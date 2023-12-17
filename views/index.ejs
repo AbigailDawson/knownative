@@ -7,5 +7,12 @@
   <body>
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
+
+    <% if (user) { %>
+      <a href="/logout">LOG OUT</a>
+    <% } else { %>
+      <a href="/auth/google" class="login">LOG IN</a>
+    <% } %>
+
   </body>
 </html>

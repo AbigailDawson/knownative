@@ -18,17 +18,36 @@ const commentSchema = new Schema({
 })
 
 const articleSchema = new Schema({
-    title: String,
-    source: String,
-    category: String,
-    content: String,
+    title: {
+        type: String,
+        required: true
+    },
+    source: {
+        type: String,
+        required: true
+    },
+    category: {
+        type: String,
+        enum: ['Politics', 'Business', 'Opinion', 'Health', 'Entertainment', 'Tech', 'Lifestyle', 'Travel', 'Education', 'Environment', 'Sports', 'Misc'],
+        required: true
+    },
+    content: {
+        type: String,
+        required: true
+    },
     public: Boolean,
-    user: [ObjectId],
     cards: [{
         type: Schema.Types.ObjectId,
         ref: 'Card'
     }],
-    comments: [commentSchema]
+    comments: [commentSchema],
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    },
+    userName: String,
+    userAvatar: String,
 }, {
     timestamps: true
 })
