@@ -1,7 +1,8 @@
 const Article = require('../models/article');
 
 module.exports = {
-    allArticles
+    allArticles,
+    myArticles
 }
 
 async function allArticles(req, res) {
@@ -10,4 +11,11 @@ async function allArticles(req, res) {
         title: 'All Articles', 
         articles 
     })
+}
+
+async function myArticles(req, res) {
+    const articles = await Article.find({ 
+        userCreating: req.user._id,
+        userSaving: req.user._id
+     })
 }
