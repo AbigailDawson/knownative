@@ -9,10 +9,9 @@
     <p>Welcome to <%= title %></p>
 
     <a href="/articles/all">View all articles</a>
-    <a href="/articles">My Articles</a>
-
     <% if (user) { %>
-      <a href="/logout">LOG OUT</a>
+        <a href="/articles">My Articles</a>
+        <a href="/logout">LOG OUT</a>
     <% } else { %>
-      <a href="/auth/google" class="login">LOG IN</a>
+        <a href="/auth/google" class="login">LOG IN</a>
     <% } %>

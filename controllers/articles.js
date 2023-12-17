@@ -17,5 +17,9 @@ async function myArticles(req, res) {
     const articles = await Article.find({ 
         userCreating: req.user._id,
         userSaving: req.user._id
-     })
+     });
+    res.render('articles/index', { 
+        title: 'My Articles', 
+        articles 
+    })
 }
