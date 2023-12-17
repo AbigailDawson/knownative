@@ -57,4 +57,4 @@ const articleSchema = new Schema({
     timestamps: true
 })
 
-const Article = mongoose.model('Article', articleSchema)
+module.exports = mongoose.model('Article', articleSchema)
