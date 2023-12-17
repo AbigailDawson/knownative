@@ -41,7 +41,12 @@ const articleSchema = new Schema({
         ref: 'Card'
     }],
     comments: [commentSchema],
-    user: {
+    userCreating: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    },
+    usersSaving: {
         type: Schema.Types.ObjectId,
         ref: 'User',
         required: true

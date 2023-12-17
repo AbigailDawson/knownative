@@ -12,7 +12,12 @@ const cardSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Card'
     }],
-    user: {
+    userCreating: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    },
+    usersSaving: {
         type: Schema.Types.ObjectId,
         ref: 'User',
         required: true
