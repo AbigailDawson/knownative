@@ -4,7 +4,8 @@ module.exports = {
     allArticles,
     myArticles,
     newArticle,
-    createArticle
+    createArticle,
+    showArticle
 }
 
 async function allArticles(req, res) {
@@ -38,6 +39,10 @@ async function newArticle(req, res) {
 async function createArticle(req, res) {
     const article = new Article(req.body);
     article.userCreating = req.user._id;
+    console.log('req.user.name: ', req.user.name)
+    console.log('req.user.avatar: ', req.user.avatar)
+    article.userName = req.user.name;
+    article.userAvatar = req.user.avatar;
     try {
         await article.save();
         console.log(article)
@@ -46,4 +51,12 @@ async function createArticle(req, res) {
         console.log(err.message)
         res.redirect('/articles/new')
     }
+}
+
+async function showArticle(req, res) {
+    const article = await Article.findById(req.params.id).populate('userCreating')
+    res.render('articles/show', {
+        title: `${article.title}`,
+        article
+    })
 }

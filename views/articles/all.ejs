@@ -1,6 +1,14 @@
 <%- include('../partials/header') %>
 
-<h2>View All Articles</h2>
 <p>A page to display all articles that have been created and marked as public</p>
+
+<% articles.forEach((article) => { %>
+    <p><%= article.title %></p>
+    <p><%= article.content %></p>
+    <p>Shared? <%= article.public %></p>
+    <a href="/articles/<%= article._id %>">See Details</a>
+    <% }) %>
+
 <a href="/articles/new">Add an Article</a>
+
 <%- include('../partials/footer') %>

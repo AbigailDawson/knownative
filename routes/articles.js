@@ -5,6 +5,7 @@ const articlesCtrl = require('../controllers/articles')
 router.get('/all', articlesCtrl.allArticles)
 router.get('/', articlesCtrl.myArticles)
 router.get('/new', articlesCtrl.newArticle)
+router.get('/:id', articlesCtrl.showArticle)
 
 router.post('/', articlesCtrl.createArticle)
 
