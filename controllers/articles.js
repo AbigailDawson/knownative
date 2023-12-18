@@ -18,8 +18,10 @@ async function allArticles(req, res) {
 
 async function myArticles(req, res) {
     const articles = await Article.find({ 
-        userCreating: req.user._id,
-        userSaving: req.user._id
+        $or: [
+            { userCreating: req.user._id },
+            { userSaving: req.user._id }
+        ]
      });
     res.render('articles/index', { 
         title: 'My Articles', 
@@ -39,8 +41,6 @@ async function newArticle(req, res) {
 async function createArticle(req, res) {
     const article = new Article(req.body);
     article.userCreating = req.user._id;
-    console.log('req.user.name: ', req.user.name)
-    console.log('req.user.avatar: ', req.user.avatar)
     article.userName = req.user.name;
     article.userAvatar = req.user.avatar;
     try {

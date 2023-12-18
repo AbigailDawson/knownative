@@ -6,6 +6,6 @@
 <p>Source: <%= article.source %></p>
 <p>Category: <%= article.category %></p>
 <p>Added by: <%= article.userName %></p>
-<p><%= article.content %></p>
+<p><%- article.content.replaceAll('\n', '<br>') %></p>
 
 <%- include('../partials/footer') %>
