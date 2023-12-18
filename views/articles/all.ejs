@@ -6,7 +6,7 @@
     <% articles.forEach((article) => { %>
         <div class="article-container">
             <h3><%= article.title %></h3>
-            <p><%= article.content %></p>
+            <p><%- article.content.replaceAll('\n', '<br>') %></p>
             <p>Shared? <%= article.public %></p>
             <a href="/articles/<%= article._id %>">See Details</a>
         </div>
