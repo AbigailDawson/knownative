@@ -6,7 +6,8 @@ module.exports = {
     newArticle,
     createArticle,
     showArticle,
-    editArticle
+    editArticle,
+    updateArticle
 }
 
 async function allArticles(req, res) {
@@ -74,4 +75,21 @@ async function editArticle(req, res) {
         article,
         validCategories
     })
+}
+
+async function updateArticle(req, res) {
+    try {
+        if(!req.body.public) {
+            req.body.public = false;
+        }
+        const updatedArticle = await Article.findOneAndUpdate(
+            { _id: req.params.id, userCreating: req.user._id},
+            req.body,
+            { new: true }
+        );
+        return res.redirect(`/articles/${updatedArticle._id}`)
+    } catch (err) {
+        console.log(err.message);
+        return res.redirect('/articles')
+    }
 }
