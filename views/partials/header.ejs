@@ -5,13 +5,16 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <h1 class="page-title"><%= title %></h1>
 
-    <a href="/articles/all">View all articles</a>
-    <% if (user) { %>
-        <a href="/articles">My Articles</a>
-        <a href="/logout">LOG OUT</a>
-    <% } else { %>
-        <a href="/auth/google" class="login">LOG IN</a>
-    <% } %>
+    <nav class="navbar">
+      <a href="/articles/all">View all articles</a>
+      <% if (user) { %>
+          <a href="/articles">My Articles</a>
+          <a href="/logout">LOG OUT</a>
+      <% } else { %>
+          <a href="/auth/google" class="login">LOG IN</a>
+      <% } %>
+    </nav>
+    
+<main>

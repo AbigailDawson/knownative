@@ -1,11 +1,15 @@
 <%- include('../partials/header') %>
 
 <p>Show the article details</p>
+<div class="collection-container">
+    <div class="article-container">
+        <h3><%= article.title %></h3>
+        <p>Source: <%= article.source %></p>
+        <p>Category: <%= article.category %></p>
+        <p>Added by: <%= article.userName %></p>
+        <p><%- article.content.replaceAll('\n', '<br>') %></p>
+    </div>
+</div>
 
-<p><%= article.title %></p>
-<p>Source: <%= article.source %></p>
-<p>Category: <%= article.category %></p>
-<p>Added by: <%= article.userName %></p>
-<p><%- article.content.replaceAll('\n', '<br>') %></p>
 
 <%- include('../partials/footer') %>
