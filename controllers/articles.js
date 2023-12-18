@@ -3,7 +3,8 @@ const Article = require('../models/article');
 module.exports = {
     allArticles,
     myArticles,
-    new: newArticle
+    newArticle,
+    createArticle
 }
 
 async function allArticles(req, res) {
@@ -25,11 +26,24 @@ async function myArticles(req, res) {
     })
 }
 
-function newArticle(req, res) {
-    const validCategories = Article.schema.path('category').enumValues;
+async function newArticle(req, res) {
+    const validCategories = await Article.schema.path('category').enumValues;
     res.render('articles/new', {
         title: 'Add an Article',
         validCategories,
         errorMsg: 'Add article failed'
     })
+}
+
+async function createArticle(req, res) {
+    const article = new Article(req.body);
+    article.userCreating = req.user._id;
+    try {
+        await article.save();
+        console.log(article)
+        res.redirect(`/articles`);
+    } catch (err) {
+        console.log(err.message)
+        res.redirect('/articles/new')
+    }
 }

@@ -35,7 +35,10 @@ const articleSchema = new Schema({
         type: String,
         required: true
     },
-    public: Boolean,
+    public: {
+        type: Boolean,
+        default: false
+    },
     cards: [{
         type: Schema.Types.ObjectId,
         ref: 'Card'
@@ -44,12 +47,10 @@ const articleSchema = new Schema({
     userCreating: {
         type: Schema.Types.ObjectId,
         ref: 'User',
-        required: true
     },
     usersSaving: {
         type: Schema.Types.ObjectId,
         ref: 'User',
-        required: true
     },
     userName: String,
     userAvatar: String,

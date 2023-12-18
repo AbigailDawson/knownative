@@ -4,6 +4,8 @@ const articlesCtrl = require('../controllers/articles')
 
 router.get('/all', articlesCtrl.allArticles)
 router.get('/', articlesCtrl.myArticles)
-router.get('/new', articlesCtrl.new)
+router.get('/new', articlesCtrl.newArticle)
+
+router.post('/', articlesCtrl.createArticle)
 
 module.exports = router;
