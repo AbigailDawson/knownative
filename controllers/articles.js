@@ -2,7 +2,8 @@ const Article = require('../models/article');
 
 module.exports = {
     allArticles,
-    myArticles
+    myArticles,
+    new: newArticle
 }
 
 async function allArticles(req, res) {
@@ -21,5 +22,14 @@ async function myArticles(req, res) {
     res.render('articles/index', { 
         title: 'My Articles', 
         articles 
+    })
+}
+
+function newArticle(req, res) {
+    const validCategories = Article.schema.path('category').enumValues;
+    res.render('articles/new', {
+        title: 'Add an Article',
+        validCategories,
+        errorMsg: 'Add article failed'
     })
 }
