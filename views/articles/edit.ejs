@@ -1,0 +1,42 @@
+<%- include('../partials/header') %>
+
+<form id="new-article-form" action="/articles/<%= article._id %>?_method=PUT" method="POST">
+    <div class="form-grp">
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title" value="<%= article.title %>">
+    </div>
+    <div class="form-grp">
+        <label for="source"> Source (URL)</label>
+        <input type="text" name="source" id="source" value="<%= article.source %>">
+    </div>
+    <div class="form-grp">
+        <label for="category">Category</label>
+        <select name="category" id="title" selected required>
+            <option value="">
+                -- Select a Category
+            </option>
+            <% validCategories.forEach((category) => { %>
+                <option value="<%= category %>" 
+                    <% if (article.category === category) { %> 
+                        selected 
+                    <% } %>>
+                    <%= category %>
+                </option>
+                <% }) %>
+        </select>
+    </div>
+    <div class="form-grp">
+        <label for="public">Share this article publicly?</label>
+        <input name="public" type="checkbox" value="true"
+        <% if (article.public) { %>
+            checked
+        <% } %>>
+    </div>
+    <div class="form-grp">
+        <label for="content">Content</label>
+        <textarea id="content" name="content" rows="10" cols="40"><%= article.content %></textarea>
+    </div>
+    <input type="submit" value="Update Article">
+</form>
+
+<%- include('../partials/footer') %>

@@ -5,7 +5,8 @@ module.exports = {
     myArticles,
     newArticle,
     createArticle,
-    showArticle
+    showArticle,
+    editArticle
 }
 
 async function allArticles(req, res) {
@@ -58,5 +59,19 @@ async function showArticle(req, res) {
     res.render('articles/show', {
         title: `${article.title}`,
         article
+    })
+}
+
+async function editArticle(req, res) {
+    const article = await Article.findOne({
+        _id: req.params.id,
+        userCreating: req.user._id
+    })
+    if (!article) return res.redirect('/articles');
+    const validCategories = await Article.schema.path('category').enumValues;
+    res.render('articles/edit', {
+        title: 'Edit Details',
+        article,
+        validCategories
     })
 }
