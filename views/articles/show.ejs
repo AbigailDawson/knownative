@@ -9,6 +9,7 @@
         <p>Added by: <%= article.userName %></p>
         <p><%- article.content.replaceAll('\n', '<br>') %></p>
         <a href="/articles/<%= article._id %>/edit">Edit Article</a>
+        <form action="/articles/<%= article._id %>?_method=DELETE" method="POST"><button type="submit">Delete Article</button></form>
     </div>
 </div>
 

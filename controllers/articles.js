@@ -7,7 +7,8 @@ module.exports = {
     createArticle,
     showArticle,
     editArticle,
-    updateArticle
+    updateArticle,
+    deleteArticle
 }
 
 async function allArticles(req, res) {
@@ -92,4 +93,12 @@ async function updateArticle(req, res) {
         console.log(err.message);
         return res.redirect('/articles')
     }
+}
+
+async function deleteArticle(req, res) {
+    await Article.findOneAndDelete({
+        _id: req.params.id,
+        userCreating: req.user._id
+    });
+    res.redirect('/articles')
 }
