@@ -8,7 +8,8 @@ module.exports = {
     showArticle,
     editArticle,
     updateArticle,
-    deleteArticle
+    deleteArticle,
+    saveArticle
 }
 
 async function allArticles(req, res) {
@@ -101,4 +102,13 @@ async function deleteArticle(req, res) {
         userCreating: req.user._id
     });
     res.redirect('/articles')
+}
+
+async function saveArticle(req, res) {
+    const article = await Article.findById(req.params.id);
+    console.log('article: ', article)
+    if (article.usersSaving.id(req.user._id)) return res.redirect('/articles');
+    article.usersSaving.push(req.user._id);
+    await article.save();
+    res.redirect(`articles/${article._id}`)
 }

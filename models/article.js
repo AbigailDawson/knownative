@@ -49,8 +49,11 @@ const articleSchema = new Schema({
         ref: 'User',
     },
     usersSaving: {
-        type: Schema.Types.ObjectId,
-        ref: 'User',
+        type: [{
+            type: Schema.Types.ObjectId,
+            ref: 'User',
+            }],
+        default: [],
     },
     userName: String,
     userAvatar: String,

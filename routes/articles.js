@@ -10,5 +10,6 @@ router.get('/:id/edit', articlesCtrl.editArticle)
 router.post('/', articlesCtrl.createArticle)
 router.put('/:id', articlesCtrl.updateArticle)
 router.delete('/:id', articlesCtrl.deleteArticle)
+router.post('/:id/save', articlesCtrl.saveArticle);
 
 module.exports = router;
