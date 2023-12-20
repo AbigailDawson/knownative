@@ -2,6 +2,7 @@ const Card = require('../models/card');
 
 module.exports = {
     search,
+    showResults
     // mine,
     // new: newArticle,
     // create,
@@ -15,6 +16,14 @@ module.exports = {
 function search(req, res) {
     res.render('cards/search', { 
         title: 'Search', 
+    })
+}
+
+function showResults(req, res) {
+    console.log('REQ.QUER.SEARCH', req.query.search)
+
+    res.render('cards/show-results', { 
+        title: 'Search Results', 
     })
 }
 

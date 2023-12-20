@@ -3,13 +3,6 @@ var router = express.Router();
 const cardsCtrl = require('../controllers/cards')
 
 router.get('/search', cardsCtrl.search)
-// router.get('/', articlesCtrl.myArticles)
-// router.get('/new', articlesCtrl.newArticle)
-// router.get('/:id', articlesCtrl.showArticle)
-// router.get('/:id/edit', articlesCtrl.editArticle)
-// router.post('/', articlesCtrl.createArticle)
-// router.put('/:id', articlesCtrl.updateArticle)
-// router.delete('/:id', articlesCtrl.deleteArticle)
-// router.post('/:id/save', articlesCtrl.saveArticle);
+router.get('/show-results', cardsCtrl.showResults)
 
 module.exports = router;
