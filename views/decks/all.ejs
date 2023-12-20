@@ -1,0 +1,33 @@
+<%- include('../partials/header') %>
+
+<p>A page to display all decks that have been created and marked as public</p>
+
+<div class="collection-container">
+    <% decks.forEach((deck) => { %>
+        <div class="deck-container">
+            <h3><%= deck.name %></h3>
+            <p><%- deck.description.replaceAll('\n', '<br>') %></p>
+            <p>Shared? <%= deck.public %></p>
+            
+            <% if(deck.cards.length) { %>
+                <ul>
+                <% deck.cards.forEach((card) => { %>
+                    <li>
+                        <%= card.traditional %> | 
+                        <%= card.simplified %> | 
+                        <%= card.pinyin %> | 
+                        <%= card.example %> | 
+                    </li>
+                <% }) %>
+                </ul>
+            <% } %>
+        </div>
+    <% }) %>
+</div>
+
+
+
+
+<a href="/articles/new">Add an Article</a>
+
+<%- include('../partials/footer') %>

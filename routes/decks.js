@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 const decksCtrl = require('../controllers/decks')
 
-router.get('/all', decksCtrl.decksCtrl)
+router.get('/all', decksCtrl.all)
 // router.get('/', articlesCtrl.myArticles)
 // router.get('/new', articlesCtrl.newArticle)
 // router.get('/:id', articlesCtrl.showArticle)
