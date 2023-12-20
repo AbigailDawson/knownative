@@ -1,18 +1,18 @@
 const Article = require('../models/article');
 
 module.exports = {
-    allArticles,
-    myArticles,
-    newArticle,
-    createArticle,
-    showArticle,
-    editArticle,
-    updateArticle,
-    deleteArticle,
-    saveArticle
+    all,
+    mine,
+    new: newArticle,
+    create,
+    show,
+    edit,
+    update,
+    delete: deleteArticle,
+    save
 }
 
-async function allArticles(req, res) {
+async function all(req, res) {
     const articles = await Article.find({ 'public' : true });
     res.render('articles/all', { 
         title: 'All Articles', 
@@ -20,7 +20,7 @@ async function allArticles(req, res) {
     })
 }
 
-async function myArticles(req, res) {
+async function mine(req, res) {
     const articles = await Article.find({ 
         $or: [
             { userCreating: req.user._id },
@@ -42,7 +42,7 @@ async function newArticle(req, res) {
     })
 }
 
-async function createArticle(req, res) {
+async function create(req, res) {
     const article = new Article(req.body);
     article.userCreating = req.user._id;
     article.userName = req.user.name;
@@ -57,7 +57,7 @@ async function createArticle(req, res) {
     }
 }
 
-async function showArticle(req, res) {
+async function show(req, res) {
     const article = await Article.findById(req.params.id).populate('userCreating')
     res.render('articles/show', {
         title: `${article.title}`,
@@ -65,7 +65,7 @@ async function showArticle(req, res) {
     })
 }
 
-async function editArticle(req, res) {
+async function edit(req, res) {
     const article = await Article.findOne({
         _id: req.params.id,
         userCreating: req.user._id
@@ -79,7 +79,7 @@ async function editArticle(req, res) {
     })
 }
 
-async function updateArticle(req, res) {
+async function update(req, res) {
     try {
         if(!req.body.public) {
             req.body.public = false;
@@ -104,7 +104,7 @@ async function deleteArticle(req, res) {
     res.redirect('/articles')
 }
 
-async function saveArticle(req, res) {
+async function save(req, res) {
     const article = await Article.findById(req.params.id);
     console.log('article: ', article)
     if (article.usersSaving.id(req.user._id)) return res.redirect('/articles');
