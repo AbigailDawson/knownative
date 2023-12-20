@@ -1,4 +1,5 @@
 const Card = require('../models/card');
+const cedict = require('../config/cedict.json');
 
 module.exports = {
     search,
@@ -20,7 +21,9 @@ function search(req, res) {
 }
 
 function showResults(req, res) {
-    console.log('REQ.QUER.SEARCH', req.query.search)
+    console.log('REQ.QUERY.SEARCH', req.query.search)
+    searchResult = cedict.find(word => word.traditional === req.query.search)
+    console.log('SEARCHRESULT: ', searchResult)
 
     res.render('cards/show-results', { 
         title: 'Search Results', 
