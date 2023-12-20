@@ -6,6 +6,7 @@ var logger = require('morgan');
 const methodOverride = require('method-override');
 const session = require('express-session');
 const passport = require('passport');
+// const cedict = require('./config/cedict');
 
 require('dotenv').config();
 require('./config/database');
