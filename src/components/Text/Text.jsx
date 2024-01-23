@@ -1,34 +1,10 @@
 import { useState, useEffect } from 'react'
-import Popup from '../../components/Popup/Popup'
 import * as textAPI from '../../utilities/text-api'
 
-export default function Text({selectedText, setSelectedText, addWord, saveWord}) {
-
-  const [showPopup, setShowPopup] = useState(false)
-  const [popupContent, setPopupContent] = useState('')
-  const [popupPosition, setPopupPosition] = useState([0,0])
-
-  useEffect(() => { // monitors the selectedText variable (this code will fire whenever selectedText changes)
-    if (selectedText) { 
-      setPopupContent(selectedText)
-      setShowPopup(true)
-    } else {
-      handlePopup()
-    }
-  }, [selectedText])
+export default function Text({selectedText, setSelectedText}) {
 
   function handleMouseUp(evt) {
-    handlePopup()
     getSelected()
-    setPopupPosition([evt.pageX, evt.pageY]) // saves position where user clicks
-  }
-  
-  function handlePopup() {
-    if (showPopup) {
-      setPopupContent('')
-      setShowPopup(false)
-      return
-    }
   }
 
   async function getSelected() {
@@ -59,20 +35,14 @@ export default function Text({selectedText, setSelectedText, addWord, saveWord})
     }
 
     setSelectedText(selection)
-    setPopupContent(selection)
-    addWord(selection)
-    setShowPopup(true)
   }
 
   return (
     <>
-      <div className="Text" onMouseUp={handleMouseUp} onMouseDown={handlePopup}>
+      <div className="Text" onMouseUp={handleMouseUp}>
         <h1>Text</h1>
         <p>我是中国人。</p>
       </div>
-      {showPopup && (
-        <Popup selectedText={popupContent} popupPosition={popupPosition} saveWord={saveWord} onClose={handlePopup} />
-      )}
     </>
   )
 }
