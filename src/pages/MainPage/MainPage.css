@@ -1,0 +1,21 @@
+.content {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  height: 90vh;
+  gap: 10px;
+}
+
+.words-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.words-column,
+.Text {
+  padding: 10px;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}

@@ -1,0 +1,9 @@
+.Popup {
+  position: absolute;
+  background-color: white;
+  border: 1px solid #9fbebb;
+  border-radius: 4px;
+  padding: 5px;
+  transform: translateX(-50%) translateY(-50%);
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
