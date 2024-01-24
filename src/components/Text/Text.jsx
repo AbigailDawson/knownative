@@ -19,7 +19,6 @@ export default function Text({text, selectedText, setSelectedText}) {
     }
 
     if (!selection) {
-      console.log('no selection')
       return
     }
 

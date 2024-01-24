@@ -14,7 +14,6 @@ export default function ReadPage() {
   useEffect(function() {
     async function getText() {
       const text = await textsAPI.getText(id)
-      console.log('text: ', text)
       setText(text)
     }
     getText()
