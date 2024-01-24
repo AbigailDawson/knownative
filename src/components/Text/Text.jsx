@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import * as textAPI from '../../utilities/text-api'
+import * as textsAPI from '../../utilities/texts-api'
 
 export default function Text({selectedText, setSelectedText}) {
 
@@ -26,7 +26,7 @@ export default function Text({selectedText, setSelectedText}) {
     console.log('SELECTION: ', selection)
     
     try {
-      const tokenizedText = await textAPI.tokenizeText(selection)
+      const tokenizedText = await textsAPI.tokenizeText(selection)
       console.log('tokenizedText: ', tokenizedText)
     } catch (error) {
       console.log(error)

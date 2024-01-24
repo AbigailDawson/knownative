@@ -1,41 +1,35 @@
 import { useState } from 'react'
-import * as textAPI from '../../utilities/text-api'
 
-export default function NewTextForm() {
+export default function NewTextForm({ handleAddText }) {
 
-  const [formData, setFormData] = useState({
+  const [textData, setTextData] = useState({
     title: '',
     source: '',
     content: ''
   })
 
   function handleChange(evt) {
-    const newFormData = {
-      ...formData,
+    const newTextData = {
+      ...textData,
       [evt.target.name]: evt.target.value
     }
-    setFormData(newFormData)
+    setTextData(newTextData)
   }
 
-  async function handleNewText(evt) {
+  async function handleSubmit(evt) {
     evt.preventDefault()
-    try {
-      const newText = await textAPI.addNewText(formData)
-      console.log('newText at handleNewText: ', newText)
-    } catch (error) {
-      console.log(error)
-    }
+    handleAddText(textData)
   }
 
   return (
     <div className="form-container">
-      <form className="NewTextForm" onSubmit={handleNewText}>
+      <form className="NewTextForm" onSubmit={handleSubmit}>
         <label for="title">Title</label>
-        <input name="title" type="text" onChange={handleChange} value={formData.title}/>
+        <input name="title" type="text" onChange={handleChange} value={textData.title}/>
         <label for="source">Source</label>
-        <input name="source" type="text" onChange={handleChange} value={formData.source}/>
+        <input name="source" type="text" onChange={handleChange} value={textData.source}/>
         <label for="content">Content</label>
-        <input name="content" type="text" onChange={handleChange} value={formData.content}/>
+        <input name="content" type="text" onChange={handleChange} value={textData.content}/>
         <button type="submit">Add</button>
       </form>
     </div>

@@ -4,7 +4,8 @@ const Text = require('../../models/text')
 
 module.exports = {
   tokenizeText,
-  addNewText
+  addNewText,
+  getAll,
 }
 
 function tokenizeText(req, res) {
@@ -13,13 +14,18 @@ function tokenizeText(req, res) {
   res.json(tokenizedText)
 }
 
+async function getAll(req, res) {
+  const texts = await Text.find({ user: req.user._id })
+  res.json(texts)
+}
+
 async function addNewText(req, res) {
-  const text = new Text(req.body)
-  text.user = req.user._id
+  req.body.user = req.user._id
+  const text = await Text.create(req.body)
   
   try {
     await text.save()
-    res.status(201).json(text)
+    res.json(text)
 
   } catch (error) {
     console.log(error)
