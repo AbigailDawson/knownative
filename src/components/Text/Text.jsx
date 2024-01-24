@@ -41,7 +41,7 @@ export default function Text({selectedText, setSelectedText}) {
     <>
       <div className="Text" onMouseUp={handleMouseUp}>
         <h1>Text</h1>
-        <p>我是中国人。</p>
+        <p>我是中国人</p>
       </div>
     </>
   )
