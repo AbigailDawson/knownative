@@ -2,6 +2,10 @@ import sendRequest from './send-request'
 const BASE_URL = '/api/text'
 
 export async function tokenizeText(selection) {
-  console.log('selection RECEIVED AT text-api.js: ', selection)
-  return sendRequest(`${BASE_URL}`, 'POST', { selection })
+  return sendRequest(`${BASE_URL}/tokenize`, 'POST', { selection })
+}
+
+export async function addNewText(newText) {
+  console.log('newText RECEIVED AT text-api.js ', newText)
+  return sendRequest(`${BASE_URL}/add`, 'POST', newText)
 }

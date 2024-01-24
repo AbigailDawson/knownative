@@ -27,8 +27,7 @@ export default function Text({selectedText, setSelectedText}) {
     
     try {
       const tokenizedText = await textAPI.tokenizeText(selection)
-      console.log('tokenizedText in Text.jsx: ', tokenizedText)
-
+      console.log('tokenizedText: ', tokenizedText)
     } catch (error) {
       console.log(error)
       console.error('Tokenization failed: ', error)
@@ -41,7 +40,7 @@ export default function Text({selectedText, setSelectedText}) {
     <>
       <div className="Text" onMouseUp={handleMouseUp}>
         <h1>Text</h1>
-        <p>我是中国人</p>
+        <p>你好世界！ <br></br>你想流利地閱讀中文嗎？ <br></br>這是一個提升閱讀理解能力的語言學習工具。<br></br> 從本文中選擇任何單字進行學習。</p>
       </div>
     </>
   )
