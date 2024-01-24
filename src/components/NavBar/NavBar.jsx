@@ -12,7 +12,7 @@ export default function NavBar({ user, setUser }) {
     <nav>
       Welcome, {user.name}
       &nbsp; | &nbsp;
-      <Link to='/main'>Main</Link>
+      <Link to='/read'>Read</Link>
       &nbsp; | &nbsp;
       <Link to='/dashboard'>Dashboard</Link>
       &nbsp; | &nbsp;

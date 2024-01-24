@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom'
 import { getUser } from '../../utilities/users-service'
 import './App.css'
 import AuthPage from '../AuthPage/AuthPage'
-import MainPage from '../MainPage/MainPage'
+import ReadPage from '../ReadPage/ReadPage'
 import NavBar from '../../components/NavBar/NavBar'
 import DashboardPage from '../DashboardPage/DashboardPage'
 
@@ -18,7 +18,7 @@ function App() {
         <NavBar user={user} setUser={setUser} />
         <Routes>
           <Route path='/dashboard' element={<DashboardPage />} />
-          <Route path='/main' element={<MainPage />} />
+          <Route path='/read' element={<ReadPage />} />
         </Routes>
       </>
         :
