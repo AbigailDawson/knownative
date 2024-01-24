@@ -6,6 +6,7 @@ module.exports = {
   tokenizeText,
   addNewText,
   getAll,
+  getText,
 }
 
 function tokenizeText(req, res) {
@@ -30,4 +31,9 @@ async function addNewText(req, res) {
   } catch (error) {
     console.log(error)
     res.status(400).json(error)  }
+}
+
+async function getText(req, res) {
+  const text = await Text.findById(req.params.id)
+  res.json(text)
 }

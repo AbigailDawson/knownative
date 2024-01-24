@@ -19,6 +19,7 @@ function App() {
         <Routes>
           <Route path='/dashboard' element={<DashboardPage />} />
           <Route path='/read' element={<ReadPage />} />
+          <Route path='/read/:id' element={<ReadPage />} />
         </Routes>
       </>
         :

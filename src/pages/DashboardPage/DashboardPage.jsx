@@ -9,14 +9,12 @@ export default function DashboardPage() {
 
   async function handleAddText(textData) {
     const text = await textsAPI.addNewText(textData)
-    console.log('text: ', text)
     setTexts([...texts, text])
   }
 
   useEffect(function() {
     async function getTexts() {
       const texts = await textsAPI.getAll()
-      console.log('texts: ', texts)
       setTexts(texts)
     }
     getTexts()
@@ -25,6 +23,7 @@ export default function DashboardPage() {
   const TextListItems = texts.map(text => (
     <TextListItem
     key={text._id}
+    id={text._id}
     title={text.title}
     source={text.source}
     content={text.content}

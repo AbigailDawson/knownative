@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import * as textsAPI from '../../utilities/texts-api'
 
-export default function Text({selectedText, setSelectedText}) {
+export default function Text({text, selectedText, setSelectedText}) {
 
   function handleMouseUp(evt) {
     getSelected()
@@ -36,11 +36,17 @@ export default function Text({selectedText, setSelectedText}) {
     setSelectedText(selection)
   }
 
+  if (!text) {
+    console.log('no text found')
+    return null
+  }
+
   return (
     <>
       <div className="Text" onMouseUp={handleMouseUp}>
-        <h1>Text</h1>
-        <p>你好世界！ <br></br>你想流利地閱讀中文嗎？ <br></br>這是一個提升閱讀理解能力的語言學習工具。<br></br> 從本文中選擇任何單字進行學習。</p>
+        <h1>{text.title}</h1>
+        <h3>Source: {text.source}</h3>
+        <p>{text.content}</p>
       </div>
     </>
   )

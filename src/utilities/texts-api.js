@@ -12,3 +12,7 @@ export function getAll() {
 export function addNewText(textData) {
   return sendRequest(`${BASE_URL}/add`, 'POST', textData)
 }
+
+export function getText(id) {
+  return sendRequest(`${BASE_URL}/${id}`)
+}
