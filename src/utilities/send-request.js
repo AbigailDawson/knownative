@@ -4,8 +4,8 @@ export default async function sendRequest(url, method = 'GET', payload = null) {
   // Fetch accepts an options object as the 2nd argument used to include a data payload, set headers, etc. method and payload are default parameters -- if we don't pass something in when we call this function, these are the default values that will be sent for method and payload
   const options = { method }; // first check if there is some other method in the request
   if (payload) { // check for a payload, if we have a payload we should set it up as follows:
-    options.headers = { 'Content-Type': 'application/json' };
-    options.body = JSON.stringify(payload);
+    options.headers = { 'Content-Type': 'application/json' }
+    options.body = JSON.stringify(payload)
   }
 
   // after checking if there is a payload, grab the token
@@ -17,8 +17,8 @@ export default async function sendRequest(url, method = 'GET', payload = null) {
     // often, authorization headers start with the keyword 'bearer'
   }
 
-  const res = await fetch(url, options); // make the fetch call
+  const res = await fetch(url, options) // make the fetch call
   // res.ok will be false if the status code set to 4xx in the controller action
-  if (res.ok) return res.json(); // if it's all good, we send back the json object
-  throw new Error('Bad Request');
+  if (res.ok) return res.json() // if it's all good, we send back the json object
+  throw new Error('Bad Request')
 }

@@ -36,7 +36,8 @@ export default function SignUpForm({setUser}) {
     }
   }
 
-  const disable = formData.password !== formData.confirm;
+  const disable = formData.password !== formData.confirm
+  
   return (
     <div>
       <div className="form-container">

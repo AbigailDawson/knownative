@@ -1,29 +1,29 @@
-import { useState } from 'react';
-import * as usersService from '../../utilities/users-service';
+import { useState } from 'react'
+import * as usersService from '../../utilities/users-service'
 
 export default function LogInForm({ setUser }) {
   const [credentials, setCredentials] = useState({
     email: '',
     password: ''
-  });
-  const [error, setError] = useState('');
+  })
+  const [error, setError] = useState('')
 
   function handleChange(evt) { // updates the credentials state based on which input is being changed. also updates the error state
     setCredentials({ 
       ...credentials, 
       [evt.target.name]: evt.target.value 
-    });
-    setError('');
+    })
+    setError('')
   }
 
   async function handleSubmit(evt) {
-    evt.preventDefault(); // Prevent form from being submitted to the server
+    evt.preventDefault() // Prevent form from being submitted to the server
     try {
       // The promise returned by the signUp service method will resolve to the user object included in the payload of the JSON Web Token (JWT)
-      const user = await usersService.logIn(credentials); 
-      setUser(user); // triggers the re-render
+      const user = await usersService.logIn(credentials)
+      setUser(user) // triggers the re-render
     } catch {
-      setError('Log In Failed - Try Again');
+      setError('Log In Failed - Try Again')
     }
   }
 
@@ -40,5 +40,5 @@ export default function LogInForm({ setUser }) {
       </div>
       <p className="error-message">&nbsp;{error}</p>
     </div>
-  );
+  )
 }

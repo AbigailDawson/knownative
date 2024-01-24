@@ -1,6 +1,6 @@
-const path = require('path');
-const tokenize = require('chinese-tokenizer').loadFile(path.join(__dirname, '../../config/cedict_ts.u8.txt'));
-const Text = require('../../models/text');
+const path = require('path')
+const tokenize = require('chinese-tokenizer').loadFile(path.join(__dirname, '../../config/cedict_ts.u8.txt'))
+const Text = require('../../models/text')
 
 module.exports = {
   tokenizeText,
@@ -8,14 +8,9 @@ module.exports = {
 }
 
 function tokenizeText(req, res) {
-  try {
-    const { selection } = req.body
-    const tokenizedText = tokenize(selection)
-    res.status(201).json(tokenizedText)
-  } catch (error) {
-    console.log(error)
-    res.status(400).json(error)
-  }
+  const { selection } = req.body
+  const tokenizedText = tokenize(selection)
+  res.json(tokenizedText)
 }
 
 async function addNewText(req, res) {
