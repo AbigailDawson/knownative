@@ -1,0 +1,11 @@
+.TextListItems {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.TextListItem {
+  width: 80%;
+  height: 200px;
+  border: 1px solid #eee;
+}
