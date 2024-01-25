@@ -5,6 +5,7 @@ const ensureLoggedIn = require('../../config/ensureLoggedIn.js')
 
 router.post('/tokenize', ensureLoggedIn, textsCtrl.tokenizeText)
 router.post('/add', ensureLoggedIn, textsCtrl.addNewText)
+// router.post('/save', ensureLoggedIn, textsCtrl.save)
 router.get('/', ensureLoggedIn, textsCtrl.getAll)
 router.get('/:id', ensureLoggedIn, textsCtrl.getText)
 

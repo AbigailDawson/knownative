@@ -2,8 +2,22 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const savedItemSchema = new Schema({
-  chinese: String,
-  translation: String
+  traditional: {
+    type: String,
+    default: ''
+  },
+  simplified: {
+    type: String,
+    default: ''
+  },
+  pinyin: {
+    type: String,
+    default: ''
+  },
+  meaning: {
+    type: String,
+    default: ''
+  }
 }, {
   timestamps: true
 })

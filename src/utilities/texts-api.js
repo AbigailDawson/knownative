@@ -16,3 +16,8 @@ export function addNewText(textData) {
 export function getText(id) {
   return sendRequest(`${BASE_URL}/${id}`)
 }
+
+export function saveItem(newItem) {
+  console.log('payload:', newItem);
+  return sendRequest(`${BASE_URL}/save`, 'POST', newItem)
+}
