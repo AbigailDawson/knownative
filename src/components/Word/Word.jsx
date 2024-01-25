@@ -1,7 +1,15 @@
-export default function Word({ text }) {
+export default function Word({ text, traditional, simplified, pinyin, meaning, onClick }) {
+  const prefixPunctuation = ['‘', '“', '《', '『', '【', '（']
+  const suffixPunctuation = ['’', '”', '》', '』', '】', '）', '、', '，', '…', '。', '：', '；', '！', '？']
+
   return (
-    <span>
-      &nbsp; { text } &nbsp; 
-    </span>
+    <>
+      &nbsp;
+      <span onClick={onClick}>
+        { text }
+      </span>
+      &nbsp;
+    </>
+    
   )
 }

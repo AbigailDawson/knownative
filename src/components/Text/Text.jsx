@@ -1,11 +1,30 @@
 import { useState, useEffect } from 'react'
 import * as textsAPI from '../../utilities/texts-api'
-// import Popup from '../Popup/Popup'
+import Popup from '../Popup/Popup'
 import Word from '../Word/Word'
 
 export default function Text({ text, tokenizedText }) {
 
-  const words = tokenizedText.map((word, idx) => {
+  const [activeWord, setActiveWord] = useState(null)
+
+  const [showPopup, setShowPopup] = useState(false)
+  const [popupPosition, setPopupPosition] = useState([0,0])
+
+  function handlePopup() {
+    if (showPopup) {
+      setActiveWord('')
+      setShowPopup(false)
+      return
+    }
+  }
+
+  function handleWordClick(word, evt) {
+    setActiveWord(word)
+    setPopupPosition([evt.pageX, evt.pageY])
+    setShowPopup(true)
+  }
+
+  function getWordInfo(word) {
     let pinyin = ''
     let meaning = ''
 
@@ -16,9 +35,16 @@ export default function Text({ text, tokenizedText }) {
       pinyin = ''
       meaning = ''
     }
+    return { pinyin, meaning }
+  }
+
+  const words = tokenizedText.map((word, idx) => {
+    const { pinyin, meaning } = getWordInfo(word)
+
     return (
       <Word 
         key={idx}
+        onClick={(evt) => handleWordClick(word, evt)}
         text={word.text}
         traditional={word.traditional}
         simplified={word.simplified}
@@ -27,28 +53,6 @@ export default function Text({ text, tokenizedText }) {
       />
     )   
 })
-
-  // const [showPopup, setShowPopup] = useState(false) // sets whether to show popup or not
-  // const [popupContent, setPopupContent] = useState('') // sets the popup content
-  // const [popupPosition, setPopupPosition] = useState([0,0]) // sets the position where the user clicks (mouseup)
-
-  
-  // function handleMouseUp(evt) {
-
-  // }
-
-  // function handlePopup() {
-  //   if (showPopup) {
-  //     setPopupContent('')
-  //     setShowPopup(false)
-  //     return
-  //   }
-  // }
-
-    // setSelectedText(selection)
-    // setPopupContent(selection)
-    // setShowPopup(true)
-  // }
 
   return (
     <>
@@ -61,9 +65,9 @@ export default function Text({ text, tokenizedText }) {
         <h1>Tokenized Text</h1>
         {words}
       </div>
-      {/* {showPopup && (
-        <Popup selectedText={popupContent} tokenizedText={tokenizedText} popupPosition={popupPosition} saveItem={saveItem} onClose={handlePopup} />
-      )} */}
+      {showPopup && (
+        <Popup word={activeWord} popupPosition={popupPosition} onClose={handlePopup} />
+      )}
     </>
   )
 }

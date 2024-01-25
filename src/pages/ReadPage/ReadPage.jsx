@@ -9,6 +9,7 @@ export default function ReadPage() {
   const { id } = useParams()
   const [text, setText] = useState(null)
   const [tokenizedText, setTokenizedText] = useState([])
+  
 
   useEffect(function() {
     async function getText() {
