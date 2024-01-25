@@ -6,8 +6,7 @@ module.exports = {
   tokenizeText,
   addNewText,
   getAll,
-  getText,
-  // save,
+  getText
 }
 
 function tokenizeText(req, res) {
@@ -38,24 +37,3 @@ async function getText(req, res) {
   const text = await Text.findById(req.params.id)
   res.json(text)
 }
-
-// async function save(req, res) {
-//   console.log('req.body:', req.body);
-//   try {
-//     const text = await Text.findOne({
-//       _id: req.params.id,
-//       user: req.body.user
-//     })
-//     if (!text) {
-//       console.log('no text found')
-//       return res.status(400).json(error)
-//     }
-//     const newItem = { traditional: req.body }
-//     text.savedItems.push(newItem)
-//     await text.save()
-
-//   } catch (error) {
-//     console.log(error)
-//   }
-//   console.log('req.body: ', req.body)
-// }
