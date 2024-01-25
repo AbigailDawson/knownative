@@ -11,8 +11,8 @@ module.exports = {
 }
 
 function tokenizeText(req, res) {
-  const { selection } = req.body
-  const tokenizedText = tokenize(selection)
+  const { text } = req.body
+  const tokenizedText = tokenize(text)
   res.json(tokenizedText)
 }
 

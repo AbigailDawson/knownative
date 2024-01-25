@@ -1,77 +1,69 @@
 import { useState, useEffect } from 'react'
 import * as textsAPI from '../../utilities/texts-api'
-import Popup from '../Popup/Popup'
+// import Popup from '../Popup/Popup'
+import Word from '../Word/Word'
 
-export default function Text({text, selectedText, setSelectedText, saveItem}) {
+export default function Text({ text, tokenizedText }) {
 
-  const [tokenizedText, setTokenizedText] = useState([])
+  const words = tokenizedText.map((word, idx) => {
+    let pinyin = ''
+    let meaning = ''
 
-  const [showPopup, setShowPopup] = useState(false) // sets whether to show popup or not
-  const [popupContent, setPopupContent] = useState('') // sets the popup content
-  const [popupPosition, setPopupPosition] = useState([0,0]) // sets the position where the user clicks (mouseup)
-
-  useEffect(() => { // monitors the selectedText variable (this code will fire whenever selectedText changes)
-    if (selectedText) { 
-      setPopupContent(selectedText)
-      setShowPopup(true)
+    if (word.matches && word.matches[0]) {
+      pinyin = word.matches[0].pinyinPretty
+      meaning = word.matches[0].english
     } else {
-      handlePopup()
+      pinyin = ''
+      meaning = ''
     }
-  }, [selectedText])
+    return (
+      <Word 
+        key={idx}
+        text={word.text}
+        traditional={word.traditional}
+        simplified={word.simplified}
+        pinyin={pinyin}
+        meaning={meaning}
+      />
+    )   
+})
 
-  function handleMouseUp(evt) {
-    getSelected()
-    handlePopup()
-    setPopupPosition([evt.pageX, evt.pageY]) // saves position where user clicks
-  }
+  // const [showPopup, setShowPopup] = useState(false) // sets whether to show popup or not
+  // const [popupContent, setPopupContent] = useState('') // sets the popup content
+  // const [popupPosition, setPopupPosition] = useState([0,0]) // sets the position where the user clicks (mouseup)
 
-  function handlePopup() {
-    if (showPopup) {
-      setPopupContent('')
-      setShowPopup(false)
-      return
-    }
-  }
+  
+  // function handleMouseUp(evt) {
 
-  async function getSelected() {
-    let selection=''
+  // }
 
-    if (window.getSelection) {
-      selection = window.getSelection().toString()
-    } else if (document.getSelection) {
-      selection = document.getSelection().toString()
-    } else {
-      selection = document.selection && document.selection.createRange()
-    }
+  // function handlePopup() {
+  //   if (showPopup) {
+  //     setPopupContent('')
+  //     setShowPopup(false)
+  //     return
+  //   }
+  // }
 
-    if (!selection) {
-      return
-    }
-
-    try {
-      const tokenizedText = await textsAPI.tokenizeText(selection)
-      console.log('tokenizedText: ', tokenizedText)
-      setTokenizedText(tokenizedText)
-    } catch (error) {
-      console.log(error)
-      console.error('Tokenization failed: ', error)
-    }
-
-    setSelectedText(selection)
-    setPopupContent(selection)
-    setShowPopup(true)
-  }
+    // setSelectedText(selection)
+    // setPopupContent(selection)
+    // setShowPopup(true)
+  // }
 
   return (
     <>
-      <div className="Text" onMouseUp={handleMouseUp}>
+      <div className="Text">
         <h1>{text.title}</h1>
         <h3>Source: {text.source}</h3>
         <p>{text.content}</p>
       </div>
-      {showPopup && (
+      <div>
+        <h1>Tokenized Text</h1>
+        {words}
+      </div>
+      {/* {showPopup && (
         <Popup selectedText={popupContent} tokenizedText={tokenizedText} popupPosition={popupPosition} saveItem={saveItem} onClose={handlePopup} />
-      )}
+      )} */}
     </>
   )
 }
