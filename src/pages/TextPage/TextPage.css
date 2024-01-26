@@ -1,21 +1,43 @@
-.content {
+.TextPage {
   display: grid;
-  grid-template-columns: 3fr 2fr;
+  grid-template-columns: 75% 25%;
   height: 90vh;
-  gap: 10px;
 }
 
-.words-column {
+.content-container {
+  background-color: #f6d4d4;
+}
+
+.sidebar {
+  background-color: #e3faf2
+}
+
+.tabs {
   display: flex;
-  flex-direction: column;
+  gap: 2vmin;
+  margin-left: 5vmin;
 }
 
-.words-column,
-.Text {
-  padding: 10px;
+.tab-btn {
+  border: 0;
+  padding: 2vmin;
+  font-size: 2vmin;
+  background-color: white;
 }
 
-ul {
-  list-style: none;
-  padding-left: 0;
+.tab-btn.active {
+  color: red;
+}
+
+.read-container,
+.study-container {
+  height: 90%;
+  display: none;
+  border: 1px solid black;
+  background-color: white;
+}
+
+.read-container.active,
+.study-container.active {
+  display: block;
 }

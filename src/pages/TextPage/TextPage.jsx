@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import './TextPage.css'
-import Text from '../../components/Text/Text'
+import StudyText from '../../components/StudyText/StudyText'
+import ReadText from '../../components/ReadText/ReadText'
 import * as textsAPI from '../../utilities/texts-api'
 
 export default function TextPage() {
@@ -9,7 +10,7 @@ export default function TextPage() {
   const { id } = useParams()
   const [text, setText] = useState(null)
   const [tokenizedText, setTokenizedText] = useState([])
-  
+  const [activeTab, setActiveTab] = useState('read')
 
   useEffect(function() {
     async function getText() {
@@ -29,11 +30,37 @@ export default function TextPage() {
     getTokenizedText()
   }, [text])
 
+  function handleTabClick(tabName) {
+    setActiveTab(tabName)
+  }
+  
   return (
     <main className="TextPage">
-      <section>
-        {text ? <Text text={text} tokenizedText={tokenizedText} /> : 'Loading data'}
+      <section className="content-container">
+        <div className="tabs">
+          <button className={`tab-btn ${activeTab === 'read' ? 'active' : ''}`} onClick={() => handleTabClick('read')} >Read</button>
+          <button className={`tab-btn ${activeTab === 'study' ? 'active' : ''}`} onClick={() => handleTabClick('study')} >Study</button>
+        </div>
+        <div id="read" className={`read-container ${activeTab === 'read' ? 'active' : ''}`}>
+          <h1>Read-container</h1>
+          <div className="Text">
+            {text ? <ReadText text={text} /> : 'Loading text'}
+          </div>
+        </div>
+        <div id="study" className={`study-container ${activeTab === 'study' ? 'active' : ''}`}>
+          <h1>Study-container</h1>
+          <div className="Text">
+            {text ? <StudyText tokenizedText={tokenizedText} /> : 'Loading text'}
+          </div>
+        </div>
       </section>
+      <aside className="sidebar">
+        <h1>Study Words</h1>
+        <div>Hello!</div>
+        <div>Hello!</div>
+        <div>Hello!</div>
+        <div>Hello!</div>
+      </aside>
     </main>
   )
 }

@@ -3,7 +3,7 @@ import * as textsAPI from '../../utilities/texts-api'
 import Popup from '../Popup/Popup'
 import Word from '../Word/Word'
 
-export default function Text({ text, tokenizedText }) {
+export default function StudyText({ tokenizedText }) {
 
   const [activeWord, setActiveWord] = useState(null)
 
@@ -56,13 +56,8 @@ export default function Text({ text, tokenizedText }) {
 
   return (
     <>
-      <div className="Text">
-        <h1>{text.title}</h1>
-        <h3>Source: {text.source}</h3>
-        <p>{text.content}</p>
-      </div>
-      <div>
-        <h1>Tokenized Text</h1>
+      <div className="studyText">
+        <h1>Study Text</h1>
         {words}
       </div>
       {showPopup && (
