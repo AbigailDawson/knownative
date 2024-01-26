@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import './ReadPage.css'
+import './TextPage.css'
 import Text from '../../components/Text/Text'
 import * as textsAPI from '../../utilities/texts-api'
 
-export default function ReadPage() {
+export default function TextPage() {
 
   const { id } = useParams()
   const [text, setText] = useState(null)
@@ -30,7 +30,7 @@ export default function ReadPage() {
   }, [text])
 
   return (
-    <main className="ReadPage">
+    <main className="TextPage">
       <section>
         {text ? <Text text={text} tokenizedText={tokenizedText} /> : 'Loading data'}
       </section>
