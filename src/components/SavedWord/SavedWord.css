@@ -1,0 +1,9 @@
+.SavedWord {
+  margin-top: 2.5vmin;
+  font-size: 11px;
+}
+
+.SavedWord p {
+  margin: 0;
+  margin-top: .7vmin;
+}
