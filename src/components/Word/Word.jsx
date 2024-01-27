@@ -1,11 +1,11 @@
-export default function Word({ text, traditional, simplified, pinyin, meaning, onClick }) {
+export default function Word({ text, isSaved, onClick }) {
   const prefixPunctuation = ['‘', '“', '《', '『', '【', '（']
   const suffixPunctuation = ['’', '”', '》', '』', '】', '）', '、', '，', '…', '。', '：', '；', '！', '？']
 
   return (
     <>
       &nbsp;
-      <span onClick={onClick}>
+      <span onClick={onClick} style={{ color: isSaved ? 'green' : 'black' }}>
         { text }
       </span>
       &nbsp;

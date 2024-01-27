@@ -8,7 +8,8 @@ module.exports = {
   addNewText,
   getAll,
   getText,
-  saveWord
+  saveWord,
+  getSavedWords
 }
 
 function tokenizeText(req, res) {
@@ -44,6 +45,15 @@ async function saveWord(req, res) {
 
   const { word } = req.body
   const thisText = await Text.findById(req.params.id)
+
+  if (word.matches && word.matches[0]) {
+    word.pinyin = word.matches[0].pinyinPretty
+    word.meaning = word.matches[0].english
+  } else {
+    word.pinyin = ''
+    word.meaning = ''
+  }
+
   word.user = req.user._id
   word.textRef = thisText
 
@@ -57,4 +67,10 @@ async function saveWord(req, res) {
     console.log(error)
     res.status(400).json(error)
   }
+}
+
+async function getSavedWords(req, res) {
+  const text = await Text.findById(req.params.id).populate('words')
+  const savedWords = text.words
+  res.json(savedWords)
 }

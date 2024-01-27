@@ -8,5 +8,6 @@ router.post('/add', ensureLoggedIn, textsCtrl.addNewText)
 router.post('/:id/save', ensureLoggedIn, textsCtrl.saveWord)
 router.get('/', ensureLoggedIn, textsCtrl.getAll)
 router.get('/:id', ensureLoggedIn, textsCtrl.getText)
+router.get('/:id/get-saved-words', ensureLoggedIn, textsCtrl.getSavedWords)
 
 module.exports = router

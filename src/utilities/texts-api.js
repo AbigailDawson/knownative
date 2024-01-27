@@ -20,3 +20,7 @@ export function getText(id) {
 export function saveWord(word, textId) {
   return sendRequest(`${BASE_URL}/${textId}/save`, 'POST', {word})
 }
+
+export function getSavedWords(textId) {
+  return sendRequest(`${BASE_URL}/${textId}/get-saved-words`)
+}
