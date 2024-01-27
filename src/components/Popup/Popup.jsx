@@ -19,7 +19,7 @@ export default function Popup({ word, popupPosition, saveWord, textId, onClose})
   function handleStarClick(word) {
     saveWord(word, textId)
   }
-  
+
   return (
     <div className="Popup" style={{ 
       left: `${popupPosition[0] + 30}px`,

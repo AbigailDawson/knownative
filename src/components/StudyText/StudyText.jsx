@@ -25,6 +25,7 @@ export default function StudyText({ tokenizedText, textId }) {
 
   async function saveWord(word, textId) {
     await textsAPI.saveWord(word, textId)
+    handlePopup()
   }
 
   function handlePopup() {
