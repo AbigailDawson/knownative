@@ -17,7 +17,7 @@ export default function StudyText({ tokenizedText, textId }) {
 
     }
     getSavedWords()
-  }, [])
+  }, [savedWords])
 
   function checkSaved(word) {
     return savedWords.some((savedWord) => savedWord.traditional === word.traditional);
