@@ -1,7 +1,10 @@
 import './Popup.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faStar as solidStar } from '@fortawesome/free-solid-svg-icons'
+import { faStar as lightStar } from '@fortawesome/free-regular-svg-icons'
 
-export default function Popup({ word, popupPosition, onClose}) {
-  console.log(word)
+export default function Popup({ word, popupPosition, saveWord, textId, onClose}) {
+
   let pinyin = ''
   let meaning = ''
 
@@ -13,16 +16,19 @@ export default function Popup({ word, popupPosition, onClose}) {
     meaning = ''
   }
 
-  console.log('pinyin: ', pinyin)
+  function handleStarClick(word) {
+    saveWord(word, textId)
+  }
   
   return (
     <div className="Popup" style={{ 
       left: `${popupPosition[0] + 30}px`,
       top: `${popupPosition[1] - 40}px`,
       }}>
+        <FontAwesomeIcon icon={lightStar} onClick={() => handleStarClick(word)} /> &nbsp;&nbsp;
         {pinyin} <br></br>
         {meaning}
-        <button onClick={() => onClose()}>X</button>
+        &nbsp;&nbsp; <button onClick={() => onClose()}>X</button>
     </div>
   )
 }

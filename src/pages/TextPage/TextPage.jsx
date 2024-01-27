@@ -50,7 +50,7 @@ export default function TextPage() {
         <div id="study" className={`study-container ${activeTab === 'study' ? 'active' : ''}`}>
           <h1>Study-container</h1>
           <div className="Text">
-            {text ? <StudyText tokenizedText={tokenizedText} /> : 'Loading text'}
+            {text ? <StudyText tokenizedText={tokenizedText} textId={id} /> : 'Loading text'}
           </div>
         </div>
       </section>

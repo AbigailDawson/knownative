@@ -17,7 +17,6 @@ export function getText(id) {
   return sendRequest(`${BASE_URL}/${id}`)
 }
 
-// export function saveItem(newItem) {
-//   console.log('payload:', newItem);
-//   return sendRequest(`${BASE_URL}/save`, 'POST', newItem)
-// }
+export function saveWord(word, textId) {
+  return sendRequest(`${BASE_URL}/${textId}/save`, 'POST', {word})
+}

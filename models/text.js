@@ -17,9 +17,9 @@ const textSchema = new Schema({
     type: String,
     required: true
   },
-  savedItems: [{
+  words: [{
     type: Schema.Types.ObjectId,
-    ref: 'savedItem',
+    ref: 'Word',
   }],
 }, {
   timestamps: true

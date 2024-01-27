@@ -3,12 +3,16 @@ import * as textsAPI from '../../utilities/texts-api'
 import Popup from '../Popup/Popup'
 import Word from '../Word/Word'
 
-export default function StudyText({ tokenizedText }) {
+export default function StudyText({ tokenizedText, textId }) {
 
   const [activeWord, setActiveWord] = useState(null)
 
   const [showPopup, setShowPopup] = useState(false)
   const [popupPosition, setPopupPosition] = useState([0,0])
+
+  async function saveWord(word, textId) {
+    await textsAPI.saveWord(word, textId)
+  }
 
   function handlePopup() {
     if (showPopup) {
@@ -61,7 +65,7 @@ export default function StudyText({ tokenizedText }) {
         {words}
       </div>
       {showPopup && (
-        <Popup word={activeWord} popupPosition={popupPosition} onClose={handlePopup} />
+        <Popup word={activeWord} popupPosition={popupPosition} saveWord={(word) => saveWord(word, textId)} onClose={handlePopup} />
       )}
     </>
   )

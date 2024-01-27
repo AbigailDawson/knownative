@@ -1,13 +1,13 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-const savedItemSchema = new Schema({
+const wordSchema = new Schema({
   user: {
     type: Schema.Types.ObjectId,
     ref: 'User',
     required: true,
   },
-  text: {
+  textRef: {
     type: Schema.Types.ObjectId,
     ref: 'Text',
     required: true,
@@ -27,21 +27,9 @@ const savedItemSchema = new Schema({
   meaning: {
     type: String,
     default: ''
-  },
-  sentence: {
-    type: String,
-    default: ''
-  },
-  translation: {
-    type: String,
-    default: ''
-  },
-  notes: {
-    type: String,
-    default: ''
-  },
+  }
 }, {
   timestamps: true
 })
 
-module.exports = mongoose.model('savedItem', savedItemSchema)
+module.exports = mongoose.model('Word', wordSchema)
