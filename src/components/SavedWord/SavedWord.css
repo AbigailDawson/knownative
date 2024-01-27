@@ -4,6 +4,6 @@
 }
 
 .SavedWord p {
-  margin: 0;
+  text-align: left;
   margin-top: .7vmin;
 }

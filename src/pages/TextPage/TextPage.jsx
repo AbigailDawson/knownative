@@ -12,6 +12,7 @@ export default function TextPage() {
   const [text, setText] = useState(null)
   const [tokenizedText, setTokenizedText] = useState([])
   const [savedWords, setSavedWords] = useState([])
+  const [isEditMode, setIsEditMode] = useState(false)
   const [activeWord, setActiveWord] = useState(null)
   const [activeTab, setActiveTab] = useState('study')
 
@@ -54,6 +55,10 @@ export default function TextPage() {
     setShowPopup(false)
   }
   
+  function toggleEditMode() {
+    setIsEditMode(!isEditMode)
+  }
+
   return (
     <main className="TextPage">
       <section className="content-container">
@@ -84,7 +89,7 @@ export default function TextPage() {
         </div>
       </section>
       <aside className="sidebar">
-        <SavedWordsList savedWords={savedWords} />
+        <SavedWordsList savedWords={savedWords} toggleEditMode={toggleEditMode} isEditMode={isEditMode}/>
       </aside>
     </main>
   )
