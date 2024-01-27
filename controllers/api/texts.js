@@ -49,6 +49,8 @@ async function saveWord(req, res) {
   if (word.matches && word.matches[0]) {
     word.pinyin = word.matches[0].pinyinPretty
     word.meaning = word.matches[0].english
+    meaning = meaning.includes('/') ? meaning.split('/')[0].trim() : meaning
+
   } else {
     word.pinyin = ''
     word.meaning = ''
