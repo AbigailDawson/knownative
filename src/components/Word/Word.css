@@ -4,17 +4,13 @@
   flex-direction: column;
   height: 10vmin;
   width: auto;
-  max-width: 12vmin;
+  max-width: 10vmin;
   font-size: 3vmin;
 }
 
 .Word p,
 .specialChar p {
   margin: 0;
-}
-
-.specialChar p {
-  background-color: red;
 }
 
 .annotation {
