@@ -61,9 +61,9 @@ async function saveWord(req, res) {
   try {
     const newWord = await Word.create(word)
     const savedWord = await newWord.save()
+    res.json(savedWord);
     thisText.words.push(savedWord)
     await thisText.save()
-    res.json(savedWord);
     
   } catch (error) {
     console.log(error)
