@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import './TextPage.css'
 import StudyText from '../../components/StudyText/StudyText'
 import ReadText from '../../components/ReadText/ReadText'
-import SavedWord from '../../components/SavedWord/SavedWord'
+import SavedWordsList from '../../components/SavedWordsList/SavedWordsList'
 import * as textsAPI from '../../utilities/texts-api'
 
 export default function TextPage() {
@@ -12,7 +12,10 @@ export default function TextPage() {
   const [text, setText] = useState(null)
   const [tokenizedText, setTokenizedText] = useState([])
   const [savedWords, setSavedWords] = useState([])
+  const [activeWord, setActiveWord] = useState(null)
   const [activeTab, setActiveTab] = useState('study')
+
+  const [showPopup, setShowPopup] = useState(false)
 
   useEffect(function() {
     async function getText() {
@@ -32,25 +35,25 @@ export default function TextPage() {
     getTokenizedText()
   }, [text])
 
-  useEffect(() => {
+  useEffect(function() {
     async function getSavedWords() {
       const savedWords = await textsAPI.getSavedWords(id)
       setSavedWords(savedWords)
     }
     getSavedWords()
-  }, [savedWords])
+  },[])
 
   function handleTabClick(tabName) {
     setActiveTab(tabName)
   }
-  
-  const savedWordItems = savedWords.map((word) => (
-    <SavedWord
-      key={id}
-      word={word}
-    />
-  ))
 
+  async function saveWord(word, textId) {
+    const savedWord = await textsAPI.saveWord(word, textId)
+    setSavedWords([...savedWords, savedWord])
+    setActiveWord('')
+    setShowPopup(false)
+  }
+  
   return (
     <main className="TextPage">
       <section className="content-container">
@@ -65,15 +68,24 @@ export default function TextPage() {
           </div>
         </div>
         <div id="study" className={`study-container ${activeTab === 'study' ? 'active' : ''}`}>
-          <h1>Study-container</h1>
           <div className="Text">
-            {text ? <StudyText tokenizedText={tokenizedText} textId={id} savedWords={savedWords} /> : 'Loading text'}
+            {text ? <StudyText 
+              tokenizedText={tokenizedText} 
+              textId={id} 
+              activeWord={activeWord}
+              setActiveWord={setActiveWord}
+              saveWord={saveWord} 
+              savedWords={savedWords} 
+              setSavedWords={setSavedWords} 
+              showPopup={showPopup}
+              setShowPopup={setShowPopup}
+              /> : 'Loading text'}
           </div>
         </div>
       </section>
       <aside className="sidebar">
         <h1>Saved Words</h1>
-        {savedWordItems}
+        <SavedWordsList savedWords={savedWords} />
       </aside>
     </main>
   )

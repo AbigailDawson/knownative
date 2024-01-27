@@ -18,7 +18,7 @@ export default function Popup({ word, popupPosition, saveWord, textId, onClose})
     meaning = ''
   }
 
-  function handleStarClick(word) {
+  function handleSaveClick(word) {
     saveWord(word, textId)
   }
 
@@ -27,10 +27,10 @@ export default function Popup({ word, popupPosition, saveWord, textId, onClose})
       left: `${popupPosition[0] + 30}px`,
       top: `${popupPosition[1] - 40}px`,
       }}>
-        <FontAwesomeIcon icon={lightStar} onClick={() => handleStarClick(word)} /> &nbsp;&nbsp;
         {pinyin} <br></br>
-        {meaning}
-        &nbsp;&nbsp; <button onClick={() => onClose()}>X</button>
+        {meaning} <br></br>
+        <button onClick={() => handleSaveClick(word)}> Save </button> &nbsp; 
+        <button onClick={() => onClose()}> Close </button>
     </div>
   )
 }

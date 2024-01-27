@@ -4,19 +4,12 @@ import './StudyText.css'
 import Popup from '../Popup/Popup'
 import Word from '../Word/Word'
 
-export default function StudyText({ tokenizedText, textId, savedWords }) {
+export default function StudyText({ tokenizedText, textId, activeWord, setActiveWord, saveWord, savedWords, setSavedWords, showPopup, setShowPopup }) {
 
-  const [activeWord, setActiveWord] = useState(null)
-  const [showPopup, setShowPopup] = useState(false)
   const [popupPosition, setPopupPosition] = useState([0,0])
 
   function checkSaved(word) {
-    return savedWords.some((savedWord) => savedWord.traditional === word.traditional);
-  }
-
-  async function saveWord(word, textId) {
-    await textsAPI.saveWord(word, textId)
-    handlePopup()
+    return savedWords.some((savedWord) => savedWord.traditional === word.traditional)
   }
 
   function handlePopup() {
@@ -75,7 +68,6 @@ export default function StudyText({ tokenizedText, textId, savedWords }) {
   return (
     <>
       <div className="studyText">
-        <h1>Study Text</h1>
         <div className="text-block">
         {words}
         </div>

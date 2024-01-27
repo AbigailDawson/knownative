@@ -49,8 +49,7 @@ async function saveWord(req, res) {
   if (word.matches && word.matches[0]) {
     word.pinyin = word.matches[0].pinyinPretty
     word.meaning = word.matches[0].english
-    meaning = meaning.includes('/') ? meaning.split('/')[0].trim() : meaning
-
+    word.meaning = word.meaning.includes('/') ? word.meaning.split('/')[0].trim() : word.meaning
   } else {
     word.pinyin = ''
     word.meaning = ''
@@ -64,6 +63,7 @@ async function saveWord(req, res) {
     const savedWord = await newWord.save()
     thisText.words.push(savedWord)
     await thisText.save()
+    res.json(savedWord);
     
   } catch (error) {
     console.log(error)
