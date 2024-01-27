@@ -1,15 +1,23 @@
-export default function Word({ text, isSaved, onClick }) {
-  const prefixPunctuation = ['‘', '“', '《', '『', '【', '（']
-  const suffixPunctuation = ['’', '”', '》', '』', '】', '）', '、', '，', '…', '。', '：', '；', '！', '？']
+import './Word.css'
+
+export default function Word({ text, pinyin, meaning, isSaved, isSpecialChar, onClick }) {
 
   return (
-    <>
-      &nbsp;
-      <span onClick={onClick} style={{ color: isSaved ? 'green' : 'black' }}>
-        { text }
-      </span>
-      &nbsp;
-    </>
+      <div 
+        className={`Word ${isSpecialChar ? 'specialChar' : ''}`}
+      >
+       <p
+       onClick={onClick} 
+       style={{ color: isSaved ? 'green' : 'black'}}
+       >{ text }</p>
+        <div 
+          className="annotation" 
+          style={{ visibility: isSaved ? 'visible' : 'hidden'}}
+        >
+          <p>{ pinyin }</p>
+          <p>{ meaning }</p>
+          </div>
+      </div>
     
   )
 }

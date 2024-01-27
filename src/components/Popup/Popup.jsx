@@ -11,6 +11,8 @@ export default function Popup({ word, popupPosition, saveWord, textId, onClose})
   if (word.matches && word.matches[0]) {
     pinyin = word.matches[0].pinyinPretty
     meaning = word.matches[0].english
+    meaning = meaning.includes('/') ? meaning.split('/')[0].trim() : meaning
+
   } else {
     pinyin = ''
     meaning = ''

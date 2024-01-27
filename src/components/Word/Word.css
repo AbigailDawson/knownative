@@ -1,0 +1,21 @@
+.Word,
+.specialChar {
+  display: flex;
+  flex-direction: column;
+  height: 10vmin;
+  width: auto;
+  max-width: 12vmin;
+  font-size: 3vmin;
+}
+
+.Word p,
+.specialChar p {
+  margin: 0;
+}
+
+.annotation {
+  height: 5vmin;
+  text-wrap: pretty;
+  font-size: 1.3vmin;
+}
+

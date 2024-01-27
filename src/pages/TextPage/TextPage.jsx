@@ -10,7 +10,7 @@ export default function TextPage() {
   const { id } = useParams()
   const [text, setText] = useState(null)
   const [tokenizedText, setTokenizedText] = useState([])
-  const [activeTab, setActiveTab] = useState('read')
+  const [activeTab, setActiveTab] = useState('study')
 
   useEffect(function() {
     async function getText() {

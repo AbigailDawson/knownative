@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import * as textsAPI from '../../utilities/texts-api'
+import './StudyText.css'
 import Popup from '../Popup/Popup'
 import Word from '../Word/Word'
 
@@ -49,6 +50,8 @@ export default function StudyText({ tokenizedText, textId }) {
     if (word.matches && word.matches[0]) {
       pinyin = word.matches[0].pinyinPretty
       meaning = word.matches[0].english
+      meaning = meaning.includes('/') ? meaning.split('/')[0].trim() : meaning
+
     } else {
       pinyin = ''
       meaning = ''
@@ -58,6 +61,11 @@ export default function StudyText({ tokenizedText, textId }) {
 
   const words = tokenizedText.map((word, idx) => {
     const { pinyin, meaning } = getWordInfo(word)
+    
+    // const prefixPunctuation = ['‘', '“', '《', '『', '【', '（']
+    // const suffixPunctuation = ['’', '”', '》', '』', '】', '）', '、', '，', '…', '。', '：', '；', '！', '？']
+
+    const specialChars = ['‘', '“', '《', '『', '【', '（', '’', '”', '》', '』', '】', '）', '、', '，', '…', '。', '：', '；', '！', '？', '「', '」', '.', '・', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' ]
 
     return (
       <Word 
@@ -69,15 +77,18 @@ export default function StudyText({ tokenizedText, textId }) {
         pinyin={pinyin}
         meaning={meaning}
         isSaved={checkSaved(word)}
+        isSpecialChar={specialChars.includes(word.text)}
       />
-    )   
-})
+    )
+  })
 
   return (
     <>
       <div className="studyText">
         <h1>Study Text</h1>
+        <div className="text-block">
         {words}
+        </div>
       </div>
       {showPopup && (
         <Popup word={activeWord} popupPosition={popupPosition} saveWord={(word) => saveWord(word, textId)} onClose={handlePopup} />
