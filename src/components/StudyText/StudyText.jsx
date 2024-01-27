@@ -4,21 +4,11 @@ import './StudyText.css'
 import Popup from '../Popup/Popup'
 import Word from '../Word/Word'
 
-export default function StudyText({ tokenizedText, textId }) {
+export default function StudyText({ tokenizedText, textId, savedWords }) {
 
   const [activeWord, setActiveWord] = useState(null)
-  const [savedWords, setSavedWords] = useState([])
   const [showPopup, setShowPopup] = useState(false)
   const [popupPosition, setPopupPosition] = useState([0,0])
-
-  useEffect(() => {
-    async function getSavedWords() {
-      const savedWords = await textsAPI.getSavedWords(textId)
-      setSavedWords(savedWords)
-
-    }
-    getSavedWords()
-  }, [savedWords])
 
   function checkSaved(word) {
     return savedWords.some((savedWord) => savedWord.traditional === word.traditional);
