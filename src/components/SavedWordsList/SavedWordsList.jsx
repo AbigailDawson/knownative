@@ -1,3 +1,4 @@
+import './SavedWordsList.css'
 import SavedWord from '../../components/SavedWord/SavedWord'
 
 export default function SavedWordsList({ savedWords }) {
@@ -10,8 +11,9 @@ export default function SavedWordsList({ savedWords }) {
   ))
 
   return (
-    <>
+    <div className="SavedWordsList">
+      <h1>Saved Words</h1>
       {savedWordItems}
-    </>
+    </div>
   )
 }

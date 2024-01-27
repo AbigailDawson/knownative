@@ -84,7 +84,6 @@ export default function TextPage() {
         </div>
       </section>
       <aside className="sidebar">
-        <h1>Saved Words</h1>
         <SavedWordsList savedWords={savedWords} />
       </aside>
     </main>
