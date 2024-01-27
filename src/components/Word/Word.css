@@ -13,6 +13,10 @@
   margin: 0;
 }
 
+.specialChar p {
+  background-color: red;
+}
+
 .annotation {
   height: 5vmin;
   text-wrap: pretty;

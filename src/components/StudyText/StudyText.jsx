@@ -48,7 +48,8 @@ export default function StudyText({ tokenizedText, textId, activeWord, setActive
     // const prefixPunctuation = ['‘', '“', '《', '『', '【', '（']
     // const suffixPunctuation = ['’', '”', '》', '』', '】', '）', '、', '，', '…', '。', '：', '；', '！', '？']
 
-    const specialChars = ['‘', '“', '《', '『', '【', '（', '’', '”', '》', '』', '】', '）', '、', '，', '…', '。', '：', '；', '！', '？', '「', '」', '.', '・', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' ]
+    const specialChars = ['‘', '“', '《', '『', '【', '（', '’', '”', '》', '』', '】', '）', '、', '，', '…', '。', '：', '；', '！', '？', '「', '」', '.', '・']
+    const isSpecialChar = specialChars.includes(word.text) || /\d/.test(word.text) || /[^\u4e00-\u9fa5]/.test(word.text)
 
     return (
       <Word 
@@ -60,8 +61,8 @@ export default function StudyText({ tokenizedText, textId, activeWord, setActive
         pinyin={pinyin}
         meaning={meaning}
         isSaved={checkSaved(word)}
-        isSpecialChar={specialChars.includes(word.text)}
-      />
+        isSpecialChar={isSpecialChar}
+        />
     )
   })
 

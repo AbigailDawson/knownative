@@ -7,7 +7,7 @@ export default function Word({ text, pinyin, meaning, isSaved, isSpecialChar, on
         className={`Word ${isSpecialChar ? 'specialChar' : ''}`}
       >
        <p
-       onClick={onClick} 
+       onClick={!isSpecialChar ? onClick : undefined}
        style={{ color: isSaved ? 'green' : 'black'}}
        >{ text }</p>
         <div 
