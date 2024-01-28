@@ -19,6 +19,7 @@
     "morgan": "^1.10.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^5.0.1",
     "react-router-dom": "^6.21.2",
     "react-scripts": "5.0.1",
     "serve-favicon": "^2.5.0"

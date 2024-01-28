@@ -1,6 +1,14 @@
 .SavedWordsList {
   display: flex;
   flex-direction: column;
+  padding: 1vmin 0;
   width: 100%;
-  padding: 2vmin;
+  background-color: var(--drk-bg);
+  color: var(--drk-txt);
+}
+
+.edit-list-btn {
+  align-self: center;
+  margin: 1vmin 0;
+  width: 30%;
 }

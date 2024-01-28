@@ -18,8 +18,9 @@ export default function SavedWordsList({ savedWords, toggleEditMode, isEditMode 
   return (
     <div className="SavedWordsList">
       <h1>Saved Words</h1>
-      <button onClick={handleEditListClick}>Edit List</button>
+      <button className="edit-list-btn" onClick={handleEditListClick}>Edit List</button>
       {savedWordItems}
+      
     </div>
   )
 }

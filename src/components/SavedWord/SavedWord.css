@@ -1,21 +1,37 @@
 .SavedWord {
-  display: flex;
+  display: grid;
+  grid-template-columns: 25% 65% 10%;
   justify-content: space-between;
   align-items: center;
+  text-align: left;
   text-wrap: wrap;
-  margin: .5vmin 3vmin;
-  padding: 1vmin 3vmin;
-  border-radius: .5vmin;
-  background-color: var(--medium);
+  background-color: var(--light);
   color: var(--drk-txt);
+  padding: 1vmin 2vmin;
+  border-bottom: 1px solid var(--drk-bg)
 }
 
-.saved-word {
+.char-pinyin {
   display: flex;
   flex-direction: column;
+  align-items: center;
   font-size: 3vmin;
 }
 
-.saved-word > .small {
-  font-size: 1vmin;
+.char-pinyin > .small {
+  font-size: 1.3vmin;
+}
+
+.meaning {
+  margin-left: 2vmin;
+}
+
+.updateMeaningForm {
+  display: flex;
+}
+
+.updateMeaningForm > input,
+.updateMeaningForm > button {
+  display: inline-block;
+  color: var(--drk-txt);
 }
