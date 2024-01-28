@@ -4,7 +4,7 @@ import './StudyText.css'
 import Popup from '../Popup/Popup'
 import Word from '../Word/Word'
 
-export default function StudyText({ tokenizedText, textId, activeWord, setActiveWord, saveWord, savedWords, setSavedWords, showPopup, setShowPopup }) {
+export default function StudyText({ text, tokenizedText, textId, activeWord, setActiveWord, saveWord, savedWords, setSavedWords, showPopup, setShowPopup }) {
 
   const [popupPosition, setPopupPosition] = useState([0,0])
 
@@ -68,8 +68,10 @@ export default function StudyText({ tokenizedText, textId, activeWord, setActive
 
   return (
     <>
-      <div className="studyText">
-        <div className="text-block">
+      <div className="StudyText">
+        <h1>{text.title}</h1>
+        <h3>Source: {text.source}</h3>
+        <div className="study-text-block">
         {words}
         </div>
       </div>

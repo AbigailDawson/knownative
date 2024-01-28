@@ -1,0 +1,16 @@
+.ReadText {
+  display: flex;
+  flex-direction: column;
+  gap: 2vmin;
+  margin: 0 3vmin 0 3vmin;
+  padding: 4vmin 2vmin;
+  color: var(--drk-txt);
+}
+
+.read-text-block {
+  margin-top: 2vmin;
+  line-height: 10vmin;
+  letter-spacing: 1vmin;
+  font-size: 2.5vmin;
+  text-align: left;
+}

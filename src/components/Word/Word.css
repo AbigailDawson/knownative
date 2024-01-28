@@ -3,9 +3,13 @@
   display: flex;
   flex-direction: column;
   height: 10vmin;
-  width: auto;
-  max-width: 10vmin;
-  font-size: 3vmin;
+  width: 7vmin;
+  font-size: 2.5vmin;
+  text-wrap: nowrap;
+}
+
+.specialChar {
+  width: 2vmin;
 }
 
 .Word p,
@@ -15,7 +19,8 @@
 
 .annotation {
   height: 5vmin;
-  text-wrap: pretty;
+  text-wrap: wrap;
   font-size: 1.3vmin;
+  color: var(--drk-txt);
 }
 

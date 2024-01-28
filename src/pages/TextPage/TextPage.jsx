@@ -84,6 +84,7 @@ export default function TextPage() {
 
               <div className="Text">
                 {text ? <StudyText 
+                  text={text}
                   tokenizedText={tokenizedText} 
                   textId={id} 
                   activeWord={activeWord}

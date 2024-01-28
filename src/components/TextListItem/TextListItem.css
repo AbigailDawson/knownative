@@ -3,7 +3,7 @@
   justify-content: space-between;
   gap: 4vmin;
   background-color: var(--drk-bg);
-  border-bottom: 1px solid var(--orange);
+  border-bottom: 1px solid var(--lt-orange);
   color: var(--lt-txt);
   text-align: left;
   width: 100%;
