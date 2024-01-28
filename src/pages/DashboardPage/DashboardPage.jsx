@@ -31,8 +31,8 @@ export default function DashboardPage() {
   ))
 
   return (
-  <main className="DashboardPage">
-    <div className="dash-sidebar">
+  <main className="DashboardPage page">
+    <div className="sidebar">
       <h1>Sidebar</h1>
       <p>Sidebar content</p>
     </div>

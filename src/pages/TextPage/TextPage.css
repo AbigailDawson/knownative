@@ -1,28 +1,22 @@
-.TextPage {
-  display: grid;
-  grid-template-columns: 75% 25%;
-  height: 90vh;
-}
-
-.content-container {
-  background-color: #f6d4d4;
-}
-
-.sidebar {
-  background-color: #e3faf2
+.text-area {
+  background: rgb(249,177,122);
+  background: linear-gradient(0deg, rgba(249,177,122,1) 39%, rgba(255,237,203,1) 69%);
+  margin: 0 3vmin 0 3vmin;
+  height: 100vh;
+  border-radius: 5vmin 5vmin 0 0;
 }
 
 .tabs {
   display: flex;
-  gap: 2vmin;
-  margin-left: 5vmin;
+  gap: 1vmin;
+  margin-left: 10vmin;
 }
 
 .tab-btn {
-  border: 0;
-  padding: 2vmin;
+  border-radius: 1vmin 1vmin 0 0;
+  padding: 2vmin 4vmin;
   font-size: 2vmin;
-  background-color: white;
+  background-color: var(--lt-orange);
 }
 
 .tab-btn.active {
@@ -31,13 +25,12 @@
 
 .read-container,
 .study-container {
-  height: 90%;
   display: none;
-  border: 1px solid black;
-  background-color: white;
+  
 }
 
 .read-container.active,
 .study-container.active {
   display: block;
 }
+

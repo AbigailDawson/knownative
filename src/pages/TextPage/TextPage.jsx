@@ -61,36 +61,44 @@ export default function TextPage() {
 
   return (
     <main className="TextPage">
-      <section className="content-container">
-        <div className="tabs">
-          <button className={`tab-btn ${activeTab === 'read' ? 'active' : ''}`} onClick={() => handleTabClick('read')} >Read</button>
-          <button className={`tab-btn ${activeTab === 'study' ? 'active' : ''}`} onClick={() => handleTabClick('study')} >Study</button>
-        </div>
-        <div id="read" className={`read-container ${activeTab === 'read' ? 'active' : ''}`}>
-          <h1>Read-container</h1>
-          <div className="Text">
-            {text ? <ReadText text={text} /> : 'Loading text'}
-          </div>
-        </div>
-        <div id="study" className={`study-container ${activeTab === 'study' ? 'active' : ''}`}>
-          <div className="Text">
-            {text ? <StudyText 
-              tokenizedText={tokenizedText} 
-              textId={id} 
-              activeWord={activeWord}
-              setActiveWord={setActiveWord}
-              saveWord={saveWord} 
-              savedWords={savedWords} 
-              setSavedWords={setSavedWords} 
-              showPopup={showPopup}
-              setShowPopup={setShowPopup}
-              /> : 'Loading text'}
-          </div>
-        </div>
-      </section>
-      <aside className="sidebar">
+
+      {/* <aside className="">
         <SavedWordsList savedWords={savedWords} toggleEditMode={toggleEditMode} isEditMode={isEditMode}/>
-      </aside>
+      </aside> */}
+
+
+          <div className="tabs">
+            <button className={`tab-btn ${activeTab === 'read' ? 'active' : ''}`} onClick={() => handleTabClick('read')} >Read</button>
+            <button className={`tab-btn ${activeTab === 'study' ? 'active' : ''}`} onClick={() => handleTabClick('study')} >Study</button>
+          </div>
+
+          <div className="text-area">
+
+            <div id="read" className={`read-container ${activeTab === 'read' ? 'active' : ''}`}>
+              <div className="Text">
+                {text ? <ReadText text={text} /> : 'Loading text'}
+              </div>
+            </div>
+
+            <div id="study" className={`study-container ${activeTab === 'study' ? 'active' : ''}`}>
+
+              <div className="Text">
+                {text ? <StudyText 
+                  tokenizedText={tokenizedText} 
+                  textId={id} 
+                  activeWord={activeWord}
+                  setActiveWord={setActiveWord}
+                  saveWord={saveWord} 
+                  savedWords={savedWords} 
+                  setSavedWords={setSavedWords} 
+                  showPopup={showPopup}
+                  setShowPopup={setShowPopup}
+                  /> : 'Loading text'}
+              </div>
+              
+            </div>
+          </div>
+
     </main>
   )
 }
