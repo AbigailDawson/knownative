@@ -54,7 +54,12 @@ export default function TextPage() {
     setActiveWord('')
     setShowPopup(false)
   }
-  
+
+  // async function updateMeaning(word) {
+  //   console.log(word.meaning)
+  //   const updatedWord = await textsAPI.updateWord(word, textId)
+  // }
+
   function toggleEditMode() {
     setIsEditMode(!isEditMode)
   }

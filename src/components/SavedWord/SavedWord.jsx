@@ -12,14 +12,15 @@ export default function SavedWord({ word, isEditMode }) {
   function handleChange(evt) {
     const newFormData = {
       ...formData,
-      meaning: evt.target.value
+      [evt.target.name]: evt.target.value
     };
     setFormData(newFormData)
   }
 
   function handleUpdateMeaning(evt) {
-    evt.preventDefault()
-    alert(`Updated meaning: ${formData.meaning}`);
+    evt.preventTargetDefault()
+    alert('formData: ', formData)
+    // updateMeaning(formData)
   }
 
   return (
@@ -39,6 +40,7 @@ export default function SavedWord({ word, isEditMode }) {
             <form className="updateMeaningForm" onSubmit={handleUpdateMeaning}>
               <input
                 type="text"
+                name="meaning"
                 value={formData.meaning}
                 onChange={handleChange}
               />
