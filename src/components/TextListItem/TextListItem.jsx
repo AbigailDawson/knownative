@@ -3,10 +3,17 @@ import './TextListItem.css'
 
 export default function TextListItem({ title, source, content, id }) {
 
+  const truncatedContent = content.slice(0, 50)
+
   return (
     <div className="TextListItem">
-      <h1>{title}</h1>
-      <Link to={`/read/${id}`}>Read</Link>
+      <div className="item-content">
+        <h3>{title}</h3>
+        <p>{truncatedContent} ... </p>
+      </div>
+      <Link className="read-btn" to={`/read/${id}`}>
+        <button>Read</button>
+      </Link>
     </div>
   )
 }

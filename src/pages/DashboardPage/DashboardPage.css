@@ -1,0 +1,43 @@
+.DashboardPage {
+  display: grid;
+  grid-template-columns: 25% 75%;
+  height: 80vh;
+  margin-top: 2vmin;
+}
+
+.outer-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgb(249,177,122);
+  background: linear-gradient(0deg, rgba(249,177,122,1) 39%, rgba(255,237,203,1) 69%);
+  border-radius: 7vmin;
+  margin: 0 3vmin;
+}
+
+.inner-container {
+  background-color: var(--drk-bg);
+  border-radius: 7vmin;  
+  width: 97%;
+  height: 97%;
+  padding: 4vmin 3vmin;
+  overflow-y: scroll;
+}
+
+.TextListItems {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+}
+
+.dash-sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  border-radius: 2vmin;
+  margin-left: 3vmin;
+  background-color: var(--drk-bg);
+  border: 3px solid var(--orange)
+}

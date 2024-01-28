@@ -1,11 +1,15 @@
-.TextListItems {
+.TextListItem {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  gap: 4vmin;
+  background-color: var(--drk-bg);
+  border-bottom: 1px solid var(--orange);
+  color: var(--lt-txt);
+  text-align: left;
+  width: 100%;
+  padding: 2vmin 3vmin;
 }
 
-.TextListItem {
-  width: 80%;
-  border: 1px solid #eee;
+.read-btn {
+  align-self: flex-end;
 }

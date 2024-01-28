@@ -1,0 +1,19 @@
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 3vmin;
+  height: 10vmin;
+  background-color: var(--drk-bg);
+  color: var(--lt-txt)
+}
+
+.nav-link {
+  text-decoration: none;
+  color: var(--lt-txt);
+}
+
+.nav-link:hover {
+  text-decoration: none;
+  color: var(--orange);
+}
