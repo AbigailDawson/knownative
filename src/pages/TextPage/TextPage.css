@@ -1,31 +1,27 @@
-.TextPage {
-  margin-top: 3vmin;
-}
-
-.text-area {
-  background: var(--lt-orange);
-  background: var(--orange-gradient);
-  margin: 0 3vmin 0 3vmin;
-  padding: 4vmin 2vmin;
-  height: 100%;
-  border-radius: 5vmin 5vmin 0 0;
-}
-
 .tabs {
   display: flex;
   gap: 1vmin;
-  margin-left: 10vmin;
+  margin-left: 5vmin;
 }
 
 .tab-btn {
   border-radius: 1vmin 1vmin 0 0;
   padding: 2vmin 4vmin;
   font-size: 2vmin;
-  background-color: var(--orange);
+  background-color: var(--medium);
 }
 
 .tab-btn.active {
-  background-color: var(--lt-orange);
+  background-color: var(--light);
+}
+
+.text-area {
+  background: var(--light);
+  background: var(--gradient);
+  padding: 2vmin;
+  height: 100%;
+  border-radius: 1vmin 1vmin 0 0;
+
 }
 
 .read-container,

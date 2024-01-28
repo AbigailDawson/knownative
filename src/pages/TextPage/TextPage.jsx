@@ -60,17 +60,18 @@ export default function TextPage() {
   }
 
   return (
-    <main className="TextPage">
+    <main className="TextPage page">
 
-      {/* <aside className="">
+      <aside className="sidebar">
         <SavedWordsList savedWords={savedWords} toggleEditMode={toggleEditMode} isEditMode={isEditMode}/>
-      </aside> */}
+      </aside>
 
+      <section className="main-area">
 
-          <div className="tabs">
-            <button className={`tab-btn ${activeTab === 'read' ? 'active' : ''}`} onClick={() => handleTabClick('read')} >Read</button>
-            <button className={`tab-btn ${activeTab === 'study' ? 'active' : ''}`} onClick={() => handleTabClick('study')} >Study</button>
-          </div>
+        <div className="tabs">
+          <button className={`tab-btn ${activeTab === 'study' ? 'active' : ''}`} onClick={() => handleTabClick('study')} >Study</button>
+          <button className={`tab-btn ${activeTab === 'read' ? 'active' : ''}`} onClick={() => handleTabClick('read')} >Read</button>
+        </div>
 
           <div className="text-area">
 
@@ -99,6 +100,10 @@ export default function TextPage() {
               
             </div>
           </div>
+
+      </section>
+
+          
 
     </main>
   )

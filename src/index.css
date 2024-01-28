@@ -5,15 +5,13 @@
 }
 
 :root {
-  --drk-txt: #0d0d08;
-  --drk-bg: #2d3250;
+  --drk-txt: #000000;
+  --drk-bg: #5e5e5e;
   --lt-txt: #ffffff;
-  --lt-bg: #e6e6e6;
-  --lt-blu: #678f9d;
-  --med-blu: #424769;
-  --orange: #f9b17a;
-  --lt-orange: #fff6e5;
-  --orange-gradient: linear-gradient(0deg, #f9e7be 39%, #fff6e5 69%);
+  --lt-bg: #ffffff;
+  --light: #b6b6b6;
+  --medium: #979797;
+  --gradient: linear-gradient(0deg, var(--medium) 39%, var(--light) 69%);
 }
 
 body {
@@ -35,38 +33,30 @@ button {
   padding: 1vmin 1.2vmin;
   border-radius: .7vmin;
   border: none;
-  background-color: var(--orange);
+  background-color: var(--medium);
   cursor: pointer;
 }
 
 button:hover {
-  background-color: var(--lt-orange);
+  background-color: var(--light);
 }
 
 .page {
   display: grid;
   grid-template-columns: 25% 75%;
-  height: 80vh;
-  margin-top: 2vmin;
+  height: 90vh;
 }
 
-.outer-container {
+.main-area {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  background: var(--lt-orange);
-  background: var(--orange-gradient);
-  border-radius: 7vmin;
-  margin: 0 3vmin;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  text-align: left;
+  background: var(--dark-bg);
+  border: 3px solid var(--light);
+  padding: 3vmin;
   height: 100%;
-}
-
-.inner-container {
-  background-color: var(--drk-bg);
-  border-radius: 7vmin;  
-  width: 97%;
-  height: 97%;
-  padding: 4vmin 3vmin;
 }
 
 .sidebar {
@@ -74,9 +64,7 @@ button:hover {
   flex-direction: column;
   justify-content: start;
   align-items: center;
-  border-radius: 2vmin;
-  margin-left: 3vmin;
   background-color: var(--drk-bg);
-  border: 3px solid var(--lt-orange);
+  border: 3px solid var(--light);
   height: 100%;
 }

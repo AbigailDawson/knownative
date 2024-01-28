@@ -32,17 +32,15 @@ export default function DashboardPage() {
 
   return (
   <main className="DashboardPage page">
-    <div className="sidebar">
+    <aside className="sidebar">
       <h1>Sidebar</h1>
       <p>Sidebar content</p>
-    </div>
+    </aside>
     {/* <NewTextForm handleAddText={handleAddText} /> */}
-    <div className="outer-container">
-      <div className="inner-container">
-        <h1>My Texts</h1>
-        <div className="TextListItems">{TextListItems}</div>
-      </div>
-    </div>
+    <section className="main-area">
+      <h1>My Texts</h1>
+      <div className="TextListItems">{TextListItems}</div>
+    </section>
   </main>
   )
 }

@@ -4,7 +4,7 @@ nav {
   justify-content: space-between;
   padding: 0 3vmin;
   height: 10vmin;
-  background-color: var(--drk-bg);
+  background-color: var(--medium);
   color: var(--lt-txt)
 }
 
