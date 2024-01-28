@@ -1,9 +1,21 @@
 .SavedWord {
-  margin-top: 2.5vmin;
-  font-size: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-wrap: wrap;
+  margin: .5vmin 3vmin;
+  padding: 1vmin 3vmin;
+  border-radius: .5vmin;
+  background-color: var(--medium);
+  color: var(--drk-txt);
 }
 
-.SavedWord p {
-  text-align: left;
-  margin-top: .7vmin;
+.saved-word {
+  display: flex;
+  flex-direction: column;
+  font-size: 3vmin;
+}
+
+.saved-word > .small {
+  font-size: 1vmin;
 }
