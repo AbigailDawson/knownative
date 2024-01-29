@@ -39,6 +39,13 @@ export default function StudyText({ text, tokenizedText, textId, activeWord, set
       pinyin = ''
       meaning = ''
     }
+
+    const savedWord = savedWords.find(savedWord => savedWord.traditional === word.traditional)
+    if (savedWord) {
+      pinyin = savedWord.pinyin || pinyin
+      meaning = savedWord.meaning || meaning
+    }
+
     return { pinyin, meaning }
   }
 
