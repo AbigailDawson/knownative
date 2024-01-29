@@ -1,9 +1,9 @@
 import './SavedWord.css'
 import { useState } from 'react'
-import { RiQuillPenFill } from "react-icons/ri";
-import { RiDeleteBin2Fill } from "react-icons/ri";
+import { FaRegEdit } from "react-icons/fa";
+import { IoMdCheckboxOutline } from "react-icons/io";
 
-export default function SavedWord({ word, isEditMode, updateMeaning }) {
+export default function SavedWord({ word, updateMeaning, isEditingWord, setIsEditingWord }) {
 
   const [formData, setFormData] = useState({
     meaning: word.meaning
@@ -17,10 +17,18 @@ export default function SavedWord({ word, isEditMode, updateMeaning }) {
     setFormData(newFormData)
   }
 
-  function handleUpdateMeaning(word) {
-    updateMeaning(word, formData.meaning)
+  function handleEditClick() {
+    setIsEditingWord(word._id)
   }
 
+  function handleUpdateMeaning(word) {
+    if (word.meaning === formData.meaning) {
+      setIsEditingWord(null)
+      return
+    }
+    updateMeaning(word, formData.meaning)
+  }
+  
   return (
     <div className="SavedWord">
 
@@ -34,7 +42,7 @@ export default function SavedWord({ word, isEditMode, updateMeaning }) {
       {/* grid column 2 */}
 
       <div className="meaning">
-        {isEditMode ? (
+        {isEditingWord ? (
           <form className="updateMeaningForm" onSubmit={() => handleUpdateMeaning(word)}>
             <input
               type="text"
@@ -42,20 +50,13 @@ export default function SavedWord({ word, isEditMode, updateMeaning }) {
               value={formData.meaning}
               onChange={handleChange}
             />
-            <button type="submit">√</button>
+            <button className="submit-btn" type="submit" ><IoMdCheckboxOutline /></button>
           </form>
         ) : (
-          <p>{ word.meaning }</p>
-        )}
-      </div>
-
-      {/* grid column 3 */}
-
-      <div className="delete-button">
-        {isEditMode && (
-          <>
-            <div><RiDeleteBin2Fill /></div>
-          </>
+          <div className="right-side">
+            <div>{ word.meaning }</div>
+            <div className="edit-btn" onClick={handleEditClick}><FaRegEdit /></div>
+          </div>
         )}
       </div>
 

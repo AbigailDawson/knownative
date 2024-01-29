@@ -14,7 +14,6 @@ export default function TextPage() {
   const [text, setText] = useState(null)
   const [tokenizedText, setTokenizedText] = useState([])
   const [savedWords, setSavedWords] = useState([])
-  const [isEditMode, setIsEditMode] = useState(false)
   const [activeWord, setActiveWord] = useState(null)
   const [activeTab, setActiveTab] = useState('study')
 
@@ -65,15 +64,13 @@ export default function TextPage() {
         savedWord._id === updatedWord._id ? updatedWord : savedWord))
   }
 
-  function toggleEditMode() {
-    setIsEditMode(!isEditMode)
-  }
+
 
   return (
     <main className="TextPage page">
 
       <aside className="sidebar">
-        <SavedWordsList savedWords={savedWords} toggleEditMode={toggleEditMode} isEditMode={isEditMode} updateMeaning={updateMeaning}/>
+        <SavedWordsList savedWords={savedWords} updateMeaning={updateMeaning}/>
       </aside>
 
       <section className="main-area">
