@@ -22,44 +22,44 @@ export default function SavedWord({ word, isEditMode, updateMeaning }) {
   }
 
   return (
-      <div className="SavedWord">
+    <div className="SavedWord">
 
-        {/* grid column 1 */}
+      {/* grid column 1 */}
 
-        <div className="char-pinyin">
-          <p className="small"> { word.pinyin } </p>
-          <p>{ word.traditional } </p> 
-        </div>
-
-        {/* grid column 2 */}
-
-        <div className="meaning">
-          {isEditMode ? (
-            <form className="updateMeaningForm" onSubmit={() => handleUpdateMeaning(word)}>
-              <input
-                type="text"
-                name="meaning"
-                value={formData.meaning}
-                onChange={handleChange}
-              />
-              <button type="submit">√</button>
-            </form>
-          ) : (
-            <p>{ word.meaning }</p>
-          )}
-        </div>
-
-        {/* grid column 3 */}
-
-        <div className="delete-button">
-          {isEditMode && (
-            <>
-              <div><RiDeleteBin2Fill /></div>
-            </>
-          )}
-        </div>
-
+      <div className="char-pinyin">
+        <p className="small"> { word.pinyin } </p>
+        <p>{ word.traditional } </p> 
       </div>
+
+      {/* grid column 2 */}
+
+      <div className="meaning">
+        {isEditMode ? (
+          <form className="updateMeaningForm" onSubmit={() => handleUpdateMeaning(word)}>
+            <input
+              type="text"
+              name="meaning"
+              value={formData.meaning}
+              onChange={handleChange}
+            />
+            <button type="submit">√</button>
+          </form>
+        ) : (
+          <p>{ word.meaning }</p>
+        )}
+      </div>
+
+      {/* grid column 3 */}
+
+      <div className="delete-button">
+        {isEditMode && (
+          <>
+            <div><RiDeleteBin2Fill /></div>
+          </>
+        )}
+      </div>
+
+    </div>
 
   )
 }

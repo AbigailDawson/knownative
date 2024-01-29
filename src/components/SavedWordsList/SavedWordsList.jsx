@@ -9,7 +9,7 @@ export default function SavedWordsList({ savedWords, toggleEditMode, isEditMode,
 
   const savedWordItems = savedWords.map((word) => (
     <SavedWord
-      key={word.id}
+      key={word._id}
       word={word}
       isEditMode={isEditMode}
       updateMeaning={updateMeaning}

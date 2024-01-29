@@ -57,7 +57,7 @@ export default function TextPage() {
   }
 
   function updateMeaning(word) {
-    alert(word)
+    alert(word._id)
     // const updatedWord = await textsAPI.updateWord(word, textId)
   }
 
