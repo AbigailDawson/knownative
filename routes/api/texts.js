@@ -9,5 +9,6 @@ router.post('/:id/save', ensureLoggedIn, textsCtrl.saveWord)
 router.get('/', ensureLoggedIn, textsCtrl.getAll)
 router.get('/:id', ensureLoggedIn, textsCtrl.getText)
 router.get('/:id/get-saved-words', ensureLoggedIn, textsCtrl.getSavedWords)
+router.post('/translate', ensureLoggedIn, textsCtrl.translateSentence)
 
 module.exports = router

@@ -2,6 +2,8 @@ const path = require('path')
 const tokenize = require('chinese-tokenizer').loadFile(path.join(__dirname, '../../config/cedict_ts.u8.txt'))
 const Text = require('../../models/text')
 const Word = require('../../models/word')
+const {Translate} = require('@google-cloud/translate').v2
+const translate = new Translate();
 
 module.exports = {
   tokenizeText,
@@ -9,7 +11,8 @@ module.exports = {
   getAll,
   getText,
   saveWord,
-  getSavedWords
+  getSavedWords,
+  translateSentence
 }
 
 function tokenizeText(req, res) {
@@ -75,4 +78,17 @@ async function getSavedWords(req, res) {
   const text = await Text.findById(req.params.id).populate('words')
   const savedWords = text.words
   res.json(savedWords)
+}
+
+async function translateSentence(req, res) {
+  const { sentence } = req.body
+  const target = 'en'
+
+  try {
+    let [translations] = await translate.translate(sentence, target)
+    translations = Array.isArray(translations) ? translations : [translations]
+    res.json(translations[0])
+  } catch(error) {
+    res.status(400).json(error)
+  }
 }
