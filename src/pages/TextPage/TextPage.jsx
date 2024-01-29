@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import './TextPage.css'
 import StudyText from '../../components/StudyText/StudyText'
 import ReadText from '../../components/ReadText/ReadText'
+import TranslateText from '../../components/TranslateText/TranslateText'
 import SavedWordsList from '../../components/SavedWordsList/SavedWordsList'
 import * as textsAPI from '../../utilities/texts-api'
 
@@ -76,18 +77,12 @@ export default function TextPage() {
         <div className="tabs">
           <button className={`tab-btn ${activeTab === 'study' ? 'active' : ''}`} onClick={() => handleTabClick('study')} >Study</button>
           <button className={`tab-btn ${activeTab === 'read' ? 'active' : ''}`} onClick={() => handleTabClick('read')} >Read</button>
+          <button className={`tab-btn ${activeTab === 'translate' ? 'active' : ''}`} onClick={() => handleTabClick('translate')} >Translate</button>
         </div>
 
           <div className="text-area">
 
-            <div id="read" className={`read-container ${activeTab === 'read' ? 'active' : ''}`}>
-              <div className="Text">
-                {text ? <ReadText text={text} /> : 'Loading text'}
-              </div>
-            </div>
-
             <div id="study" className={`study-container ${activeTab === 'study' ? 'active' : ''}`}>
-
               <div className="Text">
                 {text ? <StudyText 
                   text={text}
@@ -102,8 +97,21 @@ export default function TextPage() {
                   setShowPopup={setShowPopup}
                   /> : 'Loading text'}
               </div>
-              
             </div>
+
+            <div id="read" className={`read-container ${activeTab === 'read' ? 'active' : ''}`}>
+              <div className="Text">
+                {text ? <ReadText text={text} /> : 'Loading text'}
+              </div>
+            </div>
+
+            <div id="translate" className={`translate-container ${activeTab === 'translate' ? 'active' : ''}`}>
+              <div className="Text">
+                {text ? <TranslateText text={text} /> : 'Loading text'}
+              </div>
+            </div> 
+
+
           </div>
 
       </section>

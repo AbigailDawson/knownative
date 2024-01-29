@@ -25,12 +25,14 @@
 }
 
 .read-container,
-.study-container {
+.study-container,
+.translate-container {
   display: none;
   
 }
 
 .read-container.active,
-.study-container.active {
+.study-container.active,
+.translate-container.active {
   display: block;
 }

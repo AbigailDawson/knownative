@@ -1,6 +1,4 @@
-// import * as textAPI from '../utilities/text-api'
-
-// export async function tokenizeText(selection) {
-//   console.log('RECEIVED AT text-service: ', selection)
-//   return textAPI.tokenizeText(selection)
-// }
+export function splitSentences(text) {
+  const sentences = text.split(/([。」.])/).filter(sentence => sentence.trim() !== '')
+  return sentences
+}
