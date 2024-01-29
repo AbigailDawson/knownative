@@ -2,8 +2,9 @@
 .specialChar {
   display: flex;
   flex-direction: column;
-  height: 10vmin;
-  width: 7vmin;
+  height: 9vmin;
+  max-width: 7vmin;
+  margin: 0 .5vmin;
   font-size: 2.5vmin;
   text-wrap: nowrap;
 }
@@ -18,7 +19,7 @@
 }
 
 .annotation {
-  height: 5vmin;
+  height: 6vmin;
   text-wrap: wrap;
   font-size: 1.3vmin;
   color: var(--drk-txt);
