@@ -1,7 +1,7 @@
 import './SavedWordsList.css'
 import SavedWord from '../../components/SavedWord/SavedWord'
 
-export default function SavedWordsList({ savedWords, toggleEditMode, isEditMode }) {
+export default function SavedWordsList({ savedWords, toggleEditMode, isEditMode, updateMeaning }) {
 
   function handleEditListClick() {
     toggleEditMode()
@@ -12,6 +12,7 @@ export default function SavedWordsList({ savedWords, toggleEditMode, isEditMode 
       key={word.id}
       word={word}
       isEditMode={isEditMode}
+      updateMeaning={updateMeaning}
     />
   ))
 

@@ -56,10 +56,10 @@ export default function TextPage() {
     setShowPopup(false)
   }
 
-  // async function updateMeaning(word) {
-  //   console.log(word.meaning)
-  //   const updatedWord = await textsAPI.updateWord(word, textId)
-  // }
+  function updateMeaning(word) {
+    alert(word)
+    // const updatedWord = await textsAPI.updateWord(word, textId)
+  }
 
   function toggleEditMode() {
     setIsEditMode(!isEditMode)
@@ -69,7 +69,7 @@ export default function TextPage() {
     <main className="TextPage page">
 
       <aside className="sidebar">
-        <SavedWordsList savedWords={savedWords} toggleEditMode={toggleEditMode} isEditMode={isEditMode}/>
+        <SavedWordsList savedWords={savedWords} toggleEditMode={toggleEditMode} isEditMode={isEditMode} updateMeaning={updateMeaning}/>
       </aside>
 
       <section className="main-area">

@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { RiQuillPenFill } from "react-icons/ri";
 import { RiDeleteBin2Fill } from "react-icons/ri";
 
-export default function SavedWord({ word, isEditMode }) {
+export default function SavedWord({ word, isEditMode, updateMeaning }) {
 
   const [formData, setFormData] = useState({
     meaning: word.meaning
@@ -17,10 +17,8 @@ export default function SavedWord({ word, isEditMode }) {
     setFormData(newFormData)
   }
 
-  function handleUpdateMeaning(evt) {
-    evt.preventTargetDefault()
-    alert('formData: ', formData)
-    // updateMeaning(formData)
+  function handleUpdateMeaning(word) {
+    updateMeaning(word)
   }
 
   return (
@@ -37,7 +35,7 @@ export default function SavedWord({ word, isEditMode }) {
 
         <div className="meaning">
           {isEditMode ? (
-            <form className="updateMeaningForm" onSubmit={handleUpdateMeaning}>
+            <form className="updateMeaningForm" onSubmit={() => handleUpdateMeaning(word)}>
               <input
                 type="text"
                 name="meaning"
