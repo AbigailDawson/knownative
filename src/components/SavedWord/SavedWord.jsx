@@ -18,7 +18,7 @@ export default function SavedWord({ word, isEditMode, updateMeaning }) {
   }
 
   function handleUpdateMeaning(word) {
-    updateMeaning(word)
+    updateMeaning(word, formData.meaning)
   }
 
   return (

@@ -6,6 +6,7 @@ import ReadText from '../../components/ReadText/ReadText'
 import TranslateText from '../../components/TranslateText/TranslateText'
 import SavedWordsList from '../../components/SavedWordsList/SavedWordsList'
 import * as textsAPI from '../../utilities/texts-api'
+import * as wordsAPI from '../../utilities/words-api'
 
 export default function TextPage() {
 
@@ -56,9 +57,12 @@ export default function TextPage() {
     setShowPopup(false)
   }
 
-  function updateMeaning(word) {
-    alert(word._id)
-    // const updatedWord = await textsAPI.updateWord(word, textId)
+  async function updateMeaning(word, formData) {
+    const updatedWord = await wordsAPI.updateMeaning(word, formData)
+    console.log(updatedWord)
+    setSavedWords(prevSavedWords => 
+      prevSavedWords.map(savedWord =>
+        savedWord._id === updatedWord._id ? updatedWord : savedWord))
   }
 
   function toggleEditMode() {

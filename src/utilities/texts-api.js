@@ -24,11 +24,3 @@ export function saveWord(word, textId) {
 export function getSavedWords(textId) {
   return sendRequest(`${BASE_URL}/${textId}/get-saved-words`)
 }
-
-export function updateMeaning(word, textId) {
-  
-}
-
-// export function updateWord(word, textId) {
-//   return sendRequest(`${BASE_URL}/${textId}/update`, 'POST', {word})
-// }
