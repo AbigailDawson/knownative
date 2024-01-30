@@ -10,3 +10,9 @@
 .sidebar-heading {
   margin: 3vmin;
 }
+
+.study-btn {
+  align-self: center;
+  margin: 0 0 2vmin 0;
+  width: 50%;
+}

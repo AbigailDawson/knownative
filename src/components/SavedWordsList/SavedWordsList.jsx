@@ -2,7 +2,7 @@ import './SavedWordsList.css'
 import { useState } from 'react'
 import SavedWord from '../../components/SavedWord/SavedWord'
 
-export default function SavedWordsList({ savedWords, updateMeaning, deleteWord }) {
+export default function SavedWordsList({ savedWords, updateMeaning, deleteWord, handleOpen }) {
 
   const [editingWord, setEditingWord] = useState(null)
 
@@ -20,6 +20,7 @@ export default function SavedWordsList({ savedWords, updateMeaning, deleteWord }
   return (
     <div className="SavedWordsList">
       <h1 className="sidebar-heading">Saved Words</h1>
+      <button className="study-btn" onClick={handleOpen}>Study</button>
       {savedWordItems}
     </div>
   )

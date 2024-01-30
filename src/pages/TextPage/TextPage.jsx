@@ -7,6 +7,12 @@ import TranslateText from '../../components/TranslateText/TranslateText'
 import SavedWordsList from '../../components/SavedWordsList/SavedWordsList'
 import * as textsAPI from '../../utilities/texts-api'
 import * as wordsAPI from '../../utilities/words-api'
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
 
 export default function TextPage() {
 
@@ -16,8 +22,8 @@ export default function TextPage() {
   const [savedWords, setSavedWords] = useState([])
   const [activeWord, setActiveWord] = useState(null)
   const [activeTab, setActiveTab] = useState('study')
-
   const [showPopup, setShowPopup] = useState(false)
+  const [open, setOpen] = useState(false)
 
   useEffect(function() {
     async function getText() {
@@ -73,6 +79,14 @@ export default function TextPage() {
       }
   }
 
+  function handleOpen() {
+    setOpen(true)
+  }
+
+  function handleClose() {
+    setOpen(false)
+  }
+
   return (
     <main className="TextPage page">
 
@@ -81,8 +95,35 @@ export default function TextPage() {
           savedWords={savedWords} 
           updateMeaning={updateMeaning}
           deleteWord={deleteWord}
+          handleOpen={handleOpen}
         />
       </aside>
+
+      <Dialog
+          open={open}
+          onClose={handleClose}   
+          PaperComponent={({ children }) => (
+            <div style={{ 
+              minWidth: '400px', 
+              maxWidth: '800px', 
+              width: '80vw',
+              backgroundColor: 'white',
+              color: 'var(--drk-txt)' 
+              }}>
+              {children}
+            </div>
+          )}
+        >
+        <DialogTitle>Let's Study!</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            This is some text.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>Cancel</Button>
+        </DialogActions>
+      </Dialog>
 
       <section className="main-area">
 
