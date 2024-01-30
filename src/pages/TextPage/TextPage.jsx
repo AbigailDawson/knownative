@@ -5,6 +5,7 @@ import StudyText from '../../components/StudyText/StudyText'
 import ReadText from '../../components/ReadText/ReadText'
 import TranslateText from '../../components/TranslateText/TranslateText'
 import SavedWordsList from '../../components/SavedWordsList/SavedWordsList'
+import Flashcard from '../../components/Flashcard/Flashcard'
 import * as textsAPI from '../../utilities/texts-api'
 import * as wordsAPI from '../../utilities/words-api'
 import Button from '@mui/material/Button';
@@ -19,11 +20,20 @@ export default function TextPage() {
   const { id } = useParams()
   const [text, setText] = useState(null)
   const [tokenizedText, setTokenizedText] = useState([])
+  const [activeTab, setActiveTab] = useState('study')
+
+  // --- SAVED WORDS ---
   const [savedWords, setSavedWords] = useState([])
   const [activeWord, setActiveWord] = useState(null)
-  const [activeTab, setActiveTab] = useState('study')
+
+  // --- POPUP ---
   const [showPopup, setShowPopup] = useState(false)
+
+  // --- FLASHCARDS ---
   const [open, setOpen] = useState(false)
+  const [flashcards, setFlashcards] = useState([])
+  const [isChineseFront, setIsChineseFront] = useState(true)
+  const [showPinyin, setShowPinyin] = useState(true)
 
   useEffect(function() {
     async function getText() {
@@ -50,6 +60,16 @@ export default function TextPage() {
     }
     getSavedWords()
   },[])
+
+  useEffect(function() {
+    const flashcardsArray = savedWords.map((word) => ({
+      chinese: word.traditional,
+      pinyin: word.pinyin,
+      meaning: word.meaning,
+      id: word._id,
+    }))
+    setFlashcards(flashcardsArray)
+  }, [savedWords])
 
   function handleTabClick(tabName) {
     setActiveTab(tabName)
@@ -87,6 +107,16 @@ export default function TextPage() {
     setOpen(false)
   }
 
+  function handleCorrect() {
+    // if the user marks the word correct, create a new array of flashcards removing the 1st one in the array (the one that was correct)
+    setFlashcards((prevFlashcards) => prevFlashcards.slice(1))
+  }
+
+  function handleIncorrect() {
+    // if the user marks the word incorrect, create a new array by removing the 1st card (same as when you get it correct), but instead add it back in at the end of the new array (basically cycles the cards thru)
+    setFlashcards((prevFlashcards) => [...prevFlashcards.slice(1), prevFlashcards[0]])
+  }
+
   return (
     <main className="TextPage page">
 
@@ -117,7 +147,19 @@ export default function TextPage() {
         <DialogTitle>Let's Study!</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            This is some text.
+            { flashcards.length > 0 ? (
+              <Flashcard 
+                chinese={flashcards[0].chinese}
+                pinyin={flashcards[0].pinyin}
+                meaning={flashcards[0].meaning}
+                isChineseFront={isChineseFront}
+                showPinyin={showPinyin}
+                onCorrect={handleCorrect}
+                onIncorrect={handleIncorrect}
+              />
+            ) : (
+              'Congratulations, you completed the deck!'
+            ) }
           </DialogContentText>
         </DialogContent>
         <DialogActions>
