@@ -2,7 +2,7 @@ import './SavedWordsList.css'
 import { useState } from 'react'
 import SavedWord from '../../components/SavedWord/SavedWord'
 
-export default function SavedWordsList({ savedWords, updateMeaning }) {
+export default function SavedWordsList({ savedWords, updateMeaning, deleteWord }) {
 
   const [editingWord, setEditingWord] = useState(null)
 
@@ -13,6 +13,7 @@ export default function SavedWordsList({ savedWords, updateMeaning }) {
       updateMeaning={updateMeaning}
       isEditingWord={editingWord === word._id}
       setIsEditingWord={setEditingWord}
+      deleteWord={deleteWord}
     />
   ))
 

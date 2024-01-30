@@ -58,19 +58,30 @@ export default function TextPage() {
 
   async function updateMeaning(word, formData) {
     const updatedWord = await wordsAPI.updateMeaning(word, formData)
-    console.log(updatedWord)
     setSavedWords(prevSavedWords => 
       prevSavedWords.map(savedWord =>
         savedWord._id === updatedWord._id ? updatedWord : savedWord))
   }
 
-
+  async function deleteWord(word) {
+    setSavedWords(prevSavedWords => 
+      prevSavedWords.filter(savedWord => savedWord._id !== word._id))
+      try {
+        await wordsAPI.deleteWord(word)
+      } catch (error) {
+        console.error(error)
+      }
+  }
 
   return (
     <main className="TextPage page">
 
       <aside className="sidebar">
-        <SavedWordsList savedWords={savedWords} updateMeaning={updateMeaning}/>
+        <SavedWordsList 
+          savedWords={savedWords} 
+          updateMeaning={updateMeaning}
+          deleteWord={deleteWord}
+        />
       </aside>
 
       <section className="main-area">

@@ -3,7 +3,8 @@ const Text = require('../../models/text')
 const Word = require('../../models/word')
 
 module.exports = {
-  updateMeaning
+  updateMeaning,
+  deleteWord
 }
 
 async function updateMeaning(req, res) {
@@ -18,5 +19,13 @@ async function updateMeaning(req, res) {
   } catch (error) {
     console.error(error)
   }
-  
+}
+
+async function deleteWord(req, res) {
+  try {
+    const deletedWord = await Word.findOneAndDelete({ _id: req.params.id })
+    res.json(deletedWord)
+  } catch( error) {
+    console.error(error)
+  }
 }

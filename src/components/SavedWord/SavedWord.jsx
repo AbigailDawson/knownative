@@ -5,7 +5,7 @@ import { IoMdCheckboxOutline } from "react-icons/io";
 import { BsX } from "react-icons/bs";
 
 
-export default function SavedWord({ word, updateMeaning, isEditingWord, setIsEditingWord }) {
+export default function SavedWord({ word, updateMeaning, isEditingWord, setIsEditingWord, deleteWord }) {
 
   const [formData, setFormData] = useState({
     meaning: word.meaning
@@ -30,6 +30,10 @@ export default function SavedWord({ word, updateMeaning, isEditingWord, setIsEdi
     }
     updateMeaning(word, formData.meaning)
   }
+
+  function handleDeleteWord(word) {
+    deleteWord(word)
+  }
   
   return (
     <div className="SavedWord">
@@ -37,7 +41,7 @@ export default function SavedWord({ word, updateMeaning, isEditingWord, setIsEdi
       {/* grid column 1 */}
 
       <div className="left-side">
-        <div className="delete-btn"><BsX /></div>
+        <div className="delete-btn" onClick={() => handleDeleteWord(word)}><BsX /></div>
         <div className="char-pinyin">
           <p className="pinyin"> { word.pinyin } </p>
           <p className="char">{ word.traditional } </p> 
