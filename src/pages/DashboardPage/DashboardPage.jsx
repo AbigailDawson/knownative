@@ -4,7 +4,6 @@ import * as textsAPI from '../../utilities/texts-api'
 import NewTextForm from '../../components/NewTextForm/NewTextForm'
 import TextListItem from '../../components/TextListItem/TextListItem'
 import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
@@ -75,7 +74,18 @@ export default function DashboardPage() {
 
         <Dialog
           open={open}
-          onClose={handleClose}      
+          onClose={handleClose}   
+          PaperComponent={({ children }) => (
+            <div style={{ 
+              minWidth: '400px', 
+              maxWidth: '800px', 
+              width: '80vw',
+              backgroundColor: 'white',
+              color: 'var(--drk-txt)' 
+              }}>
+              {children}
+            </div>
+          )}
         >
         <DialogTitle>Add New Text</DialogTitle>
         <DialogContent>
