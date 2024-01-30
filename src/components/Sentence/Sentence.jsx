@@ -8,9 +8,13 @@ export default function Sentence({sentence}) {
   const [showTranslation, setShowTranslation] = useState(false)
 
   async function handleTranslate(sentence) {
-    setShowTranslation(true)
-    const translatedSentence = await textsAPI.translateSentence(sentence)
-    setTranslation(translatedSentence)
+    if (translation === '') {
+      const translatedSentence = await textsAPI.translateSentence(sentence)
+      setTranslation(translatedSentence)
+      setShowTranslation(true)
+    } else {
+      setShowTranslation(true)
+    }
   }
 
   function hideTranslation() {
