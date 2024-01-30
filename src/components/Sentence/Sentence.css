@@ -1,0 +1,21 @@
+.sentence-line {
+  margin-bottom: 2vmin;
+}
+
+.sentence {
+  margin: 1vmin 0;
+  letter-spacing: .7vmin;
+}
+
+.hide-translation,
+.show-translation {
+  letter-spacing: 0;
+  text-decoration: underline;
+  font-size: 2vmin;
+}
+
+.hide-translation:hover,
+.show-translation:hover {
+  color: var(--red);
+  cursor: pointer;
+}
