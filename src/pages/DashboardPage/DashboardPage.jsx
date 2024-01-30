@@ -23,6 +23,7 @@ export default function DashboardPage() {
   const TextListItems = texts.map(text => (
     <TextListItem
     key={text._id}
+    text={text}
     id={text._id}
     title={text.title}
     source={text.source}
