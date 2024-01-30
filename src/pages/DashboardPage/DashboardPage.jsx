@@ -12,6 +12,17 @@ export default function DashboardPage() {
     setTexts([...texts, text])
   }
 
+  async function deleteText(textToDelete, id) {
+    setTexts(prevTexts => 
+      prevTexts.filter(text => text._id !== textToDelete._id))
+
+    try {
+      await textsAPI.deleteText(textToDelete, id)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
   useEffect(function() {
     async function getTexts() {
       const texts = await textsAPI.getAll()
@@ -28,6 +39,7 @@ export default function DashboardPage() {
     title={text.title}
     source={text.source}
     content={text.content}
+    deleteText={deleteText}
     />
   ))
 

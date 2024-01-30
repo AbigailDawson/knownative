@@ -8,6 +8,7 @@ const translate = new Translate();
 module.exports = {
   tokenizeText,
   addNewText,
+  deleteText,
   getAll,
   getText,
   saveWord,
@@ -36,7 +37,17 @@ async function addNewText(req, res) {
 
   } catch (error) {
     console.log(error)
-    res.status(400).json(error)  }
+    res.status(400).json(error)  
+  }
+}
+
+async function deleteText(req, res) {
+  try {
+    const deletedText = await Text.findOneAndDelete({ _id: req.params.id })
+    res.json(deletedText)
+  } catch (error) {
+    res.status(400).json(error)  
+  }
 }
 
 async function getText(req, res) {
