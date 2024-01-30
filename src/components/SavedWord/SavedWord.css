@@ -29,7 +29,7 @@
 }
 
 .char-pinyin > .char {
-  font-size: 2.8vmin;
+  font-size: 2.6vmin;
 }
 
 .char-pinyin > .pinyin {
@@ -37,7 +37,7 @@
 }
 
 .meaning {
-  margin-left: 3vmin;
+  margin-left: 2.8vmin;
 }
 
 .right-side {
@@ -76,5 +76,5 @@
 .submit-btn {
   margin: 0;
   padding: 0;
-  font-size: 2.5vmin;
+  font-size: 2.2vmin;
 }
