@@ -30,7 +30,7 @@ export default function TextListItem({ text, title, source, content, id, deleteT
     <div className="TextListItem">
       <div className="left-side">
 
-        <div className="delete-btn" onClick={() => handleOpen()}><BsX /></div>
+        <div className="delete-btn" onClick={handleOpen}><BsX /></div>
 
         <Dialog
         open={open}
