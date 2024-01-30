@@ -12,6 +12,7 @@
   --light: #b6b6b6;
   --medium: #979797;
   --gradient: linear-gradient(0deg, var(--medium) 39%, var(--light) 69%);
+  --red: #8c0000;
 }
 
 body {

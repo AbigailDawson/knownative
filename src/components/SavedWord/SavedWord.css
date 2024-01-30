@@ -1,26 +1,38 @@
 .SavedWord {
   display: grid;
-  grid-template-columns: 25% 75%;
-  justify-content: space-between;
+  grid-template-columns: 30% 70%;
   align-items: center;
   text-align: left;
   text-wrap: wrap;
   background-color: var(--light);
   color: var(--drk-txt);
-  padding: 1.3vmin 2vmin;
+  padding: 1.3vmin 1.3vmin 1.3vmin 1vmin;;
   margin: 0 1vmin;
   border-bottom: 1px solid var(--lt-bg)
 
+}
+
+.left-side {
+  display: flex;
+  gap: 1vmin;
+}
+
+.delete-btn {
+  font-size: 2.5vmin;
+  color: var(--red);
 }
 
 .char-pinyin {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: 3vmin;
 }
 
-.char-pinyin > .small {
+.char-pinyin > .char {
+  font-size: 2.8vmin;
+}
+
+.char-pinyin > .pinyin {
   font-size: 1.3vmin;
 }
 

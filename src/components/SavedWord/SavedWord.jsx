@@ -2,6 +2,8 @@ import './SavedWord.css'
 import { useState } from 'react'
 import { FaRegEdit } from "react-icons/fa";
 import { IoMdCheckboxOutline } from "react-icons/io";
+import { BsX } from "react-icons/bs";
+
 
 export default function SavedWord({ word, updateMeaning, isEditingWord, setIsEditingWord }) {
 
@@ -34,10 +36,14 @@ export default function SavedWord({ word, updateMeaning, isEditingWord, setIsEdi
 
       {/* grid column 1 */}
 
-      <div className="char-pinyin">
-        <p className="small"> { word.pinyin } </p>
-        <p>{ word.traditional } </p> 
+      <div className="left-side">
+        <div className="delete-btn"><BsX /></div>
+        <div className="char-pinyin">
+          <p className="pinyin"> { word.pinyin } </p>
+          <p className="char">{ word.traditional } </p> 
+        </div>
       </div>
+      
 
       {/* grid column 2 */}
 
