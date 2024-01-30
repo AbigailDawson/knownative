@@ -18,7 +18,7 @@ export default function SavedWordsList({ savedWords, updateMeaning }) {
 
   return (
     <div className="SavedWordsList">
-      <h1>Saved Words</h1>
+      <h1 className="sidebar-heading">Saved Words</h1>
       {savedWordItems}
     </div>
   )

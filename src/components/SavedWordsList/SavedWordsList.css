@@ -4,11 +4,9 @@
   padding: 1vmin 0;
   width: 100%;
   background-color: var(--drk-bg);
-  color: var(--drk-txt);
+  color: var(--lt-txt);
 }
 
-.edit-list-btn {
-  align-self: center;
-  margin: 1vmin 0;
-  width: 30%;
+.sidebar-heading {
+  margin: 3vmin;
 }

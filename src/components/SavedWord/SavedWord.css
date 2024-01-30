@@ -7,8 +7,10 @@
   text-wrap: wrap;
   background-color: var(--light);
   color: var(--drk-txt);
-  padding: 1vmin 2vmin;
-  border-bottom: 1px solid var(--drk-bg)
+  padding: 1.3vmin 2vmin;
+  margin: 0 1vmin;
+  border-bottom: 1px solid var(--lt-bg)
+
 }
 
 .char-pinyin {
