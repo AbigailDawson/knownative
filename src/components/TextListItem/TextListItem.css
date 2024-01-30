@@ -7,7 +7,13 @@
   color: var(--lt-txt);
   text-align: left;
   width: 100%;
-  padding: 2vmin 3vmin;
+  padding: 2vmin 3vmin 2vmin 0;
+}
+
+.TextListItem > .left-side {
+  display: flex;
+  gap: 2vmin;
+  margin-left: 1vmin;
 }
 
 .read-btn {
