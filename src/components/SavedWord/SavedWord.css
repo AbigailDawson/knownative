@@ -22,6 +22,10 @@
   color: var(--red);
 }
 
+.delete-btn:hover {
+  cursor: pointer;
+}
+
 .char-pinyin {
   display: flex;
   flex-direction: column;
@@ -77,4 +81,9 @@
   margin: 0;
   padding: 0;
   font-size: 2.2vmin;
+}
+
+.edit-btn:hover,
+.submit-btn:hover {
+  cursor: pointer;
 }
