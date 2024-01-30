@@ -1,3 +1,4 @@
+import './Flashcard.css'
 import { useState } from 'react'
 
 export default function Flashcard({ chinese, pinyin, meaning, isChineseFront, showPinyin, onCorrect, onIncorrect }) {
@@ -23,10 +24,10 @@ export default function Flashcard({ chinese, pinyin, meaning, isChineseFront, sh
       <div className={`flashcard-front ${isFlipped ? 'hidden' : ''}`}>
         { isChineseFront ? chinese : meaning}
       </div>
-      <div className={`flashcard-back ${isFlipped ? 'hidden' : ''}`}>
+      <div className={`flashcard-back ${isFlipped ? '' : 'hidden'}`}>
         { isChineseFront ? meaning : chinese}
         <div>
-          <button onClick={handleCorrect}>Correct</button>
+          <button onClick={handleCorrect}>Correct!</button>
           <button onClick={handleIncorrect}>Try again!</button>
         </div>
       </div>
