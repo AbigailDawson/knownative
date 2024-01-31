@@ -196,6 +196,15 @@ export default function TextPage() {
                     onChange={() => setSelectedFront('english')}
                   />
                 </div>
+                <div>
+                  <label htmlFor="pinyin">Show pinyin?</label>
+                  <input 
+                    id="pinyin"
+                    type="checkbox"
+                    checked={showPinyin}
+                    onChange={() => setShowPinyin(!showPinyin)} 
+                  />
+                </div>
                 <button onClick={handlePlay}>Play!</button>
               </>
               )}
