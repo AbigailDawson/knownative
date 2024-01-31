@@ -73,23 +73,33 @@ export default function ReadText({ text }) {
         </DialogActions>
 
         <DialogContent>
-          <DialogTitle>Feeling Stuck?</DialogTitle>
-          <DialogContentText>
-            <h3> Click to generate an easier version of this text. </h3>
+          <DialogTitle style={{ 
+            textAlign: 'center'
+            }}
+            >Feeling Stuck?</DialogTitle>
+          <DialogContentText
+           style={{ 
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            }}>
+              <h3> Click to generate an easier version of this text. </h3>
 
-            {!simplifiedText && <button onClick={handleSimplifyClick}> Generate </button>}
+                {!simplifiedText && !loading && <button className="generate-btn" onClick={handleSimplifyClick}> Generate </button>}
 
-            <Suspense fallback={<h2>Loading...</h2>}>
-              {loading ? (
-                <h2>Loading...</h2>
-                ) : (
-                  <GPTText simplifiedText={simplifiedText} />
-                )}
-            </Suspense>
+                <Suspense fallback={<h2>Loading...</h2>}>
+                  {loading ? (
+                    <div class="loader"></div>
+                    ) : (
+                      <>
+                        {simplifiedText && <GPTText simplifiedText={simplifiedText} />}
+                      </>
+                      
+                    )}
+                </Suspense>
+              <p className="disclaimer">Disclaimer: This text is generated using artificial intelligence. While the model strives to produce accurate and coherent content, it may occasionally contain inaccuracies, grammatical errors, or unintended meaning. The AI model does not guarantee perfection, and the user is encouraged to exercise their judgment when interpreting the output.</p>
             
-
-            <p className="disclaimer">Disclaimer: This text is generated using artificial intelligence. While the model strives to produce accurate and coherent content, it may occasionally contain inaccuracies, grammatical errors, or unintended meaning. The AI model does not guarantee perfection, and the user is encouraged to exercise their judgment when interpreting the output.</p>
-
           </DialogContentText>
         </DialogContent>
 
