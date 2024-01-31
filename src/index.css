@@ -33,12 +33,20 @@ button {
   padding: 1vmin 1.2vmin;
   border-radius: .7vmin;
   border: none;
-  background-color: var(--medium);
   cursor: pointer;
 }
 
-button:hover {
-  background-color: var(--light);
+.close-btn:hover {
+  background: transparent;
+}
+
+.close-icon:hover {
+  background: transparent;
+}
+
+.close-icon {
+  font-size: 3vmin;
+  color: var(--medium);
 }
 
 a {

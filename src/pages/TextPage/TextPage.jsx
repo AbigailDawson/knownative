@@ -10,6 +10,7 @@ import FlashcardForm from '../../components/FlashcardForm/FlashcardForm'
 import * as textsAPI from '../../utilities/texts-api'
 import * as wordsAPI from '../../utilities/words-api'
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material'
+import { FaRegWindowClose } from "react-icons/fa";
 
 export default function TextPage() {
 
@@ -161,6 +162,14 @@ export default function TextPage() {
             </div>
           )}
         >
+        <DialogActions style={{ 
+          alignSelf: 'flex-end' 
+          }}>
+          <Button
+          onClick={handleClose}>
+            <FaRegWindowClose className="close-icon"/>
+          </Button>
+        </DialogActions>
         <DialogContent>
             { flashcards.length > 0 ? (
               <>
