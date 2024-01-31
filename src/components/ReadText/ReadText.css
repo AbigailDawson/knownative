@@ -14,3 +14,18 @@
   font-size: 2.5vmin;
   text-align: left;
 }
+
+.simplified-text {
+  margin-top: 2vmin;
+  line-height: 4vmin;
+  letter-spacing: .3vmin;
+  font-size: 2.5vmin;
+}
+
+.disclaimer {
+  font-style: italic;
+  margin-top: 2vmin;
+  line-height: 1.8vmin;
+  letter-spacing: 0;
+  font-size: 1.5vmin;
+}
