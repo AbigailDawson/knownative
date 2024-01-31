@@ -161,7 +161,6 @@ export default function TextPage() {
             </div>
           )}
         >
-        <DialogTitle>Let's Study!</DialogTitle>
         <DialogContent>
             { flashcards.length > 0 ? (
               <>

@@ -25,7 +25,7 @@ export default function Flashcard({ chinese, pinyin, english, selectedFront, sho
         { selectedFront === 'chinese' ? (
           <div>
             {showPinyin && <p>{pinyin}</p>}
-            <p>{chinese}</p>
+            <p className="zh">{chinese}</p>
           </div>
         ) : (
           <div>
@@ -37,7 +37,7 @@ export default function Flashcard({ chinese, pinyin, english, selectedFront, sho
         { selectedFront === 'english' ? (
            <div>
             {showPinyin && <p>{pinyin}</p>}
-            <p>{chinese}</p>
+            <p className="zh">{chinese}</p>
           </div>
           
         ) : (

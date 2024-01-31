@@ -24,7 +24,7 @@ export default function Sentence({sentence}) {
   return (
     <>
     <div className="sentence-line">
-      <span className="sentence">{sentence}</span>
+      <span className="sentence zh">{sentence}</span>
         { showTranslation ? (
           <a className="hide-translation" onClick={hideTranslation}>Hide Translation</a>
         ) : (

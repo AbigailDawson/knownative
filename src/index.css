@@ -16,9 +16,7 @@
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-  sans-serif;
+  font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--drk-bg);
@@ -31,6 +29,7 @@ body {
 }
 
 button {
+  font-family: 'Roboto', sans-serif;
   padding: 1vmin 1.2vmin;
   border-radius: .7vmin;
   border: none;
@@ -40,6 +39,10 @@ button {
 
 button:hover {
   background-color: var(--light);
+}
+
+a {
+  font-family: 'Roboto', sans-serif;
 }
 
 .page {
@@ -68,4 +71,8 @@ button:hover {
   background-color: var(--drk-bg);
   border: 3px solid var(--light);
   height: 100%;
+}
+
+.zh {
+  font-family: 'Noto Serif TC', serif;
 }

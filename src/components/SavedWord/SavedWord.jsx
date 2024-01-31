@@ -44,7 +44,7 @@ export default function SavedWord({ word, updateMeaning, isEditingWord, setIsEdi
         <div className="delete-btn" onClick={() => handleDeleteWord(word)}><BsX /></div>
         <div className="char-pinyin">
           <p className="pinyin"> { word.pinyin } </p>
-          <p className="char">{ word.traditional } </p> 
+          <p className="char zh">{ word.traditional } </p> 
         </div>
       </div>
       

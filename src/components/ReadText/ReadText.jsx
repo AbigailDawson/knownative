@@ -23,7 +23,7 @@ export default function ReadText({ text }) {
   return (
     <div className="ReadText">
 
-      <h1>{text.title}</h1>
+      <h1 className="zh">{text.title}</h1>
       <h3>Source: {text.source}</h3>
 
       {loading ? (
@@ -39,13 +39,13 @@ export default function ReadText({ text }) {
 
       { simplifiedText && (
         <div>
-          <p className="simplified-text">{simplifiedText}</p>
+          <p className="simplified-text zh">{simplifiedText}</p>
           <p className="disclaimer">Disclaimer: This text has been generated using artificial intelligence. While the model strives to produce accurate and coherent content, it may occasionally contain inaccuracies, grammatical errors, or unintended meaning. The AI model does not guarantee perfection, and the user is encouraged to exercise their judgment when interpreting the output.</p>
         </div>
       )}
 
         <div className="read-text-block">
-          <p>{text.content}</p>
+          <p className="zh">{text.content}</p>
         </div>
     </div>
   )
