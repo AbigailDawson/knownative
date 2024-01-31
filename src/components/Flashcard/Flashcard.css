@@ -1,0 +1,35 @@
+.flashcard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 80%;
+  border: 1px solid #eee;
+}
+
+.flashcard-front,
+.flashcard-back {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  font-size: 5vmin;
+}
+
+.flashcard-front .pinyin,
+.flashcard-back .pinyin {
+  font-size: 2vmin;
+}
+
+.flashcard-btns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2vmin;
+  gap: 2vmin;
+}
+
+.correct-btn,
+.incorrect-btn {
+  padding: 2vmin 3vmin;
+}

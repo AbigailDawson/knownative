@@ -149,28 +149,35 @@ export default function TextPage() {
           onClose={handleClose}   
           PaperComponent={({ children }) => (
             <div style={{ 
-              minWidth: '400px', 
-              maxWidth: '600px', 
+              minWidth: '50vmin', 
+              maxWidth: '70vmin', 
+              height: '50vmin',
               width: '80vw',
               backgroundColor: 'white',
               color: 'var(--drk-txt)',
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
+              padding: '1vmin',
               }}>
               {children}
             </div>
           )}
         >
         <DialogActions style={{ 
-          alignSelf: 'flex-end' 
+          alignSelf: 'flex-end',
+          padding: '0'
           }}>
           <Button
           onClick={handleClose}>
             <FaRegWindowClose className="close-icon"/>
           </Button>
         </DialogActions>
-        <DialogContent>
+        <DialogContent
+          style={{ 
+            width: '60%',
+            }}
+          >
             { flashcards.length > 0 ? (
               <>
               { gameInProgress ? (
@@ -201,9 +208,6 @@ export default function TextPage() {
               </>
             ) }
         </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
-        </DialogActions>
       </Dialog>
 
       <section className="main-area">
