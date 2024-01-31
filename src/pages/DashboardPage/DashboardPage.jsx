@@ -9,6 +9,14 @@ export default function DashboardPage() {
   const [texts, setTexts] = useState([])
   const [open, setOpen] = useState(false)
 
+  useEffect(function() {
+    async function getTexts() {
+      const texts = await textsAPI.getAll()
+      setTexts(texts)
+    }
+    getTexts()
+  }, [])
+
   function handleOpen() {
     setOpen(true)
   }
@@ -34,25 +42,33 @@ export default function DashboardPage() {
     }
   }
 
-  useEffect(function() {
-    async function getTexts() {
-      const texts = await textsAPI.getAll()
-      setTexts(texts)
-    }
-    getTexts()
-  }, [])
+  const textListItems = texts
+    .filter(text => !text.archived)
+    .map(text => (
+      <TextListItem
+      key={text._id}
+      text={text}
+      id={text._id}
+      title={text.title}
+      source={text.source}
+      content={text.content}
+      deleteText={deleteText}
+      />
+    ))
 
-  const TextListItems = texts.map(text => (
-    <TextListItem
-    key={text._id}
-    text={text}
-    id={text._id}
-    title={text.title}
-    source={text.source}
-    content={text.content}
-    deleteText={deleteText}
-    />
-  ))
+  const archivedListItems = texts
+    .filter(text => text.archived)
+    .map(text => (
+      <TextListItem
+      key={text._id}
+      text={text}
+      id={text._id}
+      title={text.title}
+      source={text.source}
+      content={text.content}
+      deleteText={deleteText}
+      />
+    ))
 
   return (
   <main className="DashboardPage page">
@@ -60,7 +76,6 @@ export default function DashboardPage() {
       <h1>Sidebar</h1>
       <p>Sidebar content</p>
     </aside>
-    {/* <NewTextForm handleAddText={handleAddText} /> */}
 
     <section className="main-area">
       <div className="main-area-header">
@@ -92,7 +107,9 @@ export default function DashboardPage() {
       </Dialog>
 
       </div>
-      <div className="TextListItems">{TextListItems}</div>
+      <div className="textListItems">{textListItems}</div>
+      <h1>Archived</h1>
+      <div className="archivedListItems">{archivedListItems}</div>
     </section>
   </main>
   )

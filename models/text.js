@@ -24,6 +24,10 @@ const textSchema = new Schema({
   simplifiedText: {
     type: String,
     default: ''
+  },
+  archived: {
+    type: Boolean,
+    default: false
   }
 }, {
   timestamps: true
