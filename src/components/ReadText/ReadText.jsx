@@ -1,5 +1,5 @@
 import './ReadText.css'
-import { useState, Suspense, lazy } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import * as textsAPI from '../../utilities/texts-api'
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material'
 import { FaRegWindowClose } from "react-icons/fa"
@@ -10,6 +10,13 @@ export default function ReadText({ text }) {
   const [open, setOpen] = useState(false)
   const [simplifiedText, setSimplifiedText] = useState(null)
   const [loading, setLoading] = useState(false)
+  const [savedSimplifiedText, setSavedSimplifiedText] = useState(null)
+
+  useEffect(function() {
+    function getSavedSimplifiedText() {
+      setSavedSimplifiedText(text.simplifiedText)
+    }
+  }, [])
 
   async function handleSimplifyClick() {
     try {
@@ -26,7 +33,7 @@ export default function ReadText({ text }) {
 
   async function saveSimplifiedText(simplifiedText) {
     const updatedText = await textsAPI.saveSimplifiedText(simplifiedText, text._id);
-    console.log(updatedText)
+    setSavedSimplifiedText(updatedText.simplifiedText)
   }
 
   function handleOpen() {
