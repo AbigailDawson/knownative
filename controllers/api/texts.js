@@ -13,7 +13,8 @@ module.exports = {
   getText,
   saveWord,
   getSavedWords,
-  translateSentence
+  translateSentence,
+  simplifyText
 }
 
 function tokenizeText(req, res) {
@@ -101,5 +102,32 @@ async function translateSentence(req, res) {
     res.json(translations[0])
   } catch(error) {
     res.status(400).json(error)
+  }
+}
+
+async function simplifyText(req, res) {
+  const { content } = req.body
+  const API_KEY = process.env.OPENAI_KEY
+
+  const options = {
+    stream: false,
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${API_KEY}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      model: 'gpt-3.5-turbo',
+      messages: [{ role: 'user', content: `Generate a simplified version of the following Chinese text suitable for a 5th-grade reading level: \n '${content}'` }],
+      max_tokens: 100,
+    })
+  }
+
+  try {
+    const simplifiedText = await fetch('https://api.openai.com/v1/chat/completions', options)
+    const data = await simplifiedText.json()
+    res.send(data)
+  } catch(error) {
+    console.error(error)
   }
 }

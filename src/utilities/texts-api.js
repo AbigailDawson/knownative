@@ -32,3 +32,7 @@ export function getSavedWords(textId) {
 export function translateSentence(sentence) {
   return sendRequest(`${BASE_URL}/translate`, 'POST', { sentence })
 }
+
+export function simplifyText(content) {
+  return sendRequest(`${BASE_URL}/simplify`, 'POST', { content })
+}
