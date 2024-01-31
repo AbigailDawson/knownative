@@ -3,12 +3,7 @@ import './DashboardPage.css'
 import * as textsAPI from '../../utilities/texts-api'
 import NewTextForm from '../../components/NewTextForm/NewTextForm'
 import TextListItem from '../../components/TextListItem/TextListItem'
-import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
+import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material'
 
 export default function DashboardPage() {
   const [texts, setTexts] = useState([])
