@@ -1,7 +1,7 @@
 import './Flashcard.css'
 import { useState } from 'react'
 
-export default function Flashcard({ chinese, pinyin, meaning, isChineseFront, showPinyin, onCorrect, onIncorrect }) {
+export default function Flashcard({ chinese, pinyin, english, selectedFront, showPinyin, onCorrect, onIncorrect }) {
   
   const [isFlipped, setIsFlipped] = useState(false);
 
@@ -22,10 +22,10 @@ export default function Flashcard({ chinese, pinyin, meaning, isChineseFront, sh
   return (
     <div className="flashcard" onClick={handleFlip}>
       <div className={`flashcard-front ${isFlipped ? 'hidden' : ''}`}>
-        { isChineseFront ? chinese : meaning}
+        { selectedFront === 'chinese' ? chinese : english}
       </div>
       <div className={`flashcard-back ${isFlipped ? '' : 'hidden'}`}>
-        { isChineseFront ? meaning : chinese}
+        { selectedFront === 'english' ? english : chinese}
         <div>
           <button onClick={handleCorrect}>Correct!</button>
           <button onClick={handleIncorrect}>Try again!</button>

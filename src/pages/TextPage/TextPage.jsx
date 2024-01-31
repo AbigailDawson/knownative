@@ -32,8 +32,9 @@ export default function TextPage() {
   // --- FLASHCARDS ---
   const [open, setOpen] = useState(false)
   const [flashcards, setFlashcards] = useState([])
-  const [isChineseFront, setIsChineseFront] = useState(true)
+  const [selectedFront, setSelectedFront] = useState('chinese')
   const [showPinyin, setShowPinyin] = useState(true)
+  const [gameInProgress, setGameInProgress] = useState(false)
 
   useEffect(function() {
     async function getText() {
@@ -101,6 +102,7 @@ export default function TextPage() {
 
   function handleOpen() {
     setOpen(true)
+    setGameInProgress(false)
   }
 
   function handleClose() {
@@ -115,6 +117,22 @@ export default function TextPage() {
   function handleIncorrect() {
     // if the user marks the word incorrect, create a new array by removing the 1st card (same as when you get it correct), but instead add it back in at the end of the new array (basically cycles the cards thru)
     setFlashcards((prevFlashcards) => [...prevFlashcards.slice(1), prevFlashcards[0]])
+  }
+
+  function handlePlay() {
+    setGameInProgress(true)
+  }
+
+  function handlePlayAgain() {
+    const flashcardsArray = savedWords.map((word) => ({
+      chinese: word.traditional,
+      pinyin: word.pinyin,
+      meaning: word.meaning,
+      id: word._id,
+    }))
+    setFlashcards(flashcardsArray)
+    setGameInProgress(false)
+    setOpen(true)
   }
 
   return (
@@ -146,21 +164,49 @@ export default function TextPage() {
         >
         <DialogTitle>Let's Study!</DialogTitle>
         <DialogContent>
-          <DialogContentText>
             { flashcards.length > 0 ? (
-              <Flashcard 
+              <>
+              { gameInProgress ? (
+                <Flashcard 
                 chinese={flashcards[0].chinese}
                 pinyin={flashcards[0].pinyin}
-                meaning={flashcards[0].meaning}
-                isChineseFront={isChineseFront}
+                english={flashcards[0].meaning}
+                selectedFront={selectedFront}
                 showPinyin={showPinyin}
                 onCorrect={handleCorrect}
                 onIncorrect={handleIncorrect}
               />
+              ) : (
+                <>
+                <div> Front: 
+                  <label for="chinese">Chinese</label>
+                  <input 
+                    id="chinese"
+                    type="radio"
+                    value="chinese"
+                    checked={selectedFront === 'chinese'}
+                    onChange={() => setSelectedFront('chinese')}
+                  />
+                  <label for="english">English</label>
+                  <input 
+                    id="english"
+                    type="radio"
+                    value="english"
+                    checked={selectedFront === 'english'}
+                    onChange={() => setSelectedFront('english')}
+                  />
+                </div>
+                <button onClick={handlePlay}>Play!</button>
+              </>
+              )}
+              </>
+              
             ) : (
-              'Congratulations, you completed the deck!'
+              <>
+                'Congratulations, you completed the deck!'
+                <button onClick={handlePlayAgain}>Play Again</button>
+              </>
             ) }
-          </DialogContentText>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
