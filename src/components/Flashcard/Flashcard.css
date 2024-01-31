@@ -2,8 +2,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 80%;
-  border: 1px solid #eee;
+  height: 70%;
+  border: 1px solid var(--light);
+  border-radius: 1vmin;
 }
 
 .flashcard-front,
@@ -25,11 +26,20 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 2vmin;
+  margin: 2vmin 0;
   gap: 2vmin;
 }
 
 .correct-btn,
 .incorrect-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1vmin;
   padding: 2vmin 3vmin;
+}
+
+.flashcard-icon {
+  font-size: 3vmin;
 }

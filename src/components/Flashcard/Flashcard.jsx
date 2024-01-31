@@ -1,5 +1,7 @@
 import './Flashcard.css'
 import { useState } from 'react'
+import { GiCheckMark } from "react-icons/gi";
+import { PiRepeatBold } from "react-icons/pi";
 
 export default function Flashcard({ chinese, pinyin, english, selectedFront, showPinyin, onCorrect, onIncorrect }) {
   
@@ -52,8 +54,8 @@ export default function Flashcard({ chinese, pinyin, english, selectedFront, sho
         )}
       </div>
       <div className="flashcard-btns">
-        <button className="correct-btn" onClick={handleCorrect}>Correct!</button>
-        <button className="incorrect-btn"  onClick={handleIncorrect}>Try again!</button>
+        <button className="correct-btn" onClick={handleCorrect}><GiCheckMark className="flashcard-icon" />Correct!</button>
+        <button className="incorrect-btn"  onClick={handleIncorrect}><PiRepeatBold className="flashcard-icon" />Try again</button>
       </div>
     </>
   )

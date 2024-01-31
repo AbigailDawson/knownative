@@ -149,16 +149,15 @@ export default function TextPage() {
           onClose={handleClose}   
           PaperComponent={({ children }) => (
             <div style={{ 
-              minWidth: '50vmin', 
-              maxWidth: '70vmin', 
+              width: '60vmin', 
               height: '50vmin',
-              width: '80vw',
               backgroundColor: 'white',
               color: 'var(--drk-txt)',
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
               padding: '1vmin',
+              borderRadius: '2vmin'
               }}>
               {children}
             </div>
