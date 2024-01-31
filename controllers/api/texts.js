@@ -14,7 +14,8 @@ module.exports = {
   saveWord,
   getSavedWords,
   translateSentence,
-  simplifyText
+  simplifyText,
+  saveSimplifiedText,
 }
 
 function tokenizeText(req, res) {
@@ -129,5 +130,21 @@ async function simplifyText(req, res) {
     res.send(data)
   } catch(error) {
     console.error(error)
+  }
+}
+
+async function saveSimplifiedText(req, res) {
+  const { simplifiedText } = req.body
+  
+  
+  try {
+    const updatedText = await Text.findByIdAndUpdate(
+      req.params.id, 
+      { simplifiedText }, 
+      { new: true }
+      )
+    res.json(updatedText)
+  } catch(error) {
+    res.status(400).json(error)
   }
 }

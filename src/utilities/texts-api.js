@@ -36,3 +36,7 @@ export function translateSentence(sentence) {
 export function simplifyText(content) {
   return sendRequest(`${BASE_URL}/simplify`, 'POST', { content })
 }
+
+export function saveSimplifiedText(simplifiedText, textId) {
+  return sendRequest(`${BASE_URL}/${textId}/saveSimplified`, 'POST', { simplifiedText })
+}

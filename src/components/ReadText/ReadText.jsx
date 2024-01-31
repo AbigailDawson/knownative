@@ -3,7 +3,7 @@ import { useState, Suspense, lazy } from 'react'
 import * as textsAPI from '../../utilities/texts-api'
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material'
 import { FaRegWindowClose } from "react-icons/fa"
-import GPTText from '../../components/GPTText/GPTText'
+import SimplifiedText from '../../components/SimplifiedText/SimplifiedText'
 
 export default function ReadText({ text }) {
 
@@ -24,6 +24,11 @@ export default function ReadText({ text }) {
     }
   }
 
+  async function saveSimplifiedText(simplifiedText) {
+    const updatedText = await textsAPI.saveSimplifiedText(simplifiedText, text._id);
+    console.log(updatedText)
+  }
+
   function handleOpen() {
     setOpen(true)
   }
@@ -31,10 +36,6 @@ export default function ReadText({ text }) {
   function handleClose() {
     setOpen(false)
   }
-
-  // function Loading() {
-  //   return <h2>🌀 Loading...</h2>;
-  // }
 
   return (
     <div className="ReadText">
@@ -93,7 +94,7 @@ export default function ReadText({ text }) {
                     <div class="loader"></div>
                     ) : (
                       <>
-                        {simplifiedText && <GPTText simplifiedText={simplifiedText} />}
+                        {simplifiedText && <SimplifiedText simplifiedText={simplifiedText} saveSimplifiedText={saveSimplifiedText} />}
                       </>
                       
                     )}

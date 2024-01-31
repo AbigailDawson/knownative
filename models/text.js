@@ -21,6 +21,10 @@ const textSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Word',
   }],
+  simplifiedText: {
+    type: String,
+    default: ''
+  }
 }, {
   timestamps: true
 })
