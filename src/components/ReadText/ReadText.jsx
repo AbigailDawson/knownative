@@ -1,8 +1,9 @@
 import './ReadText.css'
-import { useState } from 'react'
+import { useState, Suspense, lazy } from 'react'
 import * as textsAPI from '../../utilities/texts-api'
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material'
-import { FaRegWindowClose } from "react-icons/fa";
+import { FaRegWindowClose } from "react-icons/fa"
+import GPTText from '../../components/GPTText/GPTText'
 
 export default function ReadText({ text }) {
 
@@ -11,15 +12,15 @@ export default function ReadText({ text }) {
   const [loading, setLoading] = useState(false)
 
   async function handleSimplifyClick() {
-    setLoading(true)
     try {
+      setLoading(true)
       const data = await textsAPI.simplifyText(text.content)
       const simplifiedText = data.choices[0].message.content
       setSimplifiedText(simplifiedText)
     } catch (error) {
       console.error('Error simplifying text: ', error)
     } finally {
-      setLoading(false)
+      setLoading(false) 
     }
   }
 
@@ -31,6 +32,9 @@ export default function ReadText({ text }) {
     setOpen(false)
   }
 
+  // function Loading() {
+  //   return <h2>🌀 Loading...</h2>;
+  // }
 
   return (
     <div className="ReadText">
@@ -72,23 +76,20 @@ export default function ReadText({ text }) {
           <DialogTitle>Feeling Stuck?</DialogTitle>
           <DialogContentText>
             <h3> Click to generate an easier version of this text. </h3>
-            
 
-            {loading ? (
-              <span>Loading... (may take several seconds)</span>
-            ) : (
-              !simplifiedText && (
-                  <button onClick={handleSimplifyClick}> Generate </button>
-              )
-            )}
+            {!simplifiedText && <button onClick={handleSimplifyClick}> Generate </button>}
+
+            <Suspense fallback={<h2>Loading...</h2>}>
+              {loading ? (
+                <h2>Loading...</h2>
+                ) : (
+                  <GPTText simplifiedText={simplifiedText} />
+                )}
+            </Suspense>
             
-            { simplifiedText && (
-              <div>
-                <p className="simplified-text zh">{simplifiedText}</p>
-              </div>
-            )}
 
             <p className="disclaimer">Disclaimer: This text is generated using artificial intelligence. While the model strives to produce accurate and coherent content, it may occasionally contain inaccuracies, grammatical errors, or unintended meaning. The AI model does not guarantee perfection, and the user is encouraged to exercise their judgment when interpreting the output.</p>
+
           </DialogContentText>
         </DialogContent>
 
