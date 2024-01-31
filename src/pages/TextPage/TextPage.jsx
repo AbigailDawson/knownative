@@ -154,10 +154,13 @@ export default function TextPage() {
           PaperComponent={({ children }) => (
             <div style={{ 
               minWidth: '400px', 
-              maxWidth: '800px', 
+              maxWidth: '600px', 
               width: '80vw',
               backgroundColor: 'white',
-              color: 'var(--drk-txt)' 
+              color: 'var(--drk-txt)',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
               }}>
               {children}
             </div>
