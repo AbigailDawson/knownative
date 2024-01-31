@@ -6,6 +6,7 @@ import ReadText from '../../components/ReadText/ReadText'
 import TranslateText from '../../components/TranslateText/TranslateText'
 import SavedWordsList from '../../components/SavedWordsList/SavedWordsList'
 import Flashcard from '../../components/Flashcard/Flashcard'
+import FlashcardForm from '../../components/FlashcardForm/FlashcardForm'
 import * as textsAPI from '../../utilities/texts-api'
 import * as wordsAPI from '../../utilities/words-api'
 import Button from '@mui/material/Button';
@@ -177,36 +178,13 @@ export default function TextPage() {
                 onIncorrect={handleIncorrect}
               />
               ) : (
-                <>
-                <div> Front: 
-                  <label for="chinese">Chinese</label>
-                  <input 
-                    id="chinese"
-                    type="radio"
-                    value="chinese"
-                    checked={selectedFront === 'chinese'}
-                    onChange={() => setSelectedFront('chinese')}
-                  />
-                  <label for="english">English</label>
-                  <input 
-                    id="english"
-                    type="radio"
-                    value="english"
-                    checked={selectedFront === 'english'}
-                    onChange={() => setSelectedFront('english')}
-                  />
-                </div>
-                <div>
-                  <label htmlFor="pinyin">Show pinyin?</label>
-                  <input 
-                    id="pinyin"
-                    type="checkbox"
-                    checked={showPinyin}
-                    onChange={() => setShowPinyin(!showPinyin)} 
-                  />
-                </div>
-                <button onClick={handlePlay}>Play!</button>
-              </>
+                <FlashcardForm 
+                  selectedFront={selectedFront}
+                  setSelectedFront={setSelectedFront}
+                  showPinyin={showPinyin}
+                  setShowPinyin={setShowPinyin}
+                  handlePlay={handlePlay}
+                />
               )}
               </>
               
