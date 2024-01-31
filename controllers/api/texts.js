@@ -16,6 +16,7 @@ module.exports = {
   translateSentence,
   simplifyText,
   saveSimplifiedText,
+  archiveText
 }
 
 function tokenizeText(req, res) {
@@ -136,13 +137,23 @@ async function simplifyText(req, res) {
 async function saveSimplifiedText(req, res) {
   const { simplifiedText } = req.body
   
-  
   try {
     const updatedText = await Text.findByIdAndUpdate(
       req.params.id, 
       { simplifiedText }, 
       { new: true }
       )
+    res.json(updatedText)
+  } catch(error) {
+    res.status(400).json(error)
+  }
+}
+
+async function archiveText(req, res) {
+  try {
+    const updatedText = await Text.findById(req.params.id)
+    updatedText.archived = true
+    await updatedText.save()
     res.json(updatedText)
   } catch(error) {
     res.status(400).json(error)

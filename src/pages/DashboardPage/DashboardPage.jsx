@@ -31,6 +31,13 @@ export default function DashboardPage() {
     handleClose()
   }
 
+  async function archiveText(text, id) {
+    const updatedText = await textsAPI.archiveText(text, id)
+    setTexts(prevTexts => 
+      prevTexts.map(text =>
+        text._id === updatedText._id ? updatedText : text))
+  }
+
   async function deleteText(textToDelete, id) {
     setTexts(prevTexts => 
       prevTexts.filter(text => text._id !== textToDelete._id))
@@ -53,6 +60,7 @@ export default function DashboardPage() {
       source={text.source}
       content={text.content}
       deleteText={deleteText}
+      archiveText={archiveText}
       />
     ))
 
@@ -67,6 +75,7 @@ export default function DashboardPage() {
       source={text.source}
       content={text.content}
       deleteText={deleteText}
+      archiveText={archiveText}
       />
     ))
 

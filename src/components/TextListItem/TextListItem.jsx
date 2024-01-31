@@ -9,7 +9,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
-export default function TextListItem({ text, title, source, content, id, deleteText }) {
+export default function TextListItem({ text, title, source, content, id, archiveText, deleteText }) {
 
   const truncatedContent = content.slice(0, 50)
   const [open, setOpen] = useState(false)
@@ -20,6 +20,10 @@ export default function TextListItem({ text, title, source, content, id, deleteT
 
   function handleClose() {
     setOpen(false)
+  }
+
+  function handleArchiveText(text, id) {
+    archiveText(text, id)
   }
 
   function handleDeleteText(text, id) {
@@ -47,7 +51,7 @@ export default function TextListItem({ text, title, source, content, id, deleteT
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Archive</Button>
+          <Button onClick={() => handleArchiveText(text, id)}>Archive</Button>
           <Button onClick={() => handleDeleteText(text, id)} autoFocus>
             Delete
           </Button>
