@@ -5,11 +5,19 @@ import * as textsAPI from '../../utilities/texts-api'
 export default function ReadText({ text }) {
 
   const [simplifiedText, setSimplifiedText] = useState(null)
+  const [loading, setLoading] = useState(false)
 
   async function handleSimplifyClick() {
-    const data = await textsAPI.simplifyText(text.content)
-    const simplifiedText = data.choices[0].message.content
-    setSimplifiedText(simplifiedText)
+    setLoading(true)
+    try {
+      const data = await textsAPI.simplifyText(text.content)
+      const simplifiedText = data.choices[0].message.content
+      setSimplifiedText(simplifiedText)
+    } catch (error) {
+      console.error('Error simplifying text: ', error)
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -18,13 +26,16 @@ export default function ReadText({ text }) {
       <h1>{text.title}</h1>
       <h3>Source: {text.source}</h3>
 
-        { simplifiedText ? (
-          ''
-        ) : (
-          <span>Read an easier version of this text --  
+      {loading ? (
+        <span>Loading... (may take several seconds)</span>
+      ) : (
+        !simplifiedText && (
+          <span>
+            Read an easier version of this text --
             <button onClick={handleSimplifyClick}> Click Me! </button>
           </span>
-        )}
+        )
+      )}
 
       { simplifiedText && (
         <div>
