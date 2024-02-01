@@ -10,9 +10,13 @@
 
 .main-area-header {
   display: flex;
-  gap: 2vmin;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3vmin;
   margin-bottom: 3vmin;
+  position: relative;
 }
+
 
 .list-area {
   background-color: white;
@@ -23,4 +27,18 @@
   color: var(--drk-txt);
   margin: 3vmin;
   cursor: pointer;
+}
+
+
+.new-btn {
+  position: absolute;
+  right: 5vmin;
+  bottom: -4vmin;
+  font-size: 7vmin;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+.new-btn:hover {
+  transform: scale(1.1);
 }

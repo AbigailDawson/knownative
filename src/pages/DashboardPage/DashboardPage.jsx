@@ -6,6 +6,7 @@ import NewTextForm from '../../components/NewTextForm/NewTextForm'
 import TextListItem from '../../components/TextListItem/TextListItem'
 import Sidebar from '../../components/Sidebar/Sidebar'
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material'
+import { FaFileCirclePlus } from "react-icons/fa6";
 
 export default function DashboardPage({ user, texts, setTexts }) {
 
@@ -135,7 +136,7 @@ export default function DashboardPage({ user, texts, setTexts }) {
 
       <div className="main-area-header">
         <h1>My Texts</h1>
-        <button onClick={handleOpen}>+ New</button>
+        <FaFileCirclePlus className="new-btn" onClick={handleOpen} />
       </div>
 
         <div className="tabs">
