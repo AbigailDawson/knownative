@@ -19,10 +19,8 @@ export default function TextPage({ getText, updateText }) {
   const { textId } = useParams()
   const text = getText(textId)
 
-  console.log(textId)
-
   const [tokenizedText, setTokenizedText] = useState([])
-  const [activeTab, setActiveTab] = useState('study')
+  const [activeTab, setActiveTab] = useState('read')
 
   // --- SAVED WORDS ---
   const [savedWords, setSavedWords] = useState([])
@@ -226,8 +224,8 @@ export default function TextPage({ getText, updateText }) {
         </section>
 
         <div className="tabs">
-          <button className={`tab-btn ${activeTab === 'study' ? 'active' : ''}`} onClick={() => handleTabClick('study')} >Study</button>
           <button className={`tab-btn ${activeTab === 'read' ? 'active' : ''}`} onClick={() => handleTabClick('read')} >Read</button>
+          <button className={`tab-btn ${activeTab === 'study' ? 'active' : ''}`} onClick={() => handleTabClick('study')} >Study</button>
           <button className={`tab-btn ${activeTab === 'translate' ? 'active' : ''}`} onClick={() => handleTabClick('translate')} >Translate</button>
         </div>
 
