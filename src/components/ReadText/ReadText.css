@@ -91,7 +91,7 @@
 @keyframes l7 {to{transform: rotate(.5turn)}}
 
 .bulb-icon {
-  color: #f2cf0a;
+  color: var(--gold);
   font-size: 4vmin;
   margin-right: 1vmin;
   transform: rotate(-8deg);
@@ -99,7 +99,7 @@
 }
 
 .bulb-icon:hover {
-  color: #fae365;
+  color: var(--yellow);
   animation: wiggle 0.5s ease-in-out infinite;
 }
 
