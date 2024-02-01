@@ -1,3 +1,18 @@
+.textpage-heading {
+  padding: 1vmin;
+  margin-bottom: 2vmin;
+}
+
+.textpage-heading-title {
+  font-size: 4vmin;
+  margin-bottom: 1vmin;
+}
+
+.textpage-heading-subtitle {
+  text-decoration: underline;
+  color: white;
+}
+
 .tabs {
   display: flex;
   gap: 1vmin;

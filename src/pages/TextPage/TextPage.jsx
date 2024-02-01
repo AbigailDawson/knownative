@@ -73,6 +73,10 @@ export default function TextPage() {
     setActiveTab(tabName)
   }
 
+  // async function favoriteText(text, id) {
+  //   const updatedText = await textsAPI.favoriteText(text, id)
+  // }
+
   async function saveWord(word, textId) {
     const savedWord = await textsAPI.saveWord(word, textId)
     setSavedWords([...savedWords, savedWord])
@@ -134,7 +138,7 @@ export default function TextPage() {
 
   return (
     <main className="TextPage page">
-
+      
       <aside className="sidebar">
         <SavedWordsList 
           savedWords={savedWords} 
@@ -210,6 +214,16 @@ export default function TextPage() {
       </Dialog>
 
       <section className="main-area">
+
+        <section className='textpage-heading'>
+          <div>
+            <h1 className='textpage-heading-title zh'>{ text.title }</h1>
+            <a className='textpage-heading-subtitle' href={text.source}>Original source</a>
+          </div>
+          <div>
+            
+          </div>
+        </section>
 
         <div className="tabs">
           <button className={`tab-btn ${activeTab === 'study' ? 'active' : ''}`} onClick={() => handleTabClick('study')} >Study</button>
