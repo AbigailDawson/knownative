@@ -20,3 +20,12 @@
   align-self: flex-end;
 }
 
+.item-content {
+  text-decoration: none;
+  color: var(--drk-txt);
+}
+
+.star-icon-empty,
+.star-icon-filled {
+  font-size: 3.2vmin;
+}

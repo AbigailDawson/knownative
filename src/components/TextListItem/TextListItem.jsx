@@ -1,15 +1,12 @@
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import './TextListItem.css'
-import { BsX } from "react-icons/bs";
-import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
+import { BsX } from "react-icons/bs"
+import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material'
+import { PiStarLight } from "react-icons/pi";
+import { PiStarFill } from "react-icons/pi";
 
-export default function TextListItem({ text, title, source, content, id, archiveText, deleteText }) {
+export default function TextListItem({ text, title, source, content, id, favorite, archived, archiveText, deleteText, favoriteText }) {
 
   const truncatedContent = content.slice(0, 50)
   const [open, setOpen] = useState(false)
@@ -28,6 +25,10 @@ export default function TextListItem({ text, title, source, content, id, archive
 
   function handleDeleteText(text, id) {
     deleteText(text, id)
+  }
+
+  function handleStarClick(text, id) {
+    favoriteText(text, id)
   }
 
   return (
@@ -58,16 +59,15 @@ export default function TextListItem({ text, title, source, content, id, archive
         </DialogActions>
       </Dialog>
 
-        <div className="item-content">
+        <Link to={`/read/${id}`} className="item-content">
           <h3 className="zh">{title}</h3>
           <p className="zh">{truncatedContent} ... </p>
-        </div>
+        </Link>
+
+        { !favorite && !archived && <PiStarLight className="star-icon-empty" onClick={() => handleStarClick(text, id)}/> }
+        { favorite && <PiStarFill className="star-icon-filled" onClick={() => handleStarClick(text, id)} /> }
 
       </div>
-
-      <Link className="read-btn" to={`/read/${id}`}>
-        <button>Read</button>
-      </Link>
     </div>
   )
 }

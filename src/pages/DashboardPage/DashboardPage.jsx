@@ -75,6 +75,13 @@ export default function DashboardPage({ user }) {
     }
   }
 
+  async function favoriteText(text, id) {
+    const updatedText = await textsAPI.favoriteText(text, id)
+    setTexts(prevTexts => 
+      prevTexts.map(text =>
+        text._id === updatedText._id ? updatedText : text))
+  }
+
   const textListItems = texts
     .filter(text => !text.archived)
     .map(text => (
@@ -85,8 +92,11 @@ export default function DashboardPage({ user }) {
       title={text.title}
       source={text.source}
       content={text.content}
+      favorite={text.favorite}
+      archived={text.archived}
       deleteText={deleteText}
       archiveText={archiveText}
+      favoriteText={favoriteText}
       />
     ))
 
@@ -100,8 +110,11 @@ export default function DashboardPage({ user }) {
       title={text.title}
       source={text.source}
       content={text.content}
+      favorite={text.favorite}
+      archived={text.archived}
       deleteText={deleteText}
       archiveText={archiveText}
+      favoriteText={favoriteText}
       />
     ))
 
@@ -115,8 +128,11 @@ export default function DashboardPage({ user }) {
       title={text.title}
       source={text.source}
       content={text.content}
+      favorite={text.favorite}
+      archived={text.archived}
       deleteText={deleteText}
       archiveText={archiveText}
+      favoriteText={favoriteText}
       />
     ))
 

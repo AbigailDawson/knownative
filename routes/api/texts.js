@@ -14,5 +14,6 @@ router.post('/translate', ensureLoggedIn, textsCtrl.translateSentence)
 router.post('/simplify', ensureLoggedIn, textsCtrl.simplifyText)
 router.post('/:id/saveSimplified', ensureLoggedIn, textsCtrl.saveSimplifiedText)
 router.post('/:id/archive', ensureLoggedIn, textsCtrl.archiveText)
+router.post('/:id/favorite', ensureLoggedIn, textsCtrl.favoriteText)
 
 module.exports = router

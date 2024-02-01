@@ -44,3 +44,7 @@ export function saveSimplifiedText(simplifiedText, textId) {
 export function archiveText(text, id) {
   return sendRequest(`${BASE_URL}/${id}/archive`, 'POST', { text })
 }
+
+export function favoriteText(text, id) {
+  return sendRequest(`${BASE_URL}/${id}/favorite`, 'POST', { text })
+}
