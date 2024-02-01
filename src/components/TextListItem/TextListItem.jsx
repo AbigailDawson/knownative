@@ -43,33 +43,33 @@ export default function TextListItem({ text, title, source, content, id, favorit
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle id="alert-dialog-title">
-          {'Are you sure you want to delete this text?'}
-        </DialogTitle>
-        <DialogContent>
-          <DialogContentText id="alert-dialog-description">
-            Deleting this text will also delete all of its saved words. If you'd like to continue using your saved words, consider <b>archiving</b> instead.
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={() => handleArchiveText(text, id)}>Archive</Button>
-          <Button onClick={() => handleDeleteText(text, id)} autoFocus>
-            Delete
-          </Button>
-        </DialogActions>
-      </Dialog>
+          <DialogTitle id="alert-dialog-title">
+            {'Are you sure you want to delete this text?'}
+          </DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description">
+              Deleting this text will also delete all of its saved words. If you'd like to continue using your saved words, consider <b>archiving</b> instead.
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={() => handleArchiveText(text, id)}>Archive</Button>
+            <Button onClick={() => handleDeleteText(text, id)} autoFocus>
+              Delete
+            </Button>
+          </DialogActions>
+        </Dialog>
 
         <Link to={`/read/${id}`} className="item-content">
           <h3 className="zh">{title}</h3>
           <p className="zh">{truncatedContent} ... </p>
         </Link>
 
-        { !favorite && !archived && <PiStarLight className="star-icon-empty" onClick={() => handleStarClick(text, id)}/> }
-        { favorite && activeTab === 'all' && <PiStarFill className="star-icon-filled" onClick={() => handleStarClick(text, id)} /> }
-        { favorite && activeTab === 'favorites' && <button className="remove-favorite" onClick={() => handleStarClick(text, id)}>Remove from favorites</button> }
-        { archived && <button className="remove-archived" onClick={() => handleArchiveText(text, id)}>Remove from archives</button> }
-
-
+      </div>
+      <div>
+          { !favorite && !archived && <PiStarLight className="star-icon-empty" onClick={() => handleStarClick(text, id)}/> }
+          { favorite && activeTab === 'all' && <PiStarFill className="star-icon-filled" onClick={() => handleStarClick(text, id)} /> }
+          { favorite && activeTab === 'favorites' && <button className="remove-favorite" onClick={() => handleStarClick(text, id)}>Remove from favorites</button> }
+          { archived && <button className="remove-archived" onClick={() => handleArchiveText(text, id)}>Remove from archives</button> }
       </div>
     </div>
   )
