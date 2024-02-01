@@ -18,12 +18,6 @@
   color: white;
 }
 
-.star-empty,
-.star-filled {
-  display: inline-block;
-  font-size: 4vmin;
-}
-
 .tabs {
   display: flex;
   gap: 1vmin;
@@ -60,4 +54,38 @@
 .study-container.active,
 .translate-container.active {
   display: block;
+}
+
+.star-filled {
+  color: var(--gold);
+}
+
+.star-empty,
+.star-filled {
+  display: inline-block;
+  font-size: 4vmin;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+}
+
+@keyframes sparkle {
+  0% {
+    color: var(--gold);
+  }
+  50% {
+    color: var(--yellow);
+  }
+  100% {
+    color: var(--gold);
+  }
+}
+
+.star-empty:hover {
+  color: var(--gold); 
+  animation: sparkle .5s infinite;
+}
+
+.star-filled:hover {
+  color: var(--yellow); 
+  animation: sparkle .5s infinite;
 }

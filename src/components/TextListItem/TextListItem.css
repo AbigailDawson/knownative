@@ -36,18 +36,24 @@
   transition: color 0.3s ease-in-out;
 }
 
-/* Add sparkle animation */
 @keyframes sparkle {
-  0%, 100% {
-    opacity: 1;
+  0% {
+    color: var(--gold);
   }
   50% {
-    opacity: 0.5;
+    color: var(--yellow);
+  }
+  100% {
+    color: var(--gold);
   }
 }
 
-.star-icon-empty:hover,
-.star-icon-filled:hover {
+.star-icon-empty:hover {
   color: var(--gold); 
-  animation: sparkle 1s infinite;
+  animation: sparkle .5s infinite;
+}
+
+.star-icon-filled:hover {
+  color: var(--yellow); 
+  animation: sparkle .5s infinite;
 }
