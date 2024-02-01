@@ -1,7 +1,7 @@
 import './Sidebar.css'
 import * as wordsAPI from '../../utilities/words-api'
 
-export default function Sidebar({ user, numTexts, numArchivedTexts }) {
+export default function Sidebar({ user, numTexts, numArchivedTexts, numSavedWords }) {
 
   return (
     <>
@@ -12,6 +12,7 @@ export default function Sidebar({ user, numTexts, numArchivedTexts }) {
     <div className="stats">
       <p>Reading: <span className="num">{ numTexts }</span></p>
       <p>Archived: <span className="num">{ numArchivedTexts }</span></p>
+      <p>Saved words: <span className="num">{ numSavedWords }</span></p>
     </div>
       
       

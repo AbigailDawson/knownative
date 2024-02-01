@@ -28,6 +28,10 @@ const textSchema = new Schema({
   archived: {
     type: Boolean,
     default: false
+  },
+  favorite: {
+    type: Boolean,
+    default: false
   }
 }, {
   timestamps: true

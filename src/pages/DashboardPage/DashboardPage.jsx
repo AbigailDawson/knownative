@@ -105,6 +105,7 @@ export default function DashboardPage({ user }) {
         user={user}
         numTexts={numTexts}
         numArchivedTexts={numArchivedTexts}
+        numSavedWords={numSavedWords}
       />
     </aside>
 
