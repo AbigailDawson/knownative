@@ -46,7 +46,6 @@ function App() {
             setTexts={setTexts}
             />} 
           />
-          {/* <Route path='/read' element={<TextPage />} /> */}
           <Route path='/read/:textId' element={<TextPage 
           getText={getText} 
           updateText={updateText}
