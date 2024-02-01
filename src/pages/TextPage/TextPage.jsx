@@ -212,16 +212,17 @@ export default function TextPage({ getText, updateText }) {
 
       <section className="main-area">
 
-        <section className='textpage-heading'>
-          <div>
-            <h1 className='textpage-heading-title zh'>{text.title}</h1>
-            <a className='textpage-heading-subtitle' href={text.source}>Original source</a>
+        <div className="top-area">
+          <div className='textpage-heading'>
+            <div className="flex-row">
+              <h1 className='textpage-heading-title zh'>{text.title}</h1>
+              { !text.favorite && !text.archived && <PiStarLight className="star-empty" onClick={() => favoriteText(text, text._id)}/> }
+              { text.favorite && <PiStarFill className="star-filled" onClick={() => favoriteText(text, text._id)} /> }
+            </div>
+            <a className='textpage-heading-subtitle' href={text.source}>Original source</a>          
           </div>
-          <div>
-            { !text.favorite && !text.archived && <PiStarLight className="star-icon-empty" onClick={() => favoriteText(text, text._id)}/> }
-            { text.favorite && <PiStarFill className="star-icon-filled" onClick={() => favoriteText(text, text._id)} /> }
-          </div>
-        </section>
+        </div>
+        
 
         <div className="tabs">
           <button className={`tab-btn ${activeTab === 'read' ? 'active' : ''}`} onClick={() => handleTabClick('read')} >Read</button>

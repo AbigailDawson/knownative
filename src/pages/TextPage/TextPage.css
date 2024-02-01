@@ -1,19 +1,27 @@
 .textpage-heading {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
   padding: 1vmin;
   margin-bottom: 2vmin;
 }
 
+.flex-row {
+  justify-content: center;
+}
 .textpage-heading-title {
   font-size: 4vmin;
-  margin-bottom: 1vmin;
+  display: inline-block;
 }
 
 .textpage-heading-subtitle {
   text-decoration: underline;
   color: white;
+}
+
+.star-empty,
+.star-filled {
+  display: inline-block;
+  font-size: 4vmin;
 }
 
 .tabs {
