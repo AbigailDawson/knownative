@@ -59,8 +59,8 @@ export default function TextListItem({ text, title, source, content, id, archive
       </Dialog>
 
         <div className="item-content">
-          <h3>{title}</h3>
-          <p>{truncatedContent} ... </p>
+          <h3 className="zh">{title}</h3>
+          <p className="zh">{truncatedContent} ... </p>
         </div>
 
       </div>
