@@ -2,7 +2,7 @@ import './SavedWord.css'
 import { useState } from 'react'
 import { FaRegEdit } from "react-icons/fa";
 import { IoMdCheckboxOutline } from "react-icons/io";
-import { BsX } from "react-icons/bs";
+import { PiTrashLight } from "react-icons/pi";
 
 
 export default function SavedWord({ word, updateMeaning, isEditingWord, setIsEditingWord, deleteWord }) {
@@ -41,7 +41,7 @@ export default function SavedWord({ word, updateMeaning, isEditingWord, setIsEdi
       {/* grid column 1 */}
 
       <div className="left-side">
-        <div className="delete-btn" onClick={() => handleDeleteWord(word)}><BsX /></div>
+        <div className="word-delete-btn" onClick={() => handleDeleteWord(word)}><PiTrashLight /></div>
         <div className="char-pinyin">
           <p className="pinyin"> { word.pinyin } </p>
           <p className="char zh">{ word.traditional } </p> 

@@ -8,22 +8,29 @@
   color: var(--drk-txt);
   padding: 1.3vmin 1.3vmin 1.3vmin 1vmin;;
   margin: 0 1vmin;
-  border-bottom: 2px solid var(--medium)
-
+  border-bottom: 2px solid var(--medium);
+  position: relative;
 }
 
 .left-side {
   display: flex;
-  gap: 1vmin;
+  margin-left: 4vmin;
+  position: relative;
 }
 
-.delete-btn {
+.word-delete-btn {
+  position: absolute;
   font-size: 2.5vmin;
-  color: var(--red);
+  cursor: pointer;
+  top: 1.5vmin;
+  left: -4vmin;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
 }
 
-.delete-btn:hover {
-  cursor: pointer;
+.SavedWord:hover .word-delete-btn {
+  opacity: 1;
+  color: var(--red);
 }
 
 .char-pinyin {
@@ -41,7 +48,7 @@
 }
 
 .meaning {
-  margin-left: 2.8vmin;
+  margin-left: 3.5vmin;
 }
 
 .right-side {
