@@ -48,6 +48,7 @@ export default function ReadText({ text }) {
     <div className="ReadText">
 
       <div className="top">
+        <h1 className="zh">{text.title}</h1>
         <h3 className="section-heading">Feeling stuck?</h3>
         <p>Reading native texts is tough! Become more comfortable reading in your target language by starting with a slightly easier version. Once you're able to understand the content a little better, learning more will come naturally!</p>
         <button className="learn-btn" onClick={handleOpen}>Learn More</button>
@@ -56,8 +57,8 @@ export default function ReadText({ text }) {
             onClose={handleClose}   
             PaperComponent={({ children }) => (
               <div style={{ 
-                width: '70vmin', 
-                height: '60vmin',
+                width: '80vmin', 
+                height: '70vmin',
                 backgroundColor: 'white',
                 color: 'var(--drk-txt)',
                 display: 'flex',
@@ -94,16 +95,16 @@ export default function ReadText({ text }) {
               justifyContent: 'center',
               }}>
                 
-                {!simplifiedText && !loading && <h3> Click to generate an easier version of this text. </h3> }
+                {!simplifiedText && !loading && <h3 className="generate-txt"> Click to generate an easier version of this text. </h3> }
 
-                  {!simplifiedText && !loading && <button className="generate-btn" onClick={handleSimplifyClick}> Generate </button>}
+                  {!simplifiedText && !loading && <button className="generate-btn" onClick={handleSimplifyClick}> Generate! </button>}
 
                   <Suspense fallback={<h2>Loading...</h2>}>
                     {loading ? (
                       <>
-                        <h3> Generating </h3>
+                        <h3 className="generate-btn"> Generating </h3>
                         <p>This may take several seconds.</p>
-                        <div class="loader"></div>
+                        <div className="loader"></div>
                       </>
                       ) : (
                         <>

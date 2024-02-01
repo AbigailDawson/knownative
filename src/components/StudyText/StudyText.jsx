@@ -77,7 +77,6 @@ export default function StudyText({ text, tokenizedText, textId, activeWord, set
     <>
       <div className="StudyText">
         <h1 className="zh">{text.title}</h1>
-        <h3>Source: {text.source}</h3>
         <div className="study-text-block">
         {words}
         </div>

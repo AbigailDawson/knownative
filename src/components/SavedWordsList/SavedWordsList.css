@@ -3,8 +3,8 @@
   flex-direction: column;
   padding: 1vmin 0;
   width: 100%;
-  background-color: var(--drk-bg);
-  color: var(--lt-txt);
+  background-color: var(--dark);
+  color: var(--drk-txt);
 }
 
 .sidebar-heading {

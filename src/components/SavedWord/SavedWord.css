@@ -4,11 +4,11 @@
   align-items: center;
   text-align: left;
   text-wrap: wrap;
-  background-color: var(--light);
+  background-color: white;
   color: var(--drk-txt);
   padding: 1.3vmin 1.3vmin 1.3vmin 1vmin;;
   margin: 0 1vmin;
-  border-bottom: 1px solid var(--lt-bg)
+  border-bottom: 2px solid var(--medium)
 
 }
 

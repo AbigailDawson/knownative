@@ -9,11 +9,13 @@
 }
 
 .section-heading {
-  margin-bottom: 1vmin;
+  margin: 4vmin 0 1vmin 0;
 }
 
 .learn-btn {
-  margin: 2vmin 0;
+  margin: 2vmin 0 1vmin 0;
+  background-color: var(--medium);
+  cursor: pointer;
 }
 
 .read-text-block {
@@ -30,30 +32,39 @@
   margin-top: 2vmin;
   line-height: 4vmin;
   letter-spacing: .3vmin;
-  font-size: 2vmin;
+  font-size: 2.3vmin;
 }
 
-.generate-btn,
-.save-btn {
+.generate-txt {
+  font-size: 3vmin;
+}
+
+.generate-btn {
   align-self: center;
   margin-top: 3vmin;
-  font-size: 2vmin;
-  padding: 1vmin 2vmin;
+  font-size: 2.8vmin;
+  padding: 2vmin 4vmin;}
+
+.save-btn {
+  align-self: center;
+  margin: 3vmin 0;
+  font-size: 2.5vmin;
+  padding: 1.5vmin 2.5vmin;
 }
 
 .disclaimer {
   font-style: italic;
   margin-top: 2vmin;
-  line-height: 1.8vmin;
+  line-height: 2vmin;
   letter-spacing: 0;
-  font-size: 1.5vmin;
+  font-size: 1.8vmin;
 }
 
 /* HTML: <div class="loader"></div> */
 .loader {
-  margin: 2vmin 0;
+  margin: 4vmin 0;
   align-self: center;
-  width: 50px;
+  width: 70px;
   aspect-ratio: 1;
   --_c:no-repeat radial-gradient(farthest-side,#25b09b 92%,#0000);
   background: 

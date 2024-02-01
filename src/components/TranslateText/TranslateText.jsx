@@ -15,7 +15,6 @@ export default function TranslateText({ text }) {
   return (
     <div className="TranslateText">
       <h1 className="zh">{text.title}</h1>
-      <h3>Source: {text.source}</h3>
         <div className="translate-text-block">
           {sentences}
         </div>

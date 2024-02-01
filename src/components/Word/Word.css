@@ -21,6 +21,7 @@
 .annotation {
   height: 6vmin;
   text-wrap: wrap;
+  text-align: center;
   font-size: 1.3vmin;
   color: var(--drk-txt);
 }

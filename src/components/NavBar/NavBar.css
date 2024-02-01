@@ -5,12 +5,12 @@ nav {
   padding: 0 3vmin;
   height: 10vmin;
   background-color: var(--medium);
-  color: var(--lt-txt)
+  color: var(--drk-txt)
 }
 
 .nav-link {
   text-decoration: none;
-  color: var(--lt-txt);
+  color: var(--drk-txt);
 }
 
 .nav-link:hover {

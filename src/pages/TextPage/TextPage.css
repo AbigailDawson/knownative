@@ -16,8 +16,7 @@
 }
 
 .text-area {
-  background: var(--light);
-  background: var(--gradient);
+  background: white;
   padding: 2vmin;
   height: 100%;
   border-radius: 1vmin 1vmin 0 0;

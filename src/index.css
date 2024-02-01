@@ -9,9 +9,9 @@
   --drk-bg: #5e5e5e;
   --lt-txt: #ffffff;
   --lt-bg: #ffffff;
-  --light: #b6b6b6;
-  --medium: #979797;
-  --gradient: linear-gradient(0deg, var(--medium) 39%, var(--light) 69%);
+  --light: #ececec;
+  --medium: #c7c7c7;
+  --dark: #9a9a9a;
   --red: #8c0000;
 }
 
@@ -65,7 +65,7 @@ a {
   justify-content: flex-start;
   align-items: stretch;
   text-align: left;
-  background: var(--dark-bg);
+  background: var(--dark);
   border: 3px solid var(--light);
   padding: 3vmin;
   height: 100%;
@@ -76,7 +76,7 @@ a {
   flex-direction: column;
   justify-content: start;
   align-items: center;
-  background-color: var(--drk-bg);
+  background-color: var(--dark);
   border: 3px solid var(--light);
   height: 100%;
 }
