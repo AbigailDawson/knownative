@@ -7,32 +7,23 @@ import TextListItem from '../../components/TextListItem/TextListItem'
 import Sidebar from '../../components/Sidebar/Sidebar'
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material'
 
-export default function DashboardPage({ user }) {
-  const [texts, setTexts] = useState([])
+export default function DashboardPage({ user, texts, setTexts }) {
   const [open, setOpen] = useState(false)
+  const [activeTab, setActiveTab] = useState('all')
   const [numTexts, setNumTexts] = useState(0)
   const [numArchivedTexts, setNumArchivedTexts] = useState(0)
   const [numSavedWords, setNumSavedWords] = useState(0)
-  const [activeTab, setActiveTab] = useState('all')
 
   useEffect(function() {
-    async function getTexts() {
-      const texts = await textsAPI.getAll()
-      setTexts(texts)
+    async function getStats() {
+      const numSavedWords = await wordsAPI.countSavedWords()
+      setNumSavedWords(numSavedWords)
       setNumTexts(texts.length)
       const archivedTexts = texts
       .filter(text => text.archived)
       setNumArchivedTexts(archivedTexts.length)
     }
-    getTexts()
-  }, [])
-
-  useEffect(function() {
-    async function countSavedWords() {
-      const numSavedWords = await wordsAPI.countSavedWords()
-      setNumSavedWords(numSavedWords)
-    }
-    countSavedWords()
+    getStats()
   }, [])
 
   function handleTabClick(tabName) {

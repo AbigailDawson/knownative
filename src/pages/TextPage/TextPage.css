@@ -1,4 +1,7 @@
 .textpage-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding: 1vmin;
   margin-bottom: 2vmin;
 }

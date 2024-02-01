@@ -11,11 +11,16 @@ import * as textsAPI from '../../utilities/texts-api'
 import * as wordsAPI from '../../utilities/words-api'
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material'
 import { FaRegWindowClose } from "react-icons/fa";
+import { PiStarLight } from "react-icons/pi";
+import { PiStarFill } from "react-icons/pi";
 
-export default function TextPage() {
+export default function TextPage({ getText, updateText }) {
 
-  const { id } = useParams()
-  const [text, setText] = useState(null)
+  const { textId } = useParams()
+  const text = getText(textId)
+
+  console.log(textId)
+
   const [tokenizedText, setTokenizedText] = useState([])
   const [activeTab, setActiveTab] = useState('study')
 
@@ -34,14 +39,6 @@ export default function TextPage() {
   const [gameInProgress, setGameInProgress] = useState(false)
 
   useEffect(function() {
-    async function getText() {
-      const text = await textsAPI.getText(id)
-      setText(text)
-    }
-    getText()
-  }, [id])
-
-  useEffect(function() {
     async function getTokenizedText() {
       if (text) {
         const tokenizedText = await textsAPI.tokenizeText(text.content)
@@ -49,11 +46,11 @@ export default function TextPage() {
       }
     }
     getTokenizedText()
-  }, [text])
+  }, [])
 
   useEffect(function() {
     async function getSavedWords() {
-      const savedWords = await textsAPI.getSavedWords(id)
+      const savedWords = await textsAPI.getSavedWords(textId)
       setSavedWords(savedWords)
     }
     getSavedWords()
@@ -73,9 +70,10 @@ export default function TextPage() {
     setActiveTab(tabName)
   }
 
-  // async function favoriteText(text, id) {
-  //   const updatedText = await textsAPI.favoriteText(text, id)
-  // }
+  async function favoriteText(text, textId) {
+    const updatedText = await textsAPI.favoriteText(text, textId)
+    updateText(updatedText)
+  }
 
   async function saveWord(word, textId) {
     const savedWord = await textsAPI.saveWord(word, textId)
@@ -137,6 +135,7 @@ export default function TextPage() {
   }
 
   return (
+    
     <main className="TextPage page">
       
       <aside className="sidebar">
@@ -217,11 +216,12 @@ export default function TextPage() {
 
         <section className='textpage-heading'>
           <div>
-            <h1 className='textpage-heading-title zh'>{ text.title }</h1>
+            <h1 className='textpage-heading-title zh'>{text.title}</h1>
             <a className='textpage-heading-subtitle' href={text.source}>Original source</a>
           </div>
           <div>
-            
+            { !text.favorite && !text.archived && <PiStarLight className="star-icon-empty" onClick={() => favoriteText(text, text._id)}/> }
+            { text.favorite && <PiStarFill className="star-icon-filled" onClick={() => favoriteText(text, text._id)} /> }
           </div>
         </section>
 
@@ -238,7 +238,7 @@ export default function TextPage() {
                 {text ? <StudyText 
                   text={text}
                   tokenizedText={tokenizedText} 
-                  textId={id} 
+                  textId={textId} 
                   activeWord={activeWord}
                   setActiveWord={setActiveWord}
                   saveWord={saveWord} 

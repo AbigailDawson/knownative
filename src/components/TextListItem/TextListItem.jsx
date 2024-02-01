@@ -6,7 +6,7 @@ import { Button, Dialog, DialogActions, DialogContent, DialogContentText, Dialog
 import { PiStarLight } from "react-icons/pi";
 import { PiStarFill } from "react-icons/pi";
 
-export default function TextListItem({ text, title, source, content, id, favorite, archived, archiveText, deleteText, favoriteText, activeTab }) {
+export default function TextListItem({ text, title, source, content, id, favorite, archived, archiveText, deleteText, favoriteText, activeTab, getText }) {
 
   const truncatedContent = content.slice(0, 50)
   const [open, setOpen] = useState(false)
