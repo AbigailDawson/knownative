@@ -6,7 +6,7 @@ import { Button, Dialog, DialogActions, DialogContent, DialogContentText, Dialog
 import { PiStarLight } from "react-icons/pi";
 import { PiStarFill } from "react-icons/pi";
 
-export default function TextListItem({ text, title, source, content, id, favorite, archived, archiveText, deleteText, favoriteText }) {
+export default function TextListItem({ text, title, source, content, id, favorite, archived, archiveText, deleteText, favoriteText, activeTab }) {
 
   const truncatedContent = content.slice(0, 50)
   const [open, setOpen] = useState(false)
@@ -65,7 +65,10 @@ export default function TextListItem({ text, title, source, content, id, favorit
         </Link>
 
         { !favorite && !archived && <PiStarLight className="star-icon-empty" onClick={() => handleStarClick(text, id)}/> }
-        { favorite && <PiStarFill className="star-icon-filled" onClick={() => handleStarClick(text, id)} /> }
+        { favorite && activeTab === 'all' && <PiStarFill className="star-icon-filled" onClick={() => handleStarClick(text, id)} /> }
+        { favorite && activeTab === 'favorites' && <button className="remove-favorite" onClick={() => handleStarClick(text, id)}>Remove from favorites</button> }
+        { archived && <button className="remove-archived" onClick={() => handleArchiveText(text, id)}>Remove from archives</button> }
+
 
       </div>
     </div>

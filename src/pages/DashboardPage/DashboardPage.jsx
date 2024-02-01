@@ -23,8 +23,6 @@ export default function DashboardPage({ user }) {
       const archivedTexts = texts
       .filter(text => text.archived)
       setNumArchivedTexts(archivedTexts.length)
-      const favoriteTexts = texts
-      .filter(text => text.favorite)
     }
     getTexts()
   }, [])
@@ -97,6 +95,7 @@ export default function DashboardPage({ user }) {
       deleteText={deleteText}
       archiveText={archiveText}
       favoriteText={favoriteText}
+      activeTab={activeTab}
       />
     ))
 
@@ -115,6 +114,7 @@ export default function DashboardPage({ user }) {
       deleteText={deleteText}
       archiveText={archiveText}
       favoriteText={favoriteText}
+      activeTab={activeTab}
       />
     ))
 
@@ -133,6 +133,7 @@ export default function DashboardPage({ user }) {
       deleteText={deleteText}
       archiveText={archiveText}
       favoriteText={favoriteText}
+      activeTab={activeTab}
       />
     ))
 
