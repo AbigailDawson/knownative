@@ -8,11 +8,16 @@ import Sidebar from '../../components/Sidebar/Sidebar'
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material'
 
 export default function DashboardPage({ user, texts, setTexts }) {
+
   const [open, setOpen] = useState(false)
   const [activeTab, setActiveTab] = useState('all')
+  
+  const [sortBy, setSortBy] = useState('created')
+
   const [numTexts, setNumTexts] = useState(0)
   const [numArchivedTexts, setNumArchivedTexts] = useState(0)
   const [numSavedWords, setNumSavedWords] = useState(0)
+  
 
   useEffect(function() {
     async function getStats() {
@@ -71,62 +76,49 @@ export default function DashboardPage({ user, texts, setTexts }) {
         text._id === updatedText._id ? updatedText : text))
   }
 
-  const textListItems = texts
+  function handleSortBy(sortType) {
+    setSortBy(sortType)
+  }
+
+  const sortedTexts = [...texts].sort((a, b) => {
+    if (sortBy === 'created') {
+      return new Date(b.createdAt) - new Date(a.createdAt)
+    } else if (sortBy === 'updated') {
+      return new Date(b.updatedAt) - new Date(a.updatedAt)
+    }
+    return 0
+  })
+  
+  function createTextListItem(text) {
+    return (
+      <TextListItem
+        key={text._id}
+        text={text}
+        id={text._id}
+        title={text.title}
+        source={text.source}
+        content={text.content}
+        favorite={text.favorite}
+        archived={text.archived}
+        deleteText={deleteText}
+        archiveText={archiveText}
+        favoriteText={favoriteText}
+        activeTab={activeTab}
+      />
+    );
+  }
+
+  const textListItems = sortedTexts
     .filter(text => !text.archived)
-    .map(text => (
-      <TextListItem
-      key={text._id}
-      text={text}
-      id={text._id}
-      title={text.title}
-      source={text.source}
-      content={text.content}
-      favorite={text.favorite}
-      archived={text.archived}
-      deleteText={deleteText}
-      archiveText={archiveText}
-      favoriteText={favoriteText}
-      activeTab={activeTab}
-      />
-    ))
+    .map(createTextListItem)
 
-  const favoriteListItems = texts
+  const favoriteListItems = sortedTexts
     .filter(text => text.favorite)
-    .map(text => (
-      <TextListItem
-      key={text._id}
-      text={text}
-      id={text._id}
-      title={text.title}
-      source={text.source}
-      content={text.content}
-      favorite={text.favorite}
-      archived={text.archived}
-      deleteText={deleteText}
-      archiveText={archiveText}
-      favoriteText={favoriteText}
-      activeTab={activeTab}
-      />
-    ))
+    .map(createTextListItem)
 
-  const archivedListItems = texts
+  const archivedListItems = sortedTexts
     .filter(text => text.archived)
-    .map(text => (
-      <TextListItem
-      key={text._id}
-      text={text}
-      id={text._id}
-      title={text.title}
-      source={text.source}
-      content={text.content}
-      favorite={text.favorite}
-      archived={text.archived}
-      deleteText={deleteText}
-      archiveText={archiveText}
-      favoriteText={favoriteText}
-      activeTab={activeTab}
-      />
-    ))
+    .map(createTextListItem)
 
   return (
   <main className="DashboardPage page">
@@ -177,6 +169,11 @@ export default function DashboardPage({ user, texts, setTexts }) {
       </Dialog>
 
       <div className="list-area">
+        <div className="sort-options">
+          <span>Sort by: </span>
+          <a onClick={() => handleSortBy('created')}>Newest</a> &nbsp; | &nbsp;
+          <a onClick={() => handleSortBy('updated')}>Recently Updated</a>
+        </div>
         { activeTab === 'all' && (
           <div className="textListItems">{textListItems}</div>
         )}

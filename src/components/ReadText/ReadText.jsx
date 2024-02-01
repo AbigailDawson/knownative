@@ -2,7 +2,7 @@ import './ReadText.css'
 import { useState, useEffect, Suspense } from 'react'
 import * as textsAPI from '../../utilities/texts-api'
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Accordion, AccordionActions, AccordionSummary, AccordionDetails } from '@mui/material'
-// import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import { FaRegWindowClose } from "react-icons/fa"
 import { FaRegLightbulb } from "react-icons/fa6";
 import SimplifiedText from '../../components/SimplifiedText/SimplifiedText'
@@ -55,7 +55,9 @@ export default function ReadText({ text }) {
           maxWidth: '30vmin'
         }}>
           <AccordionSummary
-            // expandIcon={<ExpandMoreIcon />}
+            expandIcon={<ExpandMoreIcon style={{
+              color: 'black',
+            }}/>}
             aria-controls="panel1-content"
             id="panel1-header"
           >

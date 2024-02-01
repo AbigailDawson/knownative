@@ -18,3 +18,9 @@
   background-color: white;
   height: 100%;
 }
+
+.sort-options {
+  color: var(--drk-txt);
+  margin: 3vmin;
+  cursor: pointer;
+}
