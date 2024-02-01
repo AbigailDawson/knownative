@@ -1,6 +1,8 @@
 import './Sidebar.css'
+import * as wordsAPI from '../../utilities/words-api'
 
 export default function Sidebar({ user, numTexts, numArchivedTexts }) {
+
   return (
     <>
     <div className="sidebar-heading">

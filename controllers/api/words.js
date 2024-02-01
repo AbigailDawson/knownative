@@ -1,10 +1,12 @@
 const path = require('path')
 const Text = require('../../models/text')
 const Word = require('../../models/word')
+const User = require('../../models/user')
 
 module.exports = {
   updateMeaning,
-  deleteWord
+  deleteWord,
+  countSavedWords
 }
 
 async function updateMeaning(req, res) {
@@ -25,6 +27,16 @@ async function deleteWord(req, res) {
   try {
     const deletedWord = await Word.findOneAndDelete({ _id: req.params.id })
     res.json(deletedWord)
+  } catch( error) {
+    console.error(error)
+  }
+}
+
+async function countSavedWords(req, res) {
+  try {
+    const savedWords = await Word.find({ user: req.user._id })
+    const numSavedWords = savedWords.length
+    res.json(numSavedWords)
   } catch( error) {
     console.error(error)
   }

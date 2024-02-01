@@ -8,3 +8,7 @@ export function updateMeaning(word, formData) {
 export function deleteWord(word) {
   return sendRequest(`${BASE_URL}/${word._id}/delete`, 'DELETE', { word })
 }
+
+export function countSavedWords() {
+  return sendRequest(`${BASE_URL}/count`)
+}

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import './DashboardPage.css'
 import * as textsAPI from '../../utilities/texts-api'
+import * as wordsAPI from '../../utilities/words-api'
 import NewTextForm from '../../components/NewTextForm/NewTextForm'
 import TextListItem from '../../components/TextListItem/TextListItem'
 import Sidebar from '../../components/Sidebar/Sidebar'
@@ -11,6 +12,7 @@ export default function DashboardPage({ user }) {
   const [open, setOpen] = useState(false)
   const [numTexts, setNumTexts] = useState(0)
   const [numArchivedTexts, setNumArchivedTexts] = useState(0)
+  const [numSavedWords, setNumSavedWords] = useState(0)
 
   useEffect(function() {
     async function getTexts() {
@@ -22,6 +24,14 @@ export default function DashboardPage({ user }) {
       setNumArchivedTexts(archivedTexts.length)
     }
     getTexts()
+  }, [])
+
+  useEffect(function() {
+    async function countSavedWords() {
+      const numSavedWords = await wordsAPI.countSavedWords()
+      setNumSavedWords(numSavedWords)
+    }
+    countSavedWords()
   }, [])
 
   function handleOpen() {

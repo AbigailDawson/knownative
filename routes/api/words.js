@@ -5,5 +5,6 @@ const ensureLoggedIn = require('../../config/ensureLoggedIn.js')
 
 router.post('/:id/update', ensureLoggedIn, wordsCtrl.updateMeaning)
 router.delete('/:id/delete', ensureLoggedIn, wordsCtrl.deleteWord)
+router.get('/count', ensureLoggedIn, wordsCtrl.countSavedWords)
 
 module.exports = router
