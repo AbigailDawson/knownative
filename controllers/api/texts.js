@@ -154,7 +154,7 @@ async function saveSimplifiedText(req, res) {
 async function archiveText(req, res) {
   try {
     const updatedText = await Text.findById(req.params.id)
-    updatedText.archived = true
+    updatedText.archived = !updatedText.archived
     await updatedText.save()
     res.json(updatedText)
   } catch(error) {
