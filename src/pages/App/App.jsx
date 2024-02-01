@@ -17,7 +17,7 @@ function App() {
       <>
         <NavBar user={user} setUser={setUser} />
         <Routes>
-          <Route path='/dashboard' element={<DashboardPage />} />
+          <Route path='/dashboard' element={<DashboardPage user={user} />} />
           <Route path='/read' element={<TextPage />} />
           <Route path='/read/:id' element={<TextPage />} />
         </Routes>

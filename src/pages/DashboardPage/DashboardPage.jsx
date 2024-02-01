@@ -3,16 +3,23 @@ import './DashboardPage.css'
 import * as textsAPI from '../../utilities/texts-api'
 import NewTextForm from '../../components/NewTextForm/NewTextForm'
 import TextListItem from '../../components/TextListItem/TextListItem'
+import Sidebar from '../../components/Sidebar/Sidebar'
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material'
 
-export default function DashboardPage() {
+export default function DashboardPage({ user }) {
   const [texts, setTexts] = useState([])
   const [open, setOpen] = useState(false)
+  const [numTexts, setNumTexts] = useState(0)
+  const [numArchivedTexts, setNumArchivedTexts] = useState(0)
 
   useEffect(function() {
     async function getTexts() {
       const texts = await textsAPI.getAll()
       setTexts(texts)
+      setNumTexts(texts.length)
+      const archivedTexts = texts
+      .filter(text => text.archived)
+      setNumArchivedTexts(archivedTexts.length)
     }
     getTexts()
   }, [])
@@ -28,6 +35,7 @@ export default function DashboardPage() {
   async function handleAddText(textData) {
     const text = await textsAPI.addNewText(textData)
     setTexts([...texts, text])
+    setNumTexts(numTexts + 1)
     handleClose()
   }
 
@@ -36,6 +44,7 @@ export default function DashboardPage() {
     setTexts(prevTexts => 
       prevTexts.map(text =>
         text._id === updatedText._id ? updatedText : text))
+    setNumArchivedTexts(numArchivedTexts + 1)
   }
 
   async function deleteText(textToDelete, id) {
@@ -82,8 +91,11 @@ export default function DashboardPage() {
   return (
   <main className="DashboardPage page">
     <aside className="sidebar">
-      <h1>Sidebar</h1>
-      <p>Sidebar content</p>
+      <Sidebar 
+        user={user}
+        numTexts={numTexts}
+        numArchivedTexts={numArchivedTexts}
+      />
     </aside>
 
     <section className="main-area">

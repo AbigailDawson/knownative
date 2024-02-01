@@ -13,7 +13,6 @@ export default function NavBar({ user, setUser }) {
     <nav>
       <div className="nav-left">
         <h1>KnowNative</h1>
-        <p>Welcome, <span>{user.name}</span></p>
       </div>
       <div className="nav-right">
         <Link to='/dashboard' className="nav-link">Dashboard</Link>
