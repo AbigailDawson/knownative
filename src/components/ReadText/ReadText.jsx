@@ -114,18 +114,19 @@ export default function ReadText({ text }) {
               flexDirection: 'column',
               alignItems: 'center',
               justifyContent: 'center',
+              textAlign: 'center',
               }}>
                 
                 {!simplifiedText && !loading && (
                   <>
-                    <h3 className="generate-txt"> Click to generate an easier version of this text. </h3> 
-                    <p>Reading content written by native speakers can be tough!</p>
-                    <p>Trying to learn vocabulary and complicated syntax while understanding the meaning of the text can make reading feel difficult and frustrating.</p>
-                    <p>If you’re feeling stuck, try reading a slightly easier version of this text!</p>
+                    <h3 className="generate-txt"> Reading native texts can be tough. </h3> 
+                    <p>If you’re feeling stuck, try reading a slightly easier version of this text! Click below to recreate this text at a 5th-grade reading level.</p>
+                    <button className="generate-btn" onClick={handleSimplifyClick}> Generate! </button>
+                    <p className="disclaimer">Note: Generator currently only supports up to 500 characters of text at a time. If your text is longer, consider dividing it into sections before generating.</p>
                   </>
               )}
 
-                  {!simplifiedText && !loading && <button className="generate-btn" onClick={handleSimplifyClick}> Generate! </button>}
+                  
 
                   <Suspense fallback={<h2>Loading...</h2>}>
                     {loading ? (

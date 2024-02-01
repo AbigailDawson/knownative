@@ -49,11 +49,12 @@
 
 .generate-txt {
   font-size: 3vmin;
+  margin: 2vmin;
 }
 
 .generate-btn {
   align-self: center;
-  margin-top: 3vmin;
+  margin: 3vmin 0;
   font-size: 2.8vmin;
   padding: 2vmin 4vmin;}
 
