@@ -114,7 +114,7 @@ export default function ReadText({ text }) {
 
       <div className="bottom">
         <div className="read-text-block">
-          <p className="zh">{text.content}</p>
+          <p className="zh">{text.content.split("<br>").join("\n")}</p>
         </div>
       </div>
       
