@@ -50,10 +50,10 @@
 
 .star-icon-empty:hover {
   color: var(--gold); 
-  animation: sparkle .5s infinite;
+  animation: sparkle 1s infinite;
 }
 
 .star-icon-filled:hover {
   color: var(--yellow); 
-  animation: sparkle .5s infinite;
+  animation: sparkle 1s infinite;
 }

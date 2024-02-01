@@ -82,10 +82,10 @@
 
 .star-empty:hover {
   color: var(--gold); 
-  animation: sparkle .5s infinite;
+  animation: sparkle .8s infinite;
 }
 
 .star-filled:hover {
   color: var(--yellow); 
-  animation: sparkle .5s infinite;
+  animation: sparkle .8s infinite;
 }
