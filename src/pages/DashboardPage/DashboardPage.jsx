@@ -13,6 +13,7 @@ export default function DashboardPage({ user }) {
   const [numTexts, setNumTexts] = useState(0)
   const [numArchivedTexts, setNumArchivedTexts] = useState(0)
   const [numSavedWords, setNumSavedWords] = useState(0)
+  const [activeTab, setActiveTab] = useState('favorites')
 
   useEffect(function() {
     async function getTexts() {
@@ -22,6 +23,8 @@ export default function DashboardPage({ user }) {
       const archivedTexts = texts
       .filter(text => text.archived)
       setNumArchivedTexts(archivedTexts.length)
+      const favoriteTexts = texts
+      .filter(text => text.favorite)
     }
     getTexts()
   }, [])
@@ -33,6 +36,10 @@ export default function DashboardPage({ user }) {
     }
     countSavedWords()
   }, [])
+
+  function handleTabClick(tabName) {
+    setActiveTab(tabName)
+  }
 
   function handleOpen() {
     setOpen(true)
@@ -67,6 +74,21 @@ export default function DashboardPage({ user }) {
       console.error(error)
     }
   }
+
+  const favoriteListItems = texts
+  .filter(text => text.favorite)
+  .map(text => (
+    <TextListItem
+    key={text._id}
+    text={text}
+    id={text._id}
+    title={text.title}
+    source={text.source}
+    content={text.content}
+    deleteText={deleteText}
+    archiveText={archiveText}
+    />
+  ))
 
   const textListItems = texts
     .filter(text => !text.archived)
@@ -110,9 +132,17 @@ export default function DashboardPage({ user }) {
     </aside>
 
     <section className="main-area">
+
       <div className="main-area-header">
         <h1>My Texts</h1>
         <button onClick={handleOpen}>+ New</button>
+      </div>
+
+        <div className="tabs">
+          <button className={`tab-btn ${activeTab === 'favorites' ? 'active' : ''}`} onClick={() => handleTabClick('favorites')} >Favorites</button>
+          <button className={`tab-btn ${activeTab === 'all' ? 'active' : ''}`} onClick={() => handleTabClick('all')} >All</button>
+          <button className={`tab-btn ${activeTab === 'archived' ? 'active' : ''}`} onClick={() => handleTabClick('archived')} >Archived</button>
+        </div>
 
         <Dialog
           open={open}
@@ -138,10 +168,17 @@ export default function DashboardPage({ user }) {
         </DialogActions>
       </Dialog>
 
-      </div>
-      <div className="textListItems">{textListItems}</div>
-      <h1>Archived</h1>
-      <div className="archivedListItems">{archivedListItems}</div>
+
+      { activeTab === 'favorites' && (
+        <div className="favoriteListItems">{favoriteListItems}</div>
+      )}
+      { activeTab === 'all' && (
+        <div className="textListItems">{textListItems}</div>
+      )}
+      { activeTab === 'archived' && (
+        <div className="archivedListItems">{archivedListItems}</div>
+      )}
+      
     </section>
   </main>
   )

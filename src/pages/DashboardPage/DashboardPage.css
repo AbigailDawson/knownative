@@ -11,4 +11,5 @@
 .main-area-header {
   display: flex;
   gap: 2vmin;
+  margin-bottom: 3vmin;
 }
