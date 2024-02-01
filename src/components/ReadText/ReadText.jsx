@@ -48,14 +48,16 @@ export default function ReadText({ text }) {
     <div className="ReadText">
 
       <div className="top">
-        <span>Read an easier version of this text -- <button onClick={handleOpen}>Open</button></span>
+        <h3 className="section-heading">Feeling stuck?</h3>
+        <p>Reading native texts is tough! Become more comfortable reading in your target language by starting with a slightly easier version. Once you're able to understand the content a little better, learning more will come naturally!</p>
+        <button className="learn-btn" onClick={handleOpen}>Learn More</button>
         <Dialog
             open={open}
             onClose={handleClose}   
             PaperComponent={({ children }) => (
               <div style={{ 
-                width: '60vmin', 
-                height: '50vmin',
+                width: '70vmin', 
+                height: '60vmin',
                 backgroundColor: 'white',
                 color: 'var(--drk-txt)',
                 display: 'flex',
@@ -78,11 +80,12 @@ export default function ReadText({ text }) {
             </Button>
           </DialogActions>
 
-          <DialogContent>
-            <DialogTitle style={{ 
-              textAlign: 'center'
-              }}
-              >Feeling Stuck?</DialogTitle>
+          <DialogContent style={{ 
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              }}>
             <DialogContentText
             style={{ 
               display: 'flex',
@@ -90,13 +93,18 @@ export default function ReadText({ text }) {
               alignItems: 'center',
               justifyContent: 'center',
               }}>
-                <h3> Click to generate an easier version of this text. </h3>
+                
+                {!simplifiedText && !loading && <h3> Click to generate an easier version of this text. </h3> }
 
                   {!simplifiedText && !loading && <button className="generate-btn" onClick={handleSimplifyClick}> Generate </button>}
 
                   <Suspense fallback={<h2>Loading...</h2>}>
                     {loading ? (
-                      <div class="loader"></div>
+                      <>
+                        <h3> Generating </h3>
+                        <p>This may take several seconds.</p>
+                        <div class="loader"></div>
+                      </>
                       ) : (
                         <>
                           {simplifiedText && <SimplifiedText simplifiedText={simplifiedText} saveSimplifiedText={saveSimplifiedText} />}
@@ -104,7 +112,6 @@ export default function ReadText({ text }) {
                         
                       )}
                   </Suspense>
-                <p className="disclaimer">Disclaimer: This text is generated using artificial intelligence. While the model strives to produce accurate and coherent content, it may occasionally contain inaccuracies, grammatical errors, or unintended meaning. The AI model does not guarantee perfection, and the user is encouraged to exercise their judgment when interpreting the output.</p>
               
             </DialogContentText>
           </DialogContent>

@@ -8,6 +8,14 @@
   color: var(--drk-txt);
 }
 
+.section-heading {
+  margin-bottom: 1vmin;
+}
+
+.learn-btn {
+  margin: 2vmin 0;
+}
+
 .read-text-block {
   margin-top: 2vmin;
   line-height: 4vmin;
@@ -25,9 +33,10 @@
   font-size: 2vmin;
 }
 
-.generate-btn {
+.generate-btn,
+.save-btn {
   align-self: center;
-  margin-top: 1vmin;
+  margin-top: 3vmin;
   font-size: 2vmin;
   padding: 1vmin 2vmin;
 }
@@ -42,6 +51,7 @@
 
 /* HTML: <div class="loader"></div> */
 .loader {
+  margin: 2vmin 0;
   align-self: center;
   width: 50px;
   aspect-ratio: 1;
