@@ -3,10 +3,10 @@
   display: flex;
   flex-direction: column;
   height: 9vmin;
-  max-width: 7vmin;
+  max-width: 10vmin;
   margin: 0 .5vmin;
   font-size: 2.5vmin;
-  text-wrap: nowrap;
+  text-wrap: wrap;
 }
 
 .specialChar {

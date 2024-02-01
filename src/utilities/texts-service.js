@@ -1,5 +1,5 @@
 export function splitSentences(text) {
-  return text.split(/([。」.])/) // split according to specified punctuation marks (these typically end a sentence in Chinese)
+  return text.split(/([。.])/) // split according to specified punctuation marks (these typically end a sentence in Chinese)
              .filter(sentence => sentence.trim() !== '') // excludes any whitespace-only sentences from the array if they exist (after trimming, is the sentence an empty string?)
              .reduce((acc, current, index, array) => { // reduce to combine sentences with their punctuation
                if (index % 2 === 0) { // if the current idx is even (meaning it's a sentence, NOT a punctuation mark), do the following: 
