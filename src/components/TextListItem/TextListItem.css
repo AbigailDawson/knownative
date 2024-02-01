@@ -16,6 +16,16 @@
   margin-left: 1vmin;
 }
 
+.txt-delete-btn {
+  margin: 1vmin 1vmin 0 1vmin;
+  font-size: 4vmin;
+  cursor: pointer;
+}
+
+.txt-delete-btn:hover {
+  color: var(--red)
+}
+
 .read-btn {
   align-self: flex-end;
 }

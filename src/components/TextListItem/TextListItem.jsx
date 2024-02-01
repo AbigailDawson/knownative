@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import './TextListItem.css'
-import { BsX } from "react-icons/bs"
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material'
 import { PiStarLight } from "react-icons/pi";
 import { PiStarFill } from "react-icons/pi";
+import { PiTrashLight } from "react-icons/pi";
 
 export default function TextListItem({ text, title, source, content, id, favorite, archived, archiveText, deleteText, favoriteText, activeTab, getText }) {
 
@@ -35,7 +35,7 @@ export default function TextListItem({ text, title, source, content, id, favorit
     <div className="TextListItem">
       <div className="left-side">
 
-        <div className="delete-btn" onClick={handleOpen}><BsX /></div>
+        <PiTrashLight className="txt-delete-btn" onClick={handleOpen} />
 
         <Dialog
         open={open}
