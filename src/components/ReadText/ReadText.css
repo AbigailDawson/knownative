@@ -14,6 +14,8 @@
   letter-spacing: .3vmin;
   font-size: 2.5vmin;
   text-align: left;
+  white-space: pre;
+  text-wrap: wrap;
 }
 
 .simplified-text {

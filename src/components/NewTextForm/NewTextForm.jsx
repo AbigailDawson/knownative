@@ -20,7 +20,7 @@ export default function NewTextForm({ handleAddText }) {
 
   async function handleSubmit(evt) {
     evt.preventDefault()
-    textData.content = textData.content.replace(/\n/g, '<br>')
+    textData.content = textData.content
     handleAddText(textData)
   }
 
