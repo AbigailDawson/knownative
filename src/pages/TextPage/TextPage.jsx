@@ -132,7 +132,8 @@ export default function TextPage({ getText, updateText }) {
     setOpen(true)
   }
 
-  return (
+  return !text ? 'Loading ...' 
+    : (
     
     <main className="TextPage page">
       
