@@ -13,3 +13,8 @@
   gap: 2vmin;
   margin-bottom: 3vmin;
 }
+
+.list-area {
+  background-color: white;
+  height: 100%;
+}

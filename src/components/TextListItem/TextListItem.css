@@ -2,9 +2,9 @@
   display: flex;
   justify-content: space-between;
   gap: 4vmin;
-  background-color: var(--drk-bg);
+  background-color: white;
   border-bottom: 1px solid var(--light);
-  color: var(--lt-txt);
+  color: var(--drk-txt);
   text-align: left;
   width: 100%;
   padding: 2vmin 3vmin 2vmin 0;

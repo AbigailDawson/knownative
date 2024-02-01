@@ -12,7 +12,7 @@
 }
 
 .tab-btn.active {
-  background-color: var(--light);
+  background-color: white;
 }
 
 .text-area {

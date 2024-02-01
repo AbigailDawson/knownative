@@ -13,7 +13,7 @@ export default function DashboardPage({ user }) {
   const [numTexts, setNumTexts] = useState(0)
   const [numArchivedTexts, setNumArchivedTexts] = useState(0)
   const [numSavedWords, setNumSavedWords] = useState(0)
-  const [activeTab, setActiveTab] = useState('favorites')
+  const [activeTab, setActiveTab] = useState('all')
 
   useEffect(function() {
     async function getTexts() {
@@ -75,23 +75,23 @@ export default function DashboardPage({ user }) {
     }
   }
 
-  const favoriteListItems = texts
-  .filter(text => text.favorite)
-  .map(text => (
-    <TextListItem
-    key={text._id}
-    text={text}
-    id={text._id}
-    title={text.title}
-    source={text.source}
-    content={text.content}
-    deleteText={deleteText}
-    archiveText={archiveText}
-    />
-  ))
-
   const textListItems = texts
     .filter(text => !text.archived)
+    .map(text => (
+      <TextListItem
+      key={text._id}
+      text={text}
+      id={text._id}
+      title={text.title}
+      source={text.source}
+      content={text.content}
+      deleteText={deleteText}
+      archiveText={archiveText}
+      />
+    ))
+
+  const favoriteListItems = texts
+    .filter(text => text.favorite)
     .map(text => (
       <TextListItem
       key={text._id}
@@ -139,8 +139,8 @@ export default function DashboardPage({ user }) {
       </div>
 
         <div className="tabs">
-          <button className={`tab-btn ${activeTab === 'favorites' ? 'active' : ''}`} onClick={() => handleTabClick('favorites')} >Favorites</button>
           <button className={`tab-btn ${activeTab === 'all' ? 'active' : ''}`} onClick={() => handleTabClick('all')} >All</button>
+          <button className={`tab-btn ${activeTab === 'favorites' ? 'active' : ''}`} onClick={() => handleTabClick('favorites')} >Favorites</button>
           <button className={`tab-btn ${activeTab === 'archived' ? 'active' : ''}`} onClick={() => handleTabClick('archived')} >Archived</button>
         </div>
 
@@ -168,16 +168,17 @@ export default function DashboardPage({ user }) {
         </DialogActions>
       </Dialog>
 
-
-      { activeTab === 'favorites' && (
-        <div className="favoriteListItems">{favoriteListItems}</div>
-      )}
-      { activeTab === 'all' && (
-        <div className="textListItems">{textListItems}</div>
-      )}
-      { activeTab === 'archived' && (
-        <div className="archivedListItems">{archivedListItems}</div>
-      )}
+      <div className="list-area">
+        { activeTab === 'all' && (
+          <div className="textListItems">{textListItems}</div>
+        )}
+        { activeTab === 'favorites' && (
+          <div className="favoriteListItems">{favoriteListItems}</div>
+        )}
+        { activeTab === 'archived' && (
+          <div className="archivedListItems">{archivedListItems}</div>
+        )}
+      </div>
       
     </section>
   </main>
