@@ -8,8 +8,19 @@
   color: var(--drk-txt);
 }
 
+.top {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.accordion-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .section-heading {
-  margin: 4vmin 0 1vmin 0;
+  font-size: 1.2rem;
 }
 
 .learn-btn {
@@ -76,3 +87,31 @@
   animation: l7 1s infinite;
 }
 @keyframes l7 {to{transform: rotate(.5turn)}}
+
+.bulb-icon {
+  color: #f2cf0a;
+  font-size: 4vmin;
+  margin-right: 1vmin;
+  transform: rotate(-8deg);
+  transition: transform 0.3s ease-in-out;
+}
+
+.bulb-icon:hover {
+  color: #fae365;
+  animation: wiggle 0.5s ease-in-out infinite;
+}
+
+@keyframes wiggle {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(7deg);
+  }
+  50% {
+    transform: rotate(-7deg);
+  }
+  75% {
+    transform: rotate(7deg);
+  }
+}

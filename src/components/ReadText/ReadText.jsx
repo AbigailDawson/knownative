@@ -1,8 +1,10 @@
 import './ReadText.css'
 import { useState, useEffect, Suspense } from 'react'
 import * as textsAPI from '../../utilities/texts-api'
-import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material'
+import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Accordion, AccordionActions, AccordionSummary, AccordionDetails } from '@mui/material'
+// import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import { FaRegWindowClose } from "react-icons/fa"
+import { FaRegLightbulb } from "react-icons/fa6";
 import SimplifiedText from '../../components/SimplifiedText/SimplifiedText'
 
 export default function ReadText({ text }) {
@@ -48,10 +50,30 @@ export default function ReadText({ text }) {
     <div className="ReadText">
 
       <div className="top">
-        <h1 className="zh">{text.title}</h1>
-        <h3 className="section-heading">Feeling stuck?</h3>
-        <p>Reading native texts is tough! Become more comfortable reading in your target language by starting with a slightly easier version. Once you're able to understand the content a little better, learning more will come naturally!</p>
-        <button className="learn-btn" onClick={handleOpen}>Learn More</button>
+        <Accordion style={{
+          width: '40%',
+          maxWidth: '30vmin'
+        }}>
+          <AccordionSummary
+            // expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel1-content"
+            id="panel1-header"
+          >
+            <div className="accordion-title">
+              <FaRegLightbulb className="bulb-icon" />
+              <h1 className="section-heading">Feeling stuck?</h1>
+            </div>
+          </AccordionSummary>
+          <AccordionDetails style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            gap: '2vmin',
+          }}>
+            <p>Try reading an easier version of this text.</p>
+            <button className="learn-btn" onClick={handleOpen}>Get Started</button>
+          </AccordionDetails>
+        </Accordion>
         <Dialog
             open={open}
             onClose={handleClose}   
@@ -95,7 +117,14 @@ export default function ReadText({ text }) {
               justifyContent: 'center',
               }}>
                 
-                {!simplifiedText && !loading && <h3 className="generate-txt"> Click to generate an easier version of this text. </h3> }
+                {!simplifiedText && !loading && (
+                  <>
+                    <h3 className="generate-txt"> Click to generate an easier version of this text. </h3> 
+                    <p>Reading content written by native speakers can be tough!</p>
+                    <p>Trying to learn vocabulary and complicated syntax while understanding the meaning of the text can make reading feel difficult and frustrating.</p>
+                    <p>If you’re feeling stuck, try reading a slightly easier version of this text!</p>
+                  </>
+              )}
 
                   {!simplifiedText && !loading && <button className="generate-btn" onClick={handleSimplifyClick}> Generate! </button>}
 
