@@ -12,6 +12,11 @@
   margin: 3vmin;
 }
 
+.sidebar-heading ~ p {
+  text-align: left;
+  margin: 0 3vmin;
+}
+
 .study-btn {
   display: flex;
   flex-direction: column;
