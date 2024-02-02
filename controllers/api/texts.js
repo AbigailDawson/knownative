@@ -105,14 +105,13 @@ async function translateSentence(req, res) {
     translations = Array.isArray(translations) ? translations : [translations]
     res.json(translations[0])
   } catch(error) {
-    console.log(error)
     res.status(400).json(error)
   }
 }
 
 async function simplifyText(req, res) {
   const { content } = req.body
-  const API_KEY = process.env.API_KEY
+  const API_KEY = process.env.OPENAI_KEY
 
   const options = {
     stream: false,
