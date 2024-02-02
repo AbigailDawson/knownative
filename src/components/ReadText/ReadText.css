@@ -40,6 +40,10 @@
   /* text-wrap: wrap; */
 }
 
+.read-text-block > .zh {
+  text-wrap: wrap;
+}
+
 .simplified-text {
   margin-top: 2vmin;
   line-height: 4vmin;
