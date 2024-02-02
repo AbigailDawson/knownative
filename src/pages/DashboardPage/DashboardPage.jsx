@@ -171,7 +171,7 @@ export default function DashboardPage({ user, texts, setTexts }) {
 
       <div className="list-area">
         <div className="sort-options">
-          <span>Sort by: </span>
+          <span>Sort by: &nbsp;&nbsp;</span>
           <a onClick={() => handleSortBy('created')}>Newest</a> &nbsp; | &nbsp;
           <a onClick={() => handleSortBy('updated')}>Recently Updated</a>
         </div>

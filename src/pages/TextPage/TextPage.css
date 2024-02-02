@@ -3,6 +3,7 @@
   flex-direction: column;
   padding: 1vmin;
   margin-bottom: 2vmin;
+  color: white;
 }
 
 .flex-row {
@@ -18,29 +19,14 @@
   color: white;
 }
 
-.tabs {
-  display: flex;
-  gap: 1vmin;
-  margin-left: 5vmin;
-}
-
-.tab-btn {
-  border-radius: 1vmin 1vmin 0 0;
-  padding: 2vmin 4vmin;
-  font-size: 2vmin;
-  background-color: var(--medium);
-}
-
-.tab-btn.active {
-  background-color: white;
-}
-
 .text-area {
+  border-radius: 2vmin;
   background: white;
   padding: 2vmin;
   height: 100%;
-  border-radius: 1vmin 1vmin 0 0;
-
+  -webkit-box-shadow: 10px 10px 8px -6px rgba(0,0,0,0.4);
+  -moz-box-shadow: 10px 10px 8px -6px rgba(0,0,0,0.4);
+  box-shadow: 10px 10px 8px -6px rgba(0,0,0,0.4);
 }
 
 .read-container,

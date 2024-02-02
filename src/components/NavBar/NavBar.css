@@ -4,16 +4,16 @@ nav {
   justify-content: space-between;
   padding: 0 3vmin;
   height: 10vmin;
-  background-color: var(--medium);
-  color: var(--drk-txt)
+  background-color: var(--slate);
+  color: var(--off-white)
 }
 
 .nav-link {
   text-decoration: none;
-  color: var(--drk-txt);
+  color: var(--off-white);
 }
 
 .nav-link:hover {
   text-decoration: none;
-  color: var(--orange);
+  color: var(--red-poppy);
 }

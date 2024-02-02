@@ -17,26 +17,30 @@
   position: relative;
 }
 
-
 .list-area {
   background-color: white;
+  border-radius: 2vmin;
   height: 100%;
+  -webkit-box-shadow: 10px 10px 8px -6px rgba(0,0,0,0.4);
+  -moz-box-shadow: 10px 10px 8px -6px rgba(0,0,0,0.4);
+  box-shadow: 10px 10px 8px -6px rgba(0,0,0,0.4);
+  padding: 0 3vmin;
 }
 
 .sort-options {
-  color: var(--drk-txt);
+  color: var(--dark);
   margin: 3vmin;
   cursor: pointer;
 }
 
-
 .new-btn {
   position: absolute;
-  right: 5vmin;
-  bottom: -4vmin;
+  right: 9vmin;
+  bottom: -5vmin;
   font-size: 7vmin;
   cursor: pointer;
   transition: transform 0.3s ease-in-out;
+  color: white;
 }
 
 .new-btn:hover {

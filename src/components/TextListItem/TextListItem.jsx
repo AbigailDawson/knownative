@@ -32,10 +32,16 @@ export default function TextListItem({ text, title, source, content, id, favorit
   }
 
   return (
+    <>
     <div className="TextListItem">
       <div className="left-side">
 
-        <PiTrashLight className="txt-delete-btn" onClick={handleOpen} />
+        <div>
+          { !favorite && !archived && <PiStarLight className="star-icon-empty" onClick={() => handleStarClick(text, id)}/> }
+          { favorite && activeTab === 'all' && <PiStarFill className="star-icon-filled" onClick={() => handleStarClick(text, id)} /> }
+          { favorite && activeTab === 'favorites' && <button className="remove-favorite" onClick={() => handleStarClick(text, id)}>Remove from favorites</button> }
+          { archived && <button className="remove-archived" onClick={() => handleArchiveText(text, id)}>Remove from archives</button> }
+        </div>
 
         <Dialog
         open={open}
@@ -65,12 +71,11 @@ export default function TextListItem({ text, title, source, content, id, favorit
         </Link>
 
       </div>
-      <div>
-          { !favorite && !archived && <PiStarLight className="star-icon-empty" onClick={() => handleStarClick(text, id)}/> }
-          { favorite && activeTab === 'all' && <PiStarFill className="star-icon-filled" onClick={() => handleStarClick(text, id)} /> }
-          { favorite && activeTab === 'favorites' && <button className="remove-favorite" onClick={() => handleStarClick(text, id)}>Remove from favorites</button> }
-          { archived && <button className="remove-archived" onClick={() => handleArchiveText(text, id)}>Remove from archives</button> }
-      </div>
+
+      <PiTrashLight className="txt-delete-btn" onClick={handleOpen} />
+      
     </div>
+    <hr></hr>
+    </>
   )
 }
