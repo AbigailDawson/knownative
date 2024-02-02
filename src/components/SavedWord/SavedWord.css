@@ -7,10 +7,14 @@
   background-color: white;
   color: var(--drk-txt);
   padding: 2vmin 1vmin;
-  margin: 0 1vmin;
+  margin: .5vmin 1vmin;
   border-bottom: 2px solid var(--medium);
-  border-radius: 1vmin;
+  border-radius: .5vmin;
   position: relative;
+  -webkit-box-shadow: 7px 7px 5px -8px rgba(0,0,0,0.4);
+  -moz-box-shadow: 7px 7px 5px -8px rgba(0,0,0,0.4);
+  box-shadow: 7px 7px 5px -8px rgba(0,0,0,0.4);
+
 }
 
 .left-side {
