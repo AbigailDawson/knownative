@@ -95,6 +95,7 @@ a {
 }
 
 .tab-btn {
+  margin-top: 1vmin;
   border-radius: 1vmin 1vmin 0 0;
   padding: 2vmin 4vmin;
   font-size: 2vmin;

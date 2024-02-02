@@ -52,6 +52,7 @@
   font-size: 4vmin;
   cursor: pointer;
   transition: color 0.3s ease-in-out;
+  padding-top: .3vmin;
 }
 
 @keyframes sparkle {
