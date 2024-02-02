@@ -111,7 +111,7 @@ async function translateSentence(req, res) {
 
 async function simplifyText(req, res) {
   const { content } = req.body
-  const API_KEY = process.env.OPENAI_KEY
+  const API_KEY = process.env.API_KEY
 
   const options = {
     stream: false,
