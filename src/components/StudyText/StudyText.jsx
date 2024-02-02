@@ -51,9 +51,6 @@ export default function StudyText({ text, tokenizedText, textId, activeWord, set
 
   const words = tokenizedText.map((word, idx) => {
     const { pinyin, meaning } = getWordInfo(word)
-    
-    // const prefixPunctuation = ['‘', '“', '《', '『', '【', '（']
-    // const suffixPunctuation = ['’', '”', '》', '』', '】', '）', '、', '，', '…', '。', '：', '；', '！', '？']
 
     const specialChars = ['‘', '“', '《', '『', '【', '（', '’', '”', '》', '』', '】', '）', '、', '，', '…', '。', '：', '；', '！', '？', '「', '」', '.', '・']
     const isSpecialChar = specialChars.includes(word.text) || /\d/.test(word.text) || /[^\u4e00-\u9fa5]/.test(word.text)
