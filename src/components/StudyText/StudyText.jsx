@@ -73,7 +73,6 @@ export default function StudyText({ text, tokenizedText, textId, activeWord, set
   return (
     <>
       <div className="StudyText">
-        <h1 className="zh">{text.title}</h1>
         <div className="study-text-block">
         {words}
         </div>
