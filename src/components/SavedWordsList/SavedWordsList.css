@@ -8,11 +8,46 @@
 }
 
 .sidebar-heading {
+  align-self: flex-start;
   margin: 3vmin;
 }
 
 .study-btn {
-  align-self: center;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.study-icon {
+  font-size: 7vmin;
+  color: var(--brown);
   margin: 0 0 2vmin 0;
   width: 50%;
+  position: absolute;
+  right: -1.5vmin;
+  bottom: -.5vmin;
+  transform: rotate(5deg);
+  transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.study-icon:hover {
+  animation: wiggle 0.5s ease-in-out infinite;
+  color: var(--red-brick);
+}
+
+@keyframes wiggle {
+  0%, 100% {
+    transform: rotate(5deg);
+  }
+  50% {
+    transform: rotate(-5deg);
+  }
+}
+
+.study-btn-txt {
+  font-size: .8rem;
+  position: absolute;
+  right: 5vmin;
+  bottom: 1vmin;
 }

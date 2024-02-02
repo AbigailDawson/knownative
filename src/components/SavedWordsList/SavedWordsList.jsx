@@ -1,6 +1,7 @@
 import './SavedWordsList.css'
 import { useState } from 'react'
 import SavedWord from '../../components/SavedWord/SavedWord'
+import { PiCards } from "react-icons/pi";
 
 export default function SavedWordsList({ savedWords, updateMeaning, deleteWord, handleOpen }) {
 
@@ -27,10 +28,12 @@ export default function SavedWordsList({ savedWords, updateMeaning, deleteWord, 
         </>
       ) : (
         <>
-          <button className="study-btn" onClick={handleOpen}>Study</button>
-          {savedWordItems}
+        <div className="study-btn">
+          <PiCards className="study-icon" onClick={handleOpen} />
+          <p className="study-btn-txt"> </p>
+        </div>
+        {savedWordItems}
         </>
-
       )}
     </div>
   )
