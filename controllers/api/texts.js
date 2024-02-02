@@ -105,6 +105,7 @@ async function translateSentence(req, res) {
     translations = Array.isArray(translations) ? translations : [translations]
     res.json(translations[0])
   } catch(error) {
+    console.log(error)
     res.status(400).json(error)
   }
 }
