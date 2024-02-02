@@ -28,13 +28,7 @@
   font-size: 2.5vmin;
   cursor: pointer;
   top: 1.5vmin;
-  left: -4vmin;
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
-}
-
-.SavedWord:hover .word-delete-btn {
-  opacity: 1;
+  left: -3.5vmin;
   color: var(--red);
 }
 
@@ -78,22 +72,32 @@
   width: 70%;
   padding: 1vmin;
   font-size: 1rem;
+  border-radius: .8vmin;
+  border: 1px solid var(--gray-lt);
+}
+
+.updateMeaningForm > input:focus {
+  outline-color: var(--teal);
 }
 
 .submit-btn {
   font-size: 2.7vmin;
-  background-color: var(--light);
+  background-color: var(--white);
 }
 
 .submit-btn:hover {
-  background-color: var(--light);
+  background-color: var(--white);
+}
+
+.submit-icon {
+  color: var(--green-lt);
 }
 
 .edit-btn,
 .submit-btn {
   margin: 0 2vmin 0 0;
   padding: 0;
-  font-size: 2.2vmin;
+  font-size: 2.4vmin;
 }
 
 .edit-btn:hover,

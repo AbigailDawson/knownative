@@ -1,7 +1,7 @@
 import './SavedWord.css'
 import { useState } from 'react'
 import { FaRegEdit } from "react-icons/fa";
-import { IoMdCheckboxOutline } from "react-icons/io";
+import { FaCheckSquare } from "react-icons/fa";
 import { PiTrashLight } from "react-icons/pi";
 
 
@@ -41,7 +41,8 @@ export default function SavedWord({ word, updateMeaning, isEditingWord, setIsEdi
       {/* grid column 1 */}
 
       <div className="left-side">
-        <div className="word-delete-btn" onClick={() => handleDeleteWord(word)}><PiTrashLight /></div>
+      {isEditingWord &&
+        <div className="word-delete-btn" onClick={() => handleDeleteWord(word)}><PiTrashLight /></div> }
         <div className="char-pinyin">
           <p className="pinyin"> { word.pinyin } </p>
           <p className="char zh">{ word.traditional } </p> 
@@ -60,7 +61,7 @@ export default function SavedWord({ word, updateMeaning, isEditingWord, setIsEdi
               value={formData.meaning}
               onChange={handleChange}
             />
-            <button className="submit-btn" type="submit" ><IoMdCheckboxOutline /></button>
+            <button className="submit-btn" type="submit" ><FaCheckSquare className="submit-icon" /></button>
           </form>
         ) : (
           <div className="right-side">
