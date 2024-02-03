@@ -5,14 +5,13 @@ import * as wordsAPI from '../../utilities/words-api'
 import NewTextForm from '../../components/NewTextForm/NewTextForm'
 import TextListItem from '../../components/TextListItem/TextListItem'
 import Sidebar from '../../components/Sidebar/Sidebar'
-import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material'
+import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Select, MenuItem } from '@mui/material'
 import { FaFileCirclePlus } from "react-icons/fa6";
 
 export default function DashboardPage({ user, texts, setTexts }) {
 
   const [open, setOpen] = useState(false)
-  const [activeTab, setActiveTab] = useState('all')
-  
+  const [activeSelection, setActiveSelection] = useState('all')
   const [sortBy, setSortBy] = useState('created')
 
   const [numTexts, setNumTexts] = useState(0)
@@ -31,8 +30,8 @@ export default function DashboardPage({ user, texts, setTexts }) {
     getStats()
   }, [])
 
-  function handleTabClick(tabName) {
-    setActiveTab(tabName)
+  function handleSelect(activeSelection) {
+    setActiveSelection(activeSelection)
   }
 
   function handleOpen() {
@@ -103,7 +102,7 @@ export default function DashboardPage({ user, texts, setTexts }) {
         deleteText={deleteText}
         archiveText={archiveText}
         favoriteText={favoriteText}
-        activeTab={activeTab}
+        activeSelection={activeSelection}
       />
     );
   }
@@ -138,12 +137,6 @@ export default function DashboardPage({ user, texts, setTexts }) {
         <FaFileCirclePlus className="new-btn" onClick={handleOpen} />
       </div>
 
-        <div className="tabs">
-          <button className={`tab-btn ${activeTab === 'all' ? 'active' : ''}`} onClick={() => handleTabClick('all')} >All</button>
-          <button className={`tab-btn ${activeTab === 'favorites' ? 'active' : ''}`} onClick={() => handleTabClick('favorites')} >Favorites</button>
-          <button className={`tab-btn ${activeTab === 'archived' ? 'active' : ''}`} onClick={() => handleTabClick('archived')} >Archived</button>
-        </div>
-
         <Dialog
           open={open}
           onClose={handleClose}   
@@ -173,16 +166,28 @@ export default function DashboardPage({ user, texts, setTexts }) {
           <span>Sort by: &nbsp;&nbsp;</span>
           <a onClick={() => handleSortBy('created')}>Newest</a> &nbsp; | &nbsp;
           <a onClick={() => handleSortBy('updated')}>Recently Updated</a>
+          <div className="dropdown">
+            <Select
+              value={activeSelection}
+              onChange={(e) => handleSelect(e.target.value)}
+              sx={{ color: 'teal', backgroundColor: 'transparent', height: '4vmin' }}
+            >
+              <MenuItem value="all">All</MenuItem>
+              <MenuItem value="favorites">Favorites</MenuItem>
+              <MenuItem value="archived">Archived</MenuItem>
+            </Select>
         </div>
-        { activeTab === 'all' && (
+        </div>
+        { activeSelection === 'all' && (
           <div className="textListItems">{textListItems}</div>
         )}
-        { activeTab === 'favorites' && (
+        { activeSelection === 'favorites' && (
           <div className="favoriteListItems">{favoriteListItems}</div>
         )}
-        { activeTab === 'archived' && (
+        { activeSelection === 'archived' && (
           <div className="archivedListItems">{archivedListItems}</div>
         )}
+        
       </div>
       
     </section>

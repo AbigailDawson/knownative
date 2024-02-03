@@ -6,7 +6,7 @@ import { PiStarLight } from "react-icons/pi";
 import { PiStarFill } from "react-icons/pi";
 import { PiTrashLight } from "react-icons/pi";
 
-export default function TextListItem({ text, title, source, content, id, favorite, archived, archiveText, deleteText, favoriteText, activeTab, getText }) {
+export default function TextListItem({ text, title, source, content, id, favorite, archived, archiveText, deleteText, favoriteText, activeSelection, getText }) {
 
   const truncatedContent = content.slice(0, 50)
   const [open, setOpen] = useState(false)
@@ -38,8 +38,8 @@ export default function TextListItem({ text, title, source, content, id, favorit
 
         <div>
           { !favorite && !archived && <PiStarLight className="star-icon-empty" onClick={() => handleStarClick(text, id)}/> }
-          { favorite && activeTab === 'all' && <PiStarFill className="star-icon-filled" onClick={() => handleStarClick(text, id)} /> }
-          { favorite && activeTab === 'favorites' && <button className="remove-favorite" onClick={() => handleStarClick(text, id)}>Remove from favorites</button> }
+          { favorite && activeSelection === 'all' && <PiStarFill className="star-icon-filled" onClick={() => handleStarClick(text, id)} /> }
+          { favorite && activeSelection === 'favorites' && <button className="remove-favorite" onClick={() => handleStarClick(text, id)}>Remove from favorites</button> }
           { archived && <button className="remove-archived" onClick={() => handleArchiveText(text, id)}>Remove from archives</button> }
         </div>
 

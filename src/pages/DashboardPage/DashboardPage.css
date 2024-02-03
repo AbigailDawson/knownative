@@ -28,9 +28,15 @@
 }
 
 .sort-options {
+  display: flex;
+  align-items: center;
   color: var(--dark);
   margin: 3vmin;
   cursor: pointer;
+}
+
+.dropdown {
+  margin-left: 2vmin;
 }
 
 .new-btn {
