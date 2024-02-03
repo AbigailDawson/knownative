@@ -1,5 +1,49 @@
-.stats {
-  align-self: center;
+.dash-sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: var(--beige-lt);
+  border: 3px solid var(--off-white);
+  height: 100%;
+  width: 100%;
+}
+
+.sidebar-heading {
   text-align: left;
-  margin: 0 3vmin;
+}
+
+.sidebar-heading > h3 {
+  font-size: 1rem;
+}
+
+.sidebar-heading > h1 {
+  font-size: 2.2rem;
+  color: var(--red-brick);
+  margin: 1vmin 0 0 0;
+}
+
+.stats {
+  padding: 0 2vmin;
+}
+
+.stat {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.stat-icon {
+  font-size: 5rem;
+  color: var(--teal);
+}
+
+.stat-heading {
+  font-size: 1.2rem;
+}
+
+.num {
+  font-size: 6rem;
+  color: var(--teal);
 }

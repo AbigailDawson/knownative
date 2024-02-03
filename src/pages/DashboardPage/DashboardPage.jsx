@@ -121,7 +121,7 @@ export default function DashboardPage({ user, texts, setTexts }) {
 
   return (
   <main className="DashboardPage page">
-    <aside className="sidebar">
+    <aside className="dash-sidebar">
       <Sidebar 
         user={user}
         numTexts={numTexts}
