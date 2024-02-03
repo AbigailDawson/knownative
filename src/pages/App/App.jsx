@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import { getUser } from '../../utilities/users-service'
 import './App.css'
 import * as textsAPI from '../../utilities/texts-api'
@@ -36,24 +36,17 @@ function App() {
 }
   
   return (
-    <main className='App'>
+<main className='App'>
       { user ?
       <>
         <NavBar user={user} setUser={setUser} />
         <Routes>
           <Route 
-          path='/dashboard' 
-          element={<
-            DashboardPage 
-            user={user} 
-            texts={texts}
-            setTexts={setTexts}
-            />} 
-          />
-          <Route path='/read/:textId' element={<TextPage 
-          getText={getText} 
-          updateText={updateText}
-          />} />
+            path='/dashboard' 
+            element={<DashboardPage user={user} texts={texts} setTexts={setTexts} />}  />
+          <Route 
+            path='/read/:textId' 
+            element={<TextPage getText={getText} updateText={updateText} />} />
         </Routes>
       </>
         :

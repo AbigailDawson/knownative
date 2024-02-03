@@ -18,6 +18,8 @@ app.use(express.static(path.join(__dirname, 'build')))
 app.use(require('./config/checkToken'))
 
 // Put API routes here, before the "catch all" route
+// const ensureLoggedIn = require('./config/ensureLoggedIn');
+
 app.use('/api/users', require('./routes/api/users'))
 app.use('/api/texts', require('./routes/api/texts'))
 app.use('/api/words', require('./routes/api/words'))

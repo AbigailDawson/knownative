@@ -18,7 +18,6 @@ export default function DashboardPage({ user, texts, setTexts }) {
   const [numTexts, setNumTexts] = useState(0)
   const [numArchivedTexts, setNumArchivedTexts] = useState(0)
   const [numSavedWords, setNumSavedWords] = useState(0)
-  
 
   useEffect(function() {
     async function getStats() {
