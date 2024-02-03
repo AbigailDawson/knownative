@@ -77,7 +77,7 @@ export default function SignUpForm({setUser}) {
             label="Password" 
             variant="filled" 
             name="password" 
-            type="text" 
+            type="password" 
             onChange={handleChange} 
             value={formData.password}
             sx={{ width: '50%' }}
@@ -88,7 +88,7 @@ export default function SignUpForm({setUser}) {
             label="Confirm Password" 
             variant="filled" 
             name="confirm" 
-            type="text" 
+            type="password" 
             onChange={handleChange} 
             value={formData.confirm}
             sx={{ width: '50%' }}
