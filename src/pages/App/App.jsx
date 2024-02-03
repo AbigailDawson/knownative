@@ -14,8 +14,12 @@ function App() {
 
   useEffect(function() {
     async function getTexts() {
-      const texts = await textsAPI.getAll()
-      setTexts(texts)
+      if (user) {
+        const texts = await textsAPI.getAll()
+        setTexts(texts)
+      } else {
+        return
+      }    
     }
     getTexts()
   }, [])
