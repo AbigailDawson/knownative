@@ -1,5 +1,7 @@
+import './SignUpForm.css'
 import { useState } from 'react'
 import { signUp } from '../../utilities/users-service' // named imports are not DEFAULT exports, so don't write export default ... in the module, instead write export async .... (see users-service). this is the way to import when you are just using the one little function that you're importing. OR you can bundle a bunch of things from a module with a * to import them all at once. for example, see the line at the top of (users-service)
+import TextField from '@mui/material/TextField';
 
 export default function SignUpForm({setUser}) {
 
@@ -39,21 +41,63 @@ export default function SignUpForm({setUser}) {
   const disable = formData.password !== formData.confirm
   
   return (
-    <div>
+    <>
       <div className="form-container">
+        <h1>Sign Up</h1>
+        <p>Signing up is free, and KnowNative will never use your email to contact you.</p>
         <form autoComplete="off" onSubmit={handleSubmit}>
-          <label>Name</label>
-          <input type="text" name="name" value={formData.name} onChange={handleChange} required />
-          <label>Email</label>
-          <input type="email" name="email" value={formData.email} onChange={handleChange} required />
-          <label>Password</label>
-          <input type="password" name="password" value={formData.password} onChange={handleChange} required />
-          <label>Confirm</label>
-          <input type="password" name="confirm" value={formData.confirm} onChange={handleChange} required />
-          <button type="submit" disabled={disable}>SIGN UP</button>
+        <div className="input-grp">
+        <TextField 
+            required
+            id="filled-basic" 
+            label="Name" 
+            variant="filled" 
+            name="name" 
+            type="text" 
+            onChange={handleChange} 
+            value={formData.name}
+            sx={{ width: '50%' }}
+          />
+          <TextField 
+            required
+            id="filled-basic" 
+            label="Email" 
+            variant="filled" 
+            name="email" 
+            type="text" 
+            onChange={handleChange} 
+            value={formData.email}
+            sx={{ width: '50%' }}
+          />
+          </div>
+          <div className="input-grp">
+          <TextField 
+            required
+            id="filled-basic" 
+            label="Password" 
+            variant="filled" 
+            name="password" 
+            type="text" 
+            onChange={handleChange} 
+            value={formData.password}
+            sx={{ width: '50%' }}
+          />
+          <TextField 
+            required
+            id="filled-basic" 
+            label="Confirm Password" 
+            variant="filled" 
+            name="confirm" 
+            type="text" 
+            onChange={handleChange} 
+            value={formData.confirm}
+            sx={{ width: '50%' }}
+          />
+          </div>
+          <button className="login-btn" type="submit" disabled={disable}>SIGN UP</button>
         </form>
       </div>
       <p className="error-message">&nbsp;{formData.error}</p>
-      </div>
+      </>
     )
 }

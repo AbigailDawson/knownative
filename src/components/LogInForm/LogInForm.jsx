@@ -32,6 +32,7 @@ export default function LogInForm({ setUser }) {
   return (
     <>
       <div className="form-container">
+        <h1>Log In</h1>
         <form autoComplete="off" onSubmit={handleSubmit}>
           <TextField 
             required
