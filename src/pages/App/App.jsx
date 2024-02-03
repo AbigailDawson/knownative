@@ -18,11 +18,11 @@ function App() {
         const texts = await textsAPI.getAll()
         setTexts(texts)
       } else {
-        return
+        setTexts([])
       }    
     }
     getTexts()
-  }, [])
+  }, [user])
 
   function getText(textId) {
     return texts.find(text => text._id === textId)
@@ -36,7 +36,7 @@ function App() {
 }
   
   return (
-<main className='App'>
+    <main className='App'>
       { user ?
       <>
         <NavBar user={user} setUser={setUser} />
@@ -50,7 +50,13 @@ function App() {
         </Routes>
       </>
         :
-        <AuthPage setUser={setUser}/>
+        <>
+          <Routes>
+            <Route 
+              path='/*' 
+              element={<AuthPage setUser={setUser} />}  />
+          </Routes>
+        </>
       }
     </main>
   )
