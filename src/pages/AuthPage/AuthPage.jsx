@@ -112,6 +112,12 @@ export default function AuthPage({setUser}) {
         <img className="gpt-demo-img" src="/images/annotations.png" alt="Screenshot of annotations feature" style={{width: '80%'}} />
       </section>
 
+      <section className="signup-offer">
+        <h1>Ready to Elevate Your Language Learning?</h1>
+        <p>Sign up for free today to embark on a journey to enhance your reading skills through authentic native texts!</p>
+        <button onClick={() => setShowSignup(!showSignup)}>Sign Up</button>
+      </section>
+
     </main>
   )
 }
