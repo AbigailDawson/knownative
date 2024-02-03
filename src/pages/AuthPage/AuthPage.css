@@ -14,6 +14,13 @@
   height: 70vh;
 }
 
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .hero-right {
   display: flex;
   flex-direction: column;
