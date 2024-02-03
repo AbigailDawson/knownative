@@ -4,16 +4,14 @@
   align-items: center;
   justify-content: flex-start;
   background-color: var(--teal);
-  height: 100vh;
+  padding: 0 10vmin;
 }
 
 .hero {
   display: grid;
   grid-template-columns: 50% 50%;
-  border: 1px solid black;
   width: 100%;
-  height: 70%;
-  padding: 0 5vmin;
+  height: 70vh;
 }
 
 .hero-right {
@@ -22,10 +20,70 @@
   align-items: center;
   justify-content: center;
   gap: 2vmin;
-  padding: 0 3vmin;
 }
 
 .auth-btns {
   display: flex;
   gap: 1vmin;
+}
+
+.why {
+  margin: 3vmin 0 5vmin 0;
+}
+
+.why > h1 {
+  margin-bottom: 3vmin;
+}
+
+.why-cards {
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  gap: 1.5vmin;
+}
+
+.why-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1vmin;
+}
+
+.features {
+  display: flex;
+  flex-direction: column;
+}
+
+.feature {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  align-items: center;
+  gap: 2vmin;
+  padding: 5vmin 0;
+}
+
+.feature-txt {
+  text-align: left;
+}
+
+.feature-txt > p,
+.gpt-demo > p {
+  font-size: 1rem;
+}
+
+.feature-txt > h4 {
+  margin-top: 2vmin;
+  font-size: 1.3rem;
+}
+
+.gpt-demo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2vmin;
+  padding: 5vmin;
+}
+
+.gpt-demo-img {
+  margin-top: 2vmin;
 }
