@@ -28,7 +28,10 @@
   align-items: center;
   justify-content: center;
   gap: 2vmin;
-  padding: 0 8vmin;
+  padding: 0 6vmin;
+  margin: 10vmin 3vmin;
+  background-color: var(--teal-lt);
+  border-radius: 1vmin;
 }
 
 .hero-right > h1 {
@@ -42,7 +45,8 @@
 
 .auth-btns {
   display: flex;
-  gap: 1.5vmin;
+  gap: 2vmin;
+  margin-top: 3vmin;
 }
 
 .why {
