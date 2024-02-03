@@ -1,5 +1,7 @@
+import './LogInForm.css'
 import { useState } from 'react'
 import * as usersService from '../../utilities/users-service'
+import TextField from '@mui/material/TextField';
 
 export default function LogInForm({ setUser }) {
   const [credentials, setCredentials] = useState({
@@ -28,17 +30,35 @@ export default function LogInForm({ setUser }) {
   }
 
   return (
-    <div>
+    <>
       <div className="form-container">
         <form autoComplete="off" onSubmit={handleSubmit}>
-          <label>Email</label>
-          <input type="text" name="email" value={credentials.email} onChange={handleChange} required />
-          <label>Password</label>
-          <input type="password" name="password" value={credentials.password} onChange={handleChange} required />
-          <button type="submit">LOG IN</button>
+          <TextField 
+            required
+            id="filled-basic" 
+            label="Email" 
+            variant="filled" 
+            name="email" 
+            type="text" 
+            onChange={handleChange} 
+            value={credentials.email}
+            sx={{ width: '80%' }}
+          />
+          <TextField 
+            required
+            id="filled-basic" 
+            label="Password" 
+            variant="filled" 
+            name="password]" 
+            type="text" 
+            onChange={handleChange} 
+            value={credentials.password}
+            sx={{ width: '80%' }}
+          />
+        <button className="login-btn" type="submit">LOG IN</button>
         </form>
       </div>
       <p className="error-message">&nbsp;{error}</p>
-    </div>
+    </>
   )
 }

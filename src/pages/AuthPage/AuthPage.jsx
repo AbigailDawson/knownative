@@ -14,6 +14,7 @@ import { FaPencilAlt } from "react-icons/fa";
 import { TbCards } from "react-icons/tb";
 import { TbCardsFilled } from "react-icons/tb";
 import { IoLanguage } from "react-icons/io5";
+import { IoMdArrowRoundBack } from "react-icons/io";
 
 
 export default function AuthPage({setUser}) {
@@ -42,53 +43,25 @@ export default function AuthPage({setUser}) {
               <p>Take charge of your own learning experience by reading <span className="emphasize">authentic native texts</span> from anywhere that piques your interest.</p>
               <p>Immerse yourself in <span className="emphasize">real-life language</span> and discover the beauty of traditional Chinese through the written words of native speakers.</p>
               <div className="auth-btns">
-              <Stack direction="row" spacing={2}>
-                <Button
-                  size="large"
-                  onClick={() => setShowLogin(!showLogin)}
-                  sx={{
-                    color: 'teal',
-                    backgroundColor: 'transparent',
-                    transition: 'background-color 0.3s, color 0.3s',
-                    '&:hover': {
-                      backgroundColor: 'var(--off-white)',
-                      color: 'var(--red-brick)',
-                    },
-                  }}
-                >
+                <button className="login-btn" onClick={() => setShowLogin(!showLogin)}>
                   LOG IN
-                </Button>
-                <Button
-                  size="large"
-                  onClick={() => setShowSignup(!showSignup)}
-                  sx={{
-                    color: 'teal',
-                    backgroundColor: 'transparent',
-                    transition: 'background-color 0.3s, color 0.3s',
-                    '&:hover': {
-                      backgroundColor: 'var(--off-white)',
-                      color: 'var(--red-brick)',
-                    },
-                  }}
-                >
+                </button>
+                <button className="login-btn" onClick={() => setShowSignup(!showSignup)}>
                   SIGN UP
-                </Button>
-              </Stack>
+                </button>
               </div>
             </>
           ) : (
             <>
             { showLogin && (
               <>
-                <h1>Log In</h1>
-                <button onClick={handleGoBack}>Back</button>
+                <IoMdArrowRoundBack className="back-btn" onClick={handleGoBack} />
                 <LogInForm setUser={setUser} />
               </>
             )}
             { showSignup && (
               <>
-                <h1>Sign Up</h1>
-                <button onClick={handleGoBack}>Back</button>
+                <IoMdArrowRoundBack className="back-btn" onClick={handleGoBack} />
                 <SignUpFormFunc setUser={setUser} />
               </>
             )}

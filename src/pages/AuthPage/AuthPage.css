@@ -40,6 +40,10 @@
   font-size: .9rem;
 }
 
+.auth-btns {
+  display: flex;
+  gap: 2vmin;
+}
 
 .why {
   background-color: var(--beige-lt);
