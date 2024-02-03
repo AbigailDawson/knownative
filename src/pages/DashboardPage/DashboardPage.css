@@ -11,10 +11,16 @@
 .main-area-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 3vmin;
-  margin-bottom: 3vmin;
+  margin: 1vmin 0 3vmin 0;
   position: relative;
+  color: white;
+}
+
+.main-area-header > h1 {
+  font-size: 2rem;
+  margin: 0 2vmin;
 }
 
 .list-area {
@@ -31,22 +37,22 @@
   display: flex;
   align-items: center;
   color: var(--dark);
-  margin: 3vmin;
+  margin: 3vmin 2vmin;
   cursor: pointer;
 }
 
 .dropdown {
-  margin-left: 2vmin;
+  margin-right: 2vmin;
 }
 
 .new-btn {
   position: absolute;
-  right: 9vmin;
-  bottom: -5vmin;
+  right: 7vmin;
+  top: 9.5vmin;
   font-size: 7vmin;
   cursor: pointer;
   transition: transform 0.3s ease-in-out;
-  color: white;
+  color: var(--teal);
 }
 
 .new-btn:hover {

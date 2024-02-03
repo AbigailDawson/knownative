@@ -137,6 +137,26 @@ export default function DashboardPage({ user, texts, setTexts }) {
         <FaFileCirclePlus className="new-btn" onClick={handleOpen} />
       </div>
 
+        
+
+      <div className="list-area">
+        <div className="sort-options">
+          <div className="dropdown">
+            <Select
+              value={activeSelection}
+              onChange={(e) => handleSelect(e.target.value)}
+              sx={{ color: 'teal', backgroundColor: 'transparent', height: '4vmin' }}
+            >
+              <MenuItem value="all">All Texts</MenuItem>
+              <MenuItem value="favorites">Favorites</MenuItem>
+              <MenuItem value="archived">Archived</MenuItem>
+            </Select>
+          </div>
+            <span>Sort by: &nbsp;&nbsp;</span>
+            <a style={{textDecoration: 'underline'}} onClick={() => handleSortBy('created')}>Newest</a> &nbsp; | &nbsp;
+            <a style={{textDecoration: 'underline'}} onClick={() => handleSortBy('updated')}>Recently Updated</a>
+        </div>
+
         <Dialog
           open={open}
           onClose={handleClose}   
@@ -161,23 +181,6 @@ export default function DashboardPage({ user, texts, setTexts }) {
         </DialogActions>
       </Dialog>
 
-      <div className="list-area">
-        <div className="sort-options">
-          <span>Sort by: &nbsp;&nbsp;</span>
-          <a onClick={() => handleSortBy('created')}>Newest</a> &nbsp; | &nbsp;
-          <a onClick={() => handleSortBy('updated')}>Recently Updated</a>
-          <div className="dropdown">
-            <Select
-              value={activeSelection}
-              onChange={(e) => handleSelect(e.target.value)}
-              sx={{ color: 'teal', backgroundColor: 'transparent', height: '4vmin' }}
-            >
-              <MenuItem value="all">All</MenuItem>
-              <MenuItem value="favorites">Favorites</MenuItem>
-              <MenuItem value="archived">Archived</MenuItem>
-            </Select>
-        </div>
-        </div>
         { activeSelection === 'all' && (
           <div className="textListItems">{textListItems}</div>
         )}
