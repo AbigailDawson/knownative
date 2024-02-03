@@ -21,7 +21,7 @@ export default function AuthPage({setUser}) {
 
       <section className="hero">
         <div className="hero-left">
-          <img src="" alt="Hero Image" />
+          <img src="/images/knlogo1.png" alt="KnowNative Logo Image" style={{width: '80%'}} />
         </div>
         <div className="hero-right">
           
