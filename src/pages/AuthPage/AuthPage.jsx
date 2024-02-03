@@ -29,7 +29,7 @@ export default function AuthPage({setUser}) {
   return (
     <main className="landing-page">
 
-      <section className="hero">
+      <section className="hero" id="top">
         <div className="hero-left">
           <img src="/images/knlogo1.png" alt="KnowNative Logo Image" style={{width: '100%'}} />
         </div>
@@ -153,14 +153,30 @@ export default function AuthPage({setUser}) {
 
       <section className="gpt-demo">
         <h1>Leverage the Power of AI</h1>
-        <p>Struggling with complex texts? KnowNative leverages OpenAI to generate an easier version at a lower reading level, to help you level up your reading comprehension without compromising authenticity.</p>
+        <p>Struggling with complex texts? KnowNative leverages <span className="emphasize">OpenAI technology</span> to generate an easier version at a lower reading level, to help you <span className="emphasize">level up your reading comprehension</span> without compromising authenticity.</p>
         <img className="gpt-demo-img" src="/images/annotations.png" alt="Screenshot of annotations feature" style={{width: '80%'}} />
       </section>
 
       <section className="signup-offer">
         <h1>Ready to Elevate Your Language Learning?</h1>
         <p>Sign up for free today to embark on a journey to enhance your reading skills through authentic native texts!</p>
-        <button onClick={() => setShowSignup(!showSignup)}>Sign Up</button>
+        <a href="#top" style={{ textDecoration: 'none' }}>
+          <Button
+            size="large"
+            onClick={() => setShowSignup(!showSignup)}
+            sx={{
+              color: 'teal',
+              backgroundColor: 'white',
+              transition: 'background-color 0.3s, color 0.3s',
+              '&:hover': {
+                backgroundColor: 'white',
+                color: 'var(--red-brick)',
+              },
+            }}
+          >
+            SIGN UP
+          </Button>  
+        </a>    
       </section>
 
     </main>
