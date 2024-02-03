@@ -50,8 +50,8 @@ export default function LogInForm({ setUser }) {
             id="filled-basic" 
             label="Password" 
             variant="filled" 
-            name="password]" 
-            type="text" 
+            name="password" 
+            type="password" 
             onChange={handleChange} 
             value={credentials.password}
             sx={{ width: '80%' }}
