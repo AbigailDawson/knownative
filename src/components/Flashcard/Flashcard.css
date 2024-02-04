@@ -2,13 +2,14 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 70%;
+  height: auto;
   border: 1px solid var(--light);
   border-radius: 1vmin;
 }
 
 .flashcard-front,
 .flashcard-back {
+  padding-top: 4vmin;
   width: 100%;
   display: flex;
   flex-direction: column;

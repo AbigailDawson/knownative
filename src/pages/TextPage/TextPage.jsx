@@ -13,6 +13,8 @@ import { Button, Dialog, DialogActions, DialogContent, DialogContentText, Dialog
 import { FaRegWindowClose } from "react-icons/fa";
 import { PiStarLight } from "react-icons/pi";
 import { PiStarFill } from "react-icons/pi";
+import { GiCheckMark } from "react-icons/gi";
+import { PiRepeatBold } from "react-icons/pi";
 
 export default function TextPage({ getText, updateText }) {
 
@@ -35,6 +37,7 @@ export default function TextPage({ getText, updateText }) {
   const [selectedFront, setSelectedFront] = useState('chinese')
   const [showPinyin, setShowPinyin] = useState(true)
   const [gameInProgress, setGameInProgress] = useState(false)
+  const [correctCount, setCorrectCount] = useState(0)
 
   useEffect(function() {
     async function getTokenizedText() {
@@ -103,12 +106,15 @@ export default function TextPage({ getText, updateText }) {
   }
 
   function handleClose() {
+    setFlashcards([])
+    setCorrectCount(0)
     setOpen(false)
   }
 
   function handleCorrect() {
     // if the user marks the word correct, create a new array of flashcards removing the 1st one in the array (the one that was correct)
     setFlashcards((prevFlashcards) => prevFlashcards.slice(1))
+    setCorrectCount(correctCount - 1)
   }
 
   function handleIncorrect() {
@@ -182,6 +188,10 @@ export default function TextPage({ getText, updateText }) {
             { flashcards.length > 0 ? (
               <>
               { gameInProgress ? (
+                <>
+                <div className="flashcard-count">
+                  <p>{flashcards.length} Cards Remaining</p>
+                </div>
                 <Flashcard 
                 chinese={flashcards[0].chinese}
                 pinyin={flashcards[0].pinyin}
@@ -190,7 +200,13 @@ export default function TextPage({ getText, updateText }) {
                 showPinyin={showPinyin}
                 onCorrect={handleCorrect}
                 onIncorrect={handleIncorrect}
-              />
+                flashcards={flashcards}
+                />
+                <div className="flashcard-btns">
+                  <button className="correct-btn" onClick={handleCorrect}><GiCheckMark className="flashcard-icon" />Correct!</button>
+                  <button className="incorrect-btn"  onClick={handleIncorrect}><PiRepeatBold className="flashcard-icon" />Try again</button>
+                </div>
+              </>
               ) : (
                 <FlashcardForm 
                   selectedFront={selectedFront}

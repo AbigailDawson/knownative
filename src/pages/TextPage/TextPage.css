@@ -76,3 +76,7 @@
   color: var(--yellow); 
   animation: sparkle .8s infinite;
 }
+
+.flashcard-count {
+  text-align: center;
+}
