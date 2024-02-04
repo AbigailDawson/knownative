@@ -3,9 +3,9 @@ nav {
   align-items: center;
   justify-content: space-between;
   padding: 0 3vmin;
-  height: 10vmin;
+  height: 12vmin;
   background-color: var(--slate);
-  color: var(--off-white)
+  color: var(--dark)
 }
 
 .nav-link {
