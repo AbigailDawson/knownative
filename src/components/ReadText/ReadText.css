@@ -72,6 +72,13 @@
 .expand-icon {
   font-size: 4vmin;
   color: var(--teal);
+  transition: transform 0.3s ease-in-out;
+}
+
+.expand-icon:hover {
+  color: var(--red-poppy);
+  transform: scale(1.1);
+  cursor: pointer;
 }
 
 .simplified.collapsed {

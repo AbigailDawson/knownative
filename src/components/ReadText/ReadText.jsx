@@ -6,6 +6,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import { FaRegWindowClose } from "react-icons/fa"
 import { FaRegLightbulb } from "react-icons/fa6";
 import { BiExpand } from "react-icons/bi";
+import { BiCollapse } from "react-icons/bi";
 import SimplifiedText from '../../components/SimplifiedText/SimplifiedText'
 
 export default function ReadText({ text }) {
@@ -179,7 +180,11 @@ export default function ReadText({ text }) {
               <div className={`read-text-block simplified ${isExpandedEasier ? 'expanded' : 'collapsed'}`}>
                 <div className="block-heading">
                   <h3>Easier</h3>
-                  <BiExpand onClick={handleExpandToggleEasier} />
+                  {isExpandedEasier? (
+                    <BiCollapse className="expand-icon" onClick={handleExpandToggleEasier} />
+                  ) : (
+                    <BiExpand className="expand-icon" onClick={handleExpandToggleEasier} />
+                  )}
                 </div>
                 <p className="zh">{text.simplifiedText}</p>
               </div>
@@ -189,7 +194,11 @@ export default function ReadText({ text }) {
             <div className={`original ${isExpandedOriginal ? 'expanded' : 'collapsed'}`}>
               <div className="read-text-block">
                 <div className="block-heading">
-                  <BiExpand onClick={handleExpandToggleOriginal} />
+                  {isExpandedOriginal? (
+                    <BiCollapse className="expand-icon" onClick={handleExpandToggleOriginal} />
+                  ) : (
+                    <BiExpand className="expand-icon" onClick={handleExpandToggleOriginal} />
+                  )}
                   <h3>Original</h3>
                 </div>
                 <p className="zh">{text.content}</p>
