@@ -80,3 +80,13 @@
 .flashcard-count {
   text-align: center;
 }
+
+.correct-count {
+  color: var(--green-drk);
+  font-weight: 800;
+}
+
+.remaining-count {
+  color: var(--red-poppy);
+  font-weight: 800;
+}

@@ -57,7 +57,17 @@ export default function TextPage({ getText, updateText }) {
     getSavedWords()
   },[])
 
-  useEffect(function() {
+  // useEffect(function() {
+  //   const flashcardsArray = savedWords.map((word) => ({
+  //     chinese: word.traditional,
+  //     pinyin: word.pinyin,
+  //     meaning: word.meaning,
+  //     id: word._id,
+  //   }))
+  //   setFlashcards(flashcardsArray)
+  // }, [savedWords])
+
+  function getFlashcards() {
     const flashcardsArray = savedWords.map((word) => ({
       chinese: word.traditional,
       pinyin: word.pinyin,
@@ -65,7 +75,8 @@ export default function TextPage({ getText, updateText }) {
       id: word._id,
     }))
     setFlashcards(flashcardsArray)
-  }, [savedWords])
+  }
+  
 
   function handleTabClick(tabName) {
     setActiveTab(tabName)
@@ -102,19 +113,20 @@ export default function TextPage({ getText, updateText }) {
 
   function handleOpen() {
     setOpen(true)
-    setGameInProgress(false)
+    getFlashcards()
   }
 
   function handleClose() {
     setFlashcards([])
     setCorrectCount(0)
+    setGameInProgress(false)
     setOpen(false)
   }
 
   function handleCorrect() {
     // if the user marks the word correct, create a new array of flashcards removing the 1st one in the array (the one that was correct)
     setFlashcards((prevFlashcards) => prevFlashcards.slice(1))
-    setCorrectCount(correctCount - 1)
+    setCorrectCount(correctCount + 1)
   }
 
   function handleIncorrect() {
@@ -184,15 +196,15 @@ export default function TextPage({ getText, updateText }) {
           style={{ 
             width: '75%',
             marginTop: '4vmin',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
             }}
           >
             { flashcards.length > 0 ? (
               <>
               { gameInProgress ? (
                 <>
-                <div className="flashcard-count">
-                  <p>{flashcards.length} Cards Remaining</p>
-                </div>
                 <Flashcard 
                 chinese={flashcards[0].chinese}
                 pinyin={flashcards[0].pinyin}
@@ -203,9 +215,15 @@ export default function TextPage({ getText, updateText }) {
                 onIncorrect={handleIncorrect}
                 flashcards={flashcards}
                 />
-                <div className="flashcard-btns">
-                  <button className="correct-btn" onClick={handleCorrect}><GiCheckMark className="flashcard-icon" />Correct!</button>
-                  <button className="incorrect-btn"  onClick={handleIncorrect}><PiRepeatBold className="flashcard-icon" />Try again</button>
+                <div>
+                  <div className="flashcard-btns">
+                    <button className="correct-btn" onClick={handleCorrect}><GiCheckMark className="flashcard-icon" />Correct!</button>
+                    <button className="incorrect-btn"  onClick={handleIncorrect}><PiRepeatBold className="flashcard-icon" />Try again</button>
+                  </div>
+                  <div className="flashcard-count">
+                    <p><span className="correct-count">{correctCount}</span> Correct</p>
+                    <p><span className="remaining-count">{flashcards.length}</span> Remaining</p>
+                  </div>
                 </div>
               </>
               ) : (
