@@ -38,6 +38,7 @@ export default function TextPage({ getText, updateText }) {
   const [showPinyin, setShowPinyin] = useState(true)
   const [gameInProgress, setGameInProgress] = useState(false)
   const [correctCount, setCorrectCount] = useState(0)
+  const [remainingCount, setRemainingCount] = useState(0)
 
   useEffect(function() {
     async function getTokenizedText() {
@@ -57,16 +58,6 @@ export default function TextPage({ getText, updateText }) {
     getSavedWords()
   },[])
 
-  // useEffect(function() {
-  //   const flashcardsArray = savedWords.map((word) => ({
-  //     chinese: word.traditional,
-  //     pinyin: word.pinyin,
-  //     meaning: word.meaning,
-  //     id: word._id,
-  //   }))
-  //   setFlashcards(flashcardsArray)
-  // }, [savedWords])
-
   function getFlashcards() {
     const flashcardsArray = savedWords.map((word) => ({
       chinese: word.traditional,
@@ -77,7 +68,6 @@ export default function TextPage({ getText, updateText }) {
     setFlashcards(flashcardsArray)
   }
   
-
   function handleTabClick(tabName) {
     setActiveTab(tabName)
   }
@@ -127,6 +117,7 @@ export default function TextPage({ getText, updateText }) {
     // if the user marks the word correct, create a new array of flashcards removing the 1st one in the array (the one that was correct)
     setFlashcards((prevFlashcards) => prevFlashcards.slice(1))
     setCorrectCount(correctCount + 1)
+    setRemainingCount(remainingCount - 1)
   }
 
   function handleIncorrect() {
@@ -135,6 +126,7 @@ export default function TextPage({ getText, updateText }) {
   }
 
   function handlePlay() {
+    setRemainingCount(flashcards.length)
     setGameInProgress(true)
   }
 
@@ -222,7 +214,7 @@ export default function TextPage({ getText, updateText }) {
                   </div>
                   <div className="flashcard-count">
                     <p><span className="correct-count">{correctCount}</span> Correct</p>
-                    <p><span className="remaining-count">{flashcards.length}</span> Remaining</p>
+                    <p><span className="remaining-count">{remainingCount}</span> Remaining</p>
                   </div>
                 </div>
               </>
