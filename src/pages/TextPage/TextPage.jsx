@@ -182,7 +182,8 @@ export default function TextPage({ getText, updateText }) {
         </DialogActions>
         <DialogContent
           style={{ 
-            width: '60%',
+            width: '75%',
+            marginTop: '4vmin',
             }}
           >
             { flashcards.length > 0 ? (

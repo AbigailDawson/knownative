@@ -41,7 +41,7 @@ export default function FlashcardForm({ selectedFront, setSelectedFront, showPin
           />
         </FormGroup>
       </div>
-      <button onClick={handlePlay}>Play!</button>
+      <button className="play-btn" onClick={handlePlay}>Play!</button>
     </>
   )
 }
