@@ -8,7 +8,7 @@ export default function NavBar({ user, setUser }) {
   function handleLogOut() {
     usersService.logOut() 
     setUser(null)
-    navigate('/')
+    navigate('')
   }
 
   return (

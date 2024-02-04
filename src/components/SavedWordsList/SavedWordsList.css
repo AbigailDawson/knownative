@@ -7,9 +7,10 @@
   color: var(--drk-txt);
 }
 
-.sidebar-heading {
+.SavedWordsList > h1 {
   align-self: flex-start;
   margin: 3vmin;
+  padding-left: 2vmin;
 }
 
 .sidebar-heading ~ p {
@@ -25,11 +26,11 @@
 
 .study-icon {
   font-size: 7vmin;
-  color: var(--brown);
+  color: var(--teal);
   margin: 0 0 2vmin 0;
   width: 50%;
   position: absolute;
-  right: -1.5vmin;
+  right: -4.5vmin;
   bottom: -.5vmin;
   transform: rotate(5deg);
   transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;

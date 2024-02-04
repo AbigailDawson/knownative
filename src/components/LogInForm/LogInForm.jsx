@@ -1,9 +1,12 @@
 import './LogInForm.css'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import * as usersService from '../../utilities/users-service'
 import TextField from '@mui/material/TextField';
 
 export default function LogInForm({ setUser }) {
+  const navigate = useNavigate();
+
   const [credentials, setCredentials] = useState({
     email: '',
     password: ''
@@ -24,6 +27,7 @@ export default function LogInForm({ setUser }) {
       // The promise returned by the signUp service method will resolve to the user object included in the payload of the JSON Web Token (JWT)
       const user = await usersService.logIn(credentials)
       setUser(user) // triggers the re-render
+      navigate('/dashboard')
     } catch {
       setError('Log In Failed - Try Again')
     }
