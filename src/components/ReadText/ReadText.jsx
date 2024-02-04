@@ -5,6 +5,7 @@ import { Button, Dialog, DialogActions, DialogContent, DialogContentText, Dialog
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import { FaRegWindowClose } from "react-icons/fa"
 import { FaRegLightbulb } from "react-icons/fa6";
+import { BiExpand } from "react-icons/bi";
 import SimplifiedText from '../../components/SimplifiedText/SimplifiedText'
 
 export default function ReadText({ text }) {
@@ -50,7 +51,10 @@ export default function ReadText({ text }) {
     <div className="ReadText">
 
       <div className="top">
-        <Accordion style={{
+
+        { !text.simplifiedText && (
+          <>
+          <Accordion style={{
           width: '40%',
           maxWidth: '30vmin'
         }}>
@@ -128,12 +132,10 @@ export default function ReadText({ text }) {
                   </>
               )}
 
-                  
-
                   <Suspense fallback={<h2>Loading...</h2>}>
                     {loading ? (
                       <>
-                        <h3 className="generate-btn"> Generating </h3>
+                        <h1> Generating . . . </h1>
                         <p>This may take several seconds.</p>
                         <div className="loader"></div>
                       </>
@@ -147,15 +149,35 @@ export default function ReadText({ text }) {
               
             </DialogContentText>
           </DialogContent>
-
         </Dialog>
-      </div>
+        </>
+        )}
+        
+      <div className="container">
+        { text.simplifiedText && (
+            <div className="read-text-block simplified">
+              <div className="block-heading">
+                <h3>Easier</h3>
+                <BiExpand className="expand-icon" />
+              </div>
+              <p className="zh">{text.simplifiedText}</p>
+            </div>
+          )}
 
-      <div className="bottom">
-        <div className="read-text-block">
-          <p className="zh">{text.content}</p>
+        </div>
+
+        <div className={`bottom ${text.simplifiedText ? 'side-by-side' : ''}`}>
+          <div className="read-text-block">
+            <div className="block-heading">
+              <BiExpand className="expand-icon" />
+              <h3>Original</h3>
+            </div>
+            <p className="zh">{text.content}</p>
+          </div>
         </div>
       </div>
+        
+
       
     </div>
   )

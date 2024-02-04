@@ -24,6 +24,10 @@
   font-size: 1.2rem;
 }
 
+.container {
+  display: flex;
+}
+
 .read-text-block {
   margin-top: 2vmin;
   line-height: 4vmin;
@@ -31,11 +35,31 @@
   font-size: 2.5vmin;
   text-align: left;
   white-space: pre;
-  /* text-wrap: wrap; */
 }
 
 .read-text-block > .zh {
   text-wrap: wrap;
+}
+
+.bottom.side-by-side {
+  margin-left: 1vmin;
+}
+
+.block-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 0 2vmin 2vmin 0;
+}
+
+.expand-icon {
+  font-size: 4vmin;
+  color: var(--teal);
+}
+
+.read-text-block.simplified {
+  margin-right: 1vmin;
+  border-right: 1px solid var(--gray-lt)
 }
 
 .simplified-text {
