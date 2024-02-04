@@ -28,7 +28,7 @@ export default function DashboardPage({ user, texts, setTexts }) {
       setNumArchivedTexts(archivedTexts.length)
     }
     getStats()
-  }, [])
+  }, [user])
 
   function handleSelect(activeSelection) {
     setActiveSelection(activeSelection)
