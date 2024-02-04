@@ -8,7 +8,7 @@ export default function Sidebar({ user, numTexts, numArchivedTexts, numSavedWord
   return (
     <>
       <div className="sidebar-heading">
-        <h3>Welcome back</h3>
+        <h3 className="welcome">Welcome back</h3>
         <h1>{user.name}</h1>
       </div>
       <div className="stats">

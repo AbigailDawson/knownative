@@ -1,8 +1,6 @@
 .dash-sidebar {
   display: flex;
   flex-direction: column;
-  /* justify-content: flex-start;
-  align-items: center; */
   background-color: var(--beige-lt);
   border: 3px solid var(--off-white);
   height: 100%;
@@ -11,6 +9,10 @@
 
 .sidebar-heading {
   align-self: center;
+}
+
+.welcome {
+  margin-top: 2vmin;
 }
 
 .sidebar-heading > h3 {
@@ -24,7 +26,7 @@
 }
 
 .stats {
-  padding: 0 3vmin;
+  padding: 1vmin 3vmin;
 }
 
 .stat {
