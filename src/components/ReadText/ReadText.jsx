@@ -14,6 +14,8 @@ export default function ReadText({ text }) {
   const [simplifiedText, setSimplifiedText] = useState(null)
   const [loading, setLoading] = useState(false)
   const [savedSimplifiedText, setSavedSimplifiedText] = useState(null)
+  const [isExpandedEasier, setIsExpandedEasier] = useState(false)
+  const [isExpandedOriginal, setIsExpandedOriginal] = useState(false)
 
   useEffect(function() {
     function getSavedSimplifiedText() {
@@ -45,6 +47,14 @@ export default function ReadText({ text }) {
 
   function handleClose() {
     setOpen(false)
+  }
+
+  function handleExpandToggleEasier() {
+    setIsExpandedEasier(!isExpandedEasier);
+  }
+
+  function handleExpandToggleOriginal() {
+    setIsExpandedOriginal(!isExpandedOriginal);
   }
 
   return (
@@ -152,33 +162,46 @@ export default function ReadText({ text }) {
         </Dialog>
         </>
         )}
-        
-      <div className="container">
-        { text.simplifiedText && (
-            <div className="read-text-block simplified">
-              <div className="block-heading">
-                <h3>Easier</h3>
-                <BiExpand className="expand-icon" />
-              </div>
-              <p className="zh">{text.simplifiedText}</p>
-            </div>
-          )}
-
         </div>
 
-        <div className={`bottom ${text.simplifiedText ? 'side-by-side' : ''}`}>
+        { !text.simplifiedText && (
+        <div className="bottom">
           <div className="read-text-block">
-            <div className="block-heading">
-              <BiExpand className="expand-icon" />
-              <h3>Original</h3>
-            </div>
             <p className="zh">{text.content}</p>
           </div>
         </div>
+        )}
+        
+        
+        { text.simplifiedText && (
+          <div className="container">
+          {!isExpandedOriginal && (
+              <div className={`read-text-block simplified ${isExpandedEasier ? 'expanded' : 'collapsed'}`}>
+                <div className="block-heading">
+                  <h3>Easier</h3>
+                  <BiExpand onClick={handleExpandToggleEasier} />
+                </div>
+                <p className="zh">{text.simplifiedText}</p>
+              </div>
+            )}
+
+          {!isExpandedEasier && (
+            <div className={`original ${isExpandedOriginal ? 'expanded' : 'collapsed'}`}>
+              <div className="read-text-block">
+                <div className="block-heading">
+                  <BiExpand onClick={handleExpandToggleOriginal} />
+                  <h3>Original</h3>
+                </div>
+                <p className="zh">{text.content}</p>
+              </div>
+            </div>
+          )}
+          </div>
+        )}
+        
       </div>
         
 
       
-    </div>
   )
 }
