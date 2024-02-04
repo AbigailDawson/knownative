@@ -32,7 +32,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
-  border-bottom: 2px solid var(--red-brick);
+  border-bottom: 1px solid var(--slate);
   padding: 2vmin 0;
 }
 
