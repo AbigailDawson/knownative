@@ -54,13 +54,30 @@
   align-self: center;
   margin: 3vmin 0;
   font-size: 2.8vmin;
-  padding: 2vmin 4vmin;}
+  padding: 2vmin 4vmin;
+  background-color: var(--teal-lt);
+  transition: transform 0.3s, background-color 0.3s;
+}
+
+.generate-btn:hover {
+  transform: scale(1.1);
+  background-color: var(--off-white);
+  cursor: pointer;
+}
 
 .save-btn {
   align-self: center;
   margin: 3vmin 0;
   font-size: 2.5vmin;
   padding: 1.5vmin 2.5vmin;
+  background-color: var(--teal-lt);
+  transition: transform 0.3s, background-color 0.3s;
+}
+
+.generate-btn:hover {
+  transform: scale(1.1);
+  background-color: var(--off-white);
+  cursor: pointer;
 }
 
 .disclaimer {
@@ -129,6 +146,6 @@
     transform: scale(1);
   }
   100% {
-    transform: scale(1.03);
+    transform: scale(1.02);
   }
 }
