@@ -9,7 +9,7 @@
 
 .flashcard-front,
 .flashcard-back {
-  padding-top: 4vmin;
+  padding-top: 1.5vmin;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -39,6 +39,16 @@
   justify-content: center;
   gap: 1vmin;
   padding: 2vmin 3vmin;
+}
+
+.correct-btn {
+  background-color: var(--green-drk);
+  color: white;
+}
+
+.incorrect-btn {
+  background-color: var(--red-brick);
+  color: white;
 }
 
 .flashcard-icon {
