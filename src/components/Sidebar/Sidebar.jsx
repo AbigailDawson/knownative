@@ -1,5 +1,7 @@
 import './Sidebar.css'
 import { GiRead } from "react-icons/gi";
+import { BiSolidArchive } from "react-icons/bi";
+import { TbCardsFilled } from "react-icons/tb";
 
 export default function Sidebar({ user, numTexts, numArchivedTexts, numSavedWords }) {
 
@@ -14,25 +16,34 @@ export default function Sidebar({ user, numTexts, numArchivedTexts, numSavedWord
         <div className="stat">
           <div>
             <GiRead className="stat-icon" />
-            <div className="stat-heading">Currently Reading</div>
+            <div className="stat-heading"> Reading</div>
           </div>
-          <div className="num">{numTexts}</div>
-        </div>
-        
-        <div className="stat">
           <div>
-            <GiRead className="stat-icon" />
-            <div className="stat-heading">Saved Words</div>
+            <div className="num">{numTexts}</div>
+            <div className="stat-subheading">Texts</div>
           </div>
-          <div className="num">{numSavedWords}</div>
         </div>
 
         <div className="stat">
           <div>
-            <GiRead className="stat-icon" />
-            <div className="stat-heading"> Texts</div>
+            <BiSolidArchive className="stat-icon" />
+            <div className="stat-heading"> Archived</div>
           </div>
+          <div>
           <div className="num">{numArchivedTexts}</div>
+          <div className="stat-heading"> Texts</div>
+          </div>
+        </div>
+
+        <div className="stat">
+          <div>
+            <TbCardsFilled className="stat-icon" />
+            <div className="stat-heading">Saved</div>
+          </div>
+          <div>
+            <div className="num">{numSavedWords}</div>
+            <div className="stat-subheading">Words</div>
+          </div>
         </div>
         
       </div>
