@@ -72,7 +72,7 @@ export default function ReadText({ text }) {
             justifyContent: 'center',
             gap: '2vmin',
           }}>
-            <button className="learn-btn" onClick={handleOpen}>Read an easier version of this text!</button>
+            <button className="learn-btn" onClick={handleOpen}>Click to read an easier version of this text!</button>
           </AccordionDetails>
         </Accordion>
         <Dialog

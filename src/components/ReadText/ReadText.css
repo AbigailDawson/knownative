@@ -24,12 +24,6 @@
   font-size: 1.2rem;
 }
 
-.learn-btn {
-  margin: 0 0 1vmin 0;
-  background-color: var(--medium);
-  cursor: pointer;
-}
-
 .read-text-block {
   margin-top: 2vmin;
   line-height: 4vmin;
@@ -119,5 +113,22 @@
   }
   75% {
     transform: rotate(7deg);
+  }
+}
+
+.learn-btn {
+  margin: 0 0 .5vmin 0;
+  background-color: var(--teal-lt);
+  font-size: .9rem;
+  cursor: pointer;
+  animation: pulse .5s infinite alternate;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.03);
   }
 }
