@@ -24,7 +24,7 @@ Key features that make KnowNative unique:
 
 ## Tech Stack
 - MERN stack: MongoDB, Express.js, Node.js, React
-- chinese-tokenizer - for tokenizing Chinese text
+- [chinese-tokenizer](https://github.com/yishn/chinese-tokenizer) - for tokenizing Chinese text
 - Google Cloud Translate API
 - OpenAI API
 - MUI Components - for visually appealing user interfaces
