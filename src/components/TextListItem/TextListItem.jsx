@@ -39,7 +39,7 @@ export default function TextListItem({ text, title, source, content, id, favorit
         <div>
           { !favorite && !archived && <PiStarLight className="star-icon-empty" onClick={() => handleStarClick(text, id)}/> }
           { favorite && activeSelection === 'all' && <PiStarFill className="star-icon-filled" onClick={() => handleStarClick(text, id)} /> }
-          { favorite && activeSelection === 'favorites' && <button className="remove-favorite" onClick={() => handleStarClick(text, id)}>Remove from favorites</button> }
+          { favorite && activeSelection === 'favorites' && <PiStarFill className="star-icon-filled" onClick={() => handleStarClick(text, id)} />}
           { archived && <button className="remove-archived" onClick={() => handleArchiveText(text, id)}>Remove from archives</button> }
         </div>
 
