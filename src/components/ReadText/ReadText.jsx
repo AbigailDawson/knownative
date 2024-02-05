@@ -32,6 +32,7 @@ export default function ReadText({ text, savedSimplifiedText, getSimplifiedText,
 
   function handleRemoveClick() {
     removeSimplifiedText(text._id)
+    setOpen(false)
   }
 
   function handleOpen() {
@@ -52,8 +53,9 @@ export default function ReadText({ text, savedSimplifiedText, getSimplifiedText,
 
 
 
-  return (
-    <div className="ReadText">
+  return !text ? 'Loading ...' 
+  : (    
+  <div className="ReadText">
 
       <div className="top">
 
@@ -130,6 +132,8 @@ export default function ReadText({ text, savedSimplifiedText, getSimplifiedText,
                 
                 {!simplifiedText && !loading && (
                   <>
+                      {console.log('simplifiedText:', simplifiedText)}
+
                     <h3 className="generate-txt"> Reading native texts can be tough. </h3> 
                     <p>If you’re feeling stuck, try reading a slightly easier version of this text! Click below to recreate this text at a 5th-grade reading level.</p>
                     <button className="generate-btn" onClick={handleSimplifyClick}> Generate! </button>

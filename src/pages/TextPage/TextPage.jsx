@@ -20,7 +20,8 @@ export default function TextPage({ getText, updateText }) {
 
   const { textId } = useParams()
   const text = getText(textId)
-
+  console.log(text, 'at TextPage')
+  
   const [tokenizedText, setTokenizedText] = useState([])
   const [savedSimplifiedText, setSavedSimplifiedText] = useState(null)
 
@@ -54,7 +55,10 @@ export default function TextPage({ getText, updateText }) {
 
   useEffect(function() {
     function getSavedSimplifiedText() {
+      if (text) {
+      console.log(text.simplifiedText, 'at useEffect')
       setSavedSimplifiedText(text.simplifiedText)
+      }
     }
     getSavedSimplifiedText()
   }, [text])
@@ -68,14 +72,19 @@ export default function TextPage({ getText, updateText }) {
   },[])
 
   async function saveSimplifiedText(simplifiedText) {
+    console.log('saved text: ', simplifiedText)
     const updatedText = await textsAPI.saveSimplifiedText(simplifiedText, text._id);
-    setSavedSimplifiedText(updatedText.simplifiedText)
+    console.log('updatedText', updatedText)
+    updateText(updatedText)
+    // setSavedSimplifiedText(updatedText.simplifiedText)
     handleClose()
   }
 
   async function removeSimplifiedText() {
+    console.log('simple to remove', text.simplifiedText)
     const updatedText = await textsAPI.removeSimplifiedText(text._id);
-    setSavedSimplifiedText(null)
+    // setSavedSimplifiedText(null)
+    updateText(updatedText)
   }
 
   function getFlashcards() {

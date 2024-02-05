@@ -29,6 +29,8 @@ function App() {
   }
 
   function updateText(updatedText){  
+    console.log('updateText ran at app')
+    console.log('updatedText at app ', updatedText)
     const textsCopy = [...texts]
     const textIdx = textsCopy.findIndex(text => text._id === updatedText._id)
     textsCopy[textIdx] = updatedText
