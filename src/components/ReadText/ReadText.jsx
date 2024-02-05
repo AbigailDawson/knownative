@@ -9,20 +9,13 @@ import { BiExpand } from "react-icons/bi";
 import { BiCollapse } from "react-icons/bi";
 import SimplifiedText from '../../components/SimplifiedText/SimplifiedText'
 
-export default function ReadText({ text }) {
+export default function ReadText({ text, savedSimplifiedText, getSimplifiedText, saveSimplifiedText, removeSimplifiedText }) {
 
   const [open, setOpen] = useState(false)
   const [simplifiedText, setSimplifiedText] = useState(null)
   const [loading, setLoading] = useState(false)
-  const [savedSimplifiedText, setSavedSimplifiedText] = useState(null)
   const [isExpandedEasier, setIsExpandedEasier] = useState(false)
   const [isExpandedOriginal, setIsExpandedOriginal] = useState(false)
-
-  useEffect(function() {
-    function getSavedSimplifiedText() {
-      setSavedSimplifiedText(text.simplifiedText)
-    }
-  }, [savedSimplifiedText])
 
   async function handleSimplifyClick() {
     try {
@@ -37,19 +30,8 @@ export default function ReadText({ text }) {
     }
   }
 
-  async function saveSimplifiedText(simplifiedText) {
-    const updatedText = await textsAPI.saveSimplifiedText(simplifiedText, text._id);
-    setSavedSimplifiedText(updatedText.simplifiedText)
-    handleClose()
-  }
-
   function handleRemoveClick() {
     removeSimplifiedText(text._id)
-  }
-
-  async function removeSimplifiedText() {
-    const updatedText = await textsAPI.removeSimplifiedText(text._id);
-    setSavedSimplifiedText(null)
   }
 
   function handleOpen() {

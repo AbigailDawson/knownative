@@ -22,6 +22,8 @@ export default function TextPage({ getText, updateText }) {
   const text = getText(textId)
 
   const [tokenizedText, setTokenizedText] = useState([])
+  const [savedSimplifiedText, setSavedSimplifiedText] = useState(null)
+
   const [activeTab, setActiveTab] = useState('read')
 
   // --- SAVED WORDS ---
@@ -51,12 +53,30 @@ export default function TextPage({ getText, updateText }) {
   }, [text])
 
   useEffect(function() {
+    function getSavedSimplifiedText() {
+      setSavedSimplifiedText(text.simplifiedText)
+    }
+    getSavedSimplifiedText()
+  }, [text])
+
+  useEffect(function() {
     async function getSavedWords() {
       const savedWords = await textsAPI.getSavedWords(textId)
       setSavedWords(savedWords)
     }
     getSavedWords()
   },[])
+
+  async function saveSimplifiedText(simplifiedText) {
+    const updatedText = await textsAPI.saveSimplifiedText(simplifiedText, text._id);
+    setSavedSimplifiedText(updatedText.simplifiedText)
+    handleClose()
+  }
+
+  async function removeSimplifiedText() {
+    const updatedText = await textsAPI.removeSimplifiedText(text._id);
+    setSavedSimplifiedText(null)
+  }
 
   function getFlashcards() {
     const flashcardsArray = savedWords.map((word) => ({
@@ -289,7 +309,12 @@ export default function TextPage({ getText, updateText }) {
 
             <div id="read" className={`read-container ${activeTab === 'read' ? 'active' : ''}`}>
               <div className="Text">
-                {text ? <ReadText text={text} /> : 'Loading text'}
+                {text ? <ReadText 
+                text={text}
+                savedSimplifiedText={savedSimplifiedText}
+                saveSimplifiedText={saveSimplifiedText}
+                removeSimplifiedText={removeSimplifiedText} 
+                /> : 'Loading text'}
               </div>
             </div>
 
