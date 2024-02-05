@@ -120,7 +120,7 @@ export default function AuthPage({setUser}) {
             <h4><IoLanguage className="feature-icon" /> Reveal Full Sentence Translations</h4>
             <p>Solidify your understanding with <span className="emphasize">sentence translations</span> at your fingertips. Challenge yourself by showing and hiding translations to test your true understanding of the material.</p>
           </div>
-          <img className="feature-img" src="/images/annotations.png" alt="Screenshot of annotations feature" style={{width: '100%'}} />
+          <img className="feature-img" src="/images/kn-runthru.gif" alt="gif demonstrating app features" style={{width: '100%'}} />
         </div>
       </section>
 
