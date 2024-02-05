@@ -16,6 +16,7 @@ module.exports = {
   translateSentence,
   simplifyText,
   saveSimplifiedText,
+  removeSimplifiedText,
   archiveText,
   favoriteText
 }
@@ -145,6 +146,17 @@ async function saveSimplifiedText(req, res) {
       { simplifiedText }, 
       { new: true }
       )
+    res.json(updatedText)
+  } catch(error) {
+    res.status(400).json(error)
+  }
+}
+
+async function removeSimplifiedText(req, res) {  
+  try {
+    const updatedText = await Text.findById(req.params.id)
+    updatedText.simplifiedText = ''
+    await updatedText.save()
     res.json(updatedText)
   } catch(error) {
     res.status(400).json(error)

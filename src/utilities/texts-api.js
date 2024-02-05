@@ -41,6 +41,10 @@ export function saveSimplifiedText(simplifiedText, textId) {
   return sendRequest(`${BASE_URL}/${textId}/saveSimplified`, 'POST', { simplifiedText })
 }
 
+export function removeSimplifiedText(textId) {
+  return sendRequest(`${BASE_URL}/${textId}/removeSimplified`, 'POST')
+}
+
 export function archiveText(text, id) {
   return sendRequest(`${BASE_URL}/${id}/archive`, 'POST', { text })
 }

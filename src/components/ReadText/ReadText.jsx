@@ -40,6 +40,16 @@ export default function ReadText({ text }) {
   async function saveSimplifiedText(simplifiedText) {
     const updatedText = await textsAPI.saveSimplifiedText(simplifiedText, text._id);
     setSavedSimplifiedText(updatedText.simplifiedText)
+    handleClose()
+  }
+
+  function handleRemoveClick() {
+    removeSimplifiedText(text._id)
+  }
+
+  async function removeSimplifiedText() {
+    const updatedText = await textsAPI.removeSimplifiedText(text._id);
+    setSavedSimplifiedText(null)
   }
 
   function handleOpen() {
@@ -58,12 +68,14 @@ export default function ReadText({ text }) {
     setIsExpandedOriginal(!isExpandedOriginal);
   }
 
+
+
   return (
     <div className="ReadText">
 
       <div className="top">
 
-        { !text.simplifiedText && (
+        { !savedSimplifiedText && (
           <>
           <Accordion style={{
           width: '40%',
@@ -165,7 +177,7 @@ export default function ReadText({ text }) {
         )}
         </div>
 
-        { !text.simplifiedText && (
+        { !savedSimplifiedText && (
         <div className="bottom">
           <div className="read-text-block">
             <p className="zh">{text.content}</p>
@@ -174,12 +186,15 @@ export default function ReadText({ text }) {
         )}
         
         
-        { text.simplifiedText && (
+        { savedSimplifiedText && (
           <div className="container">
           {!isExpandedOriginal && (
               <div className={`read-text-block simplified ${isExpandedEasier ? 'expanded' : 'collapsed'}`}>
                 <div className="block-heading">
-                  <h3>Easier</h3>
+                  <div>
+                    <h3>Easier</h3>
+                    <button className="remove-easier" onClick={() => handleRemoveClick(text._id)}>Remove</button>
+                  </div>
                   {isExpandedEasier? (
                     <BiCollapse className="expand-icon" onClick={handleExpandToggleEasier} />
                   ) : (

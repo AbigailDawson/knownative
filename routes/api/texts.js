@@ -13,6 +13,7 @@ router.get('/:id/get-saved-words', ensureLoggedIn, textsCtrl.getSavedWords)
 router.post('/translate', ensureLoggedIn, textsCtrl.translateSentence)
 router.post('/simplify', ensureLoggedIn, textsCtrl.simplifyText)
 router.post('/:id/saveSimplified', ensureLoggedIn, textsCtrl.saveSimplifiedText)
+router.post('/:id/removeSimplified', ensureLoggedIn, textsCtrl.removeSimplifiedText)
 router.post('/:id/archive', ensureLoggedIn, textsCtrl.archiveText)
 router.post('/:id/favorite', ensureLoggedIn, textsCtrl.favoriteText)
 

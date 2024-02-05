@@ -69,6 +69,22 @@
   padding: 0 2vmin 2vmin 0;
 }
 
+.block-heading > div {
+  display: flex;
+  gap: 2vmin;
+}
+
+.remove-easier {
+  background-color: var(--off-white);
+  color: var(--drk-txt);
+  border: 1px solid var(--gray-lt);
+  padding: 0 1.5vmin;
+}
+
+.remove-easier:hover {
+  background-color: var(--teal-lt);
+}
+
 .expand-icon {
   font-size: 4vmin;
   color: var(--teal);
