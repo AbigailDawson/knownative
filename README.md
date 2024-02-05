@@ -4,8 +4,6 @@ KnowNative is a web application for learners of traditional Chinese to improve t
 
 [ - Live Site - ](https://knownative-730586de0f29.herokuapp.com/)
 
-![KnowNative feature demo](/public/images/kn-runthru.gif)
-
 ## Description
 
 KnowNative is inspired by two core philosophies of language learning: 
@@ -50,3 +48,9 @@ KnowNative currently only supports traditional Chinese due to its reliance on th
 The project currently leverages OpenAI technology to generate easier versions of texts graded for a 5th-grade reading level; however, currently the response length is limited and there are no options for customization. Future development will involve expanding the uses for the OpenAI API to include generating texts at different reading levels, extracting key words and other useful study tools.
 
 Future development will also include improvements to the flashcard feature of the app. Studies have shown that [**spaced repetition**](https://www.babbel.com/en/magazine/spaced-repetition-language-learning) is crucial to reinforcing concepts for long-term sustainable learning. Incorporating spaced repetition into the flashcard algorithm will make this an even more powerful tool for language learning.
+
+<hr> 
+
+Quick Demo:
+
+![KnowNative feature demo](/public/images/kn-runthru.gif)
