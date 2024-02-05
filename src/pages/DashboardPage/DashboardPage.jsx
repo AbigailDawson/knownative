@@ -44,10 +44,15 @@ export default function DashboardPage({ user, texts, setTexts }) {
   }
 
   async function handleAddText(textData) {
-    const text = await textsAPI.addNewText(textData)
-    setTexts([...texts, text])
-    setNumTexts(numTexts + 1)
-    handleClose()
+    try {
+      const text = await textsAPI.addNewText(textData);
+      console.log('Response from server:', text);
+      setTexts([...texts, text]);
+      setNumTexts(numTexts + 1);
+      handleClose();
+    } catch (error) {
+      console.error('Error adding new text:', error);
+    }
   }
 
   async function archiveText(text, id) {
