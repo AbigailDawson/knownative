@@ -123,7 +123,14 @@ async function simplifyText(req, res) {
     },
     body: JSON.stringify({
       model: 'gpt-3.5-turbo',
-      messages: [{ role: 'user', content: `Generate an easier version of the following Chinese text suitable for a 5th-grade reading level, using traditional Chinese characters: \n '${content}'` }],
+      messages: [
+        { 
+          role: 'user', 
+          content: `Generate an easier version of the following Chinese text suitable for a 5th-grade reading level: \n '${content}'`,
+          language: 'zh',
+          target: 'zh-TW',
+        }
+      ],
       max_tokens: 500,
     })
   }
