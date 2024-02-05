@@ -4,8 +4,6 @@ KnowNative is a web application for learners of traditional Chinese to improve t
 
 [ - Live Site - ](https://knownative-730586de0f29.herokuapp.com/)
 
-![KnowNative video runthrough](public/images/kn-runthru.gif)
-
 ## Description
 
 KnowNative is inspired by two of my core philosophies of language learning: 
