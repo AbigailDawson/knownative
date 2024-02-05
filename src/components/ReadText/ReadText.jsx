@@ -22,7 +22,7 @@ export default function ReadText({ text }) {
     function getSavedSimplifiedText() {
       setSavedSimplifiedText(text.simplifiedText)
     }
-  }, [])
+  }, [savedSimplifiedText])
 
   async function handleSimplifyClick() {
     try {
