@@ -229,10 +229,20 @@ export default function TextPage({ getText, updateText }) {
               </>
               
             ) : (
-              <>
-                'Congratulations, you completed the deck!'
-                <button onClick={handlePlayAgain}>Play Again</button>
-              </>
+              <div className="congrats">
+                <div>
+                  <dotlottie-player
+                  src="https://lottie.host/9279b8f8-2d84-4077-aaf6-db967f8ec7bb/3JRYmBPJgq.json"
+                  background="transparent"
+                  speed="1"
+                  style={{ height: '20vmin' }}
+                  loop
+                  autoplay
+                ></dotlottie-player>
+                </div>
+                <h2>You completed the deck!</h2>
+                <button className="play-again-btn" onClick={handlePlayAgain}>Play Again</button>
+              </div>
             ) }
         </DialogContent>
       </Dialog>
