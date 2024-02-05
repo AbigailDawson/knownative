@@ -46,7 +46,6 @@ export default function DashboardPage({ user, texts, setTexts }) {
   async function handleAddText(textData) {
     try {
       const text = await textsAPI.addNewText(textData);
-      console.log('Response from server:', text);
       setTexts([...texts, text]);
       setNumTexts(numTexts + 1);
       handleClose();

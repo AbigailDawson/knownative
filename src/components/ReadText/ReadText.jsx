@@ -132,8 +132,6 @@ export default function ReadText({ text, savedSimplifiedText, getSimplifiedText,
                 
                 {!simplifiedText && !loading && (
                   <>
-                      {console.log('simplifiedText:', simplifiedText)}
-
                     <h3 className="generate-txt"> Reading native texts can be tough. </h3> 
                     <p>If you’re feeling stuck, try reading a slightly easier version of this text! Click below to recreate this text at a 5th-grade reading level.</p>
                     <button className="generate-btn" onClick={handleSimplifyClick}> Generate! </button>
