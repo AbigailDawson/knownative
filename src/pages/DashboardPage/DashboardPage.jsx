@@ -7,6 +7,7 @@ import TextListItem from '../../components/TextListItem/TextListItem'
 import Sidebar from '../../components/Sidebar/Sidebar'
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Select, MenuItem } from '@mui/material'
 import { FaFileCirclePlus } from "react-icons/fa6";
+import { FaRegWindowClose } from "react-icons/fa";
 
 export default function DashboardPage({ user, texts, setTexts }) {
 
@@ -166,19 +167,27 @@ export default function DashboardPage({ user, texts, setTexts }) {
               maxWidth: '800px', 
               width: '80vw',
               backgroundColor: 'white',
-              color: 'var(--drk-txt)' 
+              color: 'var(--drk-txt)',
+              borderRadius: '2vmin',
               }}>
               {children}
             </div>
           )}
         >
+        <DialogActions style={{ 
+          alignSelf: 'flex-end',
+          padding: '0'
+          }}>
+          <Button
+          onClick={handleClose}>
+            <FaRegWindowClose className="close-icon"/>
+          </Button>
+        </DialogActions>
         <DialogTitle>Add New Text</DialogTitle>
         <DialogContent>
           <NewTextForm handleAddText={handleAddText} />
         </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
-        </DialogActions>
+
       </Dialog>
 
         { activeSelection === 'all' && (

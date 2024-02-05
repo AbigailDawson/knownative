@@ -67,7 +67,7 @@ export default function NewTextForm({ handleAddText }) {
             sx={{ width: '100%' }}
           />
         </div>
-        <button type="submit">Add</button>
+        <button className="add-btn" type="submit">Add</button>
       </form>
     </div>
   )
