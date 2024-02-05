@@ -48,7 +48,7 @@ export default function TextPage({ getText, updateText }) {
       }
     }
     getTokenizedText()
-  }, [])
+  }, [text])
 
   useEffect(function() {
     async function getSavedWords() {
