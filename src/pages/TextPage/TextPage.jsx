@@ -187,7 +187,6 @@ export default function TextPage({ getText, updateText }) {
         <DialogContent
           style={{ 
             width: '75%',
-            marginTop: '4vmin',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'space-between',
