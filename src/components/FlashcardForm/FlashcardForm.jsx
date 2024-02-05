@@ -34,10 +34,8 @@ export default function FlashcardForm({ selectedFront, setSelectedFront, showPin
         </FormGroup>
         <FormGroup>
           <FormControlLabel 
-            control={<Switch defaultChecked />} 
+            control={<Switch checked={showPinyin} onChange={() => setShowPinyin(!showPinyin)} />} 
             label="Show pinyin" 
-            checked={showPinyin}
-            onChange={() => setShowPinyin(!showPinyin)}
           />
         </FormGroup>
         <button className="play-btn" onClick={handlePlay}>Play!</button>
