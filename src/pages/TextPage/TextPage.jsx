@@ -153,6 +153,7 @@ export default function TextPage({ getText, updateText }) {
           updateMeaning={updateMeaning}
           deleteWord={deleteWord}
           handleOpen={handleOpen}
+          gameInProgress={gameInProgress}
         />
       </aside>
 
@@ -241,7 +242,7 @@ export default function TextPage({ getText, updateText }) {
                 ></dotlottie-player>
                 </div>
                 <h2>You completed the deck!</h2>
-                <button className="play-again-btn" onClick={handlePlayAgain}>Play Again</button>
+                <button className="play-btn" onClick={handlePlayAgain}>Play Again</button>
               </div>
             ) }
         </DialogContent>

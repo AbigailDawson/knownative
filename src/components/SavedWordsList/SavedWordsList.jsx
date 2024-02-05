@@ -3,7 +3,7 @@ import { useState } from 'react'
 import SavedWord from '../../components/SavedWord/SavedWord'
 import { TbCardsFilled } from "react-icons/tb";
 
-export default function SavedWordsList({ savedWords, updateMeaning, deleteWord, handleOpen }) {
+export default function SavedWordsList({ savedWords, updateMeaning, deleteWord, handleOpen, gameInProgress }) {
 
   const [editingWord, setEditingWord] = useState(null)
 
@@ -32,7 +32,7 @@ export default function SavedWordsList({ savedWords, updateMeaning, deleteWord, 
           <TbCardsFilled className="study-icon" onClick={handleOpen} />
           <p className="study-btn-txt"> </p>
         </div>
-        {savedWordItems}
+        { !gameInProgress && savedWordItems}
         </>
       )}
     </div>
