@@ -22,10 +22,10 @@ export default function DashboardPage({ user, texts, setTexts }) {
     async function getStats() {
       const numSavedWords = await wordsAPI.countSavedWords()
       setNumSavedWords(numSavedWords)
-      setNumTexts(texts.length)
       const archivedTexts = texts
       .filter(text => text.archived)
       setNumArchivedTexts(archivedTexts.length)
+      setNumTexts(texts.length - archivedTexts.length)
     }
     getStats()
   }, [texts])
