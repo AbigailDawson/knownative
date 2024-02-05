@@ -126,9 +126,7 @@ async function simplifyText(req, res) {
       messages: [
         { 
           role: 'user', 
-          content: `Generate an easier version of the following Chinese text suitable for a 5th-grade reading level: \n '${content}'`,
-          language: 'zh',
-          target: 'zh-TW',
+          content: `Using traditional Chinese characters, generate an easier version of the following Chinese text suitable for a 5th-grade reading level: \n '${content}'`
         }
       ],
       max_tokens: 500,
