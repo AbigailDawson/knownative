@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Routes, Route, Navigate } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import { getUser } from '../../utilities/users-service'
 import './App.css'
 import * as textsAPI from '../../utilities/texts-api'

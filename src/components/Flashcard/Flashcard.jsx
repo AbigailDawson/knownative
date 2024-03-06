@@ -9,16 +9,6 @@ export default function Flashcard({ chinese, pinyin, english, selectedFront, sho
     setIsFlipped(!isFlipped)
   }
 
-  function handleCorrect() {
-    onCorrect()
-    handleFlip()
-  }
-
-  function handleIncorrect() {
-    onIncorrect()
-    handleFlip()
-  }
-
   return (
     <>
       <div className={`flashcard ${isFlipped ? 'flipped' : ''}`} onClick={handleFlip}>

@@ -9,7 +9,7 @@ import Flashcard from '../../components/Flashcard/Flashcard'
 import FlashcardForm from '../../components/FlashcardForm/FlashcardForm'
 import * as textsAPI from '../../utilities/texts-api'
 import * as wordsAPI from '../../utilities/words-api'
-import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material'
+import { Button, Dialog, DialogActions, DialogContent } from '@mui/material'
 import { FaRegWindowClose } from "react-icons/fa";
 import { PiStarLight } from "react-icons/pi";
 import { PiStarFill } from "react-icons/pi";
@@ -67,18 +67,16 @@ export default function TextPage({ getText, updateText }) {
       setSavedWords(savedWords)
     }
     getSavedWords()
-  },[])
+  })
 
   async function saveSimplifiedText(simplifiedText) {
     const updatedText = await textsAPI.saveSimplifiedText(simplifiedText, text._id);
     updateText(updatedText)
-    // setSavedSimplifiedText(updatedText.simplifiedText)
     handleClose()
   }
 
   async function removeSimplifiedText() {
     const updatedText = await textsAPI.removeSimplifiedText(text._id);
-    // setSavedSimplifiedText(null)
     updateText(updatedText)
   }
 

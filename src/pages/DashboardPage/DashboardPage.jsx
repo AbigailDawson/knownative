@@ -5,7 +5,7 @@ import * as wordsAPI from '../../utilities/words-api'
 import NewTextForm from '../../components/NewTextForm/NewTextForm'
 import TextListItem from '../../components/TextListItem/TextListItem'
 import Sidebar from '../../components/Sidebar/Sidebar'
-import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Select, MenuItem } from '@mui/material'
+import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Select, MenuItem } from '@mui/material'
 import { FaFileCirclePlus } from "react-icons/fa6";
 import { FaRegWindowClose } from "react-icons/fa";
 
@@ -158,8 +158,8 @@ export default function DashboardPage({ user, texts, setTexts }) {
             </Select>
           </div>
             <span>Sort by: &nbsp;&nbsp;</span>
-            <a style={{textDecoration: 'underline'}} onClick={() => handleSortBy('created')}>Newest</a> &nbsp; | &nbsp;
-            <a style={{textDecoration: 'underline'}} onClick={() => handleSortBy('updated')}>Recently Updated</a>
+            <p style={{textDecoration: 'underline'}} onClick={() => handleSortBy('created')}>Newest</p> &nbsp; | &nbsp;
+            <p style={{textDecoration: 'underline'}} onClick={() => handleSortBy('updated')}>Recently Updated</p>
         </div>
 
         <Dialog

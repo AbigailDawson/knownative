@@ -1,7 +1,7 @@
 import './ReadText.css'
-import { useState, useEffect, Suspense } from 'react'
+import { useState, Suspense } from 'react'
 import * as textsAPI from '../../utilities/texts-api'
-import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Accordion, AccordionActions, AccordionSummary, AccordionDetails } from '@mui/material'
+import { Button, Dialog, DialogActions, DialogContent, DialogContentText, Accordion, AccordionSummary, AccordionDetails } from '@mui/material'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import { FaRegWindowClose } from "react-icons/fa"
 import { FaRegLightbulb } from "react-icons/fa6";
@@ -9,7 +9,7 @@ import { BiExpand } from "react-icons/bi";
 import { BiCollapse } from "react-icons/bi";
 import SimplifiedText from '../../components/SimplifiedText/SimplifiedText'
 
-export default function ReadText({ text, savedSimplifiedText, getSimplifiedText, saveSimplifiedText, removeSimplifiedText }) {
+export default function ReadText({ text, savedSimplifiedText, saveSimplifiedText, removeSimplifiedText }) {
 
   const [open, setOpen] = useState(false)
   const [simplifiedText, setSimplifiedText] = useState(null)

@@ -9,7 +9,7 @@ export default function NavBar({ user, setUser }) {
   function handleLogOut() {
     usersService.logOut() 
     setUser(null)
-    navigate('')
+    navigate('/', { replace: true })    
   }
 
   return (
@@ -20,7 +20,7 @@ export default function NavBar({ user, setUser }) {
       <div className="nav-right">
         <Link to='/dashboard' className={`nav-link ${location.pathname === '/dashboard' ? 'active' : ''}`}>Dashboard</Link>
         &nbsp; | &nbsp;
-        <Link to='#' className="nav-link" onClick={handleLogOut}>Log Out</Link>
+        <button className="nav-link" onClick={handleLogOut}>Log Out</button>
       </div>
     </nav>
   )

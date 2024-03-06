@@ -34,7 +34,7 @@ async function getAll(req, res) {
 
 async function addNewText(req, res) {
   req.body.user = req.user._id
-  req.body.content = req.body.content
+  // req.body.content = req.body.content
   
   try {
     const text = await Text.create(req.body)

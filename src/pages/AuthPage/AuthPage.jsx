@@ -6,13 +6,11 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import Stack from '@mui/material/Stack';
 import { PiBooksDuotone } from "react-icons/pi";
 import { GiRead } from "react-icons/gi";
 import { MdDashboard } from "react-icons/md";
 import { FaPencilAlt } from "react-icons/fa";
 import { TbCards } from "react-icons/tb";
-import { TbCardsFilled } from "react-icons/tb";
 import { IoLanguage } from "react-icons/io5";
 import { IoMdArrowRoundBack } from "react-icons/io";
 
@@ -32,7 +30,7 @@ export default function AuthPage({setUser}) {
 
       <section className="hero" id="top">
         <div className="hero-left">
-          <img src="/images/knlogo1.png" alt="KnowNative Logo Image" style={{width: '100%'}} />
+          <img src="/images/knlogo1.png" alt="KnowNative Logo" style={{width: '100%'}} />
         </div>
         <div className="hero-right">
           

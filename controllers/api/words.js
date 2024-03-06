@@ -1,7 +1,4 @@
-const path = require('path')
-const Text = require('../../models/text')
 const Word = require('../../models/word')
-const User = require('../../models/user')
 
 module.exports = {
   updateMeaning,
