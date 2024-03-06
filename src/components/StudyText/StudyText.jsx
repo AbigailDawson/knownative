@@ -1,5 +1,4 @@
-import { useState, useEffect } from 'react'
-import * as textsAPI from '../../utilities/texts-api'
+import { useState } from 'react'
 import './StudyText.css'
 import Popup from '../Popup/Popup'
 import Word from '../Word/Word'

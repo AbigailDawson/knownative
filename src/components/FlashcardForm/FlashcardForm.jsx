@@ -1,5 +1,4 @@
 import './FlashcardForm.css'
-import { useState } from 'react'
 import { Radio, RadioGroup, FormControlLabel, FormControl, FormGroup, Switch, FormLabel } from '@mui/material'
 
 export default function FlashcardForm({ selectedFront, setSelectedFront, showPinyin, setShowPinyin, handlePlay }) {

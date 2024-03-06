@@ -20,7 +20,7 @@ export default function NewTextForm({ handleAddText }) {
 
   async function handleSubmit(evt) {
     evt.preventDefault()
-    textData.content = textData.content
+    // textData.content = textData.content
     handleAddText(textData)
   }
 

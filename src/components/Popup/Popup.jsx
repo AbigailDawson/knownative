@@ -1,7 +1,4 @@
 import './Popup.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faStar as solidStar } from '@fortawesome/free-solid-svg-icons'
-import { faStar as lightStar } from '@fortawesome/free-regular-svg-icons'
 
 export default function Popup({ word, popupPosition, saveWord, textId, onClose}) {
 

@@ -15,7 +15,7 @@ export default function NavBar({ user, setUser }) {
   return (
     <nav>
       <div className="nav-left">
-        <img src="/images/knlogo2.png" alt="KnowNative Logo Image" style={{height: '11vmin'}} />
+        <img src="/images/knlogo2.png" alt="KnowNative Logo" style={{height: '11vmin'}} />
       </div>
       <div className="nav-right">
         <Link to='/dashboard' className={`nav-link ${location.pathname === '/dashboard' ? 'active' : ''}`}>Dashboard</Link>
