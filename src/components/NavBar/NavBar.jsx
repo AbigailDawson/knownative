@@ -19,7 +19,7 @@ export default function NavBar({ user, setUser }) {
       </div>
       <div className="nav-right">
         <Link to='/dashboard' className={`nav-link ${location.pathname === '/dashboard' ? 'active' : ''}`}>Dashboard</Link>
-        &nbsp; | &nbsp;
+        &nbsp; | 
         <button className="nav-link" onClick={handleLogOut}>Log Out</button>
       </div>
     </nav>

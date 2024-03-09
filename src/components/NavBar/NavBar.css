@@ -17,6 +17,7 @@ nav {
   position: relative;
   text-decoration: none;
   color: var(--off-white);
+  background-color: transparent;
   transition: color 0.3s ease;
   font-size: 1rem;
   text-transform: uppercase;
