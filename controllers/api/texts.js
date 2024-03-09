@@ -14,9 +14,9 @@ module.exports = {
   saveWord,
   getSavedWords,
   translateSentence,
-  simplifyText,
-  saveSimplifiedText,
-  removeSimplifiedText,
+  generateEasierText,
+  saveEasierText,
+  removeEasierText,
   archiveText,
   favoriteText
 }
@@ -110,7 +110,7 @@ async function translateSentence(req, res) {
   }
 }
 
-async function simplifyText(req, res) {
+async function generateEasierText(req, res) {
   const { content } = req.body
   const API_KEY = process.env.OPENAI_KEY
 
@@ -134,21 +134,21 @@ async function simplifyText(req, res) {
   }
 
   try {
-    const simplifiedText = await fetch('https://api.openai.com/v1/chat/completions', options)
-    const data = await simplifiedText.json()
+    const easierText = await fetch('https://api.openai.com/v1/chat/completions', options)
+    const data = await easierText.json()
     res.send(data)
   } catch(error) {
     console.error(error)
   }
 }
 
-async function saveSimplifiedText(req, res) {
-  const { simplifiedText } = req.body
+async function saveEasierText(req, res) {
+  const { easierText } = req.body
   
   try {
     const updatedText = await Text.findByIdAndUpdate(
       req.params.id, 
-      { simplifiedText }, 
+      { easierText }, 
       { new: true }
       )
     res.json(updatedText)
@@ -157,10 +157,10 @@ async function saveSimplifiedText(req, res) {
   }
 }
 
-async function removeSimplifiedText(req, res) {  
+async function removeEasierText(req, res) {  
   try {
     const updatedText = await Text.findById(req.params.id)
-    updatedText.simplifiedText = ''
+    updatedText.easierText = ''
     await updatedText.save()
     res.json(updatedText)
   } catch(error) {

@@ -22,7 +22,7 @@ export default function TextPage({ getText, updateText }) {
   const text = getText(textId)
   
   const [tokenizedText, setTokenizedText] = useState([])
-  const [savedSimplifiedText, setSavedSimplifiedText] = useState(null)
+  const [savedEasierText, setSavedEasierText] = useState(null)
 
   const [activeTab, setActiveTab] = useState('read')
 
@@ -53,30 +53,32 @@ export default function TextPage({ getText, updateText }) {
   }, [text])
 
   useEffect(function() {
-    function getSavedSimplifiedText() {
+    function getSavedEasierText() {
       if (text) {
-      setSavedSimplifiedText(text.simplifiedText)
+      setSavedEasierText(text.easierText)
       }
     }
-    getSavedSimplifiedText()
+    getSavedEasierText()
   }, [text])
 
   useEffect(function() {
     async function getSavedWords() {
-      const savedWords = await textsAPI.getSavedWords(textId)
-      setSavedWords(savedWords)
+      if (text) {
+        const savedWords = await textsAPI.getSavedWords(textId)
+        setSavedWords(savedWords)
+      }
     }
     getSavedWords()
-  })
+  }, [text])
 
-  async function saveSimplifiedText(simplifiedText) {
-    const updatedText = await textsAPI.saveSimplifiedText(simplifiedText, text._id);
+  async function saveEasierText(easierText) {
+    const updatedText = await textsAPI.saveEasierText(easierText, text._id);
     updateText(updatedText)
     handleClose()
   }
 
-  async function removeSimplifiedText() {
-    const updatedText = await textsAPI.removeSimplifiedText(text._id);
+  async function removeEasierText() {
+    const updatedText = await textsAPI.removeEasierText(text._id);
     updateText(updatedText)
   }
 
@@ -313,9 +315,9 @@ export default function TextPage({ getText, updateText }) {
               <div className="Text">
                 {text ? <ReadText 
                 text={text}
-                savedSimplifiedText={savedSimplifiedText}
-                saveSimplifiedText={saveSimplifiedText}
-                removeSimplifiedText={removeSimplifiedText} 
+                savedEasierText={savedEasierText}
+                saveEasierText={saveEasierText}
+                removeEasierText={removeEasierText} 
                 /> : 'Loading text'}
               </div>
             </div>

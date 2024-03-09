@@ -43,7 +43,7 @@
   text-wrap: wrap;
 }
 
-.simplified.collapsed,
+.easier.collapsed,
 .original.collapsed {
   grid-column: span 1;
 }
@@ -52,11 +52,11 @@
   margin-left: 3vmin;
 }
 
-.read-text-block.simplified.collapsed {
+.read-text-block.easier.collapsed {
   padding-right: 2vmin;
 }
 
-.simplified.expanded,
+.easier.expanded,
 .original.expanded {
   grid-column: span 2;
   border-right: none;
@@ -97,11 +97,11 @@
   cursor: pointer;
 }
 
-.simplified.collapsed {
+.easier.collapsed {
   border-right: 1px solid var(--gray-lt)
 }
 
-.simplified-text {
+.easier-text {
   margin-top: 2vmin;
   line-height: 4vmin;
   letter-spacing: .3vmin;

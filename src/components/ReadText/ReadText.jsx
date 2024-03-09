@@ -7,31 +7,31 @@ import { FaRegWindowClose } from "react-icons/fa"
 import { FaRegLightbulb } from "react-icons/fa6";
 import { BiExpand } from "react-icons/bi";
 import { BiCollapse } from "react-icons/bi";
-import SimplifiedText from '../../components/SimplifiedText/SimplifiedText'
+import EasierText from '../../components/EasierText/EasierText'
 
-export default function ReadText({ text, savedSimplifiedText, saveSimplifiedText, removeSimplifiedText }) {
+export default function ReadText({ text, savedEasierText, saveEasierText, removeEasierText }) {
 
   const [open, setOpen] = useState(false)
-  const [simplifiedText, setSimplifiedText] = useState(null)
+  const [easierText, setEasierText] = useState(null)
   const [loading, setLoading] = useState(false)
   const [isExpandedEasier, setIsExpandedEasier] = useState(false)
   const [isExpandedOriginal, setIsExpandedOriginal] = useState(false)
 
-  async function handleSimplifyClick() {
+  async function handleGenerateClick() {
     try {
       setLoading(true)
-      const data = await textsAPI.simplifyText(text.content)
-      const simplifiedText = data.choices[0].message.content
-      setSimplifiedText(simplifiedText)
+      const data = await textsAPI.generateEasierText(text.content)
+      const easierText = data.choices[0].message.content
+      setEasierText(easierText)
     } catch (error) {
-      console.error('Error simplifying text: ', error)
+      console.error('Error generating easier text: ', error)
     } finally {
       setLoading(false) 
     }
   }
 
   function handleRemoveClick() {
-    removeSimplifiedText(text._id)
+    removeEasierText(text._id)
     setOpen(false)
   }
 
@@ -59,7 +59,7 @@ export default function ReadText({ text, savedSimplifiedText, saveSimplifiedText
 
       <div className="top">
 
-        { !savedSimplifiedText && (
+        { !savedEasierText && (
           <>
           <Accordion style={{
           width: '40%',
@@ -130,11 +130,11 @@ export default function ReadText({ text, savedSimplifiedText, saveSimplifiedText
               textAlign: 'center',
               }}>
                 
-                {!simplifiedText && !loading && (
+                {!easierText && !loading && (
                   <>
                     <h3 className="generate-txt"> Reading native texts can be tough. </h3> 
                     <p>If you’re feeling stuck, try reading a slightly easier version of this text! Click below to recreate this text at a 5th-grade reading level.</p>
-                    <button className="generate-btn" onClick={handleSimplifyClick}> Generate! </button>
+                    <button className="generate-btn" onClick={handleGenerateClick}> Generate! </button>
                     <p className="disclaimer">Note: Generator currently only supports up to 500 characters of text at a time. If your text is longer, consider dividing it into sections before generating.</p>
                   </>
               )}
@@ -148,7 +148,7 @@ export default function ReadText({ text, savedSimplifiedText, saveSimplifiedText
                       </>
                       ) : (
                         <>
-                          {simplifiedText && <SimplifiedText simplifiedText={simplifiedText} saveSimplifiedText={saveSimplifiedText} />}
+                          {easierText && <EasierText easierText={easierText} saveEasierText={saveEasierText} />}
                         </>
                         
                       )}
@@ -161,7 +161,7 @@ export default function ReadText({ text, savedSimplifiedText, saveSimplifiedText
         )}
         </div>
 
-        { !savedSimplifiedText && (
+        { !savedEasierText && (
         <div className="bottom">
           <div className="read-text-block">
             <p className="zh">{text.content}</p>
@@ -170,10 +170,10 @@ export default function ReadText({ text, savedSimplifiedText, saveSimplifiedText
         )}
         
         
-        { savedSimplifiedText && (
+        { savedEasierText && (
           <div className="container">
           {!isExpandedOriginal && (
-              <div className={`read-text-block simplified ${isExpandedEasier ? 'expanded' : 'collapsed'}`}>
+              <div className={`read-text-block easier ${isExpandedEasier ? 'expanded' : 'collapsed'}`}>
                 <div className="block-heading">
                   <div>
                     <h3>Easier</h3>
@@ -185,7 +185,7 @@ export default function ReadText({ text, savedSimplifiedText, saveSimplifiedText
                     <BiExpand className="expand-icon" onClick={handleExpandToggleEasier} />
                   )}
                 </div>
-                <p className="zh">{text.simplifiedText}</p>
+                <p className="zh">{text.easierText}</p>
               </div>
             )}
 

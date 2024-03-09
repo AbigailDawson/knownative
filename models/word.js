@@ -16,7 +16,7 @@ const wordSchema = new Schema({
     type: String,
     default: ''
   },
-  simplified: {
+  easier: {
     type: String,
     default: ''
   },

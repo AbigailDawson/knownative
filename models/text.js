@@ -21,7 +21,7 @@ const textSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Word',
   }],
-  simplifiedText: {
+  easierText: {
     type: String,
     default: ''
   },
