@@ -69,7 +69,7 @@ export default function TextPage({ getText, updateText }) {
       }
     }
     getSavedWords()
-  }, [text])
+  })
 
   async function saveEasierText(easierText) {
     const updatedText = await textsAPI.saveEasierText(easierText, text._id);
