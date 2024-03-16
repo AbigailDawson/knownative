@@ -32,5 +32,8 @@ export function getWordInfo(word, savedWords) {
     meaning = savedWord.meaning || meaning
   }
 
-  return { pinyin, meaning }
+  const specialChars = ['‘', '“', '《', '『', '【', '（', '’', '”', '》', '』', '】', '）', '、', '，', '…', '。', '：', '；', '！', '？', '「', '」', '.', '・']
+    const isSpecialChar = specialChars.includes(word.text) || /\d/.test(word.text) || /[^\u4e00-\u9fa5]/.test(word.text)
+
+  return { pinyin, meaning, isSpecialChar }
 }

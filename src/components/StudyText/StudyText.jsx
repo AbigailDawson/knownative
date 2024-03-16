@@ -39,10 +39,7 @@ export default function StudyText({ text, textId, activeWord, setActiveWord, sav
   }
 
   const words = tokenizedText.map((word, idx) => {
-    const { pinyin, meaning } = getWordInfo(word, savedWords)
-
-    const specialChars = ['‘', '“', '《', '『', '【', '（', '’', '”', '》', '』', '】', '）', '、', '，', '…', '。', '：', '；', '！', '？', '「', '」', '.', '・']
-    const isSpecialChar = specialChars.includes(word.text) || /\d/.test(word.text) || /[^\u4e00-\u9fa5]/.test(word.text)
+    const { pinyin, meaning, isSpecialChar } = getWordInfo(word, savedWords)
 
     return (
       <Word 
