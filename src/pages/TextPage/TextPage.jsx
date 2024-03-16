@@ -21,7 +21,6 @@ export default function TextPage({ getText, updateText }) {
   const { textId } = useParams()
   const text = getText(textId)
   
-  const [tokenizedText, setTokenizedText] = useState([])
   const [savedEasierText, setSavedEasierText] = useState(null)
 
   const [activeTab, setActiveTab] = useState('read')
@@ -41,16 +40,6 @@ export default function TextPage({ getText, updateText }) {
   const [gameInProgress, setGameInProgress] = useState(false)
   const [correctCount, setCorrectCount] = useState(0)
   const [remainingCount, setRemainingCount] = useState(0)
-
-  useEffect(function() {
-    async function getTokenizedText() {
-      if (text) {
-        const tokenizedText = await textsAPI.tokenizeText(text.content)
-        setTokenizedText(tokenizedText)
-      }
-    }
-    getTokenizedText()
-  }, [text])
 
   useEffect(function() {
     function getSavedEasierText() {
@@ -298,7 +287,6 @@ export default function TextPage({ getText, updateText }) {
               <div className="Text">
                 {text ? <StudyText 
                   text={text}
-                  tokenizedText={tokenizedText} 
                   textId={textId} 
                   activeWord={activeWord}
                   setActiveWord={setActiveWord}

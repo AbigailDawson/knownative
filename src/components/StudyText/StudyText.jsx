@@ -1,11 +1,23 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './StudyText.css'
 import Popup from '../Popup/Popup'
 import Word from '../Word/Word'
+import * as textsAPI from '../../utilities/texts-api'
 
-export default function StudyText({ text, tokenizedText, textId, activeWord, setActiveWord, saveWord, savedWords, setSavedWords, showPopup, setShowPopup }) {
+export default function StudyText({ text, textId, activeWord, setActiveWord, saveWord, savedWords, setSavedWords, showPopup, setShowPopup }) {
 
+  const [tokenizedText, setTokenizedText] = useState([])
   const [popupPosition, setPopupPosition] = useState([0,0])
+
+  useEffect(function() {
+    async function getTokenizedText() {
+      if (text) {
+        const tokenizedText = await textsAPI.tokenizeText(text.content)
+        setTokenizedText(tokenizedText)
+      }
+    }
+    getTokenizedText()
+  }, [text])
 
   function checkSaved(word) {
     return savedWords.some((savedWord) => savedWord.traditional === word.traditional)
