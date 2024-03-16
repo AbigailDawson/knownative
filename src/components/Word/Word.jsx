@@ -1,6 +1,6 @@
 import './Word.css'
 
-export default function Word({ text, pinyin, meaning, isSaved, isSpecialChar, onClick }) {
+export default function Word({ word, pinyin, meaning, isSaved, isSpecialChar, onClick }) {
 
   return (
       <div 
@@ -9,7 +9,7 @@ export default function Word({ text, pinyin, meaning, isSaved, isSpecialChar, on
        <p className="zh"
        onClick={!isSpecialChar ? onClick : undefined}
        style={{ color: isSaved ? 'var(--red)' : 'var(--drk-txt)'}}
-       >{ text }</p>
+       >{ word }</p>
         <div 
           className="annotation" 
           style={{ visibility: isSaved ? 'visible' : 'hidden'}}

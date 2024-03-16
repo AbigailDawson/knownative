@@ -10,3 +10,27 @@ export function splitSentences(text) {
                return acc // return the result as an array
              }, [])
 }
+
+
+export function getWordInfo(word, savedWords) {
+  let pinyin = ''
+  let meaning = ''
+
+  if (word.matches && word.matches[0]) {
+    pinyin = word.matches[0].pinyinPretty
+    meaning = word.matches[0].english
+    meaning = meaning.includes('/') ? meaning.split('/')[0].trim() : meaning
+
+  } else {
+    pinyin = ''
+    meaning = ''
+  }
+
+  const savedWord = savedWords.find(savedWord => savedWord.traditional === word.traditional)
+  if (savedWord) {
+    pinyin = savedWord.pinyin || pinyin
+    meaning = savedWord.meaning || meaning
+  }
+
+  return { pinyin, meaning }
+}

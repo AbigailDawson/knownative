@@ -3,6 +3,7 @@ import './StudyText.css'
 import Popup from '../Popup/Popup'
 import Word from '../Word/Word'
 import * as textsAPI from '../../utilities/texts-api'
+import { getWordInfo } from '../../utilities/texts-service'
 
 export default function StudyText({ text, textId, activeWord, setActiveWord, saveWord, savedWords, setSavedWords, showPopup, setShowPopup }) {
 
@@ -37,31 +38,8 @@ export default function StudyText({ text, textId, activeWord, setActiveWord, sav
     setShowPopup(true)
   }
 
-  function getWordInfo(word) {
-    let pinyin = ''
-    let meaning = ''
-
-    if (word.matches && word.matches[0]) {
-      pinyin = word.matches[0].pinyinPretty
-      meaning = word.matches[0].english
-      meaning = meaning.includes('/') ? meaning.split('/')[0].trim() : meaning
-
-    } else {
-      pinyin = ''
-      meaning = ''
-    }
-
-    const savedWord = savedWords.find(savedWord => savedWord.traditional === word.traditional)
-    if (savedWord) {
-      pinyin = savedWord.pinyin || pinyin
-      meaning = savedWord.meaning || meaning
-    }
-
-    return { pinyin, meaning }
-  }
-
   const words = tokenizedText.map((word, idx) => {
-    const { pinyin, meaning } = getWordInfo(word)
+    const { pinyin, meaning } = getWordInfo(word, savedWords)
 
     const specialChars = ['‘', '“', '《', '『', '【', '（', '’', '”', '》', '』', '】', '）', '、', '，', '…', '。', '：', '；', '！', '？', '「', '」', '.', '・']
     const isSpecialChar = specialChars.includes(word.text) || /\d/.test(word.text) || /[^\u4e00-\u9fa5]/.test(word.text)
@@ -70,9 +48,7 @@ export default function StudyText({ text, textId, activeWord, setActiveWord, sav
       <Word 
         key={idx}
         onClick={(evt) => handleWordClick(word, evt)}
-        text={word.text}
-        traditional={word.traditional}
-        simplified={word.simplified}
+        word={word.text}
         pinyin={pinyin}
         meaning={meaning}
         isSaved={checkSaved(word)}
