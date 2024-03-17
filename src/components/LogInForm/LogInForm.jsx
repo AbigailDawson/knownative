@@ -13,7 +13,7 @@ export default function LogInForm({ setUser }) {
   })
   const [error, setError] = useState('')
 
-  function handleChange(evt) { // updates the credentials state based on which input is being changed. also updates the error state
+  function handleChange(evt) {
     setCredentials({ 
       ...credentials, 
       [evt.target.name]: evt.target.value 
@@ -22,11 +22,10 @@ export default function LogInForm({ setUser }) {
   }
 
   async function handleSubmit(evt) {
-    evt.preventDefault() // Prevent form from being submitted to the server
+    evt.preventDefault()
     try {
-      // The promise returned by the signUp service method will resolve to the user object included in the payload of the JSON Web Token (JWT)
       const user = await usersService.logIn(credentials)
-      setUser(user) // triggers the re-render
+      setUser(user)
       navigate('/dashboard')
     } catch {
       setError('Log In Failed - Try Again')

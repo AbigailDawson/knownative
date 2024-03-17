@@ -1,6 +1,6 @@
 import './AuthPage.css'
 import { useState } from 'react'
-import SignUpFormFunc from '../../components/SignUpFormFunc/SignUpFormFunc'
+import SignUpForm from '../../components/SignUpForm/SignUpForm'
 import LogInForm from '../../components/LogInForm/LogInForm'
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -60,7 +60,7 @@ export default function AuthPage({setUser}) {
             { showSignup && (
               <>
                 <IoMdArrowRoundBack className="back-btn" onClick={handleGoBack} />
-                <SignUpFormFunc setUser={setUser} />
+                <SignUpForm setUser={setUser} />
               </>
             )}
           </>
