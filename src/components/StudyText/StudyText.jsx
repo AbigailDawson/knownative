@@ -3,7 +3,7 @@ import './StudyText.css'
 import Popup from '../Popup/Popup'
 import Word from '../Word/Word'
 import * as textsAPI from '../../utilities/texts-api'
-import { getWordInfo } from '../../utilities/texts-service'
+import * as wordsAPI from '../../utilities/words-service'
 
 export default function StudyText({ text, textId, activeWord, setActiveWord, saveWord, savedWords, setSavedWords, showPopup, setShowPopup }) {
 
@@ -39,8 +39,23 @@ export default function StudyText({ text, textId, activeWord, setActiveWord, sav
   }
 
   const words = tokenizedText.map((word, idx) => {
-    const { pinyin, meaning, isSpecialChar } = getWordInfo(word, savedWords)
+    
+    let pinyin = ''
+    let meaning = ''
 
+    const savedWord = savedWords.find(savedWord => savedWord.traditional === word.traditional)
+
+    if (savedWord) {
+      pinyin = savedWord.pinyin || pinyin
+      meaning = savedWord.meaning || meaning
+    } else {
+      const wordInfo = wordsAPI.getWordInfo(word)
+      pinyin = wordInfo.pinyin
+      meaning = wordInfo.meaning
+    }
+
+    const isSpecialChar = wordsAPI.checkSpecialChar(word)
+    
     return (
       <Word 
         key={idx}
