@@ -1,12 +1,12 @@
 import './DemoTranslateText.css'
-import { splitSentences } from '../../utilities/texts-service'
-import Sentence from '../../demo/demo-components/DemoSentence/DemoSentence'
+import { splitSentences } from '../../../utilities/texts-service'
+import DemoSentence from '../DemoSentence/DemoSentence'
 
 export default function DemoTranslateText({ text }) {
 
   const sentenceArray = splitSentences(text.content)
   const sentences = sentenceArray.map((sentence, idx) => (
-    <Sentence
+    <DemoSentence
       key={idx}
       sentence={sentence}
     />

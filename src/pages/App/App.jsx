@@ -5,6 +5,7 @@ import './App.css'
 import * as textsAPI from '../../utilities/texts-api'
 import AuthPage from '../AuthPage/AuthPage'
 import TextPage from '../TextPage/TextPage'
+import DemoTextPage from '../../demo/demo-pages/DemoTextPage/DemoTextPage'
 import NavBar from '../../components/NavBar/NavBar'
 import DashboardPage from '../DashboardPage/DashboardPage'
 
@@ -52,6 +53,9 @@ function App() {
         :
         <>
           <Routes>
+            <Route 
+              path='/demo'
+              element={DemoTextPage} />
             <Route 
               path='/*' 
               element={<AuthPage setUser={setUser} />}  />

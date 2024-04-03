@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react'
 import './DemoStudyText.css'
-import Popup from '../Popup/Popup'
-import Word from '../DemoWord/DemoWord'
-import * as textsAPI from '../../utilities/texts-api'
-import * as wordsAPI from '../../utilities/words-service'
+import DemoPopup from '../DemoPopup/DemoPopup'
+import DemoWord from '../DemoWord/DemoWord'
+import * as textsAPI from '../../../utilities/texts-api'
+import * as wordsAPI from '../../../utilities/words-service'
 
 export default function DemoStudyText({ text, textId, activeWord, setActiveWord, saveWord, savedWords, setSavedWords, showPopup, setShowPopup }) {
 
@@ -57,7 +57,7 @@ export default function DemoStudyText({ text, textId, activeWord, setActiveWord,
     const isSpecialChar = wordsAPI.checkSpecialChar(word)
     
     return (
-      <Word 
+      <DemoWord 
         key={idx}
         onClick={(evt) => handleWordClick(word, evt)}
         word={word.text}
@@ -77,7 +77,7 @@ export default function DemoStudyText({ text, textId, activeWord, setActiveWord,
         </div>
       </div>
       {showPopup && (
-        <Popup word={activeWord} popupPosition={popupPosition} saveWord={(word) => saveWord(word, textId)} onClose={handlePopup} />
+        <DemoPopup word={activeWord} popupPosition={popupPosition} saveWord={(word) => saveWord(word, textId)} onClose={handlePopup} />
       )}
     </>
   )

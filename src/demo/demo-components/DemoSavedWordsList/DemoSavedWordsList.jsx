@@ -1,6 +1,6 @@
 import './DemoSavedWordsList.css'
 import { useState } from 'react'
-import SavedWord from '../../demo/demo-components/DemoSavedWord/DemoSavedWord'
+import DemoSavedWord from '../DemoSavedWord/DemoSavedWord'
 import { TbCardsFilled } from "react-icons/tb";
 
 export default function DemoSavedWordsList({ savedWords, updateMeaning, deleteWord, handleOpen, gameInProgress }) {
@@ -8,7 +8,7 @@ export default function DemoSavedWordsList({ savedWords, updateMeaning, deleteWo
   const [editingWord, setEditingWord] = useState(null)
 
   const savedWordItems = savedWords.map((word) => (
-    <SavedWord
+    <DemoSavedWord
       key={word._id}
       word={word}
       updateMeaning={updateMeaning}

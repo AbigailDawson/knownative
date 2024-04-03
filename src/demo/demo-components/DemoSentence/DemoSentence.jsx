@@ -1,9 +1,9 @@
 import './DemoSentence.css'
-import * as textsAPI from '../../utilities/texts-api'
+import * as textsAPI from '../../../utilities/texts-api'
 import { useState } from 'react'
-import Translation from '../../demo/demo-components/DemoTranslation/DemoTranslation'
+import DemoTranslation from '../DemoTranslation/DemoTranslation'
 
-export default function Sentence({sentence}) {
+export default function DemoSentence({sentence}) {
   const [translation, setTranslation] = useState('');
   const [showTranslation, setShowTranslation] = useState(false)
 
@@ -32,7 +32,7 @@ export default function Sentence({sentence}) {
         )
         }
     </div>
-      {translation && showTranslation && <Translation translation={translation}/>}
+      {translation && showTranslation && <DemoTranslation translation={translation}/>}
     </>
   )
 }

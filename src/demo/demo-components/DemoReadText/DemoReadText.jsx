@@ -1,13 +1,13 @@
 import './DemoReadText.css'
 import { useState, Suspense } from 'react'
-import * as textsAPI from '../../utilities/texts-api'
+import * as textsAPI from '../../../utilities/texts-api'
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, Accordion, AccordionSummary, AccordionDetails } from '@mui/material'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import { FaRegWindowClose } from "react-icons/fa"
 import { FaRegLightbulb } from "react-icons/fa6";
 import { BiExpand } from "react-icons/bi";
 import { BiCollapse } from "react-icons/bi";
-import EasierText from '../../components/EasierText/EasierText'
+import DemoEasierText from '../../../demo/demo-components/DemoEasierText/DemoEasierText'
 
 export default function DemoReadText({ text, savedEasierText, saveEasierText, removeEasierText }) {
 
@@ -148,7 +148,7 @@ export default function DemoReadText({ text, savedEasierText, saveEasierText, re
                       </>
                       ) : (
                         <>
-                          {easierText && <EasierText easierText={easierText} saveEasierText={saveEasierText} />}
+                          {easierText && <DemoEasierText easierText={easierText} saveEasierText={saveEasierText} />}
                         </>
                         
                       )}
