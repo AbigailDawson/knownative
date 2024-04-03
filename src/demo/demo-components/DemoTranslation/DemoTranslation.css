@@ -1,0 +1,6 @@
+.translation {
+  letter-spacing: 0;
+  font-size: 2vmin;
+  margin: 1vmin 0 4vmin 0;
+  color: var(--red)
+}
