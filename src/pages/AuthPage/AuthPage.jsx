@@ -47,6 +47,7 @@ export default function AuthPage({setUser}) {
                 <button className="login-btn" onClick={() => setShowSignup(!showSignup)}>
                   SIGN UP
                 </button>
+                <a href="/demo"><button className="login-btn" >DEMO</button></a>
               </div>
             </>
           ) : (
