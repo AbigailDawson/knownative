@@ -55,7 +55,7 @@ function App() {
           <Routes>
             <Route 
               path='/demo'
-              element={DemoTextPage} />
+              element={<DemoTextPage />} />
             <Route 
               path='/*' 
               element={<AuthPage setUser={setUser} />}  />

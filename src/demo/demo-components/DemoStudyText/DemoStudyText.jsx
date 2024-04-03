@@ -10,15 +10,15 @@ export default function DemoStudyText({ text, textId, activeWord, setActiveWord,
   const [tokenizedText, setTokenizedText] = useState([])
   const [popupPosition, setPopupPosition] = useState([0,0])
 
-  useEffect(function() {
-    async function getTokenizedText() {
-      if (text) {
-        const tokenizedText = await textsAPI.tokenizeText(text.content)
-        setTokenizedText(tokenizedText)
-      }
-    }
-    getTokenizedText()
-  }, [text])
+  // useEffect(function() {
+  //   async function getTokenizedText() {
+  //     if (text) {
+  //       const tokenizedText = await textsAPI.tokenizeText(text.content)
+  //       setTokenizedText(tokenizedText)
+  //     }
+  //   }
+  //   getTokenizedText()
+  // }, [text])
 
   function checkSaved(word) {
     return savedWords.some((savedWord) => savedWord.traditional === word.traditional)
