@@ -20,5 +20,5 @@ export function checkSpecialChar(word) {
   const specialChars = ['‘', '“', '《', '『', '【', '（', '’', '”', '》', '』', '】', '）', '、', '，', '…', '。', '：', '；', '！', '？', '「', '」', '.', '・']
     const isSpecialChar = specialChars.includes(word.text) || /\d/.test(word.text) || /[^\u4e00-\u9fa5]/.test(word.text)
 
-  return { isSpecialChar }
+  return isSpecialChar
 }
