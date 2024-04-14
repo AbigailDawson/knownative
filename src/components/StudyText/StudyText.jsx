@@ -3,7 +3,7 @@ import './StudyText.css'
 import Popup from '../Popup/Popup'
 import Word from '../Word/Word'
 import * as textsAPI from '../../utilities/texts-api'
-import * as wordsAPI from '../../utilities/words-service'
+import * as wordsService from '../../utilities/words-service'
 
 export default function StudyText({ text, textId, activeWord, setActiveWord, saveWord, savedWords, setSavedWords, showPopup, setShowPopup }) {
 
@@ -49,12 +49,12 @@ export default function StudyText({ text, textId, activeWord, setActiveWord, sav
       pinyin = savedWord.pinyin || pinyin
       meaning = savedWord.meaning || meaning
     } else {
-      const wordInfo = wordsAPI.getWordInfo(word)
+      const wordInfo = wordsService.getWordInfo(word)
       pinyin = wordInfo.pinyin
       meaning = wordInfo.meaning
     }
 
-    const isSpecialChar = wordsAPI.checkSpecialChar(word)
+    const isSpecialChar = wordsService.checkSpecialChar(word)
     
     return (
       <Word 
