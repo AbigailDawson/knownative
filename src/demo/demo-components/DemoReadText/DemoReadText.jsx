@@ -1,6 +1,6 @@
 import './DemoReadText.css'
 import { useState, Suspense } from 'react'
-import * as textsAPI from '../../../utilities/texts-api'
+import * as demoAPI from '../../../utilities/demo-api'
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, Accordion, AccordionSummary, AccordionDetails } from '@mui/material'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import { FaRegWindowClose } from "react-icons/fa"
@@ -9,20 +9,24 @@ import { BiExpand } from "react-icons/bi";
 import { BiCollapse } from "react-icons/bi";
 import DemoEasierText from '../../../demo/demo-components/DemoEasierText/DemoEasierText'
 
-export default function DemoReadText({ text, savedEasierText, saveEasierText, removeEasierText }) {
+export default function DemoReadText({ text, savedEasierText, setSavedEasierText }) {
 
   const [open, setOpen] = useState(false)
   const [easierText, setEasierText] = useState(null)
+
   const [loading, setLoading] = useState(false)
   const [isExpandedEasier, setIsExpandedEasier] = useState(false)
   const [isExpandedOriginal, setIsExpandedOriginal] = useState(false)
 
   async function handleGenerateClick() {
+    console.log('generate button clicked!')
+    console.log('text to generate: ', text.content)
     try {
       setLoading(true)
-      const data = await textsAPI.generateEasierText(text.content)
-      const easierText = data.choices[0].message.content
-      setEasierText(easierText)
+      const data = await demoAPI.generateEasierText(text.content)
+      console.log('data: ', data)
+      // const easierText = data.choices[0].message.content
+      // setEasierText(easierText)
     } catch (error) {
       console.error('Error generating easier text: ', error)
     } finally {
@@ -30,8 +34,14 @@ export default function DemoReadText({ text, savedEasierText, saveEasierText, re
     }
   }
 
+  function handleSaveClick(easierText) {
+    console.log('save button clicked!')
+    console.log('easierText to save: ', easierText)
+    setSavedEasierText(easierText)
+  }
+
   function handleRemoveClick() {
-    removeEasierText(text._id)
+    setSavedEasierText(null)
     setOpen(false)
   }
 
@@ -148,7 +158,7 @@ export default function DemoReadText({ text, savedEasierText, saveEasierText, re
                       </>
                       ) : (
                         <>
-                          {easierText && <DemoEasierText easierText={easierText} saveEasierText={saveEasierText} />}
+                          {easierText && <DemoEasierText easierText={easierText} handleSaveClick={handleSaveClick} />}
                         </>
                         
                       )}

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import './DemoTextPage.css'
 import DemoStudyText from '../../demo-components/DemoStudyText/DemoStudyText'
 import DemoReadText from '../../demo-components/DemoReadText/DemoReadText'
@@ -66,16 +66,16 @@ export default function DemoTextPage({ getText, updateText }) {
   //   getSavedWords()
   // }, [text])
 
-  async function saveEasierText(easierText) {
-    const updatedText = await textsAPI.saveEasierText(easierText, text._id);
-    updateText(updatedText)
-    handleClose()
-  }
+  // async function saveEasierText(easierText) {
+  //   const updatedText = await textsAPI.saveEasierText(easierText, text._id);
+  //   updateText(updatedText)
+  //   handleClose()
+  // }
 
-  async function removeEasierText() {
-    const updatedText = await textsAPI.removeEasierText(text._id);
-    updateText(updatedText)
-  }
+  // async function removeEasierText() {
+  //   const updatedText = await textsAPI.removeEasierText(text._id);
+  //   updateText(updatedText)
+  // }
 
   function getFlashcards() {
     const flashcardsArray = savedWords.map((word) => ({
@@ -310,8 +310,7 @@ export default function DemoTextPage({ getText, updateText }) {
                 {text ? <DemoReadText 
                 text={text}
                 savedEasierText={savedEasierText}
-                saveEasierText={saveEasierText}
-                removeEasierText={removeEasierText} 
+                setSavedEasierText={setSavedEasierText}
                 /> : 'Loading text'}
               </div>
             </div>

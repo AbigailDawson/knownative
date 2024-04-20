@@ -136,6 +136,7 @@ async function generateEasierText(req, res) {
   try {
     const easierText = await fetch('https://api.openai.com/v1/chat/completions', options)
     const data = await easierText.json()
+    console.log('data at controller: ', data)
     res.send(data)
   } catch(error) {
     console.error(error)
