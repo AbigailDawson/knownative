@@ -10,6 +10,8 @@ export default function DemoStudyText({ text, textId, activeWord, setActiveWord,
   const [tokenizedText, setTokenizedText] = useState([])
   const [popupPosition, setPopupPosition] = useState([0,0])
 
+  // adding comment to test that merge blocking is working
+
   // useEffect(function() {
   //   async function getTokenizedText() {
   //     if (text) {
