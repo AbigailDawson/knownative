@@ -24,8 +24,9 @@ export default function DemoReadText({ text, savedEasierText, setSavedEasierText
     try {
       setLoading(true)
       const data = await demoAPI.generateEasierText(text.content)
-      const easierText = data.choices[0].message.content
-      setEasierText(easierText)
+      console.log('data: ', data)
+      // const easierText = data.choices[0].message.content
+      // setEasierText(easierText)
     } catch (error) {
       console.error('Error generating easier text: ', error)
     } finally {

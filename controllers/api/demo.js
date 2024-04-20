@@ -9,6 +9,7 @@ async function getDemo(req, res) {
 
 async function generateEasierText(req, res) {
   const { content } = req.body
+  console.log('content: ', content)
   const API_KEY = process.env.OPENAI_KEY
 
   const options = {
@@ -33,6 +34,7 @@ async function generateEasierText(req, res) {
   try {
     const easierText = await fetch('https://api.openai.com/v1/chat/completions', options)
     const data = await easierText.json()
+    console.log('data at controller: ', data)
     res.send(data)
   } catch(error) {
     console.error(error)
