@@ -270,7 +270,7 @@ export default function TextPage({ getText, updateText }) {
               { !text.favorite && !text.archived && <PiStarLight className="star-empty" onClick={() => favoriteText(text, text._id)}/> }
               { text.favorite && <PiStarFill className="star-filled" onClick={() => favoriteText(text, text._id)} /> }
             </div>
-            {text.source && <a className='textpage-heading-subtitle' href={text.source}>Original source</a>}          
+            {text.source && <a className='textpage-heading-subtitle' href={text.source} target="_blank" rel="noreferrer">Original source</a>}          
           </div>
         </div>
         
