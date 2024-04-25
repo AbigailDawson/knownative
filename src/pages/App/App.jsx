@@ -38,7 +38,10 @@ function App() {
 }
   
   return (
-    <About />
+    
+    <main className='App'>
+      <About />
+    </main>
     // <main className='App'>
     //   { user ?
     //   <>

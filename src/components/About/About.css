@@ -1,0 +1,7 @@
+.flexTest {
+    display: flex;
+  /* flex-direction: column; */
+    justify-content: center; 
+    gap: 30px;
+    margin-top: 100px;
+}
