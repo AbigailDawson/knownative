@@ -5,32 +5,33 @@ import Image from "react-bootstrap/Image";
 import "./About.css";
 
 const About = () => {
-  const [slide, setSlide] = useState(0);
+  const [index, setIndex] = useState(0);
 
-  const changeSlide = (selectedSlide) => {
-    setSlide(selectedSlide);
+  const changeSlide = (selectedIndex) => {
+    setIndex(selectedIndex);
   };
 
   return (
     <Carousel
+      fade
       className="flexTest"
-      activeIndex={slide}
+      activeIndex={index}
       onSelect={changeSlide}
+      interval={null}
+      touch={true}
       data-bs-theme="dark"
     >
       <Carousel.Item>
-        <Image
-          src="https://t3.ftcdn.net/jpg/02/48/42/64/360_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg"
-          rounded
-        />
-        <Carousel.Caption>
+        <Image className="caroSize" src="/images/light.jpg" rounded />
+        <Carousel.Caption className="captionColor">
           <h3>Light Liu</h3>
           <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
         <Image
-          src="https://t3.ftcdn.net/jpg/02/48/42/64/360_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg"
+          className="caroSize"
+          src="https://static.wixstatic.com/media/5b25a8_d128f5c0289144588e4da9663ba23818~mv2.png/v1/fill/w_433,h_455,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/annecy%202023.png"
           rounded
         />
         <Carousel.Caption>
@@ -39,50 +40,35 @@ const About = () => {
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
-        <Image
-          src="https://t3.ftcdn.net/jpg/02/48/42/64/360_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg"
-          rounded
-        />
+        <Image className="caroSize" src="/images/renna.jpg" rounded />
         <Carousel.Caption>
           <h3>Renna Carver</h3>
           <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
-        <Image
-          src="https://t3.ftcdn.net/jpg/02/48/42/64/360_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg"
-          rounded
-        />
+        <Image className="caroSize" src="/images/emillio.jpg" rounded />
         <Carousel.Caption>
           <h3>Emillio Campos Jr.</h3>
           <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
-        <Image
-          src="https://t3.ftcdn.net/jpg/02/48/42/64/360_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg"
-          rounded
-        />
+        <Image className="caroSize" src="/images/taylor.jpg" rounded />
         <Carousel.Caption>
           <h3>Taylor Brooks</h3>
           <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
-        <Image
-          src="https://t3.ftcdn.net/jpg/02/48/42/64/360_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg"
-          rounded
-        />
+        <Image className="caroSize" src="/images/Abigail.jpg" rounded />
         <Carousel.Caption>
           <h3>Abigail Dawson</h3>
           <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
-        <Image
-          src="https://t3.ftcdn.net/jpg/02/48/42/64/360_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg"
-          rounded
-        />
+        <Image className="caroSize" src="/images/me2.jpg" rounded />
         <Carousel.Caption>
           <h3>Bredell Evans</h3>
           <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
@@ -92,22 +78,3 @@ const About = () => {
   );
 };
 export default About;
-
-// return (
-//     <div ref={ref} className='ui form'>
-//         <div className='field'>
-//             <label className='label'>{label}</label>
-//             <div
-//                 onClick={() => setOpen(!open)}
-//                 className={`ui selection dropdown ${open ? 'visible active' : ''}`}>
-//                 <i className='dropdown icon'></i>
-//                 <div className='text'>
-//                     {selected.label}
-//                 </div>
-//                 <div className={`menu ${open ? 'visible transition' : ''}`}>
-//                     {renderedOptions}
-//                 </div>
-//             </div>
-//         </div>
-//     </div>
-// )
