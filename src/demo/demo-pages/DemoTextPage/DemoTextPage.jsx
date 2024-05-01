@@ -27,8 +27,6 @@ export default function DemoTextPage({ getText, updateText }) {
     easierText: '',
   }
 
-  const [savedEasierText, setSavedEasierText] = useState(null)
-
   const [activeTab, setActiveTab] = useState('read')
 
   // --- SAVED WORDS ---
@@ -46,36 +44,6 @@ export default function DemoTextPage({ getText, updateText }) {
   const [gameInProgress, setGameInProgress] = useState(false)
   const [correctCount, setCorrectCount] = useState(0)
   const [remainingCount, setRemainingCount] = useState(0)
-
-  // useEffect(function() {
-  //   function getSavedEasierText() {
-  //     if (text) {
-  //     setSavedEasierText(text.easierText)
-  //     }
-  //   }
-  //   getSavedEasierText()
-  // }, [text])
-
-  // useEffect(function() {
-  //   async function getSavedWords() {
-  //     if (text) {
-  //       const savedWords = await textsAPI.getSavedWords(textId)
-  //       setSavedWords(savedWords)
-  //     }
-  //   }
-  //   getSavedWords()
-  // }, [text])
-
-  // async function saveEasierText(easierText) {
-  //   const updatedText = await textsAPI.saveEasierText(easierText, text._id);
-  //   updateText(updatedText)
-  //   handleClose()
-  // }
-
-  // async function removeEasierText() {
-  //   const updatedText = await textsAPI.removeEasierText(text._id);
-  //   updateText(updatedText)
-  // }
 
   function getFlashcards() {
     const flashcardsArray = savedWords.map((word) => ({
@@ -309,8 +277,6 @@ export default function DemoTextPage({ getText, updateText }) {
               <div className="Text">
                 {text ? <DemoReadText 
                 text={text}
-                savedEasierText={savedEasierText}
-                setSavedEasierText={setSavedEasierText}
                 /> : 'Loading text'}
               </div>
             </div>
