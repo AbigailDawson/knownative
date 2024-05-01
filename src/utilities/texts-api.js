@@ -33,18 +33,6 @@ export function translateSentence(sentence) {
   return sendRequest(`${BASE_URL}/translate`, 'POST', { sentence })
 }
 
-export function generateEasierText(content) {
-  return sendRequest(`${BASE_URL}/generate`, 'POST', { content })
-}
-
-export function saveEasierText(easierText, textId) {
-  return sendRequest(`${BASE_URL}/${textId}/save-easier-text`, 'POST', { easierText })
-}
-
-export function removeEasierText(textId) {
-  return sendRequest(`${BASE_URL}/${textId}/remove-easier-text`, 'POST')
-}
-
 export function archiveText(text, id) {
   return sendRequest(`${BASE_URL}/${id}/archive`, 'POST', { text })
 }
