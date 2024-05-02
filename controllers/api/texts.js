@@ -3,7 +3,7 @@ const tokenize = require('chinese-tokenizer').loadFile(path.join(__dirname, '../
 const Text = require('../../models/text')
 const Word = require('../../models/word')
 const {Translate} = require('@google-cloud/translate').v2
-const translate = new Translate();
+const translate = new Translate({ key: process.env.GOOGLE_TRANSLATE_API_KEY });
 
 module.exports = {
   tokenizeText,
