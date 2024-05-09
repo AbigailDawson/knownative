@@ -1,42 +1,33 @@
+const path = require('path')
+const {Translate} = require('@google-cloud/translate').v2
+const tokenize = require('chinese-tokenizer').loadFile(path.join(__dirname, '../../config/cedict_ts.u8.txt'))
+const translate = new Translate({ key: process.env.GOOGLE_TRANSLATE_API_KEY });
+
 module.exports = {
   getDemo,
-  generateEasierText
+  tokenizeText,
+  translateSentence,
 }
 
 async function getDemo(req, res) {
   
 }
 
-async function generateEasierText(req, res) {
-  const { content } = req.body
-  console.log('content: ', content)
-  const API_KEY = process.env.OPENAI_KEY
+function tokenizeText(req, res) {
+  const { text } = req.body
+  const tokenizedText = tokenize(text)
+  res.json(tokenizedText)
+}
 
-  const options = {
-    stream: false,
-    method: 'POST',
-    headers: {
-      'Authorization': `Bearer ${API_KEY}`,
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      model: 'gpt-3.5-turbo',
-      messages: [
-        { 
-          role: 'user', 
-          content: `Using traditional Chinese characters, generate an easier version of the following Chinese text suitable for a 5th-grade reading level: \n '${content}'`
-        }
-      ],
-      max_tokens: 500,
-    })
-  }
+async function translateSentence(req, res) {
+  const { sentence } = req.body
+  const target = 'en'
 
   try {
-    const easierText = await fetch('https://api.openai.com/v1/chat/completions', options)
-    const data = await easierText.json()
-    console.log('data at controller: ', data)
-    res.send(data)
+    let [translations] = await translate.translate(sentence, target)
+    translations = Array.isArray(translations) ? translations : [translations]
+    res.json(translations[0])
   } catch(error) {
-    console.error(error)
+    res.status(400).json(error)
   }
 }

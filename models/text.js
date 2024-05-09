@@ -21,10 +21,6 @@ const textSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Word',
   }],
-  easierText: {
-    type: String,
-    default: ''
-  },
   archived: {
     type: Boolean,
     default: false

@@ -21,8 +21,6 @@ export default function TextPage({ getText, updateText }) {
   const { textId } = useParams()
   const text = getText(textId)
   
-  const [savedEasierText, setSavedEasierText] = useState(null)
-
   const [activeTab, setActiveTab] = useState('read')
 
   // --- SAVED WORDS ---
@@ -41,14 +39,6 @@ export default function TextPage({ getText, updateText }) {
   const [correctCount, setCorrectCount] = useState(0)
   const [remainingCount, setRemainingCount] = useState(0)
 
-  useEffect(function() {
-    function getSavedEasierText() {
-      if (text) {
-      setSavedEasierText(text.easierText)
-      }
-    }
-    getSavedEasierText()
-  }, [text])
 
   useEffect(function() {
     async function getSavedWords() {
@@ -59,17 +49,6 @@ export default function TextPage({ getText, updateText }) {
     }
     getSavedWords()
   }, [text])
-
-  async function saveEasierText(easierText) {
-    const updatedText = await textsAPI.saveEasierText(easierText, text._id);
-    updateText(updatedText)
-    handleClose()
-  }
-
-  async function removeEasierText() {
-    const updatedText = await textsAPI.removeEasierText(text._id);
-    updateText(updatedText)
-  }
 
   function getFlashcards() {
     const flashcardsArray = savedWords.map((word) => ({
@@ -270,7 +249,7 @@ export default function TextPage({ getText, updateText }) {
               { !text.favorite && !text.archived && <PiStarLight className="star-empty" onClick={() => favoriteText(text, text._id)}/> }
               { text.favorite && <PiStarFill className="star-filled" onClick={() => favoriteText(text, text._id)} /> }
             </div>
-            {text.source && <a className='textpage-heading-subtitle' href={text.source}>Original source</a>}          
+            {text.source && <a className='textpage-heading-subtitle' href={text.source} target="_blank" rel="noreferrer">Original source</a>}          
           </div>
         </div>
         
@@ -303,9 +282,6 @@ export default function TextPage({ getText, updateText }) {
               <div className="Text">
                 {text ? <ReadText 
                 text={text}
-                savedEasierText={savedEasierText}
-                saveEasierText={saveEasierText}
-                removeEasierText={removeEasierText} 
                 /> : 'Loading text'}
               </div>
             </div>

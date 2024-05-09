@@ -3,7 +3,7 @@ const tokenize = require('chinese-tokenizer').loadFile(path.join(__dirname, '../
 const Text = require('../../models/text')
 const Word = require('../../models/word')
 const {Translate} = require('@google-cloud/translate').v2
-const translate = new Translate();
+const translate = new Translate({ key: process.env.GOOGLE_TRANSLATE_API_KEY });
 
 module.exports = {
   tokenizeText,
@@ -14,9 +14,6 @@ module.exports = {
   saveWord,
   getSavedWords,
   translateSentence,
-  generateEasierText,
-  saveEasierText,
-  removeEasierText,
   archiveText,
   favoriteText
 }
@@ -105,65 +102,6 @@ async function translateSentence(req, res) {
     let [translations] = await translate.translate(sentence, target)
     translations = Array.isArray(translations) ? translations : [translations]
     res.json(translations[0])
-  } catch(error) {
-    res.status(400).json(error)
-  }
-}
-
-async function generateEasierText(req, res) {
-  const { content } = req.body
-  const API_KEY = process.env.OPENAI_KEY
-
-  const options = {
-    stream: false,
-    method: 'POST',
-    headers: {
-      'Authorization': `Bearer ${API_KEY}`,
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      model: 'gpt-3.5-turbo',
-      messages: [
-        { 
-          role: 'user', 
-          content: `Using traditional Chinese characters, generate an easier version of the following Chinese text suitable for a 5th-grade reading level: \n '${content}'`
-        }
-      ],
-      max_tokens: 500,
-    })
-  }
-
-  try {
-    const easierText = await fetch('https://api.openai.com/v1/chat/completions', options)
-    const data = await easierText.json()
-    console.log('data at controller: ', data)
-    res.send(data)
-  } catch(error) {
-    console.error(error)
-  }
-}
-
-async function saveEasierText(req, res) {
-  const { easierText } = req.body
-  
-  try {
-    const updatedText = await Text.findByIdAndUpdate(
-      req.params.id, 
-      { easierText }, 
-      { new: true }
-      )
-    res.json(updatedText)
-  } catch(error) {
-    res.status(400).json(error)
-  }
-}
-
-async function removeEasierText(req, res) {  
-  try {
-    const updatedText = await Text.findById(req.params.id)
-    updatedText.easierText = ''
-    await updatedText.save()
-    res.json(updatedText)
   } catch(error) {
     res.status(400).json(error)
   }

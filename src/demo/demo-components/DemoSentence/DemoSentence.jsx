@@ -1,5 +1,5 @@
 import './DemoSentence.css'
-import * as textsAPI from '../../../utilities/texts-api'
+import * as demoAPI from '../../../utilities/demo-api'
 import { useState } from 'react'
 import DemoTranslation from '../DemoTranslation/DemoTranslation'
 
@@ -9,7 +9,7 @@ export default function DemoSentence({sentence}) {
 
   async function handleTranslate(sentence) {
     if (translation === '') {
-      const translatedSentence = await textsAPI.translateSentence(sentence)
+      const translatedSentence = await demoAPI.translateSentence(sentence)
       setTranslation(translatedSentence)
       setShowTranslation(true)
     } else {
