@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import './DemoStudyText.css'
 import DemoPopup from '../DemoPopup/DemoPopup'
 import DemoWord from '../DemoWord/DemoWord'
-import * as textsAPI from '../../../utilities/texts-api'
+import * as demoAPI from '../../../utilities/demo-api'
 import * as wordsAPI from '../../../utilities/words-service'
 
 export default function DemoStudyText({ text, textId, activeWord, setActiveWord, saveWord, savedWords, setSavedWords, showPopup, setShowPopup }) {
@@ -10,15 +10,15 @@ export default function DemoStudyText({ text, textId, activeWord, setActiveWord,
   const [tokenizedText, setTokenizedText] = useState([])
   const [popupPosition, setPopupPosition] = useState([0,0])
 
-  // useEffect(function() {
-  //   async function getTokenizedText() {
-  //     if (text) {
-  //       const tokenizedText = await textsAPI.tokenizeText(text.content)
-  //       setTokenizedText(tokenizedText)
-  //     }
-  //   }
-  //   getTokenizedText()
-  // }, [text])
+  useEffect(function() {
+    async function getTokenizedText() {
+      if (text) {
+        const tokenizedText = await demoAPI.tokenizeText(text.content)
+        setTokenizedText(tokenizedText)
+      }
+    }
+    getTokenizedText()
+  }, [text])
 
   function checkSaved(word) {
     return savedWords.some((savedWord) => savedWord.traditional === word.traditional)
@@ -43,7 +43,9 @@ export default function DemoStudyText({ text, textId, activeWord, setActiveWord,
     let pinyin = ''
     let meaning = ''
 
-    const savedWord = savedWords.find(savedWord => savedWord.traditional === word.traditional)
+    //const savedWord = savedWords.find(savedWord => savedWord.traditional === word.traditional)
+    
+    const savedWord = null
 
     if (savedWord) {
       pinyin = savedWord.pinyin || pinyin
@@ -73,7 +75,8 @@ export default function DemoStudyText({ text, textId, activeWord, setActiveWord,
     <>
       <div className="StudyText">
         <div className="study-text-block">
-        {words}
+          {tokenizedText}
+          {words}
         </div>
       </div>
       {showPopup && (
