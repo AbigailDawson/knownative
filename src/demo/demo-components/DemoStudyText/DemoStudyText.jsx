@@ -43,9 +43,7 @@ export default function DemoStudyText({ text, textId, activeWord, setActiveWord,
     let pinyin = ''
     let meaning = ''
 
-    //const savedWord = savedWords.find(savedWord => savedWord.traditional === word.traditional)
-    
-    const savedWord = null
+    const savedWord = savedWords.find(savedWord => savedWord.traditional === word.traditional)
 
     if (savedWord) {
       pinyin = savedWord.pinyin || pinyin
@@ -75,7 +73,6 @@ export default function DemoStudyText({ text, textId, activeWord, setActiveWord,
     <>
       <div className="StudyText">
         <div className="study-text-block">
-          {tokenizedText}
           {words}
         </div>
       </div>
