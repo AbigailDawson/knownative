@@ -261,7 +261,7 @@ export default function DemoTextPage({ getText, updateText }) {
               <div className="Text">
                 {text ? <DemoStudyText 
                   text={text}
-                  // textId={textId} 
+                  textId={text._id} 
                   activeWord={activeWord}
                   setActiveWord={setActiveWord}
                   saveWord={saveWord} 

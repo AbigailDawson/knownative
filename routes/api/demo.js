@@ -4,5 +4,6 @@ const demoCtrl = require('../../controllers/api/demo.js')
 
 router.get('/demo', demoCtrl.getDemo)
 router.post('/translate', demoCtrl.translateSentence)
+router.post('/tokenize', demoCtrl.tokenizeText)
 
 module.exports = router
