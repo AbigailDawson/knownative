@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { useState, useEffect } from "react";
 import Carousel from "react-bootstrap/Carousel";
 import Image from "react-bootstrap/Image";
-import "./About.css";
+import "./AboutPage.css";
 
 const About = () => {
   const [index, setIndex] = useState(0);

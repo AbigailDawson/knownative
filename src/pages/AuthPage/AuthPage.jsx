@@ -48,6 +48,7 @@ export default function AuthPage({setUser}) {
                   SIGN UP
                 </button>
                 <a href="/demo"><button className="login-btn">DEMO</button></a>
+                <a href="/about"><button className="login-btn">ABOUT</button></a>
               </div>
             </>
           ) : (
