@@ -12,7 +12,8 @@
     box-shadow: 10px 5px 5px grey;  
 }
 
-h3, p {
+.captionColor h3, 
+.captionColor p {
     color: white;
     text-shadow: 3px 3px black;
 }
