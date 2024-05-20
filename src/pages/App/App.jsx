@@ -8,6 +8,7 @@ import TextPage from '../TextPage/TextPage'
 import DemoTextPage from '../../demo/demo-pages/DemoTextPage/DemoTextPage'
 import NavBar from '../../components/NavBar/NavBar'
 import DashboardPage from '../DashboardPage/DashboardPage'
+import About from '../AboutPage/AboutPage'
 
 function App() {
   const [user, setUser] = useState(getUser())
@@ -37,6 +38,7 @@ function App() {
 }
   
   return (
+    
     <main className='App'>
       { user ?
       <>
@@ -56,6 +58,9 @@ function App() {
             <Route 
               path='/demo'
               element={<DemoTextPage />} />
+            <Route 
+              path='/about'
+              element={<About />} />
             <Route 
               path='/*' 
               element={<AuthPage setUser={setUser} />}  />
