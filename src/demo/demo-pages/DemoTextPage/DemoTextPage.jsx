@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './DemoTextPage.css'
 import DemoStudyText from '../../demo-components/DemoStudyText/DemoStudyText'
 import DemoReadText from '../../demo-components/DemoReadText/DemoReadText'
@@ -14,6 +14,8 @@ import { PiStarLight } from "react-icons/pi";
 import { PiStarFill } from "react-icons/pi";
 import { GiCheckMark } from "react-icons/gi";
 import { PiRepeatBold } from "react-icons/pi";
+import { getWordInfo } from '../../../utilities/words-service'
+//import word from '../../../../models/word'
 
 export default function DemoTextPage({ getText, updateText }) {
 
@@ -30,6 +32,7 @@ export default function DemoTextPage({ getText, updateText }) {
   const [activeTab, setActiveTab] = useState('read')
 
   // --- SAVED WORDS ---
+  const [localSavedWords, setLocalSavedWords] = useState([])
   const [savedWords, setSavedWords] = useState([])
   const [activeWord, setActiveWord] = useState(null)
 
@@ -44,6 +47,15 @@ export default function DemoTextPage({ getText, updateText }) {
   const [gameInProgress, setGameInProgress] = useState(false)
   const [correctCount, setCorrectCount] = useState(0)
   const [remainingCount, setRemainingCount] = useState(0)
+
+  useEffect(function() {
+    function setLocalStorage () {
+      console.log(localSavedWords)
+      const stringifiedWords = JSON.stringify(localSavedWords)
+      localStorage.setItem("stringifiedWords", stringifiedWords)
+    }
+    setLocalStorage()
+  }, [localSavedWords])
 
   function getFlashcards() {
     const flashcardsArray = savedWords.map((word) => ({
@@ -64,11 +76,17 @@ export default function DemoTextPage({ getText, updateText }) {
     updateText(updatedText)
   }
 
-  async function saveWord(word, textId) {
-    const savedWord = await textsAPI.saveWord(word, textId)
-    setSavedWords([...savedWords, savedWord])
-    setActiveWord('')
-    setShowPopup(false)
+  // async function saveWord(word, textId) {
+  //   const savedWord = await textsAPI.saveWord(word, textId)
+  //   setSavedWords([...savedWords, savedWord])
+  //   setActiveWord('')
+  //   setShowPopup(false)
+  // }
+
+  function saveWord(word) {
+    const wordToSave = getWordInfo(word)
+    console.log(wordToSave)
+    setLocalSavedWords([...localSavedWords, wordToSave])
   }
 
   async function updateMeaning(word, formData) {

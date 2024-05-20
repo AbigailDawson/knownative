@@ -15,8 +15,12 @@ export default function Popup({ word, popupPosition, saveWord, textId, onClose})
     meaning = ''
   }
 
+  // function handleSaveClick(word) {
+  //   saveWord(word, textId)
+  // }
+
   function handleSaveClick(word) {
-    saveWord(word, textId)
+    saveWord(word)
   }
 
   return (
