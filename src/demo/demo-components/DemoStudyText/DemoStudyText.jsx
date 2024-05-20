@@ -43,7 +43,9 @@ export default function DemoStudyText({ text, textId, activeWord, setActiveWord,
     let pinyin = ''
     let meaning = ''
 
-    const savedWord = savedWords.find(savedWord => savedWord.traditional === word.traditional)
+    //const savedWord = savedWords.find(savedWord => savedWord.traditional === word.traditional)
+    
+    const savedWord = null
 
     if (savedWord) {
       pinyin = savedWord.pinyin || pinyin
