@@ -6,6 +6,7 @@ import DemoTranslateText from '../../demo-components/DemoTranslateText/DemoTrans
 import DemoSavedWordsList from '../../demo-components/DemoSavedWordsList/DemoSavedWordsList'
 import DemoFlashcard from '../../demo-components/DemoFlashcard/DemoFlashcard'
 import DemoFlashcardForm from '../../demo-components/DemoFlashcardForm/DemoFlashcardForm'
+import DemoNav from '../../demo-components/DemoNav/DemoNav'
 import * as textsAPI from '../../../utilities/texts-api'
 import * as wordsAPI from '../../../utilities/words-api'
 import { Button, Dialog, DialogActions, DialogContent } from '@mui/material'
@@ -151,6 +152,10 @@ export default function DemoTextPage({ getText, updateText }) {
     : (
     
     <main className="TextPage page">
+
+      <nav className="side-nav">
+        <DemoNav />
+      </nav>
       
       <aside className="sidebar">
         <DemoSavedWordsList 
@@ -255,18 +260,6 @@ export default function DemoTextPage({ getText, updateText }) {
 
       <section className="main-area">
 
-        <div className="top-area">
-          <div className='textpage-heading'>
-            <div className="flex-row">
-              <h1 className='textpage-heading-title zh'>{text.title}</h1>
-              { !text.favorite && !text.archived && <PiStarLight className="star-empty" onClick={() => favoriteText(text, text._id)}/> }
-              { text.favorite && <PiStarFill className="star-filled" onClick={() => favoriteText(text, text._id)} /> }
-            </div>
-            {text.source && <a className='textpage-heading-subtitle' href={text.source}>Original source</a>}          
-          </div>
-        </div>
-        
-
         <div className="tabs">
           <button className={`tab-btn ${activeTab === 'read' ? 'active' : ''}`} onClick={() => handleTabClick('read')} >Read</button>
           <button className={`tab-btn ${activeTab === 'study' ? 'active' : ''}`} onClick={() => handleTabClick('study')} >Study</button>
@@ -274,6 +267,11 @@ export default function DemoTextPage({ getText, updateText }) {
         </div>
 
           <div className="text-area">
+            <div className='textpage-heading'>
+              <div className="flex-row">
+                <h1 className='textpage-heading-title zh'>{text.title}</h1>       
+              </div>
+            </div>
 
             <div id="study" className={`study-container ${activeTab === 'study' ? 'active' : ''}`}>
               <div className="Text">
