@@ -72,7 +72,7 @@ a {
 
 .page {
   display: grid;
-  grid-template-columns: 5% 20% 75%;
+  grid-template-columns: 6% 21% 73%;
   height: 90vh;
 }
 
@@ -90,7 +90,7 @@ a {
 .side-nav {
   display: flex;
   flex-direction: column;
-  justify-content: start;
+  justify-content: space-between;
   align-items: center;
   background-color: green;
   height: 100vh;

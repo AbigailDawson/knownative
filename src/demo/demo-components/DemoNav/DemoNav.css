@@ -1,0 +1,25 @@
+.top-icons,
+.bottom-icons {
+  padding: 1vmin 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.placeholder-logo {
+  width: 80%;
+  margin-bottom: 3vmin;
+}
+
+.side-nav-icon-top {
+  font-size: 4vmin;
+  color: var(--primary);
+  margin: 1vmin 0;
+}
+
+.side-nav-icon-bottom {
+  font-size: 4vmin;
+  color: var(--primary);
+  margin: 1vmin 0;
+}
