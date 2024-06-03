@@ -36,6 +36,7 @@ export default function DemoTextPage({ getText, updateText }) {
   const [localSavedWords, setLocalSavedWords] = useState([])
   const [savedWords, setSavedWords] = useState([])
   const [activeWord, setActiveWord] = useState(null)
+  const [expandedSidebar, setExpandedSidebar] = useState(false)
 
   // --- POPUP ---
   const [showPopup, setShowPopup] = useState(false)
@@ -48,6 +49,10 @@ export default function DemoTextPage({ getText, updateText }) {
   const [gameInProgress, setGameInProgress] = useState(false)
   const [correctCount, setCorrectCount] = useState(0)
   const [remainingCount, setRemainingCount] = useState(0)
+
+  function expandSidebar() {
+    setExpandedSidebar(!expandedSidebar)
+  }
 
   useEffect(function() {
     function setLocalStorage () {
@@ -151,21 +156,25 @@ export default function DemoTextPage({ getText, updateText }) {
   return !text ? 'Loading ...' 
     : (
     
-    <main className="TextPage page">
+    <main className={`TextPage page ${expandedSidebar ? 'expanded-sidebar' : 'collapsed-sidebar'}`}>
 
       <nav className="side-nav">
-        <DemoNav />
+        <DemoNav 
+          expandSidebar={expandSidebar}
+        />
       </nav>
       
-      <aside className="sidebar">
-        <DemoSavedWordsList 
-          savedWords={savedWords} 
-          updateMeaning={updateMeaning}
-          deleteWord={deleteWord}
-          handleOpen={handleOpen}
-          gameInProgress={gameInProgress}
-        />
-      </aside>
+      {expandedSidebar && (
+        <aside className="sidebar">
+          <DemoSavedWordsList 
+            savedWords={savedWords} 
+            updateMeaning={updateMeaning}
+            deleteWord={deleteWord}
+            handleOpen={handleOpen}
+            gameInProgress={gameInProgress}
+          />
+        </aside>
+      )}
 
       <Dialog
           open={open}

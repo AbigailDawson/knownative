@@ -76,6 +76,14 @@ a {
   height: 90vh;
 }
 
+.page.expanded-sidebar {
+  grid-template-columns: 6% 21% 73%;
+}
+
+.page.collapsed-sidebar {
+  grid-template-columns: 6% 94%;
+}
+
 .main-area {
   display: flex;
   flex-direction: column;
@@ -85,6 +93,12 @@ a {
   background: white;
   padding: 3vmin;
   height: 100vh;
+}
+
+.page.collapsed-sidebar .sidebar {
+  width: 0;
+  padding: 0;
+  border-right: none;
 }
 
 .side-nav {
