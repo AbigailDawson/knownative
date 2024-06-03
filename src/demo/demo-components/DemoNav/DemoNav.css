@@ -11,15 +11,16 @@
   width: 80%;
   margin-bottom: 3vmin;
 }
-
-.side-nav-icon-top {
-  font-size: 4vmin;
-  color: var(--primary);
-  margin: 1vmin 0;
+.side-nav-icon-top,
+.side-nav-icon-bottom {
+  font-size: 6vmin;
+  margin: 0;
+  padding: 1.3vmin;
+  color: var(--dark);
 }
 
-.side-nav-icon-bottom {
-  font-size: 4vmin;
-  color: var(--primary);
-  margin: 1vmin 0;
+.side-nav-icon-top:hover,
+.side-nav-icon-bottom:hover {
+  background-color: var(--light);
+  border-radius: .7vmin;
 }
