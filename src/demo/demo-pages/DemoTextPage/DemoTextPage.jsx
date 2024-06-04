@@ -59,8 +59,8 @@ export default function DemoTextPage({ getText, updateText }) {
   }, [localSavedWords])
 
   function getFlashcards() {
-    const flashcardsArray = savedWords.map((word) => ({
-      chinese: word.traditional,
+    const flashcardsArray = localSavedWords.map((word) => ({
+      chinese: word.charGroup,
       pinyin: word.pinyin,
       meaning: word.meaning,
       id: word._id,
@@ -163,8 +163,8 @@ export default function DemoTextPage({ getText, updateText }) {
   }
 
   function handlePlayAgain() {
-    const flashcardsArray = savedWords.map((word) => ({
-      chinese: word.traditional,
+    const flashcardsArray = localSavedWords.map((word) => ({
+      chinese: word.charGroup,
       pinyin: word.pinyin,
       meaning: word.meaning,
       id: word._id,
@@ -310,7 +310,7 @@ export default function DemoTextPage({ getText, updateText }) {
                   activeWord={activeWord}
                   setActiveWord={setActiveWord}
                   saveWord={saveWord} 
-                  savedWords={savedWords} 
+                  savedWords={localSavedWords} 
                   setSavedWords={setSavedWords} 
                   showPopup={showPopup}
                   setShowPopup={setShowPopup}
