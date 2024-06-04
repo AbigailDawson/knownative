@@ -32,7 +32,10 @@ export default function DemoTextPage({ getText, updateText }) {
   const [activeTab, setActiveTab] = useState('read')
 
   // --- SAVED WORDS ---
-  const [localSavedWords, setLocalSavedWords] = useState([])
+  const [localSavedWords, setLocalSavedWords] = useState(
+    (JSON.parse(localStorage.getItem("stringifiedWords") === null)) ?
+      [] : JSON.parse(localStorage.getItem("stringifiedWords"))
+  )
   const [savedWords, setSavedWords] = useState([])
   const [activeWord, setActiveWord] = useState(null)
 
@@ -50,9 +53,7 @@ export default function DemoTextPage({ getText, updateText }) {
 
   useEffect(function() {
     function setLocalStorage () {
-      console.log(localSavedWords)
-      const stringifiedWords = JSON.stringify(localSavedWords)
-      localStorage.setItem("stringifiedWords", stringifiedWords)
+      localStorage.setItem("stringifiedWords", JSON.stringify(localSavedWords))
     }
     setLocalStorage()
   }, [localSavedWords])
@@ -83,27 +84,53 @@ export default function DemoTextPage({ getText, updateText }) {
   //   setShowPopup(false)
   // }
 
+  function generateID (wordToSave) {
+    const savedWords = JSON.parse(localStorage.getItem("stringifiedWords"))
+    if (savedWords.length === 0)
+      return 0
+    else
+      return savedWords[savedWords.length - 1]._id + 1
+  }
+
   function saveWord(word) {
+    const savedWords = JSON.parse(localStorage.getItem("stringifiedWords"))
     const wordToSave = getWordInfo(word)
-    console.log(wordToSave)
-    setLocalSavedWords([...localSavedWords, wordToSave])
+    wordToSave._id = generateID(wordToSave)
+    setLocalSavedWords([...savedWords, wordToSave])
+    setActiveWord('')
+    setShowPopup(false)
   }
 
-  async function updateMeaning(word, formData) {
-    const updatedWord = await wordsAPI.updateMeaning(word, formData)
-    setSavedWords(prevSavedWords => 
-      prevSavedWords.map(savedWord =>
-        savedWord._id === updatedWord._id ? updatedWord : savedWord))
+  // async function updateMeaning(word, formData) {
+  //   const updatedWord = await wordsAPI.updateMeaning(word, formData)
+  //   setSavedWords(prevSavedWords => 
+  //     prevSavedWords.map(savedWord =>
+  //       savedWord._id === updatedWord._id ? updatedWord : savedWord))
+  // }
+
+  function updateMeaning(word, formData){
+    const savedWords = JSON.parse(localStorage.getItem("stringifiedWords"))
+    for (let k in savedWords){
+      if (savedWords[k]._id === word._id)
+        savedWords[k].meaning = formData
+    }
+    setLocalSavedWords([...savedWords])
   }
 
-  async function deleteWord(word) {
-    setSavedWords(prevSavedWords => 
-      prevSavedWords.filter(savedWord => savedWord._id !== word._id))
-      try {
-        await wordsAPI.deleteWord(word)
-      } catch (error) {
-        console.error(error)
-      }
+  // async function deleteWord(word) {
+  //   setSavedWords(prevSavedWords => 
+  //     prevSavedWords.filter(savedWord => savedWord._id !== word._id))
+  //     try {
+  //       await wordsAPI.deleteWord(word)
+  //     } catch (error) {
+  //       console.error(error)
+  //     }
+  // }
+
+  function deleteWord(word) {
+    const savedWords = JSON.parse(localStorage.getItem("stringifiedWords"))
+    const filteredWords = savedWords.filter((item) => item._id !== word._id)
+    setLocalSavedWords([...filteredWords])
   }
 
   function handleOpen() {
@@ -154,7 +181,7 @@ export default function DemoTextPage({ getText, updateText }) {
       
       <aside className="sidebar">
         <DemoSavedWordsList 
-          savedWords={savedWords} 
+          savedWords={localSavedWords}
           updateMeaning={updateMeaning}
           deleteWord={deleteWord}
           handleOpen={handleOpen}
