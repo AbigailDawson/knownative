@@ -21,7 +21,7 @@ export default function DemoStudyText({ text, textId, activeWord, setActiveWord,
   }, [text])
 
   function checkSaved(word) {
-    return savedWords.some((savedWord) => savedWord.traditional === word.traditional)
+    return savedWords.some((savedWord) => savedWord.charGroup === word.traditional)
   }
 
   function handlePopup() {

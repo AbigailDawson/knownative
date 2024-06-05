@@ -45,7 +45,7 @@ export default function DemoSavedWord({ word, updateMeaning, isEditingWord, setI
         <div className="word-delete-btn" onClick={() => handleDeleteWord(word)}><PiTrashLight /></div> }
         <div className="char-pinyin">
           <p className="pinyin"> { word.pinyin } </p>
-          <p className="char zh">{ word.traditional } </p> 
+          <p className="char zh">{ word.charGroup } </p> 
         </div>
       </div>
       
