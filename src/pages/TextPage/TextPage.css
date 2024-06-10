@@ -24,9 +24,6 @@
   background: white;
   padding: 2vmin;
   height: 100%;
-  -webkit-box-shadow: 10px 10px 8px -6px rgba(0,0,0,0.4);
-  -moz-box-shadow: 10px 10px 8px -6px rgba(0,0,0,0.4);
-  box-shadow: 10px 10px 8px -6px rgba(0,0,0,0.4);
 }
 
 .read-container,

@@ -1,9 +1,9 @@
 .textpage-heading {
   display: flex;
   flex-direction: column;
-  padding: 1vmin;
-  margin-bottom: 2vmin;
-  color: white;
+  margin: 0 3vmin 0 3vmin;
+  padding: 4vmin 2vmin 0 2vmin;
+  color: var(--darkest);
 }
 
 .flex-row {
@@ -14,19 +14,11 @@
   display: inline-block;
 }
 
-.textpage-heading-subtitle {
-  text-decoration: underline;
-  color: white;
-}
-
 .text-area {
   border-radius: 2vmin;
   background: white;
   padding: 2vmin;
   height: 100%;
-  -webkit-box-shadow: 10px 10px 8px -6px rgba(0,0,0,0.4);
-  -moz-box-shadow: 10px 10px 8px -6px rgba(0,0,0,0.4);
-  box-shadow: 10px 10px 8px -6px rgba(0,0,0,0.4);
 }
 
 .read-container,
