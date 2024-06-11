@@ -30,6 +30,9 @@
     "serve-favicon": "^2.5.0"
   },
   "scripts": {
+    "start:demo": "cd apps/demo && npm run start:react & npm run start:server",
+    "start:website": "cd apps/website && npm run start:react & npm run start:server",
+    "start:both": "concurrently \"npm run start:demo\" \"npm run start:website\"",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
