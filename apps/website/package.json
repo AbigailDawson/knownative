@@ -3,10 +3,16 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "shared": "file:../../packages/shared"
+    "react-scripts": "^5.0.0",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
+    "dotenv": "^8.2.0",
+    "serve-favicon": "^2.5.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start:react": "react-scripts start",
+    "start:server": "node server.js",
+    "start:both": "npm run start:react & npm run start:server",
     "build": "react-scripts build"
   }
 }

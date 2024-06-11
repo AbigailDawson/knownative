@@ -3,16 +3,16 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "concurrently": "^6.0.0",
-    "dotenv": "^8.2.0",
+    "react-scripts": "^5.0.0",
     "express": "^4.17.1",
     "morgan": "^1.10.0",
-    "react-scripts": "^5.0.1",
-    "serve-favicon": "^2.5.0",
-    "shared": "file:../../packages/shared"
+    "dotenv": "^8.2.0",
+    "serve-favicon": "^2.5.0"
   },
   "scripts": {
-    "start": "concurrently \"PORT=3001 react-scripts start\" \"node server.js\"",
+    "start:react": "react-scripts start",
+    "start:server": "node server.js",
+    "start:both": "npm run start:react & npm run start:server",
     "build": "react-scripts build"
   }
 }
