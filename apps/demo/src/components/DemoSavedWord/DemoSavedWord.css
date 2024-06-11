@@ -1,0 +1,106 @@
+.SavedWord {
+  display: grid;
+  grid-template-columns: 30% 70%;
+  align-items: center;
+  text-align: left;
+  text-wrap: wrap;
+  background-color: white;
+  color: var(--drk-txt);
+  padding: 2vmin 1vmin;
+  margin: .5vmin 1vmin;
+  border-bottom: 2px solid var(--medium);
+  border-radius: .5vmin;
+  position: relative;
+  -webkit-box-shadow: 7px 7px 5px -8px rgba(0,0,0,0.4);
+  -moz-box-shadow: 7px 7px 5px -8px rgba(0,0,0,0.4);
+  box-shadow: 7px 7px 5px -8px rgba(0,0,0,0.4);
+
+}
+
+.left-side {
+  display: flex;
+  margin-left: 4vmin;
+  position: relative;
+}
+
+.word-delete-btn {
+  position: absolute;
+  font-size: 2.5vmin;
+  cursor: pointer;
+  top: 1.5vmin;
+  left: -3.5vmin;
+  color: var(--red);
+}
+
+.char-pinyin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.char-pinyin > .char {
+  font-size: 1.4rem;
+}
+
+.char-pinyin > .pinyin {
+  font-size: .6rem;
+}
+
+.meaning {
+  margin-left: 1.4rem;
+}
+
+.right-side {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.updateMeaningForm {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.updateMeaningForm > input,
+.updateMeaningForm > button {
+  color: var(--drk-txt);
+}
+
+.updateMeaningForm > input {
+  width: 70%;
+  padding: 1vmin;
+  font-size: 1rem;
+  border-radius: .8vmin;
+  border: 1px solid var(--gray-lt);
+}
+
+.updateMeaningForm > input:focus {
+  outline-color: var(--teal);
+}
+
+.submit-btn {
+  font-size: 2.7vmin;
+  background-color: var(--white);
+}
+
+.submit-btn:hover {
+  background-color: var(--white);
+}
+
+.submit-icon {
+  color: var(--green-lt);
+}
+
+.edit-btn,
+.submit-btn {
+  margin: 0 2vmin 0 0;
+  padding: 0;
+  font-size: 2.4vmin;
+}
+
+.edit-btn:hover,
+.submit-btn:hover {
+  cursor: pointer;
+}

@@ -1,0 +1,61 @@
+.textListItems,
+.archivedListItems {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  overflow-y: scroll;
+  margin-bottom: 2vmin;
+}
+
+
+.main-area-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 3vmin;
+  margin: 1vmin 0 3vmin 0;
+  position: relative;
+  color: white;
+}
+
+.main-area-header > h1 {
+  font-size: 2rem;
+  margin: 0 2vmin;
+}
+
+.list-area {
+  background-color: white;
+  border-radius: 2vmin;
+  height: 100%;
+  -webkit-box-shadow: 10px 10px 8px -6px rgba(0,0,0,0.4);
+  -moz-box-shadow: 10px 10px 8px -6px rgba(0,0,0,0.4);
+  box-shadow: 10px 10px 8px -6px rgba(0,0,0,0.4);
+  padding: 0 3vmin;
+}
+
+.sort-options {
+  display: flex;
+  align-items: center;
+  color: var(--dark);
+  margin: 3vmin 2vmin;
+  cursor: pointer;
+}
+
+.dropdown {
+  margin-right: 2vmin;
+}
+
+.new-btn {
+  position: absolute;
+  right: 7vmin;
+  top: 9.5vmin;
+  font-size: 7vmin;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+  color: var(--teal);
+}
+
+.new-btn:hover {
+  transform: scale(1.1);
+}

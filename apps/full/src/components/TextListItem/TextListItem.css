@@ -1,0 +1,79 @@
+.TextListItem {
+  display: flex;
+  justify-content: space-between;
+  gap: 4vmin;
+  background-color: white;
+  color: var(--drk-txt);
+  text-align: left;
+  width: 100%;
+  padding: 2vmin 3vmin 2vmin 0;
+}
+
+hr {
+  border: 1px solid var(--off-white);
+  width: 95%;
+}
+
+.TextListItem > .left-side {
+  display: flex;
+  gap: 2vmin;
+  margin-left: 1vmin;
+}
+
+.txt-delete-btn {
+  margin: 2vmin 0;
+  font-size: 3vmin;
+  color: var(--slate);
+  cursor: pointer;
+}
+
+.txt-delete-btn:hover {
+  color: var(--red)
+}
+
+.read-btn {
+  align-self: flex-end;
+}
+
+.item-content {
+  text-decoration: none;
+  color: var(--dark)
+}
+
+.star-icon-empty {
+  color: var(--gray-lt);
+}
+
+.star-icon-filled {
+  color: var(--gold);
+}
+
+.star-icon-empty,
+.star-icon-filled {
+  font-size: 3.2vmin;
+  margin: 1vmin 1vmin 0 0;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+}
+
+@keyframes sparkle {
+  0% {
+    color: var(--gold);
+  }
+  50% {
+    color: var(--yellow);
+  }
+  100% {
+    color: var(--gold);
+  }
+}
+
+.star-icon-empty:hover {
+  color: var(--gold); 
+  animation: sparkle 1s infinite;
+}
+
+.star-icon-filled:hover {
+  color: var(--yellow); 
+  animation: sparkle 1s infinite;
+}

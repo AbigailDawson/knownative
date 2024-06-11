@@ -1,0 +1,15 @@
+.TranslateText {
+  display: flex;
+  flex-direction: column;
+  gap: 2vmin;
+  margin: 0 3vmin 0 3vmin;
+  padding: 4vmin 2vmin;
+  color: var(--drk-txt);
+}
+
+.translate-text-block {
+  margin-top: 2vmin;
+  line-height: 3.5vmin;
+  font-size: 2.5vmin;
+  text-align: left;
+}

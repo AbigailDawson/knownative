@@ -1,0 +1,110 @@
+.textpage-heading {
+  display: flex;
+  flex-direction: column;
+  padding: 1vmin;
+  margin-bottom: 2vmin;
+  color: white;
+}
+
+.flex-row {
+  justify-content: center;
+}
+.textpage-heading-title {
+  font-size: 4vmin;
+  display: inline-block;
+}
+
+.textpage-heading-subtitle {
+  text-decoration: underline;
+  color: white;
+}
+
+.text-area {
+  border-radius: 2vmin;
+  background: white;
+  padding: 2vmin;
+  height: 100%;
+}
+
+.read-container,
+.study-container,
+.translate-container {
+  display: none;
+  
+}
+
+.read-container.active,
+.study-container.active,
+.translate-container.active {
+  display: block;
+}
+
+.star-filled {
+  color: var(--gold);
+}
+
+.star-empty,
+.star-filled {
+  display: inline-block;
+  font-size: 4vmin;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+  padding-top: .3vmin;
+}
+
+@keyframes sparkle {
+  0% {
+    color: var(--gold);
+  }
+  50% {
+    color: var(--yellow);
+  }
+  100% {
+    color: var(--gold);
+  }
+}
+
+.star-empty:hover {
+  color: var(--gold); 
+  animation: sparkle .8s infinite;
+}
+
+.star-filled:hover {
+  color: var(--yellow); 
+  animation: sparkle .8s infinite;
+}
+
+.flashcard-count {
+  text-align: center;
+  padding-top: 2vmin;
+}
+
+.correct-count {
+  color: var(--green-drk);
+  font-weight: 800;
+}
+
+.remaining-count {
+  color: var(--red-poppy);
+  font-weight: 800;
+}
+
+.congrats {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.play-again-btn {
+  margin-top: 3vmin;
+  font-size: 1.1rem;
+  padding: 1vmin 2vmin;
+  background-color: var(--teal-lt);
+  transition: transform 0.3s ease-in-out;
+}
+
+.play-again-btn:hover {
+  background-color: var(--teal-lt);
+  transform: scale(1.1);
+}
