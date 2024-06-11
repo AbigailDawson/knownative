@@ -2,59 +2,23 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <!-- <a href="https://github.com/github_username/repo_name">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a> -->
 
-<h3 align="center">KnowNative</h3>
+  <h1 align="center">KnowNative</h1>
 
   <p align="center">
     Learn to read Chinese by studying real native texts.
     <br />
     <br />
-    <a href="#">View Demo</a>
-    ·
-    <a href="#">Report Bug</a>
-    ·
-    <a href="#">Request Feature</a>
+    <a href="#">- Visit Site -</a>
   </p>
 </div>
 
-
-
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-    </li>
-    <li>
-      <a href="#getting-started">Running KnowNative locally</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
-  </ol>
-</details>
-
-
-
-<!-- ABOUT THE PROJECT -->
-## About The Project
+## About the project
 
 
 KnowNative is a web application for learners of traditional Chinese to improve their reading comprehension through studying native language texts.
 
-
-
-### Built With
-
+**Built with:**
 * Node
 * Express
 * React
@@ -71,26 +35,28 @@ To get a local copy up and running follow these simple example steps.
 ### Prerequisites
 
 
-* npm
+#### npm
   ```sh
   npm install npm@latest -g
   ```
 
 ### Installation
 
-1. Clone the repo
+#### 1. Clone the repo
    ```
    git clone https://github.com/AbigailDawson/knownative.git
    ```
-2. Install all packages
+#### 2. Install all packages
    ```
    npm install
+
    cd apps/website
    npm install
+
    cd apps/demo
    npm install
    ```
-3. Run the project from **knownative** root directory
+#### 3. Run the project from **knownative** root directory
    ```
    npm run start:both
    ```
@@ -99,12 +65,11 @@ To get a local copy up and running follow these simple example steps.
 
 
 
-<!-- CONTRIBUTING -->
 ## Contributing
 
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+KnowNative can only improve with fresh perspectives and creative insights from contributors! I welcome any suggestions, fixes and improvements that can make KnowNative a great resource for learners.
 
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
+To contribute to the project, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
 
 Don't forget to give the project a star!
 
@@ -132,23 +97,19 @@ To chat about becoming a core contributor, please reach out to me on [**LinkedIn
 
 
 <!-- LICENSE -->
-<!-- ## License
+## License
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
- -->
 
 
 <!-- CONTACT -->
-<!-- ## Contact
+## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
-
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
+Abigail Dawson · [**LinkedIn**](https://www.linkedin.com/in/abigaildawsondev/) · abigaildawson.dev@gmail.com
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
- -->
+
 
 
 <!-- ACKNOWLEDGMENTS -->
