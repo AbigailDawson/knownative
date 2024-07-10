@@ -1,12 +1,11 @@
-import Navbar from '../../components/Navbar';
-import Footer from '../../components/Footer';
-import './LandingPage.css';
+import LandingPageNav from '../../components/LandingPageNav';
+import LandingPageFooter from '../../components/LandingPageFooterFooter';
 
 export default function LandingPage() {
   return (
     <>
     <div className="container">
-    <Navbar />
+    <LandingPageNav />
       <section className="hero">
         <div class="px-4 pt-5 my-5 text-center border-bottom">
           <h1 class="display-4 fw-bold">Welcome to KnowNative</h1>
@@ -51,7 +50,7 @@ export default function LandingPage() {
           </div>
         </div>
       </section>
-    <Footer />
+    <LandingPageFooter />
     </div>
     </>
   );
