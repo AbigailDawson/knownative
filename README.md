@@ -1,56 +1,103 @@
-# KnowNative
+<a name="readme-top"></a>
+<br />
+<div align="center">
+
+  <h1 align="center">KnowNative</h1>
+
+  <p align="center">
+    Learn to read Chinese by studying real native texts.
+    <br />
+    <br />
+    <a href="#">- Visit Site -</a>
+  </p>
+</div>
+
+## About the project
+
 
 KnowNative is a web application for learners of traditional Chinese to improve their reading comprehension through studying native language texts.
 
-[ - Live Site - ](https://knownative-730586de0f29.herokuapp.com/)
+**Built with:**
+* Node
+* Express
+* React
+* Bootstrap
+* MongoDB
 
-## Description
 
-KnowNative is inspired by two core philosophies of language learning: 
+## Running KnowNative locally
 
-* Our learning is most sustainable when we are genuinely interested in the content we are using to study.
-* The more we learn from content produced by real native speakers, the more easily we develop natural fluency in a target language.
+To get a local copy up and running follow these simple example steps.
 
-KnowNative is designed to move learners away from dry textbook material into the world of real language by providing them a means to easily study from authentic texts and articles written by native speakers.
+### Prerequisites
 
-## User Research
 
-KnowNative's design is in part guided by feedback from a user research survey conducted during project planning. The survey received 21 responses from language learners.
+#### npm
+  ```sh
+  npm install npm@latest -g
+  ```
 
-When asked about their preferences in a language learning app for reading comprehension, respondees expressed most interest in generating flashcards, adding inline annotations and seeing sentence translastions, so these features were prioritized in development.
+### Installation
 
-Additionally, respondees expressed interest in feeling like they're playing a game while learning, and learning about culture alongside the language.
+#### 1. Clone the repo
+   ```
+   git clone https://github.com/AbigailDawson/knownative.git
+   ```
+#### 2. Install all packages and build
+   ```
+   npm install
+   npm run build
+   ```
+#### 3. Run the Express server
+   ```
+   npm run dev
+   ```
+#### 4. Run the React server
+  ```
+  npm run start
+  ```
 
-![User Research Survey](/public/images/chart1.png)
-![User Research Survey](/public/images/chart2.png)
-![User Research Survey](/public/images/chart3.png)
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## Features
 
-Key features that make KnowNative unique:
-- Import any text or article you'd like to study from
-- Automatically **generate flashcards** from your saved words
-- Add **inline annotations** with a simple click
-- Show/hide full **sentence translations**
-- **Generate easier versions** of difficult texts
 
-## Tech Stack
-- MERN stack: MongoDB, Express.js, Node.js, React
-- [chinese-tokenizer](https://github.com/yishn/chinese-tokenizer) - for tokenizing Chinese text
-- Google Cloud Translate API
-- OpenAI API
-- MUI Components - for visually appealing user interfaces
+## Contributing
 
-## Challenges and Future Development
+KnowNative can only improve with fresh perspectives and creative insights from contributors! I welcome any suggestions, fixes and improvements that can make KnowNative a great resource for learners.
 
-KnowNative currently only supports traditional Chinese due to its reliance on the chinese-tokenizer package to parse Chinese text into words based on the [CC-CEDICT](https://www.mdbg.net/chinese/dictionary?page=cc-cedict) (Chinese-English Dictionary). This algorithm makes it possible to create a clickable component from each word to look up definitions and add inline annotations. A different approach would be needed for handling other languages that handle whitespace and word separation differently.
+To contribute to the project, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
 
-The project currently leverages OpenAI technology to generate easier versions of texts graded for a 5th-grade reading level; however, currently the response length is limited and there are no options for customization. Additionally, OpenAI primarily works with English and may not yield accurate results in Chinese; currently, the model sometimes returns simplified Chinese characters instead of traditional and a language cannot be specified for the gpt-3.5-turbo model. Future development will involve exploring different AI technologies for use in this project.
+Don't forget to give the project a star!
 
-Future development will also include improvements to the flashcard feature of the app. Studies have shown that [**spaced repetition**](https://www.babbel.com/en/magazine/spaced-repetition-language-learning) is crucial to reinforcing concepts for long-term sustainable learning. Incorporating spaced repetition into the flashcard algorithm will make this an even more powerful tool for language learning.
+1. Fork the project
+2. Create your own branch (`git checkout -b <yourbranchname>`)
+3. Commit your changes (`git commit -m 'About your contribution'`)
+4. Push to the branch (`git push origin <yourbranchname>`)
+5. Open a pull request to merge into `dev-2.0`
 
-<hr> 
+### Core Contributors
 
-Quick Demo:
+As the creator of KnowNative, I am eager to collaborate with others who are excited about this project and are looking to contribute to on a more regular and consistent (volunteer) basis. We currently have a small team of core contributors who are innovating behind the scenes to bring high quality features and exceptional user experience to KnowNative.
 
-![KnowNative feature demo](/public/images/kn-runthru.gif)
+Becoming a core contributor is an excellent way to gain real-world experience working with a team and add to your own portfolio or resume, all while being a part of a project you're passionate about! I'm currently open to core contributors in:
+
+* UX/UI research and design
+* Software development
+* Branding, social media and marketing
+* Those with interest in linguistics, language learning and Chinese - if you think you'd like to contribute, I'd love to hear from you!
+
+To chat about becoming a core contributor, please reach out to me on [**LinkedIn**](https://www.linkedin.com/in/abigaildawsondev/).
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+## License
+
+Distributed under the MIT License. See `LICENSE.txt` for more information.
+
+
+## Contact
+
+Abigail Dawson · [**LinkedIn**](https://www.linkedin.com/in/abigaildawsondev/) · abigaildawson.dev@gmail.com
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
