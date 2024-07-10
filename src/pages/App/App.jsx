@@ -9,6 +9,7 @@ import DemoTextPage from '../../demo/demo-pages/DemoTextPage/DemoTextPage'
 import NavBar from '../../components/NavBar/NavBar'
 import DashboardPage from '../DashboardPage/DashboardPage'
 import About from '../AboutPage/AboutPage'
+import LandingPage from './pages/LandingPage/LandingPage';
 
 function App() {
   const [user, setUser] = useState(getUser())
@@ -44,6 +45,10 @@ function App() {
       <>
         <NavBar user={user} setUser={setUser} />
         <Routes>
+          <Route 
+            path="/" 
+            element={<LandingPage />} 
+            />
           <Route 
             path='/dashboard' 
             element={<DashboardPage user={user} texts={texts} setTexts={setTexts} />}  />
