@@ -9,7 +9,7 @@ import DemoTextPage from '../../demo/demo-pages/DemoTextPage/DemoTextPage'
 import NavBar from '../../components/NavBar/NavBar'
 import DashboardPage from '../DashboardPage/DashboardPage'
 import About from '../AboutPage/AboutPage'
-import LandingPage from './pages/LandingPage/LandingPage';
+import LandingPage from '../LandingPage/LandingPage';
 
 function App() {
   const [user, setUser] = useState(getUser())
@@ -68,7 +68,7 @@ function App() {
               element={<About />} />
             <Route 
               path='/*' 
-              element={<AuthPage setUser={setUser} />}  />
+              element={<LandingPage setUser={setUser} />}  />
           </Routes>
         </>
       }

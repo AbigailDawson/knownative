@@ -1,5 +1,6 @@
-import LandingPageNav from '../../components/LandingPageNav';
-import LandingPageFooter from '../../components/LandingPageFooterFooter';
+import LandingPageNav from '../../components/LandingPageNav/LandingPageNav';
+import LandingPageFooter from '../../components/LandingPageFooter/LandingPageFooter';
+import './LandingPage.css';
 
 export default function LandingPage() {
   return (
