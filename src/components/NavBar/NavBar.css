@@ -1,4 +1,4 @@
-nav {
+/* nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -6,8 +6,8 @@ nav {
   height: 12vmin;
   background-color: var(--slate);
   color: var(--dark);
-}
-
+} */
+/* 
 .nav-right {
   display: flex;
   align-items: center;
@@ -43,4 +43,4 @@ nav {
 .nav-link:hover::after,
 .nav-link.active::after {
   width: 100%;
-}
+} */

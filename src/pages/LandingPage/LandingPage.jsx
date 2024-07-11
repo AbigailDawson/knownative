@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import LandingPageNav from '../../components/LandingPageNav/LandingPageNav';
 import LandingPageFooter from '../../components/LandingPageFooter/LandingPageFooter';
 
@@ -12,13 +13,13 @@ export default function LandingPage() {
           <div class="col-lg-6 mx-auto">
             <p class="lead my-4">Ditch the textbooks and learn from real native speakers by studying articles written by real native speakers. Learning with KnowNative is like building your own study guide designed specifically for you.</p>
             <div class="d-grid gap-2 d-sm-flex justify-content-sm-center my-5">
-              <button type="button" class="btn btn-primary btn-lg px-4 me-sm-3">Demo</button>
-              <button type="button" class="btn btn-outline-secondary btn-lg px-4">GitHub</button>
+              <Link to="/demo" className="btn btn-primary btn-lg px-4 me-sm-3">Demo</Link>
+              <a href="https://github.com/AbigailDawson/knownative" target="_blank" rel="noopener noreferrer" className="btn btn-outline-secondary btn-lg px-4">GitHub</a>
             </div>
           </div>
           <div class="overflow-hidden" style={{maxHeight: 30 + 'vh'}}>
             <div class="container px-5">
-              <img src="read-text.png" class="img-fluid border rounded-3 shadow-lg mb-4" alt="Example" width="700" height="500" loading="lazy" />
+              <img src="/images/landing-image.png" class="img-fluid border rounded-3 shadow-lg mb-4" alt="KnowNative app" width="700" height="500" loading="lazy" />
             </div>
           </div>
         </div>
