@@ -24,10 +24,10 @@
   font-size: 1.2rem;
 }
 
-.container {
+/* .container {
   display: grid;
   grid-template-columns: 50% 50%;
-}
+} */
 
 .read-text-block {
   margin-top: 2vmin;
