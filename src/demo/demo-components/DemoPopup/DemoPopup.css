@@ -1,13 +1,14 @@
 .Popup {
   position: absolute;
-  background-color: white;
-  border: 1px solid #9fbebb;
+  background-color: #effffc;
+  border: 1px solid #bed3d1;
   border-radius: 1vmin;
   padding: 1vmin;
   transform: translateX(-50%) translateY(-50%);
   box-shadow: 0 0 5px rgba(0,0,0,0.2);
   font-size: 12px;
   color: var(--drk-txt);
+  min-width: 100px;
 }
 
 .popup-content {
@@ -16,4 +17,35 @@
   align-items: center;
   justify-self: center;
   padding: 0 0 1vmin 0;
+}
+
+.close-btn {
+  font-size: 2.5vmin; 
+  font-family: 'roboto';
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 1vmin;
+  color: #bed3d1;
+}
+
+.save-button {
+  background-color: #58bdaa;
+  cursor: pointer;
+  position: absolute;
+  width: 2vmin;
+  height: 2vmin;
+  font-size: 2.5vmin; 
+  border-radius: 50%;
+  bottom: 0.8vmin;
+  right: 0.6vmin;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  color: white;
 }

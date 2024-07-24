@@ -1,6 +1,6 @@
 .Popup {
   position: absolute;
-  background-color: white;
+  background-color: rgb(255, 255, 255);
   border: 1px solid #9fbebb;
   border-radius: 1vmin;
   padding: 1vmin;

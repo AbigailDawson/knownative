@@ -1,3 +1,7 @@
+.Word:not(.specialChar) {
+  cursor: pointer;
+}
+
 .Word,
 .specialChar {
   display: flex;
@@ -26,3 +30,9 @@
   color: var(--drk-txt);
 }
 
+.Word:not(.specialChar) .zh:hover {
+  background-color: #dfdfdf;
+  border-radius: 0.5vmin;
+  padding: 6px;
+  opacity: 0.8;
+}
