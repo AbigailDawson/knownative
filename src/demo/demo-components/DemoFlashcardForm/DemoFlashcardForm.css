@@ -1,3 +1,8 @@
+.header {
+  text-align: left;
+  padding-left: 1rem;
+}
+
 .play-btn {
   margin-top: 3vmin;
   font-size: 1.1rem;

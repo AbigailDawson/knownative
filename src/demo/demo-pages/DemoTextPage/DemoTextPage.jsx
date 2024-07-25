@@ -241,7 +241,7 @@ export default function DemoTextPage({ getText, updateText }) {
               gameInProgress={gameInProgress}
             />
           )}
-          {sidebarCategory === "flashcards-tooltip" && <h1>Learn</h1>}
+          {sidebarCategory === "flashcards-tooltip" && <DemoFlashcardForm />}
         </aside>
       )}
 

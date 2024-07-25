@@ -1,45 +1,67 @@
-import './DemoFlashcardForm.css'
-import { Radio, RadioGroup, FormControlLabel, FormControl, FormGroup, Switch, FormLabel } from '@mui/material'
+import "./DemoFlashcardForm.css";
+import {
+  Radio,
+  RadioGroup,
+  FormControlLabel,
+  FormControl,
+  FormGroup,
+  Switch,
+  FormLabel,
+} from "@mui/material";
 
-export default function DemoFlashcardForm({ selectedFront, setSelectedFront, showPinyin, setShowPinyin, handlePlay }) {
-
-  return(
+export default function DemoFlashcardForm({
+  selectedFront,
+  setSelectedFront,
+  showPinyin,
+  setShowPinyin,
+  handlePlay,
+}) {
+  return (
     <>
       <div>
+        <h2 className="header">Learn</h2>
         <FormGroup>
           <FormControl>
-            <FormLabel id="radio-buttons-group-label">Choose which to display on the front:</FormLabel>
+            <FormLabel id="radio-buttons-group-label">
+              Choose which to display on the front:
+            </FormLabel>
             <RadioGroup
               row
               aria-labelledby="demo-row-radio-buttons-group-label"
               name="row-radio-buttons-group"
             >
-              <FormControlLabel 
-                value="chinese" 
-                control={<Radio />} 
-                label="Chinese" 
-                checked={selectedFront === 'chinese'}
-                onChange={() => setSelectedFront('chinese')}
+              <FormControlLabel
+                value="chinese"
+                control={<Radio />}
+                label="Chinese"
+                checked={selectedFront === "chinese"}
+                onChange={() => setSelectedFront("chinese")}
               />
-              <FormControlLabel 
-                value="english" 
-                control={<Radio />} 
-                label="English" 
-                checked={selectedFront === 'english'}
-                onChange={() => setSelectedFront('english')}
+              <FormControlLabel
+                value="english"
+                control={<Radio />}
+                label="English"
+                checked={selectedFront === "english"}
+                onChange={() => setSelectedFront("english")}
               />
             </RadioGroup>
           </FormControl>
         </FormGroup>
         <FormGroup>
-          <FormControlLabel 
-            control={<Switch checked={showPinyin} onChange={() => setShowPinyin(!showPinyin)} />} 
-            label="Show pinyin" 
+          <FormControlLabel
+            control={
+              <Switch
+                checked={showPinyin}
+                onChange={() => setShowPinyin(!showPinyin)}
+              />
+            }
+            label="Show pinyin"
           />
         </FormGroup>
-        <button className="play-btn" onClick={handlePlay}>Play!</button>
-
+        <button className="play-btn" onClick={handlePlay}>
+          Play!
+        </button>
       </div>
     </>
-  )
+  );
 }
