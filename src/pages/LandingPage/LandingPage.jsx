@@ -13,7 +13,7 @@ export default function LandingPage() {
           <div class="col-lg-6 mx-auto">
             <p class="lead my-4">Ditch the textbooks and learn from real native speakers by studying articles written by real native speakers. Learning with KnowNative is like building your own study guide designed specifically for you.</p>
             <div class="d-grid gap-2 d-sm-flex justify-content-sm-center my-5">
-              <Link to="/demo" className="btn btn-primary btn-lg px-4 me-sm-3">Demo</Link>
+              <Link to="/demo" className="btn btn-primary btn-lg px-4 me-sm-3 demo-button">Demo</Link>
               <a href="https://github.com/AbigailDawson/knownative" target="_blank" rel="noopener noreferrer" className="btn btn-outline-secondary btn-lg px-4">GitHub</a>
             </div>
           </div>

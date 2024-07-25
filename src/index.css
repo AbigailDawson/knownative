@@ -52,6 +52,21 @@ button {
   cursor: pointer;
 }
 
+.demo-button {
+  background-color: var(--primary);
+  color: var(--darkest);
+  border: none;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+  gap: 10px;
+}
+
+.demo-button:hover {
+  background-color: var(--white);
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  gap: 10px;
+}
+
 .close-btn:hover {
   background: transparent;
 }
