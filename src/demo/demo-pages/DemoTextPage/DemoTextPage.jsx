@@ -184,12 +184,11 @@ export default function DemoTextPage({ getText, updateText }) {
     setOpen(true);
   }
 
-  //state that will be used to determine which sidebar to present based on which sidebar is clicked.
+  //state that will be used to store data that will determine which sidebar content to present based on which sidebar is clicked.
   const [sidebarCategory, setSidebarCategory] = useState(null);
 
+  //this function will change the type of content that should be displayed on the sidebar whenever one of the nav buttons is clicked
   function changeSidebarCategory(selectedIcon) {
-    console.log("changesidebarcat ", selectedIcon);
-    console.log("pre-change category:", sidebarCategory);
     if (sidebarCategory === selectedIcon) {
       setSidebarCategory(null);
     } else {
@@ -197,6 +196,7 @@ export default function DemoTextPage({ getText, updateText }) {
     }
   }
 
+  //function that physically expands the sidebar
   function expandSidebar() {
     setExpandedSidebar(!expandedSidebar);
   }
@@ -217,19 +217,7 @@ export default function DemoTextPage({ getText, updateText }) {
         />
       </nav>
 
-      {/* NOTE TO SELF: re-create this code so that there is some conditional rendering regarding which sidebar is displayed depending on what is clicked */}
-      {/* {expandedSidebar && (
-        <aside className="sidebar">
-          <DemoSavedWordsList
-            savedWords={localSavedWords}
-            updateMeaning={updateMeaning}
-            deleteWord={deleteWord}
-            handleOpen={handleOpen}
-            gameInProgress={gameInProgress}
-          />
-        </aside>
-      )} */}
-
+      {/* Conditional rendering, dependent on the values of expandedSidbar and sidebarCategory, that will determine if the sidebar is displayed and what content is displayed. */}
       {expandedSidebar && (
         <aside className="sidebar">
           {sidebarCategory === "savedwords-tooltip" && (
@@ -241,9 +229,32 @@ export default function DemoTextPage({ getText, updateText }) {
               gameInProgress={gameInProgress}
             />
           )}
-          {sidebarCategory === "flashcards-tooltip" && <DemoFlashcardForm />}
+          {sidebarCategory === "flashcards-tooltip" && (
+            <DemoFlashcardForm
+              expandSidebar={expandSidebar}
+              changeSidebarCategory={changeSidebarCategory}
+              selectedFront={selectedFront}
+              setSelectedFront={setSelectedFront}
+              showPinyin={showPinyin}
+              setShowPinyin={setShowPinyin}
+              handlePlay={handlePlay}
+            />
+          )}
         </aside>
       )}
+
+      {/* OLD CODE */}
+      {/* {expandedSidebar && (
+        <aside className="sidebar">
+          <DemoSavedWordsList
+            savedWords={localSavedWords}
+            updateMeaning={updateMeaning}
+            deleteWord={deleteWord}
+            handleOpen={handleOpen}
+            gameInProgress={gameInProgress}
+          />
+        </aside>
+      )} */}
 
       <Dialog
         open={open}
