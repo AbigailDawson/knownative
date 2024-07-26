@@ -67,13 +67,6 @@ button {
   gap: 10px;
 }
 
-.demo-button.active {
-  background-color: var(--light);
-  color: var(--darkest);
-  box-shadow: none;
-  gap: 10px;
-}
-
 .github-button {
   background-color: var(--white);
   color: var(--primary);
@@ -82,12 +75,6 @@ button {
 }
 
 .github-button:hover {
-  background-color: var(--light);
-  color: var(--darkest);
-  border: none;
-}
-
-.github-button.active {
   background-color: var(--light);
   color: var(--darkest);
   border: none;
