@@ -61,10 +61,23 @@ button {
 }
 
 .demo-button:hover {
+  background-color: var(--light);
+  color: var(--darkest);
+  box-shadow: none;
+  gap: 10px;
+}
+
+.github-button {
   background-color: var(--white);
   color: var(--primary);
   border: 1px solid var(--primary);
   gap: 10px;
+}
+
+.github-button:hover {
+  background-color: var(--light);
+  color: var(--darkest);
+  border: none;
 }
 
 .close-btn:hover {
