@@ -26,8 +26,12 @@
   border-radius: .7vmin;
 }
 
-/* or teal-lt */
-.icon-tool-tip {
-  color: black !important;
-  background-color: #daf2ee !important;
+.icontip-container .icontip-message {
+  color: black;
+  background-color: var(--light);
+  padding: 8px 10px;
+  margin-left: 1.1%; /* best margin for now. this margin probs will need to be redone when sizing issue for demo page is resolved */
+  border-radius: 3px;
+  font-size: 90%;
+  width: max-content;
 }
