@@ -23,37 +23,42 @@ export default function DemoNav({ expandSidebar }) {
           data-tooltip-content="Saved Words" 
           data-tooltip-place="right" 
         />
-        <Tooltip id="savedwords-tooltip" />
+        <Tooltip id="savedwords-tooltip" className="icon-tool-tip"
+        border="1px solid #526662" />
         <MdQuiz 
           className="side-nav-icon-top" 
           data-tooltip-id="flashcards-tooltip" 
           data-tooltip-content="Flashcard Quiz" 
           data-tooltip-place="right" 
         />
-        <Tooltip id="flashcards-tooltip" />
+        <Tooltip id="flashcards-tooltip" className="icon-tool-tip"
+        border="1px solid #526662" />
         <FaArrowsRotate 
           className="side-nav-icon-top" 
           data-tooltip-id="changetext-tooltip" 
           data-tooltip-content="Change Text" 
           data-tooltip-place="right" 
         />
-        <Tooltip id="changetext-tooltip" />
+        <Tooltip id="changetext-tooltip" className="icon-tool-tip" 
+        border="1px solid #526662" />
       </div>
       <div className="bottom-icons">
         <FaRegQuestionCircle  
           className="side-nav-icon-bottom" 
           data-tooltip-id="support-tooltip" 
           data-tooltip-content="Support" 
-          data-tooltip-place="right" 
+          data-tooltip-place="right"
         />
-        <Tooltip id="support-tooltip" />
+        <Tooltip id="support-tooltip" className="icon-tool-tip" 
+        border="1px solid #526662" />
         <ImExit 
           className="side-nav-icon-bottom" 
           data-tooltip-id="exit-tooltip" 
           data-tooltip-content="Exit Demo" 
           data-tooltip-place="right" 
         />
-        <Tooltip id="exit-tooltip" />
+        <Tooltip id="exit-tooltip" className="icon-tool-tip" 
+        border="1px solid #526662"/>
       </div>
     </>
   )

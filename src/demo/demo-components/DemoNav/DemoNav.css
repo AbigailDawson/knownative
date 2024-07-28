@@ -5,6 +5,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  z-index: 10;
 }
 
 .placeholder-logo {
@@ -23,4 +24,10 @@
 .side-nav-icon-bottom:hover {
   background-color: var(--light);
   border-radius: .7vmin;
+}
+
+/* or teal-lt */
+.icon-tool-tip {
+  color: black !important;
+  background-color: #daf2ee !important;
 }
