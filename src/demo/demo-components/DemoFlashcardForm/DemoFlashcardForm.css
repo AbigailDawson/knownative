@@ -1,8 +1,42 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.arrowBack:hover {
+  background-color: var(--light);
+  border-radius: 0.7vmin;
+  cursor: pointer;
+}
+
+.FlashCardForm {
+  display: flex;
+  flex-direction: column;
+  padding: 3vmin 3vmin;
+  margin-top: 1rem;
+  width: 100%;
+  color: black;
+}
+
+.radio-buttons-group-label {
+  text-align: left;
+  margin-top: 1rem;
+}
+
+.radio-buttons-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.show-pinyin {
+  margin-top: 0.5rem;
+}
+
 .play-btn {
   margin-top: 3vmin;
   font-size: 1.1rem;
   padding: 1vmin 2vmin;
-  background-color: var(--slate);
+  background-color: #006769;
   color: white;
   transition: transform 0.3s ease-in-out;
 }
