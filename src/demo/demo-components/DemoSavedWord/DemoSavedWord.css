@@ -27,7 +27,7 @@
   position: relative;
 } */
 
-.edit-menu-button {
+.edit-menu-icon {
   color: #00b9bc;
   position: absolute;
   top: 1vmin;
@@ -37,7 +37,7 @@
   border-radius: 50%;
 }
 
-.edit-menu-button:hover {
+.edit-menu-icon:hover {
   background-color: #00b9bc;
   transform: scale(1.3);
   cursor: pointer;
@@ -91,14 +91,14 @@
   color: #ffe6e6;
 }
 
-.word-delete-btn {
+/* .word-delete-btn {
   position: absolute;
   font-size: 2.5vmin;
   cursor: pointer;
   top: 1.5vmin;
   left: -3.5vmin;
   color: var(--red);
-}
+} */
 
 /* .char-pinyin {
   display: flex;
@@ -129,7 +129,7 @@
   align-items: center;
 } */
 
-.updateMeaningForm {
+/* .updateMeaningForm {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -150,9 +150,9 @@
 
 .updateMeaningForm > input:focus {
   outline-color: var(--teal);
-}
+} */
 
-.submit-btn {
+/* .submit-btn {
   font-size: 2.7vmin;
   background-color: var(--white);
 }
@@ -175,4 +175,4 @@
 .edit-btn:hover,
 .submit-btn:hover {
   cursor: pointer;
-}
+} */

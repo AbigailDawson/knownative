@@ -31,9 +31,10 @@ export default function DemoSavedWordsList({
         <h1 className="sidebar-heading">Saved Words</h1>
         <ChevronLeftIcon
           fontSize="large"
-          className="arrowBack"
           data-tooltip-id="savedwords-tooltip"
           onClick={handleBackArrowClick}
+          className="arrowBack"
+          color="#006769"
         />
       </header>
       {savedWords.length === 0 ? (
@@ -48,10 +49,12 @@ export default function DemoSavedWordsList({
       ) : (
         <>
           {/* <div className="study-btn">
-          <TbCardsFilled className="study-icon" onClick={handleOpen} />
-          <p className="study-btn-txt"> </p>
-        </div> */}
-          {!gameInProgress && savedWordItems}
+            <TbCardsFilled className="study-icon" onClick={handleOpen} />
+            <p className="study-btn-txt"> </p>
+          </div> */}
+          <article className="saved-words-list-container">
+            {!gameInProgress && savedWordItems}
+          </article>
         </>
       )}
       <button className="add-word-btn">+</button>
