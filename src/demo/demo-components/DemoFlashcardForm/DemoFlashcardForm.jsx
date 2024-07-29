@@ -17,16 +17,8 @@ export default function DemoFlashcardForm({
   showPinyin,
   setShowPinyin,
   handlePlay,
-  expandSidebar,
-  changeSidebarCategory,
+  handleBackArrowClick,
 }) {
-  //function that closes the sidebar when you click on the arrow icon.
-  function handleBackArrowClick(e) {
-    const toolTipId = e.currentTarget.dataset.tooltipId;
-    expandSidebar();
-    changeSidebarCategory(toolTipId);
-  }
-
   return (
     <>
       <div className="FlashCardForm">

@@ -201,6 +201,13 @@ export default function DemoTextPage({ getText, updateText }) {
     setExpandedSidebar(!expandedSidebar);
   }
 
+  //function that closes the sidebar when you click on the arrow icon.
+  function handleBackArrowClick(e) {
+    const toolTipId = e.currentTarget.dataset.tooltipId;
+    expandSidebar();
+    changeSidebarCategory(toolTipId);
+  }
+
   return !text ? (
     "Loading ..."
   ) : (
@@ -227,6 +234,7 @@ export default function DemoTextPage({ getText, updateText }) {
               deleteWord={deleteWord}
               handleOpen={handleOpen}
               gameInProgress={gameInProgress}
+              handleBackArrowClick={handleBackArrowClick}
             />
           )}
           {sidebarCategory === "flashcards-tooltip" && (
@@ -238,6 +246,7 @@ export default function DemoTextPage({ getText, updateText }) {
               showPinyin={showPinyin}
               setShowPinyin={setShowPinyin}
               handlePlay={handlePlay}
+              handleBackArrowClick={handleBackArrowClick}
             />
           )}
         </aside>

@@ -1,10 +1,10 @@
 .SavedWordsList {
   display: flex;
   flex-direction: column;
-  padding: 1vmin 1vmin;
+  padding: 2vmin 2vmin;
   width: 100%;
-  background-color: #F5FAF9;
-  color: var(--drk-txt);
+  background-color: #f5faf9;
+  color: black;
 }
 
 .SavedWordsList > h1 {
@@ -12,11 +12,19 @@
   margin: 3vmin;
   padding-left: 2vmin;
 }
+.demo-saved-words-header-container {
+  display: flex;
+  justify-content: space-between;
+}
+.sidebar-heading {
+  text-align: left;
+  font-size: 1.5rem;
+}
 
-.sidebar-heading ~ p {
+/* .sidebar-heading ~ p {
   text-align: left;
   margin: 0 3vmin;
-}
+} */
 
 .study-btn {
   display: flex;
@@ -31,7 +39,7 @@
   width: 50%;
   position: absolute;
   right: -4.5vmin;
-  bottom: -.5vmin;
+  bottom: -0.5vmin;
   transform: rotate(5deg);
   transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
   cursor: pointer;
@@ -43,7 +51,8 @@
 }
 
 @keyframes wiggle {
-  0%, 100% {
+  0%,
+  100% {
     transform: rotate(5deg);
   }
   50% {
@@ -52,8 +61,22 @@
 }
 
 .study-btn-txt {
-  font-size: .8rem;
+  font-size: 0.8rem;
   position: absolute;
   right: 5vmin;
   bottom: 1vmin;
+}
+
+.add-word-btn {
+  margin-top: 3vmin;
+  font-size: 1.1rem;
+  padding: 1vmin 2vmin;
+  background-color: #006769;
+  color: white;
+  transition: transform 0.3s ease-in-out;
+}
+
+.add-word-btn:hover {
+  background-color: var(--teal);
+  transform: scale(1.1);
 }
