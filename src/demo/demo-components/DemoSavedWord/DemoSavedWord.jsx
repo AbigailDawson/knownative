@@ -1,77 +1,195 @@
-import './DemoSavedWord.css'
-import { useState } from 'react'
+import "./DemoSavedWord.css";
+import { useState } from "react";
+import { BiDotsVerticalRounded } from "react-icons/bi";
 import { FaRegEdit } from "react-icons/fa";
+import { FaPencilAlt } from "react-icons/fa";
 import { FaCheckSquare } from "react-icons/fa";
 import { PiTrashLight } from "react-icons/pi";
 
-
-export default function DemoSavedWord({ word, updateMeaning, isEditingWord, setIsEditingWord, deleteWord }) {
-
+export default function DemoSavedWord({
+  word,
+  updateMeaning,
+  isEditingWord,
+  setIsEditingWord,
+  deleteWord,
+}) {
   const [formData, setFormData] = useState({
-    meaning: word.meaning
-  })
+    meaning: word.meaning,
+  });
 
+  //NEW CODE ----------------------
+  //state that will keep track of IF the edit menu is open for that particular word. Also, isMouseInsideMenu is utilized in order to track whether the cursor is inside of the menu. The menu is set to close when your mouse is outside of the menu.
+  const [isEditMenuOpen, setIsEditMenuOpen] = useState(false);
+  const [isMouseInsideMenu, setIsMouseInsideMenu] = useState(false);
+
+  //clicking the edit icon will open up the menu or close the menu if the menu is already open
+  function handleEditIconClick() {
+    setIsEditMenuOpen((currentState) => !currentState);
+  }
+
+  //if the mouse leaves the saved word card element that is associated with the menu, close the menu if the menu is already open.
+  function handleMouseleaveCard() {
+    if (!isMouseInsideMenu) {
+      setIsEditMenuOpen(false);
+    }
+  }
+
+  //if the mouse enters the menu, set state of IsMouseInsideMenu to TRUE. (it allows you navigate edit or delete buttons as you need to)
+  function handleMouseEnterMenu() {
+    setIsMouseInsideMenu(true);
+  }
+
+  //if you enter the menu and then leave the menu with your mouse, it automatically closes the menu.
+  function handleEditMenuMouseleave() {
+    setIsMouseInsideMenu(false);
+    setIsEditMenuOpen(false);
+  }
+
+  //I WILL REVISIT THE COMMENTED CODE BELOW WHEN I CREATE THE MODAL. I just commented it out for now so that I wouldn't get confused when I adjust things.
+  /*
   function handleChange(evt) {
     const newFormData = {
       ...formData,
-      [evt.target.name]: evt.target.value
+      [evt.target.name]: evt.target.value,
     };
-    setFormData(newFormData)
-  }
+    setFormData(newFormData);
+  } 
 
   function handleEditClick() {
-    setIsEditingWord(word._id)
-  }
+    setIsEditingWord(word._id);
+  } 
 
   function handleUpdateMeaning(word) {
     if (word.meaning === formData.meaning) {
-      setIsEditingWord(null)
-      return
+      setIsEditingWord(null);
+      return;
     }
-    updateMeaning(word, formData.meaning)
-  }
+    updateMeaning(word, formData.meaning);
+  } */
 
   function handleDeleteWord(word) {
-    deleteWord(word)
+    setIsEditMenuOpen(false);
+    deleteWord(word);
   }
-  
+
   return (
-    <div className="SavedWord">
+    <article className="SavedWord" onMouseLeave={handleMouseleaveCard}>
+      {/* This the three dots. I placed it absolutely to the corner of every saved word. */}
+      <BiDotsVerticalRounded
+        className="edit-menu-icon"
+        onClick={handleEditIconClick}
+      />
+      {/* If the editMenuOpen state variable is true, display the edit/delete menu. */}
+      {isEditMenuOpen && (
+        <article
+          className="edit-delete-menu"
+          onMouseEnter={handleMouseEnterMenu}
+          onMouseLeave={handleEditMenuMouseleave}
+        >
+          <section className="edit-button">
+            <p>Edit</p>
+            <FaPencilAlt />
+          </section>
+          <section className="delete-button" onClick={handleDeleteWord}>
+            <p>Delete</p>
+            <PiTrashLight />
+          </section>
+        </article>
+      )}
+      <section className="char-pinyin">
+        {/* {isEditingWord && (
+          <div
+            className="word-delete-btn"
+            onClick={() => handleDeleteWord(word)}
+          >
+            <PiTrashLight />
+          </div>
+        )} */}
+        <p className="pinyin"> {word.pinyin} </p>
+        <p className="char zh">{word.charGroup} </p>
+      </section>
+      <section>
+        <span>{word.meaning}</span>
+        {/* <div className="edit-btn" onClick={handleEditClick}>
+              <FaRegEdit />
+            </div> */}
+      </section>
+    </article>
+  );
+}
 
-      {/* grid column 1 */}
-
-      <div className="left-side">
-      {isEditingWord &&
-        <div className="word-delete-btn" onClick={() => handleDeleteWord(word)}><PiTrashLight /></div> }
-        <div className="char-pinyin">
-          <p className="pinyin"> { word.pinyin } </p>
-          <p className="char zh">{ word.charGroup } </p> 
-        </div>
-      </div>
-      
-
-      {/* grid column 2 */}
-
-      <div className="meaning">
+/* 
+OLD CODE -> to keep for reference. 
+return (
+    <article className="SavedWord">
+      <BiDotsVerticalRounded />
+      <section className="char-pinyin">
+         {isEditingWord && (
+          <div
+            className="word-delete-btn"
+            onClick={() => handleDeleteWord(word)}
+          >
+            <PiTrashLight />
+          </div>
+        )} 
+        <p className="pinyin"> {word.pinyin} </p>
+        <p className="char zh">{word.charGroup} </p>
+      </section>
+      <section>
         {isEditingWord ? (
-          <form className="updateMeaningForm" onSubmit={() => handleUpdateMeaning(word)}>
+          <form
+            className="updateMeaningForm"
+            onSubmit={() => handleUpdateMeaning(word)}
+          >
             <input
               type="text"
               name="meaning"
               value={formData.meaning}
               onChange={handleChange}
             />
-            <button className="submit-btn" type="submit" ><FaCheckSquare className="submit-icon" /></button>
+            <button className="submit-btn" type="submit">
+              <FaCheckSquare className="submit-icon" />
+            </button>
           </form>
         ) : (
-          <div className="right-side">
-            <div>{ word.meaning }</div>
-            <div className="edit-btn" onClick={handleEditClick}><FaRegEdit /></div>
+          <div>
+            <div>{word.meaning}</div>
+             <div className="edit-btn" onClick={handleEditClick}>
+              <FaRegEdit />
+            </div> 
           </div>
         )}
-      </div>
-
-    </div>
-
-  )
+      </section>
+    </article>
+  );
 }
+//KEEPING OLD CODE HERE IN CASE I NEED TO REFERENCE IT.
+        <p className="char zh">{word.charGroup} </p>
+      </section>
+      <section>
+        {isEditingWord ? (
+          <form
+            className="updateMeaningForm"
+            onSubmit={() => handleUpdateMeaning(word)}
+          >
+            <input
+              type="text"
+              name="meaning"
+              value={formData.meaning}
+              onChange={handleChange}
+            />
+            <button className="submit-btn" type="submit">
+              <FaCheckSquare className="submit-icon" />
+            </button>
+          </form>
+        ) : (
+          <div>
+            <div>{word.meaning}</div>
+            {/* <div className="edit-btn" onClick={handleEditClick}>
+              <FaRegEdit />
+            </div>}
+            </div>
+          )}
+        </section>
+      </article>
+*/

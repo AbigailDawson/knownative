@@ -1,15 +1,36 @@
-import './DemoNav.css'
+import "./DemoNav.css";
 import { TbCardsFilled } from "react-icons/tb";
 import { MdQuiz } from "react-icons/md";
 import { FaArrowsRotate } from "react-icons/fa6";
 import { ImExit } from "react-icons/im";
 import { FaRegQuestionCircle } from "react-icons/fa";
-import { Tooltip } from 'react-tooltip'
+import { Tooltip } from "react-tooltip";
 
-export default function DemoNav({ expandSidebar }) {
-
-  function handleCardsClick(evt) {
-    expandSidebar()
+export default function DemoNav({
+  expandSidebar,
+  changeSidebarCategory,
+  sidebarCategory,
+}) {
+  function handleCardsClick(e) {
+    const selectedIcon = e.currentTarget.dataset.tooltipId;
+    console.log("selected icon: ", selectedIcon);
+    //if there's no sidebar present, then expand the sidebar based on what the user clicked.
+    if (sidebarCategory === null) {
+      changeSidebarCategory(selectedIcon);
+      expandSidebar();
+      return;
+    }
+    //if the sidebar is present, but you're pressing a different button, just switch the content of the sidebar
+    if (sidebarCategory !== selectedIcon) {
+      changeSidebarCategory(selectedIcon);
+      return;
+    }
+    //if the sidebar is present, and you're clicking the same icon on the navbar, close the sidebar
+    if (sidebarCategory === selectedIcon) {
+      expandSidebar();
+      changeSidebarCategory(selectedIcon);
+      return;
+    }
   }
 
   return (
@@ -33,7 +54,7 @@ export default function DemoNav({ expandSidebar }) {
           <Tooltip
             id="savedwords-tooltip"
             className="icontip-message"
-            border="1px solid var(--medium)"
+            delayShow={100}
             disableStyleInjection="true"
           />
         </div>
@@ -41,6 +62,7 @@ export default function DemoNav({ expandSidebar }) {
         <div className="icontip-container">
           <MdQuiz
             className="side-nav-icon-top"
+            onClick={handleCardsClick}
             data-tooltip-id="flashcards-tooltip"
             data-tooltip-content="Flashcard Quiz"
             data-tooltip-place="right"
@@ -48,7 +70,7 @@ export default function DemoNav({ expandSidebar }) {
           <Tooltip
             id="flashcards-tooltip"
             className="icontip-message"
-            border="1px solid var(--medium)"
+            delayShow={100}
             disableStyleInjection="true"
           />
         </div>
@@ -64,7 +86,7 @@ export default function DemoNav({ expandSidebar }) {
           <Tooltip
             id="changetext-tooltip"
             className="icontip-message"
-            border="1px solid var(--medium)"
+            delayShow={100}
             disableStyleInjection="true"
           />
         </div>
@@ -81,7 +103,7 @@ export default function DemoNav({ expandSidebar }) {
           <Tooltip
             id="support-tooltip"
             className="icontip-message"
-            border="1px solid var(--medium)"
+            delayShow={100}
             disableStyleInjection="true"
           />
         </div>
@@ -96,7 +118,7 @@ export default function DemoNav({ expandSidebar }) {
           <Tooltip
             id="exit-tooltip"
             className="icontip-message"
-            border="1px solid var(--medium)"
+            delayShow={100}
             disableStyleInjection="true"
           />
         </div>

@@ -27,11 +27,11 @@
 }
 
 .icontip-container .icontip-message {
-  color: black;
-  background-color: var(--light);
-  padding: 8px 10px;
-  margin-left: 1.1%; /* best margin for now. this margin probs will need to be redone when sizing issue for demo page is resolved */
-  border-radius: 3px;
+  color: white;
+  background-color: var(--dark);
+  padding: 6px 10px;
+  opacity: 0.95;
+  border-radius: 5px;
   font-size: 90%;
   width: max-content;
 }
