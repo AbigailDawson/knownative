@@ -110,13 +110,17 @@
 .char-pinyin > .char {
   font-size: 1.7rem;
   margin-bottom: 0px;
-  color: black;
 }
 
 .char-pinyin > .pinyin {
   font-size: 0.8rem;
   margin-bottom: 0px;
   color: grey;
+}
+
+.word-meaning {
+  margin-bottom: 0px;
+  text-align: center;
 }
 
 /* .meaning {

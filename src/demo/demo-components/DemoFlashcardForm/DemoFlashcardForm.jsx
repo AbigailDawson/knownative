@@ -34,15 +34,15 @@ export default function DemoFlashcardForm({
           </div>
         </header>
         <FormGroup>
+          <FormLabel
+            id="radio-buttons-group-label"
+            className="radio-buttons-group-label"
+            sx={{ color: "black" }}
+          >
+            <p>Review your saved terms with a short quiz.</p>
+            <p>Choose which to display on the front:</p>
+          </FormLabel>
           <FormControl>
-            <FormLabel
-              id="radio-buttons-group-label"
-              className="radio-buttons-group-label"
-              sx={{ color: "black" }}
-            >
-              <p>Review your saved terms with a short quiz.</p>
-              <p>Choose which to display on the front:</p>
-            </FormLabel>
             <RadioGroup
               column
               aria-labelledby="demo-row-radio-buttons-group-label"
