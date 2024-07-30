@@ -67,7 +67,7 @@ export default function DemoSavedWord({
     updateMeaning(word, formData.meaning);
   } */
 
-  function handleDeleteWord(word) {
+  function handleDeleteWord() {
     setIsEditMenuOpen(false);
     deleteWord(word);
   }
