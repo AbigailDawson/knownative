@@ -10,6 +10,7 @@ export default function DemoNav({
   expandSidebar,
   changeSidebarCategory,
   sidebarCategory,
+  handleShowExit,
 }) {
   function handleCardsClick(e) {
     const selectedIcon = e.currentTarget.dataset.tooltipId;
@@ -78,6 +79,7 @@ export default function DemoNav({
           data-tooltip-id="exit-tooltip"
           data-tooltip-content="Exit Demo"
           data-tooltip-place="right"
+          onClick={handleShowExit}
         />
         <Tooltip id="exit-tooltip" />
       </div>

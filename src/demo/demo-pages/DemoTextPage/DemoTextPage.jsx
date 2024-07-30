@@ -7,6 +7,7 @@ import DemoSavedWordsList from "../../demo-components/DemoSavedWordsList/DemoSav
 import DemoFlashcard from "../../demo-components/DemoFlashcard/DemoFlashcard";
 import DemoFlashcardForm from "../../demo-components/DemoFlashcardForm/DemoFlashcardForm";
 import DemoNav from "../../demo-components/DemoNav/DemoNav";
+import DemoExitModal from "../../demo-components/DemoExitModal/DemoExitModal";
 import * as textsAPI from "../../../utilities/texts-api";
 import * as wordsAPI from "../../../utilities/words-api";
 import { Button, Dialog, DialogActions, DialogContent } from "@mui/material";
@@ -45,6 +46,11 @@ export default function DemoTextPage({ getText, updateText }) {
 
   // --- POPUP ---
   const [showPopup, setShowPopup] = useState(false);
+
+  // --- MODALS ---
+  const [showExitModal, setShowExitModal] = useState(false)
+  const handleShowExit = () => setShowExitModal(true)
+  const handleCloseExit = () => setShowExitModal(false)
 
   // --- FLASHCARDS ---
   const [open, setOpen] = useState(false);
@@ -221,6 +227,7 @@ export default function DemoTextPage({ getText, updateText }) {
           expandSidebar={expandSidebar}
           changeSidebarCategory={changeSidebarCategory}
           sidebarCategory={sidebarCategory}
+          handleShowExit={handleShowExit}
         />
       </nav>
 
@@ -452,6 +459,14 @@ export default function DemoTextPage({ getText, updateText }) {
           </div>
         </div>
       </section>
+      <div id="exit-modal">
+        {
+        <DemoExitModal 
+        showExitModal={showExitModal}
+        handleCloseExit={handleCloseExit}
+        />
+        }
+      </div>
     </main>
   );
 }
