@@ -5,6 +5,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  z-index: 10;
 }
 
 .placeholder-logo {
@@ -23,4 +24,14 @@
 .side-nav-icon-bottom:hover {
   background-color: var(--light);
   border-radius: .7vmin;
+}
+
+.icontip-container .icontip-message {
+  color: white;
+  background-color: var(--dark);
+  padding: 6px 10px;
+  opacity: 0.95;
+  border-radius: 5px;
+  font-size: 90%;
+  width: max-content;
 }

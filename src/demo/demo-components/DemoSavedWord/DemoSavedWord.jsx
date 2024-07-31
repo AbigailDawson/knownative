@@ -67,7 +67,7 @@ export default function DemoSavedWord({
     updateMeaning(word, formData.meaning);
   } */
 
-  function handleDeleteWord(word) {
+  function handleDeleteWord() {
     setIsEditMenuOpen(false);
     deleteWord(word);
   }
@@ -109,7 +109,7 @@ export default function DemoSavedWord({
         <p className="char zh">{word.charGroup} </p>
       </section>
       <section>
-        <span>{word.meaning}</span>
+        <p className="word-meaning">{word.meaning}</p>
         {/* <div className="edit-btn" onClick={handleEditClick}>
               <FaRegEdit />
             </div> */}
