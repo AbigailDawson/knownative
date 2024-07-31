@@ -10,6 +10,7 @@ import NavBar from '../../components/NavBar/NavBar'
 import DashboardPage from '../DashboardPage/DashboardPage'
 import About from '../AboutPage/AboutPage'
 import LandingPage from '../LandingPage/LandingPage';
+import ContactPage from '../ContactPage/ContactPage';
 
 function App() {
   const [user, setUser] = useState(getUser())
@@ -66,6 +67,9 @@ function App() {
             <Route 
               path='/about'
               element={<About />} />
+            <Route 
+              path='/contact'
+              element={<ContactPage />} />
             <Route 
               path='/*' 
               element={<LandingPage setUser={setUser} />}  />
