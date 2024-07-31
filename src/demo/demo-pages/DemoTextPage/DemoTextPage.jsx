@@ -8,11 +8,8 @@ import DemoFlashcard from '../../demo-components/DemoFlashcard/DemoFlashcard'
 import DemoFlashcardForm from '../../demo-components/DemoFlashcardForm/DemoFlashcardForm'
 import DemoNav from '../../demo-components/DemoNav/DemoNav'
 import * as textsAPI from '../../../utilities/texts-api'
-import * as wordsAPI from '../../../utilities/words-api'
 import { Button, Dialog, DialogActions, DialogContent } from '@mui/material'
 import { FaRegWindowClose } from "react-icons/fa";
-import { PiStarLight } from "react-icons/pi";
-import { PiStarFill } from "react-icons/pi";
 import { GiCheckMark } from "react-icons/gi";
 import { PiRepeatBold } from "react-icons/pi";
 import { getWordInfo } from '../../../utilities/words-service'
