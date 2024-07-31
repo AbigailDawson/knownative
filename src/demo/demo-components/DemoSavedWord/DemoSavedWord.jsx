@@ -5,6 +5,8 @@ import { FaRegEdit } from "react-icons/fa";
 import { FaPencilAlt } from "react-icons/fa";
 import { FaCheckSquare } from "react-icons/fa";
 import { PiTrashLight } from "react-icons/pi";
+import DemoEditWordModal from "../DemoEditWordModal/DemoEditWordModal";
+import { FaBedPulse } from "react-icons/fa6";
 
 export default function DemoSavedWord({
   word,
@@ -21,6 +23,11 @@ export default function DemoSavedWord({
   //state that will keep track of IF the edit menu is open for that particular word. Also, isMouseInsideMenu is utilized in order to track whether the cursor is inside of the menu. The menu is set to close when your mouse is outside of the menu.
   const [isEditMenuOpen, setIsEditMenuOpen] = useState(false);
   const [isMouseInsideMenu, setIsMouseInsideMenu] = useState(false);
+  const [showingEditWordModal, setShowingEditWordModal] = useState(FaBedPulse);
+
+  function handleOpenEditModal() {
+    setShowingEditWordModal(true);
+  }
 
   //clicking the edit icon will open up the menu or close the menu if the menu is already open
   function handleEditIconClick() {
@@ -79,6 +86,11 @@ export default function DemoSavedWord({
         className="edit-menu-icon"
         onClick={handleEditIconClick}
       />
+      <DemoEditWordModal
+        showingEditWordModal={showingEditWordModal}
+        setShowingEditWordModal={setShowingEditWordModal}
+        word={word}
+      />
       {/* If the editMenuOpen state variable is true, display the edit/delete menu. */}
       {isEditMenuOpen && (
         <article
@@ -86,7 +98,7 @@ export default function DemoSavedWord({
           onMouseEnter={handleMouseEnterMenu}
           onMouseLeave={handleEditMenuMouseleave}
         >
-          <section className="edit-button">
+          <section className="edit-button" onClick={handleOpenEditModal}>
             <p>Edit</p>
             <FaPencilAlt />
           </section>
