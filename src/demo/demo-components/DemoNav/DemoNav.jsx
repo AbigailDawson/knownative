@@ -10,6 +10,7 @@ export default function DemoNav({
   expandSidebar,
   changeSidebarCategory,
   sidebarCategory,
+  handleShowExit,
 }) {
   function handleCardsClick(e) {
     const selectedIcon = e.currentTarget.dataset.tooltipId;
