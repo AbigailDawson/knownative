@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 export default function LandingPageNav() {
   return (
     <nav class="navbar navbar-expand-lg navbar-light mx-4 py-3">
@@ -7,7 +8,7 @@ export default function LandingPageNav() {
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ms-auto my-2 my-lg-0">
               <li class="nav-item"><a class="nav-link" href="/">About</a></li>
-              <li class="nav-item"><a class="nav-link" href="/">Contact</a></li>
+              <li class="nav-item"><Link class="nav-link" to="/contact">Contact</Link></li>
               <li class="nav-item"><a class="nav-link" href="/">GitHub</a></li>
             </ul>
           </div>
