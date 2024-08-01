@@ -126,17 +126,7 @@ export default function DemoTextPage({ getText, updateText }) {
   //       savedWord._id === updatedWord._id ? updatedWord : savedWord))
   // }
 
-  // Alternate solution
-  // function updateMeaning(word, formData) {
-  //   const savedWords = JSON.parse(localStorage.getItem("stringifiedWords"));
-  //   savedWords.forEach((savedWord) => {
-  //     if (savedWord._id === word._id) {
-  //       savedWord.meaning = formData;
-  //     }
-  //   });
-  //   setLocalSavedWords([...savedWords]);
-  // }
-
+  /* FUNCTION ALTERED to allow for users to have meaning, term, and reading updated after form submissio.*/
   function updateWord(word, inputtedMeaning, inputtedTerm, inputtedReading) {
     const savedWords = JSON.parse(localStorage.getItem("stringifiedWords"));
     for (let k in savedWords) {

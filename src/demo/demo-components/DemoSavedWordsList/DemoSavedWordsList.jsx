@@ -2,19 +2,16 @@ import "./DemoSavedWordsList.css";
 import { useState } from "react";
 import DemoSavedWord from "../DemoSavedWord/DemoSavedWord";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import { TbCardsFilled } from "react-icons/tb";
 
 export default function DemoSavedWordsList({
   savedWords,
   updateWord,
   deleteWord,
-  handleOpen,
   gameInProgress,
   handleBackArrowClick,
 }) {
   const [editingWord, setEditingWord] = useState(null);
 
-  console.log("these are the saved words", savedWords);
   const savedWordItems = savedWords.map((word) => (
     <DemoSavedWord
       key={word._id}
@@ -49,10 +46,6 @@ export default function DemoSavedWordsList({
         </>
       ) : (
         <>
-          {/* <div className="study-btn">
-            <TbCardsFilled className="study-icon" onClick={handleOpen} />
-            <p className="study-btn-txt"> </p>
-          </div> */}
           <article className="saved-words-list-container">
             {!gameInProgress && savedWordItems}
           </article>
@@ -62,3 +55,29 @@ export default function DemoSavedWordsList({
     </div>
   );
 }
+
+/* 
+Old code (in case it's needed) 
+   {savedWords.length === 0 ? (
+        <>
+          <p>No words have been saved yet!</p>
+          <br></br>
+          <p>
+            Get started by navigating to the Study tab and selecting some words
+            you'd like to study.
+          </p>
+        </>
+      ) : (
+        <>
+          {/* <div className="study-btn">
+            <TbCardsFilled className="study-icon" onClick={handleOpen} />
+            <p className="study-btn-txt"> </p>
+          </div>}
+          <article className="saved-words-list-container">
+            {!gameInProgress && savedWordItems}
+          </article>
+        </>
+      )}
+      <button className="add-word-btn">+</button>
+    </div>
+*/

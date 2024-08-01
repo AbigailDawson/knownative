@@ -52,6 +52,7 @@ export default function DemoSavedWord({ word, updateWord, deleteWord }) {
         }`}
         onClick={handleEditIconClick}
       />
+      {/* Code that allows for the edit word modal to show up*/}
       <DemoEditWordModal
         showingEditWordModal={showingEditWordModal}
         setShowingEditWordModal={setShowingEditWordModal}

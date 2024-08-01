@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Modal, Button } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
 import { FaPencilAlt } from "react-icons/fa";
 import { BsX } from "react-icons/bs";
 import "./DemoEditWordModal.css";
@@ -16,22 +16,23 @@ function DemoEditWordModal({
   const [inputReading, setInputReading] = useState(word.pinyin);
   const [inputMeaning, setInputMeaning] = useState(word.meaning);
 
+  //for closing the modal
   function handleCloseEditModal() {
     setShowingEditWordModal(false);
   }
 
+  //functions that allow for a user to edit the term, reading, and meaning of a word in the edit word form
   function handleInputTermChange(e) {
     setInputTerm(e.target.value);
   }
-
   function handleInputReadingChange(e) {
     setInputReading(e.target.value);
   }
-
   function handleInputMeaningChange(e) {
     setInputMeaning(e.target.value);
   }
 
+  //function to actually save the changes when a user clicks on save
   function handleUpdateWord() {
     updateWord(word, inputMeaning, inputTerm, inputReading);
     setShowingEditWordModal(false);
