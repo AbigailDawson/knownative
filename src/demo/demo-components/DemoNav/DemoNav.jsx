@@ -112,6 +112,7 @@ export default function DemoNav({
         <div className="icontip-container">
           <ImExit
             className="side-nav-icon-bottom"
+            onClick={handleShowExit}
             data-tooltip-id="exit-tooltip"
             data-tooltip-content="Exit Demo"
             data-tooltip-place="right"
