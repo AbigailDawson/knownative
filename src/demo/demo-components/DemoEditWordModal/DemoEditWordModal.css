@@ -1,6 +1,9 @@
 .edit-word-modal {
   width: 100%;
   padding: 1.5vmin 1.5vmin;
+  color: black;
+  background-color: var(--lightest);
+  box-shadow: 7px 7px 5px -8px rgba(0, 0, 0, 0.8);
 }
 
 .edit-word-modal-header {
@@ -9,7 +12,7 @@
 }
 
 .edit-word-modal-backdrop {
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .edit-word-modal-title-container {
@@ -26,12 +29,12 @@
 }
 
 .edit-word-modal-title * {
-  font-size: 2rem;
+  font-size: 1.8rem;
 }
 
 .edit-word-modal-exit-icon {
   color: var(--primary);
-  font-size: 2rem;
+  font-size: 1.8rem;
   border-radius: 50%;
   transition: transform 0.3s ease-in-out;
   align-self: flex-start;
@@ -49,9 +52,15 @@
   padding-bottom: 0px;
 }
 
+.edit-word-modal-body h2 {
+  font-size: 1.2rem;
+}
+
 .edit-word-modal-textarea {
   width: 100%;
   padding: 0.5rem 0.5rem;
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
 }
 
 .edit-word-modal-footer {
@@ -73,7 +82,7 @@
 }
 
 .edit-word-modal-save-btn {
-  background-color: #80b3b4;
+  background-color: var(--primary);
   color: #24312f;
   border: 2px solid #24312f;
   padding: 0px 1rem;
@@ -81,7 +90,7 @@
 }
 
 .edit-word-modal-save-btn:hover {
-  color: #4d9596;
+  color: var(--primary);
   background-color: #24312f;
   transform: scale(1.1);
 }

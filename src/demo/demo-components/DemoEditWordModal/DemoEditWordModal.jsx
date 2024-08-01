@@ -8,21 +8,32 @@ function DemoEditWordModal({
   showingEditWordModal,
   setShowingEditWordModal,
   word,
-  updateMeaning,
+  updateWord,
   handleDeleteWord,
 }) {
+  console.log(word);
+  const [inputTerm, setInputTerm] = useState(word.charGroup);
+  const [inputReading, setInputReading] = useState(word.pinyin);
   const [inputMeaning, setInputMeaning] = useState(word.meaning);
 
   function handleCloseEditModal() {
     setShowingEditWordModal(false);
   }
 
+  function handleInputTermChange(e) {
+    setInputTerm(e.target.value);
+  }
+
+  function handleInputReadingChange(e) {
+    setInputReading(e.target.value);
+  }
+
   function handleInputMeaningChange(e) {
     setInputMeaning(e.target.value);
   }
 
-  function handleUpdateMeaning() {
-    updateMeaning(word, inputMeaning);
+  function handleUpdateWord() {
+    updateWord(word, inputMeaning, inputTerm, inputReading);
     setShowingEditWordModal(false);
   }
 
@@ -32,7 +43,6 @@ function DemoEditWordModal({
       centered
       backdropClassName="edit-word-modal-backdrop"
       onHide={handleCloseEditModal}
-      backdrop="static"
     >
       <main className="edit-word-modal">
         <Modal.Header className="edit-word-modal-header">
@@ -52,13 +62,15 @@ function DemoEditWordModal({
           <textarea
             className="edit-word-modal-textarea"
             rows="3"
-            value={word.charGroup}
+            value={inputTerm}
+            onChange={handleInputTermChange}
           />
           <h2>Reading</h2>
           <textarea
             className="edit-word-modal-textarea"
             rows="3"
-            value={word.pinyin}
+            value={inputReading}
+            onChange={handleInputReadingChange}
           />
           <h2>Meaning</h2>
           <textarea
@@ -77,7 +89,7 @@ function DemoEditWordModal({
           </button>
           <button
             className="edit-word-modal-save-btn"
-            onClick={handleUpdateMeaning}
+            onClick={handleUpdateWord}
           >
             Save
           </button>

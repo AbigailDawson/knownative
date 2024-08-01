@@ -4,7 +4,7 @@ import { BiDotsVerticalRounded } from "react-icons/bi";
 import { FaPencilAlt } from "react-icons/fa";
 import DemoEditWordModal from "../DemoEditWordModal/DemoEditWordModal";
 
-export default function DemoSavedWord({ word, updateMeaning, deleteWord }) {
+export default function DemoSavedWord({ word, updateWord, deleteWord }) {
   //NEW CODE ----------------------
   //state that will keep track of IF the edit menu is open for that particular word. Also, isMouseInsideMenu is utilized in order to track whether the cursor is inside of the menu. The menu is set to close when your mouse is outside of the menu.
   const [isEditMenuOpen, setIsEditMenuOpen] = useState(false);
@@ -56,7 +56,7 @@ export default function DemoSavedWord({ word, updateMeaning, deleteWord }) {
         showingEditWordModal={showingEditWordModal}
         setShowingEditWordModal={setShowingEditWordModal}
         word={word}
-        updateMeaning={updateMeaning}
+        updateWord={updateWord}
         handleDeleteWord={handleDeleteWord}
       />
       {/* If the editMenuOpen state variable is true, display the edit/delete menu. */}

@@ -137,10 +137,14 @@ export default function DemoTextPage({ getText, updateText }) {
   //   setLocalSavedWords([...savedWords]);
   // }
 
-  function updateMeaning(word, formData) {
+  function updateWord(word, inputtedMeaning, inputtedTerm, inputtedReading) {
     const savedWords = JSON.parse(localStorage.getItem("stringifiedWords"));
     for (let k in savedWords) {
-      if (savedWords[k]._id === word._id) savedWords[k].meaning = formData;
+      if (savedWords[k]._id === word._id) {
+        savedWords[k].meaning = inputtedMeaning;
+        savedWords[k].charGroup = inputtedTerm;
+        savedWords[k].pinyin = inputtedReading;
+      }
     }
     setLocalSavedWords([...savedWords]);
   }
@@ -252,7 +256,7 @@ export default function DemoTextPage({ getText, updateText }) {
           {sidebarCategory === "savedwords-tooltip" && (
             <DemoSavedWordsList
               savedWords={localSavedWords}
-              updateMeaning={updateMeaning}
+              updateWord={updateWord}
               deleteWord={deleteWord}
               handleOpen={handleOpen}
               gameInProgress={gameInProgress}

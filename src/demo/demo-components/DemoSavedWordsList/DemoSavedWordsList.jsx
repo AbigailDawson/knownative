@@ -6,7 +6,7 @@ import { TbCardsFilled } from "react-icons/tb";
 
 export default function DemoSavedWordsList({
   savedWords,
-  updateMeaning,
+  updateWord,
   deleteWord,
   handleOpen,
   gameInProgress,
@@ -19,7 +19,7 @@ export default function DemoSavedWordsList({
     <DemoSavedWord
       key={word._id}
       word={word}
-      updateMeaning={updateMeaning}
+      updateWord={updateWord}
       isEditingWord={editingWord === word._id}
       setIsEditingWord={setEditingWord}
       deleteWord={deleteWord}
