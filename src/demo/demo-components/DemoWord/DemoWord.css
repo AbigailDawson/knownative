@@ -31,8 +31,8 @@
 }
 
 .Word:not(.specialChar) .zh:hover {
-  background-color: #dfdfdf;
+  background-color: #d5fbf4;
   border-radius: 0.5vmin;
-  padding: 6px;
+  padding: 2px;
   opacity: 0.8;
 }

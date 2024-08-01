@@ -18,6 +18,5 @@ export default function DemoWord({ word, pinyin, meaning, isSaved, isSpecialChar
           <p>{ meaning }</p>
           </div>
       </div>
-    
   )
 }
