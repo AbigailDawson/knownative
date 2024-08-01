@@ -44,6 +44,11 @@
   color: white;
 }
 
+.edit-menu-currently-open {
+  background-color: #00b9bc;
+  color: white;
+}
+
 .edit-delete-menu {
   width: 50%;
   min-width: 120px;

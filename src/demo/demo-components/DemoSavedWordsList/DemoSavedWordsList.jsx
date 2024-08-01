@@ -14,6 +14,7 @@ export default function DemoSavedWordsList({
 }) {
   const [editingWord, setEditingWord] = useState(null);
 
+  console.log("these are the saved words", savedWords);
   const savedWordItems = savedWords.map((word) => (
     <DemoSavedWord
       key={word._id}

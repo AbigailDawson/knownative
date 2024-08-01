@@ -49,9 +49,9 @@ export default function DemoTextPage({ getText, updateText }) {
   const [showPopup, setShowPopup] = useState(false);
 
   // --- MODALS ---
-  const [showExitModal, setShowExitModal] = useState(false)
-  const handleShowExit = () => setShowExitModal(true)
-  const handleCloseExit = () => setShowExitModal(false)
+  const [showExitModal, setShowExitModal] = useState(false);
+  const handleShowExit = () => setShowExitModal(true);
+  const handleCloseExit = () => setShowExitModal(false);
 
   // --- FLASHCARDS ---
   const [open, setOpen] = useState(false);
@@ -103,8 +103,11 @@ export default function DemoTextPage({ getText, updateText }) {
 
   function generateID(wordToSave) {
     const savedWords = JSON.parse(localStorage.getItem("stringifiedWords"));
-    if (savedWords.length === 0) return 0;
-    else return savedWords[savedWords.length - 1]._id + 1;
+    if (savedWords.length === 0) {
+      return 0;
+    } else {
+      return savedWords[savedWords.length - 1]._id + 1;
+    }
   }
 
   function saveWord(word) {
@@ -121,6 +124,17 @@ export default function DemoTextPage({ getText, updateText }) {
   //   setSavedWords(prevSavedWords =>
   //     prevSavedWords.map(savedWord =>
   //       savedWord._id === updatedWord._id ? updatedWord : savedWord))
+  // }
+
+  // Alternate solution
+  // function updateMeaning(word, formData) {
+  //   const savedWords = JSON.parse(localStorage.getItem("stringifiedWords"));
+  //   savedWords.forEach((savedWord) => {
+  //     if (savedWord._id === word._id) {
+  //       savedWord.meaning = formData;
+  //     }
+  //   });
+  //   setLocalSavedWords([...savedWords]);
   // }
 
   function updateMeaning(word, formData) {
@@ -259,19 +273,6 @@ export default function DemoTextPage({ getText, updateText }) {
           )}
         </aside>
       )}
-
-      {/* OLD CODE */}
-      {/* {expandedSidebar && (
-        <aside className="sidebar">
-          <DemoSavedWordsList
-            savedWords={localSavedWords}
-            updateMeaning={updateMeaning}
-            deleteWord={deleteWord}
-            handleOpen={handleOpen}
-            gameInProgress={gameInProgress}
-          />
-        </aside>
-      )} */}
 
       <Dialog
         open={open}
@@ -462,10 +463,10 @@ export default function DemoTextPage({ getText, updateText }) {
       </section>
       <div id="exit-modal">
         {
-        <DemoExitModal 
-        showExitModal={showExitModal}
-        handleCloseExit={handleCloseExit}
-        />
+          <DemoExitModal
+            showExitModal={showExitModal}
+            handleCloseExit={handleCloseExit}
+          />
         }
       </div>
     </main>

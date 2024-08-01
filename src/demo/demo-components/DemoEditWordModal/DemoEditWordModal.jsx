@@ -3,22 +3,26 @@ import { Modal, Button } from "react-bootstrap";
 import { FaPencilAlt } from "react-icons/fa";
 import { BsX } from "react-icons/bs";
 import "./DemoEditWordModal.css";
-import { useAsyncError } from "react-router-dom";
 
 function DemoEditWordModal({
   showingEditWordModal,
   setShowingEditWordModal,
   word,
+  updateMeaning,
+  handleDeleteWord,
 }) {
-  console.log(word);
-  /* 
-  {pinyin: 'zài', meaning: '(located) at', charGroup: '在', _id: 0}
-  */
-  const [inputTerm, setTerm] = useState(word.charGroup);
-  const [inputReading, setInputReading] = useState(word.pinyin);
   const [inputMeaning, setInputMeaning] = useState(word.meaning);
 
   function handleCloseEditModal() {
+    setShowingEditWordModal(false);
+  }
+
+  function handleInputMeaningChange(e) {
+    setInputMeaning(e.target.value);
+  }
+
+  function handleUpdateMeaning() {
+    updateMeaning(word, inputMeaning);
     setShowingEditWordModal(false);
   }
 
@@ -45,12 +49,38 @@ function DemoEditWordModal({
         </Modal.Header>
         <Modal.Body className="edit-word-modal-body">
           <h2>Term</h2>
+          <textarea
+            className="edit-word-modal-textarea"
+            rows="3"
+            value={word.charGroup}
+          />
           <h2>Reading</h2>
+          <textarea
+            className="edit-word-modal-textarea"
+            rows="3"
+            value={word.pinyin}
+          />
           <h2>Meaning</h2>
+          <textarea
+            className="edit-word-modal-textarea"
+            rows="3"
+            value={inputMeaning}
+            onChange={handleInputMeaningChange}
+          />
         </Modal.Body>
         <Modal.Footer className="edit-word-modal-footer">
-          <button className="edit-word-modal-delete-btn">Delete</button>
-          <button className="edit-word-modal-save-btn">Save</button>
+          <button
+            className="edit-word-modal-delete-btn"
+            onClick={handleDeleteWord}
+          >
+            Delete
+          </button>
+          <button
+            className="edit-word-modal-save-btn"
+            onClick={handleUpdateMeaning}
+          >
+            Save
+          </button>
         </Modal.Footer>
       </main>
     </Modal>

@@ -49,6 +49,11 @@
   padding-bottom: 0px;
 }
 
+.edit-word-modal-textarea {
+  width: 100%;
+  padding: 0.5rem 0.5rem;
+}
+
 .edit-word-modal-footer {
   border: none;
 }
@@ -68,7 +73,7 @@
 }
 
 .edit-word-modal-save-btn {
-  background-color: #e1faf7;
+  background-color: #80b3b4;
   color: #24312f;
   border: 2px solid #24312f;
   padding: 0px 1rem;
@@ -76,7 +81,7 @@
 }
 
 .edit-word-modal-save-btn:hover {
-  color: #e1faf7;
+  color: #4d9596;
   background-color: #24312f;
   transform: scale(1.1);
 }
