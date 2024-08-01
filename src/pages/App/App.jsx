@@ -4,12 +4,13 @@ import { getUser } from "../../utilities/users-service";
 import "./App.css";
 import * as textsAPI from "../../utilities/texts-api";
 // import AuthPage from '../AuthPage/AuthPage'
-import TextPage from "../TextPage/TextPage";
-import DemoTextPage from "../../demo/demo-pages/DemoTextPage/DemoTextPage";
-import NavBar from "../../components/NavBar/NavBar";
-import DashboardPage from "../DashboardPage/DashboardPage";
-import About from "../AboutPage/AboutPage";
-import LandingPage from "../LandingPage/LandingPage";
+import TextPage from '../TextPage/TextPage'
+import DemoTextPage from '../../demo/demo-pages/DemoTextPage/DemoTextPage'
+import NavBar from '../../components/NavBar/NavBar'
+import DashboardPage from '../DashboardPage/DashboardPage'
+import About from '../AboutPage/AboutPage'
+import LandingPage from '../LandingPage/LandingPage';
+import ContactPage from '../ContactPage/ContactPage';
 
 function App() {
   const [user, setUser] = useState(getUser());
@@ -42,35 +43,39 @@ function App() {
   }
 
   return (
-    <main className="App">
-      {user ? (
+    
+    <main className='App'>
+      { user ?
+      <>
+        <NavBar user={user} setUser={setUser} />
+        <Routes>
+          <Route 
+            path="/" 
+            element={<LandingPage />} 
+            />
+          <Route 
+            path='/dashboard' 
+            element={<DashboardPage user={user} texts={texts} setTexts={setTexts} />}  />
+          <Route 
+            path='/read/:textId' 
+            element={<TextPage getText={getText} updateText={updateText} />} />
+        </Routes>
+      </>
+        :
         <>
-          <NavBar user={user} setUser={setUser} />
           <Routes>
-            <Route path="/" element={<LandingPage />} />
-            <Route
-              path="/dashboard"
-              element={
-                <DashboardPage user={user} texts={texts} setTexts={setTexts} />
-              }
-            />
-            <Route
-              path="/read/:textId"
-              element={<TextPage getText={getText} updateText={updateText} />}
-            />
-          </Routes>
-        </>
-      ) : (
-        <>
-          <Routes>
-            <Route
-              path="/demo"
-              element={
-                  <DemoTextPage />
-              }
-            />
-            <Route path="/about" element={<About />} />
-            <Route path="/*" element={<LandingPage setUser={setUser} />} />
+            <Route 
+              path='/demo'
+              element={<DemoTextPage />} />
+            <Route 
+              path='/about'
+              element={<About />} />
+            <Route 
+              path='/contact'
+              element={<ContactPage />} />
+            <Route 
+              path='/*' 
+              element={<LandingPage setUser={setUser} />}  />
           </Routes>
         </>
       )}

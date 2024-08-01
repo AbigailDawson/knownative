@@ -1,29 +1,11 @@
-import { Link } from 'react-router-dom';
 import LandingPageNav from '../../components/LandingPageNav/LandingPageNav';
 import LandingPageFooter from '../../components/LandingPageFooter/LandingPageFooter';
 
-export default function LandingPage() {
+export default function ContactPage() {
   return (
     <>
     <div className="container">
     <LandingPageNav />
-      <section className="hero">
-        <div class="px-4 pt-5 my-5 text-center border-bottom">
-          <h1 class="display-4 fw-bold">Welcome to KnowNative</h1>
-          <div class="col-lg-6 mx-auto">
-            <p class="lead my-4">Ditch the textbooks and learn from real native speakers by studying articles written by real native speakers. Learning with KnowNative is like building your own study guide designed specifically for you.</p>
-            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center my-5">
-              <Link to="/demo" className="btn btn-lg px-4 me-sm-3 demo-button">Demo</Link>
-              <a href="https://github.com/AbigailDawson/knownative" target="_blank" rel="noopener noreferrer" className="btn btn-lg px-4 github-button">GitHub</a>
-            </div>
-          </div>
-          <div class="overflow-hidden" style={{maxHeight: 30 + 'vh'}}>
-            <div class="container px-5">
-              <img src="/images/landing-image.png" class="img-fluid border rounded-3 shadow-lg mb-4" alt="KnowNative app" width="700" height="500" loading="lazy" />
-            </div>
-          </div>
-        </div>
-      </section>
       <section className="mailing-list">
         <div class="container col-xl-10 col-xxl-8 px-4 py-5">
           <div class="row align-items-center g-lg-5 py-5">
@@ -43,8 +25,14 @@ export default function LandingPage() {
                   <input type="email" class="form-control" id="emailInput" placeholder="name@example.com" />
                   <label for="emailInput">Email address</label>
                 </div>
-                <button class="w-100 btn btn-lg btn-primary" type="submit">Sign up</button>
-                <hr class="my-4" />
+                <button class="w-100 btn btn-lg sign-up" type="submit">Sign up</button>
+                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center my-4">
+                  <a href="https://www.linkedin.com/in/abigaildawsondev/" className="btn btn-sm px-3 social-links">LinkedIn</a>
+                  <a href="https://github.com/AbigailDawson/knownative" target="_blank" rel="noopener noreferrer" className="btn btn-sm px-3 social-links">GitHub</a>
+                  <a href="mailto:abigaildawson.dev@gmail.com" target="_blank" rel="noopener noreferrer" className="btn btn-sm px-3 social-links">Email</a>
+                  <a href="https://x.com/abigailddev" target="_blank" rel="noopener noreferrer" className="btn btn-sm px-3 social-links">X</a>
+                </div>
+                <hr class="my-3" />
                 <small class="text-muted">KnowNative will never send you spam. Unsubscribe at any time by emailing hello@knownative.com.</small>
               </form>
             </div>

@@ -33,9 +33,15 @@ export default function DemoStudyText({ text, textId, activeWord, setActiveWord,
   }
 
   function handleWordClick(word, evt) {
-    setActiveWord(word)
-    setPopupPosition([evt.pageX, evt.pageY])
-    setShowPopup(true)
+    if (showPopup) {
+      // Close the previous popup
+      setShowPopup(false);
+      setActiveWord('');
+    }
+    // Open the new popup
+    setActiveWord(word);
+    setPopupPosition([evt.pageX, evt.pageY]);
+    setShowPopup(true);
   }
 
   const words = tokenizedText.map((word, idx) => {
