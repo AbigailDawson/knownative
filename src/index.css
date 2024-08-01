@@ -91,7 +91,6 @@ button {
 .github-button:hover {
   background-color: var(--light);
   color: var(--darkest);
-<<<<<<< HEAD
   border: 1px solid var(--light);
 }
 
@@ -106,9 +105,7 @@ button {
   background-color: var(--light);
   color: var(--darkest);
   border: 1px solid var(--light);
-=======
   outline: 1px solid var(--light);
->>>>>>> 4c914106cceaab64f16291fa0b324db033d9e367
 }
 
 .close-btn:hover {

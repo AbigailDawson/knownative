@@ -26,11 +26,12 @@ export default function ContactPage() {
                   <input type="email" class="form-control" id="emailInput" placeholder="name@example.com" />
                   <label for="emailInput">Email address</label>
                 </div>
-                <button class="w-100 btn btn-lg btn-primary sign-up" type="submit">Sign up</button>
+                <button class="w-100 btn btn-lg sign-up" type="submit">Sign up</button>
                 <div class="d-grid gap-2 d-sm-flex justify-content-sm-center my-4">
-                  <Link to="/demo" className="btn btn-sm px-3 social-links">LinkedIn</Link>
+                  <a href="https://www.linkedin.com/in/abigaildawsondev/" className="btn btn-sm px-3 social-links">LinkedIn</a>
                   <a href="https://github.com/AbigailDawson/knownative" target="_blank" rel="noopener noreferrer" className="btn btn-sm px-3 social-links">GitHub</a>
-                  <a href="https://github.com/AbigailDawson/knownative" target="_blank" rel="noopener noreferrer" className="btn btn-sm px-3 social-links">X</a>
+                  <a href="mailto:abigaildawson.dev@gmail.com" target="_blank" rel="noopener noreferrer" className="btn btn-sm px-3 social-links">Email</a>
+                  <a href="https://x.com/abigailddev" target="_blank" rel="noopener noreferrer" className="btn btn-sm px-3 social-links">X</a>
                 </div>
                 <hr class="my-3" />
                 <small class="text-muted">KnowNative will never send you spam. Unsubscribe at any time by emailing hello@knownative.com.</small>
