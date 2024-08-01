@@ -55,7 +55,6 @@ button {
 .demo-button {
   background-color: var(--primary);
   color: var(--darkest);
-  border: none;
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
   gap: 10px;
 }
@@ -85,13 +84,14 @@ button {
 .github-button {
   background-color: var(--white);
   color: var(--primary);
-  border: 1px solid var(--primary);
+  outline: 1px solid var(--primary);
   gap: 10px;
 }
 
 .github-button:hover {
   background-color: var(--light);
   color: var(--darkest);
+<<<<<<< HEAD
   border: 1px solid var(--light);
 }
 
@@ -106,6 +106,9 @@ button {
   background-color: var(--light);
   color: var(--darkest);
   border: 1px solid var(--light);
+=======
+  outline: 1px solid var(--light);
+>>>>>>> 4c914106cceaab64f16291fa0b324db033d9e367
 }
 
 .close-btn:hover {
