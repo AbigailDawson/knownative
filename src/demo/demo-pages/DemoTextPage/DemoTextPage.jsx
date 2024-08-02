@@ -6,6 +6,7 @@ import DemoTranslateText from "../../demo-components/DemoTranslateText/DemoTrans
 import DemoSavedWordsList from "../../demo-components/DemoSavedWordsList/DemoSavedWordsList";
 import DemoFlashcard from "../../demo-components/DemoFlashcard/DemoFlashcard";
 import DemoFlashcardForm from "../../demo-components/DemoFlashcardForm/DemoFlashcardForm";
+import DemoInfoSidebar from "../../demo-components/DemoInfoSidebar/DemoInfoSidebar";
 import DemoNav from "../../demo-components/DemoNav/DemoNav";
 import DemoExitModal from "../../demo-components/DemoExitModal/DemoExitModal";
 import * as textsAPI from "../../../utilities/texts-api";
@@ -216,9 +217,8 @@ export default function DemoTextPage({ getText, updateText }) {
     "Loading ..."
   ) : (
     <main
-      className={`TextPage page ${
-        expandedSidebar ? "expanded-sidebar" : "collapsed-sidebar"
-      }`}
+      className={`TextPage page ${expandedSidebar ? "expanded-sidebar" : "collapsed-sidebar"
+        }`}
     >
       <nav className="side-nav">
         <DemoNav
@@ -252,6 +252,13 @@ export default function DemoTextPage({ getText, updateText }) {
               setShowPinyin={setShowPinyin}
               handlePlay={handlePlay}
               handleBackArrowClick={handleBackArrowClick}
+            />
+          )}
+          {sidebarCategory === "info-tooltip" && (
+            <DemoInfoSidebar
+              changeSidebarCategory={changeSidebarCategory}
+              handleBackArrowClick={handleBackArrowClick}
+              handleShowExit={handleShowExit}
             />
           )}
         </aside>
@@ -413,9 +420,8 @@ export default function DemoTextPage({ getText, updateText }) {
 
           <div
             id="study"
-            className={`study-container ${
-              activeTab === "study" ? "active" : ""
-            }`}
+            className={`study-container ${activeTab === "study" ? "active" : ""
+              }`}
           >
             <div className="Text">
               {text ? (
@@ -447,9 +453,8 @@ export default function DemoTextPage({ getText, updateText }) {
 
           <div
             id="translate"
-            className={`translate-container ${
-              activeTab === "translate" ? "active" : ""
-            }`}
+            className={`translate-container ${activeTab === "translate" ? "active" : ""
+              }`}
           >
             <div className="Text">
               {text ? <DemoTranslateText text={text} /> : "Loading text"}
@@ -459,10 +464,10 @@ export default function DemoTextPage({ getText, updateText }) {
       </section>
       <div id="exit-modal">
         {
-        <DemoExitModal 
-        showExitModal={showExitModal}
-        handleCloseExit={handleCloseExit}
-        />
+          <DemoExitModal
+            showExitModal={showExitModal}
+            handleCloseExit={handleCloseExit}
+          />
         }
       </div>
     </main>
