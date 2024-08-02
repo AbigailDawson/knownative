@@ -31,12 +31,13 @@
 
 .read-text-block {
   margin-top: 2vmin;
-  line-height: 40px;
+  line-height: 55px;
   letter-spacing: .3vmin;
-  font-size: 30px;
+  font-size: 27px;
   text-align: left;
   white-space: pre;
   transition: grid-column 0.5s;
+  max-width: 900px;
 }
 
 .read-text-block > .zh {
@@ -211,4 +212,16 @@
   100% {
     transform: scale(1.02);
   }
+}
+
+/* medium screens and smaller */
+@media (max-width: 768px) { 
+
+  .read-text-block {
+    line-height: 40px;
+    letter-spacing: .3vmin;
+    font-size: 20px;
+    margin-left: 20px;
+  }
+
 }

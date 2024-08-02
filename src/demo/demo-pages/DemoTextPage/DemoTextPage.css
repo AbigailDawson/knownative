@@ -103,3 +103,13 @@
   background-color: var(--teal-lt);
   transform: scale(1.1);
 }
+
+
+/* medium screens and smaller */
+@media (max-width: 768px) { 
+
+  .textpage-heading-title {
+    font-size: 28px;
+    margin-left: 20px;
+  }
+}
