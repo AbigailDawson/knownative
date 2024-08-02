@@ -194,7 +194,7 @@ a {
   margin: 1vmin 0 3vmin 0;
   border-radius: 1vmin;
   padding: .5vmin 2vmin;
-  font-size: 2vmin;
+  font-size: 22px;
   background-color: var(--white);
   color: var(--dark);
 }
