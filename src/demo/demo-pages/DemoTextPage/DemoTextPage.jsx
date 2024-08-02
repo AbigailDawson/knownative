@@ -144,11 +144,6 @@ export default function DemoTextPage({ getText, updateText }) {
     setLocalSavedWords([...filteredWords]);
   }
 
-  function handleOpen() {
-    setOpen(true);
-    getFlashcards();
-  }
-
   function handleClose() {
     setFlashcards([]);
     setCorrectCount(0);
@@ -171,8 +166,11 @@ export default function DemoTextPage({ getText, updateText }) {
     ]);
   }
 
-  function handlePlay() {
+  function startQuiz() {
+    setOpen(true);
+    getFlashcards();
     setRemainingCount(flashcards.length);
+    console.log(flashcards.length)
     setGameInProgress(true);
   }
 
@@ -237,7 +235,7 @@ export default function DemoTextPage({ getText, updateText }) {
               savedWords={localSavedWords}
               updateMeaning={updateMeaning}
               deleteWord={deleteWord}
-              handleOpen={handleOpen}
+              startQuiz={startQuiz}
               gameInProgress={gameInProgress}
               handleBackArrowClick={handleBackArrowClick}
             />
@@ -250,7 +248,7 @@ export default function DemoTextPage({ getText, updateText }) {
               setSelectedFront={setSelectedFront}
               showPinyin={showPinyin}
               setShowPinyin={setShowPinyin}
-              handlePlay={handlePlay}
+              startQuiz={startQuiz}
               handleBackArrowClick={handleBackArrowClick}
             />
           )}
@@ -309,9 +307,7 @@ export default function DemoTextPage({ getText, updateText }) {
             justifyContent: "space-between",
           }}
         >
-          {flashcards.length > 0 ? (
-            <>
-              {gameInProgress ? (
+          {flashcards.length > 0 && gameInProgress ? (
                 <>
                   <DemoFlashcard
                     chinese={flashcards[0].chinese}
@@ -324,43 +320,33 @@ export default function DemoTextPage({ getText, updateText }) {
                     flashcards={flashcards}
                   />
                   <div>
-                    <div className="flashcard-btns">
-                      <button className="correct-btn" onClick={handleCorrect}>
-                        <GiCheckMark className="flashcard-icon" />
-                        Correct!
-                      </button>
-                      <button
-                        className="incorrect-btn"
-                        onClick={handleIncorrect}
-                      >
-                        <PiRepeatBold className="flashcard-icon" />
-                        Try again
-                      </button>
-                    </div>
-                    <div className="flashcard-count">
-                      <p>
-                        <span className="correct-count">{correctCount}</span>{" "}
-                        Correct
-                      </p>
-                      <p>
-                        <span className="remaining-count">
-                          {remainingCount}
-                        </span>{" "}
-                        Remaining
-                      </p>
-                    </div>
+                  <div className="flashcard-btns">
+                    <button className="correct-btn" onClick={handleCorrect}>
+                      <GiCheckMark className="flashcard-icon" />
+                      Correct!
+                    </button>
+                    <button
+                      className="incorrect-btn"
+                      onClick={handleIncorrect}
+                    >
+                      <PiRepeatBold className="flashcard-icon" />
+                      Try again
+                    </button>
                   </div>
-                </>
-              ) : (
-                <DemoFlashcardForm
-                  selectedFront={selectedFront}
-                  setSelectedFront={setSelectedFront}
-                  showPinyin={showPinyin}
-                  setShowPinyin={setShowPinyin}
-                  handlePlay={handlePlay}
-                />
-              )}
-            </>
+                  <div className="flashcard-count">
+                    <p>
+                      <span className="correct-count">{correctCount}</span>{" "}
+                      Correct
+                    </p>
+                    <p>
+                      <span className="remaining-count">
+                        {remainingCount}
+                      </span>{" "}
+                      Remaining
+                    </p>
+                  </div>
+                </div>
+              </>
           ) : (
             <div className="congrats">
               <div>
