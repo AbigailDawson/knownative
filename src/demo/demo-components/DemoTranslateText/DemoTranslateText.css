@@ -9,7 +9,25 @@
 
 .translate-text-block {
   margin-top: 2vmin;
-  line-height: 40px;
-  font-size: 30px;
+  line-height: 3.1rem;
+  font-size: 1.8rem;
   text-align: left;
+  max-width: 900px;
+}
+
+/* medium screens and smaller */
+@media (max-width: 768px) { 
+
+  .translate-text-block {
+    font-size: 1.4rem;
+  }
+
+}
+
+/* small screens and smaller */
+@media (max-width: 550px) { 
+  .TranslateText {
+    padding: 4vmin 0 0 5.5vmin;
+  }
+
 }

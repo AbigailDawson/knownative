@@ -11,11 +11,20 @@
 .show-translation {
   letter-spacing: 0;
   text-decoration: underline;
-  font-size: 2vmin;
+  font-size: 1.3rem;
 }
 
 .hide-translation:hover,
 .show-translation:hover {
   color: var(--red);
   cursor: pointer;
+}
+
+/* small screens and smaller */
+@media (max-width: 550px) { 
+  .hide-translation,
+  .show-translation {
+    font-size: 1rem;
+  }
+
 }

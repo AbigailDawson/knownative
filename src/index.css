@@ -165,6 +165,7 @@ a {
   align-items: center;
   background-color: green;
   height: 100vh;
+  width: 90px;
   padding: 0;
   background-color: var(--lightest);
   border-right: 1px solid var(--medium);
@@ -194,7 +195,7 @@ a {
   margin: 1vmin 0 3vmin 0;
   border-radius: 1vmin;
   padding: .5vmin 2vmin;
-  font-size: 22px;
+  font-size: 1.4rem;
   background-color: var(--white);
   color: var(--dark);
 }

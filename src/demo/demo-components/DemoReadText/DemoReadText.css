@@ -30,9 +30,9 @@
 
 .read-text-block {
   margin-top: 2vmin;
-  line-height: 45px;
+  line-height: 3.1rem;
   letter-spacing: .3vmin;
-  font-size: 28px;
+  font-size: 1.8rem;
   text-align: left;
   white-space: pre;
   transition: grid-column 0.5s;
@@ -217,9 +217,7 @@
 @media (max-width: 768px) { 
 
   .read-text-block {
-    line-height: 40px;
-    letter-spacing: .3vmin;
-    font-size: 20px;
+    font-size: 1.3rem;
     margin-left: 20px;
   }
 
