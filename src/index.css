@@ -149,6 +149,7 @@ a {
   background: white;
   padding: 3vmin;
   height: 100vh;
+  overflow-y: auto; /* Enable vertical scrolling if content overflows */ 
 }
 
 .page.collapsed-sidebar .sidebar {
@@ -167,6 +168,7 @@ a {
   padding: 0;
   background-color: var(--lightest);
   border-right: 1px solid var(--medium);
+  z-index: 5;
 }
 
 .sidebar {
@@ -204,4 +206,14 @@ a {
 
 .zh {
   font-family: 'Noto Serif TC', serif;
+}
+
+/* medium screens and smaller */
+@media (max-width: 768px) { 
+
+  .side-nav {
+    height: 100vh;
+    width: 65px;
+  }
+
 }
