@@ -1,8 +1,11 @@
 .textpage-heading {
   display: flex;
+  max-width: 900px;
+  text-align: left;
+  width: 100%;
   flex-direction: column;
   margin: 0 3vmin 0 3vmin;
-  padding: 4vmin 2vmin 0 2vmin;
+  padding: 4vmin 0 0 2vmin;
   color: var(--darkest);
 }
 
@@ -15,10 +18,12 @@
 }
 
 .text-area {
-  border-radius: 2vmin;
   background: white;
   padding: 2vmin;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .read-container,
@@ -112,4 +117,12 @@
     font-size: 28px;
     margin-left: 20px;
   }
+}
+
+/* small screens and smaller */
+@media (max-width: 550px) { 
+  .textpage-heading {
+    padding: 4vmin 0 0 5vmin;
+  }
+
 }
