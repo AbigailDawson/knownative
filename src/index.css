@@ -218,3 +218,13 @@ a {
   }
 
 }
+
+
+/* xsmall screens and smaller */
+@media (max-width: 400px) { 
+
+  .tab-btn {
+    font-size: 1.1rem;
+  }
+
+}
