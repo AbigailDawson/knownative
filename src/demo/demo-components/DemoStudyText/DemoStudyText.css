@@ -1,10 +1,11 @@
 .StudyText {
   display: flex;
   flex-direction: column;
-  gap: 2vmin;
+  gap: 2rem;
   margin: 0 3vmin 0 3vmin;
   padding: 4vmin 2vmin;
   color: var(--drk-txt);
+  max-width: 900px;
 }
 
 .study-text-block {
@@ -13,4 +14,17 @@
   flex-wrap: wrap;
   align-items: flex-start;
   padding-top: 4vmin;
+}
+
+
+/* small screens and smaller */
+@media (max-width: 550px) { 
+  .TranslateText {
+    padding: 4vmin 0 0 5.5vmin;
+  }
+
+  .study-text-block {
+    margin-left: 20px
+  }
+
 }
