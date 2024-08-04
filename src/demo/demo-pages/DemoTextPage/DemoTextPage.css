@@ -32,6 +32,10 @@
   
 }
 
+.study-content {
+  position: relative;
+}
+
 .read-container.active,
 .study-container.active,
 .translate-container.active {

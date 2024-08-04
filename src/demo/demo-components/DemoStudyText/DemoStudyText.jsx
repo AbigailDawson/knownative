@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import './DemoStudyText.css'
 import DemoPopup from '../DemoPopup/DemoPopup'
 import DemoWord from '../DemoWord/DemoWord'
@@ -9,6 +9,8 @@ export default function DemoStudyText({ text, textId, activeWord, setActiveWord,
 
   const [tokenizedText, setTokenizedText] = useState([])
   const [popupPosition, setPopupPosition] = useState([0,0])
+  const containerRef = useRef(null);
+
 
   useEffect(function() {
     async function getTokenizedText() {
@@ -40,7 +42,15 @@ export default function DemoStudyText({ text, textId, activeWord, setActiveWord,
     }
     // Open the new popup
     setActiveWord(word);
-    setPopupPosition([evt.pageX, evt.pageY]);
+    
+    // Note: using containerRect here so popup is positioned relative to the containerRef. 
+    // changed from pageX (whole document) to clientX (just the current viewport)
+    const containerRect = containerRef.current.getBoundingClientRect();
+    
+    setPopupPosition([
+      evt.clientX - containerRect.left, 
+      evt.clientY - containerRect.top - 40
+    ]);
     setShowPopup(true);
   }
 
@@ -79,7 +89,7 @@ export default function DemoStudyText({ text, textId, activeWord, setActiveWord,
 
   return (
     <>
-      <div className="StudyText">
+      <div className="StudyText" ref={containerRef}>
         <div className="study-text-block">
           {words}
         </div>
