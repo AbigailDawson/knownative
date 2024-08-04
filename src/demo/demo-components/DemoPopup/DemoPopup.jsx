@@ -42,9 +42,9 @@ export default function Popup({ word, popupPosition, saveWord, textId, onClose})
     const html = popupMeaning.innerHTML;
     const lines = html.split('<br>').length; // count the number of lines by splitting on <br> elements
     if (lines > 1) {
-      setPopupHeight('17%'); // update popup height to 17% if there are more than 1 line
+      setPopupHeight('220px'); // update popup height to 220px if there are more than 1 line
     } else {
-      setPopupHeight('15%'); // keep popup height to 15% if there is only 1 line
+      setPopupHeight('190px'); // keep popup height to 190px if there is only 1 line
     }
   }, [meaning]);
 
@@ -53,8 +53,9 @@ export default function Popup({ word, popupPosition, saveWord, textId, onClose})
         className="Popup"
         style={{
           left: `${popupPosition[0] + 105}px`,
-          top: popupHeight === '15%'? `${popupPosition[1] - 10}px` : `${popupPosition[1] - 14}px`,
+          top: popupHeight === '11rem'? `${popupPosition[1] - 100}px` : `${popupPosition[1] - 50}px`,
           height: popupHeight,
+          
         }}
       >
       <div className="popup-content">
