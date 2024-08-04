@@ -8,8 +8,8 @@ import DemoFlashcard from "../../demo-components/DemoFlashcard/DemoFlashcard";
 import DemoFlashcardForm from "../../demo-components/DemoFlashcardForm/DemoFlashcardForm";
 import DemoNav from "../../demo-components/DemoNav/DemoNav";
 import DemoExitModal from "../../demo-components/DemoExitModal/DemoExitModal";
-import * as textsAPI from "../../../utilities/texts-api";
-import * as wordsAPI from "../../../utilities/words-api";
+// import * as textsAPI from "../../../utilities/texts-api";
+// import * as wordsAPI from "../../../utilities/words-api";
 import { Button, Dialog, DialogActions, DialogContent } from "@mui/material";
 import { FaRegWindowClose } from "react-icons/fa";
 import { GiCheckMark } from "react-icons/gi";
@@ -39,7 +39,7 @@ export default function DemoTextPage({ getText, updateText }) {
       ? []
       : JSON.parse(localStorage.getItem("stringifiedWords"))
   );
-  const [savedWords, setSavedWords] = useState([]);
+  // const [savedWords, setSavedWords] = useState([]);
   const [activeWord, setActiveWord] = useState(null);
   const [expandedSidebar, setExpandedSidebar] = useState(false);
 
@@ -87,10 +87,10 @@ export default function DemoTextPage({ getText, updateText }) {
     setActiveTab(tabName);
   }
 
-  async function favoriteText(text, textId) {
-    const updatedText = await textsAPI.favoriteText(text, textId);
-    updateText(updatedText);
-  }
+  // async function favoriteText(text, textId) {
+  //   const updatedText = await textsAPI.favoriteText(text, textId);
+  //   updateText(updatedText);
+  // }
 
   // async function saveWord(word, textId) {
   //   const savedWord = await textsAPI.saveWord(word, textId)
@@ -99,7 +99,7 @@ export default function DemoTextPage({ getText, updateText }) {
   //   setShowPopup(false)
   // }
 
-  function generateID(wordToSave) {
+  function generateID() {
     const savedWords = JSON.parse(localStorage.getItem("stringifiedWords"));
     if (savedWords.length === 0) {
       return 0;
@@ -111,7 +111,7 @@ export default function DemoTextPage({ getText, updateText }) {
   function saveWord(word) {
     const savedWords = JSON.parse(localStorage.getItem("stringifiedWords"));
     const wordToSave = getWordInfo(word);
-    wordToSave._id = generateID(wordToSave);
+    wordToSave._id = generateID();
     setLocalSavedWords([...savedWords, wordToSave]);
     setActiveWord("");
     setShowPopup(false);
@@ -422,7 +422,6 @@ export default function DemoTextPage({ getText, updateText }) {
                   setActiveWord={setActiveWord}
                   saveWord={saveWord}
                   savedWords={localSavedWords}
-                  setSavedWords={setSavedWords}
                   showPopup={showPopup}
                   setShowPopup={setShowPopup}
                 />
