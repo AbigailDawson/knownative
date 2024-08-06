@@ -1,6 +1,14 @@
 .translation {
   letter-spacing: 0;
-  font-size: 2vmin;
+  font-size: 1.2rem;
   margin: 1vmin 0 4vmin 0;
   color: var(--red)
+}
+
+/* small screens and smaller */
+@media (max-width: 550px) { 
+  .translation {
+    font-size: 1rem;
+  }
+
 }

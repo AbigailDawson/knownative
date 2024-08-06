@@ -1,22 +1,16 @@
-import { useState, useEffect } from "react";
-import "./DemoStudyText.css";
-import DemoPopup from "../DemoPopup/DemoPopup";
-import DemoWord from "../DemoWord/DemoWord";
-import * as demoAPI from "../../../utilities/demo-api";
-import * as wordsAPI from "../../../utilities/words-service";
+import { useState, useEffect, useRef } from 'react'
+import './DemoStudyText.css'
+import DemoPopup from '../DemoPopup/DemoPopup'
+import DemoWord from '../DemoWord/DemoWord'
+import * as demoAPI from '../../../utilities/demo-api'
+import * as wordsAPI from '../../../utilities/words-service'
 
-export default function DemoStudyText({
-  text,
-  textId,
-  activeWord,
-  setActiveWord,
-  saveWord,
-  savedWords,
-  showPopup,
-  setShowPopup,
-}) {
-  const [tokenizedText, setTokenizedText] = useState([]);
-  const [popupPosition, setPopupPosition] = useState([0, 0]);
+export default function DemoStudyText({ text, textId, activeWord, setActiveWord, saveWord, savedWords, setSavedWords, showPopup, setShowPopup }) {
+
+  const [tokenizedText, setTokenizedText] = useState([])
+  const [popupPosition, setPopupPosition] = useState([0,0])
+  const containerRef = useRef(null);
+
 
   useEffect(
     function () {
@@ -59,7 +53,15 @@ export default function DemoStudyText({
 
   function handleWordClick(word, evt) {
     setActiveWord(word);
-    setPopupPosition([evt.pageX, evt.pageY]);
+    
+    // Note: using containerRect here so popup is positioned relative to the containerRef. 
+    // changed from pageX (whole document) to clientX (just the current viewport)
+    const containerRect = containerRef.current.getBoundingClientRect();
+    
+    setPopupPosition([
+      evt.clientX - containerRect.left, 
+      evt.clientY - containerRect.top - 40
+    ]);
     setShowPopup(true);
   }
 
@@ -99,8 +101,10 @@ export default function DemoStudyText({
 
   return (
     <>
-      <div className="StudyText">
-        <div className="study-text-block">{words}</div>
+      <div className="StudyText" ref={containerRef}>
+        <div className="study-text-block">
+          {words}
+        </div>
       </div>
       {showPopup && (
         <DemoPopup

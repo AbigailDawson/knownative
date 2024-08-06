@@ -149,6 +149,7 @@ a {
   background: white;
   padding: 3vmin;
   height: 100vh;
+  overflow-y: auto; /* Enable vertical scrolling if content overflows */ 
 }
 
 .page.collapsed-sidebar .sidebar {
@@ -164,9 +165,11 @@ a {
   align-items: center;
   background-color: green;
   height: 100vh;
+  width: 90px;
   padding: 0;
   background-color: var(--lightest);
   border-right: 1px solid var(--medium);
+  z-index: 5;
 }
 
 .sidebar {
@@ -192,7 +195,7 @@ a {
   margin: 1vmin 0 3vmin 0;
   border-radius: 1vmin;
   padding: .5vmin 2vmin;
-  font-size: 2vmin;
+  font-size: 1.4rem;
   background-color: var(--white);
   color: var(--dark);
 }
@@ -204,4 +207,24 @@ a {
 
 .zh {
   font-family: 'Noto Serif TC', serif;
+}
+
+/* medium screens and smaller */
+@media (max-width: 768px) { 
+
+  .side-nav {
+    height: 100vh;
+    width: 65px;
+  }
+
+}
+
+
+/* xsmall screens and smaller */
+@media (max-width: 400px) { 
+
+  .tab-btn {
+    font-size: 1.1rem;
+  }
+
 }

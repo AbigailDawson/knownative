@@ -405,7 +405,7 @@ export default function DemoTextPage({ getText, updateText }) {
             className={`study-container ${activeTab === "study" ? "active" : ""
               }`}
           >
-            <div className="Text">
+            <div className="Text study-content">
               {text ? (
                 <DemoStudyText
                   text={text}

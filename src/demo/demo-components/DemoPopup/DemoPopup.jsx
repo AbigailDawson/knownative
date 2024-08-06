@@ -23,32 +23,34 @@ export default function Popup({ word, popupPosition, saveWord, textId, onClose }
     const popupMeaning = document.querySelector('.popup-meaning');
     const html = popupMeaning.innerHTML;
     const lines = html.split('<br>').length; // count the number of lines by splitting on <br> elements
-    setPopupHeight(lines > 1 ? '17%' : '15%'); // update popup height based on the number of lines
-  }, [word]);
 
-  let pinyin = '';
-  let meaning = '';
+    setPopupHeight(lines > 1 ? '220px' : '190px'); // update popup height based on the number of lines
+      }, [word]);
 
-  if (word.matches && word.matches[0]) {
-    pinyin = word.matches[0].pinyinPretty;
-    meaning = word.matches[0].english;
-    meaning = meaning.includes('/') ? meaning.split('/')[0].trim() : meaning;
-  }
+      let pinyin = '';
+      let meaning = '';
 
-  function handleSaveClick() {
-    saveWord(word);
-  }
+      if (word.matches && word.matches[0]) {
+        pinyin = word.matches[0].pinyinPretty;
+        meaning = word.matches[0].english;
+        meaning = meaning.includes('/') ? meaning.split('/')[0].trim() : meaning;
+      }
+
+      function handleSaveClick() {
+        saveWord(word);
+      }
+
+  
 
   return (
-    <div
-      className="Popup"
-      style={{
-        left: `${popupPosition[0] + 145}px`,
-        top: popupHeight === '15%' ? `${popupPosition[1] + 10}px` : `${popupPosition[1] - 0}px`,
-        height: popupHeight,
-      }}
-      ref={popupRef}
-    >
+      <div
+        className="Popup"
+        style={{
+          left: `${popupPosition[0] + 105}px`,
+          top: popupHeight === '11rem'? `${popupPosition[1] - 100}px` : `${popupPosition[1] - 50}px`,
+          height: popupHeight,
+        }}
+      >
       <div className="popup-content">
         <p className="popup-pinyin">{pinyin}</p>
         <p className="popup-glyphs">{word.text}</p>
