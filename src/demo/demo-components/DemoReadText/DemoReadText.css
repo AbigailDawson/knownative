@@ -1,9 +1,8 @@
-.ReadText {
+.read-text {
   display: flex;
   flex-direction: column;
   grid-template-columns: 50% 50%;
   gap: 2vmin;
-  margin: 0 3vmin 0 3vmin;
   padding: 4vmin 2vmin;
   color: var(--drk-txt);
 }
@@ -31,12 +30,13 @@
 
 .read-text-block {
   margin-top: 2vmin;
-  line-height: 4vmin;
+  line-height: 3.1rem;
   letter-spacing: .3vmin;
-  font-size: 2.5vmin;
+  font-size: 1.8rem;
   text-align: left;
   white-space: pre;
   transition: grid-column 0.5s;
+  max-width: 900px;
 }
 
 .read-text-block > .zh {
@@ -234,3 +234,22 @@
     transform: scale(1.02);
   }
 }
+
+/* medium screens and smaller */
+@media (max-width: 768px) { 
+
+  .read-text-block {
+    font-size: 1.3rem;
+    margin-left: 20px;
+  }
+
+}
+
+/* small screens and smaller */
+@media (max-width: 550px) { 
+  .read-text {
+    padding: 4vmin 0 0 5vmin;
+  }
+
+}
+

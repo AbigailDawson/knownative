@@ -1,0 +1,96 @@
+.edit-word-modal {
+  width: 100%;
+  padding: 1.5vmin 1.5vmin;
+  color: black;
+  background-color: var(--lightest);
+  box-shadow: 7px 7px 5px -8px rgba(0, 0, 0, 0.8);
+}
+
+.edit-word-modal-header {
+  border: none;
+  padding-bottom: 0px;
+}
+
+.edit-word-modal-backdrop {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.edit-word-modal-title-container {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.edit-word-modal-title {
+  display: flex;
+  align-self: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.edit-word-modal-title * {
+  font-size: 1.8rem;
+}
+
+.edit-word-modal-exit-icon {
+  color: var(--primary);
+  font-size: 1.8rem;
+  border-radius: 50%;
+  transition: transform 0.3s ease-in-out;
+  align-self: flex-start;
+}
+
+.edit-word-modal-exit-icon:hover {
+  color: #24312f;
+  font-size: 2rem;
+  cursor: pointer;
+  transform: scale(1.2);
+  background-color: var(--primary);
+}
+
+.edit-word-modal-body {
+  padding-bottom: 0px;
+}
+
+.edit-word-modal-body h2 {
+  font-size: 1.2rem;
+}
+
+.edit-word-modal-textarea {
+  width: 100%;
+  padding: 0.5rem 0.5rem;
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+.edit-word-modal-footer {
+  border: none;
+}
+
+.edit-word-modal-delete-btn {
+  color: #660000;
+  border: 2px solid #660000;
+  padding: 0px 1rem;
+  background-color: #ffe6e6;
+  transition: transform 0.3s ease-in-out;
+}
+
+.edit-word-modal-delete-btn:hover {
+  background-color: #660000;
+  color: #ffe6e6;
+  transform: scale(1.1);
+}
+
+.edit-word-modal-save-btn {
+  background-color: var(--primary);
+  color: #24312f;
+  border: 2px solid #24312f;
+  padding: 0px 1rem;
+  transition: transform 0.3s ease-in-out;
+}
+
+.edit-word-modal-save-btn:hover {
+  color: var(--primary);
+  background-color: #24312f;
+  transform: scale(1.1);
+}

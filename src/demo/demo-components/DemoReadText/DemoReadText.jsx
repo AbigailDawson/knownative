@@ -5,7 +5,7 @@ export default function DemoReadText({ text }) {
   
   return !text ? 'Loading ...' 
   : (    
-  <div className="ReadText">
+  <div className="read-text">
 
     <div className="bottom">
       <div className="read-text-block">
