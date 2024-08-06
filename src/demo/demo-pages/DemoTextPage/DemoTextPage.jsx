@@ -11,9 +11,7 @@ import DemoExitModal from "../../demo-components/DemoExitModal/DemoExitModal";
 import * as textsAPI from "../../../utilities/texts-api";
 import * as wordsAPI from "../../../utilities/words-api";
 import { Button, Dialog, DialogActions, DialogContent } from "@mui/material";
-import { FaRegWindowClose } from "react-icons/fa";
-import { GiCheckMark } from "react-icons/gi";
-import { PiRepeatBold } from "react-icons/pi";
+import { IoCloseOutline } from "react-icons/io5";
 import { getWordInfo } from "../../../utilities/words-service";
 //import word from '../../../../models/word'
 
@@ -296,7 +294,7 @@ export default function DemoTextPage({ getText, updateText }) {
           }}
         >
           <Button onClick={handleClose}>
-            <FaRegWindowClose className="close-icon" />
+            <IoCloseOutline className="close-icon" />
           </Button>
         </DialogActions>
         <DialogContent
@@ -322,14 +320,12 @@ export default function DemoTextPage({ getText, updateText }) {
                   <div>
                   <div className="flashcard-btns">
                     <button className="correct-btn" onClick={handleCorrect}>
-                      <GiCheckMark className="flashcard-icon" />
                       Correct!
                     </button>
                     <button
                       className="incorrect-btn"
                       onClick={handleIncorrect}
                     >
-                      <PiRepeatBold className="flashcard-icon" />
                       Try again
                     </button>
                   </div>

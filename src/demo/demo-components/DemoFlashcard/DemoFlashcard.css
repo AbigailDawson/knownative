@@ -4,16 +4,18 @@
   justify-content: center;
   height: auto;
   border-radius: 1vmin;
-  box-shadow: 7px 7px 7px -6px rgba(0,0,0,0.7);
+  box-shadow: none;
+  border: 1px solid black;
 
 }
 
 .flashcard-back {
-  border: 2px solid var(--teal);
+  border: none;
 }
 
 .flashcard-front {
-  border: 2px solid var(--beige-med);
+  border: none;
+
 }
 
 .flashcard-front,
@@ -50,17 +52,19 @@
   align-items: center;
   justify-content: center;
   gap: 1vmin;
-  padding: 2vmin 3vmin;
+  padding: 1vmin 2vmin;
 }
 
 .correct-btn {
-  border: 2px solid var(--green-drk);
-  color: var(--green-drk);
+  border: 2px solid var(--primary);
+  color: var(--darkest);
+  background-color: var(--primary);
 }
 
 .incorrect-btn {
   border: 2px solid var(--red-brick);
   color: var(--red-brick);
+  background-color: var(--red-brick-transparent);
 }
 
 .correct-btn:hover,

@@ -71,7 +71,15 @@
 
 .flashcard-count {
   text-align: center;
+  align-items: center;
+  justify-content: center;
   padding-top: 2vmin;
+  display: flex;
+  gap: 1rem;
+}
+
+.flashcard-count p {
+  margin: 0;
 }
 
 .correct-count {
