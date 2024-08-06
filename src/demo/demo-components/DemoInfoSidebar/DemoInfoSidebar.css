@@ -39,7 +39,7 @@
 
 .demo-info-dark-btn:hover {
     background-color: var(--teal);
-    transform: scale(1.1);
+    transform: scale(1.03);
 }
 
 .demo-info-light-btn {
@@ -54,5 +54,5 @@
 .demo-info-light-btn:hover {
     background-color: var(--teal);
     color: white;
-    transform: scale(1.1);
+    transform: scale(1.03);
 }

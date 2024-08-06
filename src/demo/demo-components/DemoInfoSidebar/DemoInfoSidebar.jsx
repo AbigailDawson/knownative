@@ -31,12 +31,11 @@ export default function DemoInfoSidebar({
                 onClick={null}>
                 Contact us
             </button>
-            <a
+            <button
                 className="demo-info-light-btn"
-                href="https://github.com/AbigailDawson/knownative"
-                target="_blank">
+                onClick={() => window.open("https://github.com/AbigailDawson/knownative", "_blank")}>
                 Visit GitHub
-            </a>
+            </button>
             <button
                 className="demo-info-light-btn"
                 onClick={handleShowExit}>
