@@ -3,10 +3,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* grid-template-columns: 30% 70%;
-  align-items: center;
-  text-align: left;
-  text-wrap: wrap; */
   background-color: white;
   color: black;
   padding: 2vmin 3.5vmin;
@@ -18,14 +14,6 @@
   -moz-box-shadow: 7px 7px 5px -8px rgba(235, 235, 235, 0.4);
   box-shadow: 7px 7px 5px -8px rgba(235, 235, 235, 0.4);
 }
-
-/* rgba(0, 0, 0, 0.4);*/
-
-/* .left-side {
-  display: flex;
-  margin-left: 4vmin;
-  position: relative;
-} */
 
 .edit-menu-icon {
   color: #00b9bc;
@@ -41,6 +29,11 @@
   background-color: #00b9bc;
   transform: scale(1.3);
   cursor: pointer;
+  color: white;
+}
+
+.edit-menu-currently-open {
+  background-color: #00b9bc;
   color: white;
 }
 
@@ -91,22 +84,6 @@
   color: #ffe6e6;
 }
 
-/* .word-delete-btn {
-  position: absolute;
-  font-size: 2.5vmin;
-  cursor: pointer;
-  top: 1.5vmin;
-  left: -3.5vmin;
-  color: var(--red);
-} */
-
-/* .char-pinyin {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-} */
-
 .char-pinyin > .char {
   font-size: 1.7rem;
   margin-bottom: 0px;
@@ -122,61 +99,3 @@
   margin-bottom: 0px;
   text-align: center;
 }
-
-/* .meaning {
-  margin-left: 1.4rem;
-} */
-
-/* .right-side {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-} */
-
-/* .updateMeaningForm {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.updateMeaningForm > input,
-.updateMeaningForm > button {
-  color: var(--drk-txt);
-}
-
-.updateMeaningForm > input {
-  width: 70%;
-  padding: 1vmin;
-  font-size: 1rem;
-  border-radius: 0.8vmin;
-  border: 1px solid var(--gray-lt);
-}
-
-.updateMeaningForm > input:focus {
-  outline-color: var(--teal);
-} */
-
-/* .submit-btn {
-  font-size: 2.7vmin;
-  background-color: var(--white);
-}
-
-.submit-btn:hover {
-  background-color: var(--white);
-}
-
-.submit-icon {
-  color: var(--green-lt);
-}
-
-.edit-btn,
-.submit-btn {
-  margin: 0 2vmin 0 0;
-  padding: 0;
-  font-size: 2.4vmin;
-}
-
-.edit-btn:hover,
-.submit-btn:hover {
-  cursor: pointer;
-} */
