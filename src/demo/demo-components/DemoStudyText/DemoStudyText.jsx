@@ -39,19 +39,25 @@ export default function DemoStudyText({
 
   function handlePopup() {
     if (showPopup) {
-      setActiveWord("");
-      setShowPopup(false);
-      return;
+      setActiveWord('')
+      setShowPopup(false)
+      // return
     }
   }
 
-  function handleWordClick(word, evt) {
-    if (showPopup) {
-      // Close the previous popup
-      setShowPopup(false);
-      setActiveWord("");
-    }
+  // function handleWordClick(word, evt) {
+  //   if (showPopup) {
+  //     // Close the previous popup
+  //     setShowPopup(false);
+  //     setActiveWord('');
+  //   }
     // Open the new popup
+  //   setActiveWord(word);
+  //   setPopupPosition([evt.pageX, evt.pageY]);
+  //   setShowPopup(true);
+  // }
+
+  function handleWordClick(word, evt) {
     setActiveWord(word);
     setPopupPosition([evt.pageX, evt.pageY]);
     setShowPopup(true);

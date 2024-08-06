@@ -1,62 +1,54 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import './DemoPopup.css'
 
-export default function Popup({ word, popupPosition, saveWord, textId, onClose}) {
-  const [isOpen, setIsOpen] = useState(false);
-  const [popupHeight, setPopupHeight] = useState('15%'); 
+export default function Popup({ word, popupPosition, saveWord, textId, onClose }) {
+  const [popupHeight, setPopupHeight] = useState('15%');
+  const popupRef = useRef(null);
 
   useEffect(() => {
     const handleOutsideClick = (event) => {
-      if (!event.target.closest('.Popup') && isOpen) {
+      if (popupRef.current && !popupRef.current.contains(event.target)) {
         onClose();
-        setIsOpen(false);
       }
     };
-    document.addEventListener('click', handleOutsideClick);
+
+    document.addEventListener('mousedown', handleOutsideClick);
     return () => {
-      document.removeEventListener('click', handleOutsideClick);
-      setIsOpen(false); 
+      document.removeEventListener('mousedown', handleOutsideClick);
     };
   }, [onClose]);
-
-  let pinyin = ''
-  let meaning = ''
-
-  if (word.matches && word.matches[0]) {
-    pinyin = word.matches[0].pinyinPretty
-    meaning = word.matches[0].english
-    meaning = meaning.includes('/') ? meaning.split('/')[0].trim() : meaning
-
-  } else {
-    pinyin = ''
-    meaning = ''
-  }
-
-  function handleSaveClick(word) {
-    saveWord(word)
-  }
 
   useEffect(() => {
     const popupMeaning = document.querySelector('.popup-meaning');
     const html = popupMeaning.innerHTML;
     const lines = html.split('<br>').length; // count the number of lines by splitting on <br> elements
-    if (lines > 1) {
-      setPopupHeight('17%'); // update popup height to 17% if there are more than 1 line
-    } else {
-      setPopupHeight('15%'); // keep popup height to 15% if there is only 1 line
-    }
-  }, [meaning]);
+    setPopupHeight(lines > 1 ? '17%' : '15%'); // update popup height based on the number of lines
+  }, [word]);
+
+  let pinyin = '';
+  let meaning = '';
+
+  if (word.matches && word.matches[0]) {
+    pinyin = word.matches[0].pinyinPretty;
+    meaning = word.matches[0].english;
+    meaning = meaning.includes('/') ? meaning.split('/')[0].trim() : meaning;
+  }
+
+  function handleSaveClick() {
+    saveWord(word);
+  }
 
   return (
-      <div
-        className="Popup"
-        style={{
-          left: `${popupPosition[0] + 105}px`,
-          top: popupHeight === '15%'? `${popupPosition[1] - 10}px` : `${popupPosition[1] - 14}px`,
-          height: popupHeight,
-        }}
-      >
+    <div
+      className="Popup"
+      style={{
+        left: `${popupPosition[0] + 145}px`,
+        top: popupHeight === '15%' ? `${popupPosition[1] + 10}px` : `${popupPosition[1] - 0}px`,
+        height: popupHeight,
+      }}
+      ref={popupRef}
+    >
       <div className="popup-content">
         <p className="popup-pinyin">{pinyin}</p>
         <p className="popup-glyphs">{word.text}</p>
@@ -71,12 +63,9 @@ export default function Popup({ word, popupPosition, saveWord, textId, onClose})
           )}
         </p>
       </div>
-      <ArrowDropDownIcon className="play-arrow-icon" />
-      <button className="save-button" onClick={() => handleSaveClick(word)}> + </button> &nbsp; 
-      <button className="close-btn" onClick={() => {
-        onClose();
-        setIsOpen(false);
-      }}> x </button>
+      <button className="save-button" onClick={handleSaveClick}> + </button> &nbsp; 
+      <button className="close-btn" onClick={onClose}> x </button>
+      <div className="popup-arrow" />
     </div>
-  )
+  );
 }
