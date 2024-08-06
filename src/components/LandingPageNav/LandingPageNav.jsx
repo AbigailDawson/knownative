@@ -9,7 +9,7 @@ export default function LandingPageNav() {
             <ul class="navbar-nav ms-auto my-2 my-lg-0">
               <li class="nav-item"><a class="nav-link" href="/">About</a></li>
               <li class="nav-item"><Link class="nav-link" to="/contact">Contact</Link></li>
-              <li class="nav-item"><a class="nav-link" href="https://github.com/AbigailDawson/knownative">GitHub</a></li>
+              <li class="nav-item"><a class="nav-link" href="https://github.com/AbigailDawson/knownative" target="_blank" rel="noreferrer">GitHub</a></li>
             </ul>
           </div>
       </div>
