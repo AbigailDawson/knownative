@@ -9,13 +9,14 @@ import DemoFlashcardForm from "../../demo-components/DemoFlashcardForm/DemoFlash
 import DemoInfoSidebar from "../../demo-components/DemoInfoSidebar/DemoInfoSidebar";
 import DemoNav from "../../demo-components/DemoNav/DemoNav";
 import DemoExitModal from "../../demo-components/DemoExitModal/DemoExitModal";
-import * as textsAPI from "../../../utilities/texts-api";
-import * as wordsAPI from "../../../utilities/words-api";
+// import * as textsAPI from "../../../utilities/texts-api";
+// import * as wordsAPI from "../../../utilities/words-api";
 import { Button, Dialog, DialogActions, DialogContent } from "@mui/material";
 import { FaRegWindowClose } from "react-icons/fa";
 import { GiCheckMark } from "react-icons/gi";
 import { PiRepeatBold } from "react-icons/pi";
 import { getWordInfo } from "../../../utilities/words-service";
+
 //import word from '../../../../models/word'
 
 export default function DemoTextPage({ getText, updateText }) {
@@ -39,7 +40,7 @@ export default function DemoTextPage({ getText, updateText }) {
       ? []
       : JSON.parse(localStorage.getItem("stringifiedWords"))
   );
-  const [savedWords, setSavedWords] = useState([]);
+  // const [savedWords, setSavedWords] = useState([]);
   const [activeWord, setActiveWord] = useState(null);
   const [expandedSidebar, setExpandedSidebar] = useState(false);
 
@@ -47,9 +48,9 @@ export default function DemoTextPage({ getText, updateText }) {
   const [showPopup, setShowPopup] = useState(false);
 
   // --- MODALS ---
-  const [showExitModal, setShowExitModal] = useState(false)
-  const handleShowExit = () => setShowExitModal(true)
-  const handleCloseExit = () => setShowExitModal(false)
+  const [showExitModal, setShowExitModal] = useState(false);
+  const handleShowExit = () => setShowExitModal(true);
+  const handleCloseExit = () => setShowExitModal(false);
 
   // --- FLASHCARDS ---
   const [open, setOpen] = useState(false);
@@ -87,10 +88,10 @@ export default function DemoTextPage({ getText, updateText }) {
     setActiveTab(tabName);
   }
 
-  async function favoriteText(text, textId) {
-    const updatedText = await textsAPI.favoriteText(text, textId);
-    updateText(updatedText);
-  }
+  // async function favoriteText(text, textId) {
+  //   const updatedText = await textsAPI.favoriteText(text, textId);
+  //   updateText(updatedText);
+  // }
 
   // async function saveWord(word, textId) {
   //   const savedWord = await textsAPI.saveWord(word, textId)
@@ -99,16 +100,19 @@ export default function DemoTextPage({ getText, updateText }) {
   //   setShowPopup(false)
   // }
 
-  function generateID(wordToSave) {
+  function generateID() {
     const savedWords = JSON.parse(localStorage.getItem("stringifiedWords"));
-    if (savedWords.length === 0) return 0;
-    else return savedWords[savedWords.length - 1]._id + 1;
+    if (savedWords.length === 0) {
+      return 0;
+    } else {
+      return savedWords[savedWords.length - 1]._id + 1;
+    }
   }
 
   function saveWord(word) {
     const savedWords = JSON.parse(localStorage.getItem("stringifiedWords"));
     const wordToSave = getWordInfo(word);
-    wordToSave._id = generateID(wordToSave);
+    wordToSave._id = generateID();
     setLocalSavedWords([...savedWords, wordToSave]);
     setActiveWord("");
     setShowPopup(false);
@@ -121,10 +125,15 @@ export default function DemoTextPage({ getText, updateText }) {
   //       savedWord._id === updatedWord._id ? updatedWord : savedWord))
   // }
 
-  function updateMeaning(word, formData) {
+  /* FUNCTION ALTERED to allow for users to have meaning, term, and reading updated after form submissio.*/
+  function updateWord(word, inputtedMeaning, inputtedTerm, inputtedReading) {
     const savedWords = JSON.parse(localStorage.getItem("stringifiedWords"));
     for (let k in savedWords) {
-      if (savedWords[k]._id === word._id) savedWords[k].meaning = formData;
+      if (savedWords[k]._id === word._id) {
+        savedWords[k].meaning = inputtedMeaning;
+        savedWords[k].charGroup = inputtedTerm;
+        savedWords[k].pinyin = inputtedReading;
+      }
     }
     setLocalSavedWords([...savedWords]);
   }
@@ -233,7 +242,7 @@ export default function DemoTextPage({ getText, updateText }) {
           {sidebarCategory === "savedwords-tooltip" && (
             <DemoSavedWordsList
               savedWords={localSavedWords}
-              updateMeaning={updateMeaning}
+              updateWord={updateWord}
               deleteWord={deleteWord}
               startQuiz={startQuiz}
               gameInProgress={gameInProgress}
@@ -261,19 +270,6 @@ export default function DemoTextPage({ getText, updateText }) {
           )}
         </aside>
       )}
-
-      {/* OLD CODE */}
-      {/* {expandedSidebar && (
-        <aside className="sidebar">
-          <DemoSavedWordsList
-            savedWords={localSavedWords}
-            updateMeaning={updateMeaning}
-            deleteWord={deleteWord}
-            handleOpen={handleOpen}
-            gameInProgress={gameInProgress}
-          />
-        </aside>
-      )} */}
 
       <Dialog
         open={open}
@@ -418,7 +414,6 @@ export default function DemoTextPage({ getText, updateText }) {
                   setActiveWord={setActiveWord}
                   saveWord={saveWord}
                   savedWords={localSavedWords}
-                  setSavedWords={setSavedWords}
                   showPopup={showPopup}
                   setShowPopup={setShowPopup}
                 />
