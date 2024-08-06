@@ -12,35 +12,46 @@ export default function DemoStudyText({ text, textId, activeWord, setActiveWord,
   const containerRef = useRef(null);
 
 
-  useEffect(function() {
-    async function getTokenizedText() {
-      if (text) {
-        const tokenizedText = await demoAPI.tokenizeText(text.content)
-        setTokenizedText(tokenizedText)
+  useEffect(
+    function () {
+      async function getTokenizedText() {
+        if (text) {
+          const thisTokenizedText = await demoAPI.tokenizeText(text.content);
+          setTokenizedText(thisTokenizedText);
+        }
       }
-    }
-    getTokenizedText()
-  }, [text])
+      getTokenizedText();
+    },
+    [text]
+  );
 
   function checkSaved(word) {
-    return savedWords.some((savedWord) => savedWord.charGroup === word.traditional)
+    return savedWords.some(
+      (savedWord) => savedWord.charGroup === word.traditional
+    );
   }
 
   function handlePopup() {
     if (showPopup) {
       setActiveWord('')
       setShowPopup(false)
-      return
+      // return
     }
   }
 
-  function handleWordClick(word, evt) {
-    if (showPopup) {
-      // Close the previous popup
-      setShowPopup(false);
-      setActiveWord('');
-    }
+  // function handleWordClick(word, evt) {
+  //   if (showPopup) {
+  //     // Close the previous popup
+  //     setShowPopup(false);
+  //     setActiveWord('');
+  //   }
     // Open the new popup
+  //   setActiveWord(word);
+  //   setPopupPosition([evt.pageX, evt.pageY]);
+  //   setShowPopup(true);
+  // }
+
+  function handleWordClick(word, evt) {
     setActiveWord(word);
     
     // Note: using containerRect here so popup is positioned relative to the containerRef. 
@@ -54,38 +65,39 @@ export default function DemoStudyText({ text, textId, activeWord, setActiveWord,
     setShowPopup(true);
   }
 
+  //this function first matches the word with the equivalent word saved in local storage and returns the meaning or pinyin saved in local storage
+  function displaySavedProperty(word, propertyType) {
+    const foundWord = savedWords.find((savedWord) => {
+      return savedWord.charGroup === word.traditional;
+    });
+    return foundWord[propertyType];
+  }
+
   const words = tokenizedText.map((word, idx) => {
-    
-    let pinyin = ''
-    let meaning = ''
+    const isSaved = checkSaved(word);
+    const wordInfo = wordsAPI.getWordInfo(word);
+    // If the word is saved in local storage, display that meaning or pinyin. otherwise, just display the default pinyin and meaning
+    const pinyin = isSaved
+      ? displaySavedProperty(word, "pinyin")
+      : wordInfo.pinyin;
+    const meaning = isSaved
+      ? displaySavedProperty(word, "meaning")
+      : wordInfo.meaning;
+    const isSpecialChar = wordsAPI.checkSpecialChar(word);
 
-    //const savedWord = savedWords.find(savedWord => savedWord.traditional === word.traditional)
-    
-    const savedWord = null
-
-    if (savedWord) {
-      pinyin = savedWord.pinyin || pinyin
-      meaning = savedWord.meaning || meaning
-    } else {
-      const wordInfo = wordsAPI.getWordInfo(word)
-      pinyin = wordInfo.pinyin
-      meaning = wordInfo.meaning
-    }
-
-    const isSpecialChar = wordsAPI.checkSpecialChar(word)
-    
     return (
-      <DemoWord 
+      <DemoWord
         key={idx}
         onClick={(evt) => handleWordClick(word, evt)}
-        word={word.text}
+        word={word}
         pinyin={pinyin}
         meaning={meaning}
         isSaved={checkSaved(word)}
         isSpecialChar={isSpecialChar}
-        />
-    )
-  })
+        savedWords={savedWords}
+      />
+    );
+  });
 
   return (
     <>
@@ -95,8 +107,13 @@ export default function DemoStudyText({ text, textId, activeWord, setActiveWord,
         </div>
       </div>
       {showPopup && (
-        <DemoPopup word={activeWord} popupPosition={popupPosition} saveWord={(word) => saveWord(word, textId)} onClose={handlePopup} />
+        <DemoPopup
+          word={activeWord}
+          popupPosition={popupPosition}
+          saveWord={(word) => saveWord(word, textId)}
+          onClose={handlePopup}
+        />
       )}
     </>
-  )
+  );
 }
