@@ -1,34 +1,47 @@
-import { useState, useEffect } from 'react'
-import './DemoStudyText.css'
-import DemoPopup from '../DemoPopup/DemoPopup'
-import DemoWord from '../DemoWord/DemoWord'
-import * as demoAPI from '../../../utilities/demo-api'
-import * as wordsAPI from '../../../utilities/words-service'
+import { useState, useEffect } from "react";
+import "./DemoStudyText.css";
+import DemoPopup from "../DemoPopup/DemoPopup";
+import DemoWord from "../DemoWord/DemoWord";
+import * as demoAPI from "../../../utilities/demo-api";
+import * as wordsAPI from "../../../utilities/words-service";
 
-export default function DemoStudyText({ text, textId, activeWord, setActiveWord, saveWord, savedWords, setSavedWords, showPopup, setShowPopup }) {
+export default function DemoStudyText({
+  text,
+  textId,
+  activeWord,
+  setActiveWord,
+  saveWord,
+  savedWords,
+  showPopup,
+  setShowPopup,
+}) {
+  const [tokenizedText, setTokenizedText] = useState([]);
+  const [popupPosition, setPopupPosition] = useState([0, 0]);
 
-  const [tokenizedText, setTokenizedText] = useState([])
-  const [popupPosition, setPopupPosition] = useState([0,0])
-
-  useEffect(function() {
-    async function getTokenizedText() {
-      if (text) {
-        const tokenizedText = await demoAPI.tokenizeText(text.content)
-        setTokenizedText(tokenizedText)
+  useEffect(
+    function () {
+      async function getTokenizedText() {
+        if (text) {
+          const thisTokenizedText = await demoAPI.tokenizeText(text.content);
+          setTokenizedText(thisTokenizedText);
+        }
       }
-    }
-    getTokenizedText()
-  }, [text])
+      getTokenizedText();
+    },
+    [text]
+  );
 
   function checkSaved(word) {
-    return savedWords.some((savedWord) => savedWord.charGroup === word.traditional)
+    return savedWords.some(
+      (savedWord) => savedWord.charGroup === word.traditional
+    );
   }
 
   function handlePopup() {
     if (showPopup) {
-      setActiveWord('')
-      setShowPopup(false)
-      return
+      setActiveWord("");
+      setShowPopup(false);
+      return;
     }
   }
 
@@ -36,7 +49,7 @@ export default function DemoStudyText({ text, textId, activeWord, setActiveWord,
     if (showPopup) {
       // Close the previous popup
       setShowPopup(false);
-      setActiveWord('');
+      setActiveWord("");
     }
     // Open the new popup
     setActiveWord(word);
@@ -44,49 +57,53 @@ export default function DemoStudyText({ text, textId, activeWord, setActiveWord,
     setShowPopup(true);
   }
 
+  //this function first matches the word with the equivalent word saved in local storage and returns the meaning or pinyin saved in local storage
+  function displaySavedProperty(word, propertyType) {
+    const foundWord = savedWords.find((savedWord) => {
+      return savedWord.charGroup === word.traditional;
+    });
+    return foundWord[propertyType];
+  }
+
   const words = tokenizedText.map((word, idx) => {
-    
-    let pinyin = ''
-    let meaning = ''
+    const isSaved = checkSaved(word);
+    const wordInfo = wordsAPI.getWordInfo(word);
+    // If the word is saved in local storage, display that meaning or pinyin. otherwise, just display the default pinyin and meaning
+    const pinyin = isSaved
+      ? displaySavedProperty(word, "pinyin")
+      : wordInfo.pinyin;
+    const meaning = isSaved
+      ? displaySavedProperty(word, "meaning")
+      : wordInfo.meaning;
+    const isSpecialChar = wordsAPI.checkSpecialChar(word);
 
-    //const savedWord = savedWords.find(savedWord => savedWord.traditional === word.traditional)
-    
-    const savedWord = null
-
-    if (savedWord) {
-      pinyin = savedWord.pinyin || pinyin
-      meaning = savedWord.meaning || meaning
-    } else {
-      const wordInfo = wordsAPI.getWordInfo(word)
-      pinyin = wordInfo.pinyin
-      meaning = wordInfo.meaning
-    }
-
-    const isSpecialChar = wordsAPI.checkSpecialChar(word)
-    
     return (
-      <DemoWord 
+      <DemoWord
         key={idx}
         onClick={(evt) => handleWordClick(word, evt)}
-        word={word.text}
+        word={word}
         pinyin={pinyin}
         meaning={meaning}
         isSaved={checkSaved(word)}
         isSpecialChar={isSpecialChar}
-        />
-    )
-  })
+        savedWords={savedWords}
+      />
+    );
+  });
 
   return (
     <>
       <div className="StudyText">
-        <div className="study-text-block">
-          {words}
-        </div>
+        <div className="study-text-block">{words}</div>
       </div>
       {showPopup && (
-        <DemoPopup word={activeWord} popupPosition={popupPosition} saveWord={(word) => saveWord(word, textId)} onClose={handlePopup} />
+        <DemoPopup
+          word={activeWord}
+          popupPosition={popupPosition}
+          saveWord={(word) => saveWord(word, textId)}
+          onClose={handlePopup}
+        />
       )}
     </>
-  )
+  );
 }
