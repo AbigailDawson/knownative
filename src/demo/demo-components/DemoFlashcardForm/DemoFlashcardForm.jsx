@@ -16,9 +16,11 @@ export default function DemoFlashcardForm({
   setSelectedFront,
   showPinyin,
   setShowPinyin,
-  handlePlay,
+  startQuiz,
   handleBackArrowClick,
 }) {
+
+
   return (
     <>
       <div className="FlashCardForm">
@@ -104,7 +106,7 @@ export default function DemoFlashcardForm({
             className="show-pinyin"
           />
         </FormGroup>
-        <button className="play-btn" onClick={handlePlay}>
+        <button className="play-btn" onClick={startQuiz}>
           Start Quiz
         </button>
       </div>
