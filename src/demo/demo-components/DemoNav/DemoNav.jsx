@@ -83,7 +83,6 @@ export default function DemoNav({
             data-tooltip-id="changetext-tooltip"
             data-tooltip-content="Change Text"
             data-tooltip-place="right"
-            disableStyleInjection="true"
           />
           <Tooltip
             id="changetext-tooltip"
@@ -100,7 +99,6 @@ export default function DemoNav({
             data-tooltip-id="info-tooltip"
             data-tooltip-content="Info"
             data-tooltip-place="right"
-            disableStyleInjection="true"
           />
           <Tooltip
             id="info-tooltip"
