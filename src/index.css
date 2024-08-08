@@ -147,7 +147,7 @@ a {
   align-items: stretch;
   text-align: left;
   background: white;
-  padding: 3vmin;
+  padding: 0 3vmin;
   height: 100vh;
   overflow-y: auto; /* Enable vertical scrolling if content overflows */ 
 }
@@ -188,7 +188,16 @@ a {
   justify-content: center;
   align-items: center;
   gap: 1vmin;
-  margin-left: 5vmin;
+  /* margin-left: 5vmin; */
+  padding-top: 3vmin;
+}
+
+.sticky-fade {
+  position: -webkit-sticky;
+  /* Safari */
+  position: sticky;
+  top: 0;
+  background: linear-gradient(to top, #ff000000 0%, #ffffffff 10%);
 }
 
 .tab-btn {
