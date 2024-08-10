@@ -8,7 +8,7 @@ import TextPage from "../TextPage/TextPage";
 import DemoTextPage from "../../demo/demo-pages/DemoTextPage/DemoTextPage";
 import NavBar from "../../components/NavBar/NavBar";
 import DashboardPage from "../DashboardPage/DashboardPage";
-import About from "../AboutPage/AboutPage";
+import AboutPage from "../AboutPage/AboutPage";
 import LandingPage from "../LandingPage/LandingPage";
 import ContactPage from "../ContactPage/ContactPage";
 
@@ -65,7 +65,7 @@ function App() {
         <>
           <Routes>
             <Route path="/demo" element={<DemoTextPage />} />
-            <Route path="/about" element={<About />} />
+            <Route path="/about" element={<AboutPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/*" element={<LandingPage setUser={setUser} />} />
           </Routes>
