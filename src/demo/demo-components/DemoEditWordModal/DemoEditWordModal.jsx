@@ -22,9 +22,6 @@ function DemoEditWordModal({
   }
 
   //functions that allow for a user to edit the term, reading, and meaning of a word in the edit word form
-  function handleInputTermChange(e) {
-    setInputTerm(e.target.value);
-  }
   function handleInputReadingChange(e) {
     setInputReading(e.target.value);
   }
@@ -64,7 +61,7 @@ function DemoEditWordModal({
             className="edit-word-modal-textarea"
             rows="3"
             value={inputTerm}
-            onChange={handleInputTermChange}
+            disabled
           />
           <h2>Reading</h2>
           <textarea

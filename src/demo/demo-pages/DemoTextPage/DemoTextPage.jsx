@@ -16,7 +16,7 @@ import { FaRegWindowClose } from "react-icons/fa";
 import { GiCheckMark } from "react-icons/gi";
 import { PiRepeatBold } from "react-icons/pi";
 import { getWordInfo } from "../../../utilities/words-service";
-
+import DemoLibrary from "../../demo-components/DemoLibrary/DemoLibrary";
 //import word from '../../../../models/word'
 
 export default function DemoTextPage({ getText, updateText }) {
@@ -180,7 +180,7 @@ export default function DemoTextPage({ getText, updateText }) {
     setOpen(true);
     getFlashcards();
     setRemainingCount(flashcards.length);
-    console.log(flashcards.length)
+    console.log(flashcards.length);
     setGameInProgress(true);
   }
 
@@ -224,8 +224,9 @@ export default function DemoTextPage({ getText, updateText }) {
     "Loading ..."
   ) : (
     <main
-      className={`TextPage page ${expandedSidebar ? "expanded-sidebar" : "collapsed-sidebar"
-        }`}
+      className={`TextPage page ${
+        expandedSidebar ? "expanded-sidebar" : "collapsed-sidebar"
+      }`}
     >
       <nav className="side-nav">
         <DemoNav
@@ -263,6 +264,13 @@ export default function DemoTextPage({ getText, updateText }) {
           )}
           {sidebarCategory === "info-tooltip" && (
             <DemoInfoSidebar
+              changeSidebarCategory={changeSidebarCategory}
+              handleBackArrowClick={handleBackArrowClick}
+              handleShowExit={handleShowExit}
+            />
+          )}
+          {sidebarCategory === "library-tooltip" && (
+            <DemoLibrary
               changeSidebarCategory={changeSidebarCategory}
               handleBackArrowClick={handleBackArrowClick}
               handleShowExit={handleShowExit}
@@ -311,45 +319,40 @@ export default function DemoTextPage({ getText, updateText }) {
           }}
         >
           {flashcards.length > 0 && gameInProgress ? (
-                <>
-                  <DemoFlashcard
-                    chinese={flashcards[0].chinese}
-                    pinyin={flashcards[0].pinyin}
-                    english={flashcards[0].meaning}
-                    selectedFront={selectedFront}
-                    showPinyin={showPinyin}
-                    onCorrect={handleCorrect}
-                    onIncorrect={handleIncorrect}
-                    flashcards={flashcards}
-                  />
-                  <div>
-                  <div className="flashcard-btns">
-                    <button className="correct-btn" onClick={handleCorrect}>
-                      <GiCheckMark className="flashcard-icon" />
-                      Correct!
-                    </button>
-                    <button
-                      className="incorrect-btn"
-                      onClick={handleIncorrect}
-                    >
-                      <PiRepeatBold className="flashcard-icon" />
-                      Try again
-                    </button>
-                  </div>
-                  <div className="flashcard-count">
-                    <p>
-                      <span className="correct-count">{correctCount}</span>{" "}
-                      Correct
-                    </p>
-                    <p>
-                      <span className="remaining-count">
-                        {remainingCount}
-                      </span>{" "}
-                      Remaining
-                    </p>
-                  </div>
+            <>
+              <DemoFlashcard
+                chinese={flashcards[0].chinese}
+                pinyin={flashcards[0].pinyin}
+                english={flashcards[0].meaning}
+                selectedFront={selectedFront}
+                showPinyin={showPinyin}
+                onCorrect={handleCorrect}
+                onIncorrect={handleIncorrect}
+                flashcards={flashcards}
+              />
+              <div>
+                <div className="flashcard-btns">
+                  <button className="correct-btn" onClick={handleCorrect}>
+                    <GiCheckMark className="flashcard-icon" />
+                    Correct!
+                  </button>
+                  <button className="incorrect-btn" onClick={handleIncorrect}>
+                    <PiRepeatBold className="flashcard-icon" />
+                    Try again
+                  </button>
                 </div>
-              </>
+                <div className="flashcard-count">
+                  <p>
+                    <span className="correct-count">{correctCount}</span>{" "}
+                    Correct
+                  </p>
+                  <p>
+                    <span className="remaining-count">{remainingCount}</span>{" "}
+                    Remaining
+                  </p>
+                </div>
+              </div>
+            </>
           ) : (
             <div className="congrats">
               <div>
@@ -402,8 +405,9 @@ export default function DemoTextPage({ getText, updateText }) {
 
           <div
             id="study"
-            className={`study-container ${activeTab === "study" ? "active" : ""
-              }`}
+            className={`study-container ${
+              activeTab === "study" ? "active" : ""
+            }`}
           >
             <div className="Text study-content">
               {text ? (
@@ -434,8 +438,9 @@ export default function DemoTextPage({ getText, updateText }) {
 
           <div
             id="translate"
-            className={`translate-container ${activeTab === "translate" ? "active" : ""
-              }`}
+            className={`translate-container ${
+              activeTab === "translate" ? "active" : ""
+            }`}
           >
             <div className="Text">
               {text ? <DemoTranslateText text={text} /> : "Loading text"}
