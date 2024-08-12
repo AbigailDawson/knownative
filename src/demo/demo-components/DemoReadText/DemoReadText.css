@@ -144,13 +144,6 @@
   cursor: pointer;
 }
 
-.main-area {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
 .text-area {
   margin: 0 10vmin 0 10vmin;
 }
