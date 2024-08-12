@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from 'react';
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import './DemoPopup.css'
 
 export default function Popup({ word, popupPosition, saveWord, textId, onClose }) {
@@ -22,9 +21,9 @@ export default function Popup({ word, popupPosition, saveWord, textId, onClose }
   useEffect(() => {
     const popupMeaning = document.querySelector('.popup-meaning');
     const html = popupMeaning.innerHTML;
-    const lines = html.split('<br>').length; // count the number of lines by splitting on <br> elements
+    const lines = html.split('<br>').length; 
 
-    setPopupHeight(lines > 1 ? '220px' : '190px'); // update popup height based on the number of lines
+    setPopupHeight(lines > 1 ? '220px' : '190px'); 
       }, [word]);
 
       let pinyin = '';
@@ -50,6 +49,7 @@ export default function Popup({ word, popupPosition, saveWord, textId, onClose }
           top: popupHeight === '11rem'? `${popupPosition[1] - 100}px` : `${popupPosition[1] - 50}px`,
           height: popupHeight,
         }}
+        ref={popupRef}
       >
       <div className="popup-content">
         <p className="popup-pinyin">{pinyin}</p>
@@ -71,3 +71,4 @@ export default function Popup({ word, popupPosition, saveWord, textId, onClose }
     </div>
   );
 }
+
