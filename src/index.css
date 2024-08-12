@@ -189,7 +189,7 @@ a {
   align-items: center;
   gap: 1vmin;
   /* margin-left: 5vmin; */
-  padding-top: 3vmin;
+  padding: 3vmin 0 2vmin;
 }
 
 .sticky-fade {
