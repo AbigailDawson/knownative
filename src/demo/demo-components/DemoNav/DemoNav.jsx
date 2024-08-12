@@ -5,6 +5,7 @@ import { FaArrowsRotate } from "react-icons/fa6";
 import { ImExit } from "react-icons/im";
 import { FaRegQuestionCircle } from "react-icons/fa";
 import { FaCircleInfo } from "react-icons/fa6";
+import { FaBook } from "react-icons/fa";
 import { Tooltip } from "react-tooltip";
 
 export default function DemoNav({
@@ -86,6 +87,22 @@ export default function DemoNav({
           />
           <Tooltip
             id="changetext-tooltip"
+            className="icontip-message"
+            delayShow={100}
+            disableStyleInjection="true"
+          />
+        </div>
+        {/* Library Icon */}
+        <div className="icontip-container">
+          <FaBook
+            className="side-nav-icon-top"
+            onClick={handleCardsClick}
+            data-tooltip-id="library-tooltip"
+            data-tooltip-content="Library"
+            data-tooltip-place="right"
+          />
+          <Tooltip
+            id="library-tooltip"
             className="icontip-message"
             delayShow={100}
             disableStyleInjection="true"
