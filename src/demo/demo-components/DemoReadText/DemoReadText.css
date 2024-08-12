@@ -41,6 +41,7 @@
 
 .read-text-block > .zh {
   text-wrap: wrap;
+  line-height: 2.0;
 }
 
 .easier.collapsed,
@@ -141,6 +142,15 @@
   transform: scale(1.1);
   background-color: var(--off-white);
   cursor: pointer;
+}
+
+.text-area {
+  margin: 0 10vmin 0 10vmin;
+}
+
+.flex-row h1 {
+  font-weight: bolder;
+  font-size: 6vmin;
 }
 
 .disclaimer {

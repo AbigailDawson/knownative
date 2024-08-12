@@ -33,7 +33,10 @@
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Libre Franklin", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--white);
@@ -45,7 +48,10 @@ body {
 }
 
 button {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Libre Franklin", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
   padding: 1vmin 1.2vmin;
   border-radius: .7vmin;
   border: none;
@@ -122,7 +128,10 @@ button {
 }
 
 a {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Libre Franklin", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
   text-decoration: none;
 }
 
