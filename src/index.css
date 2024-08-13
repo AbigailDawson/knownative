@@ -34,7 +34,10 @@
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Libre Franklin", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--white);
@@ -46,7 +49,10 @@ body {
 }
 
 button {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Libre Franklin", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
   padding: 1vmin 1.2vmin;
   border-radius: .7vmin;
   border: none;
@@ -123,7 +129,10 @@ button {
 }
 
 a {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Libre Franklin", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
   text-decoration: none;
 }
 
@@ -150,6 +159,7 @@ a {
   background: white;
   padding: 3vmin;
   height: 100vh;
+  overflow-y: auto; /* Enable vertical scrolling if content overflows */ 
 }
 
 .page.collapsed-sidebar .sidebar {
@@ -165,9 +175,11 @@ a {
   align-items: center;
   background-color: green;
   height: 100vh;
+  width: 90px;
   padding: 0;
   background-color: var(--lightest);
   border-right: 1px solid var(--medium);
+  z-index: 5;
 }
 
 .sidebar {
@@ -193,7 +205,7 @@ a {
   margin: 1vmin 0 3vmin 0;
   border-radius: 1vmin;
   padding: .5vmin 2vmin;
-  font-size: 2vmin;
+  font-size: 1.4rem;
   background-color: var(--white);
   color: var(--dark);
 }
@@ -205,4 +217,24 @@ a {
 
 .zh {
   font-family: 'Noto Serif TC', serif;
+}
+
+/* medium screens and smaller */
+@media (max-width: 768px) { 
+
+  .side-nav {
+    height: 100vh;
+    width: 65px;
+  }
+
+}
+
+
+/* xsmall screens and smaller */
+@media (max-width: 400px) { 
+
+  .tab-btn {
+    font-size: 1.1rem;
+  }
+
 }

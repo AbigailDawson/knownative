@@ -4,6 +4,8 @@ import { MdQuiz } from "react-icons/md";
 import { FaArrowsRotate } from "react-icons/fa6";
 import { ImExit } from "react-icons/im";
 import { FaRegQuestionCircle } from "react-icons/fa";
+import { FaCircleInfo } from "react-icons/fa6";
+import { FaBook } from "react-icons/fa";
 import { Tooltip } from "react-tooltip";
 
 export default function DemoNav({
@@ -82,10 +84,41 @@ export default function DemoNav({
             data-tooltip-id="changetext-tooltip"
             data-tooltip-content="Change Text"
             data-tooltip-place="right"
-            disableStyleInjection="true"
           />
           <Tooltip
             id="changetext-tooltip"
+            className="icontip-message"
+            delayShow={100}
+            disableStyleInjection="true"
+          />
+        </div>
+        {/* Library Icon */}
+        <div className="icontip-container">
+          <FaBook
+            className="side-nav-icon-top"
+            onClick={handleCardsClick}
+            data-tooltip-id="library-tooltip"
+            data-tooltip-content="Library"
+            data-tooltip-place="right"
+          />
+          <Tooltip
+            id="library-tooltip"
+            className="icontip-message"
+            delayShow={100}
+            disableStyleInjection="true"
+          />
+        </div>
+        {/* Info Icon */}
+        <div className="icontip-container">
+          <FaCircleInfo
+            className="side-nav-icon-top"
+            onClick={handleCardsClick}
+            data-tooltip-id="info-tooltip"
+            data-tooltip-content="Info"
+            data-tooltip-place="right"
+          />
+          <Tooltip
+            id="info-tooltip"
             className="icontip-message"
             delayShow={100}
             disableStyleInjection="true"

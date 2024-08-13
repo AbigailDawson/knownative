@@ -1,6 +1,6 @@
 .top-icons,
 .bottom-icons {
-  padding: 1vmin 0;
+  padding: 5px 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -10,13 +10,13 @@
 
 .placeholder-logo {
   width: 80%;
-  margin-bottom: 3vmin;
+  margin-bottom: 30px;
 }
 .side-nav-icon-top,
 .side-nav-icon-bottom {
-  font-size: 6vmin;
+  font-size: 4.5rem;
   margin: 0;
-  padding: 1.3vmin;
+  padding: 1rem;
   color: var(--dark);
 }
 
@@ -34,4 +34,15 @@
   border-radius: 5px;
   font-size: 90%;
   width: max-content;
+}
+
+/* medium screens and smaller */
+@media (max-width: 768px) { 
+
+  .side-nav-icon-top,
+  .side-nav-icon-bottom {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
 }
