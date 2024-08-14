@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import "./DemoTextPage.css";
 import DemoStudyText from "../../demo-components/DemoStudyText/DemoStudyText";
 import DemoReadText from "../../demo-components/DemoReadText/DemoReadText";
@@ -72,6 +72,8 @@ export default function DemoTextPage({ getText, updateText }) {
   const [correctCount, setCorrectCount] = useState(0);
   const [remainingCount, setRemainingCount] = useState(0);
 
+  const topRef = useRef(null);
+
   useEffect(
     function () {
       function setLocalStorage() {
@@ -96,6 +98,7 @@ export default function DemoTextPage({ getText, updateText }) {
   }
 
   function handleTabClick(tabName) {
+    topRef.current?.scroll(0, 0);
     setActiveTab(tabName);
   }
 
@@ -385,7 +388,7 @@ export default function DemoTextPage({ getText, updateText }) {
         </DialogContent>
       </Dialog>
 
-      <section className="main-area">
+      <section className="main-area" ref={topRef}>
         <div className="tabs sticky-fade">
           <button
             className={`tab-btn ${activeTab === "read" ? "active" : ""}`}
