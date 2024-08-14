@@ -32,6 +32,17 @@ export default function DemoTextPage({ getText, updateText }) {
     easierText: "",
   };
 
+  //trial
+  const [isFlipped, setIsFlipped] = useState(false);
+  const [hasBeenFlipped, setHasBeenFlipped] = useState(false);
+  
+  function handleToggle() {
+    setIsFlipped(!isFlipped);
+    if (!hasBeenFlipped) {
+      setHasBeenFlipped(true); // Update state to indicate that the card has been flipped
+    }
+  }
+  
   const [activeTab, setActiveTab] = useState("read");
 
   // --- SAVED WORDS ---
@@ -159,6 +170,7 @@ export default function DemoTextPage({ getText, updateText }) {
     setCorrectCount(0);
     setGameInProgress(false);
     setOpen(false);
+    setHasBeenFlipped(false);
   }
 
   function handleCorrect() {
@@ -166,6 +178,8 @@ export default function DemoTextPage({ getText, updateText }) {
     setFlashcards((prevFlashcards) => prevFlashcards.slice(1));
     setCorrectCount(correctCount + 1);
     setRemainingCount(remainingCount - 1);
+    setIsFlipped(false);
+    setHasBeenFlipped(false); 
   }
 
   function handleIncorrect() {
@@ -174,6 +188,8 @@ export default function DemoTextPage({ getText, updateText }) {
       ...prevFlashcards.slice(1),
       prevFlashcards[0],
     ]);
+    setIsFlipped(false);
+    setHasBeenFlipped(false); 
   }
 
   function startQuiz() {
@@ -326,49 +342,58 @@ export default function DemoTextPage({ getText, updateText }) {
                 english={flashcards[0].meaning}
                 selectedFront={selectedFront}
                 showPinyin={showPinyin}
+                isFlipped={isFlipped}
+                onToggle={handleToggle}
                 onCorrect={handleCorrect}
                 onIncorrect={handleIncorrect}
                 flashcards={flashcards}
               />
               <div>
-                <div className="flashcard-btns">
-                  <button className="correct-btn" onClick={handleCorrect}>
-                    Correct!
-                  </button>
-                  <button className="incorrect-btn" onClick={handleIncorrect}>
-                    Try again
-                  </button>
+                <div className="flip-button-container">
+                  {!hasBeenFlipped && (
+                    <button className="flip-button" onClick={handleToggle}>
+                      {isFlipped ? 'Show Front' : 'Show Answer'}
+                    </button>
+                  )}
                 </div>
-                <div className="flashcard-count">
-                  <p>
-                    <span className="correct-count">{correctCount}</span>{" "}
-                    Correct
-                  </p>
-                  <p>
-                    <span className="remaining-count">{remainingCount}</span>{" "}
-                    Remaining
-                  </p>
+                {(isFlipped || hasBeenFlipped) && (
+                    <div className="flashcard-btns">
+                      <button className="correct-btn" onClick={handleCorrect}>
+                        Correct!
+                      </button>
+                      <button className="incorrect-btn" onClick={handleIncorrect}>
+                        Try again
+                      </button>
+                    </div>
+                  )}
+                  <div className="flashcard-count">
+                    <p>
+                      <span className="correct-count">{correctCount}</span> Correct
+                    </p>
+                    <p>
+                      <span className="remaining-count">{remainingCount}</span> Remaining
+                    </p>
+                  </div>
                 </div>
+              </>
+            ) : (
+              <div className="congrats">
+                <div>
+                  <dotlottie-player
+                    src="https://lottie.host/9279b8f8-2d84-4077-aaf6-db967f8ec7bb/3JRYmBPJgq.json"
+                    background="transparent"
+                    speed="1"
+                    style={{ height: "20vmin" }}
+                    loop
+                    autoplay
+                  ></dotlottie-player>
+                </div>
+                <h2>You completed the deck!</h2>
+                <button className="play-btn" onClick={handlePlayAgain}>
+                  Play Again
+                </button>
               </div>
-            </>
-          ) : (
-            <div className="congrats">
-              <div>
-                <dotlottie-player
-                  src="https://lottie.host/9279b8f8-2d84-4077-aaf6-db967f8ec7bb/3JRYmBPJgq.json"
-                  background="transparent"
-                  speed="1"
-                  style={{ height: "20vmin" }}
-                  loop
-                  autoplay
-                ></dotlottie-player>
-              </div>
-              <h2>You completed the deck!</h2>
-              <button className="play-btn" onClick={handlePlayAgain}>
-                Play Again
-              </button>
-            </div>
-          )}
+            )}
         </DialogContent>
       </Dialog>
 

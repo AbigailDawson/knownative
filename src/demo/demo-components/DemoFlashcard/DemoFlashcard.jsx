@@ -1,5 +1,4 @@
 import './DemoFlashcard.css';
-import { useState } from 'react';
 
 export default function DemoFlashcard({ 
   chinese, 
@@ -8,16 +7,10 @@ export default function DemoFlashcard({
   selectedFront, 
   showPinyin, 
   onCorrect, 
-  onIncorrect, 
-  showButtons 
+  onIncorrect,
+  isFlipped,
+  onToggle, // Added callback for toggling from parent
 }) {
-  const [isFlipped, setIsFlipped] = useState(false);
-  const [buttonClicked, setButtonClicked] = useState(false);
-
-  function handleToggle() {
-    setIsFlipped(!isFlipped);
-    setButtonClicked(true);
-  }
 
   const englishTextStyle = {
     fontSize: '24px',
@@ -56,23 +49,6 @@ export default function DemoFlashcard({
           </div>
         )}
       </div>
-
-      {!buttonClicked && (
-        <button className="flip-button" onClick={handleToggle}>
-          {isFlipped ? 'Show Front' : 'Flip Card'}
-        </button>
-      )}
-
-      {showButtons && (
-        <div className="flashcard-btns">
-          <button className="correct-btn" onClick={onCorrect}>
-            Correct!
-          </button>
-          <button className="incorrect-btn" onClick={onIncorrect}>
-            Try Again
-          </button>
-        </div>
-      )}
     </>
   );
 }

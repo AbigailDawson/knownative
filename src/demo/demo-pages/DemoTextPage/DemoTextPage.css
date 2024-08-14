@@ -120,6 +120,37 @@
   transform: scale(1.1);
 }
 
+.flip-button-container {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center;     /* Center vertically */
+  margin-top: 20px;        /* Margin at the top */
+}
+
+.flip-button {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center;     /* Center vertically */
+  background-color: #007bff; /* Blue background color */
+  color: white;             /* White text color */
+  border: none;             /* Remove default border */
+  border-radius: 4px;       /* Rounded corners */
+  padding: 10px 20px;       /* Padding inside the button */
+  font-size: 16px;          /* Font size */
+  cursor: pointer;          /* Pointer cursor on hover */
+  transition: background-color 0.3s ease; /* Smooth background color transition */
+  margin: 10px;             /* Margin around the button */
+}
+
+.flip-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+.flip-button:focus {
+  outline: none;            /* Remove default focus outline */
+}
+
+
 /* xl screens and smaller */
 @media (max-width:  1280px) {
   .textpage-heading-title {
