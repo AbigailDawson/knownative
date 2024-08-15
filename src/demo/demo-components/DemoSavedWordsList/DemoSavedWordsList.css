@@ -30,6 +30,7 @@
     flex-direction: column;
     height: 80vh;
     overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .saved-words-list-container::-webkit-scrollbar {
