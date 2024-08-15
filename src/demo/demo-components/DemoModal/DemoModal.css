@@ -1,0 +1,22 @@
+.demo-modal::backdrop {
+  background: hsl(0 0% 0% / 50%);
+}
+
+.demo-modal {
+  text-align: left;
+  box-sizing: border-box;
+  overflow: auto;
+  width: 600px;
+  border: solid #BEBEBE 1px;
+  border-radius: 7px;
+  padding: 30px 30px 30px 30px;
+  transition: all ease-in 1s;
+  box-shadow: hsl(0 0% 0% / 10%) 0 0 0.5rem 0.25rem;
+}
+
+.demo-modal-close-btn {
+  font-size: 0.75em;
+  position: absolute;
+  top: 0.25em;
+  right: 0.25em;
+}
