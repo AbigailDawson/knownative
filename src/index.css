@@ -152,15 +152,15 @@ a {
 }
 
 .main-area {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: stretch;
-    text-align: left;
-    background: white;
-    padding: 3vmin;
-    height: 100vh;
-    overflow-y: auto; /* Enable vertical scrolling if content overflows */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  text-align: left;
+  background: white;
+  padding: 0 3vmin;
+  height: 100vh;
+  overflow-y: auto; /* Enable vertical scrolling if content overflows */ 
 }
 
 .page.collapsed-sidebar .sidebar {
@@ -194,12 +194,22 @@ a {
 }
 
 .tabs {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 1vmin;
-    margin-left: 5vmin;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1vmin;
+  /* margin-left: 5vmin; */
+  padding: 3vmin 0 2vmin;
+}
+
+.sticky-fade {
+  position: -webkit-sticky;
+  /* Safari */
+  position: sticky;
+  top: 0;
+  background: linear-gradient(to top, #ff000000 0%, #ffffffff 10%);
+  z-index: 4;
 }
 
 .tab-btn {

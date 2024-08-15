@@ -375,7 +375,7 @@ export default function DemoTextPage({ getText, updateText }) {
       </Dialog>
 
       <section className="main-area">
-        <div className="tabs">
+        <div className="tabs sticky-fade">
           <button
             className={`tab-btn ${activeTab === "read" ? "active" : ""}`}
             onClick={() => handleTabClick("read")}
