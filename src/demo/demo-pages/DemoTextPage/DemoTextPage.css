@@ -84,6 +84,7 @@
   padding-top: 2vmin;
   display: flex;
   gap: 1rem;
+  margin-bottom: 2rem;
 }
 
 .flashcard-count p {
@@ -122,34 +123,31 @@
 
 .flip-button-container {
   display: flex;
-  justify-content: center; /* Center horizontally */
-  align-items: center;     /* Center vertically */
-  margin-top: 20px;        /* Margin at the top */
+  justify-content: center;
+  align-items: center;
 }
 
 .flip-button {
   display: flex;
-  justify-content: center; /* Center horizontally */
-  align-items: center;     /* Center vertically */
-  background-color: #007bff; /* Blue background color */
-  color: white;             /* White text color */
-  border: none;             /* Remove default border */
-  border-radius: 4px;       /* Rounded corners */
-  padding: 10px 20px;       /* Padding inside the button */
-  font-size: 16px;          /* Font size */
-  cursor: pointer;          /* Pointer cursor on hover */
-  transition: background-color 0.3s ease; /* Smooth background color transition */
-  margin: 10px;             /* Margin around the button */
+  justify-content: center;
+  align-items: center;
+  background-color: var(--action);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .flip-button:hover {
-  background-color: #0056b3; /* Darker blue on hover */
+  background-color: var(--medium);
 }
 
 .flip-button:focus {
-  outline: none;            /* Remove default focus outline */
+  outline: none;
 }
-
 
 /* xl screens and smaller */
 @media (max-width:  1280px) {

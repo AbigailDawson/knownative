@@ -25,12 +25,14 @@
   --yellow: #fae365;
 
   --primary: #57bcaa; /* actions */
+  --action: #006769;
   --darkest: #0c1f1b; /* heading text */
   --dark: #526662; /* secondary text */
   --medium: #9cc3bc; /* non-decorative borders */
   --light: #daf2ee; /* decorative borders */
   --lightest: #f5faf9; /* alternate backgrounds */
   --white: #ffffff; /* main background */
+
 }
 
 body {

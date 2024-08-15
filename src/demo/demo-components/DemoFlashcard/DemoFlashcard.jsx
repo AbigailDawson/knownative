@@ -13,7 +13,7 @@ export default function DemoFlashcard({
 }) {
 
   const englishTextStyle = {
-    fontSize: '24px',
+    fontSize: '20px',
   };
 
   return (
@@ -23,7 +23,7 @@ export default function DemoFlashcard({
           {selectedFront === 'chinese' ? (
             <div>
               {showPinyin && <p className="pinyin">{pinyin}</p>}
-              <p className="zh">{chinese}</p>
+              <p className="zh flash-zh">{chinese}</p>
             </div>
           ) : (
             <div>
@@ -36,13 +36,11 @@ export default function DemoFlashcard({
           <div className="flashcard-back">
             {selectedFront === 'english' ? (
               <div>
-                <hr />
                 {showPinyin && <p className="pinyin">{pinyin}</p>}
-                <p className="zh">{chinese}</p>
+                <p className="zh flash-zh">{chinese}</p>
               </div>
             ) : (
               <div>
-                <hr />
                 <p style={englishTextStyle}>{english}</p>
               </div>
             )}
