@@ -1,42 +1,68 @@
 .SavedWordsList {
-  display: flex;
-  flex-direction: column;
-  padding: 2vmin 2vmin;
-  width: 100%;
-  background-color: #f5faf9;
-  color: black;
-  margin-top: 2vmin;
+    display: flex;
+    flex-direction: column;
+    padding: 2vmin 2vmin;
+    width: 100%;
+    background-color: #f5faf9;
+    color: black;
+    margin-top: 2vmin;
 }
 
 .arrowBack:hover {
-  background-color: var(--light);
-  border-radius: 0.7vmin;
-  cursor: pointer;
+    background-color: var(--light);
+    border-radius: 0.7vmin;
+    cursor: pointer;
 }
 
 .demo-saved-words-header-container {
-  display: flex;
-  justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
 }
 .sidebar-heading {
-  text-align: left;
-  font-size: 1.5rem;
+    text-align: left;
+    font-size: 1.5rem;
 }
 
 .saved-words-list-container {
-  margin-top: 2vmin;
+    margin-top: 2vmin;
+    padding-right: 12px;
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+    overflow-y: auto;
+}
+
+.saved-words-list-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.saved-words-list-container::-webkit-scrollbar-track {
+    background: hsl(240, 6%, 77%);
+    border-radius: 8px;
+}
+
+.saved-words-list-container::-webkit-scrollbar-thumb {
+    background: hsl(181, 100%, 26%);
+    border-radius: 8px;
+}
+
+.saved-words-list-container::-webkit-scrollbar-thumb:hover {
+    background: hsl(181, 100%, 31%);
 }
 
 .add-word-btn {
-  margin-top: 3vmin;
-  font-size: 1.1rem;
-  padding: 1vmin 2vmin;
-  background-color: #006769;
-  color: white;
-  transition: transform 0.3s ease-in-out;
+    margin-top: 32px;
+    font-size: 32px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: hsl(181, 100%, 21%);
+    color: hsl(0, 0%, 98%);
+    transition: transform 0.3s ease-in-out;
 }
 
 .add-word-btn:hover {
-  background-color: var(--teal);
-  transform: scale(1.1);
+    background-color: var(--teal);
+    transform: scale(1.1);
 }

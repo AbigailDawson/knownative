@@ -16,7 +16,7 @@ import { FaRegWindowClose } from "react-icons/fa";
 import { GiCheckMark } from "react-icons/gi";
 import { PiRepeatBold } from "react-icons/pi";
 import { getWordInfo } from "../../../utilities/words-service";
-
+import DemoLibrary from "../../demo-components/DemoLibrary/DemoLibrary";
 //import word from '../../../../models/word'
 
 export default function DemoTextPage({ getText, updateText }) {
@@ -24,7 +24,7 @@ export default function DemoTextPage({ getText, updateText }) {
     _id: "1",
     title: "10 個台灣人最愛去的日本城市！",
     content:
-      "位在日本本州中部的靜岡縣，鄰近神奈川縣，有著日本最高、最著名的世界遺產「富士山」，大家最喜歡去的景點之一「伊豆半島」更是連日本人都非常熱愛的度假勝地，還有熱海沙灘、夢幻景點大井川鐵路等。靜岡縣南部緊鄰太平洋，眺望廣闊綿延的海岸線，十分悠閒，如果喜愛休閒輕鬆的旅程，它會是你的好選擇！此外，去過靜岡縣「伊豆仙人掌動物園」的網友表示，「可以很親近不同的小動物，隻隻都會賣萌賺零食。水豚非常親人，袋鼠十分慵懶，看他們浸溫泉，可以看足一小時」、「水豚太可愛了，樂園小小的但規劃的很不錯，可以逛完大室山後來走走」，也推薦列入行程中喔。",
+      "位在日本本州中部的靜岡縣，鄰近神奈川縣，有著日本最高、最著名的世界遺產「富士山」，大家最喜歡去的景點之一「伊豆半島」更是連日本人都非常熱愛的度假勝地，還有熱海沙灘、夢幻景點大井川鐵路等。靜岡縣南部緊鄰太平洋，眺望廣闊綿延的海岸線，十分悠閒，如果喜愛休閒輕鬆的旅程，它會是你的好選擇！此外，去過靜岡縣「伊豆仙人掌動物園」的網友表示，「可以很親近不同的小動物，隻隻都會賣萌賺零食。水豚非常親人，袋鼠十分慵懶，看他們浸溫泉，可以看足一小時」、「水豚太可愛了，樂園小小的但規劃的很不錯，可以逛完大室山後來走走」，也推薦列入行程中喔。位在日本本州中部的靜岡縣，鄰近神奈川縣，有著日本最高、最著名的世界遺產「富士山」，大家最喜歡去的景點之一「伊豆半島」更是連日本人都非常熱愛的度假勝地，還有熱海沙灘、夢幻景點大井川鐵路等。靜岡縣南部緊鄰太平洋，眺望廣闊綿延的海岸線，十分悠閒，如果喜愛休閒輕鬆的旅程，它會是你的好選擇！此外，去過靜岡縣「伊豆仙人掌動物園」的網友表示，「可以很親近不同的小動物，隻隻都會賣萌賺零食。水豚非常親人，袋鼠十分慵懶，看他們浸溫泉，可以看足一小時」、「水豚太可愛了，樂園小小的但規劃的很不錯，可以逛完大室山後來走走」，也推薦列入行程中喔。位在日本本州中部的靜岡縣，鄰近神奈川縣，有著日本最高、最著名的世界遺產「富士山」，大家最喜歡去的景點之一「伊豆半島」更是連日本人都非常熱愛的度假勝地，還有熱海沙灘、夢幻景點大井川鐵路等。靜岡縣南部緊鄰太平洋，眺望廣闊綿延的海岸線，十分悠閒，如果喜愛休閒輕鬆的旅程，它會是你的好選擇！此外，去過靜岡縣「伊豆仙人掌動物園」的網友表示，「可以很親近不同的小動物，隻隻都會賣萌賺零食。水豚非常親人，袋鼠十分慵懶，看他們浸溫泉，可以看足一小時」、「水豚太可愛了，樂園小小的但規劃的很不錯，可以逛完大室山後來走走」，也推薦列入行程中喔。",
     source:
       "https://www.housefeel.com.tw/article/%E6%97%A5%E6%9C%AC%E6%97%85%E9%81%8A-%E6%97%A5%E6%9C%AC%E6%99%AF%E9%BB%9E-%E6%97%A5%E6%9C%AC%E8%A7%80%E5%85%89-%E6%97%A5%E6%9C%AC%E5%9F%8E%E5%B8%82/",
     favorite: false,
@@ -180,7 +180,7 @@ export default function DemoTextPage({ getText, updateText }) {
     setOpen(true);
     getFlashcards();
     setRemainingCount(flashcards.length);
-    console.log(flashcards.length)
+    console.log(flashcards.length);
     setGameInProgress(true);
   }
 
@@ -224,8 +224,9 @@ export default function DemoTextPage({ getText, updateText }) {
     "Loading ..."
   ) : (
     <main
-      className={`TextPage page ${expandedSidebar ? "expanded-sidebar" : "collapsed-sidebar"
-        }`}
+      className={`TextPage page ${
+        expandedSidebar ? "expanded-sidebar" : "collapsed-sidebar"
+      }`}
     >
       <nav className="side-nav">
         <DemoNav
@@ -263,6 +264,13 @@ export default function DemoTextPage({ getText, updateText }) {
           )}
           {sidebarCategory === "info-tooltip" && (
             <DemoInfoSidebar
+              changeSidebarCategory={changeSidebarCategory}
+              handleBackArrowClick={handleBackArrowClick}
+              handleShowExit={handleShowExit}
+            />
+          )}
+          {sidebarCategory === "library-tooltip" && (
+            <DemoLibrary
               changeSidebarCategory={changeSidebarCategory}
               handleBackArrowClick={handleBackArrowClick}
               handleShowExit={handleShowExit}
@@ -311,45 +319,40 @@ export default function DemoTextPage({ getText, updateText }) {
           }}
         >
           {flashcards.length > 0 && gameInProgress ? (
-                <>
-                  <DemoFlashcard
-                    chinese={flashcards[0].chinese}
-                    pinyin={flashcards[0].pinyin}
-                    english={flashcards[0].meaning}
-                    selectedFront={selectedFront}
-                    showPinyin={showPinyin}
-                    onCorrect={handleCorrect}
-                    onIncorrect={handleIncorrect}
-                    flashcards={flashcards}
-                  />
-                  <div>
-                  <div className="flashcard-btns">
-                    <button className="correct-btn" onClick={handleCorrect}>
-                      <GiCheckMark className="flashcard-icon" />
-                      Correct!
-                    </button>
-                    <button
-                      className="incorrect-btn"
-                      onClick={handleIncorrect}
-                    >
-                      <PiRepeatBold className="flashcard-icon" />
-                      Try again
-                    </button>
-                  </div>
-                  <div className="flashcard-count">
-                    <p>
-                      <span className="correct-count">{correctCount}</span>{" "}
-                      Correct
-                    </p>
-                    <p>
-                      <span className="remaining-count">
-                        {remainingCount}
-                      </span>{" "}
-                      Remaining
-                    </p>
-                  </div>
+            <>
+              <DemoFlashcard
+                chinese={flashcards[0].chinese}
+                pinyin={flashcards[0].pinyin}
+                english={flashcards[0].meaning}
+                selectedFront={selectedFront}
+                showPinyin={showPinyin}
+                onCorrect={handleCorrect}
+                onIncorrect={handleIncorrect}
+                flashcards={flashcards}
+              />
+              <div>
+                <div className="flashcard-btns">
+                  <button className="correct-btn" onClick={handleCorrect}>
+                    <GiCheckMark className="flashcard-icon" />
+                    Correct!
+                  </button>
+                  <button className="incorrect-btn" onClick={handleIncorrect}>
+                    <PiRepeatBold className="flashcard-icon" />
+                    Try again
+                  </button>
                 </div>
-              </>
+                <div className="flashcard-count">
+                  <p>
+                    <span className="correct-count">{correctCount}</span>{" "}
+                    Correct
+                  </p>
+                  <p>
+                    <span className="remaining-count">{remainingCount}</span>{" "}
+                    Remaining
+                  </p>
+                </div>
+              </div>
+            </>
           ) : (
             <div className="congrats">
               <div>
@@ -402,8 +405,9 @@ export default function DemoTextPage({ getText, updateText }) {
 
           <div
             id="study"
-            className={`study-container ${activeTab === "study" ? "active" : ""
-              }`}
+            className={`study-container ${
+              activeTab === "study" ? "active" : ""
+            }`}
           >
             <div className="Text study-content">
               {text ? (
@@ -434,8 +438,9 @@ export default function DemoTextPage({ getText, updateText }) {
 
           <div
             id="translate"
-            className={`translate-container ${activeTab === "translate" ? "active" : ""
-              }`}
+            className={`translate-container ${
+              activeTab === "translate" ? "active" : ""
+            }`}
           >
             <div className="Text">
               {text ? <DemoTranslateText text={text} /> : "Loading text"}

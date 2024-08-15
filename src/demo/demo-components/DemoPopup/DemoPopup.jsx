@@ -50,6 +50,7 @@ export default function Popup({ word, popupPosition, saveWord, textId, onClose }
           top: popupHeight === '11rem'? `${popupPosition[1] - 100}px` : `${popupPosition[1] - 50}px`,
           height: popupHeight,
         }}
+        ref={popupRef}
       >
       <div className="popup-content">
         <p className="popup-pinyin">{pinyin}</p>

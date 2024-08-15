@@ -1,19 +1,7 @@
-.flexTest {
-    display: flex;
-  /* flex-direction: column; */
-    justify-content: center; 
-    gap: 30px;
-    margin-top: 100px;
-}
-
-.caroSize {
-    height: 55vh;
-    width: 35vw;
-    box-shadow: 10px 5px 5px grey;  
-}
-
-.captionColor h3, 
-.captionColor p {
-    color: white;
-    text-shadow: 3px 3px black;
+.intro,
+.creator,
+.core-contributors,
+.how-to-contribute,
+.backstory {
+    margin-top: 2rem;
 }

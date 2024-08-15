@@ -23,12 +23,19 @@
   margin: 0;
 }
 
-.annotation {
-  height: 3.3rem;
-  text-wrap: wrap;
-  text-align: center;
-  font-size: 0.85rem;
-  color: var(--drk-txt);
+.annotation p {
+  font-size: .9rem;
+  font-family:'Montserrat', 'Roboto', sans-serif;
+}
+
+.saved.zh {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1.5px;
+}
+
+.meaning {
+  font-weight: bold;
 }
 
 .Word:not(.specialChar) .zh:hover {
