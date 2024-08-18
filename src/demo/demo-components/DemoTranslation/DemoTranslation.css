@@ -2,7 +2,18 @@
   letter-spacing: 0;
   font-size: 1.2rem;
   margin: 1vmin 0 4vmin 0;
-  color: var(--red)
+  color: var(--black);
+
+  /* Transition properties */
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 1.8s ease-in-out, opacity 0.9s ease-in-out;
+}
+
+.translation.show-container {
+  max-height: 1200px;
+  opacity: 1;
 }
 
 /* small screens and smaller */
