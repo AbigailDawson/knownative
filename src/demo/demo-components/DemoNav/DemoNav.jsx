@@ -1,11 +1,4 @@
 import "./DemoNav.css";
-import { TbCardsFilled } from "react-icons/tb";
-import { MdQuiz } from "react-icons/md";
-import { FaArrowsRotate } from "react-icons/fa6";
-import { ImExit } from "react-icons/im";
-import { FaRegQuestionCircle } from "react-icons/fa";
-import { FaCircleInfo } from "react-icons/fa6";
-import { FaBook } from "react-icons/fa";
 import { Tooltip } from "react-tooltip";
 
 export default function DemoNav({
@@ -47,80 +40,73 @@ export default function DemoNav({
         />
         {/* Saved Words Icon*/}
         <div className="icontip-container">
-          <TbCardsFilled
-            className="side-nav-icon-top"
+          <span
+            className="material-symbols-outlined side-nav-icon-top"
             onClick={handleCardsClick}
             data-tooltip-id="savedwords-tooltip"
             data-tooltip-content="Saved Words"
             data-tooltip-place="right"
-          />
+          >
+            style
+          </span>
           <Tooltip
             id="savedwords-tooltip"
             className="icontip-message"
-            delayShow={100}
+            delayShow={300}
             disableStyleInjection="true"
           />
         </div>
         {/* Quiz Icon */}
         <div className="icontip-container">
-          <MdQuiz
-            className="side-nav-icon-top"
+          <span
+            className="material-symbols-outlined side-nav-icon-top"
             onClick={handleCardsClick}
             data-tooltip-id="flashcards-tooltip"
             data-tooltip-content="Flashcard Quiz"
             data-tooltip-place="right"
-          />
+          >
+            school
+          </span>
           <Tooltip
             id="flashcards-tooltip"
             className="icontip-message"
-            delayShow={100}
-            disableStyleInjection="true"
-          />
-        </div>
-        {/* Change Text Icon */}
-        <div className="icontip-container">
-          <FaArrowsRotate
-            className="side-nav-icon-top"
-            data-tooltip-id="changetext-tooltip"
-            data-tooltip-content="Change Text"
-            data-tooltip-place="right"
-          />
-          <Tooltip
-            id="changetext-tooltip"
-            className="icontip-message"
-            delayShow={100}
+            delayShow={300}
             disableStyleInjection="true"
           />
         </div>
         {/* Library Icon */}
         <div className="icontip-container">
-          <FaBook
-            className="side-nav-icon-top"
+          <span
+            className="material-symbols-outlined side-nav-icon-top"
             onClick={handleCardsClick}
             data-tooltip-id="library-tooltip"
             data-tooltip-content="Library"
             data-tooltip-place="right"
-          />
+          >
+            book_2
+          </span>
           <Tooltip
             id="library-tooltip"
             className="icontip-message"
-            delayShow={100}
+            delayShow={300}
             disableStyleInjection="true"
           />
         </div>
         {/* Info Icon */}
         <div className="icontip-container">
-          <FaCircleInfo
-            className="side-nav-icon-top"
+          <span
+            className="material-symbols-outlined side-nav-icon-top"
             onClick={handleCardsClick}
             data-tooltip-id="info-tooltip"
             data-tooltip-content="Info"
             data-tooltip-place="right"
-          />
+          >
+            info
+          </span>
           <Tooltip
             id="info-tooltip"
             className="icontip-message"
-            delayShow={100}
+            delayShow={300}
             disableStyleInjection="true"
           />
         </div>
@@ -128,32 +114,36 @@ export default function DemoNav({
       <div className="bottom-icons">
         {/* Support Icon */}
         <div className="icontip-container">
-          <FaRegQuestionCircle
-            className="side-nav-icon-bottom"
+          <span
+            className="material-symbols-outlined side-nav-icon-bottom"
             data-tooltip-id="support-tooltip"
             data-tooltip-content="Support"
             data-tooltip-place="right"
-          />
+          >
+            help
+          </span>
           <Tooltip
             id="support-tooltip"
             className="icontip-message"
-            delayShow={100}
+            delayShow={300}
             disableStyleInjection="true"
           />
         </div>
         {/* Exit Icon */}
         <div className="icontip-container">
-          <ImExit
-            className="side-nav-icon-bottom"
+          <span
+            className="material-symbols-outlined side-nav-icon-bottom"
             onClick={handleShowExit}
             data-tooltip-id="exit-tooltip"
             data-tooltip-content="Exit Demo"
             data-tooltip-place="right"
-          />
+          >
+            logout
+          </span>
           <Tooltip
             id="exit-tooltip"
             className="icontip-message"
-            delayShow={100}
+            delayShow={300}
             disableStyleInjection="true"
           />
         </div>
