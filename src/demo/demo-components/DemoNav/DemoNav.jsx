@@ -1,5 +1,4 @@
 import "./DemoNav.css";
-import { Tooltip } from "react-tooltip";
 
 export default function DemoNav({
   expandSidebar,
@@ -8,7 +7,7 @@ export default function DemoNav({
   handleShowExit,
 }) {
   function handleCardsClick(e) {
-    const selectedIcon = e.currentTarget.dataset.tooltipId;
+    const selectedIcon = e.currentTarget.id;
     console.log("selected icon: ", selectedIcon);
     //if there's no sidebar present, then expand the sidebar based on what the user clicked.
     if (sidebarCategory === null) {
@@ -41,113 +40,68 @@ export default function DemoNav({
         {/* Saved Words Icon*/}
         <div className="icontip-container">
           <span
+            id="savedwords-tooltip"
             className="material-symbols-outlined side-nav-icon-top"
             onClick={handleCardsClick}
-            data-tooltip-id="savedwords-tooltip"
-            data-tooltip-content="Saved Words"
-            data-tooltip-place="right"
           >
             style
           </span>
-          <Tooltip
-            id="savedwords-tooltip"
-            className="icontip-message"
-            delayShow={300}
-            disableStyleInjection="true"
-          />
+          <label htmlFor="">Terms</label>
         </div>
         {/* Quiz Icon */}
         <div className="icontip-container">
           <span
+            id="flashcards-tooltip"
             className="material-symbols-outlined side-nav-icon-top"
             onClick={handleCardsClick}
-            data-tooltip-id="flashcards-tooltip"
-            data-tooltip-content="Flashcard Quiz"
-            data-tooltip-place="right"
           >
             school
           </span>
-          <Tooltip
-            id="flashcards-tooltip"
-            className="icontip-message"
-            delayShow={300}
-            disableStyleInjection="true"
-          />
+          <label htmlFor="">Learn</label>
         </div>
         {/* Library Icon */}
         <div className="icontip-container">
           <span
+            id="library-tooltip"
             className="material-symbols-outlined side-nav-icon-top"
             onClick={handleCardsClick}
-            data-tooltip-id="library-tooltip"
-            data-tooltip-content="Library"
-            data-tooltip-place="right"
           >
             book_2
           </span>
-          <Tooltip
-            id="library-tooltip"
-            className="icontip-message"
-            delayShow={300}
-            disableStyleInjection="true"
-          />
+          <label htmlFor="">Library</label>
         </div>
         {/* Info Icon */}
         <div className="icontip-container">
           <span
+            id="info-tooltip"
             className="material-symbols-outlined side-nav-icon-top"
             onClick={handleCardsClick}
-            data-tooltip-id="info-tooltip"
-            data-tooltip-content="Info"
-            data-tooltip-place="right"
           >
             info
           </span>
-          <Tooltip
-            id="info-tooltip"
-            className="icontip-message"
-            delayShow={300}
-            disableStyleInjection="true"
-          />
+          <label htmlFor="">Info</label>
         </div>
       </div>
-      <div className="bottom-icons">
+      {/* <div className="bottom-icons"> */}
         {/* Support Icon */}
-        <div className="icontip-container">
+        {/* <div className="icontip-container">
           <span
+            id="support-tooltip"
             className="material-symbols-outlined side-nav-icon-bottom"
-            data-tooltip-id="support-tooltip"
-            data-tooltip-content="Support"
-            data-tooltip-place="right"
           >
             help
           </span>
-          <Tooltip
-            id="support-tooltip"
-            className="icontip-message"
-            delayShow={300}
-            disableStyleInjection="true"
-          />
-        </div>
+        </div> */}
         {/* Exit Icon */}
-        <div className="icontip-container">
+        {/* <div className="icontip-container">
           <span
             className="material-symbols-outlined side-nav-icon-bottom"
             onClick={handleShowExit}
-            data-tooltip-id="exit-tooltip"
-            data-tooltip-content="Exit Demo"
-            data-tooltip-place="right"
           >
             logout
           </span>
-          <Tooltip
-            id="exit-tooltip"
-            className="icontip-message"
-            delayShow={300}
-            disableStyleInjection="true"
-          />
         </div>
-      </div>
+      </div> */}
     </>
   );
 }
