@@ -13,9 +13,9 @@ import DemoExitModal from "../../demo-components/DemoExitModal/DemoExitModal";
 // import * as textsAPI from "../../../utilities/texts-api";
 // import * as wordsAPI from "../../../utilities/words-api";
 import { Button, Dialog, DialogActions, DialogContent } from "@mui/material";
-import { FaRegWindowClose } from "react-icons/fa";
-import { GiCheckMark } from "react-icons/gi";
-import { PiRepeatBold } from "react-icons/pi";
+import { IoMdClose } from "react-icons/io";
+// import { GiCheckMark } from "react-icons/gi";
+// import { PiRepeatBold } from "react-icons/pi";
 import { getWordInfo } from "../../../utilities/words-service";
 import DemoLibrary from "../../demo-components/DemoLibrary/DemoLibrary";
 //import word from '../../../../models/word'
@@ -32,7 +32,7 @@ export default function DemoTextPage({ getText, updateText }) {
     archived: false,
     easierText: "",
   };
-
+  
   const [activeTab, setActiveTab] = useState("read");
 
   // --- SAVED WORDS ---
@@ -71,6 +71,15 @@ export default function DemoTextPage({ getText, updateText }) {
   const [gameInProgress, setGameInProgress] = useState(false);
   const [correctCount, setCorrectCount] = useState(0);
   const [remainingCount, setRemainingCount] = useState(0);
+  const [isFlipped, setIsFlipped] = useState(false);
+  const [hasBeenFlipped, setHasBeenFlipped] = useState(false);
+  
+  function handleToggle() {
+    setIsFlipped(!isFlipped);
+    if (!hasBeenFlipped) {
+      setHasBeenFlipped(true);
+    }
+  }
 
   useEffect(
     function () {
@@ -170,6 +179,7 @@ export default function DemoTextPage({ getText, updateText }) {
     setCorrectCount(0);
     setGameInProgress(false);
     setOpen(false);
+    setHasBeenFlipped(false);
   }
 
   function handleCorrect() {
@@ -177,6 +187,8 @@ export default function DemoTextPage({ getText, updateText }) {
     setFlashcards((prevFlashcards) => prevFlashcards.slice(1));
     setCorrectCount(correctCount + 1);
     setRemainingCount(remainingCount - 1);
+    setIsFlipped(false);
+    setHasBeenFlipped(false); 
   }
 
   function handleIncorrect() {
@@ -185,6 +197,8 @@ export default function DemoTextPage({ getText, updateText }) {
       ...prevFlashcards.slice(1),
       prevFlashcards[0],
     ]);
+    setIsFlipped(false);
+    setHasBeenFlipped(false); 
   }
 
   function startQuiz() {
@@ -297,7 +311,7 @@ export default function DemoTextPage({ getText, updateText }) {
           <div
             style={{
               width: "60vmin",
-              height: "50vmin",
+              height: "55vmin",
               backgroundColor: "white",
               color: "var(--drk-txt)",
               display: "flex",
@@ -318,7 +332,7 @@ export default function DemoTextPage({ getText, updateText }) {
           }}
         >
           <Button onClick={handleClose}>
-            <FaRegWindowClose className="close-icon" />
+            <IoMdClose className="close-icon" />
           </Button>
         </DialogActions>
         <DialogContent
@@ -337,29 +351,36 @@ export default function DemoTextPage({ getText, updateText }) {
                 english={flashcards[0].meaning}
                 selectedFront={selectedFront}
                 showPinyin={showPinyin}
+                isFlipped={isFlipped}
+                onToggle={handleToggle}
                 onCorrect={handleCorrect}
                 onIncorrect={handleIncorrect}
                 flashcards={flashcards}
               />
               <div>
-                <div className="flashcard-btns">
-                  <button className="correct-btn" onClick={handleCorrect}>
-                    <GiCheckMark className="flashcard-icon" />
-                    Correct!
-                  </button>
-                  <button className="incorrect-btn" onClick={handleIncorrect}>
-                    <PiRepeatBold className="flashcard-icon" />
-                    Try again
-                  </button>
+                <div className="flip-button-container">
+                  {!hasBeenFlipped && !isFlipped && (
+                    <button className="flip-button" onClick={handleToggle}>
+                      {isFlipped ? 'Show Front' : 'Show Answer'}
+                    </button>
+                  )}
                 </div>
+                {(isFlipped || hasBeenFlipped) && (
+                  <div className="flashcard-btns">
+                    <button className="correct-btn" onClick={handleCorrect}>
+                      Correct!
+                    </button>
+                    <button className="incorrect-btn" onClick={handleIncorrect}>
+                      Try again
+                    </button>
+                  </div>
+                )}
                 <div className="flashcard-count">
                   <p>
-                    <span className="correct-count">{correctCount}</span>{" "}
-                    Correct
+                    <span className="correct-count">{correctCount}</span> Correct
                   </p>
                   <p>
-                    <span className="remaining-count">{remainingCount}</span>{" "}
-                    Remaining
+                    <span className="remaining-count">{remainingCount}</span> Remaining
                   </p>
                 </div>
               </div>
