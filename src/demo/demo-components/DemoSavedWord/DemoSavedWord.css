@@ -1,101 +1,99 @@
 .SavedWord {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: white;
-  color: black;
-  padding: 2vmin 3.5vmin;
-  margin: 0.5vmin 1vmin;
-  border-bottom: 2px solid var(--medium);
-  border-radius: 0.5vmin;
-  position: relative;
-  -webkit-box-shadow: 7px 7px 5px -8px rgba(235, 235, 235, 0.4);
-  -moz-box-shadow: 7px 7px 5px -8px rgba(235, 235, 235, 0.4);
-  box-shadow: 7px 7px 5px -8px rgba(235, 235, 235, 0.4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    color: black;
+    padding: 2vmin 3.5vmin;
+    margin: 0.5vmin 1vmin;
+    border-bottom: 2px solid var(--medium);
+    border-radius: 0.5vmin;
+    position: relative;
+    -webkit-box-shadow: 7px 7px 5px -8px rgba(235, 235, 235, 0.4);
+    -moz-box-shadow: 7px 7px 5px -8px rgba(235, 235, 235, 0.4);
+    box-shadow: 7px 7px 5px -8px rgba(235, 235, 235, 0.4);
 }
 
 .edit-menu-icon {
-  color: #00b9bc;
-  position: absolute;
-  top: 1vmin;
-  right: 1vmin;
-  font-size: 1.3rem;
-  transition: transform 0.3s ease-in-out;
-  border-radius: 50%;
+    color: #00b9bc;
+    position: absolute;
+    top: 1vmin;
+    right: 1vmin;
+    font-size: 1.3rem;
+    transition: transform 0.3s ease-in-out;
+    border-radius: 50%;
 }
 
 .edit-menu-icon:hover {
-  background-color: #00b9bc;
-  transform: scale(1.3);
-  cursor: pointer;
-  color: white;
+    background-color: #00b9bc;
+    transform: scale(1.3);
+    cursor: pointer;
+    color: white;
 }
 
 .edit-menu-currently-open {
-  background-color: #00b9bc;
-  color: white;
+    background-color: #00b9bc;
+    color: white;
 }
 
 .edit-delete-menu {
-  width: 50%;
-  min-width: 120px;
-  box-shadow: 7px 7px 5px -8px black;
-  position: absolute;
-  top: 1.2vmin;
-  left: 95%;
+    width: fit-content;
+    min-width: 90px;
+    /* box-shadow: 7px 7px 5px -8px black; */
+    box-shadow: 0 2px 6px hsla(0, 0%, 7%, 0.5);
+    position: absolute;
+    top: 2px;
+    right: 2px;
 }
 
 .edit-delete-menu section {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 1rem;
-  padding: 0.5vmin 1vmin;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 0.5vmin 1vmin;
 }
 
 .edit-delete-menu section p {
-  margin-bottom: 0px;
+    margin-bottom: 0px;
 }
 
 .edit-button {
-  background-color: #e1faf7;
-  color: #24312f;
-  border-top-left-radius: 10%;
-  border-top-right-radius: 10%;
+    background-color: #e1faf7;
+    color: #24312f;
 }
 
 .edit-button:hover {
-  cursor: pointer;
-  color: #e1faf7;
-  background-color: #24312f;
+    cursor: pointer;
+    color: #e1faf7;
+    background-color: #24312f;
 }
 
 .delete-button {
-  background-color: #ffe6e6;
-  color: #660000;
-  border-bottom-left-radius: 10%;
-  border-bottom-right-radius: 10%;
+    background-color: #ffe6e6;
+    color: #660000;
 }
 
 .delete-button:hover {
-  cursor: pointer;
-  background-color: #660000;
-  color: #ffe6e6;
+    cursor: pointer;
+    background-color: #660000;
+    color: #ffe6e6;
 }
 
 .char-pinyin > .char {
-  font-size: 1.7rem;
-  margin-bottom: 0px;
+    font-size: 1.7rem;
+    margin-bottom: 0px;
 }
 
 .char-pinyin > .pinyin {
-  font-size: 0.8rem;
-  margin-bottom: 0px;
-  color: grey;
+    font-size: 0.8rem;
+    margin-bottom: 0px;
+    color: grey;
 }
 
 .word-meaning {
-  margin-bottom: 0px;
-  text-align: center;
+    margin-bottom: 0px;
+    text-align: center;
 }
