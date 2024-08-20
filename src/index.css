@@ -196,16 +196,6 @@ a {
     height: 100vh;
 }
 
-.tabs {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 1vmin;
-  /* margin-left: 5vmin; */
-  padding: 3vmin 0 2vmin;
-}
-
 .sticky-fade {
   position: -webkit-sticky;
   /* Safari */
@@ -213,20 +203,6 @@ a {
   top: 0;
   background: linear-gradient(to top, #ff000000 0%, #ffffffff 10%);
   z-index: 4;
-}
-
-.tab-btn {
-    margin: 1vmin 0 3vmin 0;
-    border-radius: 1vmin;
-    padding: 0.5vmin 2vmin;
-    font-size: 1.4rem;
-    background-color: var(--white);
-    color: var(--dark);
-}
-
-.tab-btn.active {
-    background-color: var(--primary);
-    color: var(--white);
 }
 
 .zh {

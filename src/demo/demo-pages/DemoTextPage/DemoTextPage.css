@@ -11,6 +11,7 @@
 .flex-row {
   justify-content: center;
 }
+
 .textpage-heading-title {
   font-size: 2.7rem;
   display: inline-block;
@@ -147,6 +148,61 @@
 
 .flip-button:focus {
   outline: none;
+}
+
+.tabs {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1vmin;
+  margin-left: 5vmin;
+  padding: 3vmin 0 2vmin;
+}
+
+.tab-btn {
+  cursor: pointer;
+  background-color: transparent;
+  position: relative;
+  color: var(--dark);
+  margin: 1vmin 0 3vmin 0;
+  border-radius: 1vmin;
+  padding: .5vmin 2vmin;
+  font-size: 1.4rem;
+}
+
+.tab-btn::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.tab-btn.active {
+  color: var(--darkest);
+  font-weight: 500;
+  border: none;
+}
+
+.tab-btn.active::after {
+  background-color: var(--primary);
+  color: var(--darkest);
+  transform: scaleX(1);
+}
+
+.tab-btn:not(.active)::after {
+  transform: scaleX(0);
+}
+
+.tab-indicator {
+  background-color: var(--primary);
+  width: 100px;
+  transition: transform 0.3s ease-in-out;
 }
 
 /* xl screens and smaller */
