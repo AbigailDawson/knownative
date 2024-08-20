@@ -186,6 +186,7 @@
 .tab-btn.active {
   color: var(--darkest);
   font-weight: 500;
+  border: none;
 }
 
 .tab-btn.active::after {

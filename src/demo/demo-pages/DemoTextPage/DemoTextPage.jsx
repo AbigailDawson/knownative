@@ -8,6 +8,7 @@ import DemoFlashcard from "../../demo-components/DemoFlashcard/DemoFlashcard";
 import DemoFlashcardForm from "../../demo-components/DemoFlashcardForm/DemoFlashcardForm";
 import DemoInfoSidebar from "../../demo-components/DemoInfoSidebar/DemoInfoSidebar";
 import DemoNav from "../../demo-components/DemoNav/DemoNav";
+import DemoWelcomeModal from "../../demo-components/DemoWelcomeModal/DemoWelcomeModal";
 import DemoExitModal from "../../demo-components/DemoExitModal/DemoExitModal";
 // import * as textsAPI from "../../../utilities/texts-api";
 // import * as wordsAPI from "../../../utilities/words-api";
@@ -51,6 +52,16 @@ export default function DemoTextPage({ getText, updateText }) {
   const [showExitModal, setShowExitModal] = useState(false);
   const handleShowExit = () => setShowExitModal(true);
   const handleCloseExit = () => setShowExitModal(false);
+
+  // --- WELCOME MODAL ---
+  const [isDemoWelcomeModalOpen, setDemoWelcomeModalOpen] = useState(true);
+  const [DemoWelcomeModalData, setDemoWelcomeModalData] = useState(null);
+
+  const handleCloseDemoWelcomeModal = () => setDemoWelcomeModalOpen(false);
+  const handleWelcomeModalSubmit = (data) => {
+    setDemoWelcomeModalData(data);
+    handleCloseDemoWelcomeModal();
+  };
 
   // --- FLASHCARDS ---
   const [open, setOpen] = useState(false);
@@ -396,7 +407,7 @@ export default function DemoTextPage({ getText, updateText }) {
       </Dialog>
 
       <section className="main-area">
-        <div className="tabs">
+        <div className="tabs sticky-fade">
           <button
             className={`tab-btn ${activeTab === "read" ? "active" : ""}`}
             onClick={() => handleTabClick("read")}
@@ -477,6 +488,13 @@ export default function DemoTextPage({ getText, updateText }) {
           />
         }
       </div>
+      
+      <DemoWelcomeModal
+        isOpen={isDemoWelcomeModalOpen}
+        onSubmit={handleWelcomeModalSubmit}
+        onClose={handleCloseDemoWelcomeModal}
+      />
+
     </main>
   );
 }
