@@ -194,29 +194,6 @@ a {
   height: 100vh;
 }
 
-.tabs {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 1vmin;
-  margin-left: 5vmin;
-}
-
-.tab-btn {
-  margin: 1vmin 0 3vmin 0;
-  border-radius: 1vmin;
-  padding: .5vmin 2vmin;
-  font-size: 1.4rem;
-  background-color: var(--white);
-  color: var(--dark);
-}
-
-.tab-btn.active {
-  background-color: var(--primary);
-  color: var(--white);
-}
-
 .zh {
   font-family: 'Noto Serif TC', serif;
 }
@@ -230,7 +207,6 @@ a {
   }
 
 }
-
 
 /* xsmall screens and smaller */
 @media (max-width: 400px) { 
