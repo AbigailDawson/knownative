@@ -13,7 +13,7 @@ export default function LandingPage() {
   const navigate = useNavigate();
 
   function handleScreenCheck() {
-    if (screenHeight <= 1024 && screenWidth <= 1366){
+    if (screenHeight <= 1024 || screenWidth <= 1366){
       setShowModal(true);
     } else {
       navigate(`/demo`);
