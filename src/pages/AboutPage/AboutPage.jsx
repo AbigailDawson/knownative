@@ -10,7 +10,9 @@ export default function AboutPage() {
       <section className="intro">
         <div>
           <h1>What is KnowNative?</h1>
-          <p>Short description of the app, who it's for and what its purpose is.</p>
+          <p>KnowNative is a language learning web application that offers a refreshing alternative to traditional textbooks by allowing learners to gather and study their own materials in one seamless platform.</p>
+          <p>Learners of traditional Chinese who want to enhance their reading comprehension through immersive and personalized study experiences can do so with KnowNative. It's designed for those who want to fully engage with authentic language materials to gain a deeper understanding of how native speakers naturally communicate.</p>
+          <p>KnowNative empowers learners by offering a platform where they can collect, annotate, and study their own chosen texts, all within a single intuitive interface. Featuring dynamic annotations and automatically generated flashcards from any chosen words, KnowNative puts learners in charge of their language journey.</p>
         </div>
       </section>
       <section className="creator">
