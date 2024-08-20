@@ -1,3 +1,4 @@
+import React, { useRef, useEffect, useState } from "react";
 import "./DemoWord.css";
 
 export default function DemoWord({
@@ -8,7 +9,6 @@ export default function DemoWord({
   isSpecialChar,
   onClick,
 }) 
-
 {
   return (
     <div className={`Word ${isSpecialChar ? "specialChar" : ""}`}>
