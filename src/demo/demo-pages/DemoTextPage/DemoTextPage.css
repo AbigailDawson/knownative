@@ -152,12 +152,12 @@
 
 .tabs {
   display: flex;
-  position: relative;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   gap: 1vmin;
   margin-left: 5vmin;
+  padding: 3vmin 0 2vmin;
 }
 
 .tab-btn {
