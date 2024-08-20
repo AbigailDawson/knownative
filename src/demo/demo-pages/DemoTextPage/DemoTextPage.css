@@ -79,7 +79,16 @@
 
 .flashcard-count {
   text-align: center;
+  align-items: center;
+  justify-content: center;
   padding-top: 2vmin;
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.flashcard-count p {
+  margin: 0;
 }
 
 .correct-count {
@@ -110,6 +119,34 @@
 .play-again-btn:hover {
   background-color: var(--teal-lt);
   transform: scale(1.1);
+}
+
+.flip-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flip-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--action);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.flip-button:hover {
+  background-color: var(--medium);
+}
+
+.flip-button:focus {
+  outline: none;
 }
 
 /* xl screens and smaller */
