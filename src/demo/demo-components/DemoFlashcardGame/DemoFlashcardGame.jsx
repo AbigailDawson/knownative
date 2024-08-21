@@ -4,41 +4,6 @@ import { Button, Dialog, DialogActions, DialogContent } from "@mui/material";
 import { IoMdClose } from "react-icons/io";
 import { GiCheckMark } from "react-icons/gi";
 import { PiRepeatBold } from "react-icons/pi";
-class Deck {
-        constructor(){
-            this.top = null
-            this.bottom = null
-        }
-        drawCard() {
-            let card = this.top
-            this.top = this.top.next
-            return card
-        }
-        returnCard(card) {
-            this.bottom.next = card
-            card.previous = this.bottom
-            this.bottom = card
-            card.next = null
-        }
-        addNewCard(chinese, pinyin, english) {
-            let newCard = {
-                chinese: chinese,
-                pinyin: pinyin,
-                english: english,
-                next: null,
-                previous: null
-            }
-            if (!this.top) {
-                this.top = newCard
-                this.bottom = newCard
-            }
-            else {
-                this.bottom.next = newCard
-                newCard.previous = this.bottom
-                this.bottom = newCard
-            }
-        }
-    }
 
 export default function DemoFlashcardGame({wordList, selectedFront, showPinyin}) {
     const [open, setOpen] = useState(false);
