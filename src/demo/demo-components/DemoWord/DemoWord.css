@@ -25,6 +25,7 @@
 .meaning {
   font-weight: bold;
   min-width: 10rem;
+  z-index: 1;
 }
 
 .specialChar {
