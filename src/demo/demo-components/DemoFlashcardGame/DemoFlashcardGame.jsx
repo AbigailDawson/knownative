@@ -88,15 +88,17 @@ export default function DemoFlashcardGame({wordList, selectedFront, showPinyin})
     }
 
     function handlePlayAgain() {
-        const flashcardsArray = wordList.map((word) => ({
-            chinese: word.charGroup,
-            pinyin: word.pinyin,
-            meaning: word.meaning,
-            id: word._id,
-        }));
-        setFlashcards(flashcardsArray);
-        setGameInProgress(false);
-        setOpen(true);
+        // const flashcardsArray = wordList.map((word) => ({
+        //     chinese: word.charGroup,
+        //     pinyin: word.pinyin,
+        //     meaning: word.meaning,
+        //     id: word._id,
+        // }));
+        // setFlashcards(flashcardsArray);
+        // setGameInProgress(false);
+        // setOpen(true);
+        setCorrectCount(0)
+        startQuiz()
     }
 
     return (
