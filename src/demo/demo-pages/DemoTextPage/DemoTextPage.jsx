@@ -11,7 +11,6 @@ import DemoWelcomeModal from "../../demo-components/DemoWelcomeModal/DemoWelcome
 import DemoExitModal from "../../demo-components/DemoExitModal/DemoExitModal";
 // import * as textsAPI from "../../../utilities/texts-api";
 // import * as wordsAPI from "../../../utilities/words-api";
-import { Button, Dialog, DialogActions, DialogContent } from "@mui/material";
 import { getWordInfo } from "../../../utilities/words-service";
 import DemoLibrary from "../../demo-components/DemoLibrary/DemoLibrary";
 //import word from '../../../../models/word'
