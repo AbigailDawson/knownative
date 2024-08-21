@@ -55,6 +55,7 @@
   "proxy": "http://localhost:3001",
   "devDependencies": {
     "@babel/plugin-transform-private-property-in-object": "^7.24.7",
-    "nodemon": "^3.1.0"
+    "nodemon": "^3.1.0",
+    "prettier": "3.3.3"
   }
 }
