@@ -205,11 +205,17 @@ export default function DemoTextPage({ getText, updateText }) {
   }
 
   function startQuiz() {
-    setOpen(true);
-    getFlashcards();
-    setRemainingCount(flashcards.length);
-    console.log(flashcards.length);
+    const flashcardsArray = localSavedWords.map((word) => ({
+      chinese: word.charGroup,
+      pinyin: word.pinyin,
+      meaning: word.meaning,
+      id: word._id,
+    }));
+  
+    setFlashcards(flashcardsArray);
+    setRemainingCount(flashcardsArray.length);
     setGameInProgress(true);
+    setOpen(true);
   }
 
   function handlePlayAgain() {
