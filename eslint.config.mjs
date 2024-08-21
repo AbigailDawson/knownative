@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 import globals from "globals";
 import pluginJs from "@eslint/js";
 import pluginReact from "eslint-plugin-react";
