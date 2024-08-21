@@ -40,16 +40,16 @@ class Deck {
         }
     }
 
-export default function DemoFlashcardGame(wordList) {
+export default function DemoFlashcardGame({wordList, selectedFront, showPinyin}) {
     const [open, setOpen] = useState(false);
     const [flashcards, setFlashcards] = useState([]);
-    const [selectedFront, setSelectedFront] = useState("chinese");
-    const [showPinyin, setShowPinyin] = useState(true);
+    // const [selectedFront, setSelectedFront] = useState("chinese");
+    // const [showPinyin, setShowPinyin] = useState(true);
     const [gameInProgress, setGameInProgress] = useState(false);
     const [correctCount, setCorrectCount] = useState(0);
     const [remainingCount, setRemainingCount] = useState(0);
 
-    function getFlashcards() {
+    function getFlashcards(wordList) {
         const flashcardsArray = wordList.map((word) => ({
             chinese: word.charGroup,
             pinyin: word.pinyin,
@@ -83,7 +83,7 @@ export default function DemoFlashcardGame(wordList) {
 
     function startQuiz() {
         setOpen(true);
-        getFlashcards();
+        getFlashcards(wordList);
         setRemainingCount(flashcards.length);
         console.log(flashcards.length);
         setGameInProgress(true);
