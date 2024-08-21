@@ -43,8 +43,6 @@ class Deck {
 export default function DemoFlashcardGame({wordList, selectedFront, showPinyin}) {
     const [open, setOpen] = useState(false);
     const [flashcards, setFlashcards] = useState([]);
-    // const [selectedFront, setSelectedFront] = useState("chinese");
-    // const [showPinyin, setShowPinyin] = useState(true);
     const [gameInProgress, setGameInProgress] = useState(false);
     const [correctCount, setCorrectCount] = useState(0);
     const [remainingCount, setRemainingCount] = useState(0);

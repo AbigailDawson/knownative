@@ -14,11 +14,6 @@ import {
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 
 export default function DemoFlashcardForm({
-  // selectedFront,
-  // setSelectedFront,
-  // showPinyin,
-  // setShowPinyin,
-  // startQuiz,
   localSavedWords,
   handleBackArrowClick,
 }) {
@@ -110,9 +105,6 @@ export default function DemoFlashcardForm({
             className="show-pinyin"
           />
         </FormGroup>
-        {/* <button className="play-btn" onClick={startQuiz}>
-          Start Quiz
-        </button> */}
         <DemoFlashcardGame wordList={localSavedWords} selectedFront={selectedFront} showPinyin={showPinyin} />
       </div>
     </>

@@ -265,11 +265,6 @@ export default function DemoTextPage({ getText, updateText }) {
             <DemoFlashcardForm
               expandSidebar={expandSidebar}
               changeSidebarCategory={changeSidebarCategory}
-              // selectedFront={selectedFront}
-              // setSelectedFront={setSelectedFront}
-              // showPinyin={showPinyin}
-              // setShowPinyin={setShowPinyin}
-              // startQuiz={startQuiz}
               localSavedWords={localSavedWords}
               handleBackArrowClick={handleBackArrowClick}
             />
