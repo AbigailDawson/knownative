@@ -17,7 +17,7 @@ export default function DemoFlashcardGame({wordList, selectedFront, showPinyin})
     function handleToggle() {
         setIsFlipped(!isFlipped);
         if (!hasBeenFlipped) {
-        setHasBeenFlipped(true);
+            setHasBeenFlipped(true);
         }
     }
 
