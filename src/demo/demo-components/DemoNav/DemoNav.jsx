@@ -4,7 +4,6 @@ export default function DemoNav({
   expandSidebar,
   changeSidebarCategory,
   sidebarCategory,
-  handleShowExit,
 }) {
   function handleCardsClick(e) {
     const selectedIcon = e.currentTarget.id;
@@ -38,49 +37,42 @@ export default function DemoNav({
           className="placeholder-logo"
         />
         {/* Saved Words Icon*/}
-        <div className="icontip-container">
+        <button id="savedwords-tooltip" className="icontip-container" onClick={handleCardsClick}>
           <span
-            id="savedwords-tooltip"
             className="material-symbols-outlined side-nav-icon-top"
-            onClick={handleCardsClick}
           >
             style
           </span>
           <label htmlFor="">Terms</label>
-        </div>
+        </button>
         {/* Quiz Icon */}
-        <div className="icontip-container">
+        <button id="flashcards-tooltip" className="icontip-container" onClick={handleCardsClick}>
           <span
-            id="flashcards-tooltip"
             className="material-symbols-outlined side-nav-icon-top"
-            onClick={handleCardsClick}
           >
             school
           </span>
           <label htmlFor="">Learn</label>
-        </div>
+        </button>
         {/* Library Icon */}
-        <div className="icontip-container">
+        <button id="library-tooltip" className="icontip-container" onClick={handleCardsClick}>
           <span
-            id="library-tooltip"
             className="material-symbols-outlined side-nav-icon-top"
-            onClick={handleCardsClick}
+            
           >
             book_2
           </span>
           <label htmlFor="">Library</label>
-        </div>
+        </button>
         {/* Info Icon */}
-        <div className="icontip-container">
+        <button id="info-tooltip" className="icontip-container" onClick={handleCardsClick}>
           <span
-            id="info-tooltip"
             className="material-symbols-outlined side-nav-icon-top"
-            onClick={handleCardsClick}
           >
             info
           </span>
           <label htmlFor="">Info</label>
-        </div>
+        </button>
       </div>
       {/* <div className="bottom-icons"> */}
         {/* Support Icon */}
