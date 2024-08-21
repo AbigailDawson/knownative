@@ -1,7 +1,7 @@
 import { useState } from "react"
 import DemoFlashcard from "../../demo-components/DemoFlashcard/DemoFlashcard";
 import { Button, Dialog, DialogActions, DialogContent } from "@mui/material";
-import { FaRegWindowClose } from "react-icons/fa";
+import { IoMdClose } from "react-icons/io";
 import { GiCheckMark } from "react-icons/gi";
 import { PiRepeatBold } from "react-icons/pi";
 class Deck {
@@ -46,6 +46,15 @@ export default function DemoFlashcardGame({wordList, selectedFront, showPinyin})
     const [gameInProgress, setGameInProgress] = useState(false);
     const [correctCount, setCorrectCount] = useState(0);
     const [remainingCount, setRemainingCount] = useState(0);
+    const [isFlipped, setIsFlipped] = useState(false);
+    const [hasBeenFlipped, setHasBeenFlipped] = useState(false);
+  
+    function handleToggle() {
+        setIsFlipped(!isFlipped);
+        if (!hasBeenFlipped) {
+        setHasBeenFlipped(true);
+        }
+    }
 
     function getFlashcards() {
         const flashcardsArray = wordList.map((word) => ({
@@ -62,6 +71,7 @@ export default function DemoFlashcardGame({wordList, selectedFront, showPinyin})
         setCorrectCount(0);
         setGameInProgress(false);
         setOpen(false);
+        setHasBeenFlipped(false);
     }
 
     function handleCorrect() {
@@ -69,6 +79,8 @@ export default function DemoFlashcardGame({wordList, selectedFront, showPinyin})
         setFlashcards((prevFlashcards) => prevFlashcards.slice(1));
         setCorrectCount(correctCount + 1);
         setRemainingCount(remainingCount - 1);
+        setIsFlipped(false);
+        setHasBeenFlipped(false); 
     }
 
     function handleIncorrect() {
@@ -77,6 +89,8 @@ export default function DemoFlashcardGame({wordList, selectedFront, showPinyin})
             ...prevFlashcards.slice(1),
             prevFlashcards[0],
         ]);
+        setIsFlipped(false);
+        setHasBeenFlipped(false);
     }
 
     function startQuiz() {
@@ -113,7 +127,7 @@ export default function DemoFlashcardGame({wordList, selectedFront, showPinyin})
           <div
             style={{
               width: "60vmin",
-              height: "50vmin",
+              height: "55vmin",
               backgroundColor: "white",
               color: "var(--drk-txt)",
               display: "flex",
@@ -134,7 +148,7 @@ export default function DemoFlashcardGame({wordList, selectedFront, showPinyin})
           }}
         >
           <Button onClick={handleClose}>
-            <FaRegWindowClose className="close-icon" />
+            <IoMdClose className="close-icon" />
           </Button>
         </DialogActions>
         <DialogContent
@@ -153,11 +167,21 @@ export default function DemoFlashcardGame({wordList, selectedFront, showPinyin})
                 english={flashcards[0].meaning}
                 selectedFront={selectedFront}
                 showPinyin={showPinyin}
+                isFlipped={isFlipped}
+                onToggle={handleToggle}
                 onCorrect={handleCorrect}
                 onIncorrect={handleIncorrect}
                 flashcards={flashcards}
               />
               <div>
+                <div className="flip-button-container">
+                  {!hasBeenFlipped && !isFlipped && (
+                    <button className="flip-button" onClick={handleToggle}>
+                      {isFlipped ? 'Show Front' : 'Show Answer'}
+                    </button>
+                  )}
+                </div>
+                {(isFlipped || hasBeenFlipped) && (
                 <div className="flashcard-btns">
                   <button className="correct-btn" onClick={handleCorrect}>
                     <GiCheckMark className="flashcard-icon" />
@@ -168,14 +192,13 @@ export default function DemoFlashcardGame({wordList, selectedFront, showPinyin})
                     Try again
                   </button>
                 </div>
+                )}
                 <div className="flashcard-count">
                   <p>
-                    <span className="correct-count">{correctCount}</span>{" "}
-                    Correct
+                    <span className="correct-count">{correctCount}</span> Correct
                   </p>
                   <p>
-                    <span className="remaining-count">{remainingCount}</span>{" "}
-                    Remaining
+                    <span className="remaining-count">{remainingCount}</span> Remaining
                   </p>
                 </div>
               </div>

@@ -8,9 +8,23 @@
   flex-direction: column;
   height: 6.05rem;
   max-width: 6.7rem;
-  margin: 0 .5vmin;
-  font-size: 1.5rem;
+  margin: 0 .2vmin;
+  font-size: 1.7rem;
   text-wrap: wrap;
+  min-height: 8.5rem;
+  text-align: center;
+  align-items: center; 
+  justify-content: center;
+}
+
+.annotation p {
+  font-size: .9rem;
+  font-family:'Montserrat', 'Roboto', sans-serif;
+}
+
+.meaning {
+  font-weight: bold;
+  min-width: 10rem;
   z-index: 1;
 }
 
@@ -23,19 +37,10 @@
   margin: 0;
 }
 
-.annotation p {
-  font-size: .9rem;
-  font-family:'Montserrat', 'Roboto', sans-serif;
-}
-
 .saved.zh {
   text-decoration: underline;
   text-underline-offset: 4px;
   text-decoration-thickness: 1.5px;
-}
-
-.meaning {
-  font-weight: bold;
 }
 
 .Word:not(.specialChar) .zh:hover {

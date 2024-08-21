@@ -140,10 +140,6 @@ button.back {
   margin-right: 5px;
 }
 
-.active {
-  border: 2px solid #53A4A7;
-}
-
 .inactive {
   border: 2px solid #F0F6F8;
 }
