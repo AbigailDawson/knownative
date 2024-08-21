@@ -7,31 +7,34 @@
 }
 
 :root {
-    --teal: #7ea5a4;
-    --teal-lt: #d1dddd;
-    --red-poppy: #e0595c;
-    --red-brick: #b64340;
-    --pink: #ff9389;
-    --beige-lt: #f1d7bc;
-    --beige-med: #e5c4a3;
-    --brown: #65302a;
-    --off-white: #eff0eb;
-    --gray-lt: #b9b9b9;
-    --slate: #607377;
-    /* --dark: #2d2d2f; */
-    --red: #8c0000;
-    --green-lt: #00b700;
-    --green-drk: #008a00;
-    --gold: #f2cf0a;
-    --yellow: #fae365;
+  --teal: #7ea5a4;
+  --teal-lt: #d1dddd;
+  --red-poppy: #e0595c;
+  --red-brick: #b64340;
+  --red-brick-transparent: rgba(178, 34, 34, 0.05);
+  --pink: #ff9389;
+  --beige-lt: #f1d7bc;
+  --beige-med: #e5c4a3;
+  --brown: #65302a;
+  --off-white: #eff0eb;
+  --gray-lt: #b9b9b9;
+  --slate: #607377;
+  /* --dark: #2d2d2f; */
+  --red: #8c0000;
+  --green-lt: #00b700;
+  --green-drk: #008a00;
+  --gold: #f2cf0a;
+  --yellow: #fae365;
 
-    --primary: #57bcaa; /* actions */
-    --darkest: #0c1f1b; /* heading text */
-    --dark: #526662; /* secondary text */
-    --medium: #9cc3bc; /* non-decorative borders */
-    --light: #daf2ee; /* decorative borders */
-    --lightest: #f5faf9; /* alternate backgrounds */
-    --white: #ffffff; /* main background */
+  --primary: #57bcaa; /* actions */
+  --action: #006769;
+  --darkest: #0c1f1b; /* heading text */
+  --dark: #526662; /* secondary text */
+  --medium: #9cc3bc; /* non-decorative borders */
+  --light: #daf2ee; /* decorative borders */
+  --lightest: #f5faf9; /* alternate backgrounds */
+  --white: #ffffff; /* main background */
+
 }
 
 body {
@@ -193,16 +196,6 @@ a {
     height: 100vh;
 }
 
-.tabs {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 1vmin;
-  /* margin-left: 5vmin; */
-  padding: 3vmin 0 2vmin;
-}
-
 .sticky-fade {
   position: -webkit-sticky;
   /* Safari */
@@ -210,20 +203,6 @@ a {
   top: 0;
   background: linear-gradient(to top, #ff000000 0%, #ffffffff 10%);
   z-index: 4;
-}
-
-.tab-btn {
-    margin: 1vmin 0 3vmin 0;
-    border-radius: 1vmin;
-    padding: 0.5vmin 2vmin;
-    font-size: 1.4rem;
-    background-color: var(--white);
-    color: var(--dark);
-}
-
-.tab-btn.active {
-    background-color: var(--primary);
-    color: var(--white);
 }
 
 .zh {
