@@ -181,7 +181,6 @@ export default function DemoTextPage({ getText, updateText }) {
           expandSidebar={expandSidebar}
           changeSidebarCategory={changeSidebarCategory}
           sidebarCategory={sidebarCategory}
-          handleShowExit={handleShowExit}
         />
       </nav>
 
