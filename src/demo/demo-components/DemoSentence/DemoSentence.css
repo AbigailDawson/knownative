@@ -5,6 +5,7 @@
 
 .sentence {
   margin: 1vmin 0;
+  font-weight: 500;
   font-size: 1.5rem;
   line-height: 32px;
   letter-spacing: 0.3rem;
