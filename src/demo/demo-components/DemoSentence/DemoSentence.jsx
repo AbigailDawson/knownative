@@ -30,7 +30,7 @@ export default function DemoSentence({ sentence }) {
           }`}
           onClick={() => handleTranslate(sentence)}
         >
-          translate
+          &#xe8e2;
         </button>
         <span className="sentence zh">{sentence}</span>
       </div>
