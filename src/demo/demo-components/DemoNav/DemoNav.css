@@ -18,11 +18,27 @@
   color: var(--dark-action);
 }
 
-.icontip-container:hover {
+.google-icons-shaded {
+  font-variation-settings: 'FILL' 1, 'wght' 700, 'GRAD' 0, 'opsz' 48;
+}
+
+.google-icons-outline {
+  font-variation-settings: 'FILL' 1, 'wght' 700, 'GRAD' 0, 'opsz' 48;
+}
+
+.icontip-container:hover,
+.icontip-container.button-active  {
   background-color: var(--light);
   width: 100%;
   border-radius: .5rem;
 }
+
+.icontip-container {
+  background-color: var(--light);
+  width: 100%;
+  border-radius: .5rem;
+}
+
 
 .icontip-container {
   color: var(--dark-action);
