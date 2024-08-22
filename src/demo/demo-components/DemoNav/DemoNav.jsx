@@ -51,7 +51,7 @@ export default function DemoNav({
           aria-expanded={sidebarCategory ===  "savedwords-tooltip" ? "true" : "false"}
         >
           <span className="material-symbols-outlined side-nav-icon-top icon-flipped">
-            style
+            &#xe41d;
           </span>
           <label htmlFor="savedwords-tooltip">Terms</label>
           {savedWords.length > 0 && (
@@ -71,7 +71,7 @@ export default function DemoNav({
           aria-expanded={sidebarCategory === "flashcards-tooltip" ? "true" : "false"}
         >
           <span className="material-symbols-outlined side-nav-icon-top">
-            school
+            &#xe80c;
           </span>
           <label htmlFor="flashcards-tooltip">Learn</label>
         </button>
@@ -88,7 +88,7 @@ export default function DemoNav({
           aria-expanded={sidebarCategory === "library-tooltip" ? "true" : "false"}
         >
           <span className="material-symbols-outlined side-nav-icon-top">
-            book_2
+            &#xf53e;
           </span>
           <label htmlFor="library-tooltip">Library</label>
         </button>
@@ -105,7 +105,7 @@ export default function DemoNav({
           aria-expanded={sidebarCategory === "info-tooltip" ? "true" : "false"}
         >
           <span className="material-symbols-outlined side-nav-icon-top">
-            info
+            &#xe88e;
           </span>
           <label htmlFor="info-tooltip">Info</label>
         </button>
