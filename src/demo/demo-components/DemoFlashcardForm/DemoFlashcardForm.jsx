@@ -1,4 +1,6 @@
+import { useState } from "react";
 import "./DemoFlashcardForm.css";
+import DemoFlashcardGame from "../DemoFlashcardGame/DemoFlashcardGame";
 import {
   Radio,
   RadioGroup,
@@ -12,14 +14,11 @@ import {
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 
 export default function DemoFlashcardForm({
-  selectedFront,
-  setSelectedFront,
-  showPinyin,
-  setShowPinyin,
-  startQuiz,
+  localSavedWords,
   handleBackArrowClick,
 }) {
-
+    const [selectedFront, setSelectedFront] = useState("chinese");
+    const [showPinyin, setShowPinyin] = useState(true);
 
   return (
     <>
@@ -106,9 +105,7 @@ export default function DemoFlashcardForm({
             className="show-pinyin"
           />
         </FormGroup>
-        <button className="play-btn" onClick={startQuiz}>
-          Start Quiz
-        </button>
+        <DemoFlashcardGame wordList={localSavedWords} selectedFront={selectedFront} showPinyin={showPinyin} />
       </div>
     </>
   );
