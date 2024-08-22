@@ -24,14 +24,14 @@ export default function DemoSentence({ sentence }) {
     <>
       <div className="sentence-line">
         {/* Google Icons translate Icon */}
-        <span
+        <button
           className={`material-symbols-outlined toggle-translation ${
             showTranslation ? "translation-visible" : ""
           }`}
           onClick={() => handleTranslate(sentence)}
         >
           translate
-        </span>
+        </button>
         <span className="sentence zh">{sentence}</span>
       </div>
       {translation && (

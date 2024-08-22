@@ -11,10 +11,12 @@
 .toggle-translation {
   position: absolute;
   color: var(--primary);
+  background-color: inherit;
   left: -3.4rem;
-  top: 0.4rem;
-  font-size: 2rem;
+  top: 1.2rem;
+  font-size: 1.8rem;
   padding: 5px;
+  margin-left: 0px;
   cursor: pointer;
 }
 
