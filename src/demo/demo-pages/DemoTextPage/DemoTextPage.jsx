@@ -181,6 +181,7 @@ export default function DemoTextPage({ getText, updateText }) {
           expandSidebar={expandSidebar}
           changeSidebarCategory={changeSidebarCategory}
           sidebarCategory={sidebarCategory}
+          savedWords={localSavedWords}
         />
       </nav>
 

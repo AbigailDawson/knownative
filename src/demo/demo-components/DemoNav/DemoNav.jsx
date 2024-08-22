@@ -1,13 +1,11 @@
-import { useState } from 'react'
 import "./DemoNav.css";
 
 export default function DemoNav({
   expandSidebar,
   changeSidebarCategory,
   sidebarCategory,
+  savedWords,
 }) {
-
-  const [activeButton, setActiveButton] = useState("")
 
   function handleCardsClick(e) {
     const selectedIcon = e.currentTarget.id;
@@ -41,38 +39,64 @@ export default function DemoNav({
           className="placeholder-logo"
         />
         {/* Saved Words Icon*/}
-        <button id="savedwords-tooltip" className={`icontip-container ${sidebarCategory === "savedwords-tooltip" ? "button-active google-icons-shaded" : "google-icons-outline"}`} onClick={handleCardsClick}>
-          <span
-            className="material-symbols-outlined side-nav-icon-top icon-flipped"
-          >
+        <button
+          id="savedwords-tooltip"
+          className={`icontip-container ${
+            sidebarCategory === "savedwords-tooltip"
+              ? "button-active google-icons-shaded"
+              : "google-icons-outline"
+          }`}
+          onClick={handleCardsClick}
+        >
+          <span className="material-symbols-outlined side-nav-icon-top icon-flipped">
             style
           </span>
           <label htmlFor="">Terms</label>
+          {savedWords.length > 0 && (
+            <span className="badge">{savedWords.length}</span>
+          )}
         </button>
         {/* Quiz Icon */}
-        <button id="flashcards-tooltip" className={`icontip-container ${sidebarCategory === "flashcards-tooltip" ? "button-active google-icons-shaded" : "google-icons-outline"}`} onClick={handleCardsClick}>
-          <span
-            className="material-symbols-outlined side-nav-icon-top"
-          >
+        <button
+          id="flashcards-tooltip"
+          className={`icontip-container ${
+            sidebarCategory === "flashcards-tooltip"
+              ? "button-active google-icons-shaded"
+              : "google-icons-outline"
+          }`}
+          onClick={handleCardsClick}
+        >
+          <span className="material-symbols-outlined side-nav-icon-top">
             school
           </span>
           <label htmlFor="">Learn</label>
         </button>
         {/* Library Icon */}
-        <button id="library-tooltip" className={`icontip-container ${sidebarCategory === "library-tooltip" ? "button-active google-icons-shaded" : "google-icons-outline"}`} onClick={handleCardsClick}>
-          <span
-            className="material-symbols-outlined side-nav-icon-top"
-            
-          >
+        <button
+          id="library-tooltip"
+          className={`icontip-container ${
+            sidebarCategory === "library-tooltip"
+              ? "button-active google-icons-shaded"
+              : "google-icons-outline"
+          }`}
+          onClick={handleCardsClick}
+        >
+          <span className="material-symbols-outlined side-nav-icon-top">
             book_2
           </span>
           <label htmlFor="">Library</label>
         </button>
         {/* Info Icon */}
-        <button id="info-tooltip" className={`icontip-container ${sidebarCategory  === "info-tooltip" ? "button-active google-icons-shaded" : ""}`} onClick={handleCardsClick}>
-          <span
-            className="material-symbols-outlined side-nav-icon-top"
-          >
+        <button
+          id="info-tooltip"
+          className={`icontip-container ${
+            sidebarCategory === "info-tooltip"
+              ? "button-active google-icons-shaded"
+              : ""
+          }`}
+          onClick={handleCardsClick}
+        >
+          <span className="material-symbols-outlined side-nav-icon-top">
             info
           </span>
           <label htmlFor="">Info</label>
