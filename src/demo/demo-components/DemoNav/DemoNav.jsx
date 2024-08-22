@@ -47,16 +47,18 @@ export default function DemoNav({
               : "google-icons-outline"
           }`}
           onClick={handleCardsClick}
+          aria-label="Saved Words"
+          aria-expanded={sidebarCategory ===  "savedwords-tooltip" ? "true" : "false"}
         >
           <span className="material-symbols-outlined side-nav-icon-top icon-flipped">
             style
           </span>
-          <label htmlFor="">Terms</label>
+          <label htmlFor="savedwords-tooltip">Terms</label>
           {savedWords.length > 0 && (
             <span className="badge">{savedWords.length}</span>
           )}
         </button>
-        {/* Quiz Icon */}
+        {/* Learn Icon */}
         <button
           id="flashcards-tooltip"
           className={`icontip-container ${
@@ -65,11 +67,13 @@ export default function DemoNav({
               : "google-icons-outline"
           }`}
           onClick={handleCardsClick}
+          aria-label="Learn"
+          aria-expanded={sidebarCategory === "flashcards-tooltip" ? "true" : "false"}
         >
           <span className="material-symbols-outlined side-nav-icon-top">
             school
           </span>
-          <label htmlFor="">Learn</label>
+          <label htmlFor="flashcards-tooltip">Learn</label>
         </button>
         {/* Library Icon */}
         <button
@@ -80,11 +84,13 @@ export default function DemoNav({
               : "google-icons-outline"
           }`}
           onClick={handleCardsClick}
+          aria-label="Library"
+          aria-expanded={sidebarCategory === "library-tooltip" ? "true" : "false"}
         >
           <span className="material-symbols-outlined side-nav-icon-top">
             book_2
           </span>
-          <label htmlFor="">Library</label>
+          <label htmlFor="library-tooltip">Library</label>
         </button>
         {/* Info Icon */}
         <button
@@ -95,11 +101,13 @@ export default function DemoNav({
               : ""
           }`}
           onClick={handleCardsClick}
+          aria-label="Info"
+          aria-expanded={sidebarCategory === "info-tooltip" ? "true" : "false"}
         >
           <span className="material-symbols-outlined side-nav-icon-top">
             info
           </span>
-          <label htmlFor="">Info</label>
+          <label htmlFor="info-tooltip">Info</label>
         </button>
       </div>
     </>
