@@ -1,9 +1,9 @@
 .translation {
   letter-spacing: 0;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   margin: 1vmin 0 4vmin 0;
   color: var(--black);
-
+  line-height: 1.8rem;
   /* Transition properties */
   max-height: 0;
   opacity: 0;
