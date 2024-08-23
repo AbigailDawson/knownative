@@ -11,32 +11,27 @@
 }
 
 .about-header {
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
 }
 
 .about-body {
     margin-top: 1.5rem;
-    max-width: 65ch;
+    max-width: 70ch;
     line-height: 1.7;
 }
 
-.contribute-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 2rem;
-    margin: 2rem 0;
+.how-to-contribute ul {
+    list-style-type: none;
+    text-align: center;
+    max-width: 70ch;
 }
 
-.contribute-grid > div {
-    padding: 2rem;
-    border: 1px solid #e0e0e0;
-    border-radius: 5px;
-    text-align: left;
+.how-to-contribute ul li {
+    margin-top: 1.5rem;
 }
 
-
-.intro p {
-    margin-left: 20%;
-    margin-right: 20%;
-    text-align: left;
+.li-header {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 1rem;
 }
