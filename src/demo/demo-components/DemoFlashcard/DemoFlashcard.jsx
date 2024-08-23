@@ -1,47 +1,52 @@
-import './DemoFlashcard.css'
-import { useState } from 'react'
+import './DemoFlashcard.css';
 
-export default function DemoFlashcard({ chinese, pinyin, english, selectedFront, showPinyin, onCorrect, onIncorrect }) {
-  
-  const [isFlipped, setIsFlipped] = useState(false)
+export default function DemoFlashcard({ 
+  chinese, 
+  pinyin, 
+  english, 
+  selectedFront, 
+  showPinyin, 
+  onCorrect, 
+  onIncorrect,
+  isFlipped,
+  onToggle, // Added callback for toggling from parent
+}) {
 
-  function handleFlip() {
-    setIsFlipped(!isFlipped)
-  }
+  const englishTextStyle = {
+    fontSize: '20px',
+  };
 
   return (
     <>
-      <div className={`flashcard ${isFlipped ? 'flipped' : ''}`} onClick={handleFlip}>
+      <div className="flashcard">
+        <div className="flashcard-front">
+          {selectedFront === 'chinese' ? (
+            <div>
+              {showPinyin && <p className="pinyin">{pinyin}</p>}
+              <p className="zh flash-zh">{chinese}</p>
+            </div>
+          ) : (
+            <div>
+              <p style={englishTextStyle}>{english}</p>
+            </div>
+          )}
+        </div>
+        
         {isFlipped && (
           <div className="flashcard-back">
             {selectedFront === 'english' ? (
               <div>
                 {showPinyin && <p className="pinyin">{pinyin}</p>}
-                <p className="zh">{chinese}</p>
+                <p className="zh flash-zh">{chinese}</p>
               </div>
             ) : (
               <div>
-                <p>{english}</p>
-              </div>
-            )}
-          </div>
-        )}
-        {!isFlipped && (
-          <div className={`flashcard-front ${isFlipped ? 'hidden' : ''}`}>
-            {selectedFront === 'chinese' ? (
-              <div>
-                {showPinyin && <p className="pinyin">{pinyin}</p>}
-                <p className="zh">{chinese}</p>
-              </div>
-            ) : (
-              <div>
-                <p>{english}</p>
+                <p style={englishTextStyle}>{english}</p>
               </div>
             )}
           </div>
         )}
       </div>
-      
     </>
-  )
+  );
 }

@@ -4,7 +4,6 @@ const favicon = require('serve-favicon')
 const logger = require('morgan')
 
 require('dotenv').config()
-require('./config/database')
  
 const app = express()
  
@@ -15,14 +14,10 @@ app.use(express.json())
 // to serve from the production 'build' folder
 app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')))
 app.use(express.static(path.join(__dirname, 'build')))
-app.use(require('./config/checkToken'))
 
 // Put API routes here, before the "catch all" route
 // const ensureLoggedIn = require('./config/ensureLoggedIn');
 
-app.use('/api/users', require('./routes/api/users'))
-app.use('/api/texts', require('./routes/api/texts'))
-app.use('/api/words', require('./routes/api/words'))
 app.use('/api/demo', require('./routes/api/demo'))
 
 // The following "catch all" route (note the *) is necessary

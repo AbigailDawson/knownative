@@ -1,21 +1,14 @@
 import "./DemoNav.css";
-import { TbCardsFilled } from "react-icons/tb";
-import { MdQuiz } from "react-icons/md";
-import { FaArrowsRotate } from "react-icons/fa6";
-import { ImExit } from "react-icons/im";
-import { FaRegQuestionCircle } from "react-icons/fa";
-import { FaCircleInfo } from "react-icons/fa6";
-import { FaBook } from "react-icons/fa";
-import { Tooltip } from "react-tooltip";
 
 export default function DemoNav({
   expandSidebar,
   changeSidebarCategory,
   sidebarCategory,
-  handleShowExit,
+  savedWords,
 }) {
+
   function handleCardsClick(e) {
-    const selectedIcon = e.currentTarget.dataset.tooltipId;
+    const selectedIcon = e.currentTarget.id;
     console.log("selected icon: ", selectedIcon);
     //if there's no sidebar present, then expand the sidebar based on what the user clicked.
     if (sidebarCategory === null) {
@@ -46,117 +39,76 @@ export default function DemoNav({
           className="placeholder-logo"
         />
         {/* Saved Words Icon*/}
-        <div className="icontip-container">
-          <TbCardsFilled
-            className="side-nav-icon-top"
-            onClick={handleCardsClick}
-            data-tooltip-id="savedwords-tooltip"
-            data-tooltip-content="Saved Words"
-            data-tooltip-place="right"
-          />
-          <Tooltip
-            id="savedwords-tooltip"
-            className="icontip-message"
-            delayShow={100}
-            disableStyleInjection="true"
-          />
-        </div>
-        {/* Quiz Icon */}
-        <div className="icontip-container">
-          <MdQuiz
-            className="side-nav-icon-top"
-            onClick={handleCardsClick}
-            data-tooltip-id="flashcards-tooltip"
-            data-tooltip-content="Flashcard Quiz"
-            data-tooltip-place="right"
-          />
-          <Tooltip
-            id="flashcards-tooltip"
-            className="icontip-message"
-            delayShow={100}
-            disableStyleInjection="true"
-          />
-        </div>
-        {/* Change Text Icon */}
-        <div className="icontip-container">
-          <FaArrowsRotate
-            className="side-nav-icon-top"
-            data-tooltip-id="changetext-tooltip"
-            data-tooltip-content="Change Text"
-            data-tooltip-place="right"
-          />
-          <Tooltip
-            id="changetext-tooltip"
-            className="icontip-message"
-            delayShow={100}
-            disableStyleInjection="true"
-          />
-        </div>
+        <button
+          id="savedwords-tooltip"
+          className={`icontip-container ${
+            sidebarCategory === "savedwords-tooltip"
+              ? "button-active google-icons-shaded"
+              : "google-icons-outline"
+          }`}
+          onClick={handleCardsClick}
+          aria-label="Saved Words"
+          aria-expanded={sidebarCategory ===  "savedwords-tooltip" ? "true" : "false"}
+        >
+          <span className="material-symbols-outlined side-nav-icon-top icon-flipped">
+            &#xe41d;
+          </span>
+          <label htmlFor="savedwords-tooltip">Terms</label>
+          {savedWords.length > 0 && (
+            <span className="badge">{savedWords.length}</span>
+          )}
+        </button>
+        {/* Learn Icon */}
+        <button
+          id="flashcards-tooltip"
+          className={`icontip-container ${
+            sidebarCategory === "flashcards-tooltip"
+              ? "button-active google-icons-shaded"
+              : "google-icons-outline"
+          }`}
+          onClick={handleCardsClick}
+          aria-label="Learn"
+          aria-expanded={sidebarCategory === "flashcards-tooltip" ? "true" : "false"}
+        >
+          <span className="material-symbols-outlined side-nav-icon-top">
+            &#xe80c;
+          </span>
+          <label htmlFor="flashcards-tooltip">Learn</label>
+        </button>
         {/* Library Icon */}
-        <div className="icontip-container">
-          <FaBook
-            className="side-nav-icon-top"
-            onClick={handleCardsClick}
-            data-tooltip-id="library-tooltip"
-            data-tooltip-content="Library"
-            data-tooltip-place="right"
-          />
-          <Tooltip
-            id="library-tooltip"
-            className="icontip-message"
-            delayShow={100}
-            disableStyleInjection="true"
-          />
-        </div>
+        <button
+          id="library-tooltip"
+          className={`icontip-container ${
+            sidebarCategory === "library-tooltip"
+              ? "button-active google-icons-shaded"
+              : "google-icons-outline"
+          }`}
+          onClick={handleCardsClick}
+          aria-label="Library"
+          aria-expanded={sidebarCategory === "library-tooltip" ? "true" : "false"}
+        >
+          <span className="material-symbols-outlined side-nav-icon-top">
+            &#xf53e;
+          </span>
+          <label htmlFor="library-tooltip">Library</label>
+        </button>
         {/* Info Icon */}
-        <div className="icontip-container">
-          <FaCircleInfo
-            className="side-nav-icon-top"
-            onClick={handleCardsClick}
-            data-tooltip-id="info-tooltip"
-            data-tooltip-content="Info"
-            data-tooltip-place="right"
-          />
-          <Tooltip
-            id="info-tooltip"
-            className="icontip-message"
-            delayShow={100}
-            disableStyleInjection="true"
-          />
-        </div>
-      </div>
-      <div className="bottom-icons">
-        {/* Support Icon */}
-        <div className="icontip-container">
-          <FaRegQuestionCircle
-            className="side-nav-icon-bottom"
-            data-tooltip-id="support-tooltip"
-            data-tooltip-content="Support"
-            data-tooltip-place="right"
-          />
-          <Tooltip
-            id="support-tooltip"
-            className="icontip-message"
-            delayShow={100}
-            disableStyleInjection="true"
-          />
-        </div>
-        {/* Exit Icon */}
-        <div className="icontip-container">
-          <ImExit
-            className="side-nav-icon-bottom"
-            onClick={handleShowExit}
-            data-tooltip-id="exit-tooltip"
-            data-tooltip-content="Exit Demo"
-            data-tooltip-place="right"
-          />
-          <Tooltip
-            id="exit-tooltip"
-            className="icontip-message"
-            delayShow={100}
-            disableStyleInjection="true"
-          />
-        </div>
+        <button
+          id="info-tooltip"
+          className={`icontip-container ${
+            sidebarCategory === "info-tooltip"
+              ? "button-active google-icons-shaded"
+              : ""
+          }`}
+          onClick={handleCardsClick}
+          aria-label="Info"
+          aria-expanded={sidebarCategory === "info-tooltip" ? "true" : "false"}
+        >
+          <span className="material-symbols-outlined side-nav-icon-top">
+            &#xe88e;
+          </span>
+          <label htmlFor="info-tooltip">Info</label>
+        </button>
       </div>
     </>
   );
