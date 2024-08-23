@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import './DemoPopup.css'
 
-export default function Popup({ word, popupPosition, saveWord, textId, onClose }) {
+export default function Popup({ word, popupPosition, saveWord, textId, onClose, checkSaved }) {
   const [popupHeight, setPopupHeight] = useState('15%');
   const popupRef = useRef(null);
 
@@ -40,7 +40,7 @@ export default function Popup({ word, popupPosition, saveWord, textId, onClose }
         saveWord(word);
       }
 
-  
+  const isSaved = checkSaved(word);
 
   return (
       <div
@@ -66,7 +66,7 @@ export default function Popup({ word, popupPosition, saveWord, textId, onClose }
           )}
         </p>
       </div>
-      <button className="save-button" onClick={handleSaveClick}> + </button> &nbsp; 
+      {!isSaved && (<button className="save-button" onClick={handleSaveClick}> + </button>)}&nbsp;      
       <button className="close-btn" onClick={onClose}> x </button>
       <div className="popup-arrow" />
     </div>

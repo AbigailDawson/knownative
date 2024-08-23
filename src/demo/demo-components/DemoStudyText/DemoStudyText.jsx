@@ -112,6 +112,7 @@ export default function DemoStudyText({ text, textId, activeWord, setActiveWord,
           popupPosition={popupPosition}
           saveWord={(word) => saveWord(word, textId)}
           onClose={handlePopup}
+          checkSaved={checkSaved}
         />
       )}
     </>
