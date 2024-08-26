@@ -6,7 +6,11 @@ export default function LandingPageNav() {
         <nav class="navbar navbar-expand-lg navbar-light mx-4 py-3">
             <div class="container px-4 px-lg-5">
                 <a class="navbar-brand" href="/">
-                    KnowNative
+                    <img
+                        src="/images/horizontal-logo.png"
+                        alt="logo"
+                        className="hozizontal-logo"
+                    />
                 </a>
                 <button
                     class="navbar-toggler navbar-toggler-right"
