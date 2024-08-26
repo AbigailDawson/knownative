@@ -1,8 +1,19 @@
 .translation {
   letter-spacing: 0;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   margin: 1vmin 0 4vmin 0;
-  color: var(--red)
+  color: var(--black);
+  line-height: 1.8rem;
+  /* Transition properties */
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 1.2s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.translation.show-container {
+  max-height: 1200px;
+  opacity: 1;
 }
 
 /* small screens and smaller */
