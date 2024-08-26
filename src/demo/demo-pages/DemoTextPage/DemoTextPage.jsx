@@ -192,6 +192,7 @@ export default function DemoTextPage({ getText, updateText }) {
           changeSidebarCategory={changeSidebarCategory}
           sidebarCategory={sidebarCategory}
           savedWords={localSavedWords}
+          handleShowExit={handleShowExit}
         />
       </nav>
 
@@ -219,7 +220,6 @@ export default function DemoTextPage({ getText, updateText }) {
             <DemoInfoSidebar
               changeSidebarCategory={changeSidebarCategory}
               handleBackArrowClick={handleBackArrowClick}
-              handleShowExit={handleShowExit}
             />
           )}
           {sidebarCategory === "library-tooltip" && (
