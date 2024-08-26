@@ -4,14 +4,20 @@ import pluginReact from 'eslint-plugin-react';
 import eslintConfigPrettier from 'eslint-config-prettier';
 
 export default [
-  { files: ['**/*.{js,mjs,cjs,jsx}'] },
   { languageOptions: { globals: globals.browser } },
   pluginJs.configs.recommended,
   pluginReact.configs.flat.recommended,
   {
+    files: ['src/**/*.jsx']
+  },
+  {
+    ignores: ['build/', 'config/', 'controllers/', 'src/utilities/', 'routes/', 'server.js']
+  },
+  {
     rules: {
       'no-console': ['warn'],
-      'react-in-jsx-scope': ['ignore']
+      'react/prop-types': ['off'],
+      'react/react-in-jsx-scope': ['off']
     }
   },
   eslintConfigPrettier
