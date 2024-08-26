@@ -66,7 +66,8 @@ export default function Popup({ word, popupPosition, saveWord, textId, onClose, 
           )}
         </p>
       </div>
-      {!isSaved && (<button className="save-button" onClick={handleSaveClick}> + </button>)}&nbsp;      
+      {!isSaved ? (<button className="save-button" onClick={handleSaveClick}> + </button>) : (<button className="save-button saved-button" disabled="true"> ✓ </button>)}&nbsp;
+      {/* <button className="save-button" onClick={handleSaveClick} disabled={isSaved}> + </button>&nbsp; */}
       <button className="close-btn" onClick={onClose}> x </button>
       <div className="popup-arrow" />
     </div>
