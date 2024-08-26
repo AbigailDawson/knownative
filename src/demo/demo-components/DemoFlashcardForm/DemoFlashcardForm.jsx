@@ -16,6 +16,7 @@ import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 export default function DemoFlashcardForm({
   localSavedWords,
   handleBackArrowClick,
+  blurText
 }) {
     const [selectedFront, setSelectedFront] = useState("chinese");
     const [showPinyin, setShowPinyin] = useState(true);
@@ -105,7 +106,7 @@ export default function DemoFlashcardForm({
             className="show-pinyin"
           />
         </FormGroup>
-        <DemoFlashcardGame wordList={localSavedWords} selectedFront={selectedFront} showPinyin={showPinyin} />
+        <DemoFlashcardGame wordList={localSavedWords} selectedFront={selectedFront} showPinyin={showPinyin} blurText={blurText} />
       </div>
     </>
   );

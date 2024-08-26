@@ -59,6 +59,7 @@ export default function DemoTextPage({ getText, updateText }) {
   };
 
   const topRef = useRef(null);
+  const blurRef = useRef(null);
 
   useEffect(
     function () {
@@ -168,6 +169,15 @@ export default function DemoTextPage({ getText, updateText }) {
     changeSidebarCategory(toolTipId);
   }
 
+  const blurText = (isActive) => {
+    if (isActive) {
+      blurRef.current.style.filter = 'blur(4px)'
+    }
+    else {
+      blurRef.current.removeAttribute('style')
+    }
+  }
+
   return !text ? (
     "Loading ..."
   ) : (
@@ -202,6 +212,7 @@ export default function DemoTextPage({ getText, updateText }) {
               changeSidebarCategory={changeSidebarCategory}
               localSavedWords={localSavedWords}
               handleBackArrowClick={handleBackArrowClick}
+              blurText={blurText}
             />
           )}
           {sidebarCategory === "info-tooltip" && (
@@ -243,7 +254,7 @@ export default function DemoTextPage({ getText, updateText }) {
           </button>
         </div>
 
-        <div className="text-area">
+        <div className="text-area" ref={blurRef}>
           <div className="textpage-heading">
             <div className="flex-row">
               <h1 className="textpage-heading-title zh">{text.title}</h1>
