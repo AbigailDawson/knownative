@@ -38,7 +38,6 @@ export default function DemoSavedWordsList({
             {savedWords.length === 0 ? (
                 <div className="saved-word-list-subtext">
                     <p>No words have been saved yet!</p>
-                    <br></br>
                     <p>
                         Get started by navigating to the Study tab and selecting
                         some words you'd like to study.
