@@ -9,7 +9,7 @@ export default function LandingPageNav() {
                     <img
                         src="/images/horizontal-logo.png"
                         alt="logo"
-                        className="hozizontal-logo"
+                        className="horizontal-logo"
                     />
                 </a>
                 <button
