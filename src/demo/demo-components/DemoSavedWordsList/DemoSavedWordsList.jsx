@@ -27,15 +27,13 @@ export default function DemoSavedWordsList({
         <div className="SavedWordsList">
             <header className="demo-saved-words-header-container">
                 <h3 className="sidebar-heading">Saved Words</h3>
-                <div>
-                    <ChevronLeftIcon
-                        fontSize="large"
-                        data-tooltip-id="savedwords-tooltip"
-                        onClick={handleBackArrowClick}
-                        className="arrowBack"
-                        color="#006769"
-                    />
-                </div>
+                <ChevronLeftIcon
+                    fontSize="large"
+                    data-tooltip-id="savedwords-tooltip"
+                    onClick={handleBackArrowClick}
+                    className="arrowBack"
+                    color="#006769"
+                />
             </header>
             {savedWords.length === 0 ? (
                 <>

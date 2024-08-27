@@ -6,6 +6,7 @@
     background-color: #f5faf9;
     color: black;
     margin-top: 1rem;
+    overflow: hidden;
 }
 
 .arrowBack:hover {
@@ -28,6 +29,7 @@
     padding-right: 12px;
     display: flex;
     flex-direction: column;
+    align-items: center;
     height: 80vh;
     overflow-y: auto;
     overflow-x: hidden;
