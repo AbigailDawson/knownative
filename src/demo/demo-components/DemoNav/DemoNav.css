@@ -1,46 +1,87 @@
-.top-icons,
-.bottom-icons {
+.square-logo {
+  width: 80%;
+  margin: 30px 0 40px 0;
+}
+
+.side-nav-icon-top {
+  font-size: 4vmin;
+  margin: 0;
+  padding: 5px 0;
+  color: var(--dark-action);
+}
+
+.google-icons-shaded span {
+  font-variation-settings: 'FILL' 1, 'wght' 600, 'GRAD' 0, 'opsz' 48;
+}
+
+.google-icons-outline span {
+  font-variation-settings: 'FILL' 0, 'wght' 600, 'GRAD' 0, 'opsz' 48;
+}
+
+/* Icon Container styling */
+.icontip-container {
+  color: var(--dark-action);
+  background-color: inherit;
+  font-weight: 500;
+  opacity: 0.95;
+  margin-left: 0px;
+  border-radius: 5px;
+  font-size: 90%;
+  padding: 20px 0px 15px;
+  width: 100%;
+  position: relative;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.icontip-container:hover,
+.icontip-container.button-active  {
+  background-color: var(--light);
+}
+
+button.icontip-container label {
+  cursor: pointer;
+}
+
+.badge {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  background-color: var(--primary);
+  color: white;
+  padding: 6px 7px 4px 6px;
+  border-radius: 25%;
+  font-size: 0.8rem;
+  line-height: 1;
+  z-index: 1;
+}
+
+.icon-flipped {
+  transform: rotate(180deg);
+}
+
+.top-icons {
   padding: 5px 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   z-index: 10;
+  gap: 8px;
 }
 
-.placeholder-logo {
-  width: 80%;
-  margin-bottom: 30px;
-}
-.side-nav-icon-top,
-.side-nav-icon-bottom {
-  font-size: 4.5rem;
-  margin: 0;
-  padding: 1rem;
-  color: var(--dark);
-}
-
-.side-nav-icon-top:hover,
-.side-nav-icon-bottom:hover {
-  background-color: var(--light);
-  border-radius: .7vmin;
-}
-
-.icontip-container .icontip-message {
-  color: white;
-  background-color: var(--dark);
-  padding: 6px 10px;
-  opacity: 0.95;
-  border-radius: 5px;
-  font-size: 90%;
-  width: max-content;
+.bottom-icons {
+  padding: 5px 0;
+  width: 100%;
+  gap: 5px;
 }
 
 /* medium screens and smaller */
 @media (max-width: 768px) { 
 
-  .side-nav-icon-top,
-  .side-nav-icon-bottom {
+  .side-nav-icon-top {
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
   }

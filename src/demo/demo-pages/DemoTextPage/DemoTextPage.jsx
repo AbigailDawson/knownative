@@ -4,7 +4,6 @@ import DemoStudyText from "../../demo-components/DemoStudyText/DemoStudyText";
 import DemoReadText from "../../demo-components/DemoReadText/DemoReadText";
 import DemoTranslateText from "../../demo-components/DemoTranslateText/DemoTranslateText";
 import DemoSavedWordsList from "../../demo-components/DemoSavedWordsList/DemoSavedWordsList";
-import DemoFlashcard from "../../demo-components/DemoFlashcard/DemoFlashcard";
 import DemoFlashcardForm from "../../demo-components/DemoFlashcardForm/DemoFlashcardForm";
 import DemoInfoSidebar from "../../demo-components/DemoInfoSidebar/DemoInfoSidebar";
 import DemoNav from "../../demo-components/DemoNav/DemoNav";
@@ -12,10 +11,6 @@ import DemoWelcomeModal from "../../demo-components/DemoWelcomeModal/DemoWelcome
 import DemoExitModal from "../../demo-components/DemoExitModal/DemoExitModal";
 // import * as textsAPI from "../../../utilities/texts-api";
 // import * as wordsAPI from "../../../utilities/words-api";
-import { Button, Dialog, DialogActions, DialogContent } from "@mui/material";
-import { IoMdClose } from "react-icons/io";
-// import { GiCheckMark } from "react-icons/gi";
-// import { PiRepeatBold } from "react-icons/pi";
 import { getWordInfo } from "../../../utilities/words-service";
 import DemoLibrary from "../../demo-components/DemoLibrary/DemoLibrary";
 //import word from '../../../../models/word'
@@ -63,25 +58,8 @@ export default function DemoTextPage({ getText, updateText }) {
     handleCloseDemoWelcomeModal();
   };
 
-  // --- FLASHCARDS ---
-  const [open, setOpen] = useState(false);
-  const [flashcards, setFlashcards] = useState([]);
-  const [selectedFront, setSelectedFront] = useState("chinese");
-  const [showPinyin, setShowPinyin] = useState(true);
-  const [gameInProgress, setGameInProgress] = useState(false);
-  const [correctCount, setCorrectCount] = useState(0);
-  const [remainingCount, setRemainingCount] = useState(0);
-  const [isFlipped, setIsFlipped] = useState(false);
-  const [hasBeenFlipped, setHasBeenFlipped] = useState(false);
-  
-  function handleToggle() {
-    setIsFlipped(!isFlipped);
-    if (!hasBeenFlipped) {
-      setHasBeenFlipped(true);
-    }
-  }
-
   const topRef = useRef(null);
+  const blurRef = useRef(null);
 
   useEffect(
     function () {
@@ -95,16 +73,6 @@ export default function DemoTextPage({ getText, updateText }) {
     },
     [localSavedWords]
   );
-
-  function getFlashcards() {
-    const flashcardsArray = localSavedWords.map((word) => ({
-      chinese: word.charGroup,
-      pinyin: word.pinyin,
-      meaning: word.meaning,
-      id: word._id,
-    }));
-    setFlashcards(flashcardsArray);
-  }
 
   function handleTabClick(tabName) {
     topRef.current?.scroll(0, 0);
@@ -177,53 +145,6 @@ export default function DemoTextPage({ getText, updateText }) {
     setLocalSavedWords([...filteredWords]);
   }
 
-  function handleClose() {
-    setFlashcards([]);
-    setCorrectCount(0);
-    setGameInProgress(false);
-    setOpen(false);
-    setHasBeenFlipped(false);
-  }
-
-  function handleCorrect() {
-    // if the user marks the word correct, create a new array of flashcards removing the 1st one in the array (the one that was correct)
-    setFlashcards((prevFlashcards) => prevFlashcards.slice(1));
-    setCorrectCount(correctCount + 1);
-    setRemainingCount(remainingCount - 1);
-    setIsFlipped(false);
-    setHasBeenFlipped(false); 
-  }
-
-  function handleIncorrect() {
-    // if the user marks the word incorrect, create a new array by removing the 1st card (same as when you get it correct), but instead add it back in at the end of the new array (basically cycles the cards thru)
-    setFlashcards((prevFlashcards) => [
-      ...prevFlashcards.slice(1),
-      prevFlashcards[0],
-    ]);
-    setIsFlipped(false);
-    setHasBeenFlipped(false); 
-  }
-
-  function startQuiz() {
-    setOpen(true);
-    getFlashcards();
-    setRemainingCount(flashcards.length);
-    console.log(flashcards.length);
-    setGameInProgress(true);
-  }
-
-  function handlePlayAgain() {
-    const flashcardsArray = localSavedWords.map((word) => ({
-      chinese: word.charGroup,
-      pinyin: word.pinyin,
-      meaning: word.meaning,
-      id: word._id,
-    }));
-    setFlashcards(flashcardsArray);
-    setGameInProgress(false);
-    setOpen(true);
-  }
-
   //state that will be used to store data that will determine which sidebar content to present based on which sidebar is clicked.
   const [sidebarCategory, setSidebarCategory] = useState(null);
 
@@ -248,6 +169,15 @@ export default function DemoTextPage({ getText, updateText }) {
     changeSidebarCategory(toolTipId);
   }
 
+  const blurText = (isActive) => {
+    if (isActive) {
+      blurRef.current.style.filter = 'blur(4px)'
+    }
+    else {
+      blurRef.current.removeAttribute('style')
+    }
+  }
+
   return !text ? (
     "Loading ..."
   ) : (
@@ -261,6 +191,7 @@ export default function DemoTextPage({ getText, updateText }) {
           expandSidebar={expandSidebar}
           changeSidebarCategory={changeSidebarCategory}
           sidebarCategory={sidebarCategory}
+          savedWords={localSavedWords}
           handleShowExit={handleShowExit}
         />
       </nav>
@@ -273,8 +204,6 @@ export default function DemoTextPage({ getText, updateText }) {
               savedWords={localSavedWords}
               updateWord={updateWord}
               deleteWord={deleteWord}
-              startQuiz={startQuiz}
-              gameInProgress={gameInProgress}
               handleBackArrowClick={handleBackArrowClick}
             />
           )}
@@ -282,19 +211,15 @@ export default function DemoTextPage({ getText, updateText }) {
             <DemoFlashcardForm
               expandSidebar={expandSidebar}
               changeSidebarCategory={changeSidebarCategory}
-              selectedFront={selectedFront}
-              setSelectedFront={setSelectedFront}
-              showPinyin={showPinyin}
-              setShowPinyin={setShowPinyin}
-              startQuiz={startQuiz}
+              localSavedWords={localSavedWords}
               handleBackArrowClick={handleBackArrowClick}
+              blurText={blurText}
             />
           )}
           {sidebarCategory === "info-tooltip" && (
             <DemoInfoSidebar
               changeSidebarCategory={changeSidebarCategory}
               handleBackArrowClick={handleBackArrowClick}
-              handleShowExit={handleShowExit}
             />
           )}
           {sidebarCategory === "library-tooltip" && (
@@ -306,108 +231,6 @@ export default function DemoTextPage({ getText, updateText }) {
           )}
         </aside>
       )}
-
-      <Dialog
-        open={open}
-        onClose={handleClose}
-        PaperComponent={({ children }) => (
-          <div
-            style={{
-              width: "60vmin",
-              height: "55vmin",
-              backgroundColor: "white",
-              color: "var(--drk-txt)",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              padding: "1vmin",
-              borderRadius: "2vmin",
-            }}
-          >
-            {children}
-          </div>
-        )}
-      >
-        <DialogActions
-          style={{
-            alignSelf: "flex-end",
-            padding: "0",
-          }}
-        >
-          <Button onClick={handleClose}>
-            <IoMdClose className="close-icon" />
-          </Button>
-        </DialogActions>
-        <DialogContent
-          style={{
-            width: "75%",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-between",
-          }}
-        >
-          {flashcards.length > 0 && gameInProgress ? (
-            <>
-              <DemoFlashcard
-                chinese={flashcards[0].chinese}
-                pinyin={flashcards[0].pinyin}
-                english={flashcards[0].meaning}
-                selectedFront={selectedFront}
-                showPinyin={showPinyin}
-                isFlipped={isFlipped}
-                onToggle={handleToggle}
-                onCorrect={handleCorrect}
-                onIncorrect={handleIncorrect}
-                flashcards={flashcards}
-              />
-              <div>
-                <div className="flip-button-container">
-                  {!hasBeenFlipped && !isFlipped && (
-                    <button className="flip-button" onClick={handleToggle}>
-                      {isFlipped ? 'Show Front' : 'Show Answer'}
-                    </button>
-                  )}
-                </div>
-                {(isFlipped || hasBeenFlipped) && (
-                  <div className="flashcard-btns">
-                    <button className="correct-btn" onClick={handleCorrect}>
-                      Correct!
-                    </button>
-                    <button className="incorrect-btn" onClick={handleIncorrect}>
-                      Try again
-                    </button>
-                  </div>
-                )}
-                <div className="flashcard-count">
-                  <p>
-                    <span className="correct-count">{correctCount}</span> Correct
-                  </p>
-                  <p>
-                    <span className="remaining-count">{remainingCount}</span> Remaining
-                  </p>
-                </div>
-              </div>
-            </>
-          ) : (
-            <div className="congrats">
-              <div>
-                <dotlottie-player
-                  src="https://lottie.host/9279b8f8-2d84-4077-aaf6-db967f8ec7bb/3JRYmBPJgq.json"
-                  background="transparent"
-                  speed="1"
-                  style={{ height: "20vmin" }}
-                  loop
-                  autoplay
-                ></dotlottie-player>
-              </div>
-              <h2>You completed the deck!</h2>
-              <button className="play-btn" onClick={handlePlayAgain}>
-                Play Again
-              </button>
-            </div>
-          )}
-        </DialogContent>
-      </Dialog>
 
       <section className="main-area" ref={topRef}>
         <div className="tabs sticky-fade">
@@ -431,7 +254,7 @@ export default function DemoTextPage({ getText, updateText }) {
           </button>
         </div>
 
-        <div className="text-area">
+        <div className="text-area" ref={blurRef}>
           <div className="textpage-heading">
             <div className="flex-row">
               <h1 className="textpage-heading-title zh">{text.title}</h1>

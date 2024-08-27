@@ -28,6 +28,7 @@
 
   --primary: #57bcaa; /* actions */
   --action: #006769;
+  --dark-action: #074B59;
   --darkest: #0c1f1b; /* heading text */
   --dark: #526662; /* secondary text */
   --medium: #9cc3bc; /* non-decorative borders */
@@ -142,16 +143,16 @@ a {
 
 .page {
     display: grid;
-    grid-template-columns: 6% 21% 73%;
+    grid-template-columns: 180px auto;
     height: 90vh;
 }
 
 .page.expanded-sidebar {
-    grid-template-columns: 6% 21% 73%;
+    grid-template-columns: 180px 420px auto;
 }
 
 .page.collapsed-sidebar {
-    grid-template-columns: 6% 94%;
+    grid-template-columns: 180px auto;
 }
 
 .main-area {
@@ -179,8 +180,8 @@ a {
     align-items: center;
     background-color: green;
     height: 100vh;
-    /* width: 90px; */
-    padding: 0;
+    width: 180px;
+    padding: 0 10px;
     background-color: var(--lightest);
     border-right: 1px solid var(--medium);
     z-index: 5;
@@ -194,6 +195,7 @@ a {
     background-color: #f5faf9;
     border-right: 1px solid var(--medium);
     height: 100vh;
+    width: 420;
 }
 
 .sticky-fade {
@@ -217,14 +219,6 @@ a {
 
 .zh {
     font-family: "Noto Serif TC", serif;
-}
-
-/* medium screens and smaller */
-@media (max-width: 768px) {
-    .side-nav {
-        height: 100vh;
-        width: 65px;
-    }
 }
 
 /* xsmall screens and smaller */
