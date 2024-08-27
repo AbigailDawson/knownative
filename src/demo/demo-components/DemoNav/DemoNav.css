@@ -71,6 +71,12 @@ button.icontip-container label {
   gap: 10px;
 }
 
+.bottom-icons {
+  padding: 5px 0;
+  width: 100%;
+  gap: 10px;
+}
+
 /* medium screens and smaller */
 @media (max-width: 768px) { 
 
