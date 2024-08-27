@@ -35,9 +35,9 @@ export default function DemoNav({
       {/* Sidebar Icons */}
       <div className="top-icons">
         <img
-          src="/images/placeholder-logo.png"
+          src="/images/transparent-square-logo.png"
           alt="logo"
-          className="placeholder-logo"
+          className="square-logo"
         />
         {/* Saved Words Icon*/}
         <button
