@@ -1,11 +1,12 @@
 .SavedWordsList {
     display: flex;
     flex-direction: column;
-    padding: 2vmin 2vmin;
+    padding: 3vmin 3vmin;
     width: 100%;
     background-color: #f5faf9;
     color: black;
-    margin-top: 2vmin;
+    margin-top: 1rem;
+    overflow: hidden;
 }
 
 .arrowBack:hover {
@@ -20,7 +21,12 @@
 }
 .sidebar-heading {
     text-align: left;
-    font-size: 1.5rem;
+    font-size: 1.75rem;
+}
+
+.saved-word-list-subtext {
+    text-align: left;
+    margin-top: 2vmin;
 }
 
 .saved-words-list-container {
@@ -28,6 +34,7 @@
     padding-right: 12px;
     display: flex;
     flex-direction: column;
+    align-items: center;
     height: 80vh;
     overflow-y: auto;
     overflow-x: hidden;
