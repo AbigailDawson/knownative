@@ -17,14 +17,14 @@ export default function DemoInfoSidebar({
                     color="#006769"
                 />
             </header>
-            <br />
-            <p className="demo-info-paragraph">
-                Thank you for trying the KnowNative demo!
-            </p>
-            <p className="demo-info-paragraph">
-                KnowNative is currently in development. Check out the links
-                below to learn more or get in touch.
-            </p>
+            <div className="info-section-subtext">
+                <p>Thank you for trying the KnowNative demo!</p>
+                <p>
+                    KnowNative is currently in development. Check out the links
+                    below to learn more or get in touch.
+                </p>
+            </div>
+
             <button className="demo-info-dark-btn" onClick={null}>
                 Join our mailing list
             </button>

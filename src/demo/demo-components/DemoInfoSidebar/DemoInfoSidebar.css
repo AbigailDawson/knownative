@@ -24,8 +24,9 @@
     font-size: 1.75rem;
 }
 
-.demo-info-paragraph {
+.info-section-subtext {
     text-align: left;
+    margin-top: 2vmin;
 }
 
 .demo-info-dark-btn {
