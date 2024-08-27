@@ -205,6 +205,16 @@ a {
   z-index: 4;
 }
 
+/* contact page */
+.media-links{
+    margin-top: -100px;
+}
+
+.form {
+    background-color: var(--lightest);
+    border: 0.5px solid var(--medium)
+}
+
 .zh {
     font-family: "Noto Serif TC", serif;
 }
