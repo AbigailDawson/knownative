@@ -12,13 +12,17 @@ function DemoLibrary({
   const [bookshelfTexts, setBookShelfTexts] = useState([]);
 
   useEffect(() => {
+    //the filtered books will determine what goes in the "bookshelf" section. all of this will be based on the textSelection variable, which is determined by the welcome modal.
     const difficulties = ["beginner", "intermediate", "advanced"];
     const filteredBooks = difficulties.filter(
       (difficulty) => difficulty !== textSelection
     );
+
+    //maintext will go under "currently reading" header
     setMainText(textSelection);
     setBookShelfTexts(filteredBooks);
   }, [textSelection]);
+
   return (
     <main className="DemoLibrary">
       <header className="demo-library-header-container">
@@ -44,7 +48,6 @@ function DemoLibrary({
           isActiveText={true}
           isTopOfBookshelf={false}
         />
-        {/* Text cards to be implemented here */}
       </section>
       <section className="demo-library-bookshelf-container">
         <h5 className="demo-library-bookshelf-label">Bookshelf:</h5>

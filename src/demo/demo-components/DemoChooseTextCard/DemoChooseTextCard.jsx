@@ -3,6 +3,7 @@ import "./DemoChooseTextCard.css";
 import { FaSearch } from "react-icons/fa";
 import DemoDifficultyTag from "../DemoDifficultyTag/DemoDifficultyTag";
 
+//conditional rendering will determine what stylings each of the demochoosetextcards will take. there will be different stylings based on whether it is the active text (under currently reading) and if it's the first text in the bookshelf
 const DemoChooseTextCard = ({
   textSelection,
   isActiveText,
@@ -32,28 +33,3 @@ const DemoChooseTextCard = ({
 };
 
 export default DemoChooseTextCard;
-
-/*
-<article className="demo-library-text-card demo-library-top-bookshelf-card demo-library-bookshelf-cards">
-          <section>
-            <h3 className="demo-library-chinese-characters">天氣</h3>
-            <article>
-              <DemoDifficultyTag difficulty={"intermediate"} />
-            </article>
-          </section>
-          <section>
-            <FaSearch />
-          </section>
-        </article>
-        <article className="demo-library-text-card demo-library-bookshelf-cards">
-          <section>
-            <h3 className="demo-library-chinese-characters">天氣</h3>
-            <article>
-              <DemoDifficultyTag difficulty={"advanced"} />
-            </article>
-          </section>
-          <section>
-            <FaSearch />
-          </section>
-        </article>
-*/
