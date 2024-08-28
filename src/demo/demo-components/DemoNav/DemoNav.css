@@ -1,11 +1,12 @@
-.placeholder-logo {
+.square-logo {
   width: 80%;
-  margin-bottom: 30px;
+  margin: 30px 0 40px 0;
 }
 
 .side-nav-icon-top {
-  font-size: 2.5rem;
+  font-size: 4vmin;
   margin: 0;
+  padding: 5px 0;
   color: var(--dark-action);
 }
 
@@ -46,8 +47,8 @@ button.icontip-container label {
 
 .badge {
   position: absolute;
-  top: 8px;
-  right: 5px;
+  top: 20px;
+  right: 30px;
   background-color: var(--primary);
   color: white;
   padding: 6px 7px 4px 6px;
@@ -68,7 +69,13 @@ button.icontip-container label {
   justify-content: center;
   align-items: center;
   z-index: 10;
-  gap: 10px;
+  gap: 8px;
+}
+
+.bottom-icons {
+  padding: 5px 0;
+  width: 100%;
+  gap: 5px;
 }
 
 /* medium screens and smaller */

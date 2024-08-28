@@ -14,6 +14,7 @@ import DemoExitModal from "../../demo-components/DemoExitModal/DemoExitModal";
 import { getWordInfo } from "../../../utilities/words-service";
 import DemoLibrary from "../../demo-components/DemoLibrary/DemoLibrary";
 //import word from '../../../../models/word'
+import DemoDifficultyTag from "../../demo-components/DemoDifficultyTag/DemoDifficultyTag";
 
 export default function DemoTextPage({ getText, updateText }) {
   const text = {
@@ -27,8 +28,10 @@ export default function DemoTextPage({ getText, updateText }) {
     archived: false,
     easierText: "",
   };
-  
+
   const [activeTab, setActiveTab] = useState("read");
+  //-- TEXT DIFFICULTY --
+  const [textSelection, setTextSelection] = useState("beginner");
 
   // --- SAVED WORDS ---
   const [localSavedWords, setLocalSavedWords] = useState(
@@ -59,6 +62,7 @@ export default function DemoTextPage({ getText, updateText }) {
   };
 
   const topRef = useRef(null);
+  const blurRef = useRef(null);
 
   useEffect(
     function () {
@@ -115,7 +119,7 @@ export default function DemoTextPage({ getText, updateText }) {
   //       savedWord._id === updatedWord._id ? updatedWord : savedWord))
   // }
 
-  /* FUNCTION ALTERED to allow for users to have meaning, term, and reading updated after form submissio.*/
+  /* FUNCTION ALTERED to allow for users to have meaning, term, and reading updated after form submission.*/
   function updateWord(word, inputtedMeaning, inputtedTerm, inputtedReading) {
     const savedWords = JSON.parse(localStorage.getItem("stringifiedWords"));
     for (let k in savedWords) {
@@ -168,6 +172,14 @@ export default function DemoTextPage({ getText, updateText }) {
     changeSidebarCategory(toolTipId);
   }
 
+  const blurText = (isActive) => {
+    if (isActive) {
+      blurRef.current.style.filter = "blur(4px)";
+    } else {
+      blurRef.current.removeAttribute("style");
+    }
+  };
+
   return !text ? (
     "Loading ..."
   ) : (
@@ -182,6 +194,7 @@ export default function DemoTextPage({ getText, updateText }) {
           changeSidebarCategory={changeSidebarCategory}
           sidebarCategory={sidebarCategory}
           savedWords={localSavedWords}
+          handleShowExit={handleShowExit}
         />
       </nav>
 
@@ -202,20 +215,20 @@ export default function DemoTextPage({ getText, updateText }) {
               changeSidebarCategory={changeSidebarCategory}
               localSavedWords={localSavedWords}
               handleBackArrowClick={handleBackArrowClick}
+              blurText={blurText}
             />
           )}
           {sidebarCategory === "info-tooltip" && (
             <DemoInfoSidebar
               changeSidebarCategory={changeSidebarCategory}
               handleBackArrowClick={handleBackArrowClick}
-              handleShowExit={handleShowExit}
             />
           )}
           {sidebarCategory === "library-tooltip" && (
             <DemoLibrary
-              changeSidebarCategory={changeSidebarCategory}
               handleBackArrowClick={handleBackArrowClick}
-              handleShowExit={handleShowExit}
+              textSelection={textSelection}
+              setTextSelection={setTextSelection}
             />
           )}
         </aside>
@@ -243,10 +256,13 @@ export default function DemoTextPage({ getText, updateText }) {
           </button>
         </div>
 
-        <div className="text-area">
+        <div className="text-area" ref={blurRef}>
           <div className="textpage-heading">
             <div className="flex-row">
               <h1 className="textpage-heading-title zh">{text.title}</h1>
+              <article>
+                <DemoDifficultyTag textSelection={textSelection} />
+              </article>
             </div>
           </div>
 
@@ -303,13 +319,14 @@ export default function DemoTextPage({ getText, updateText }) {
           />
         }
       </div>
-      
+
       <DemoWelcomeModal
         isOpen={isDemoWelcomeModalOpen}
         onSubmit={handleWelcomeModalSubmit}
         onClose={handleCloseDemoWelcomeModal}
+        textSelection={textSelection}
+        setTextSelection={setTextSelection}
       />
-
     </main>
   );
 }

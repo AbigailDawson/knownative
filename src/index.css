@@ -143,16 +143,16 @@ a {
 
 .page {
     display: grid;
-    grid-template-columns: 120px minmax(230px, 21%) auto;
+    grid-template-columns: 180px auto;
     height: 90vh;
 }
 
 .page.expanded-sidebar {
-    grid-template-columns: 120px minmax(230px, 21%) auto;
+    grid-template-columns: 180px 420px auto;
 }
 
 .page.collapsed-sidebar {
-    grid-template-columns: 120px auto;
+    grid-template-columns: 180px auto;
 }
 
 .main-area {
@@ -180,7 +180,7 @@ a {
     align-items: center;
     background-color: green;
     height: 100vh;
-    width: 120px;
+    width: 180px;
     padding: 0 10px;
     background-color: var(--lightest);
     border-right: 1px solid var(--medium);
@@ -195,6 +195,7 @@ a {
     background-color: #f5faf9;
     border-right: 1px solid var(--medium);
     height: 100vh;
+    width: 420;
 }
 
 .sticky-fade {

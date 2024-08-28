@@ -5,6 +5,7 @@ export default function DemoNav({
   changeSidebarCategory,
   sidebarCategory,
   savedWords,
+  handleShowExit
 }) {
 
   function handleCardsClick(e) {
@@ -34,9 +35,9 @@ export default function DemoNav({
       {/* Sidebar Icons */}
       <div className="top-icons">
         <img
-          src="/images/placeholder-logo.png"
+          src="/images/transparent-square-logo.png"
           alt="logo"
-          className="placeholder-logo"
+          className="square-logo"
         />
         {/* Saved Words Icon*/}
         <button
@@ -108,6 +109,24 @@ export default function DemoNav({
             &#xe88e;
           </span>
           <label htmlFor="info-tooltip">Info</label>
+        </button>
+      </div>
+      <div className="bottom-icons">
+        <button
+          id="exit-tooltip"
+          className={`icontip-container ${
+            sidebarCategory === "exit-tooltip"
+              ? "button-active google-icons-shaded"
+              : ""
+          }`}
+          onClick={handleShowExit}
+          aria-label="Exit"
+          aria-expanded={sidebarCategory === "exit-tooltip" ? "true" : "false"}
+        >
+          <span className="material-symbols-outlined side-nav-icon-top">
+            &#xe9ba;
+          </span>
+          <label htmlFor="exit-tooltip">Exit</label>
         </button>
       </div>
     </>

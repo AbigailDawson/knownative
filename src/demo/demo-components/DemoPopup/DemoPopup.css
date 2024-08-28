@@ -82,6 +82,16 @@
   color: white;
 }
 
+.saved-button {
+  background-color: inherit !important;
+  color: #62BFAF;
+}
+
+:disabled {
+  /* opacity: 50%; */
+  cursor: auto;
+}
+
 /* medium screens and smaller */
 @media (max-width: 768px) { 
 
