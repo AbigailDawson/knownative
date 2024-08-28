@@ -14,6 +14,7 @@ import DemoExitModal from "../../demo-components/DemoExitModal/DemoExitModal";
 import { getWordInfo } from "../../../utilities/words-service";
 import DemoLibrary from "../../demo-components/DemoLibrary/DemoLibrary";
 //import word from '../../../../models/word'
+import DemoDifficultyTag from "../../demo-components/DemoDifficultyTag/DemoDifficultyTag";
 
 export default function DemoTextPage({ getText, updateText }) {
   const text = {
@@ -259,6 +260,9 @@ export default function DemoTextPage({ getText, updateText }) {
           <div className="textpage-heading">
             <div className="flex-row">
               <h1 className="textpage-heading-title zh">{text.title}</h1>
+              <article>
+                <DemoDifficultyTag textSelection={textSelection} />
+              </article>
             </div>
           </div>
 
