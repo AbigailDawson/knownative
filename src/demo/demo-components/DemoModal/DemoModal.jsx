@@ -1,8 +1,9 @@
 import React, { useRef, useEffect, useState } from 'react';
 import './DemoModal.css';
 
-const DemoModal = ({ isOpen, hasCloseBtn = true, onClose, hasEscKey, children }) => {
+const DemoModal = ({ isOpen, hasCloseBtn = true, onClose, hasEscKeyExit, children }) => {
   const [isModalOpen, setModalOpen] = useState(isOpen);
+  const [allowDialogDismiss, setAllowdialogDismiss] = useState(hasEscKeyExit)
   const modalRef = useRef(null)
 
   const handleCloseModal = () => {
@@ -13,12 +14,22 @@ const DemoModal = ({ isOpen, hasCloseBtn = true, onClose, hasEscKey, children })
   };
 
   const handleKeyDown = (event) => {
-    if (!hasEscKey) return;
-    if (event.key === 'Escape') {
-      event.preventDefault()
+    if (event.key !== 'Escape') console.log(event.key);
+    if (event.key === 'Escape' && hasEscKeyExit) {
+      console.log(event.key)
       handleCloseModal();
     }
+    if ((event.key === 'Escape' && !hasEscKeyExit))
+      event.preventDefault()
   };
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleKeyDown);
+  
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  });
 
   useEffect(() => {
     setModalOpen(isOpen);

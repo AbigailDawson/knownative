@@ -39,7 +39,7 @@ const DemoWelcomeModal = ({
      hasCloseBtn={false}
      isOpen={isOpen}
      onClose={onClose}
-     hasEscKey={false}
+     hasEscKeyExit={false}
    >
      <div className="dialog-padding">
        {/* Modal Page 1 */}
