@@ -21,6 +21,15 @@ export default function DemoFlashcardGame({wordList, selectedFront, showPinyin, 
         }
     }
 
+    function shuffle(cards) {
+      let i = cards.length;
+      while(i > 0) {
+        let newIdx = Math.floor(Math.random() * i);
+        i--;
+        [cards[newIdx], cards[i]] = [cards[i], cards[newIdx]];
+      }
+    }
+
     function getFlashcards() {
         const flashcardsArray = wordList.map((word) => ({
             chinese: word.charGroup,
@@ -28,6 +37,7 @@ export default function DemoFlashcardGame({wordList, selectedFront, showPinyin, 
             meaning: word.meaning,
             id: word._id,
         }));
+        shuffle(flashcardsArray);
         return flashcardsArray
   }
 
