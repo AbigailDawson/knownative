@@ -1,0 +1,20 @@
+.demo-difficulty-tag-beginner {
+  background-color: #cce4f0;
+  padding: 1vmin 1vmin;
+  border-radius: 15%;
+  color: #094a68;
+}
+
+.demo-difficulty-tag-intermediate {
+  background-color: #f0edcc;
+  padding: 1vmin 1vmin;
+  border-radius: 15%;
+  color: #6b6202;
+}
+
+.demo-difficulty-tag-advanced {
+  background-color: #efbdbd;
+  padding: 1vmin 1vmin;
+  border-radius: 15%;
+  color: #560404;
+}

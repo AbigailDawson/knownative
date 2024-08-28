@@ -32,8 +32,55 @@
 .demo-library-bookshelf-container {
   text-align: left;
   color: #006769;
+  margin-top: 2vmin;
 }
 
 .demo-library-currently-reading-container {
   margin-top: 2vmin;
+}
+
+.demo-library-currently-reading {
+  border-radius: 5%;
+  border: solid #006769 2px;
+}
+
+.demo-library-top-bookshelf-card {
+  border-top: solid grey 1px;
+}
+
+.demo-library-bookshelf-cards {
+  border-bottom: solid grey 1px;
+}
+
+.demo-library-text-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3.5vmin;
+}
+
+.demo-library-chinese-characters {
+  color: black;
+  margin-bottom: 3vmin;
+}
+
+.demo-library-difficulty-tag-beginner {
+  background-color: #cce4f0;
+  padding: 1vmin 1vmin;
+  border-radius: 15%;
+  color: #094a68;
+}
+
+.demo-library-difficulty-tag-intermediate {
+  background-color: #f0edcc;
+  padding: 1vmin 1vmin;
+  border-radius: 15%;
+  color: #6b6202;
+}
+
+.demo-library-difficulty-tag-advanced {
+  background-color: #efbdbd;
+  padding: 1vmin 1vmin;
+  border-radius: 15%;
+  color: #560404;
 }

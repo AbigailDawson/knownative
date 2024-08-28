@@ -27,8 +27,10 @@ export default function DemoTextPage({ getText, updateText }) {
     archived: false,
     easierText: "",
   };
-  
+
   const [activeTab, setActiveTab] = useState("read");
+  //-- TEXT DIFFICULTY --
+  const [textSelection, setTextSelection] = useState("beginner");
 
   // --- SAVED WORDS ---
   const [localSavedWords, setLocalSavedWords] = useState(
@@ -116,7 +118,7 @@ export default function DemoTextPage({ getText, updateText }) {
   //       savedWord._id === updatedWord._id ? updatedWord : savedWord))
   // }
 
-  /* FUNCTION ALTERED to allow for users to have meaning, term, and reading updated after form submissio.*/
+  /* FUNCTION ALTERED to allow for users to have meaning, term, and reading updated after form submission.*/
   function updateWord(word, inputtedMeaning, inputtedTerm, inputtedReading) {
     const savedWords = JSON.parse(localStorage.getItem("stringifiedWords"));
     for (let k in savedWords) {
@@ -171,12 +173,11 @@ export default function DemoTextPage({ getText, updateText }) {
 
   const blurText = (isActive) => {
     if (isActive) {
-      blurRef.current.style.filter = 'blur(4px)'
+      blurRef.current.style.filter = "blur(4px)";
+    } else {
+      blurRef.current.removeAttribute("style");
     }
-    else {
-      blurRef.current.removeAttribute('style')
-    }
-  }
+  };
 
   return !text ? (
     "Loading ..."
@@ -224,9 +225,9 @@ export default function DemoTextPage({ getText, updateText }) {
           )}
           {sidebarCategory === "library-tooltip" && (
             <DemoLibrary
-              changeSidebarCategory={changeSidebarCategory}
               handleBackArrowClick={handleBackArrowClick}
-              handleShowExit={handleShowExit}
+              textSelection={textSelection}
+              setTextSelection={setTextSelection}
             />
           )}
         </aside>
@@ -314,13 +315,14 @@ export default function DemoTextPage({ getText, updateText }) {
           />
         }
       </div>
-      
+
       <DemoWelcomeModal
         isOpen={isDemoWelcomeModalOpen}
         onSubmit={handleWelcomeModalSubmit}
         onClose={handleCloseDemoWelcomeModal}
+        textSelection={textSelection}
+        setTextSelection={setTextSelection}
       />
-
     </main>
   );
 }
