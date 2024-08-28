@@ -21,6 +21,7 @@
 .demo-library-sidebar-heading {
     text-align: left;
     font-size: 1.75rem;
+    margin: 0;
 }
 
 .demo-library-subtext {
