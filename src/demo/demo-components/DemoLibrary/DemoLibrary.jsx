@@ -1,7 +1,6 @@
+import { useState, useEffect } from "react";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import { FaSearch } from "react-icons/fa";
 import "./DemoLibrary.css";
-import DemoDifficultyTag from "../DemoDifficultyTag/DemoDifficultyTag";
 import DemoChooseTextCard from "../DemoChooseTextCard/DemoChooseTextCard";
 
 function DemoLibrary({
@@ -9,12 +8,17 @@ function DemoLibrary({
   textSelection,
   setTextSelection,
 }) {
-  /*
-  If selected, 
-  (1) there should be the BORDER around it. 
-  (2) There should NOT be a magnifying glass
-  (3) If should be displayed SEPARATELY from the rest
-  */
+  const [mainText, setMainText] = useState(textSelection);
+  const [bookshelfTexts, setBookShelfTexts] = useState([]);
+
+  useEffect(() => {
+    const difficulties = ["beginner", "intermediate", "advanced"];
+    const filteredBooks = difficulties.filter(
+      (difficulty) => difficulty !== textSelection
+    );
+    setMainText(textSelection);
+    setBookShelfTexts(filteredBooks);
+  }, [textSelection]);
   return (
     <main className="DemoLibrary">
       <header className="demo-library-header-container">
@@ -36,7 +40,7 @@ function DemoLibrary({
       <section className="demo-library-currently-reading-container">
         <h5>Currently Reading:</h5>
         <DemoChooseTextCard
-          textSelection={"beginner"}
+          textSelection={mainText}
           isActiveText={true}
           isTopOfBookshelf={false}
         />
@@ -44,16 +48,16 @@ function DemoLibrary({
       </section>
       <section className="demo-library-bookshelf-container">
         <h5 className="demo-library-bookshelf-label">Bookshelf:</h5>
-        <DemoChooseTextCard
-          textSelection={"intermediate"}
-          isActiveText={false}
-          isTopOfBookshelf={true}
-        />
-        <DemoChooseTextCard
-          textSelection={"advanced"}
-          isActiveText={false}
-          isTopOfBookshelf={false}
-        />
+        {bookshelfTexts.map((difficulty, i) => {
+          return (
+            <DemoChooseTextCard
+              textSelection={difficulty}
+              isActiveText={false}
+              isTopOfBookshelf={i === 0}
+              key={difficulty + i + "bookshelf"}
+            />
+          );
+        })}
       </section>
     </main>
   );
