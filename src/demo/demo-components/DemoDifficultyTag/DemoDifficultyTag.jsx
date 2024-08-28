@@ -1,11 +1,12 @@
 import { HiChartBar } from "react-icons/hi";
 import "./DemoDifficultyTag.css";
 
-const DemoDifficultyTag = ({ difficulty }) => {
+const DemoDifficultyTag = ({ textSelection }) => {
   return (
     <>
-      <span className={`demo-difficulty-tag-${difficulty}`}>
-        <HiChartBar /> {`${difficulty[0].toUpperCase() + difficulty.slice(1)}`}{" "}
+      <span className={`demo-difficulty-tag-${textSelection}`}>
+        <HiChartBar />{" "}
+        {`${textSelection[0].toUpperCase() + textSelection.slice(1)}`}{" "}
       </span>
     </>
   );
