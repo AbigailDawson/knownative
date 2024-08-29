@@ -14,7 +14,7 @@ export default function ContactPage() {
           <div class="container col-xl-10 col-xxl-8 px-4 py-5">
             <div class="row align-items-center g-lg-5 py-5">
               <div class="col-lg-6 text-center text-lg-start">
-                <h1 class="display-6 fw-bold lh-1">Sign up for early access</h1>
+                <h1 class="display-6 fw-bold lh-1 mb-4">Sign up for early access</h1>
                 <p class="col-lg-10 fs-6">We are planning to release a beta version of KnowNative by the end of 2024!</p> 
                 <p class="col-lg-10 fs-6">As an early access member of KnowNative, you'll be able to create an account and build your own personalized study portal, uploading any article you'd like to learn from. Your articles, vocabulary lists and notes will all be saved so you'll never have to worry about losing your progress.</p>
                 <p class="col-lg-10 fs-6">Sign up to be notified when this beta version is released for a unique opportunity to be one of KnowNative's first members!</p>
