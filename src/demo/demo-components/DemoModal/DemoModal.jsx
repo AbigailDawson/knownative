@@ -3,7 +3,6 @@ import './DemoModal.css';
 
 const DemoModal = ({ isOpen, hasCloseBtn = true, onClose, hasEscKeyExit, children }) => {
   const [isModalOpen, setModalOpen] = useState(isOpen);
-  const [allowDialogDismiss, setAllowdialogDismiss] = useState(hasEscKeyExit)
   const modalRef = useRef(null)
 
   const handleCloseModal = () => {
