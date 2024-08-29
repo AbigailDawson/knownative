@@ -199,40 +199,40 @@ export default function DemoTextPage({ getText, updateText }) {
       </nav>
 
       {/* Conditional rendering, dependent on the values of expandedSidbar and sidebarCategory, that will determine if the sidebar is displayed and what content is displayed. */}
-      {expandedSidebar && (
-        <aside className="sidebar">
-          {sidebarCategory === "savedwords-tooltip" && (
-            <DemoSavedWordsList
-              savedWords={localSavedWords}
-              updateWord={updateWord}
-              deleteWord={deleteWord}
-              handleBackArrowClick={handleBackArrowClick}
-            />
-          )}
-          {sidebarCategory === "flashcards-tooltip" && (
-            <DemoFlashcardForm
-              expandSidebar={expandSidebar}
-              changeSidebarCategory={changeSidebarCategory}
-              localSavedWords={localSavedWords}
-              handleBackArrowClick={handleBackArrowClick}
-              blurText={blurText}
-            />
-          )}
-          {sidebarCategory === "info-tooltip" && (
-            <DemoInfoSidebar
-              changeSidebarCategory={changeSidebarCategory}
-              handleBackArrowClick={handleBackArrowClick}
-            />
-          )}
-          {sidebarCategory === "library-tooltip" && (
-            <DemoLibrary
-              handleBackArrowClick={handleBackArrowClick}
-              textSelection={textSelection}
-              setTextSelection={setTextSelection}
-            />
-          )}
-        </aside>
-      )}
+
+      <aside className="sidebar">
+        {sidebarCategory === "savedwords-tooltip" && (
+          <DemoSavedWordsList
+            savedWords={localSavedWords}
+            updateWord={updateWord}
+            deleteWord={deleteWord}
+            handleBackArrowClick={handleBackArrowClick}
+          />
+        )}
+        {sidebarCategory === "flashcards-tooltip" && (
+          <DemoFlashcardForm
+            expandSidebar={expandSidebar}
+            changeSidebarCategory={changeSidebarCategory}
+            localSavedWords={localSavedWords}
+            handleBackArrowClick={handleBackArrowClick}
+            blurText={blurText}
+          />
+        )}
+        {sidebarCategory === "info-tooltip" && (
+          <DemoInfoSidebar
+            changeSidebarCategory={changeSidebarCategory}
+            handleBackArrowClick={handleBackArrowClick}
+          />
+        )}
+        {sidebarCategory === "library-tooltip" && (
+          <DemoLibrary
+            handleBackArrowClick={handleBackArrowClick}
+            textSelection={textSelection}
+            setTextSelection={setTextSelection}
+          />
+        )}
+      </aside>
+
 
       <section className="main-area" ref={topRef}>
         <div className="tabs sticky-fade">
