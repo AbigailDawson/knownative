@@ -15,8 +15,21 @@ export default function AboutPage() {
       </section>
       <section className="creator">
         <div>
-          <h1 className="about-header">The creator</h1>
-          <p className="about-body">Abigail's bio here.</p>
+          <div className="creator-container">
+            <div className="creator-container-left">
+              <h3 className="creator-heading">Meet Abigail, owner and creator of the KnowNative project</h3>
+              <p>Hi! I'm Abigail, the creator and owner of the KnowNative project.</p>
+              <p>My love for languages began with my first Japanese class in college. During my first semester, I had my first real conversation with an exchange student entirely in [broken] Japanese, and I was immediately hooked!</p>
+              <p>I poured myself into my language study, traveling to Japan for a year to live with a host family and study at Waseda University. I began teaching myself Mandarin, traveling to Taipei for another year in an immersion program at National Taiwan University. Having attained advanced proficiency in both Mandarin and Japanese, I returned to the US to pursue my M.A. in Asian Studies from Georgetown University, where I immersed myself in historical research of the Japanese colonial period in Taiwan.</p>
+              <p>After years of rigorous study, I stepped back from academia to seek out different experiences and figure out where exactly I could make an impact in the world. I worked with therapeutic horseback riding programs, managed a barn, traveled across the country and tutored English online. Finally, I decided to pursue a certification in software engineering to equip myself with a versatile skillset that would enable me to bring my own ideas to life through software.</p>
+              <p>The concept for KnowNative began as a daydream of the language learning app I wanted to see in the world, but it's since expanded beyond how I'd ever imagined it! <a href="#backstory" >Read the backstory.</a></p>
+
+              
+            </div>
+            <div className="creator-container-right">
+              <img className="abigail-taiwan" src="./images/abigail-taiwan.jpg" alt="" />
+            </div>
+          </div>
         </div>
       </section>
       <section className="core-contributors">
@@ -40,10 +53,12 @@ export default function AboutPage() {
           </li>
         </ul>
       </section>
-      <section className="backstory">
+      <section className="backstory" id="backstory">
         <div>
           <h1 className="about-header">The story behind KnowNative</h1>
-          <p className="about-body">Longer description of how KnowNative came to be.</p>
+          {/* <p>The concept for the KnowNative app started as a daydream I had during a tedious Chinese study session. Like I did most days, I sat in front of my computer screen and manually copy-and-pasted vocabulary words from a Taiwanese news article into my dictionary app, and then transferred them one by one into my Anki flashcard deck. </p>
+              <p>Frustrated by the tedium and inefficiency of this process, I began to imagine the language learning app I wanted to see in the world — something like a personalized study guide, made from authentic materials that I was <i>actually interested in</i>, combining dictionary look-up, automatically generated flashcards and full-sentence translations into one app.</p>
+              <p>I created KnowNative as my capstone project for my software engineering bootcamp program, </p> */}
         </div>
       </section>
     <LandingPageFooter />
