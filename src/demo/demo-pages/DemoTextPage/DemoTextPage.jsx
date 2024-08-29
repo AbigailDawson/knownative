@@ -53,9 +53,17 @@ export default function DemoTextPage({ getText, updateText }) {
 
   // --- WELCOME MODAL ---
   const [isDemoWelcomeModalOpen, setDemoWelcomeModalOpen] = useState(true);
-  const [DemoWelcomeModalData, setDemoWelcomeModalData] = useState(null);
+  const [demoWelcomeModalData, setDemoWelcomeModalData] = useState(null);
+  const [welcomeModalComplete, setWelcomeModalComplete] = useState(
+    (localStorage.getItem("welcomeModalComplete")  === null) ? false : JSON.parse(localStorage.getItem("welcomeModalComplete"))
+  )
 
-  const handleCloseDemoWelcomeModal = () => setDemoWelcomeModalOpen(false);
+  const handleCloseDemoWelcomeModal = () => {
+    setWelcomeModalComplete(true)
+    setDemoWelcomeModalOpen(false)
+    localStorage.setItem("welcomeModalComplete", 'true')
+  }
+
   const handleWelcomeModalSubmit = (data) => {
     setDemoWelcomeModalData(data);
     handleCloseDemoWelcomeModal();
@@ -260,7 +268,7 @@ export default function DemoTextPage({ getText, updateText }) {
           <div className="textpage-heading">
             <div className="flex-row">
               <h1 className="textpage-heading-title zh">{text.title}</h1>
-              <article>
+              <article className="textpage-difficulty-tag">
                 <DemoDifficultyTag textSelection={textSelection} />
               </article>
             </div>
@@ -320,13 +328,16 @@ export default function DemoTextPage({ getText, updateText }) {
         }
       </div>
 
-      <DemoWelcomeModal
-        isOpen={isDemoWelcomeModalOpen}
-        onSubmit={handleWelcomeModalSubmit}
-        onClose={handleCloseDemoWelcomeModal}
-        textSelection={textSelection}
-        setTextSelection={setTextSelection}
-      />
+      {welcomeModalComplete ? ""
+        : (<DemoWelcomeModal
+            isOpen={isDemoWelcomeModalOpen}
+            onSubmit={handleWelcomeModalSubmit}
+            onClose={handleCloseDemoWelcomeModal}
+            textSelection={textSelection}
+            setTextSelection={setTextSelection}
+          />)
+      }
+      
     </main>
   );
 }
