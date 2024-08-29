@@ -82,7 +82,7 @@ export default function LandingPage() {
                 Please consider using KnowNative on your desktop device until our mobile version is available.</div>
             </div>
             <div className='button-div'>
-              <button className='demo-button' onClick={handleModalButtonClick}>Continue Anyway</button>
+              <button className='demo-button continue' onClick={handleModalButtonClick}>Continue Anyway</button>
               <button className='back' onClick={() => setShowModal(false)}>Back</button>
             </div>
           </DemoModal>): null }

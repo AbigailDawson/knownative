@@ -78,21 +78,6 @@ button {
     gap: 10px;
 }
 
-.sign-up {
-    background-color: var(--primary);
-    color: var(--darkest);
-    border: none;
-    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
-    gap: 10px;
-}
-
-.sign-up:hover {
-    background-color: var(--light);
-    color: var(--darkest);
-    box-shadow: none;
-    gap: 10px;
-}
-
 .github-button {
     background-color: var(--white);
     color: var(--primary);
@@ -209,13 +194,54 @@ a {
 
 /* contact page */
 .media-links{
-    margin-top: -100px;
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
 }
 
 .form {
-    background-color: var(--lightest);
-    border: 0.5px solid var(--medium)
+    margin-top: 130px;
+    background-color: none;
+    border: 1px solid var(--light);
+    border-radius: 8px;
 }
+
+.form-input {
+    background-color: var(--lightest);
+    border: none;
+    width: 100%;
+}
+
+.sign-up {
+    background-color: var(--primary);
+    color: var(--darkest);
+    border: none;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+    margin-left: 0;
+}
+
+.sign-up:hover {
+    background-color: var(--light);
+    color: var(--darkest);
+    box-shadow: none;
+    gap: 10px;
+}
+
+.contact-hr {
+    border: .2px solid var(--primary);
+    margin: 2rem 0;
+}
+
+.socials{
+    height: 10px;
+    font-size: small;
+    margin: 0;
+}
+
+.knownative-link {
+    color: var(--primary);
+}
+/* contact page ends */
 
 .zh {
     font-family: "Noto Serif TC", serif;
@@ -225,5 +251,11 @@ a {
 @media (max-width: 400px) {
     .tab-btn {
         font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 990px) {
+    .form {
+        margin-top: 0;
     }
 }
