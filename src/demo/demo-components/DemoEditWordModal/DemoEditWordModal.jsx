@@ -11,7 +11,6 @@ function DemoEditWordModal({
   updateWord,
   handleDeleteWord,
 }) {
-  console.log(word);
   const [inputTerm, setInputTerm] = useState(word.charGroup);
   const [inputReading, setInputReading] = useState(word.pinyin);
   const [inputMeaning, setInputMeaning] = useState(word.meaning);
