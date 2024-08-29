@@ -1,21 +1,40 @@
 .sentence-line {
   margin-bottom: 2vmin;
+  position: relative;
 }
 
 .sentence {
   margin: 1vmin 0;
-  letter-spacing: .7vmin;
+  font-weight: 400;
+  font-size: 1.5rem;
+  line-height: 32px;
+  letter-spacing: 0.3rem;
+  color: black;
 }
 
-.hide-translation,
-.show-translation {
-  letter-spacing: 0;
-  text-decoration: underline;
-  font-size: 2vmin;
-}
-
-.hide-translation:hover,
-.show-translation:hover {
-  color: var(--red);
+.toggle-translation {
+  position: absolute;
+  color: var(--primary);
+  background-color: inherit;
+  left: -3.4rem;
+  top: 1.2rem;
+  font-size: 1.8rem;
+  padding: 5px;
+  margin-left: 0px;
   cursor: pointer;
+}
+
+.toggle-translation:hover,
+.toggle-translation.translation-visible {
+  color: var(--white);
+  background-color: var(--primary);
+  border-radius: 100%;
+}
+
+/* small screens and smaller */
+@media (max-width: 400px) { 
+  .toggle-translation {
+    left: -2.8rem;
+  }
+
 }

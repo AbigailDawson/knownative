@@ -1,0 +1,28 @@
+.demo-choose-text-currently-reading {
+  border-radius: 10px;
+  border: solid #006769 2px;
+}
+
+.demo-choose-text-top-bookshelf-card {
+  border-top: solid grey 1px;
+}
+
+.demo-choose-text-bookshelf-cards {
+  border-bottom: solid grey 1px;
+}
+
+.demo-choose-text-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3.5vmin;
+}
+
+.demo-choose-text-chinese-characters {
+  color: black;
+  margin-bottom: 3vmin;
+}
+
+.demo-choose-text-hide-visibility {
+  visibility: hidden;
+}
