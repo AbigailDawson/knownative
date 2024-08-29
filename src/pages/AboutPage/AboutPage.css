@@ -20,6 +20,7 @@
     line-height: 1.7;
 }
 
+/* Creator section */
 .creator {
     background-color: var(--light);
     border-radius: 20px;
@@ -59,6 +60,7 @@
     padding-right: 60px;
 }
 
+/* How to contribute section */
 .how-to-contribute {
     background-color: var(--light);
     border-radius: 20px;
@@ -100,6 +102,7 @@
     font-size: 1.2rem;
 }
 
+/* Backstory section */
 .backstory-grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -120,10 +123,12 @@
     font-size: 1rem;
 }
 
+/* Media queries for small screens */
 @media (max-width: 768px) {
     p {
         font-size: 1rem;
     }
+    /* Media queries for creator section */
     .creator {
         padding: 20px; 
     }
@@ -156,6 +161,7 @@
         max-width: 300px;
     }
 
+    /* Media queries for how to contribute section */
     .how-to-contribute {
         padding: 20px;
         text-align: center;
@@ -187,6 +193,7 @@
         margin-bottom: 0.75rem;
     }
 
+    /* Media queries for backstory section */
     .backstory-grid {
         grid-template-columns: 1fr;
         gap: 20px;
