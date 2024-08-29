@@ -17,6 +17,10 @@
   display: inline-block;
 }
 
+.textpage-difficulty-tag {
+  margin-top: 1.5rem;
+}
+
 .text-area {
   background: white;
   padding: 2vmin;
@@ -30,7 +34,6 @@
 .study-container,
 .translate-container {
   display: none;
-  
 }
 
 .study-content {
@@ -53,7 +56,7 @@
   font-size: 4vmin;
   cursor: pointer;
   transition: color 0.3s ease-in-out;
-  padding-top: .3vmin;
+  padding-top: 0.3vmin;
 }
 
 @keyframes sparkle {
@@ -69,13 +72,13 @@
 }
 
 .star-empty:hover {
-  color: var(--gold); 
-  animation: sparkle .8s infinite;
+  color: var(--gold);
+  animation: sparkle 0.8s infinite;
 }
 
 .star-filled:hover {
-  color: var(--yellow); 
-  animation: sparkle .8s infinite;
+  color: var(--yellow);
+  animation: sparkle 0.8s infinite;
 }
 
 .flashcard-count {
@@ -167,12 +170,12 @@
   color: var(--dark);
   margin: 1vmin 0 3vmin 0;
   border-radius: 1vmin;
-  padding: .5vmin 2vmin;
+  padding: 0.5vmin 2vmin;
   font-size: 1.4rem;
 }
 
 .tab-btn::after {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   bottom: 0;
@@ -206,15 +209,14 @@
 }
 
 /* xl screens and smaller */
-@media (max-width:  1280px) {
+@media (max-width: 1280px) {
   .textpage-heading-title {
     padding: 4vmin 0 0 2vmin;
   }
 }
 
 /* medium screens and smaller */
-@media (max-width: 768px) { 
-
+@media (max-width: 768px) {
   .textpage-heading-title {
     padding: 4vmin 0 0 2vmin;
     font-size: 1.75rem;
@@ -223,9 +225,8 @@
 }
 
 /* small screens and smaller */
-@media (max-width: 550px) { 
+@media (max-width: 550px) {
   .textpage-heading {
     padding: 4vmin 0 0 5vmin;
   }
-
 }
