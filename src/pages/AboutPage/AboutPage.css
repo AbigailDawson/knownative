@@ -3,7 +3,7 @@
 .core-contributors,
 .how-to-contribute,
 .backstory {
-    margin-top: 2rem;
+    margin: 2rem 0;
     font-size: 1.2rem;
     display: flex;
     flex-direction: column;
@@ -11,7 +11,7 @@
 }
 
 .about-header {
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
 }
 
 .about-body {
@@ -74,4 +74,24 @@
     display: block;
     font-weight: bold;
     margin-bottom: 1rem;
+}
+
+.backstory-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+.backstory-grid div {
+    border-radius: 10px;
+    background-color: var(--lightest);
+    padding: 20px;
+}
+
+.backstory-grid div h4 {
+    margin-bottom: 1rem;
+}
+
+.backstory-grid div p {
+    font-size: 1rem;
 }
