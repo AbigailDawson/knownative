@@ -119,3 +119,90 @@
 .backstory-grid div p {
     font-size: 1rem;
 }
+
+@media (max-width: 768px) {
+    p {
+        font-size: 1rem;
+    }
+    .creator {
+        padding: 20px; 
+    }
+
+    .creator-heading {
+        text-align: center;
+        margin: 0 0 15px 0;
+    }
+
+    .creator-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .creator-container-left {
+        padding: 0;
+        padding-bottom: 20px;
+        text-align: center;
+    }
+
+    .creator-container-right {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .abigail-taiwan {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .how-to-contribute {
+        padding: 20px;
+        text-align: center;
+    }
+
+    .how-to-contribute-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .how-to-contribute-left {
+        margin-right: 0;
+    }
+
+    .how-to-contribute ul {
+        text-align: center;
+        margin: 0 auto;
+        padding: 0;
+    }
+
+    .how-to-contribute ul li {
+        margin: 10px 0;
+        padding: 15px;
+        font-size: 0.9rem;
+    }
+
+    .li-header {
+        font-size: 1rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .backstory-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .backstory-grid div {
+        padding: 15px;
+    }
+
+    .backstory-grid div h4 {
+        font-size: 1.2rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .backstory-grid div p {
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
+}
