@@ -270,7 +270,7 @@ export default function DemoTextPage({ getText, updateText }) {
           <div className="textpage-heading">
             <div className="flex-row">
               <h1 className="textpage-heading-title zh">{text.title}</h1>
-              <article>
+              <article className="textpage-difficulty-tag">
                 <DemoDifficultyTag textSelection={textSelection} />
               </article>
             </div>
