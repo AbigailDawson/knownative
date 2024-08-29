@@ -58,8 +58,6 @@ export default function DemoTextPage({ getText, updateText }) {
     (localStorage.getItem("welcomeModalComplete")  === null) ? false : JSON.parse(localStorage.getItem("welcomeModalComplete"))
   )
 
-  useEffect( () => {console.log(`welcomeModalComplete: ${welcomeModalComplete}`)})
-
   const handleCloseDemoWelcomeModal = () => {
     setWelcomeModalComplete(true)
     setDemoWelcomeModalOpen(false)
