@@ -33,7 +33,7 @@ export default function LandingPage() {
           <div class="px-4 pt-5 my-5 text-center border-bottom">
             <h1 class="display-4 fw-bold">Welcome to KnowNative</h1>
             <div class="col-lg-6 mx-auto">
-              <p class="lead my-4">Ditch the textbooks and learn from real native speakers by studying articles written by real native speakers. Learning with KnowNative is like building your own study guide designed specifically for you.</p>
+              <p class="lead my-4">Transform your language learning with real-world articles written by native speakers. KnowNative personalizes your study experience with custom flashcards, inline annotations and context-driven translations, creating tailored learning tools that are uniquely yours.</p>
               <div class="d-grid gap-2 d-sm-flex justify-content-sm-center my-5">
                 <button className="btn btn-lg px-4 me-sm-3 demo-button" onClick={handleScreenCheck}>Demo</button>
                 <a href="https://github.com/AbigailDawson/knownative" target="_blank" rel="noopener noreferrer" className="btn btn-lg px-4 github-button">GitHub</a>
