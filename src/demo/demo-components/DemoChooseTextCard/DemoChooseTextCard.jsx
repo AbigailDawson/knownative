@@ -1,7 +1,8 @@
-import React from "react";
+import { useState } from "react";
 import "./DemoChooseTextCard.css";
 import { FaSearch } from "react-icons/fa";
 import DemoDifficultyTag from "../DemoDifficultyTag/DemoDifficultyTag";
+import DemoPreviewTextModal from "../DemoPreviewTextModal/DemoPreviewTextModal";
 
 //conditional rendering will determine what stylings each of the demochoosetextcards will take. there will be different stylings based on whether it is the active text (under currently reading) and if it's the first text in the bookshelf
 const DemoChooseTextCard = ({
@@ -9,6 +10,12 @@ const DemoChooseTextCard = ({
   isActiveText,
   isTopOfBookshelf,
 }) => {
+  const [showPreviewTextModal, setShowPreviewTextModal] = useState(false);
+
+  function handleMagnifyGlassClick() {
+    setShowPreviewTextModal(true);
+  }
+
   return (
     <article
       className={`demo-choose-text-card ${
@@ -23,9 +30,10 @@ const DemoChooseTextCard = ({
           <DemoDifficultyTag textSelection={textSelection} />
         </article>
       </section>
-      <section>
+      <section className="demo-choose-text-magnify-glass-container">
         <FaSearch
           className={`${isActiveText && "demo-choose-text-hide-visibility"}`}
+          onClick={handleMagnifyGlassClick}
         />
       </section>
     </article>
