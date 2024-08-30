@@ -130,6 +130,7 @@ a {
     display: grid;
     grid-template-columns: 180px auto;
     height: 90vh;
+    transition: 300ms ease-in-out;
 }
 
 .page.expanded-sidebar {
@@ -137,7 +138,7 @@ a {
 }
 
 .page.collapsed-sidebar {
-    grid-template-columns: 180px auto;
+    grid-template-columns: 180px 0 auto;
 }
 
 .main-area {
@@ -156,6 +157,7 @@ a {
     width: 0;
     padding: 0;
     border-right: none;
+    transition: 300ms ease-in-out;
 }
 
 .side-nav {
@@ -180,7 +182,7 @@ a {
     background-color: #f5faf9;
     border-right: 1px solid var(--medium);
     height: 100vh;
-    width: 420;
+    width: 420px;
 }
 
 .sticky-fade {
