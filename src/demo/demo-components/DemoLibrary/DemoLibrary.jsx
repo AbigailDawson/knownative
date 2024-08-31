@@ -54,6 +54,7 @@ function DemoLibrary({
         {bookshelfTexts.map((difficulty, i) => {
           return (
             <DemoChooseTextCard
+              setTextSelection={setTextSelection}
               textSelection={difficulty}
               isActiveText={false}
               isTopOfBookshelf={i === 0}

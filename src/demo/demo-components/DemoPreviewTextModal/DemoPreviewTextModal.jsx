@@ -13,13 +13,15 @@ function DemoPreviewTextModal({
   showPreviewTextModal,
   setShowPreviewTextModal,
   textSelection,
+  setTextSelection,
 }) {
   function handleCloseShowPreviewModal() {
     setShowPreviewTextModal(false);
   }
 
   function handleLoadNewText() {
-    //functionality for later...
+    setTextSelection(textSelection);
+    setShowPreviewTextModal(false);
   }
 
   return (
@@ -68,7 +70,10 @@ function DemoPreviewTextModal({
         </Modal.Body>
         <Modal.Footer className="show-preview-modal-buttons-container">
           <section>
-            <button className="show-preview-modal-load-text-btn">
+            <button
+              className="show-preview-modal-load-text-btn"
+              onClick={handleLoadNewText}
+            >
               <strong>Load Text</strong>
             </button>
             <button

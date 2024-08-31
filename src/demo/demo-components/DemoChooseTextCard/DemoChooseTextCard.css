@@ -25,6 +25,7 @@
 
 .demo-choose-text-hide-visibility {
   visibility: hidden;
+  pointer-events: none;
 }
 
 .demo-choose-text-magnify-glass-container {

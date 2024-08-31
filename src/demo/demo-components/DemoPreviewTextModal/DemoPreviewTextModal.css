@@ -82,7 +82,17 @@
   color: var(--teal-lt);
 }
 
+.show-preview-modal-load-text-btn:hover {
+  color: var(--dark-action);
+  background-color: var(--teal);
+}
+
 .show-preview-modal-close-btn {
   color: var(--dark-action);
   background-color: var(--teal-lt);
+}
+
+.show-preview-modal-close-btn:hover {
+  background-color: var(--teal);
+  color: var(--teal-lt);
 }
