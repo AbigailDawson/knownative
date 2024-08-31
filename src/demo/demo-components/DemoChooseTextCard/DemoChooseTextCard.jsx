@@ -24,16 +24,25 @@ const DemoChooseTextCard = ({
           : `demo-choose-text-bookshelf-cards`
       } ${isTopOfBookshelf && `demo-choose-text-top-bookshelf-card`}`}
     >
+      <DemoPreviewTextModal
+        showPreviewTextModal={showPreviewTextModal}
+        setShowPreviewTextModal={setShowPreviewTextModal}
+        textSelection={textSelection}
+      />
       <section>
         <h3 className="demo-choose-text-chinese-characters">天氣</h3>
         <article>
           <DemoDifficultyTag textSelection={textSelection} />
         </article>
       </section>
-      <section className="demo-choose-text-magnify-glass-container">
+      <section
+        className={`${
+          !isActiveText && "demo-choose-text-magnify-glass-container"
+        }`}
+        onClick={handleMagnifyGlassClick}
+      >
         <FaSearch
           className={`${isActiveText && "demo-choose-text-hide-visibility"}`}
-          onClick={handleMagnifyGlassClick}
         />
       </section>
     </article>
