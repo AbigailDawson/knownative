@@ -1,117 +1,115 @@
 .Popup {
-  position: absolute;
-  background-color: #effffc;
-  border: 1px solid #bed3d1;
-  border-radius: 1vmin;
-  padding: 1.75vmin 1.5vmin 0 1.5vmin;
-  left: 50%; 
-  top: 50%; 
-  margin-left: -100px; 
-  margin-top: -30px; 
-  box-shadow: 0 0 5px rgba(0,0,0,0.2);
-  min-width: 200px;
-  overflow: visible;
-  z-index: 1;
+    position: absolute;
+    background-color: #effffc;
+    border: 1px solid #bed3d1;
+    border-radius: 1vmin;
+    padding: 1.75vmin 1.5vmin 0 1.5vmin;
+    left: 50%;
+    top: 50%;
+    margin-left: -100px;
+    margin-top: -30px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    min-width: 200px;
+    overflow: visible;
+    z-index: 1;
 }
 
 .popup-content {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    bottom: 0;
 }
 
 .popup-arrow {
-  position: absolute;
-  bottom: 0;
-  left: 20%;
-  margin-bottom: -5px;
-  margin-left: -10px;
-  background-color: #effffc;
-  transform: rotate( 45deg );
-  height: 15px;
-  width: 15px;
-  z-index: -1;
-  box-shadow: 2px 2px 2px 0 rgba( 178, 178, 178, .4 );
+    position: absolute;
+    bottom: 0;
+    left: 20%;
+    margin-bottom: -5px;
+    margin-left: -10px;
+    background-color: #effffc;
+    transform: rotate(45deg);
+    height: 15px;
+    width: 15px;
+    z-index: -1;
+    box-shadow: 2px 2px 2px 0 rgba(178, 178, 178, 0.4);
 }
 
 .popup-glyphs {
-  font-size: 2rem;
-  color: black;
-  font-weight: bold;
+    font-size: 2rem;
+    color: black;
+    font-weight: bold;
 }
 
 .popup-pinyin,
 .popup-meaning {
-  font-size: 0.9rem;
-  color: var(--drk-txt);
+    font-size: 0.9rem;
+    color: var(--drk-txt);
 }
 
-.popup-pinyin,.popup-glyphs,.popup-meaning {
-  margin: 0.5vmin 0; 
+.popup-pinyin,
+.popup-glyphs,
+.popup-meaning {
+    margin: 0.5vmin 0;
 }
 
 .close-btn {
-  font-size: 1.5rem; 
-  font-family: 'roboto';
-  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  background: none;
-  border: none;
-  padding: 1vmin 1vmin 0 0;
-  cursor: pointer;
-  position: absolute;
-  top: 0;
-  right: 0vmin;
-  color: #bed3d1;
+    font-size: 1.5rem;
+    font-family: "roboto";
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+        sans-serif;
+    background: none;
+    border: none;
+    padding: 1vmin 1vmin 0 0;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 0vmin;
+    color: #bed3d1;
 }
 
 .save-button {
-  background-color: #58bdaa;
-  cursor: pointer;
-  position: absolute;
-  width: 1.3rem;
-  height: 1.4rem;
-  font-size: 2.5vmin; 
-  border-radius: 60%;
-  bottom: 0.8vmin;
-  right: 0.6vmin;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
+    background-color: #58bdaa;
+    cursor: pointer;
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    font-size: 20px;
+    border-radius: 50%;
+    bottom: 8px;
+    right: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
 }
 
 .saved-button {
-  background-color: inherit !important;
-  color: #62BFAF;
+    background-color: inherit !important;
+    color: #62bfaf;
 }
 
 :disabled {
-  /* opacity: 50%; */
-  cursor: auto;
+    /* opacity: 50%; */
+    cursor: auto;
 }
 
 /* medium screens and smaller */
-@media (max-width: 768px) { 
-
-  .popup-glyphs {
-    font-size: 1.7rem;
-  }
-
-
+@media (max-width: 768px) {
+    .popup-glyphs {
+        font-size: 1.7rem;
+    }
 }
 
 /* small screens and smaller */
-@media (max-width: 550px) { 
+@media (max-width: 550px) {
+    .popup-glyphs {
+        font-size: 1.5rem;
+    }
 
-  .popup-glyphs {
-    font-size: 1.5rem;
-  }
-
-  .popup-pinyin,
-  .popup-meaning {
-    font-size: 0.8rem;
-  }
-  
+    .popup-pinyin,
+    .popup-meaning {
+        font-size: 0.8rem;
+    }
 }
