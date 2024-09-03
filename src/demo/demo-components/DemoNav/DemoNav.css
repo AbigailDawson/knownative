@@ -78,6 +78,10 @@ button.icontip-container label {
   gap: 5px;
 }
 
+label {
+  display: block;
+}
+
 /* medium screens and smaller */
 @media (max-width: 768px) { 
 

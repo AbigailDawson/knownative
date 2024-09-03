@@ -78,21 +78,6 @@ button {
     gap: 10px;
 }
 
-.sign-up {
-    background-color: var(--primary);
-    color: var(--darkest);
-    border: none;
-    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
-    gap: 10px;
-}
-
-.sign-up:hover {
-    background-color: var(--light);
-    color: var(--darkest);
-    box-shadow: none;
-    gap: 10px;
-}
-
 .github-button {
     background-color: var(--white);
     color: var(--primary);
@@ -145,6 +130,7 @@ a {
     display: grid;
     grid-template-columns: 180px auto;
     height: 90vh;
+    transition: 300ms ease-in-out;
 }
 
 .page.expanded-sidebar {
@@ -152,7 +138,7 @@ a {
 }
 
 .page.collapsed-sidebar {
-    grid-template-columns: 180px auto;
+    grid-template-columns: 180px 0 auto;
 }
 
 .main-area {
@@ -171,6 +157,7 @@ a {
     width: 0;
     padding: 0;
     border-right: none;
+    transition: 300ms ease-in-out;
 }
 
 .side-nav {
@@ -195,7 +182,7 @@ a {
     background-color: #f5faf9;
     border-right: 1px solid var(--medium);
     height: 100vh;
-    width: 420;
+    width: 420px;
 }
 
 .sticky-fade {
@@ -207,6 +194,56 @@ a {
   z-index: 4;
 }
 
+/* contact page */
+.media-links{
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.form {
+    background-color: none;
+    border: 1px solid var(--light);
+    border-radius: 8px;
+}
+
+.form-input {
+    background-color: var(--lightest);
+    border: none;
+    width: 100%;
+}
+
+.sign-up {
+    background-color: var(--primary);
+    color: var(--darkest);
+    border: none;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+    margin-left: 0;
+}
+
+.sign-up:hover {
+    background-color: var(--light);
+    color: var(--darkest);
+    box-shadow: none;
+    gap: 10px;
+}
+
+.contact-hr {
+    border: .2px solid var(--primary);
+    margin: 2rem 0;
+}
+
+.socials{
+    height: 10px;
+    font-size: small;
+    margin: 0;
+}
+
+.knownative-link {
+    color: var(--primary);
+}
+/* contact page ends */
+
 .zh {
     font-family: "Noto Serif TC", serif;
 }
@@ -215,5 +252,11 @@ a {
 @media (max-width: 400px) {
     .tab-btn {
         font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 990px) {
+    .form {
+        margin-top: 0;
     }
 }

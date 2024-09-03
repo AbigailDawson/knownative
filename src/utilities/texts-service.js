@@ -1,5 +1,5 @@
 export function splitSentences(text) {
-  return text.split(/([。.])/) 
+  return text.split(/([。])/) 
              .filter(sentence => sentence.trim() !== '') 
              .reduce((acc, current, index, array) => { 
                if (index % 2 === 0) { 
