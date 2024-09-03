@@ -246,6 +246,7 @@ export default function DemoTextPage({ getText, updateText }) {
             handleBackArrowClick={handleBackArrowClick}
             textSelection={textSelection}
             setTextSelection={setTextSelection}
+            setLocalSavedWords={setLocalSavedWords}
           />
         )}
       </aside>

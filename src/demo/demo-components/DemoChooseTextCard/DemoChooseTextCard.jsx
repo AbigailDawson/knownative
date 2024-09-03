@@ -10,6 +10,7 @@ const DemoChooseTextCard = ({
   textSelection,
   isActiveText,
   isTopOfBookshelf,
+  setLocalSavedWords,
 }) => {
   const [showPreviewTextModal, setShowPreviewTextModal] = useState(false);
 
@@ -30,6 +31,7 @@ const DemoChooseTextCard = ({
         setShowPreviewTextModal={setShowPreviewTextModal}
         textSelection={textSelection}
         setTextSelection={setTextSelection}
+        setLocalSavedWords={setLocalSavedWords}
       />
       <section>
         <h3 className="demo-choose-text-chinese-characters">天氣</h3>

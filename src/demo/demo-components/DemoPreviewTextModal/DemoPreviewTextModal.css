@@ -71,7 +71,7 @@
   gap: 2rem;
 }
 
-.show-preview-modal-buttons-container {
+.show-preview-modal-footer {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -80,6 +80,11 @@
 .show-preview-modal-load-text-btn {
   background-color: var(--dark-action);
   color: var(--teal-lt);
+}
+
+.show-preview-modal-btns-ctn {
+  display: flex;
+  gap: 10px;
 }
 
 .show-preview-modal-load-text-btn:hover {

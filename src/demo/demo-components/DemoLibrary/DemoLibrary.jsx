@@ -7,6 +7,7 @@ function DemoLibrary({
   handleBackArrowClick,
   textSelection,
   setTextSelection,
+  setLocalSavedWords,
 }) {
   const [mainText, setMainText] = useState(textSelection);
   const [bookshelfTexts, setBookShelfTexts] = useState([]);
@@ -36,7 +37,11 @@ function DemoLibrary({
         />
       </header>
       <section className="demo-library-subtext">
-        <p>Choose a different text to use this demo.</p>
+        <p>
+          Choose a different text for this demo by clicking the magnifying glass
+          icons in the Bookshelf section. You will be able to see a preview of
+          the text prior to loading it.
+        </p>
         <p>
           In the full version of KnowNative, you can import any text you want.
         </p>
@@ -58,6 +63,7 @@ function DemoLibrary({
               textSelection={difficulty}
               isActiveText={false}
               isTopOfBookshelf={i === 0}
+              setLocalSavedWords={setLocalSavedWords}
               key={difficulty + i + "bookshelf"}
             />
           );
