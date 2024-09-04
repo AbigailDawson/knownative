@@ -1,8 +1,111 @@
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import LandingPageNav from '../../components/LandingPageNav/LandingPageNav';
 import LandingPageFooter from '../../components/LandingPageFooter/LandingPageFooter';
 import './AboutPage.css';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
 
 export default function AboutPage() {
+  const [show, setShow] = useState(null); // Change initial state to null
+  
+  const handleClose = () => setShow(null); // Set show to null on close
+  const handleShow = (name) => setShow(name); // Set show to the contributor's name so that only that contributor's modal opens
+
+const coreContributors = [
+  // when adding new in contributors add in by last name alphabetical order
+  // fomatting for each contributor is as follows (delete portfolio if they do not have one):
+  // {name: first last
+  //   image: ***New Contributors will need an image saved in images/core-contributors in a  500px x 500 px png and naming convention should be First-Last.png**,
+  //   bio: in html with <p> elements
+  //   linkedin: full url
+  //   github: full url
+  //   portfolio: delete if not provided
+  //   }
+  {name: "Sarma Akondi",
+    image: "/images/core-contributors/Placeholder-image.png",
+    bio: "<p>Sarma made the big move from India to Australia in January 2024 and jumped straight into the tech world, graduating from the Software Engineering Immersive bootcamp at General Assembly, Sydney, in August 2024. Right now, Sarma is having a blast working with the team at KnowNative, where he is putting my skills to good use. When he is not coding, he is probably diving into some anime, hitting the gym, or just chilling with a book or some tunes—Sarma's taste in music is all over the place!</p>",
+    linkedin: "https://www.linkedin.com/in/sarmaakondi/",
+    github: "https://github.com/sarmaakondi",
+    portfolio: "https://sarmaakondi.github.io/portfolio/"
+  },
+  {name: "Seanna Arnold",
+    image: "/images/core-contributors/Placeholder-image.png",
+    bio: "<p>A software engineer driven by a passion for creative problem-solving and user-centric innovation. With a multicultural upbringing spanning Africa and Asia, I am able to build natural rapport with others from various regions and backgrounds and Seanna is eager to contribute her technical skills and creativity to help drive business needs forward.</p>",
+    linkedin: "https://www.linkedin.com/in/seanna-arnold/",
+    github: "https://seanna-arnold.com/",
+    portfolio: "https://github.com/Seanna-Arnold"
+  },
+  {name: "Mel Boyajian",
+    image: "/images/core-contributors/Placeholder-image.png",
+    bio: "<p>Mel is an aspiring full-stack software developer 🖥 proficient in JavaScript and Python, back-end and front-end technologies who has worked as an LGBTQ advocate 🏳️‍🌈, video producer 🎥 , professor of video/photography👨🏻‍🏫, and baker 🥐. Mel's 10+ years of experience in media arts lent them a great eye for composition and design and taught them the importance of collaboration and resourcefulness. The culmination of Mel's experience in higher education, direct services, and culinary arts has given them excellent leadership skills, experience working with diverse populations, and great organizational and time management skills. In Mel's spare time they enjoy going on hikes 🥾and picnics 🧺, being in forests 🌲, and playing video games 🎮 and board games 🎲.</p>",
+    linkedin: "https://www.linkedin.com/in/mel-boyajian",
+    github: "https://github.com/m-boyajian",
+  },
+  {name: "Renna Carver",
+    image: "/images/core-contributors/Placeholder-image.png",
+    bio: "<p>Renna is a software engineer dedicated to making education more accessible through interactive learning tools. When Renna is not working on a project or teaching, you can find her lacing up my roller skates and hitting the pavement or learning a new language. Current stack: React, Node, Express, and MongoDB.</p>",
+    linkedin: "https://www.linkedin.com/in/alex-grimes-dev/",
+    github: "https://github.com/agrimes23",
+    portfolio: "https://alex-grimes-software-engineer.vercel.app/"
+  },
+    {name: "Alex Grimes",
+    image: "/images/core-contributors/Placeholder-image.png",
+    bio: "<p> Alex is a software developer with experience in React, TypeScript, Next.js, and Python. Alex spent two years in Japan as an English teaching assistant, where she worked with local teachers to create engaging learning activities. Along the way, she gained intermediate proficiency in Japanese and passed the N3 JLPT exam.</p><p>As an IT Junior Software Engineer, Alex managed a Python project that analyzed website performance metrics using API results, optimized data retrieval with stored procedures, and leveraged Power BI for insightful visualizations. Alex's experience includes migrating services to third-party APIs with Flask and writing a comprehensive suite of parameterized unit tests to ensure high code quality. In a previous role in accounting, she used Power Automate to shift from a paper-based approval system to an online one, speeding up approvals and making processes more efficient.</p>",
+    linkedin: "https://www.linkedin.com/in/rennacarver",
+    github: "http://github.com/rennacarver",
+    portfolio: "https://www.projectcarver.com/portfolio"
+  },
+  {name: "Jason Houn",
+    image: "/images/core-contributors/Placeholder-image.png",
+    bio: "<p>Jason is a software developer driven by a passion for music and language. With over 6 years in the music industry and a strong background in language learning, Jason strives to blend his experiences with his programming skills to contribute to impactful projects!</p>",
+    linkedin: "https://www.linkedin.com/in/jason-houn/",
+    github: "https://github.com/jsnhn",
+  },
+  {name: "Kate McElhaney",
+  image:"/images/core-contributors/Placeholder-image.png",
+  bio:"<p>Kate started her career in project management in the nonprofit and quasi-government sectors where she implemented, designed, launched, and managed customer relationship Management (CRM) systems and other efficiency web based tools. This is where her love of building tech tools that enhance workflows and make life a little more efficient blossomed to the point that she took the deep dive into software engineering and enrolled in an immersive software engineering program. She successfully completed the program and her passion for building full stack applications, particularly in React, continues as she gets to work with the KnowNative team.</p>",
+  linkedin:"https://www.linkedin.com/in/kate-mcelhaney/",
+  github:"https://github.com/K8MacEl",
+  portfolio: "https://katemcelhaney.com/"
+  },
+  {name:"Paul Santos",
+    image:"/images/core-contributors/Placeholder-image.png",
+    bio:"<p>Native to Los Angeles, California, Paul is a full-stack software engineer with a specialty in front-end development, particularly in developing React.js and Next.js applications. Paul's love for languages began in high school when he first started learning French. He furthered his studies in French language by pursuing a French and Francophone Studies minor at UCLA. Through KnowNative, Paul is able to combine his passion for software development with his love for language and linguistics, and he is excited to continue contributing to the application. In addition to software engineering and languages, Paul's hobbies include Tahitian dance, yoga, hip hop dance, hiking, and escape rooms. Before transitioning to software engineering, Paul also worked as home health physical therapist. With his unique blend of experiences, he aspires to break into the healthcare tech space in the future.</p>",
+    linkedin:"https://www.linkedin.com/in/paulsantos2107/",
+    github:"https://github.com/psantos2107"
+    },
+    {name: "Nakita Strangeways",
+      image:"/images/core-contributors/Placeholder-image.png",
+      bio:"<p>Nakita is a dedicated Software Engineer with 4+ years of experience specializing in front-end web development using React and CSS. Adept at creating intuitive, and visually appealing user interfaces. In her spare time, she enjoys gaming, hanging out with her pets, and expanding her experiences with trips and knowledge.</p>",
+      linkedin:"https://www.linkedin.com/in/nakita-strangeways/",
+      github:"https://github.com/nakita-strangeways" 
+      },
+      {name: "Zephyr Worthington",
+        image:"/images/core-contributors/Placeholder-image.png",
+        bio: "<p>A theatre kid turned software engineer, Zephyr is a versatile full-stack developer with a passion for solving complex technical puzzles. When not coding, you can find them rock climbing, hanging out with their dog, trying a new cupcake recipe, or working on their latest crochet project.</p>",
+        linkedin: "https://www.linkedin.com/in/zephyrworthington",
+        github:"https://www.github.com/zephyr-c",
+        },
+        {name:"Ellie Wright",
+          image:"/images/core-contributors/Placeholder-image.png",
+          bio:"<p>Ellie Wright is a software developer with experience in many languages and libraries, including HTML/CSS, JavaScript, and React. She uses these skills to improve the structure, layout/styling, and components of the KnowNative frontend.</p><p>Graduating with a BA in Psychology in 2022, Ellie began her switch to the software field in 2023, graduating from her Software Development bootcamp in 2024. She is based in the Kansas City Metropolitan Area.</p>",
+          linkedin:"https://www.linkedin.com/in/ellewri/",
+          github:"https://github.com/ellewright",
+          },
+          {name:"Lisa Young",
+            image:"/images/core-contributors/Placeholder-image.png",
+            bio:"<p> Lisa is always looking to learn something new and improve their approach to what they already know. With nine years of professional experience as the team member who evaluates workflows to save time and increase revenue, Lisa uses their sharp eye for detail to improve communication, automate routine processes, and turn unruly data into insights, leading to more efficient work and happier customers.</p>",
+            linkedin:"https://www.linkedin.com/in/lisa-young-eayand/",
+            github:"https://github.com/eayand",
+            portfolio: "https://eayand.com/"
+            }
+
+]
+
   return (
     <>
       <div className="container">
@@ -21,64 +124,73 @@ export default function AboutPage() {
         </section>
         <section className="core-contributors">
           <h1>Core Contributors</h1>
-          <div className="contributor-container">
-            <div>
-              <a href="https://imgur.com/i3sxWLD"><img src="https://i.imgur.com/i3sxWLDb.png" title="source: imgur.com" /></a>
-              <p id="contributor-name">Core Contributor 1</p>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-              <a href="/">Social Media Link</a>
-            </div>
-            <div>
-              <a href="https://imgur.com/i3sxWLD"><img src="https://i.imgur.com/i3sxWLDb.png" title="source: imgur.com" /></a>
-              <p id="contributor-name">Core Contributor 2</p>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-              <a href="/">Social Media Link</a>
-            </div>
-            <div>
-              <a href="https://imgur.com/i3sxWLD"><img src="https://i.imgur.com/i3sxWLDb.png" title="source: imgur.com" /></a>
-              <p id="contributor-name">Core Contributor 3</p>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-              <a href="/">Social Media Link</a>
-            </div>
-            <div>
-              <a href="https://imgur.com/i3sxWLD"><img src="https://i.imgur.com/i3sxWLDb.png" title="source: imgur.com" /></a>
-              <p id="contributor-name">Core Contributor 4</p>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-              <a href="/">Social Media Link</a>
-            </div>
-            <div>
-              <a href="https://imgur.com/i3sxWLD"><img src="https://i.imgur.com/i3sxWLDb.png" title="source: imgur.com" /></a>
-              <p id="contributor-name">Core Contributor 5</p>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-              <a href="/">Social Media Link</a>
-            </div>
-            <div>
-              <a href="https://imgur.com/i3sxWLD"><img src="https://i.imgur.com/i3sxWLDb.png" title="source: imgur.com" /></a>
-              <p id="contributor-name">Core Contributor 6</p>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-              </p>
-              <a href="/">Social Media Link</a>
-            </div>
-            <div>
-              <a href="https://imgur.com/i3sxWLD"><img src="https://i.imgur.com/i3sxWLDb.png" title="source: imgur.com" /></a>
-              <p id="contributor-name">Core Contributor 7</p>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-              </p>
-              <a href="/">Social Media Link</a>
-            </div>
-            <div>
-              <a href="https://imgur.com/i3sxWLD"><img src="https://i.imgur.com/i3sxWLDb.png" title="source: imgur.com" /></a>
-              <p id="contributor-name">Core Contributor 8</p>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-              </p>
-              <a href="/">Social Media Link</a>  
-            </div>
-            <div>
-              <a href="https://imgur.com/i3sxWLD"><img src="https://i.imgur.com/i3sxWLDb.png" title="source: imgur.com" /></a>
-              <p id="contributor-name">Core Contributor 9</p>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-              <a href="/">Social Media Link</a>
-            </div>
+          <div className="row">
+            {coreContributors.map((contributor) => (
+              <div className="col-3" key={contributor.name}>
+                <div className="core-container">
+                  <Button variant="light" onClick={() => handleShow(contributor.name)} className="btn-outline-secondary">
+                    <img src={contributor.image} alt={contributor.name} className="rounded-circle" width="200" height="200" />
+                    <div className="contributor-name">
+                      <h4>{contributor.name}</h4>
+                    </div>
+                  </Button>
+                  <Modal
+                    show={show === contributor.name}
+                    onHide={handleClose}
+                    size="lg"
+                    aria-labelledby="contained-modal-title-vcenter"
+                    centered
+                  >
+                    <Modal.Header closeButton>
+                      <Modal.Title>{contributor.name}</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body className="grid-example">
+                      <Container>
+                        <Row>
+                          <Col xs={12} md={5}>
+                            <img src={contributor.image} alt={contributor.name} width="100%" />
+                            <div className="contributor-links">
+                              <a rel="noopener noreferrer" href={contributor.linkedin} target="_blank">
+                                <img src="/images/linkedin-icon.png" width="32" height="32" alt="LinkedIn" />
+                              </a>
+                              <a rel="noopener noreferrer" href={contributor.github} target="_blank">
+                                <img src="/images/github-icon.png" width="32" height="32" alt="Github" />
+                              </a>
+                              {contributor.portfolio && (
+                                <a rel="noopener noreferrer" href={contributor.portfolio} target="_blank">
+                                  <img src="/images/portfolio-icon.png" width="32" height="32" alt="WWW Icon" />
+                                </a>
+                              )}
+                            </div>
+                          </Col>
+                          <Col xs={12} md={7}>
+                            <div dangerouslySetInnerHTML={{ __html: contributor.bio }} />
+                          </Col>
+                        </Row>
+                      </Container>
+                    </Modal.Body>
+                    <Modal.Footer>
+                      <Button variant="secondary" onClick={handleClose}>
+                        Close
+                      </Button>
+                    </Modal.Footer>
+                  </Modal>
+                </div>
+                <div className="contributor-links">
+                              <a rel="noopener noreferrer" href={contributor.linkedin} target="_blank">
+                                <img src="/images/linkedin-icon.png" width="32" height="32" alt="LinkedIn" />
+                              </a>
+                              <a rel="noopener noreferrer" href={contributor.github} target="_blank">
+                                <img src="/images/github-icon.png" width="32" height="32" alt="Github" />
+                              </a>
+                              {contributor.portfolio && (
+                                <a rel="noopener noreferrer" href={contributor.portfolio} target="_blank">
+                                  <img src="/images/portfolio-icon.png" width="32" height="32" alt="WWW Icon" />
+                                </a>
+                              )}
+                            </div>
+              </div>
+            ))}
           </div>
         </section>
         <section className="how-to-contribute">
