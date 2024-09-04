@@ -3,9 +3,9 @@ import * as demoAPI from "../../../utilities/demo-api";
 import { useState, useEffect } from "react";
 import DemoTranslation from "../DemoTranslation/DemoTranslation";
 
-export default function DemoSentence({ sentence }) {
+export default function DemoSentence({ sentence, isFirst }) {
   const [translation, setTranslation] = useState("");
-  const [showTranslation, setShowTranslation] = useState(false);
+  const [showTranslation, setShowTranslation] = useState(isFirst || false);
 
   useEffect(() => {
     const fetchTranslation = async () => {
