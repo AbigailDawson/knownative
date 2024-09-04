@@ -55,35 +55,40 @@
 }
 
 .close-btn {
-    font-size: 1.5rem;
-    font-family: "roboto";
-    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
-        sans-serif;
+    font-size: 24px;
     background: none;
     border: none;
-    padding: 1vmin 1vmin 0 0;
     cursor: pointer;
     position: absolute;
-    top: -12px;
+    top: -8px;
     right: 2px;
-    color: #bed3d1;
+    color: hsl(174, 19%, 69%);
 }
 
 .save-button {
-    background-color: hsl(169, 43%, 54%);
+    background-color: #58bdaa;
     cursor: pointer;
     position: absolute;
-    width: 25px;
-    height: 25px;
-    font-size: 24px;
-    font-weight: 500;
+    width: 24px;
+    height: 24px;
+    font-size: 20px;
     border-radius: 50%;
-    bottom: 8px;
-    right: 8px;
+    bottom: 10px;
+    right: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: hsl(0, 0%, 98%);
+    color: white;
+}
+
+.saved-button {
+    background-color: inherit !important;
+    color: #62bfaf;
+}
+
+:disabled {
+    /* opacity: 50%; */
+    cursor: auto;
 }
 
 /* medium screens and smaller */

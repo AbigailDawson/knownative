@@ -1,7 +1,28 @@
+import { useState, useEffect } from "react";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import "./DemoLibrary.css";
+import DemoChooseTextCard from "../DemoChooseTextCard/DemoChooseTextCard";
 
-function DemoLibrary({ handleBackArrowClick }) {
+function DemoLibrary({
+  handleBackArrowClick,
+  textSelection,
+  setTextSelection,
+}) {
+  const [mainText, setMainText] = useState(textSelection);
+  const [bookshelfTexts, setBookShelfTexts] = useState([]);
+
+  useEffect(() => {
+    //the filtered books will determine what goes in the "bookshelf" section. all of this will be based on the textSelection variable, which is determined by the welcome modal.
+    const difficulties = ["beginner", "intermediate", "advanced"];
+    const filteredBooks = difficulties.filter(
+      (difficulty) => difficulty !== textSelection
+    );
+
+    //maintext will go under "currently reading" header
+    setMainText(textSelection);
+    setBookShelfTexts(filteredBooks);
+  }, [textSelection]);
+
   return (
     <main className="DemoLibrary">
       <header className="demo-library-header-container">
@@ -22,11 +43,24 @@ function DemoLibrary({ handleBackArrowClick }) {
       </section>
       <section className="demo-library-currently-reading-container">
         <h5>Currently Reading:</h5>
-        {/* Text cards to be implemented here */}
+        <DemoChooseTextCard
+          textSelection={mainText}
+          isActiveText={true}
+          isTopOfBookshelf={false}
+        />
       </section>
       <section className="demo-library-bookshelf-container">
-        <h5>Bookshelf:</h5>
-        {/* Text cards to be implemented here */}
+        <h5 className="demo-library-bookshelf-label">Bookshelf:</h5>
+        {bookshelfTexts.map((difficulty, i) => {
+          return (
+            <DemoChooseTextCard
+              textSelection={difficulty}
+              isActiveText={false}
+              isTopOfBookshelf={i === 0}
+              key={difficulty + i + "bookshelf"}
+            />
+          );
+        })}
       </section>
     </main>
   );
