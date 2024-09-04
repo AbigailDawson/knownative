@@ -8,3 +8,9 @@
    font-weight: 500;
    margin-bottom: 10px;
 }
+
+form {
+   margin: 0; 
+   border-radius: 0px !important; 
+   background-color: transparent;
+}
