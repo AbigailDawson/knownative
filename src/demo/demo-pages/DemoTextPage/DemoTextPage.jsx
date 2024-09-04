@@ -19,8 +19,12 @@ import demoTexts from '../../demodata'
 
 export default function DemoTextPage({ getText, updateText }) {
 
+// --- DISPLAY STATE VALUES ---
   const [activeTab, setActiveTab] = useState("read");
-  //-- TEXT DIFFICULTY --
+  const [sidebarCategory, setSidebarCategory] = useState(null);
+  const [expandedSidebar, setExpandedSidebar] = useState(false);
+
+//-- TEXT DIFFICULTY STATE VALUES--
   const [textSelection, setTextSelection] = useState(
     (localStorage.getItem("textSelection")  === null) ? "beginner" : localStorage.getItem("textSelection")
   );
@@ -28,25 +32,24 @@ export default function DemoTextPage({ getText, updateText }) {
     (localStorage.getItem("text")  === null) ? demoTexts.beginner : JSON.parse(localStorage.getItem("text"))
   );
 
-  // --- SAVED WORDS ---
+// --- SAVED WORDS ---
   const [localSavedWords, setLocalSavedWords] = useState(
     JSON.parse(localStorage.getItem("stringifiedWords") === null)
       ? []
       : JSON.parse(localStorage.getItem("stringifiedWords"))
   );
   // const [savedWords, setSavedWords] = useState([]);
+  
+// --- STUDY TAB STATE ---
   const [activeWord, setActiveWord] = useState(null);
-  const [expandedSidebar, setExpandedSidebar] = useState(false);
-
-  // --- POPUP ---
   const [showPopup, setShowPopup] = useState(false);
 
-  // --- MODALS ---
+// --- EXIT MODAL ---
   const [showExitModal, setShowExitModal] = useState(false);
   const handleShowExit = () => setShowExitModal(true);
   const handleCloseExit = () => setShowExitModal(false);
 
-  // --- WELCOME MODAL ---
+// --- WELCOME MODAL ---
   const [isDemoWelcomeModalOpen, setDemoWelcomeModalOpen] = useState(true);
   //const [demoWelcomeModalData, setDemoWelcomeModalData] = useState(null);
   const [welcomeModalComplete, setWelcomeModalComplete] = useState(
@@ -64,10 +67,11 @@ export default function DemoTextPage({ getText, updateText }) {
     handleCloseDemoWelcomeModal();
   };
 
+// --- REFS ---
   const topRef = useRef(null);
   const blurRef = useRef(null);
 
-  // --- Text Selection Side Effects---
+// --- Text Selection Side Effects---
   useEffect(
      () => {
       setText(demoTexts[textSelection])
@@ -94,23 +98,8 @@ export default function DemoTextPage({ getText, updateText }) {
     [localSavedWords]
   );
 
-  function handleTabClick(tabName) {
-    topRef.current?.scroll(0, 0);
-    setActiveTab(tabName);
-  }
 
-  // async function favoriteText(text, textId) {
-  //   const updatedText = await textsAPI.favoriteText(text, textId);
-  //   updateText(updatedText);
-  // }
-
-  // async function saveWord(word, textId) {
-  //   const savedWord = await textsAPI.saveWord(word, textId)
-  //   setSavedWords([...savedWords, savedWord])
-  //   setActiveWord('')
-  //   setShowPopup(false)
-  // }
-
+// --- SAVED WORDS RELATED FUNCTIONS ---
   function generateID() {
     const savedWords = JSON.parse(localStorage.getItem("stringifiedWords"));
     if (savedWords.length === 0) {
@@ -129,12 +118,11 @@ export default function DemoTextPage({ getText, updateText }) {
     setShowPopup(false);
   }
 
-  // async function updateMeaning(word, formData) {
-  //   const updatedWord = await wordsAPI.updateMeaning(word, formData)
-  //   setSavedWords(prevSavedWords =>
-  //     prevSavedWords.map(savedWord =>
-  //       savedWord._id === updatedWord._id ? updatedWord : savedWord))
-  // }
+  function deleteWord(word) {
+    const savedWords = JSON.parse(localStorage.getItem("stringifiedWords"));
+    const filteredWords = savedWords.filter((item) => item._id !== word._id);
+    setLocalSavedWords([...filteredWords]);
+  }
 
   /* FUNCTION ALTERED to allow for users to have meaning, term, and reading updated after form submission.*/
   function updateWord(word, inputtedMeaning, inputtedTerm, inputtedReading) {
@@ -149,24 +137,11 @@ export default function DemoTextPage({ getText, updateText }) {
     setLocalSavedWords([...savedWords]);
   }
 
-  // async function deleteWord(word) {
-  //   setSavedWords(prevSavedWords =>
-  //     prevSavedWords.filter(savedWord => savedWord._id !== word._id))
-  //     try {
-  //       await wordsAPI.deleteWord(word)
-  //     } catch (error) {
-  //       console.error(error)
-  //     }
-  // }
-
-  function deleteWord(word) {
-    const savedWords = JSON.parse(localStorage.getItem("stringifiedWords"));
-    const filteredWords = savedWords.filter((item) => item._id !== word._id);
-    setLocalSavedWords([...filteredWords]);
-  }
-
-  //state that will be used to store data that will determine which sidebar content to present based on which sidebar is clicked.
-  const [sidebarCategory, setSidebarCategory] = useState(null);
+// --- DISPLAY RELATED FUNCTIONS ---
+  function handleTabClick(tabName) {
+    topRef.current?.scroll(0, 0);
+    setActiveTab(tabName);
+  } 
 
   //this function will change the type of content that should be displayed on the sidebar whenever one of the nav buttons is clicked
   function changeSidebarCategory(selectedIcon) {
@@ -189,6 +164,7 @@ export default function DemoTextPage({ getText, updateText }) {
     changeSidebarCategory(toolTipId);
   }
 
+  // blurs background text when flashcard game in progress
   const blurText = (isActive) => {
     if (isActive) {
       blurRef.current.style.filter = "blur(4px)";
@@ -196,6 +172,7 @@ export default function DemoTextPage({ getText, updateText }) {
       blurRef.current.removeAttribute("style");
     }
   };
+
 
   return !text ? (
     "Loading ..."
@@ -351,3 +328,34 @@ export default function DemoTextPage({ getText, updateText }) {
     </main>
   );
 }
+
+//--- OLD CODE ---
+
+  // async function favoriteText(text, textId) {
+  //   const updatedText = await textsAPI.favoriteText(text, textId);
+  //   updateText(updatedText);
+  // }
+
+  // async function saveWord(word, textId) {
+  //   const savedWord = await textsAPI.saveWord(word, textId)
+  //   setSavedWords([...savedWords, savedWord])
+  //   setActiveWord('')
+  //   setShowPopup(false)
+  // }
+
+  // async function updateMeaning(word, formData) {
+  //   const updatedWord = await wordsAPI.updateMeaning(word, formData)
+  //   setSavedWords(prevSavedWords =>
+  //     prevSavedWords.map(savedWord =>
+  //       savedWord._id === updatedWord._id ? updatedWord : savedWord))
+  // }
+
+  // async function deleteWord(word) {
+  //   setSavedWords(prevSavedWords =>
+  //     prevSavedWords.filter(savedWord => savedWord._id !== word._id))
+  //     try {
+  //       await wordsAPI.deleteWord(word)
+  //     } catch (error) {
+  //       console.error(error)
+  //     }
+  // }
