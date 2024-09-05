@@ -1,3 +1,4 @@
+import React, { useRef, useEffect, useState } from "react";
 import "./DemoWord.css";
 
 export default function DemoWord({
@@ -7,22 +8,20 @@ export default function DemoWord({
   isSaved,
   isSpecialChar,
   onClick,
-}) {
+}) 
+{
   return (
     <div className={`Word ${isSpecialChar ? "specialChar" : ""}`}>
       <p
-        className="zh"
+        className={`zh ${isSaved ? 'saved' : ''}`}
         onClick={!isSpecialChar ? onClick : undefined}
-        style={{ color: isSaved ? "var(--red)" : "var(--drk-txt)" }}
+        style={{ color: isSaved ? '#056a6d' : 'var(--drk-txt)'}}
       >
-        {word.text}
+        { word.text }
       </p>
-      <div
-        className="annotation"
-        style={{ visibility: isSaved ? "visible" : "hidden" }}
-      >
-        <p>{pinyin}</p>
-        <p>{meaning}</p>
+      <div className="annotation" style={{ visibility: isSaved ? 'visible' : 'hidden' }}>
+        <p className="pinyin">{pinyin}</p>
+        <p className="meaning">{meaning}</p>
       </div>
     </div>
   );

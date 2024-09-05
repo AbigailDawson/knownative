@@ -1,0 +1,17 @@
+dialog.demo-modal {
+  margin: auto;
+  text-align: left;
+  box-sizing: border-box;
+  overflow: auto;
+  width: 600px;
+  border: solid #BEBEBE 1px;
+  border-radius: 7px;
+  padding: 30px 30px 30px 30px;
+  transition: all ease-in 1s;
+  box-shadow: hsl(0 0% 0% / 10%) 0 0 0.5rem 0.25rem;
+ }
+ 
+ 
+ .demo-modal::backdrop {
+  background: hsl(0 0% 0% / 50%);
+ } 
