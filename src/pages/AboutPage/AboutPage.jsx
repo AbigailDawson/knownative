@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
 import LandingPageNav from '../../components/LandingPageNav/LandingPageNav';
 import LandingPageFooter from '../../components/LandingPageFooter/LandingPageFooter';
 import './AboutPage.css';
