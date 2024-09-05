@@ -25,38 +25,38 @@ const coreContributors = [
   //   portfolio: delete if not provided
   //   }
   {name: "Sarma Akondi",
-    image: "/images/core-contributors/Placeholder-image.png",
+    image: "/images/core-contributors/Sarma-Akondi.png",
     bio: "<p>Sarma made the big move from India to Australia in January 2024 and jumped straight into the tech world, graduating from the Software Engineering Immersive bootcamp at General Assembly, Sydney, in August 2024. Right now, Sarma is having a blast working with the team at KnowNative, where he is putting my skills to good use. When he is not coding, he is probably diving into some anime, hitting the gym, or just chilling with a book or some tunes—Sarma's taste in music is all over the place!</p>",
     linkedin: "https://www.linkedin.com/in/sarmaakondi/",
     github: "https://github.com/sarmaakondi",
     portfolio: "https://sarmaakondi.github.io/portfolio/"
   },
   {name: "Seanna Arnold",
-    image: "/images/core-contributors/Placeholder-image.png",
+    image: "/images/core-contributors/Seanna-Arnold.png",
     bio: "<p>A software engineer driven by a passion for creative problem-solving and user-centric innovation. With a multicultural upbringing spanning Africa and Asia, I am able to build natural rapport with others from various regions and backgrounds and Seanna is eager to contribute her technical skills and creativity to help drive business needs forward.</p>",
     linkedin: "https://www.linkedin.com/in/seanna-arnold/",
     github: "https://seanna-arnold.com/",
     portfolio: "https://github.com/Seanna-Arnold"
   },
   {name: "Mel Boyajian",
-    image: "/images/core-contributors/Placeholder-image.png",
+    image: "/images/core-contributors/Mel-Boyajian.png",
     bio: "<p>Mel is an aspiring full-stack software developer 🖥 proficient in JavaScript and Python, back-end and front-end technologies who has worked as an LGBTQ advocate 🏳️‍🌈, video producer 🎥 , professor of video/photography👨🏻‍🏫, and baker 🥐. Mel's 10+ years of experience in media arts lent them a great eye for composition and design and taught them the importance of collaboration and resourcefulness. The culmination of Mel's experience in higher education, direct services, and culinary arts has given them excellent leadership skills, experience working with diverse populations, and great organizational and time management skills. In Mel's spare time they enjoy going on hikes 🥾and picnics 🧺, being in forests 🌲, and playing video games 🎮 and board games 🎲.</p>",
     linkedin: "https://www.linkedin.com/in/mel-boyajian",
     github: "https://github.com/m-boyajian",
   },
   {name: "Renna Carver",
-    image: "/images/core-contributors/Placeholder-image.png",
+    image: "/images/core-contributors/Renna-Carver.png",
     bio: "<p>Renna is a software engineer dedicated to making education more accessible through interactive learning tools. When Renna is not working on a project or teaching, you can find her lacing up my roller skates and hitting the pavement or learning a new language. Current stack: React, Node, Express, and MongoDB.</p>",
-    linkedin: "https://www.linkedin.com/in/alex-grimes-dev/",
-    github: "https://github.com/agrimes23",
-    portfolio: "https://alex-grimes-software-engineer.vercel.app/"
+    linkedin: "https://www.linkedin.com/in/rennacarver",
+    github: "http://github.com/rennacarver",
+    portfolio: "https://www.projectcarver.com/portfolio"
   },
     {name: "Alex Grimes",
     image: "/images/core-contributors/Placeholder-image.png",
     bio: "<p> Alex is a software developer with experience in React, TypeScript, Next.js, and Python. Alex spent two years in Japan as an English teaching assistant, where she worked with local teachers to create engaging learning activities. Along the way, she gained intermediate proficiency in Japanese and passed the N3 JLPT exam.</p><p>As an IT Junior Software Engineer, Alex managed a Python project that analyzed website performance metrics using API results, optimized data retrieval with stored procedures, and leveraged Power BI for insightful visualizations. Alex's experience includes migrating services to third-party APIs with Flask and writing a comprehensive suite of parameterized unit tests to ensure high code quality. In a previous role in accounting, she used Power Automate to shift from a paper-based approval system to an online one, speeding up approvals and making processes more efficient.</p>",
-    linkedin: "https://www.linkedin.com/in/rennacarver",
-    github: "http://github.com/rennacarver",
-    portfolio: "https://www.projectcarver.com/portfolio"
+    linkedin: "https://www.linkedin.com/in/alex-grimes-dev/",
+    github: "https://github.com/agrimes23",
+    portfolio: "https://alex-grimes-software-engineer.vercel.app/"
   },
   {name: "Jason Houn",
     image: "/images/core-contributors/Placeholder-image.png",
