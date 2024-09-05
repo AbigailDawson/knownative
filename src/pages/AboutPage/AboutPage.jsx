@@ -289,7 +289,6 @@ const coreContributors = [
       </section>
     <LandingPageFooter />
     </div>
->>>>>>> dev-1.2
     </>
   );
 };
