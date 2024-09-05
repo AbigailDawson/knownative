@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
 import LandingPageNav from '../../components/LandingPageNav/LandingPageNav';
 import LandingPageFooter from '../../components/LandingPageFooter/LandingPageFooter';
 import './AboutPage.css';
@@ -108,21 +107,34 @@ const coreContributors = [
 
   return (
     <>
-      <div className="container">
-        <LandingPageNav />
-        <section className="intro">
-          <div>
-            <h1>What is KnowNative?</h1>
-            <p>Short description of the app, who it's for and what its purpose is.</p>
+    <div className="container">
+    <LandingPageNav />
+    <section className="intro">
+        <div>
+          <h1 className="about-header">What is KnowNative?</h1>
+          <p className="about-body">KnowNative provides a refreshing alternative to traditional textbooks, helping learners of traditional Chinese enhance their reading comprehension through an immersive and personalized study experience. By engaging with authentic language materials, learners gain a deeper understanding of how native speakers naturally communicate. With KnowNative, anyone can collect, annotate, and study their chosen materials, taking charge of their own learning journey.</p>
+        </div>
+      </section>
+      <section className="creator">
+        <div>
+          <div className="creator-container">
+            <div className="creator-container-left">
+              <h3 className="creator-heading">Meet Abigail, owner and creator of the KnowNative project</h3>
+              <p>Hi! I'm Abigail, the creator and owner of the KnowNative project.</p>
+              <p>My love for languages began with my first Japanese class in college. During my first semester, I had my first real conversation with an exchange student entirely in [broken] Japanese, and I was immediately hooked!</p>
+              <p>I poured myself into my language study, traveling to Japan for a year to live with a host family and study at Waseda University. I began teaching myself Mandarin, traveling to Taipei for another year in an immersion program at National Taiwan University. Having attained advanced proficiency in both Mandarin and Japanese, I returned to the US to pursue my M.A. in Asian Studies from Georgetown University, where I immersed myself in historical research of the Japanese colonial period in Taiwan.</p>
+              <p>After years of rigorous study, I stepped back from academia to seek out different experiences and figure out where exactly I could make an impact in the world. I worked with therapeutic horseback riding programs, managed a barn, traveled across the country and tutored English online. Finally, I decided to pursue a certification in software engineering to equip myself with a versatile skillset that would enable me to bring my own ideas to life through software.</p>
+              <p>The concept for KnowNative began as a daydream of the language learning app I wanted to see in the world, but it's since expanded beyond how I'd ever imagined it!</p>
+
+              
+            </div>
+            <div className="creator-container-right">
+              <img className="abigail-taiwan" src="./images/abigail-taiwan.jpg" alt="" />
+            </div>
           </div>
-        </section>
-        <section className="creator">
-          <div>
-            <h1>The Creator</h1>
-            <p>Abigail's bio here.</p>
-          </div>
-        </section>
-        <section className="core-contributors">
+        </div>
+      </section>
+      <section className="core-contributors">
           <h1>Core Contributors</h1>
           <div className="row">
             {coreContributors.map((contributor) => (
@@ -194,53 +206,6 @@ const coreContributors = [
           </div>
         </section>
         <section className="how-to-contribute">
-          <div>
-            <h1>How to contribute</h1>
-            <p>Two options: contribute to the open-source repository or become a Core Contributor.</p>
-          </div>
-        </section>
-        <section className="backstory">
-          <div>
-            <h1>The story behind KnowNative</h1>
-            <p>Longer description of how KnowNative came to be.</p>
-          </div>
-        </section>
-        <LandingPageFooter />
-      </div>
-    <div className="container">
-    <LandingPageNav />
-      <section className="intro">
-        <div>
-          <h1 className="about-header">What is KnowNative?</h1>
-          <p className="about-body">KnowNative provides a refreshing alternative to traditional textbooks, helping learners of traditional Chinese enhance their reading comprehension through an immersive and personalized study experience. By engaging with authentic language materials, learners gain a deeper understanding of how native speakers naturally communicate. With KnowNative, anyone can collect, annotate, and study their chosen materials, taking charge of their own learning journey.</p>
-        </div>
-      </section>
-      <section className="creator">
-        <div>
-          <div className="creator-container">
-            <div className="creator-container-left">
-              <h3 className="creator-heading">Meet Abigail, owner and creator of the KnowNative project</h3>
-              <p>Hi! I'm Abigail, the creator and owner of the KnowNative project.</p>
-              <p>My love for languages began with my first Japanese class in college. During my first semester, I had my first real conversation with an exchange student entirely in [broken] Japanese, and I was immediately hooked!</p>
-              <p>I poured myself into my language study, traveling to Japan for a year to live with a host family and study at Waseda University. I began teaching myself Mandarin, traveling to Taipei for another year in an immersion program at National Taiwan University. Having attained advanced proficiency in both Mandarin and Japanese, I returned to the US to pursue my M.A. in Asian Studies from Georgetown University, where I immersed myself in historical research of the Japanese colonial period in Taiwan.</p>
-              <p>After years of rigorous study, I stepped back from academia to seek out different experiences and figure out where exactly I could make an impact in the world. I worked with therapeutic horseback riding programs, managed a barn, traveled across the country and tutored English online. Finally, I decided to pursue a certification in software engineering to equip myself with a versatile skillset that would enable me to bring my own ideas to life through software.</p>
-              <p>The concept for KnowNative began as a daydream of the language learning app I wanted to see in the world, but it's since expanded beyond how I'd ever imagined it!</p>
-
-              
-            </div>
-            <div className="creator-container-right">
-              <img className="abigail-taiwan" src="./images/abigail-taiwan.jpg" alt="" />
-            </div>
-          </div>
-        </div>
-      </section>
-      <section className="core-contributors">
-        <div>
-          <h1 className="about-header">Core Contributors</h1>
-          <p className="about-body">Each contributor should write a short paragraph bio and provide links to any social media accounts and image they would like to be included.</p>
-        </div>
-      </section>
-      <section className="how-to-contribute">
         <div className="how-to-contribute-grid">
           <div className="how-to-contribute-left">
             <h1>How to contribute</h1>
