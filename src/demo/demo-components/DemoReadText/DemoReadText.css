@@ -41,6 +41,7 @@
 
 .read-text-block > .zh {
   text-wrap: wrap;
+  line-height: 2.0;
 }
 
 .easier.collapsed,
@@ -143,6 +144,15 @@
   cursor: pointer;
 }
 
+.text-area {
+  margin: 0 10vmin 0 10vmin;
+}
+
+.flex-row h1 {
+  font-weight: bolder;
+  font-size: 400%;
+}
+
 .disclaimer {
   font-style: italic;
   margin-top: 2vmin;
@@ -227,6 +237,13 @@
 @media (max-width: 550px) { 
   .read-text {
     padding: 4vmin 0 0 5vmin;
+  }
+
+}
+
+@media (max-width: 400px) { 
+  .text-area {
+    padding: 0 0 0 10vmin;
   }
 
 }

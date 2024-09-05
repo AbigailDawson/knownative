@@ -9,6 +9,7 @@ export default function DemoTranslateText({ text }) {
     <DemoSentence
       key={idx}
       sentence={sentence}
+      isFirst={idx === 0}
     />
   ))
 
