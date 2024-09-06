@@ -25,8 +25,8 @@ export default function ContactPage() {
                 </div>
               </div>
               <div class="col-lg-6 text-center d-flex flex-column align-items-center text-lg-start early-access">
-                <h3 class="fw-bold lh-1 mb-4">Sign up for early access</h3>
-                <iframe class="early-access-form mb-3" title="early-access-form" src="https://embeds.beehiiv.com/512b2f32-1ccd-4254-b0ef-9514515f60d6?slim=true" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" ></iframe>
+                <h3 class="fw-bold lh-1">Sign up for early access</h3>
+                <iframe class="early-access-form my-4" title="early-access-form" src="https://embeds.beehiiv.com/512b2f32-1ccd-4254-b0ef-9514515f60d6?slim=true" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" ></iframe>
                 <p class="col-lg-12 fs-6 text-center">We're planning to release a beta version of KnowNative by spring of 2025!</p> 
                 <p class="col-lg-12 fs-6 text-center">As a member, you'll be be able to <strong>build your own personalized study portal</strong> with your own imported articles. Everything will be saved so you'll never have to worry about losing your notes.</p>
                 <p class="col-lg-12 fs-6 text-center">Sign up to be notified when this beta version is released for a unique opportunity to be one of KnowNative's first members.</p>
