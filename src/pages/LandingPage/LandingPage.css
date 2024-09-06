@@ -11,8 +11,6 @@
 
 .early-access-form {
    margin: 0;
-   border: 2px solid var(--light);
-   border-radius: 5px !important;
+   border-radius: 4px !important;
    background-color: transparent;
 }
-

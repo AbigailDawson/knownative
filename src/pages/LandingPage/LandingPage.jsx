@@ -49,12 +49,12 @@ export default function LandingPage() {
         <section className="mailing-list">
           <div class="container mx-auto px-4 py-5">
             <div class=" g-lg-5 py-5">
-              <div class="d-flex flex-column align-items-center text-lg-start px-5">
+              <div class="d-flex flex-column align-items-center text-lg-start px-5 mx-4">
                 <h1 class="text-center display-6 fw-bold lh-1 mb-5">Sign up for early access</h1>
-                <iframe class="early-access-form mb-5" title="early-access-form" src="https://embeds.beehiiv.com/512b2f32-1ccd-4254-b0ef-9514515f60d6?slim=true" data-test-id="beehiiv-embed" height="52" frameborder="0" ></iframe>
-                <p class="text-center fs-6">We are planning to release a beta version of KnowNative by the end of 2024!</p>
-                <p class="text-center fs-6">As an early access member of KnowNative, you'll be able to create an account and build your own personalized study portal, uploading any article you'd like to learn from. Your articles, vocabulary lists and notes will all be saved so you'll never have to worry about losing your progress.</p>
-                <p class="text-center fs-6">Sign up to be notified when this beta version is released for a unique opportunity to be one of KnowNative's first members!</p>
+                <iframe class="early-access-form mb-5" title="early-access-form" src="https://embeds.beehiiv.com/512b2f32-1ccd-4254-b0ef-9514515f60d6?slim=true" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" ></iframe>
+                <p class="text-center fs-5">We are planning to release a beta version of KnowNative in spring of 2025!</p>
+                <p class="text-center fs-5">As an early access member of KnowNative, you'll be able to create an account and <strong>build your own personalized study portal</strong>, uploading any article you'd like to learn from. Your articles, vocabulary lists and notes will all be saved so you'll never have to worry about losing your progress.</p>
+                <p class="text-center fs-5">Sign up to be notified when this beta version is released for a unique opportunity to be one of KnowNative's first members!</p>
               </div>
             </div>
           </div>
