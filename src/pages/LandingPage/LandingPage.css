@@ -8,3 +8,11 @@
    font-weight: 500;
    margin-bottom: 10px;
 }
+
+.early-access-form {
+   margin: 0;
+   border: 2px solid var(--light);
+   border-radius: 5px !important;
+   background-color: transparent;
+}
+
