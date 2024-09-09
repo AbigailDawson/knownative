@@ -91,7 +91,7 @@
 .char-pinyin > .pinyin {
     font-size: 0.8rem;
     margin-bottom: 0px;
-    color: grey;
+    color: var(--dark);
 }
 
 .word-meaning {

@@ -58,18 +58,6 @@
     background: hsl(181, 100%, 31%);
 }
 
-.add-word-btn {
-    margin-top: 32px;
-    font-size: 32px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: hsl(181, 100%, 21%);
-    color: hsl(0, 0%, 98%);
-    transition: transform 0.3s ease-in-out;
-}
-
 .add-word-btn:hover {
     background-color: var(--teal);
     transform: scale(1.1);

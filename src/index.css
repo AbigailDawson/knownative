@@ -80,7 +80,7 @@ button {
 
 .github-button {
     background-color: var(--white);
-    color: var(--primary);
+    color: var(--action);
     outline: 1px solid var(--primary);
     gap: 10px;
 }
@@ -93,9 +93,12 @@ button {
 
 .social-links {
     background-color: var(--white);
-    color: var(--primary);
+    color: var(--action);
     border: 1px solid var(--primary);
     gap: 10px;
+    padding: 3px;
+    border-radius: 4px;
+    font-size: 12px;
 }
 
 .social-links:hover {
@@ -240,8 +243,10 @@ a {
 }
 
 .knownative-link {
-    color: var(--primary);
+    color: var(--action);
+    text-decoration: underline;
 }
+
 /* contact page ends */
 
 .zh {
