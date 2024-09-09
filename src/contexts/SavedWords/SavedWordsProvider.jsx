@@ -9,7 +9,7 @@ const SavedWordsDispatchContext = createContext(null);
 function useSavedWordsContext() {
   const context = useContext(SavedWordsContext);
   if (context === undefined) {
-    throw new Error("useSavedWordsContext was used outside of ModalProvider");
+    throw new Error("useSavedWordsContext was used outside of provider");
   }
   return context;
 }
@@ -18,7 +18,7 @@ function useSavedWordsDispatch() {
   const context = useContext(SavedWordsDispatchContext);
   if (context === undefined) {
     throw new Error(
-      "useSavedWordsDispatchContext was used outside of ModalProvider"
+      "useSavedWordsDispatchContext was used outside of provider"
     );
   }
   return context;
