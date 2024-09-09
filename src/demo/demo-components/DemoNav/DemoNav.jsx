@@ -36,7 +36,7 @@ export default function DemoNav({
       <div className="top-icons">
         <img
           src="/images/transparent-square-logo.png"
-          alt="logo"
+          alt="knownative logo"
           className="square-logo"
         />
         {/* Saved Words Icon*/}

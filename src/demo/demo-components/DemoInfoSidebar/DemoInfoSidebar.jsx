@@ -1,5 +1,6 @@
 import "./DemoInfoSidebar.css";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import { Link } from "react-router-dom";
 
 export default function DemoInfoSidebar({
     handleShowExit,
@@ -28,9 +29,9 @@ export default function DemoInfoSidebar({
             <button className="demo-info-dark-btn" onClick={null}>
                 Join our mailing list
             </button>
-            <button className="demo-info-light-btn" onClick={null}>
+            <Link className="demo-info-light-btn" onClick={null} to="/contact">
                 Contact us
-            </button>
+            </Link>
             <button
                 className="demo-info-light-btn"
                 onClick={() =>

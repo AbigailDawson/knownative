@@ -49,7 +49,6 @@ export default function DemoSavedWordsList({
           </article>
         </>
       )}
-      <button className="add-word-btn">+</button>
     </div>
   );
 }
