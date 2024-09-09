@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { BiLinkExternal } from "react-icons/bi";
 import "./DemoTextPage.css";
 import DemoStudyText from "../../demo-components/DemoStudyText/DemoStudyText";
 import DemoReadText from "../../demo-components/DemoReadText/DemoReadText";
@@ -257,7 +258,16 @@ export default function DemoTextPage({ getText, updateText }) {
               <h1 className="textpage-heading-title zh">{text.title}</h1>
               <article className="textpage-difficulty-tag">
                 <DemoDifficultyTag textSelection={textSelection} />
+                <a
+                  href={text.source}
+                  className="link-view-source"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  View Source <BiLinkExternal />
+                </a>
               </article>
+            
             </div>
           </div>
 

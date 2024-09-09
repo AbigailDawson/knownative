@@ -1,6 +1,7 @@
 import "./DemoPreviewTextModal.css";
 import { Modal } from "react-bootstrap";
 import { BsX } from "react-icons/bs";
+import { BiLinkExternal } from "react-icons/bi";
 import DemoDifficultyTag from "../DemoDifficultyTag/DemoDifficultyTag";
 import demoTexts from "../../demodata";
 
@@ -55,7 +56,7 @@ function DemoPreviewTextModal({
               target="_blank"
               rel="noreferrer"
             >
-              View Source
+              View Source <BiLinkExternal />
             </a>
           </section>
           <section className="show-preview-modal-text">
