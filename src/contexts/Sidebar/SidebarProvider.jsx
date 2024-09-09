@@ -5,7 +5,7 @@ import useSidebarState from "./SidebarReducer";
 const SidebarContext = createContext(null);
 const SidebarDispatchContext = createContext(null);
 
-//custom hooks to use the savedWordsContext and its dispatch. Implemented developer error handling just in case we need it
+//custom hooks to use the sidebarContext and its dispatch. Implemented developer error handling just in case we need it
 function useSidebarContext() {
   const context = useContext(SidebarContext);
   if (context === undefined) {
