@@ -49,8 +49,8 @@ button.icontip-container label {
   position: absolute;
   top: 20px;
   right: 30px;
-  background-color: var(--primary);
-  color: white;
+  background-color: var(--medium);
+  color: var(--dark-action);
   padding: 6px 7px 4px 6px;
   border-radius: 25%;
   font-size: 0.8rem;

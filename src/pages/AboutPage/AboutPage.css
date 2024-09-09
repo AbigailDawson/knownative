@@ -60,6 +60,33 @@
     padding-right: 60px;
 }
 
+/* Core Contributor section */
+
+.contributor-container {
+    display: grid;
+    grid-template-columns: repeat(3, 300px);
+    gap: 15px 15px;
+    align-items: center;
+    justify-content: center;
+}
+
+.contributor-container > div {
+    background-color: #fff; /* Background color for the box */
+    padding: 20px; /* Padding inside the box */
+    border-radius: 2px; /* Rounded corners */
+    text-align: center; /* Center text */
+}
+
+#contributor-name {
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.contributor-links{
+    margin-top: 10px;;
+    margin-bottom: 20px;
+}
+
 /* How to contribute section */
 .how-to-contribute {
     background-color: var(--light);
