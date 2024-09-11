@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import LandingPageNav from '../../components/LandingPageNav/LandingPageNav';
 import LandingPageFooter from '../../components/LandingPageFooter/LandingPageFooter';
-import DemoModal from '../../demo/demo-components/DemoModal/DemoModal'
+import Modal from '../../ui-components/Modal/modal';
 import './LandingPage.css';
 
 export default function LandingPage() {
@@ -13,7 +13,7 @@ export default function LandingPage() {
   const navigate = useNavigate();
 
   function handleScreenCheck() {
-    if (screenHeight <= 1024 || screenWidth <= 1366){
+    if (screenHeight <= 1024 || screenWidth <= 1366) {
       setShowModal(true);
     } else {
       navigate(`/demo`);
@@ -61,18 +61,27 @@ export default function LandingPage() {
         </section>
         <LandingPageFooter />
         {showModal ? (
-          <DemoModal hasCloseBtn={false} isOpen={showModal} onClose={() => setShowModal(false)} hasEscKey={false} >
-            <div className='landing-page-modal-content'>
-              <h1 className='landing-page-modal-content-header'>KnowNative is not optimized for mobile devices!</h1>
+          <Modal canCloseOnEscapeKey={false} setShowModal={setShowModal}>
+            <div className="landing-page-modal-content">
+              <h1 className="landing-page-modal-content-header">
+                KnowNative is not optimized for mobile devices!
+              </h1>
               <div>
-                Please consider using KnowNative on your desktop device until our mobile version is available.</div>
+                Please consider using KnowNative on your desktop device until our mobile version is
+                available.
+              </div>
             </div>
-            <div className='button-div'>
-              <button className='demo-button continue' onClick={handleModalButtonClick}>Continue Anyway</button>
-              <button className='back' onClick={() => setShowModal(false)}>Back</button>
+            <div className="landing-page-modal-buttons">
+              <button className="back" onClick={() => setShowModal(false)}>
+                {'Back'}
+              </button>
+              <button className="demo-button continue" onClick={handleModalButtonClick}>
+                {'Continue Anyways'}
+              </button>
             </div>
-          </DemoModal>): null }
+          </Modal>
+        ) : null}
       </div>
     </>
   );
-};
+}

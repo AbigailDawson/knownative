@@ -247,6 +247,30 @@ a {
     text-decoration: underline;
 }
 
+/* MODAL DEFAULT */
+#portal-modal {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#portal-modal:empty {
+  display: none;
+}
+
+#portal-modal > div {
+  padding: 15px;
+  border-radius: 10px;
+  background: #f9f9f9;
+}
+
 /* contact page ends */
 
 .zh {
