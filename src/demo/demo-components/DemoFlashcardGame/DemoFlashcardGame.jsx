@@ -5,7 +5,7 @@ import { IoMdClose } from "react-icons/io";
 import { GiCheckMark } from "react-icons/gi";
 import { PiRepeatBold } from "react-icons/pi";
 
-export default function DemoFlashcardGame({wordList, selectedFront, showPinyin}) {
+export default function DemoFlashcardGame({wordList, selectedFront, showPinyin, blurText}) {
     const [open, setOpen] = useState(false);
     const [flashcards, setFlashcards] = useState([]);
     const [gameInProgress, setGameInProgress] = useState(false);
@@ -21,6 +21,15 @@ export default function DemoFlashcardGame({wordList, selectedFront, showPinyin})
         }
     }
 
+    function shuffle(cards) {
+      let i = cards.length;
+      while(i > 0) {
+        let newIdx = Math.floor(Math.random() * i);
+        i--;
+        [cards[newIdx], cards[i]] = [cards[i], cards[newIdx]];
+      }
+    }
+
     function getFlashcards() {
         const flashcardsArray = wordList.map((word) => ({
             chinese: word.charGroup,
@@ -28,6 +37,7 @@ export default function DemoFlashcardGame({wordList, selectedFront, showPinyin})
             meaning: word.meaning,
             id: word._id,
         }));
+        shuffle(flashcardsArray);
         return flashcardsArray
   }
 
@@ -37,6 +47,7 @@ export default function DemoFlashcardGame({wordList, selectedFront, showPinyin})
         setGameInProgress(false);
         setOpen(false);
         setHasBeenFlipped(false);
+        blurText(false);
     }
 
     function handleCorrect() {
@@ -64,6 +75,7 @@ export default function DemoFlashcardGame({wordList, selectedFront, showPinyin})
         setRemainingCount(flashcardsArray.length);
         setGameInProgress(true);
         setOpen(true);
+        blurText(true);
     }
 
     function handlePlayAgain() {

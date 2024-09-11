@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { BiLinkExternal } from "react-icons/bi";
 import "./DemoTextPage.css";
 import DemoStudyText from "../../demo-components/DemoStudyText/DemoStudyText";
 import DemoReadText from "../../demo-components/DemoReadText/DemoReadText";
@@ -14,51 +15,76 @@ import DemoExitModal from "../../demo-components/DemoExitModal/DemoExitModal";
 import { getWordInfo } from "../../../utilities/words-service";
 import DemoLibrary from "../../demo-components/DemoLibrary/DemoLibrary";
 //import word from '../../../../models/word'
+import DemoDifficultyTag from "../../demo-components/DemoDifficultyTag/DemoDifficultyTag";
+import demoTexts from '../../demodata'
 
 export default function DemoTextPage({ getText, updateText }) {
-  const text = {
-    _id: "1",
-    title: "10 個台灣人最愛去的日本城市！",
-    content:
-      "位在日本本州中部的靜岡縣，鄰近神奈川縣，有著日本最高、最著名的世界遺產「富士山」，大家最喜歡去的景點之一「伊豆半島」更是連日本人都非常熱愛的度假勝地，還有熱海沙灘、夢幻景點大井川鐵路等。靜岡縣南部緊鄰太平洋，眺望廣闊綿延的海岸線，十分悠閒，如果喜愛休閒輕鬆的旅程，它會是你的好選擇！此外，去過靜岡縣「伊豆仙人掌動物園」的網友表示，「可以很親近不同的小動物，隻隻都會賣萌賺零食。水豚非常親人，袋鼠十分慵懶，看他們浸溫泉，可以看足一小時」、「水豚太可愛了，樂園小小的但規劃的很不錯，可以逛完大室山後來走走」，也推薦列入行程中喔。位在日本本州中部的靜岡縣，鄰近神奈川縣，有著日本最高、最著名的世界遺產「富士山」，大家最喜歡去的景點之一「伊豆半島」更是連日本人都非常熱愛的度假勝地，還有熱海沙灘、夢幻景點大井川鐵路等。靜岡縣南部緊鄰太平洋，眺望廣闊綿延的海岸線，十分悠閒，如果喜愛休閒輕鬆的旅程，它會是你的好選擇！此外，去過靜岡縣「伊豆仙人掌動物園」的網友表示，「可以很親近不同的小動物，隻隻都會賣萌賺零食。水豚非常親人，袋鼠十分慵懶，看他們浸溫泉，可以看足一小時」、「水豚太可愛了，樂園小小的但規劃的很不錯，可以逛完大室山後來走走」，也推薦列入行程中喔。位在日本本州中部的靜岡縣，鄰近神奈川縣，有著日本最高、最著名的世界遺產「富士山」，大家最喜歡去的景點之一「伊豆半島」更是連日本人都非常熱愛的度假勝地，還有熱海沙灘、夢幻景點大井川鐵路等。靜岡縣南部緊鄰太平洋，眺望廣闊綿延的海岸線，十分悠閒，如果喜愛休閒輕鬆的旅程，它會是你的好選擇！此外，去過靜岡縣「伊豆仙人掌動物園」的網友表示，「可以很親近不同的小動物，隻隻都會賣萌賺零食。水豚非常親人，袋鼠十分慵懶，看他們浸溫泉，可以看足一小時」、「水豚太可愛了，樂園小小的但規劃的很不錯，可以逛完大室山後來走走」，也推薦列入行程中喔。",
-    source:
-      "https://www.housefeel.com.tw/article/%E6%97%A5%E6%9C%AC%E6%97%85%E9%81%8A-%E6%97%A5%E6%9C%AC%E6%99%AF%E9%BB%9E-%E6%97%A5%E6%9C%AC%E8%A7%80%E5%85%89-%E6%97%A5%E6%9C%AC%E5%9F%8E%E5%B8%82/",
-    favorite: false,
-    archived: false,
-    easierText: "",
-  };
-  
-  const [activeTab, setActiveTab] = useState("read");
 
-  // --- SAVED WORDS ---
+// --- DISPLAY STATE VALUES ---
+  const [activeTab, setActiveTab] = useState("read");
+  const [sidebarCategory, setSidebarCategory] = useState(null);
+  const [expandedSidebar, setExpandedSidebar] = useState(false);
+
+//-- TEXT DIFFICULTY STATE VALUES--
+  const [textSelection, setTextSelection] = useState(
+    (localStorage.getItem("textSelection")  === null) ? "beginner" : localStorage.getItem("textSelection")
+  );
+  const [text, setText] = useState(
+    (localStorage.getItem("text")  === null) ? demoTexts.beginner : JSON.parse(localStorage.getItem("text"))
+  );
+
+// --- SAVED WORDS ---
   const [localSavedWords, setLocalSavedWords] = useState(
     JSON.parse(localStorage.getItem("stringifiedWords") === null)
       ? []
       : JSON.parse(localStorage.getItem("stringifiedWords"))
   );
   // const [savedWords, setSavedWords] = useState([]);
+  
+// --- STUDY TAB STATE ---
   const [activeWord, setActiveWord] = useState(null);
-  const [expandedSidebar, setExpandedSidebar] = useState(false);
-
-  // --- POPUP ---
   const [showPopup, setShowPopup] = useState(false);
 
-  // --- MODALS ---
+// --- EXIT MODAL ---
   const [showExitModal, setShowExitModal] = useState(false);
   const handleShowExit = () => setShowExitModal(true);
   const handleCloseExit = () => setShowExitModal(false);
 
-  // --- WELCOME MODAL ---
+// --- WELCOME MODAL ---
   const [isDemoWelcomeModalOpen, setDemoWelcomeModalOpen] = useState(true);
-  const [DemoWelcomeModalData, setDemoWelcomeModalData] = useState(null);
+  //const [demoWelcomeModalData, setDemoWelcomeModalData] = useState(null);
+  const [welcomeModalComplete, setWelcomeModalComplete] = useState(
+    (localStorage.getItem("welcomeModalComplete")  === null) ? false : JSON.parse(localStorage.getItem("welcomeModalComplete"))
+  )
 
-  const handleCloseDemoWelcomeModal = () => setDemoWelcomeModalOpen(false);
+  const handleCloseDemoWelcomeModal = () => {
+    setWelcomeModalComplete(true)
+    setDemoWelcomeModalOpen(false)
+    localStorage.setItem("welcomeModalComplete", 'true')
+  }
+
   const handleWelcomeModalSubmit = (data) => {
-    setDemoWelcomeModalData(data);
+    //setDemoWelcomeModalData(data);
     handleCloseDemoWelcomeModal();
   };
 
+// --- REFS ---
   const topRef = useRef(null);
+  const blurRef = useRef(null);
+
+// --- Text Selection Side Effects---
+  useEffect(
+     () => {
+      setText(demoTexts[textSelection])
+      localStorage.setItem(
+        "text",
+        JSON.stringify(demoTexts[textSelection])
+      )
+      
+      localStorage.setItem("textSelection", textSelection)
+    },
+    [textSelection]
+  )
 
   useEffect(
     function () {
@@ -73,23 +99,8 @@ export default function DemoTextPage({ getText, updateText }) {
     [localSavedWords]
   );
 
-  function handleTabClick(tabName) {
-    topRef.current?.scroll(0, 0);
-    setActiveTab(tabName);
-  }
 
-  // async function favoriteText(text, textId) {
-  //   const updatedText = await textsAPI.favoriteText(text, textId);
-  //   updateText(updatedText);
-  // }
-
-  // async function saveWord(word, textId) {
-  //   const savedWord = await textsAPI.saveWord(word, textId)
-  //   setSavedWords([...savedWords, savedWord])
-  //   setActiveWord('')
-  //   setShowPopup(false)
-  // }
-
+// --- SAVED WORDS RELATED FUNCTIONS ---
   function generateID() {
     const savedWords = JSON.parse(localStorage.getItem("stringifiedWords"));
     if (savedWords.length === 0) {
@@ -108,14 +119,13 @@ export default function DemoTextPage({ getText, updateText }) {
     setShowPopup(false);
   }
 
-  // async function updateMeaning(word, formData) {
-  //   const updatedWord = await wordsAPI.updateMeaning(word, formData)
-  //   setSavedWords(prevSavedWords =>
-  //     prevSavedWords.map(savedWord =>
-  //       savedWord._id === updatedWord._id ? updatedWord : savedWord))
-  // }
+  function deleteWord(word) {
+    const savedWords = JSON.parse(localStorage.getItem("stringifiedWords"));
+    const filteredWords = savedWords.filter((item) => item._id !== word._id);
+    setLocalSavedWords([...filteredWords]);
+  }
 
-  /* FUNCTION ALTERED to allow for users to have meaning, term, and reading updated after form submissio.*/
+  /* FUNCTION ALTERED to allow for users to have meaning, term, and reading updated after form submission.*/
   function updateWord(word, inputtedMeaning, inputtedTerm, inputtedReading) {
     const savedWords = JSON.parse(localStorage.getItem("stringifiedWords"));
     for (let k in savedWords) {
@@ -128,24 +138,11 @@ export default function DemoTextPage({ getText, updateText }) {
     setLocalSavedWords([...savedWords]);
   }
 
-  // async function deleteWord(word) {
-  //   setSavedWords(prevSavedWords =>
-  //     prevSavedWords.filter(savedWord => savedWord._id !== word._id))
-  //     try {
-  //       await wordsAPI.deleteWord(word)
-  //     } catch (error) {
-  //       console.error(error)
-  //     }
-  // }
-
-  function deleteWord(word) {
-    const savedWords = JSON.parse(localStorage.getItem("stringifiedWords"));
-    const filteredWords = savedWords.filter((item) => item._id !== word._id);
-    setLocalSavedWords([...filteredWords]);
-  }
-
-  //state that will be used to store data that will determine which sidebar content to present based on which sidebar is clicked.
-  const [sidebarCategory, setSidebarCategory] = useState(null);
+// --- DISPLAY RELATED FUNCTIONS ---
+  function handleTabClick(tabName) {
+    topRef.current?.scroll(0, 0);
+    setActiveTab(tabName);
+  } 
 
   //this function will change the type of content that should be displayed on the sidebar whenever one of the nav buttons is clicked
   function changeSidebarCategory(selectedIcon) {
@@ -168,6 +165,16 @@ export default function DemoTextPage({ getText, updateText }) {
     changeSidebarCategory(toolTipId);
   }
 
+  // blurs background text when flashcard game in progress
+  const blurText = (isActive) => {
+    if (isActive) {
+      blurRef.current.style.filter = "blur(4px)";
+    } else {
+      blurRef.current.removeAttribute("style");
+    }
+  };
+
+
   return !text ? (
     "Loading ..."
   ) : (
@@ -182,44 +189,46 @@ export default function DemoTextPage({ getText, updateText }) {
           changeSidebarCategory={changeSidebarCategory}
           sidebarCategory={sidebarCategory}
           savedWords={localSavedWords}
+          handleShowExit={handleShowExit}
         />
       </nav>
 
       {/* Conditional rendering, dependent on the values of expandedSidbar and sidebarCategory, that will determine if the sidebar is displayed and what content is displayed. */}
-      {expandedSidebar && (
-        <aside className="sidebar">
-          {sidebarCategory === "savedwords-tooltip" && (
-            <DemoSavedWordsList
-              savedWords={localSavedWords}
-              updateWord={updateWord}
-              deleteWord={deleteWord}
-              handleBackArrowClick={handleBackArrowClick}
-            />
-          )}
-          {sidebarCategory === "flashcards-tooltip" && (
-            <DemoFlashcardForm
-              expandSidebar={expandSidebar}
-              changeSidebarCategory={changeSidebarCategory}
-              localSavedWords={localSavedWords}
-              handleBackArrowClick={handleBackArrowClick}
-            />
-          )}
-          {sidebarCategory === "info-tooltip" && (
-            <DemoInfoSidebar
-              changeSidebarCategory={changeSidebarCategory}
-              handleBackArrowClick={handleBackArrowClick}
-              handleShowExit={handleShowExit}
-            />
-          )}
-          {sidebarCategory === "library-tooltip" && (
-            <DemoLibrary
-              changeSidebarCategory={changeSidebarCategory}
-              handleBackArrowClick={handleBackArrowClick}
-              handleShowExit={handleShowExit}
-            />
-          )}
-        </aside>
-      )}
+
+      <aside className="sidebar">
+        {sidebarCategory === "savedwords-tooltip" && (
+          <DemoSavedWordsList
+            savedWords={localSavedWords}
+            updateWord={updateWord}
+            deleteWord={deleteWord}
+            handleBackArrowClick={handleBackArrowClick}
+          />
+        )}
+        {sidebarCategory === "flashcards-tooltip" && (
+          <DemoFlashcardForm
+            expandSidebar={expandSidebar}
+            changeSidebarCategory={changeSidebarCategory}
+            localSavedWords={localSavedWords}
+            handleBackArrowClick={handleBackArrowClick}
+            blurText={blurText}
+          />
+        )}
+        {sidebarCategory === "info-tooltip" && (
+          <DemoInfoSidebar
+            changeSidebarCategory={changeSidebarCategory}
+            handleBackArrowClick={handleBackArrowClick}
+          />
+        )}
+        {sidebarCategory === "library-tooltip" && (
+          <DemoLibrary
+            handleBackArrowClick={handleBackArrowClick}
+            textSelection={textSelection}
+            setTextSelection={setTextSelection}
+            setLocalSavedWords={setLocalSavedWords}
+          />
+        )}
+      </aside>
+
 
       <section className="main-area" ref={topRef}>
         <div className="tabs sticky-fade">
@@ -243,10 +252,22 @@ export default function DemoTextPage({ getText, updateText }) {
           </button>
         </div>
 
-        <div className="text-area">
+        <div className="text-area" ref={blurRef}>
           <div className="textpage-heading">
             <div className="flex-row">
               <h1 className="textpage-heading-title zh">{text.title}</h1>
+              <article className="textpage-difficulty-tag">
+                <DemoDifficultyTag textSelection={textSelection} />
+                <a
+                  href={text.source}
+                  className="link-view-source"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  View Source <BiLinkExternal />
+                </a>
+              </article>
+            
             </div>
           </div>
 
@@ -303,13 +324,48 @@ export default function DemoTextPage({ getText, updateText }) {
           />
         }
       </div>
-      
-      <DemoWelcomeModal
-        isOpen={isDemoWelcomeModalOpen}
-        onSubmit={handleWelcomeModalSubmit}
-        onClose={handleCloseDemoWelcomeModal}
-      />
 
+      {welcomeModalComplete ? ""
+        : (<DemoWelcomeModal
+            isOpen={isDemoWelcomeModalOpen}
+            onSubmit={handleWelcomeModalSubmit}
+            onClose={handleCloseDemoWelcomeModal}
+            textSelection={textSelection}
+            setTextSelection={setTextSelection}
+          />)
+      }
+      
     </main>
   );
 }
+
+//--- OLD CODE ---
+
+  // async function favoriteText(text, textId) {
+  //   const updatedText = await textsAPI.favoriteText(text, textId);
+  //   updateText(updatedText);
+  // }
+
+  // async function saveWord(word, textId) {
+  //   const savedWord = await textsAPI.saveWord(word, textId)
+  //   setSavedWords([...savedWords, savedWord])
+  //   setActiveWord('')
+  //   setShowPopup(false)
+  // }
+
+  // async function updateMeaning(word, formData) {
+  //   const updatedWord = await wordsAPI.updateMeaning(word, formData)
+  //   setSavedWords(prevSavedWords =>
+  //     prevSavedWords.map(savedWord =>
+  //       savedWord._id === updatedWord._id ? updatedWord : savedWord))
+  // }
+
+  // async function deleteWord(word) {
+  //   setSavedWords(prevSavedWords =>
+  //     prevSavedWords.filter(savedWord => savedWord._id !== word._id))
+  //     try {
+  //       await wordsAPI.deleteWord(word)
+  //     } catch (error) {
+  //       console.error(error)
+  //     }
+  // }
