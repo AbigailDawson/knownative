@@ -15,7 +15,7 @@ export default [
   },
   {
     rules: {
-      'no-console': ['warn'],
+      'no-console': ['error'],
       'react/prop-types': ['off'],
       'react/react-in-jsx-scope': ['off']
     }
