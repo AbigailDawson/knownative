@@ -61,11 +61,12 @@ export default function LandingPage() {
         </section>
         <LandingPageFooter />
         {showModal ? (
-          <Modal canCloseOnEscapeKey={false} setShowModal={setShowModal}>
+          <Modal
+            canCloseOnEscapeKey={false}
+            hasCloseBtn={false}
+            modalTitle="KnowNative is not optimized for mobile devices!"
+            setShowModal={setShowModal}>
             <div className="landing-page-modal-content">
-              <h1 className="landing-page-modal-content-header">
-                KnowNative is not optimized for mobile devices!
-              </h1>
               <div>
                 Please consider using KnowNative on your desktop device until our mobile version is
                 available.

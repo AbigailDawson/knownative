@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import './modal.css';
 
-const Modal = ({ canCloseOnEscapeKey, children, setShowModal }) => {
+const Modal = ({ canCloseOnEscapeKey, children, hasCloseBtn, modalTitle, setShowModal }) => {
   const elRef = useRef(null);
 
   if (!elRef.current) {
@@ -26,7 +26,16 @@ const Modal = ({ canCloseOnEscapeKey, children, setShowModal }) => {
     return () => document.body.removeEventListener('keydown', close);
   }, [canCloseOnEscapeKey, setShowModal]);
 
-  return createPortal(<div className="reusable-modal">{children}</div>, elRef.current);
+  return createPortal(
+    <div className="reusable-modal">
+      <div className="reusable-modal-header-contents">
+        <h1>{modalTitle}</h1>
+        {hasCloseBtn ? <button onClick={() => setShowModal(false)}>Close</button> : null}
+      </div>
+      {children}
+    </div>,
+    elRef.current
+  );
 };
 
 export default Modal;

@@ -11,8 +11,9 @@
   /* Hide horizontal scrollbar */
 }
 
-.reusable-modal-button-div {
+.reusable-modal-header-contents {
   display: flex;
-  gap: 10px;
-  margin-left: auto;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 15px;
 }
