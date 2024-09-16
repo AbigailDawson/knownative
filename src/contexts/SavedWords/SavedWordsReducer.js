@@ -14,11 +14,23 @@ function savedWordsReducer(state, action){
     case DELETE:
       return {...state, savedWords: state.savedWords.filter((item) => item._id !== action.id)};
     case UPDATE:
-      return {};
+      return {...state, savedWords: updateWord([...state.savedWords], action.data)};
     case CLEAR:
       return {...state, savedWords: action.data};
     default:
       throw new Error("invalid action");
+  }
+}
+
+function updateWord(savedWords, updatedData) {
+  try {
+    const targetWord = savedWords.find(word => word._id === updatedData.id);
+    targetWord.meaning = updatedData.meaning;
+    targetWord.charGroup = updatedData.term;
+    targetWord.pinyin = updatedData.reading;
+    return savedWords
+  } catch (error) {
+    console.error(error);
   }
 }
 
