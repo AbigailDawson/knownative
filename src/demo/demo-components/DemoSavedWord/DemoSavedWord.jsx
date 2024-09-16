@@ -1,7 +1,7 @@
 import "./DemoSavedWord.css";
 import { useState } from "react";
 import { BiDotsVerticalRounded } from "react-icons/bi";
-import { FaPencilAlt } from "react-icons/fa";
+import { FaPencilAlt, FaTrashAlt } from "react-icons/fa";
 import DemoEditWordModal from "../DemoEditWordModal/DemoEditWordModal";
 
 export default function DemoSavedWord({ word, updateWord, deleteWord }) {
@@ -73,6 +73,7 @@ export default function DemoSavedWord({ word, updateWord, deleteWord }) {
           </section>
           <section className="delete-button" onClick={handleDeleteWord}>
             <p>Delete</p>
+            <FaTrashAlt />
           </section>
         </article>
       )}
