@@ -7,6 +7,16 @@ const initialState = {
 
 function savedWordsReducer(state, action){
   switch(action.type){
+    case LOAD:
+      return {...state, savedWords: action.data};
+    case ADD:
+      return {};
+    case DELETE:
+      return {};
+    case UPDATE:
+      return {};
+    case CLEAR:
+      return {...state, savedWords: action.data};
     default:
       throw new Error("invalid action");
   }
@@ -14,6 +24,6 @@ function savedWordsReducer(state, action){
 
 export default function useSavedWordsState() {
   const [state, dispatch] = useReducer(savedWordsReducer, initialState)
-  
+
   return {state: state, dispatch: dispatch};
 }
