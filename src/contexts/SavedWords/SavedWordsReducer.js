@@ -10,7 +10,7 @@ function savedWordsReducer(state, action){
     case LOAD:
       return {...state, savedWords: action.data};
     case ADD:
-      return {};
+      return {...state, savedWords: [...state.savedWords, action.data]};
     case DELETE:
       return {...state, savedWords: state.savedWords.filter((item) => item._id !== action.id)};
     case UPDATE:
