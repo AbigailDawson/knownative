@@ -10,31 +10,3 @@
   font-size: 1.4rem;
   margin-bottom: 1rem;
 }
-
-.edit-word-modal-delete-btn {
-  color: #660000;
-  border: 2px solid #660000;
-  padding: 0px 1rem;
-  background-color: #ffe6e6;
-  transition: transform 0.3s ease-in-out;
-}
-
-.edit-word-modal-delete-btn:hover {
-  background-color: #660000;
-  color: #ffe6e6;
-  transform: scale(1.1);
-}
-
-.edit-word-modal-save-btn {
-  background-color: var(--primary);
-  color: #24312f;
-  border: 2px solid #24312f;
-  padding: 0px 1rem;
-  transition: transform 0.3s ease-in-out;
-}
-
-.edit-word-modal-save-btn:hover {
-  color: var(--primary);
-  background-color: #24312f;
-  transform: scale(1.1);
-}

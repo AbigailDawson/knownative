@@ -41,7 +41,7 @@ const Modal = ({
   return createPortal(
     <div className="reusable-modal">
       <div className="reusable-modal-header-contents">
-        <h1>{modalTitle}</h1>
+        <h1 className="reusable-modal-title">{modalTitle}</h1>
         {hasCloseButton ? (
           <button className="reusable-modal-close-button" onClick={() => setShowModal(false)}>
             ×
