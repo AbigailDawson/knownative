@@ -19,6 +19,12 @@ export default function ContributePage() {
     <>
     <div className="container">
       <LandingPageNav />
+      <section className="intro">
+        <div>
+          <h1 className="about-header">Contribute to KnowNative</h1>
+          <p className="about-body">There are many ways to get involved with the KnowNative project - see how below!</p>
+        </div>
+      </section>
       <section className="how-to-contribute">
         <div className="how-to-contribute-grid">
           <div className="how-to-contribute-left">
@@ -39,15 +45,16 @@ export default function ContributePage() {
             </div>
           </div>
         </section>
-        <section className="core-contributors">
+        <section className="core-contributors mt-5">
           <h1>Core Contributors</h1>
-          <div className="row">
+          <p className="about-body">Click on any of the cards below to learn more about the team!</p>
+          <div className="row mt-5">
             {coreContributors.map((contributor) => (
               <div className="col-3" key={contributor.name}>
                 <div className="core-container">
-                  <Button variant="light" onClick={() => handleShow(contributor.name)} className="btn-outline-secondary">
+                  <Button variant="light" onClick={() => handleShow(contributor.name)} className="btn-outline-secondary core-contributor-card p-4">
                     <img src={contributor.image} alt={contributor.name} className="rounded-circle" width="200" height="200" />
-                    <div className="contributor-name">
+                    <div className="contributor-name mb-3 mt-4">
                       <h4>{contributor.name}</h4>
                     </div>
                   </Button>
@@ -93,21 +100,8 @@ export default function ContributePage() {
                     </Modal.Footer>
                   </Modal>
                 </div>
-                <div className="contributor-links">
-                  <a rel="noopener noreferrer" href={contributor.linkedin} target="_blank">
-                    <img src="/images/linkedin-icon.png" width="32" height="32" alt="LinkedIn" />
-                  </a>
-                  <a rel="noopener noreferrer" href={contributor.github} target="_blank">
-                    <img src="/images/github-icon.png" width="32" height="32" alt="Github" />
-                  </a>
-                  {contributor.portfolio && (
-                    <a rel="noopener noreferrer" href={contributor.portfolio} target="_blank">
-                      <img src="/images/portfolio-icon.png" width="32" height="32" alt="WWW Icon" />
-                    </a>
-                  )}
-                </div>
               </div>
-                  ))}
+              ))}
           </div>
         </section>
         <LandingPageFooter />
