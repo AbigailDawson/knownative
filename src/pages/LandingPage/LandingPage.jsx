@@ -77,7 +77,9 @@ export default function LandingPage() {
                   title="early-access-form"
                   src="https://embeds.beehiiv.com/512b2f32-1ccd-4254-b0ef-9514515f60d6?slim=true"
                   data-test-id="beehiiv-embed"
-                  height="52"></iframe>
+                  height="52"
+                  frameBorder="0"
+                  scrolling="no"></iframe>
                 <p className="text-center fs-5">
                   We are planning to release a beta version of KnowNative in spring of 2025!
                 </p>
