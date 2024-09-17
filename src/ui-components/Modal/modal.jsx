@@ -2,7 +2,19 @@ import React, { useRef, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import './modal.css';
 
-const Modal = ({ canCloseOnEscapeKey, children, hasCloseBtn, modalTitle, setShowModal }) => {
+const Modal = ({
+  canCloseOnEscapeKey,
+  children,
+  buttonDeleteText,
+  buttonPrimaryText,
+  buttonSecondaryText,
+  handleDeleteButtonOnClick,
+  handlePrimaryButtonOnClick,
+  handleSecondaryButtonOnClick,
+  hasCloseButton,
+  modalTitle,
+  setShowModal
+}) => {
   const elRef = useRef(null);
 
   if (!elRef.current) {
@@ -30,9 +42,29 @@ const Modal = ({ canCloseOnEscapeKey, children, hasCloseBtn, modalTitle, setShow
     <div className="reusable-modal">
       <div className="reusable-modal-header-contents">
         <h1>{modalTitle}</h1>
-        {hasCloseBtn ? <button onClick={() => setShowModal(false)}>Close</button> : null}
+        {hasCloseButton ? (
+          <button className="reusable-modal-close-button" onClick={() => setShowModal(false)}>
+            ×
+          </button>
+        ) : null}
       </div>
       {children}
+      <div className="reusable-modal-buttons">
+        {buttonDeleteText ? (
+          <button
+            className="reusable-modal-delete-button"
+            id="reusable-modal-delete-button"
+            onClick={handleDeleteButtonOnClick}>
+            {buttonDeleteText}
+          </button>
+        ) : null}
+        <button className="reusable-modal-secondary-button" onClick={handleSecondaryButtonOnClick}>
+          {buttonSecondaryText}
+        </button>
+        <button className="reusable-modal-primary-button" onClick={handlePrimaryButtonOnClick}>
+          {buttonPrimaryText}
+        </button>
+      </div>
     </div>,
     elRef.current
   );

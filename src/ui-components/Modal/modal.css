@@ -6,12 +6,60 @@
   overflow-x: hidden;
   overflow-y: auto;
   padding: 15px;
-  /* Hide horizontal scrollbar */
 }
 
 .reusable-modal-header-contents {
+  align-items: flex-end;
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
   gap: 15px;
+  justify-content: space-between;
+}
+
+.reusable-modal-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.reusable-modal-close-button {
+  background: none;
+  font-size: 40px;
+  padding: 0;
+}
+
+.reusable-modal-primary-button {
+  background-color: #57bcaa;
+  color: #0c1f1b;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.reusable-modal-primary-button:hover {
+  background-color: #3d8679;
+  color: var(--darkest);
+  box-shadow: none;
+  transition: 0.2s;
+}
+
+.reusable-modal-secondary-button {
+  margin-left: auto;
+  background-color: #dadada;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.reusable-modal-secondary-button:hover {
+  background-color: #b0b0b0;
+  box-shadow: none;
+  transition: 0.2s;
+}
+
+.reusable-modal-delete-button {
+  margin-right: auto;
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.reusable-modal-delete-button:hover {
+  background-color: #bb2d3b;
+  color: #fff;
+  box-shadow: none;
+  transition: 0.2s;
 }

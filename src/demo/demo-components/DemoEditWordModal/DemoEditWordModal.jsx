@@ -1,6 +1,4 @@
 import { useState } from 'react';
-import { FaPencilAlt } from 'react-icons/fa';
-import { BsX } from 'react-icons/bs';
 import './DemoEditWordModal.css';
 import Modal from '../../../ui-components/Modal/modal';
 
@@ -27,37 +25,30 @@ function DemoEditWordModal({ handleDeleteWord, setShowModal, updateWord, word })
   return (
     <Modal
       canCloseOnEscapeKey={true}
-      hasCloseBtn={true}
+      buttonDeleteText="Delete"
+      buttonPrimaryText="Save"
+      buttonSecondaryText="Cancel"
+      handleDeleteButtonOnClick={handleDeleteWord}
+      handleSecondaryButtonOnClick={() => setShowModal(false)}
+      handlePrimaryButtonOnClick={handleUpdateWord}
+      hasCloseButton={true}
       modalTitle={'Edit Card'}
       setShowModal={setShowModal}>
       <div className="edit-word-modal-content">
         <div>Term</div>
-        <textarea className="edit-word-modal-textarea" rows="3" value={inputTerm} disabled />
+        <textarea className="edit-word-modal-textarea" value={inputTerm} disabled />
         <div>Reading</div>
         <textarea
           className="edit-word-modal-textarea"
-          rows="3"
           value={inputReading}
           onChange={handleInputReadingChange}
         />
         <div>Meaning</div>
         <textarea
           className="edit-word-modal-textarea"
-          rows="3"
           value={inputMeaning}
           onChange={handleInputMeaningChange}
         />
-      </div>
-      <div className="edit-modal-buttons">
-        <button className="edit-word-modal-delete-btn" onClick={handleDeleteWord}>
-          Delete
-        </button>
-        <button className="back" onClick={() => setShowModal(false)}>
-          Cancel
-        </button>
-        <button className="demo-button continue" onClick={handleUpdateWord}>
-          Save
-        </button>
       </div>
     </Modal>
   );
