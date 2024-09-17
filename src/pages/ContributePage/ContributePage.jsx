@@ -56,6 +56,7 @@ export default function ContributePage() {
                     <img src={contributor.image} alt={contributor.name} className="rounded-circle" width="200" height="200" />
                     <div className="contributor-name mb-3 mt-4">
                       <h4>{contributor.name}</h4>
+                      <p>{contributor.role}</p>
                     </div>
                   </Button>
                   <Modal
@@ -72,20 +73,21 @@ export default function ContributePage() {
                       <Container>
                         <Row>
                           <Col xs={12} md={5}>
-                            <img src={contributor.image} alt={contributor.name} width="100%" className="contributor-image" />
+                            <img src={contributor.image} alt={contributor.name} width="100%" className="contributor-image mb-3" />
+                            <p><b>{contributor.role}</b></p>
                             <div className="contributor-links">
-                              <a rel="noopener noreferrer" href={contributor.linkedin} target="_blank">
-                                <img src="/images/linkedin-icon.png" width="32" height="32" alt="LinkedIn" />
-                              </a>
-                              <a rel="noopener noreferrer" href={contributor.github} target="_blank">
-                                <img src="/images/github-icon.png" width="32" height="32" alt="Github" />
-                              </a>
-                              {contributor.portfolio && (
-                                <a rel="noopener noreferrer" href={contributor.portfolio} target="_blank">
-                                  <img src="/images/portfolio-icon.png" width="32" height="32" alt="WWW Icon" />
+                                <a rel="noopener noreferrer" href={contributor.linkedin} target="_blank">
+                                  <img src="/images/linkedin-icon.png" width="32" height="32" alt="LinkedIn" />
                                 </a>
-                              )}
-                            </div>
+                                <a rel="noopener noreferrer" href={contributor.github} target="_blank">
+                                  <img src="/images/github-icon.png" width="32" height="32" alt="Github" />
+                                </a>
+                                {contributor.portfolio && (
+                                  <a rel="noopener noreferrer" href={contributor.portfolio} target="_blank">
+                                    <img src="/images/portfolio-icon.png" width="32" height="32" alt="WWW Icon" />
+                                  </a>
+                                )}
+                              </div>
                           </Col>
                           <Col xs={12} md={7}>
                             <div dangerouslySetInnerHTML={{ __html: contributor.bio }} />
@@ -93,11 +95,6 @@ export default function ContributePage() {
                         </Row>
                       </Container>
                     </Modal.Body>
-                    <Modal.Footer>
-                      <Button variant="secondary" onClick={handleClose}>
-                        Close
-                      </Button>
-                    </Modal.Footer>
                   </Modal>
                 </div>
               </div>
