@@ -72,7 +72,7 @@ export default function ContributePage() {
                       <Container>
                         <Row>
                           <Col xs={12} md={5}>
-                            <img src={contributor.image} alt={contributor.name} width="100%" />
+                            <img src={contributor.image} alt={contributor.name} width="100%" className="contributor-image" />
                             <div className="contributor-links">
                               <a rel="noopener noreferrer" href={contributor.linkedin} target="_blank">
                                 <img src="/images/linkedin-icon.png" width="32" height="32" alt="LinkedIn" />

@@ -57,3 +57,11 @@
   margin-top: 10px;
   margin-bottom: 20px;
 }
+
+.contributor-links * {
+  margin: 5px 5px 0 0;
+}
+
+.contributor-image {
+  border-radius: 8px;
+}
