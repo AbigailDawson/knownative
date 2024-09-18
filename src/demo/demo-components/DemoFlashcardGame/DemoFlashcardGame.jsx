@@ -4,6 +4,7 @@ import { Button, Dialog, DialogActions, DialogContent } from "@mui/material";
 import { IoMdClose } from "react-icons/io";
 import { GiCheckMark } from "react-icons/gi";
 import { PiRepeatBold } from "react-icons/pi";
+import "./DemoFlashcardGame.css"
 
 export default function DemoFlashcardGame({wordList, selectedFront, showPinyin, blurText}) {
     const [open, setOpen] = useState(false);
@@ -94,7 +95,7 @@ export default function DemoFlashcardGame({wordList, selectedFront, showPinyin, 
 
     return (
         <>
-        <button className="play-btn" onClick={startQuiz}>
+        <button className="quiz-play-btn"  disabled={wordList.length === 0} onClick={startQuiz}>
           Start Quiz
         </button>
         <Dialog
