@@ -30,7 +30,10 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "dev": "nodemon server"
+    "dev": "nodemon server",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write ./**/*.{js,jsx,css,md,json} --config ./.prettierrc"
   },
   "eslintConfig": {
     "extends": [
@@ -53,6 +56,12 @@
   "proxy": "http://localhost:3001",
   "devDependencies": {
     "@babel/plugin-transform-private-property-in-object": "^7.24.7",
-    "nodemon": "^3.1.0"
+    "@eslint/js": "^9.9.0",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-react": "^7.35.0",
+    "globals": "^15.9.0",
+    "nodemon": "^3.1.0",
+    "prettier": "3.3.3"
   }
 }

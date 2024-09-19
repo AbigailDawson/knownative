@@ -2,12 +2,10 @@ import './LandingPageFooter.css';
 
 export default function LandingPageFooter() {
   return (
-    <div class="footer">
-      <footer class="bg-body-tertiary text-center text-lg-start">
-        <div class="text-center p-3">
-          © 2024 Abigail Dawson
-        </div>
+    <div className="container footer">
+      <footer className="py-3 my-4">
+        <p className="text-center text-body-secondary">© 2024 KnowNative</p>
       </footer>
     </div>
-  )
+  );
 }
