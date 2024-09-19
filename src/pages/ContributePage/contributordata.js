@@ -21,7 +21,7 @@ const coreContributors = [
     name: 'Seanna Arnold',
     role: 'Front-End Developer',
     image: '/images/core-contributors/Seanna-Arnold.png',
-    bio: '<p>Seanna is a software engineer driven by a passion for creative problem-solving and user-centric innovation. With a multicultural upbringing spanning Africa and Asia, she is able to build natural rapport with others from various regions and backgrounds and is eager to contribute her technical skills and creativity to help drive business needs forward.</p>',
+    bio: '<p>Seanna is a software engineer driven by a passion for creative problem-solving and user-centric innovation. With a multicultural upbringing spanning Africa and Asia, she is able to build natural rapport with others from various regions and backgrounds and is eager to contribute her technical skills and creativity to help drive business needs forward. Her specialty lies in UI development, specifically React and CSS, with a strong focus on accessibility and UX principles.</p>',
     linkedin: 'https://www.linkedin.com/in/seanna-arnold/',
     github: 'https://github.com/Seanna-Arnold',
     portfolio: 'https://seanna-arnold.com/'
