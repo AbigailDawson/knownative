@@ -7,5 +7,5 @@ export default function LandingPageFooter() {
         <p className="text-center text-body-secondary">© 2024 KnowNative</p>
       </footer>
     </div>
-  )
+  );
 }

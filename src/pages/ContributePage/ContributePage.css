@@ -65,3 +65,10 @@
 .contributor-image {
   border-radius: 8px;
 }
+
+/* Past Core Contributor section */
+.past-core-contributor {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
