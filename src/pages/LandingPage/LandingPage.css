@@ -8,3 +8,9 @@
    font-weight: 500;
    margin-bottom: 10px;
 }
+
+.early-access-form {
+   margin: 0;
+   border-radius: 4px !important;
+   background-color: transparent;
+}
