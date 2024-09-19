@@ -64,7 +64,7 @@ export default function DemoInfoSidebar({
                 Visit GitHub
             </button>
             <button className="demo-info-light-btn" onClick={handleShowExit}>
-                Return to homepage
+                <label htmlFor="exit-tooltip">Return to homepage</label>
             </button>
         </div>
     );
