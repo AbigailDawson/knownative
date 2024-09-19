@@ -9,14 +9,3 @@
   flex-direction: column;
   margin-bottom: 30px;
 }
-
-.landing-page-modal-content-header {
-  font-weight: 500;
-  margin-bottom: 10px;
-}
-
-.landing-page-modal-buttons {
-  display: flex;
-  gap: 10px;
-  margin-left: auto;
-}
