@@ -101,7 +101,7 @@ export default function LandingPage() {
         {showModal ? (
           <Modal
             canCloseOnEscapeKey={false}
-            buttonPrimaryText="Continue"
+            buttonPrimaryText="Continue Anyways"
             buttonSecondaryText="Back"
             handleSecondaryButtonOnClick={() => setShowModal(false)}
             handlePrimaryButtonOnClick={handleModalButtonClick}
