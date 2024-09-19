@@ -29,14 +29,14 @@ export default function DemoInfoSidebar({ handleShowExit, handleBackArrowClick }
             We are planning to release a beta version of KnowNative in spring of 2025!
           </p>
           <p className="text-center fs-6">
-            As an early access member of KnowNative, you&apos;'ll be able to create an account and
+            As an early access member of KnowNative, you&apos;ll be able to create an account and
             <strong>build your own personalized study portal</strong>, uploading any article
-            you&apos;'d like to learn from. Your articles, vocabulary lists and notes will all be
-            saved so you&apos;'ll never have to worry about losing your progress.
+            you&apos;d like to learn from. Your articles, vocabulary lists and notes will all be
+            saved so you&apos;ll never have to worry about losing your progress.
           </p>
           <p className="text-center fs-6">
             Sign up to be notified when this beta version is released for a unique opportunity to be
-            one of KnowNative&apos;'s first members!
+            one of KnowNative&apos;s first members!
           </p>
           <iframe
             className="early-access-form mt-3 mb-5"
