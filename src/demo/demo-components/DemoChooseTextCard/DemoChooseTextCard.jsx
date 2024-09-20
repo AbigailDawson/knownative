@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import './DemoChooseTextCard.css';
-import { FaSearch } from 'react-icons/fa';
 import DemoDifficultyTag from '../DemoDifficultyTag/DemoDifficultyTag';
 import DemoPreviewTextModal from '../DemoPreviewTextModal/DemoPreviewTextModal';
 
@@ -15,7 +14,7 @@ const DemoChooseTextCard = ({
 }) => {
   const [showPreviewTextModal, setShowPreviewTextModal] = useState(false);
 
-  function handleMagnifyGlassClick() {
+  function handleTextCardClick() {
     setShowPreviewTextModal(true);
   }
 
@@ -25,7 +24,7 @@ const DemoChooseTextCard = ({
         className={`demo-choose-text-card ${
           isActiveText ? `demo-choose-text-currently-reading` : `demo-choose-text-bookshelf-cards`
         } ${isTopOfBookshelf && `demo-choose-text-top-bookshelf-card`}`}
-        onClick={!isActiveText ? handleMagnifyGlassClick : null}>
+        onClick={!isActiveText ? handleTextCardClick : null}>
         <section>
           <h3 className="demo-choose-text-chinese-characters">{textTitle}</h3>
           <article>
