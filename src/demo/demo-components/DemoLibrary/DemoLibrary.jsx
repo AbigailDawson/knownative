@@ -8,6 +8,7 @@ function DemoLibrary({
   textSelection,
   setTextSelection,
   setLocalSavedWords,
+  demoTexts
 }) {
   const [mainText, setMainText] = useState(textSelection);
   const [bookshelfTexts, setBookShelfTexts] = useState([]);
@@ -52,6 +53,7 @@ function DemoLibrary({
           textSelection={mainText}
           isActiveText={true}
           isTopOfBookshelf={false}
+          textTitle={demoTexts[textSelection].title}
         />
       </section>
       <section className="demo-library-bookshelf-container">
@@ -65,6 +67,7 @@ function DemoLibrary({
               isTopOfBookshelf={i === 0}
               setLocalSavedWords={setLocalSavedWords}
               key={difficulty + i + "bookshelf"}
+              textTitle={demoTexts[difficulty].title}
             />
           );
         })}
