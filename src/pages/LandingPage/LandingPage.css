@@ -1,10 +1,16 @@
 .landing-page-modal-content {
-   display: flex;
-   flex-direction: column;
-   margin-bottom: 30px;
- }
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
 
 .landing-page-modal-content-header {
-   font-weight: 500;
-   margin-bottom: 10px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.early-access-form {
+  margin: 0;
+  border-radius: 4px !important;
+  background-color: transparent;
 }

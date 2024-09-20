@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { BiLinkExternal } from "react-icons/bi";
 import "./DemoTextPage.css";
 import DemoStudyText from "../../demo-components/DemoStudyText/DemoStudyText";
 import DemoReadText from "../../demo-components/DemoReadText/DemoReadText";
@@ -19,13 +20,17 @@ import demoTexts from '../../demodata'
 
 export default function DemoTextPage({ getText, updateText }) {
 
+  // --- DISPLAY STATE VALUES ---
   const [activeTab, setActiveTab] = useState("read");
-  //-- TEXT DIFFICULTY --
+  const [sidebarCategory, setSidebarCategory] = useState(null);
+  const [expandedSidebar, setExpandedSidebar] = useState(false);
+
+  //-- TEXT DIFFICULTY STATE VALUES--
   const [textSelection, setTextSelection] = useState(
-    (localStorage.getItem("textSelection")  === null) ? "beginner" : localStorage.getItem("textSelection")
+    (localStorage.getItem("textSelection") === null) ? "beginner" : localStorage.getItem("textSelection")
   );
   const [text, setText] = useState(
-    (localStorage.getItem("text")  === null) ? demoTexts.beginner : JSON.parse(localStorage.getItem("text"))
+    (localStorage.getItem("text") === null) ? demoTexts.beginner : JSON.parse(localStorage.getItem("text"))
   );
 
   // --- SAVED WORDS ---
@@ -35,13 +40,12 @@ export default function DemoTextPage({ getText, updateText }) {
       : JSON.parse(localStorage.getItem("stringifiedWords"))
   );
   // const [savedWords, setSavedWords] = useState([]);
-  const [activeWord, setActiveWord] = useState(null);
-  const [expandedSidebar, setExpandedSidebar] = useState(false);
 
-  // --- POPUP ---
+  // --- STUDY TAB STATE ---
+  const [activeWord, setActiveWord] = useState(null);
   const [showPopup, setShowPopup] = useState(false);
 
-  // --- MODALS ---
+  // --- EXIT MODAL ---
   const [showExitModal, setShowExitModal] = useState(false);
   const handleShowExit = () => setShowExitModal(true);
   const handleCloseExit = () => setShowExitModal(false);
@@ -50,7 +54,7 @@ export default function DemoTextPage({ getText, updateText }) {
   const [isDemoWelcomeModalOpen, setDemoWelcomeModalOpen] = useState(true);
   //const [demoWelcomeModalData, setDemoWelcomeModalData] = useState(null);
   const [welcomeModalComplete, setWelcomeModalComplete] = useState(
-    (localStorage.getItem("welcomeModalComplete")  === null) ? false : JSON.parse(localStorage.getItem("welcomeModalComplete"))
+    (localStorage.getItem("welcomeModalComplete") === null) ? false : JSON.parse(localStorage.getItem("welcomeModalComplete"))
   )
 
   const handleCloseDemoWelcomeModal = () => {
@@ -64,18 +68,19 @@ export default function DemoTextPage({ getText, updateText }) {
     handleCloseDemoWelcomeModal();
   };
 
+  // --- REFS ---
   const topRef = useRef(null);
   const blurRef = useRef(null);
 
   // --- Text Selection Side Effects---
   useEffect(
-     () => {
+    () => {
       setText(demoTexts[textSelection])
       localStorage.setItem(
         "text",
         JSON.stringify(demoTexts[textSelection])
       )
-      
+
       localStorage.setItem("textSelection", textSelection)
     },
     [textSelection]
@@ -94,23 +99,8 @@ export default function DemoTextPage({ getText, updateText }) {
     [localSavedWords]
   );
 
-  function handleTabClick(tabName) {
-    topRef.current?.scroll(0, 0);
-    setActiveTab(tabName);
-  }
 
-  // async function favoriteText(text, textId) {
-  //   const updatedText = await textsAPI.favoriteText(text, textId);
-  //   updateText(updatedText);
-  // }
-
-  // async function saveWord(word, textId) {
-  //   const savedWord = await textsAPI.saveWord(word, textId)
-  //   setSavedWords([...savedWords, savedWord])
-  //   setActiveWord('')
-  //   setShowPopup(false)
-  // }
-
+  // --- SAVED WORDS RELATED FUNCTIONS ---
   function generateID() {
     const savedWords = JSON.parse(localStorage.getItem("stringifiedWords"));
     if (savedWords.length === 0) {
@@ -129,12 +119,11 @@ export default function DemoTextPage({ getText, updateText }) {
     setShowPopup(false);
   }
 
-  // async function updateMeaning(word, formData) {
-  //   const updatedWord = await wordsAPI.updateMeaning(word, formData)
-  //   setSavedWords(prevSavedWords =>
-  //     prevSavedWords.map(savedWord =>
-  //       savedWord._id === updatedWord._id ? updatedWord : savedWord))
-  // }
+  function deleteWord(word) {
+    const savedWords = JSON.parse(localStorage.getItem("stringifiedWords"));
+    const filteredWords = savedWords.filter((item) => item._id !== word._id);
+    setLocalSavedWords([...filteredWords]);
+  }
 
   /* FUNCTION ALTERED to allow for users to have meaning, term, and reading updated after form submission.*/
   function updateWord(word, inputtedMeaning, inputtedTerm, inputtedReading) {
@@ -149,24 +138,11 @@ export default function DemoTextPage({ getText, updateText }) {
     setLocalSavedWords([...savedWords]);
   }
 
-  // async function deleteWord(word) {
-  //   setSavedWords(prevSavedWords =>
-  //     prevSavedWords.filter(savedWord => savedWord._id !== word._id))
-  //     try {
-  //       await wordsAPI.deleteWord(word)
-  //     } catch (error) {
-  //       console.error(error)
-  //     }
-  // }
-
-  function deleteWord(word) {
-    const savedWords = JSON.parse(localStorage.getItem("stringifiedWords"));
-    const filteredWords = savedWords.filter((item) => item._id !== word._id);
-    setLocalSavedWords([...filteredWords]);
+  // --- DISPLAY RELATED FUNCTIONS ---
+  function handleTabClick(tabName) {
+    topRef.current?.scroll(0, 0);
+    setActiveTab(tabName);
   }
-
-  //state that will be used to store data that will determine which sidebar content to present based on which sidebar is clicked.
-  const [sidebarCategory, setSidebarCategory] = useState(null);
 
   //this function will change the type of content that should be displayed on the sidebar whenever one of the nav buttons is clicked
   function changeSidebarCategory(selectedIcon) {
@@ -189,6 +165,7 @@ export default function DemoTextPage({ getText, updateText }) {
     changeSidebarCategory(toolTipId);
   }
 
+  // blurs background text when flashcard game in progress
   const blurText = (isActive) => {
     if (isActive) {
       blurRef.current.style.filter = "blur(4px)";
@@ -197,13 +174,13 @@ export default function DemoTextPage({ getText, updateText }) {
     }
   };
 
+
   return !text ? (
     "Loading ..."
   ) : (
     <main
-      className={`TextPage page ${
-        expandedSidebar ? "expanded-sidebar" : "collapsed-sidebar"
-      }`}
+      className={`TextPage page ${expandedSidebar ? "expanded-sidebar" : "collapsed-sidebar"
+        }`}
     >
       <nav className="side-nav">
         <DemoNav
@@ -216,40 +193,42 @@ export default function DemoTextPage({ getText, updateText }) {
       </nav>
 
       {/* Conditional rendering, dependent on the values of expandedSidbar and sidebarCategory, that will determine if the sidebar is displayed and what content is displayed. */}
-      {expandedSidebar && (
-        <aside className="sidebar">
-          {sidebarCategory === "savedwords-tooltip" && (
-            <DemoSavedWordsList
-              savedWords={localSavedWords}
-              updateWord={updateWord}
-              deleteWord={deleteWord}
-              handleBackArrowClick={handleBackArrowClick}
-            />
-          )}
-          {sidebarCategory === "flashcards-tooltip" && (
-            <DemoFlashcardForm
-              expandSidebar={expandSidebar}
-              changeSidebarCategory={changeSidebarCategory}
-              localSavedWords={localSavedWords}
-              handleBackArrowClick={handleBackArrowClick}
-              blurText={blurText}
-            />
-          )}
-          {sidebarCategory === "info-tooltip" && (
-            <DemoInfoSidebar
-              changeSidebarCategory={changeSidebarCategory}
-              handleBackArrowClick={handleBackArrowClick}
-            />
-          )}
-          {sidebarCategory === "library-tooltip" && (
-            <DemoLibrary
-              handleBackArrowClick={handleBackArrowClick}
-              textSelection={textSelection}
-              setTextSelection={setTextSelection}
-            />
-          )}
-        </aside>
-      )}
+
+      <aside className="sidebar">
+        {sidebarCategory === "savedwords-tooltip" && (
+          <DemoSavedWordsList
+            savedWords={localSavedWords}
+            updateWord={updateWord}
+            deleteWord={deleteWord}
+            handleBackArrowClick={handleBackArrowClick}
+          />
+        )}
+        {sidebarCategory === "flashcards-tooltip" && (
+          <DemoFlashcardForm
+            expandSidebar={expandSidebar}
+            changeSidebarCategory={changeSidebarCategory}
+            localSavedWords={localSavedWords}
+            handleBackArrowClick={handleBackArrowClick}
+            blurText={blurText}
+          />
+        )}
+        {sidebarCategory === "info-tooltip" && (
+          <DemoInfoSidebar
+            changeSidebarCategory={changeSidebarCategory}
+            handleBackArrowClick={handleBackArrowClick}
+          />
+        )}
+        {sidebarCategory === "library-tooltip" && (
+          <DemoLibrary
+            handleBackArrowClick={handleBackArrowClick}
+            textSelection={textSelection}
+            setTextSelection={setTextSelection}
+            setLocalSavedWords={setLocalSavedWords}
+            demoTexts={demoTexts}
+          />
+        )}
+      </aside>
+
 
       <section className="main-area" ref={topRef}>
         <div className="tabs sticky-fade">
@@ -279,15 +258,23 @@ export default function DemoTextPage({ getText, updateText }) {
               <h1 className="textpage-heading-title zh">{text.title}</h1>
               <article className="textpage-difficulty-tag">
                 <DemoDifficultyTag textSelection={textSelection} />
+                <a
+                  href={text.source}
+                  className="link-view-source"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  View Source <BiLinkExternal />
+                </a>
               </article>
+
             </div>
           </div>
 
           <div
             id="study"
-            className={`study-container ${
-              activeTab === "study" ? "active" : ""
-            }`}
+            className={`study-container ${activeTab === "study" ? "active" : ""
+              }`}
           >
             <div className="Text study-content">
               {text ? (
@@ -318,9 +305,8 @@ export default function DemoTextPage({ getText, updateText }) {
 
           <div
             id="translate"
-            className={`translate-container ${
-              activeTab === "translate" ? "active" : ""
-            }`}
+            className={`translate-container ${activeTab === "translate" ? "active" : ""
+              }`}
           >
             <div className="Text">
               {text ? <DemoTranslateText text={text} /> : "Loading text"}
@@ -339,14 +325,45 @@ export default function DemoTextPage({ getText, updateText }) {
 
       {welcomeModalComplete ? ""
         : (<DemoWelcomeModal
-            isOpen={isDemoWelcomeModalOpen}
-            onSubmit={handleWelcomeModalSubmit}
-            onClose={handleCloseDemoWelcomeModal}
-            textSelection={textSelection}
-            setTextSelection={setTextSelection}
-          />)
+          isOpen={isDemoWelcomeModalOpen}
+          onSubmit={handleWelcomeModalSubmit}
+          onClose={handleCloseDemoWelcomeModal}
+          textSelection={textSelection}
+          setTextSelection={setTextSelection}
+        />)
       }
-      
+
     </main>
   );
 }
+
+//--- OLD CODE ---
+
+// async function favoriteText(text, textId) {
+//   const updatedText = await textsAPI.favoriteText(text, textId);
+//   updateText(updatedText);
+// }
+
+// async function saveWord(word, textId) {
+//   const savedWord = await textsAPI.saveWord(word, textId)
+//   setSavedWords([...savedWords, savedWord])
+//   setActiveWord('')
+//   setShowPopup(false)
+// }
+
+// async function updateMeaning(word, formData) {
+//   const updatedWord = await wordsAPI.updateMeaning(word, formData)
+//   setSavedWords(prevSavedWords =>
+//     prevSavedWords.map(savedWord =>
+//       savedWord._id === updatedWord._id ? updatedWord : savedWord))
+// }
+
+// async function deleteWord(word) {
+//   setSavedWords(prevSavedWords =>
+//     prevSavedWords.filter(savedWord => savedWord._id !== word._id))
+//     try {
+//       await wordsAPI.deleteWord(word)
+//     } catch (error) {
+//       console.error(error)
+//     }
+// }

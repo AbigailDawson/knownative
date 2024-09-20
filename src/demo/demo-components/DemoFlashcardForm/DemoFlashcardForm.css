@@ -33,16 +33,7 @@
   margin-top: 0.5rem;
 }
 
-.play-btn {
-  margin-top: 3vmin;
-  font-size: 1.1rem;
-  padding: 1vmin 2vmin;
-  background-color: #006769;
-  color: white;
-  transition: transform 0.3s ease-in-out;
-}
-
-.play-btn:hover {
-  background-color: var(--teal);
-  transform: scale(1.1);
+.quiz-subtext {
+  text-align: left;
+  margin-top: 2vmin;
 }

@@ -3,12 +3,16 @@
   border: solid #006769 2px;
 }
 
-.demo-choose-text-top-bookshelf-card {
-  border-top: solid grey 1px;
+.demo-choose-text-bookshelf-cards {
+  border: solid grey 0.5px;
+  border-radius: 0.7vmin;
+  margin-bottom: 3vmin;
 }
 
-.demo-choose-text-bookshelf-cards {
-  border-bottom: solid grey 1px;
+article.demo-choose-text-bookshelf-cards:hover {
+  border-radius: 10px;
+  border: solid #006769 2px;
+  cursor: pointer;
 }
 
 .demo-choose-text-card {
@@ -25,4 +29,15 @@
 
 .demo-choose-text-hide-visibility {
   visibility: hidden;
+  pointer-events: none;
+}
+
+.demo-choose-text-magnify-glass-container {
+  padding: 1vmin;
+}
+
+.demo-choose-text-magnify-glass-container:hover {
+  background-color: var(--light);
+  border-radius: 0.7vmin;
+  cursor: pointer;
 }
