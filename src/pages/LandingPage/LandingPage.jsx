@@ -38,9 +38,12 @@ export default function LandingPage() {
             <h1 className="display-4 fw-bold">Welcome to KnowNative</h1>
             <div className="col-lg-6 mx-auto">
               <p className="lead my-4">
-                Ditch the textbooks and learn from real native speakers by studying articles written
-                by real native speakers. Learning with KnowNative is like building your own study
-                guide designed specifically for you.
+                Transform your language learning with real-world articles written by native
+                speakers. KnowNative personalizes your study experience with{' '}
+                <span className="landing-page-bold">automatically generated flashcards</span>,{' '}
+                <span className="landing-page-bold">inline annotations</span> and{' '}
+                <span className="landing-page-bold">context-driven translations</span>, creating
+                tailored learning tools that are uniquely yours.
               </p>
               <div className="d-grid gap-2 d-sm-flex justify-content-sm-center my-5">
                 <button className="btn btn-lg px-4 me-sm-3 demo-button" onClick={handleScreenCheck}>
@@ -136,10 +139,10 @@ export default function LandingPage() {
                   We&apos;re planning to release a beta version of KnowNative by spring of 2025!
                 </p>
                 <p className="col-lg-12 fs-6 text-center">
-                  As a member, you&apos;ll be be able to
-                  <strong>build your own personalized study guide</strong> with your own imported
-                  articles. Everything will be saved so you&apos;ll never have to worry about losing
-                  your notes.
+                  As a member, you&apos;ll be be able to build your own{' '}
+                  <span className="landing-page-bold">personalized study guide</span> with your own
+                  imported articles. Everything will be saved so you&apos;ll never have to worry
+                  about losing your notes.
                 </p>
                 <p className="col-lg-12 fs-6 text-center">
                   Sign up to be notified when this beta version is released for a unique opportunity
