@@ -1,8 +1,8 @@
-import "./DemoSavedWord.css";
-import { useState } from "react";
-import { BiDotsVerticalRounded } from "react-icons/bi";
-import { FaPencilAlt, FaTrashAlt } from "react-icons/fa";
-import DemoEditWordModal from "../DemoEditWordModal/DemoEditWordModal";
+import './DemoSavedWord.css';
+import { useState } from 'react';
+import { BiDotsVerticalRounded } from 'react-icons/bi';
+import { FaPencilAlt, FaTrashAlt } from 'react-icons/fa';
+import DemoEditWordModal from '../DemoEditWordModal/DemoEditWordModal';
 
 export default function DemoSavedWord({ word, updateWord, deleteWord }) {
   //NEW CODE ----------------------
@@ -47,26 +47,24 @@ export default function DemoSavedWord({ word, updateWord, deleteWord }) {
     <article className="SavedWord" onMouseLeave={handleMouseleaveCard}>
       {/* This the three dots. I placed it absolutely to the corner of every saved word. */}
       <BiDotsVerticalRounded
-        className={`edit-menu-icon ${
-          showingEditWordModal && "edit-menu-currently-open"
-        }`}
+        className={`edit-menu-icon ${showingEditWordModal && 'edit-menu-currently-open'}`}
         onClick={handleEditIconClick}
       />
       {/* Code that allows for the edit word modal to show up*/}
-      <DemoEditWordModal
-        showingEditWordModal={showingEditWordModal}
-        setShowingEditWordModal={setShowingEditWordModal}
-        word={word}
-        updateWord={updateWord}
-        handleDeleteWord={handleDeleteWord}
-      />
+      {showingEditWordModal ? (
+        <DemoEditWordModal
+          handleDeleteWord={handleDeleteWord}
+          setShowModal={setShowingEditWordModal}
+          updateWord={updateWord}
+          word={word}
+        />
+      ) : null}
       {/* If the editMenuOpen state variable is true, display the edit/delete menu. */}
       {isEditMenuOpen && (
         <article
           className="edit-delete-menu"
           onMouseEnter={handleMouseEnterMenu}
-          onMouseLeave={handleEditMenuMouseleave}
-        >
+          onMouseLeave={handleEditMenuMouseleave}>
           <section className="edit-button" onClick={handleOpenEditModal}>
             <p>Edit</p>
             <FaPencilAlt />
@@ -88,8 +86,8 @@ export default function DemoSavedWord({ word, updateWord, deleteWord }) {
   );
 }
 
-/* 
-OLD CODE -> to keep for reference. 
+/*
+OLD CODE -> to keep for reference.
 //I WILL REVISIT THE COMMENTED CODE BELOW WHEN I CREATE THE MODAL. I just commented it out for now so that I wouldn't get confused when I adjust things.
 
   function handleChange(evt) {
@@ -98,11 +96,11 @@ OLD CODE -> to keep for reference.
       [evt.target.name]: evt.target.value,
     };
     setFormData(newFormData);
-  } 
+  }
 
   function handleEditClick() {
     setIsEditingWord(word._id);
-  } 
+  }
 
   function handleUpdateMeaning(word) {
     if (word.meaning === formData.meaning) {
@@ -110,7 +108,7 @@ OLD CODE -> to keep for reference.
       return;
     }
     updateMeaning(word, formData.meaning);
-  } 
+  }
 
 return (
     <article className="SavedWord">
@@ -123,7 +121,7 @@ return (
           >
             <PiTrashLight />
           </div>
-        )} 
+        )}
         <p className="pinyin"> {word.pinyin} </p>
         <p className="char zh">{word.charGroup} </p>
       </section>
@@ -148,7 +146,7 @@ return (
             <div>{word.meaning}</div>
              <div className="edit-btn" onClick={handleEditClick}>
               <FaRegEdit />
-            </div> 
+            </div>
           </div>
         )}
       </section>
@@ -235,7 +233,7 @@ export default function DemoSavedWord({
   /*
   function handleEditClick() {
     setIsEditingWord(word._id);
-  } 
+  }
 
   function handleUpdateMeaning(word) {
     if (word.meaning === formData.meaning) {
@@ -243,7 +241,7 @@ export default function DemoSavedWord({
       return;
     }
     updateMeaning(word, formData.meaning);
-  } 
+  }
 
   function handleDeleteWord() {
     setIsEditMenuOpen(false);
