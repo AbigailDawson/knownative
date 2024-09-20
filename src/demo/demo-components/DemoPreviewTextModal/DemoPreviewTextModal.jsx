@@ -45,7 +45,7 @@ function DemoPreviewTextModal({
           </Modal.Title>
         </Modal.Header>
         <Modal.Body className="show-preview-modal-body">
-          <h3 className="show-preview-modal-chinese-character">天氣</h3>
+          <h3 className="show-preview-modal-chinese-character">{demoTexts[textSelection].title}</h3>
           <section className="show-preview-modal-difficulty-source-ctn">
             <article className="show-preview-modal-difficulty-tag">
               <DemoDifficultyTag textSelection={textSelection} />
@@ -60,7 +60,6 @@ function DemoPreviewTextModal({
             </a>
           </section>
           <section className="show-preview-modal-text">
-            <h3>{demoTexts[textSelection].title}</h3>
             <p>
               {demoTexts[textSelection].content.slice(0, 75)}
               ...

@@ -4,6 +4,7 @@ import './DemoModal.css';
 const DemoModal = ({ isOpen, hasCloseBtn = true, onClose, hasEscKeyExit, children }) => {
   const [isModalOpen, setModalOpen] = useState(isOpen);
   const modalRef = useRef(null)
+  //test file save
 
   const handleCloseModal = () => {
     if (onClose) {
@@ -24,7 +25,7 @@ const DemoModal = ({ isOpen, hasCloseBtn = true, onClose, hasEscKeyExit, childre
 
   useEffect(() => {
     document.addEventListener('keydown', handleKeyDown);
-  
+
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
@@ -47,8 +48,8 @@ const DemoModal = ({ isOpen, hasCloseBtn = true, onClose, hasEscKeyExit, childre
   }, [isModalOpen]);
 
   return (
-    <dialog ref={modalRef} 
-      onKeyDown={handleKeyDown} 
+    <dialog ref={modalRef}
+      onKeyDown={handleKeyDown}
       className="demo-modal"
     >
       {hasCloseBtn && (
