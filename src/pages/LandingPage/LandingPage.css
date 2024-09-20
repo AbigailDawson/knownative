@@ -1,7 +1,13 @@
 .early-access-form {
+  border-radius: 4px;
   margin: 0;
-  border-radius: 4px !important;
   background-color: transparent;
+}
+
+.early-access {
+  background-color: var(--light);
+  padding: 30px;
+  border-radius: 7px;
 }
 
 .landing-page-modal-content {
