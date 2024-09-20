@@ -39,8 +39,7 @@ function DemoLibrary({
       </header>
       <section className="demo-library-subtext">
         <p>
-          Choose a different text for this demo by clicking the magnifying glass
-          icons in the Bookshelf section. You will be able to see a preview of
+          Choose a different text for this demo. You will be able to see a preview of
           the text prior to loading it.
         </p>
         <p>

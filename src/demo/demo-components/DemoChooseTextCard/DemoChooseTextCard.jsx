@@ -20,13 +20,22 @@ const DemoChooseTextCard = ({
   }
 
   return (
-    <article
+    <>
+      <article
       className={`demo-choose-text-card ${
         isActiveText
           ? `demo-choose-text-currently-reading`
           : `demo-choose-text-bookshelf-cards`
-      } ${isTopOfBookshelf && `demo-choose-text-top-bookshelf-card`}`}
+        } ${isTopOfBookshelf && `demo-choose-text-top-bookshelf-card`}`}
+      onClick={handleMagnifyGlassClick}
     >
+      <section>
+        <h3 className="demo-choose-text-chinese-characters">{textTitle}</h3>
+        <article>
+          <DemoDifficultyTag textSelection={textSelection} />
+        </article>
+      </section>
+      </article>
       <DemoPreviewTextModal
         showPreviewTextModal={showPreviewTextModal}
         setShowPreviewTextModal={setShowPreviewTextModal}
@@ -34,23 +43,8 @@ const DemoChooseTextCard = ({
         setTextSelection={setTextSelection}
         setLocalSavedWords={setLocalSavedWords}
       />
-      <section>
-        <h3 className="demo-choose-text-chinese-characters">{textTitle}</h3>
-        <article>
-          <DemoDifficultyTag textSelection={textSelection} />
-        </article>
-      </section>
-      <section
-        className={`${
-          !isActiveText && "demo-choose-text-magnify-glass-container"
-        }`}
-        onClick={handleMagnifyGlassClick}
-      >
-        <FaSearch
-          className={`${isActiveText && "demo-choose-text-hide-visibility"}`}
-        />
-      </section>
-    </article>
+    </>
+    
   );
 };
 
