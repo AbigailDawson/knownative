@@ -23,13 +23,13 @@ function useSidebarDispatch() {
 }
 
 function SidebarProvider({ children }) {
-  // placed this function inside of the SidebarProvider function because ESLint was giving me trouble. Will just use a placeholder for now until useSavedwordsState is fleshed out.
-  const placeholder = useSidebarState();
+  //
+  const { state, dispatch } = useSidebarState();
 
   //will set values to null until the reducer and dispatch fucntions are made.
   return (
-    <SidebarContext.Provider value={null}>
-      <SidebarDispatchContext.Provider value={null}>
+    <SidebarContext.Provider value={state}>
+      <SidebarDispatchContext.Provider value={dispatch}>
         {children}
       </SidebarDispatchContext.Provider>
     </SidebarContext.Provider>
