@@ -1,8 +1,8 @@
-import { useState } from "react";
-import "./DemoChooseTextCard.css";
-import { FaSearch } from "react-icons/fa";
-import DemoDifficultyTag from "../DemoDifficultyTag/DemoDifficultyTag";
-import DemoPreviewTextModal from "../DemoPreviewTextModal/DemoPreviewTextModal";
+import { useState } from 'react';
+import './DemoChooseTextCard.css';
+import { FaSearch } from 'react-icons/fa';
+import DemoDifficultyTag from '../DemoDifficultyTag/DemoDifficultyTag';
+import DemoPreviewTextModal from '../DemoPreviewTextModal/DemoPreviewTextModal';
 
 //conditional rendering will determine what stylings each of the demochoosetextcards will take. there will be different stylings based on whether it is the active text (under currently reading) and if it's the first text in the bookshelf
 const DemoChooseTextCard = ({
@@ -22,19 +22,16 @@ const DemoChooseTextCard = ({
   return (
     <>
       <article
-      className={`demo-choose-text-card ${
-        isActiveText
-          ? `demo-choose-text-currently-reading`
-          : `demo-choose-text-bookshelf-cards`
+        className={`demo-choose-text-card ${
+          isActiveText ? `demo-choose-text-currently-reading` : `demo-choose-text-bookshelf-cards`
         } ${isTopOfBookshelf && `demo-choose-text-top-bookshelf-card`}`}
-      onClick={handleMagnifyGlassClick}
-    >
-      <section>
-        <h3 className="demo-choose-text-chinese-characters">{textTitle}</h3>
-        <article>
-          <DemoDifficultyTag textSelection={textSelection} />
-        </article>
-      </section>
+        onClick={!isActiveText ? handleMagnifyGlassClick : null}>
+        <section>
+          <h3 className="demo-choose-text-chinese-characters">{textTitle}</h3>
+          <article>
+            <DemoDifficultyTag textSelection={textSelection} />
+          </article>
+        </section>
       </article>
       <DemoPreviewTextModal
         showPreviewTextModal={showPreviewTextModal}
@@ -44,7 +41,6 @@ const DemoChooseTextCard = ({
         setLocalSavedWords={setLocalSavedWords}
       />
     </>
-    
   );
 };
 
