@@ -20,41 +20,41 @@ import demoTexts from '../../demodata'
 
 export default function DemoTextPage({ getText, updateText }) {
 
-// --- DISPLAY STATE VALUES ---
+  // --- DISPLAY STATE VALUES ---
   const [activeTab, setActiveTab] = useState("read");
   const [sidebarCategory, setSidebarCategory] = useState(null);
   const [expandedSidebar, setExpandedSidebar] = useState(false);
 
-//-- TEXT DIFFICULTY STATE VALUES--
+  //-- TEXT DIFFICULTY STATE VALUES--
   const [textSelection, setTextSelection] = useState(
-    (localStorage.getItem("textSelection")  === null) ? "beginner" : localStorage.getItem("textSelection")
+    (localStorage.getItem("textSelection") === null) ? "beginner" : localStorage.getItem("textSelection")
   );
   const [text, setText] = useState(
-    (localStorage.getItem("text")  === null) ? demoTexts.beginner : JSON.parse(localStorage.getItem("text"))
+    (localStorage.getItem("text") === null) ? demoTexts.beginner : JSON.parse(localStorage.getItem("text"))
   );
 
-// --- SAVED WORDS ---
+  // --- SAVED WORDS ---
   const [localSavedWords, setLocalSavedWords] = useState(
     JSON.parse(localStorage.getItem("stringifiedWords") === null)
       ? []
       : JSON.parse(localStorage.getItem("stringifiedWords"))
   );
   // const [savedWords, setSavedWords] = useState([]);
-  
-// --- STUDY TAB STATE ---
+
+  // --- STUDY TAB STATE ---
   const [activeWord, setActiveWord] = useState(null);
   const [showPopup, setShowPopup] = useState(false);
 
-// --- EXIT MODAL ---
+  // --- EXIT MODAL ---
   const [showExitModal, setShowExitModal] = useState(false);
   const handleShowExit = () => setShowExitModal(true);
   const handleCloseExit = () => setShowExitModal(false);
 
-// --- WELCOME MODAL ---
+  // --- WELCOME MODAL ---
   const [isDemoWelcomeModalOpen, setDemoWelcomeModalOpen] = useState(true);
   //const [demoWelcomeModalData, setDemoWelcomeModalData] = useState(null);
   const [welcomeModalComplete, setWelcomeModalComplete] = useState(
-    (localStorage.getItem("welcomeModalComplete")  === null) ? false : JSON.parse(localStorage.getItem("welcomeModalComplete"))
+    (localStorage.getItem("welcomeModalComplete") === null) ? false : JSON.parse(localStorage.getItem("welcomeModalComplete"))
   )
 
   const handleCloseDemoWelcomeModal = () => {
@@ -68,19 +68,19 @@ export default function DemoTextPage({ getText, updateText }) {
     handleCloseDemoWelcomeModal();
   };
 
-// --- REFS ---
+  // --- REFS ---
   const topRef = useRef(null);
   const blurRef = useRef(null);
 
-// --- Text Selection Side Effects---
+  // --- Text Selection Side Effects---
   useEffect(
-     () => {
+    () => {
       setText(demoTexts[textSelection])
       localStorage.setItem(
         "text",
         JSON.stringify(demoTexts[textSelection])
       )
-      
+
       localStorage.setItem("textSelection", textSelection)
     },
     [textSelection]
@@ -100,7 +100,7 @@ export default function DemoTextPage({ getText, updateText }) {
   );
 
 
-// --- SAVED WORDS RELATED FUNCTIONS ---
+  // --- SAVED WORDS RELATED FUNCTIONS ---
   function generateID() {
     const savedWords = JSON.parse(localStorage.getItem("stringifiedWords"));
     if (savedWords.length === 0) {
@@ -138,11 +138,11 @@ export default function DemoTextPage({ getText, updateText }) {
     setLocalSavedWords([...savedWords]);
   }
 
-// --- DISPLAY RELATED FUNCTIONS ---
+  // --- DISPLAY RELATED FUNCTIONS ---
   function handleTabClick(tabName) {
     topRef.current?.scroll(0, 0);
     setActiveTab(tabName);
-  } 
+  }
 
   //this function will change the type of content that should be displayed on the sidebar whenever one of the nav buttons is clicked
   function changeSidebarCategory(selectedIcon) {
@@ -179,9 +179,8 @@ export default function DemoTextPage({ getText, updateText }) {
     "Loading ..."
   ) : (
     <main
-      className={`TextPage page ${
-        expandedSidebar ? "expanded-sidebar" : "collapsed-sidebar"
-      }`}
+      className={`TextPage page ${expandedSidebar ? "expanded-sidebar" : "collapsed-sidebar"
+        }`}
     >
       <nav className="side-nav">
         <DemoNav
@@ -225,6 +224,7 @@ export default function DemoTextPage({ getText, updateText }) {
             textSelection={textSelection}
             setTextSelection={setTextSelection}
             setLocalSavedWords={setLocalSavedWords}
+            demoTexts={demoTexts}
           />
         )}
       </aside>
@@ -267,15 +267,14 @@ export default function DemoTextPage({ getText, updateText }) {
                   View Source <BiLinkExternal />
                 </a>
               </article>
-            
+
             </div>
           </div>
 
           <div
             id="study"
-            className={`study-container ${
-              activeTab === "study" ? "active" : ""
-            }`}
+            className={`study-container ${activeTab === "study" ? "active" : ""
+              }`}
           >
             <div className="Text study-content">
               {text ? (
@@ -306,9 +305,8 @@ export default function DemoTextPage({ getText, updateText }) {
 
           <div
             id="translate"
-            className={`translate-container ${
-              activeTab === "translate" ? "active" : ""
-            }`}
+            className={`translate-container ${activeTab === "translate" ? "active" : ""
+              }`}
           >
             <div className="Text">
               {text ? <DemoTranslateText text={text} /> : "Loading text"}
@@ -327,45 +325,45 @@ export default function DemoTextPage({ getText, updateText }) {
 
       {welcomeModalComplete ? ""
         : (<DemoWelcomeModal
-            isOpen={isDemoWelcomeModalOpen}
-            onSubmit={handleWelcomeModalSubmit}
-            onClose={handleCloseDemoWelcomeModal}
-            textSelection={textSelection}
-            setTextSelection={setTextSelection}
-          />)
+          isOpen={isDemoWelcomeModalOpen}
+          onSubmit={handleWelcomeModalSubmit}
+          onClose={handleCloseDemoWelcomeModal}
+          textSelection={textSelection}
+          setTextSelection={setTextSelection}
+        />)
       }
-      
+
     </main>
   );
 }
 
 //--- OLD CODE ---
 
-  // async function favoriteText(text, textId) {
-  //   const updatedText = await textsAPI.favoriteText(text, textId);
-  //   updateText(updatedText);
-  // }
+// async function favoriteText(text, textId) {
+//   const updatedText = await textsAPI.favoriteText(text, textId);
+//   updateText(updatedText);
+// }
 
-  // async function saveWord(word, textId) {
-  //   const savedWord = await textsAPI.saveWord(word, textId)
-  //   setSavedWords([...savedWords, savedWord])
-  //   setActiveWord('')
-  //   setShowPopup(false)
-  // }
+// async function saveWord(word, textId) {
+//   const savedWord = await textsAPI.saveWord(word, textId)
+//   setSavedWords([...savedWords, savedWord])
+//   setActiveWord('')
+//   setShowPopup(false)
+// }
 
-  // async function updateMeaning(word, formData) {
-  //   const updatedWord = await wordsAPI.updateMeaning(word, formData)
-  //   setSavedWords(prevSavedWords =>
-  //     prevSavedWords.map(savedWord =>
-  //       savedWord._id === updatedWord._id ? updatedWord : savedWord))
-  // }
+// async function updateMeaning(word, formData) {
+//   const updatedWord = await wordsAPI.updateMeaning(word, formData)
+//   setSavedWords(prevSavedWords =>
+//     prevSavedWords.map(savedWord =>
+//       savedWord._id === updatedWord._id ? updatedWord : savedWord))
+// }
 
-  // async function deleteWord(word) {
-  //   setSavedWords(prevSavedWords =>
-  //     prevSavedWords.filter(savedWord => savedWord._id !== word._id))
-  //     try {
-  //       await wordsAPI.deleteWord(word)
-  //     } catch (error) {
-  //       console.error(error)
-  //     }
-  // }
+// async function deleteWord(word) {
+//   setSavedWords(prevSavedWords =>
+//     prevSavedWords.filter(savedWord => savedWord._id !== word._id))
+//     try {
+//       await wordsAPI.deleteWord(word)
+//     } catch (error) {
+//       console.error(error)
+//     }
+// }
