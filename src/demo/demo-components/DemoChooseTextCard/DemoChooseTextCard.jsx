@@ -34,7 +34,7 @@ const DemoChooseTextCard = ({
         setLocalSavedWords={setLocalSavedWords}
       />
       <section>
-        <h3 className="demo-choose-text-chinese-characters">天氣</h3>
+        <h3 className="demo-choose-text-chinese-characters zh">天氣</h3>
         <article>
           <DemoDifficultyTag textSelection={textSelection} />
         </article>
