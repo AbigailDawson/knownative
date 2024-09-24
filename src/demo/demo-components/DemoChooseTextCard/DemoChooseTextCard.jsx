@@ -26,7 +26,7 @@ const DemoChooseTextCard = ({
         } ${isTopOfBookshelf && `demo-choose-text-top-bookshelf-card`}`}
         onClick={!isActiveText ? handleTextCardClick : null}>
         <section>
-          <h3 className="demo-choose-text-chinese-characters">{textTitle}</h3>
+          <h3 className="demo-choose-text-chinese-characters zh">{textTitle}</h3>
           <article>
             <DemoDifficultyTag textSelection={textSelection} />
           </article>
