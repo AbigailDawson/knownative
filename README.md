@@ -1,58 +1,113 @@
-# KnowNative
+<a name="readme-top"></a>
+<br />
 
-KnowNative is a web application for learners of traditional Chinese to improve their reading comprehension through studying native language texts.
+<div align="center">
 
-[ - Live Site - ](https://knownative-730586de0f29.herokuapp.com/)
+  <h1 align="center">KnowNative</h1>
 
-## Description
+  <p align="center">
+    Transform your language learning with real-world articles written by native speakers. KnowNative personalizes your study experience with automatically generated flashcards, inline annotations and context-driven translations, creating tailored learning tools that are uniquely yours.
+    <br />
+    <br />
+    <a href="#">- Live Demo -</a>
+  </p>
+</div>
 
-KnowNative is inspired by two core philosophies of language learning: 
+## About the project
 
-* Our learning is most sustainable when we are genuinely interested in the content we are using to study.
-* The more we learn from content produced by real native speakers, the more easily we develop natural fluency in a target language.
+KnowNative is a web application built by Abigail Dawson, maintained by our Core Contributors and the broader open-source community.
 
-KnowNative is designed to move learners away from dry textbook material into the world of real language by providing them a means to easily study from authentic texts and articles written by native speakers.
+**Built with:**
 
-## User Research
+- Node
+- Express
+- React
+- MongoDB
 
-KnowNative's design is in part guided by feedback from a user research survey conducted during project planning. The survey received 21 responses from language learners.
+## Running KnowNative locally
 
-When asked about their preferences in a language learning app for reading comprehension, respondees expressed most interest in generating flashcards, adding inline annotations and seeing sentence translastions, so these features were prioritized in development.
+Run KnowNative locally with the following steps:
 
-Additionally, respondees expressed interest in feeling like they're playing a game while learning, and learning about culture alongside the language.
+### Prerequisites
 
-![User Research Survey](/public/images/chart1.png)
-![User Research Survey](/public/images/chart2.png)
-![User Research Survey](/public/images/chart3.png)
+#### npm
 
-## Features
+```sh
+npm install npm@latest -g
+```
 
-Key features that make KnowNative unique:
-- Import any text or article you'd like to study from
-- Automatically **generate flashcards** from your saved words
-- Add **inline annotations** with a simple click
-- Show/hide full **sentence translations**
-- **Generate easier versions** of difficult texts
+### Installation
 
-## Tech Stack
-- MERN stack: MongoDB, Express.js, Node.js, React
-- [chinese-tokenizer](https://github.com/yishn/chinese-tokenizer) - for tokenizing Chinese text
-- Google Cloud Translate API
-- OpenAI API
-- MUI Components - for visually appealing user interfaces
+#### 1. Clone the repo
 
-## Challenges and Future Development
+```
+git clone https://github.com/AbigailDawson/knownative.git
+```
 
-KnowNative currently only supports traditional Chinese due to its reliance on the chinese-tokenizer package to parse Chinese text into words based on the [CC-CEDICT](https://www.mdbg.net/chinese/dictionary?page=cc-cedict) (Chinese-English Dictionary). This algorithm makes it possible to create a clickable component from each word to look up definitions and add inline annotations. A different approach would be needed for handling other languages that handle whitespace and word separation differently.
+#### 2. Install all packages and build
 
-The project currently leverages OpenAI technology to generate easier versions of texts graded for a 5th-grade reading level; however, currently the response length is limited and there are no options for customization. Additionally, OpenAI primarily works with English and may not yield accurate results in Chinese; currently, the model sometimes returns simplified Chinese characters instead of traditional and a language cannot be specified for the gpt-3.5-turbo model. Future development will involve exploring different AI technologies for use in this project.
+```
+npm install
+npm run build
+```
 
-Future development will also include improvements to the flashcard feature of the app. Studies have shown that [**spaced repetition**](https://www.babbel.com/en/magazine/spaced-repetition-language-learning) is crucial to reinforcing concepts for long-term sustainable learning. Incorporating spaced repetition into the flashcard algorithm will make this an even more powerful tool for language learning.
+#### 3. Run the Express server
 
-<hr> 
+```
+npm run dev
+```
 
-Quick Demo:
+#### 4. Run the React server
 
-![KnowNative feature demo](/public/images/kn-runthru.gif)
+```
+npm run start
+```
 
-<!-- This is another test -->
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## Contributing to the open-source project
+
+KnowNative can only improve with fresh perspectives and creative insights from contributors! We welcome any suggestions, fixes and improvements that can make KnowNative an even better resource for learners.
+
+To contribute to the project, please fork the repo, make changes and create a pull request. You can also open an issue through GitHub if you'd simply like to submit an idea or report a bug.
+
+1. Fork the project
+2. Create your own branch (`git checkout -b <yourbranchname>`)
+3. Commit your changes (`git commit -m 'About your contribution'`)
+4. Push to the branch (`git push origin <yourbranchname>`)
+5. Open a pull request to merge into `develop`
+
+Don't forget to give the project a star while you're at it!
+
+### Core Contributors
+
+As the creator of KnowNative, I am eager to collaborate with others who are excited about this project and are looking to contribute to on a more regular and consistent (volunteer) basis. We currently have a small team of Core Contributors who are innovating behind the scenes to bring high quality features and exceptional user experience to KnowNative. Read more here: <a href="#">Core Contributors</a>.
+
+Becoming a Core Contributor is an excellent way to gain real-world experience working with a team and add to your own portfolio or resume, all while being a part of a project you're passionate about! I'm currently open to Core Contributors with skills in:
+
+- UX/UI research and design
+- Software development
+- Branding, social media and marketing
+- Those with a special interest in linguistics and language learning - if you'd like to contribute, I'd love to hear from you!
+
+Core Contributors benefit from the following:
+
+- Special recognition on our website, with your image, bio and professional/social links
+- Experience working solo or in small groups
+- Weekly group coding sessions
+
+To be considered a Core Contributor of the KnowNative project, developers must commit to submitting one meaningful PR per month and attend at least one team meeting or 1:1 check-in per month. Participation is voluntary, and these requirements are in place to ensure harmonious collaboration among team members who are serious about the project. There is no minimum commitment for hours/week or number of months, and all experience levels are welcome.
+
+To chat about becoming a Core Contributor, please reach out to me on [**LinkedIn**](https://www.linkedin.com/in/abigaildawsondev/). Please include something in your message about how your interests align with the project's mission.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## License
+
+Distributed under the MIT License. See `LICENSE.txt` for more information.
+
+## Contact
+
+Abigail Dawson · [**LinkedIn**](https://www.linkedin.com/in/abigaildawsondev/) · abigaildawson.dev@gmail.com
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>

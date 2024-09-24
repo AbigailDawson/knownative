@@ -1,0 +1,239 @@
+.textpage-heading {
+  display: flex;
+  max-width: 900px;
+  text-align: left;
+  width: 100%;
+  flex-direction: column;
+  margin: 0 3vmin 0 0;
+  color: var(--darkest);
+}
+
+.flex-row {
+  justify-content: center;
+}
+
+.textpage-heading-title {
+  font-size: 2.7rem;
+  display: inline-block;
+}
+
+.textpage-difficulty-tag {
+  margin-top: 1.5rem;
+}
+
+.link-view-source {
+  text-decoration: underline;
+  color: #576163;
+  margin-left: 2.5vmin;
+  vertical-align: middle;
+}
+
+.text-area {
+  background: white;
+  padding: 2vmin;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.read-container,
+.study-container,
+.translate-container {
+  display: none;
+}
+
+.study-content {
+  position: relative;
+}
+
+.read-container.active,
+.study-container.active,
+.translate-container.active {
+  display: block;
+}
+
+.star-filled {
+  color: var(--gold);
+}
+
+.star-empty,
+.star-filled {
+  display: inline-block;
+  font-size: 4vmin;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+  padding-top: 0.3vmin;
+}
+
+@keyframes sparkle {
+  0% {
+    color: var(--gold);
+  }
+  50% {
+    color: var(--yellow);
+  }
+  100% {
+    color: var(--gold);
+  }
+}
+
+.star-empty:hover {
+  color: var(--gold);
+  animation: sparkle 0.8s infinite;
+}
+
+.star-filled:hover {
+  color: var(--yellow);
+  animation: sparkle 0.8s infinite;
+}
+
+.flashcard-count {
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  padding-top: 2vmin;
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.flashcard-count p {
+  margin: 0;
+}
+
+.correct-count {
+  color: var(--green-drk);
+  font-weight: 800;
+}
+
+.remaining-count {
+  color: var(--red-poppy);
+  font-weight: 800;
+}
+
+.congrats {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.play-again-btn {
+  margin-top: 3vmin;
+  font-size: 1.1rem;
+  padding: 1vmin 2vmin;
+  background-color: var(--teal-lt);
+  transition: transform 0.3s ease-in-out;
+}
+
+.play-again-btn:hover {
+  background-color: var(--teal-lt);
+  transform: scale(1.1);
+}
+
+.flip-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flip-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--action);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.flip-button:hover {
+  background-color: var(--medium);
+}
+
+.flip-button:focus {
+  outline: none;
+}
+
+.tabs {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1vmin;
+  margin-left: 5vmin;
+  padding: 3vmin 0 2vmin;
+}
+
+.tab-btn {
+  cursor: pointer;
+  background-color: transparent;
+  position: relative;
+  color: var(--dark);
+  margin: 1vmin 0 3vmin 0;
+  border-radius: 1vmin;
+  padding: 0.5vmin 2vmin;
+  font-size: 1.4rem;
+}
+
+.tab-btn::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.tab-btn.active {
+  color: var(--darkest);
+  font-weight: 500;
+  border: none;
+}
+
+.tab-btn.active::after {
+  background-color: var(--primary);
+  color: var(--darkest);
+  transform: scaleX(1);
+}
+
+.tab-btn:not(.active)::after {
+  transform: scaleX(0);
+}
+
+.tab-indicator {
+  background-color: var(--primary);
+  width: 100px;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* xl screens and smaller */
+@media (max-width: 1280px) {
+  .textpage-heading-title {
+    padding: 4vmin 0 0 2vmin;
+  }
+}
+
+/* medium screens and smaller */
+@media (max-width: 768px) {
+  .textpage-heading-title {
+    padding: 4vmin 0 0 2vmin;
+    font-size: 1.75rem;
+    margin-left: 20px;
+  }
+}
+
+/* small screens and smaller */
+@media (max-width: 550px) {
+  .textpage-heading {
+    padding: 4vmin 0 0 5vmin;
+  }
+}

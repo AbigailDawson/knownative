@@ -3,12 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@emotion/react": "^11.11.3",
-    "@emotion/styled": "^11.11.0",
+    "@emotion/react": "^11.13.0",
+    "@emotion/styled": "^11.13.0",
     "@google-cloud/translate": "^8.0.3",
-    "@mui/icons-material": "^5.15.7",
+    "@mui/icons-material": "^5.16.6",
     "@mui/material": "^5.15.6",
     "bcrypt": "^5.1.1",
+    "bootstrap": "^5.0.2",
     "chinese-tokenizer": "^2.4.0",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
@@ -16,17 +17,23 @@
     "mongoose": "^8.1.0",
     "morgan": "^1.10.0",
     "react": "^18.2.0",
+    "react-bootstrap": "^2.10.2",
     "react-dom": "^18.2.0",
     "react-icons": "^5.0.1",
-    "react-router-dom": "^6.21.2",
+    "react-router-dom": "^6.25.1",
     "react-scripts": "5.0.1",
+    "react-tooltip": "^5.27.1",
     "serve-favicon": "^2.5.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "dev": "nodemon server",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write ./**/*.{js,jsx,css,md,json} --config ./.prettierrc"
   },
   "eslintConfig": {
     "extends": [
@@ -46,5 +53,15 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:3001"
+  "proxy": "http://localhost:3001",
+  "devDependencies": {
+    "@babel/plugin-transform-private-property-in-object": "^7.24.7",
+    "@eslint/js": "^9.9.0",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-react": "^7.35.0",
+    "globals": "^15.9.0",
+    "nodemon": "^3.1.0",
+    "prettier": "3.3.3"
+  }
 }
