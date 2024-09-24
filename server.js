@@ -8,9 +8,18 @@ require('dotenv').config()
 const app = express()
  
 app.use((req, res, next) => {
-  if (req.headers.host === 'knownative.com') {
-    return res.redirect(301, `https://www.knownative.com${req.url}`);
+  const host = req.headers.host;
+  
+  // Redirect knownative.com and www.knownative.com to knownative.io
+  if (host === 'knownative.com' || host === 'www.knownative.com') {
+    return res.redirect(301, `https://www.knownative.io${req.url}`);
   }
+
+  // force redirect from non-www to www for knownative.io
+  if (host === 'knownative.io') {
+    return res.redirect(301, `https://www.knownative.io${req.url}`);
+  }
+
   next();
 });
 
