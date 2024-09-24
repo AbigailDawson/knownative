@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import LandingPageNav from '../../components/LandingPageNav/LandingPageNav';
-import LandingPageFooter from '../../components/LandingPageFooter/LandingPageFooter';
-import Modal from '../../ui-components/Modal/modal';
+import LandingPageNav from '../components/TopNav/LandingPageNav';
+import LandingPageFooter from '../components/Footer/LandingPageFooter';
+import Modal from '../../components/Modal/modal';
 import './LandingPage.css';
 import { FaLinkedin } from 'react-icons/fa';
 import { FaGithub } from 'react-icons/fa';

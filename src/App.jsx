@@ -1,9 +1,9 @@
 import { Routes, Route } from 'react-router-dom';
 import './App.css';
-import DemoTextPage from '../../demo/demo-pages/DemoTextPage/DemoTextPage';
-import AboutPage from '../AboutPage/AboutPage';
-import ContributePage from '../ContributePage/ContributePage';
-import LandingPage from '../LandingPage/LandingPage';
+import DemoTextPage from './demo/demo-pages/DemoTextPage/DemoTextPage';
+import AboutPage from './HomePages/AboutPage/AboutPage';
+import ContributePage from './HomePages/ContributePage/ContributePage';
+import LandingPage from './HomePages/LandingPage/LandingPage';
 
 function App() {
   return (

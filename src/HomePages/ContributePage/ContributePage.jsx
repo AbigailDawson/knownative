@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import LandingPageNav from '../../components/LandingPageNav/LandingPageNav';
-import LandingPageFooter from '../../components/LandingPageFooter/LandingPageFooter';
+import LandingPageNav from '../components/TopNav/LandingPageNav';
+import LandingPageFooter from '../components/Footer/LandingPageFooter';
 import './ContributePage.css';
 import contributorData from './contributordata';
 import Button from 'react-bootstrap/Button';
