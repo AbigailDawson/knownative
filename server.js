@@ -7,6 +7,13 @@ require('dotenv').config()
  
 const app = express()
  
+app.use((req, res, next) => {
+  if (req.headers.host === 'knownative.com') {
+    return res.redirect(301, `https://www.knownative.com${req.url}`);
+  }
+  next();
+});
+
 app.use(logger('dev'))
 app.use(express.json())
 
