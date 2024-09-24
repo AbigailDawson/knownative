@@ -1,5 +1,5 @@
-import LandingPageNav from '../components/TopNav/LandingPageNav';
-import LandingPageFooter from '../components/Footer/LandingPageFooter';
+import LandingPageNav from '../components/LandingPageHeader/LandingPageNav';
+import LandingPageFooter from '../components/LandingPageFooter/LandingPageFooter';
 import './AboutPage.css';
 
 export default function AboutPage() {
