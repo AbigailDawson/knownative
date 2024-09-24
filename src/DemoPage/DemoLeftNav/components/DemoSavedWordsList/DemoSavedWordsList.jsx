@@ -1,13 +1,13 @@
-import "./DemoSavedWordsList.css";
-import DemoSavedWord from "../DemoSavedWord/DemoSavedWord";
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import './DemoSavedWordsList.css';
+import DemoSavedWord from '../../../demo-components/DemoSavedWord/DemoSavedWord';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 
 export default function DemoSavedWordsList({
   savedWords,
   updateWord,
   deleteWord,
   gameInProgress,
-  handleBackArrowClick,
+  handleBackArrowClick
 }) {
   // const [editingWord, setEditingWord] = useState(null);
 
@@ -38,8 +38,7 @@ export default function DemoSavedWordsList({
         <div className="saved-word-list-subtext">
           <p>No words have been saved yet!</p>
           <p>
-            Get started by navigating to the Study tab and selecting some words
-            you'd like to study.
+            Get started by navigating to the Study tab and selecting some words you'd like to study.
           </p>
         </div>
       ) : (
@@ -53,8 +52,8 @@ export default function DemoSavedWordsList({
   );
 }
 
-/* 
-Old code (in case it's needed) 
+/*
+Old code (in case it's needed)
    {savedWords.length === 0 ? (
         <>
           <p>No words have been saved yet!</p>

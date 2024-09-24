@@ -4,9 +4,9 @@ import { Button, Dialog, DialogActions, DialogContent } from '@mui/material';
 import { IoMdClose } from 'react-icons/io';
 import { GiCheckMark } from 'react-icons/gi';
 import { PiRepeatBold } from 'react-icons/pi';
-import './DemoFlashcardGame.css';
+import './DemoFlashcardGameModal.css';
 
-export default function DemoFlashcardGame({ wordList, selectedFront, showPinyin, blurText }) {
+export default function DemoFlashcardGameModal({ wordList, selectedFront, showPinyin, blurText }) {
   const [open, setOpen] = useState(false);
   const [flashcards, setFlashcards] = useState([]);
   const [gameInProgress, setGameInProgress] = useState(false);

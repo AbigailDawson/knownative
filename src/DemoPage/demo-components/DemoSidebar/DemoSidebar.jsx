@@ -1,10 +1,9 @@
-import './DemoSidebar.css'
-import { GiRead } from "react-icons/gi";
-import { BiSolidArchive } from "react-icons/bi";
-import { TbCardsFilled } from "react-icons/tb";
+import './DemoSidebar.css';
+import { GiRead } from 'react-icons/gi';
+import { BiSolidArchive } from 'react-icons/bi';
+import { TbCardsFilled } from 'react-icons/tb';
 
 export default function DemoSidebar({ user, numTexts, numArchivedTexts, numSavedWords }) {
-
   return (
     <>
       <div className="sidebar-heading">
@@ -12,7 +11,6 @@ export default function DemoSidebar({ user, numTexts, numArchivedTexts, numSaved
         <h1>{user.name}</h1>
       </div>
       <div className="stats">
-        
         <div className="stat">
           <div>
             <GiRead className="stat-icon" />
@@ -30,8 +28,8 @@ export default function DemoSidebar({ user, numTexts, numArchivedTexts, numSaved
             <div className="stat-heading"> Archived</div>
           </div>
           <div>
-          <div className="num">{numArchivedTexts}</div>
-          <div className="stat-heading"> Texts</div>
+            <div className="num">{numArchivedTexts}</div>
+            <div className="stat-heading"> Texts</div>
           </div>
         </div>
 
@@ -45,8 +43,7 @@ export default function DemoSidebar({ user, numTexts, numArchivedTexts, numSaved
             <div className="stat-subheading">Words</div>
           </div>
         </div>
-        
       </div>
     </>
-  )
+  );
 }

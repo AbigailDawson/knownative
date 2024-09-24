@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import "./DemoLibrary.css";
-import DemoChooseTextCard from "../DemoChooseTextCard/DemoChooseTextCard";
+import { useState, useEffect } from 'react';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import './DemoLibrary.css';
+import DemoChooseTextCard from '../DemoChooseTextCard/DemoChooseTextCard';
 
 function DemoLibrary({
   handleBackArrowClick,
@@ -15,10 +15,8 @@ function DemoLibrary({
 
   useEffect(() => {
     //the filtered books will determine what goes in the "bookshelf" section. all of this will be based on the textSelection variable, which is determined by the welcome modal.
-    const difficulties = ["beginner", "intermediate", "advanced"];
-    const filteredBooks = difficulties.filter(
-      (difficulty) => difficulty !== textSelection
-    );
+    const difficulties = ['beginner', 'intermediate', 'advanced'];
+    const filteredBooks = difficulties.filter((difficulty) => difficulty !== textSelection);
 
     //maintext will go under "currently reading" header
     setMainText(textSelection);
@@ -39,12 +37,10 @@ function DemoLibrary({
       </header>
       <section className="demo-library-subtext">
         <p>
-          Choose a different text for this demo. You will be able to see a preview of
-          the text prior to loading it.
+          Choose a different text for this demo. You will be able to see a preview of the text prior
+          to loading it.
         </p>
-        <p>
-          In the full version of KnowNative, you can import any text you want.
-        </p>
+        <p>In the full version of KnowNative, you can import any text you want.</p>
       </section>
       <section className="demo-library-currently-reading-container">
         <h5>Currently Reading:</h5>
@@ -65,7 +61,7 @@ function DemoLibrary({
               isActiveText={false}
               isTopOfBookshelf={i === 0}
               setLocalSavedWords={setLocalSavedWords}
-              key={difficulty + i + "bookshelf"}
+              key={difficulty + i + 'bookshelf'}
               textTitle={demoTexts[difficulty].title}
             />
           );

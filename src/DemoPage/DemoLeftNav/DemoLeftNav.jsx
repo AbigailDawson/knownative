@@ -1,16 +1,15 @@
-import "./DemoNav.css";
+import './DemoLeftNav.css';
 
-export default function DemoNav({
+export default function DemoLeftNav({
   expandSidebar,
   changeSidebarCategory,
   sidebarCategory,
   savedWords,
   handleShowExit
 }) {
-
   function handleCardsClick(e) {
     const selectedIcon = e.currentTarget.id;
-    console.log("selected icon: ", selectedIcon);
+    console.log('selected icon: ', selectedIcon);
     //if there's no sidebar present, then expand the sidebar based on what the user clicked.
     if (sidebarCategory === null) {
       changeSidebarCategory(selectedIcon);
@@ -43,71 +42,55 @@ export default function DemoNav({
         <button
           id="savedwords-tooltip"
           className={`icontip-container ${
-            sidebarCategory === "savedwords-tooltip"
-              ? "button-active google-icons-shaded"
-              : "google-icons-outline"
+            sidebarCategory === 'savedwords-tooltip'
+              ? 'button-active google-icons-shaded'
+              : 'google-icons-outline'
           }`}
           onClick={handleCardsClick}
           aria-label="Saved Words"
-          aria-expanded={sidebarCategory ===  "savedwords-tooltip" ? "true" : "false"}
-        >
-          <span className="material-symbols-outlined side-nav-icon-top icon-flipped">
-            &#xe41d;
-          </span>
+          aria-expanded={sidebarCategory === 'savedwords-tooltip' ? 'true' : 'false'}>
+          <span className="material-symbols-outlined side-nav-icon-top icon-flipped">&#xe41d;</span>
           <label htmlFor="savedwords-tooltip">Terms</label>
-          {savedWords.length > 0 && (
-            <span className="badge">{savedWords.length}</span>
-          )}
+          {savedWords.length > 0 && <span className="badge">{savedWords.length}</span>}
         </button>
         {/* Learn Icon */}
         <button
           id="flashcards-tooltip"
           className={`icontip-container ${
-            sidebarCategory === "flashcards-tooltip"
-              ? "button-active google-icons-shaded"
-              : "google-icons-outline"
+            sidebarCategory === 'flashcards-tooltip'
+              ? 'button-active google-icons-shaded'
+              : 'google-icons-outline'
           }`}
           onClick={handleCardsClick}
           aria-label="Learn"
-          aria-expanded={sidebarCategory === "flashcards-tooltip" ? "true" : "false"}
-        >
-          <span className="material-symbols-outlined side-nav-icon-top">
-            &#xe80c;
-          </span>
+          aria-expanded={sidebarCategory === 'flashcards-tooltip' ? 'true' : 'false'}>
+          <span className="material-symbols-outlined side-nav-icon-top">&#xe80c;</span>
           <label htmlFor="flashcards-tooltip">Learn</label>
         </button>
         {/* Library Icon */}
         <button
           id="library-tooltip"
           className={`icontip-container ${
-            sidebarCategory === "library-tooltip"
-              ? "button-active google-icons-shaded"
-              : "google-icons-outline"
+            sidebarCategory === 'library-tooltip'
+              ? 'button-active google-icons-shaded'
+              : 'google-icons-outline'
           }`}
           onClick={handleCardsClick}
           aria-label="Library"
-          aria-expanded={sidebarCategory === "library-tooltip" ? "true" : "false"}
-        >
-          <span className="material-symbols-outlined side-nav-icon-top">
-            &#xf53e;
-          </span>
+          aria-expanded={sidebarCategory === 'library-tooltip' ? 'true' : 'false'}>
+          <span className="material-symbols-outlined side-nav-icon-top">&#xf53e;</span>
           <label htmlFor="library-tooltip">Library</label>
         </button>
         {/* Info Icon */}
         <button
           id="info-tooltip"
           className={`icontip-container ${
-            sidebarCategory === "info-tooltip"
-              ? "button-active google-icons-shaded"
-              : ""
+            sidebarCategory === 'info-tooltip' ? 'button-active google-icons-shaded' : ''
           }`}
           onClick={handleCardsClick}
           aria-label="Info"
-          aria-expanded={sidebarCategory === "info-tooltip" ? "true" : "false"}
-        >
-          <span className="material-symbols-outlined side-nav-icon-top">
-            &#xe88e;
-          </span>
+          aria-expanded={sidebarCategory === 'info-tooltip' ? 'true' : 'false'}>
+          <span className="material-symbols-outlined side-nav-icon-top">&#xe88e;</span>
           <label htmlFor="info-tooltip">Info</label>
         </button>
       </div>
@@ -115,17 +98,12 @@ export default function DemoNav({
         <button
           id="exit-tooltip"
           className={`icontip-container ${
-            sidebarCategory === "exit-tooltip"
-              ? "button-active google-icons-shaded"
-              : ""
+            sidebarCategory === 'exit-tooltip' ? 'button-active google-icons-shaded' : ''
           }`}
           onClick={handleShowExit}
           aria-label="Exit"
-          aria-expanded={sidebarCategory === "exit-tooltip" ? "true" : "false"}
-        >
-          <span className="material-symbols-outlined side-nav-icon-top">
-            &#xe9ba;
-          </span>
+          aria-expanded={sidebarCategory === 'exit-tooltip' ? 'true' : 'false'}>
+          <span className="material-symbols-outlined side-nav-icon-top">&#xe9ba;</span>
           <label htmlFor="exit-tooltip">Exit</label>
         </button>
       </div>

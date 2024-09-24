@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './DemoEditWordModal.css';
-import Modal from '../../../components/Modal/modal';
+import Modal from '../../../ui-components/Modal/modal';
 
 function DemoEditWordModal({ handleDeleteWord, setShowModal, updateWord, word }) {
   const [inputTerm /*setInputTerm*/] = useState(word.charGroup);
