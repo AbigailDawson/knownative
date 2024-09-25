@@ -19,7 +19,9 @@ export default function DemoExitModal({ setShowModal }) {
       hasCloseButton={true}
       modalTitle={'Exit and clear word list?'}
       setShowModal={setShowModal}>
-      <p>Exiting the demo will remove your saved words. Are you sure you want to proceed?</p>
+      <div className="exit-demo-modal-content">
+        <p>Exiting the demo will remove your saved words. Are you sure you want to proceed?</p>
+      </div>
     </Modal>
   );
 }
