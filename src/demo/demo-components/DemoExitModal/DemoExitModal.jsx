@@ -1,30 +1,25 @@
 import './DemoExitModal.css';
 import { useNavigate } from 'react-router-dom';
-import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
+import Modal from '../../../ui-components/Modal/modal';
 
-export default function DemoExitModal({ showExitModal, handleCloseExit }) {
+export default function DemoExitModal({ setShowModal }) {
   const navigate = useNavigate();
   function exitDemo() {
+    setShowModal(false);
     navigate('/');
   }
 
   return (
-    <Modal show={showExitModal} onHide={handleCloseExit} backdrop="static">
-      <Modal.Header closeButton>
-        <Modal.Title>Exit and clear word list?</Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        <p>Exiting the demo will remove your saved words. Are you sure you want to proceed?</p>
-      </Modal.Body>
-      <Modal.Footer>
-        <Button variant="secondary" onClick={handleCloseExit}>
-          Go Back
-        </Button>
-        <Button variant="danger" onClick={exitDemo}>
-          Exit
-        </Button>
-      </Modal.Footer>
+    <Modal
+      canCloseOnEscapeKey={true}
+      buttonPrimaryText="Exit"
+      buttonSecondaryText="Go Back"
+      handleSecondaryButtonOnClick={() => setShowModal(false)}
+      handlePrimaryButtonOnClick={exitDemo}
+      hasCloseButton={true}
+      modalTitle={'Exit and clear word list?'}
+      setShowModal={setShowModal}>
+      <p>Exiting the demo will remove your saved words. Are you sure you want to proceed?</p>
     </Modal>
   );
 }
