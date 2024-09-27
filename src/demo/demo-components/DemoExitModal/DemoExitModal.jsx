@@ -17,10 +17,10 @@ export default function DemoExitModal({ setShowModal }) {
       handleSecondaryButtonOnClick={() => setShowModal(false)}
       handlePrimaryButtonOnClick={exitDemo}
       hasCloseButton={true}
-      modalTitle={'Exit and clear word list?'}
+      modalTitle={'Exit Demo Session?'}
       setShowModal={setShowModal}>
       <div className="exit-demo-modal-content">
-        <p>Exiting the demo will remove your saved words. Are you sure you want to proceed?</p>
+        <p>Your vocabulary list may disappear after you leave. Are you sure you want to proceed?</p>
       </div>
     </Modal>
   );
