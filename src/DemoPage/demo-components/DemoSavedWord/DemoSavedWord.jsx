@@ -2,7 +2,7 @@ import './DemoSavedWord.css';
 import { useState } from 'react';
 import { BiDotsVerticalRounded } from 'react-icons/bi';
 import { FaPencilAlt, FaTrashAlt } from 'react-icons/fa';
-import DemoEditWordModal from '../DemoEditWordModal/DemoEditWordModal';
+import DemoEditWordModal from '../../components/DemoEditWordModal/DemoEditWordModal';
 
 export default function DemoSavedWord({ word, updateWord, deleteWord }) {
   //NEW CODE ----------------------

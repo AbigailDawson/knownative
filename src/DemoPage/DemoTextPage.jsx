@@ -8,8 +8,8 @@ import DemoSavedWordsList from './DemoLeftNav/components/DemoSavedWordsList/Demo
 import DemoFlashcardForm from './DemoLeftNav/components/DemoFlashcardForm/DemoFlashcardForm';
 import DemoInfoSidebar from './DemoLeftNav/components/DemoInfoSidebar/DemoInfoSidebar';
 import DemoLeftNav from './DemoLeftNav/DemoLeftNav';
-import DemoWelcomeModal from './demo-components/DemoWelcomeModal/DemoWelcomeModal';
-import DemoExitModal from './demo-components/DemoExitModal/DemoExitModal';
+import DemoWelcomeModal from './components/DemoWelcomeModal/DemoWelcomeModal';
+import DemoExitModal from './components/DemoExitModal/DemoExitModal';
 // import * as textsAPI from "../../../utilities/texts-api";
 // import * as wordsAPI from "../../../utilities/words-api";
 import { getWordInfo } from '../utilities/words-service';
