@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import './DemoStudyText.css';
-import DemoPopup from '../DemoPopup/DemoPopup';
-import DemoWord from '../DemoWord/DemoWord';
+import DemoPopup from './components/DemoPopup/DemoPopup';
+import DemoWord from './components/DemoWord/DemoWord';
 import * as demoAPI from '../../../utilities/demo-api';
 import * as wordsAPI from '../../../utilities/words-service';
 

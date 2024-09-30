@@ -1,10 +1,10 @@
-import "./DemoSentence.css";
-import * as demoAPI from "../../../utilities/demo-api";
-import { useState, useEffect } from "react";
-import DemoTranslation from "../DemoTranslation/DemoTranslation";
+import './DemoSentence.css';
+import * as demoAPI from '../../../../../../utilities/demo-api';
+import { useState, useEffect } from 'react';
+import DemoTranslation from '../../../../../demo-components/DemoTranslation/DemoTranslation';
 
 export default function DemoSentence({ sentence, isFirst }) {
-  const [translation, setTranslation] = useState("");
+  const [translation, setTranslation] = useState('');
   const [showTranslation, setShowTranslation] = useState(isFirst || false);
 
   useEffect(() => {
@@ -26,17 +26,14 @@ export default function DemoSentence({ sentence, isFirst }) {
         {/* Google Icons translate Icon */}
         <button
           className={`material-symbols-outlined toggle-translation ${
-            showTranslation ? "translation-visible" : ""
+            showTranslation ? 'translation-visible' : ''
           }`}
-          onClick={() => handleTranslate(sentence)}
-        >
+          onClick={() => handleTranslate(sentence)}>
           &#xe8e2;
         </button>
         <span className="sentence zh">{sentence}</span>
       </div>
-      {translation && (
-        <DemoTranslation translation={translation} show={showTranslation} />
-      )}
+      {translation && <DemoTranslation translation={translation} show={showTranslation} />}
     </>
   );
 }

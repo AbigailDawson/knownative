@@ -1,21 +1,23 @@
 import { useState, useEffect, useRef } from 'react';
 import { BiLinkExternal } from 'react-icons/bi';
 import './DemoTextPage.css';
-import DemoStudyText from './demo-components/DemoStudyText/DemoStudyText';
-import DemoReadText from './demo-components/DemoReadText/DemoReadText';
-import DemoTranslateText from './demo-components/DemoTranslateText/DemoTranslateText';
+import DemoStudyText from './DemoMainContent/DemoStudyText/DemoStudyText';
+import DemoReadText from './DemoMainContent/components/DemoReadText/DemoReadText';
+import DemoTranslateText from './DemoMainContent/components/DemoTranslateText/DemoTranslateText';
+
+import DemoLeftNav from './DemoLeftNav/DemoLeftNav';
 import DemoSavedWordsList from './DemoLeftNav/components/DemoSavedWordsList/DemoSavedWordsList';
 import DemoFlashcardForm from './DemoLeftNav/components/DemoFlashcardForm/DemoFlashcardForm';
 import DemoInfoSidebar from './DemoLeftNav/components/DemoInfoSidebar/DemoInfoSidebar';
-import DemoLeftNav from './DemoLeftNav/DemoLeftNav';
+import DemoLibrary from './DemoLeftNav/components/DemoLibrary/DemoLibrary';
+
 import DemoWelcomeModal from './components/DemoWelcomeModal/DemoWelcomeModal';
 import DemoExitModal from './components/DemoExitModal/DemoExitModal';
 // import * as textsAPI from "../../../utilities/texts-api";
 // import * as wordsAPI from "../../../utilities/words-api";
 import { getWordInfo } from '../utilities/words-service';
-import DemoLibrary from './DemoLeftNav/components/DemoLibrary/DemoLibrary';
 //import word from '../../../../models/word'
-import DemoDifficultyTag from './demo-components/DemoDifficultyTag/DemoDifficultyTag';
+import DemoDifficultyTag from './DemoMainContent/DemoDifficultyTag/DemoDifficultyTag';
 import demoTexts from './demodata';
 
 export default function DemoTextPage({ getText, updateText }) {
@@ -184,7 +186,7 @@ export default function DemoTextPage({ getText, updateText }) {
       </nav>
 
       {/* Conditional rendering, dependent on the values of expandedSidbar and sidebarCategory, that will determine if the sidebar is displayed and what content is displayed. */}
-
+      {/* Potential Option for refactor and moving sidebar components into either DemoLeftNav or a separate component under DemoLeftNav  */}
       <aside className="sidebar">
         {sidebarCategory === 'savedwords-tooltip' && (
           <DemoSavedWordsList
@@ -221,6 +223,7 @@ export default function DemoTextPage({ getText, updateText }) {
       </aside>
 
       <section className="main-area" ref={topRef}>
+        {/* Potential to be separate component: ArticleHeader */}
         <div className="tabs sticky-fade">
           <button
             className={`tab-btn ${activeTab === 'read' ? 'active' : ''}`}

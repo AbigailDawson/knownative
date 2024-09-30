@@ -17,15 +17,13 @@
   padding-top: 4vmin;
 }
 
-
 /* small screens and smaller */
-@media (max-width: 550px) { 
+@media (max-width: 550px) {
   .TranslateText {
     padding: 4vmin 0 0 5.5vmin;
   }
 
   .study-text-block {
-    margin-left: 20px
+    margin-left: 20px;
   }
-
 }
