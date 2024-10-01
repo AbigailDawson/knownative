@@ -1,5 +1,5 @@
 import './DemoTranslateText.css';
-import { splitSentences } from '../../../../utilities/texts-service';
+import { splitSentences } from '../../../utilities/texts-service';
 import DemoSentence from './components/DemoSentence/DemoSentence';
 
 export default function DemoTranslateText({ text }) {

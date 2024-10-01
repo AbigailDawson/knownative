@@ -1,7 +1,7 @@
 import './DemoSentence.css';
-import * as demoAPI from '../../../../../../utilities/demo-api';
+import * as demoAPI from '../../../../../utilities/demo-api';
 import { useState, useEffect } from 'react';
-import DemoTranslation from '../../../../../demo-components/DemoTranslation/DemoTranslation';
+import DemoTranslation from '../DemoTranslation/DemoTranslation';
 
 export default function DemoSentence({ sentence, isFirst }) {
   const [translation, setTranslation] = useState('');

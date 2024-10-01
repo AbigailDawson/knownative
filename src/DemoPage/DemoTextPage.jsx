@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
 import { BiLinkExternal } from 'react-icons/bi';
 import './DemoTextPage.css';
-import DemoStudyText from './DemoMainContent/components/DemoStudyText/DemoStudyText';
-import DemoReadText from './DemoMainContent/components/DemoReadText/DemoReadText';
-import DemoTranslateText from './DemoMainContent/components/DemoTranslateText/DemoTranslateText';
+import DemoStudyText from './DemoMainContent/DemoStudyText/DemoStudyText';
+import DemoReadText from './DemoMainContent/DemoReadText/DemoReadText';
+import DemoTranslateText from './DemoMainContent/DemoTranslateText/DemoTranslateText';
 
 import DemoLeftNav from './DemoLeftNav/DemoLeftNav';
 import DemoSavedWordsList from './DemoLeftNav/components/DemoSavedWordsList/DemoSavedWordsList';
