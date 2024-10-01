@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { BiLinkExternal } from 'react-icons/bi';
 import './DemoTextPage.css';
+
 import DemoStudyText from './DemoMainContent/DemoStudyText/DemoStudyText';
 import DemoReadText from './DemoMainContent/DemoReadText/DemoReadText';
 import DemoTranslateText from './DemoMainContent/DemoTranslateText/DemoTranslateText';
@@ -286,7 +287,7 @@ export default function DemoTextPage({ getText, updateText }) {
         </div>
       </section>
       <div id="exit-modal">
-        {<DemoExitModal showExitModal={showExitModal} handleCloseExit={handleCloseExit} />}
+        {showExitModal ? <DemoExitModal setShowModal={setShowExitModal} /> : null}
       </div>
 
       {welcomeModalComplete ? (
