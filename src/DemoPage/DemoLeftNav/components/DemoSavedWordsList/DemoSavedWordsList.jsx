@@ -1,5 +1,5 @@
 import './DemoSavedWordsList.css';
-import DemoSavedWord from '../../../demo-components/DemoSavedWord/DemoSavedWord';
+import DemoSavedWord from './components/DemoSavedWord/DemoSavedWord';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 
 export default function DemoSavedWordsList({
