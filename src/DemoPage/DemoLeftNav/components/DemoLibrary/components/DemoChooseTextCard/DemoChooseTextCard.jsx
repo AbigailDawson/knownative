@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './DemoChooseTextCard.css';
-import DemoDifficultyTag from '../../DemoMainContent/DemoDifficultyTag/DemoDifficultyTag';
+import DemoDifficultyTag from '../../../../../components/DemoDifficultyTag/DemoDifficultyTag';
 import DemoPreviewTextModal from '../DemoPreviewTextModal/DemoPreviewTextModal';
 
 //conditional rendering will determine what stylings each of the demochoosetextcards will take. there will be different stylings based on whether it is the active text (under currently reading) and if it's the first text in the bookshelf

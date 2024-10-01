@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { BiLinkExternal } from 'react-icons/bi';
 import './DemoTextPage.css';
-import DemoStudyText from './DemoMainContent/DemoStudyText/DemoStudyText';
+import DemoStudyText from './DemoMainContent/components/DemoStudyText/DemoStudyText';
 import DemoReadText from './DemoMainContent/components/DemoReadText/DemoReadText';
 import DemoTranslateText from './DemoMainContent/components/DemoTranslateText/DemoTranslateText';
 
@@ -17,7 +17,7 @@ import DemoExitModal from './components/DemoExitModal/DemoExitModal';
 // import * as wordsAPI from "../../../utilities/words-api";
 import { getWordInfo } from '../utilities/words-service';
 //import word from '../../../../models/word'
-import DemoDifficultyTag from './DemoMainContent/DemoDifficultyTag/DemoDifficultyTag';
+import DemoDifficultyTag from './components/DemoDifficultyTag/DemoDifficultyTag';
 import demoTexts from './demodata';
 
 export default function DemoTextPage({ getText, updateText }) {

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import './DemoLibrary.css';
-import DemoChooseTextCard from '../DemoChooseTextCard/DemoChooseTextCard';
+import DemoChooseTextCard from './components/DemoChooseTextCard/DemoChooseTextCard';
 
 function DemoLibrary({
   handleBackArrowClick,

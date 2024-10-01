@@ -2,8 +2,8 @@ import { useState, useEffect, useRef } from 'react';
 import './DemoStudyText.css';
 import DemoPopup from './components/DemoPopup/DemoPopup';
 import DemoWord from './components/DemoWord/DemoWord';
-import * as demoAPI from '../../../utilities/demo-api';
-import * as wordsAPI from '../../../utilities/words-service';
+import * as demoAPI from '../../../../utilities/demo-api';
+import * as wordsAPI from '../../../../utilities/words-service';
 
 export default function DemoStudyText({
   text,

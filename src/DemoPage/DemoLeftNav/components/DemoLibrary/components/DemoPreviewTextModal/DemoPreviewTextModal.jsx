@@ -2,8 +2,8 @@ import './DemoPreviewTextModal.css';
 import { Modal } from 'react-bootstrap';
 import { BsX } from 'react-icons/bs';
 import { BiLinkExternal } from 'react-icons/bi';
-import DemoDifficultyTag from '../../DemoMainContent/DemoDifficultyTag/DemoDifficultyTag';
-import demoTexts from '../../demodata';
+import DemoDifficultyTag from '../../../../../components/DemoDifficultyTag/DemoDifficultyTag';
+import demoTexts from '../../../../../demodata';
 
 function DemoPreviewTextModal({
   showPreviewTextModal,
