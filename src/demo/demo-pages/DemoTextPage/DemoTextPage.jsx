@@ -1,43 +1,46 @@
-import { useState, useEffect, useRef } from "react";
-import { BiLinkExternal } from "react-icons/bi";
-import "./DemoTextPage.css";
-import DemoStudyText from "../../demo-components/DemoStudyText/DemoStudyText";
-import DemoReadText from "../../demo-components/DemoReadText/DemoReadText";
-import DemoTranslateText from "../../demo-components/DemoTranslateText/DemoTranslateText";
-import DemoSavedWordsList from "../../demo-components/DemoSavedWordsList/DemoSavedWordsList";
-import DemoFlashcardForm from "../../demo-components/DemoFlashcardForm/DemoFlashcardForm";
-import DemoInfoSidebar from "../../demo-components/DemoInfoSidebar/DemoInfoSidebar";
-import DemoNav from "../../demo-components/DemoNav/DemoNav";
-import DemoWelcomeModal from "../../demo-components/DemoWelcomeModal/DemoWelcomeModal";
-import DemoExitModal from "../../demo-components/DemoExitModal/DemoExitModal";
+import { useState, useEffect, useRef } from 'react';
+import { BiLinkExternal } from 'react-icons/bi';
+import './DemoTextPage.css';
+import DemoStudyText from '../../demo-components/DemoStudyText/DemoStudyText';
+import DemoReadText from '../../demo-components/DemoReadText/DemoReadText';
+import DemoTranslateText from '../../demo-components/DemoTranslateText/DemoTranslateText';
+import DemoSavedWordsList from '../../demo-components/DemoSavedWordsList/DemoSavedWordsList';
+import DemoFlashcardForm from '../../demo-components/DemoFlashcardForm/DemoFlashcardForm';
+import DemoInfoSidebar from '../../demo-components/DemoInfoSidebar/DemoInfoSidebar';
+import DemoNav from '../../demo-components/DemoNav/DemoNav';
+import DemoWelcomeModal from '../../demo-components/DemoWelcomeModal/DemoWelcomeModal';
+import DemoExitModal from '../../demo-components/DemoExitModal/DemoExitModal';
 // import * as textsAPI from "../../../utilities/texts-api";
 // import * as wordsAPI from "../../../utilities/words-api";
-import { getWordInfo } from "../../../utilities/words-service";
-import DemoLibrary from "../../demo-components/DemoLibrary/DemoLibrary";
+import { getWordInfo } from '../../../utilities/words-service';
+import DemoLibrary from '../../demo-components/DemoLibrary/DemoLibrary';
 //import word from '../../../../models/word'
-import DemoDifficultyTag from "../../demo-components/DemoDifficultyTag/DemoDifficultyTag";
-import demoTexts from '../../demodata'
+import DemoDifficultyTag from '../../demo-components/DemoDifficultyTag/DemoDifficultyTag';
+import demoTexts from '../../demodata';
 
 export default function DemoTextPage({ getText, updateText }) {
-
   // --- DISPLAY STATE VALUES ---
-  const [activeTab, setActiveTab] = useState("read");
+  const [activeTab, setActiveTab] = useState('read');
   const [sidebarCategory, setSidebarCategory] = useState(null);
   const [expandedSidebar, setExpandedSidebar] = useState(false);
 
   //-- TEXT DIFFICULTY STATE VALUES--
   const [textSelection, setTextSelection] = useState(
-    (localStorage.getItem("textSelection") === null) ? "beginner" : localStorage.getItem("textSelection")
+    localStorage.getItem('textSelection') === null
+      ? 'beginner'
+      : localStorage.getItem('textSelection')
   );
   const [text, setText] = useState(
-    (localStorage.getItem("text") === null) ? demoTexts.beginner : JSON.parse(localStorage.getItem("text"))
+    localStorage.getItem('text') === null
+      ? demoTexts.beginner
+      : JSON.parse(localStorage.getItem('text'))
   );
 
   // --- SAVED WORDS ---
   const [localSavedWords, setLocalSavedWords] = useState(
-    JSON.parse(localStorage.getItem("stringifiedWords") === null)
+    JSON.parse(localStorage.getItem('stringifiedWords') === null)
       ? []
-      : JSON.parse(localStorage.getItem("stringifiedWords"))
+      : JSON.parse(localStorage.getItem('stringifiedWords'))
   );
   // const [savedWords, setSavedWords] = useState([]);
 
@@ -54,14 +57,16 @@ export default function DemoTextPage({ getText, updateText }) {
   const [isDemoWelcomeModalOpen, setDemoWelcomeModalOpen] = useState(true);
   //const [demoWelcomeModalData, setDemoWelcomeModalData] = useState(null);
   const [welcomeModalComplete, setWelcomeModalComplete] = useState(
-    (localStorage.getItem("welcomeModalComplete") === null) ? false : JSON.parse(localStorage.getItem("welcomeModalComplete"))
-  )
+    localStorage.getItem('welcomeModalComplete') === null
+      ? false
+      : JSON.parse(localStorage.getItem('welcomeModalComplete'))
+  );
 
   const handleCloseDemoWelcomeModal = () => {
-    setWelcomeModalComplete(true)
-    setDemoWelcomeModalOpen(false)
-    localStorage.setItem("welcomeModalComplete", 'true')
-  }
+    setWelcomeModalComplete(true);
+    setDemoWelcomeModalOpen(false);
+    localStorage.setItem('welcomeModalComplete', 'true');
+  };
 
   const handleWelcomeModalSubmit = (data) => {
     //setDemoWelcomeModalData(data);
@@ -73,36 +78,26 @@ export default function DemoTextPage({ getText, updateText }) {
   const blurRef = useRef(null);
 
   // --- Text Selection Side Effects---
-  useEffect(
-    () => {
-      setText(demoTexts[textSelection])
-      localStorage.setItem(
-        "text",
-        JSON.stringify(demoTexts[textSelection])
-      )
+  useEffect(() => {
+    setText(demoTexts[textSelection]);
+    localStorage.setItem('text', JSON.stringify(demoTexts[textSelection]));
 
-      localStorage.setItem("textSelection", textSelection)
-    },
-    [textSelection]
-  )
+    localStorage.setItem('textSelection', textSelection);
+  }, [textSelection]);
 
   useEffect(
     function () {
       function setLocalStorage() {
-        localStorage.setItem(
-          "stringifiedWords",
-          JSON.stringify(localSavedWords)
-        );
+        localStorage.setItem('stringifiedWords', JSON.stringify(localSavedWords));
       }
       setLocalStorage();
     },
     [localSavedWords]
   );
 
-
   // --- SAVED WORDS RELATED FUNCTIONS ---
   function generateID() {
-    const savedWords = JSON.parse(localStorage.getItem("stringifiedWords"));
+    const savedWords = JSON.parse(localStorage.getItem('stringifiedWords'));
     if (savedWords.length === 0) {
       return 0;
     } else {
@@ -111,23 +106,23 @@ export default function DemoTextPage({ getText, updateText }) {
   }
 
   function saveWord(word) {
-    const savedWords = JSON.parse(localStorage.getItem("stringifiedWords"));
+    const savedWords = JSON.parse(localStorage.getItem('stringifiedWords'));
     const wordToSave = getWordInfo(word);
     wordToSave._id = generateID();
     setLocalSavedWords([...savedWords, wordToSave]);
-    setActiveWord("");
+    setActiveWord('');
     setShowPopup(false);
   }
 
   function deleteWord(word) {
-    const savedWords = JSON.parse(localStorage.getItem("stringifiedWords"));
+    const savedWords = JSON.parse(localStorage.getItem('stringifiedWords'));
     const filteredWords = savedWords.filter((item) => item._id !== word._id);
     setLocalSavedWords([...filteredWords]);
   }
 
   /* FUNCTION ALTERED to allow for users to have meaning, term, and reading updated after form submission.*/
   function updateWord(word, inputtedMeaning, inputtedTerm, inputtedReading) {
-    const savedWords = JSON.parse(localStorage.getItem("stringifiedWords"));
+    const savedWords = JSON.parse(localStorage.getItem('stringifiedWords'));
     for (let k in savedWords) {
       if (savedWords[k]._id === word._id) {
         savedWords[k].meaning = inputtedMeaning;
@@ -168,20 +163,16 @@ export default function DemoTextPage({ getText, updateText }) {
   // blurs background text when flashcard game in progress
   const blurText = (isActive) => {
     if (isActive) {
-      blurRef.current.style.filter = "blur(4px)";
+      blurRef.current.style.filter = 'blur(4px)';
     } else {
-      blurRef.current.removeAttribute("style");
+      blurRef.current.removeAttribute('style');
     }
   };
 
-
   return !text ? (
-    "Loading ..."
+    'Loading ...'
   ) : (
-    <main
-      className={`TextPage page ${expandedSidebar ? "expanded-sidebar" : "collapsed-sidebar"
-        }`}
-    >
+    <main className={`TextPage page ${expandedSidebar ? 'expanded-sidebar' : 'collapsed-sidebar'}`}>
       <nav className="side-nav">
         <DemoNav
           expandSidebar={expandSidebar}
@@ -195,7 +186,7 @@ export default function DemoTextPage({ getText, updateText }) {
       {/* Conditional rendering, dependent on the values of expandedSidbar and sidebarCategory, that will determine if the sidebar is displayed and what content is displayed. */}
 
       <aside className="sidebar">
-        {sidebarCategory === "savedwords-tooltip" && (
+        {sidebarCategory === 'savedwords-tooltip' && (
           <DemoSavedWordsList
             savedWords={localSavedWords}
             updateWord={updateWord}
@@ -203,7 +194,7 @@ export default function DemoTextPage({ getText, updateText }) {
             handleBackArrowClick={handleBackArrowClick}
           />
         )}
-        {sidebarCategory === "flashcards-tooltip" && (
+        {sidebarCategory === 'flashcards-tooltip' && (
           <DemoFlashcardForm
             expandSidebar={expandSidebar}
             changeSidebarCategory={changeSidebarCategory}
@@ -212,13 +203,13 @@ export default function DemoTextPage({ getText, updateText }) {
             blurText={blurText}
           />
         )}
-        {sidebarCategory === "info-tooltip" && (
+        {sidebarCategory === 'info-tooltip' && (
           <DemoInfoSidebar
             changeSidebarCategory={changeSidebarCategory}
             handleBackArrowClick={handleBackArrowClick}
           />
         )}
-        {sidebarCategory === "library-tooltip" && (
+        {sidebarCategory === 'library-tooltip' && (
           <DemoLibrary
             handleBackArrowClick={handleBackArrowClick}
             textSelection={textSelection}
@@ -229,25 +220,21 @@ export default function DemoTextPage({ getText, updateText }) {
         )}
       </aside>
 
-
       <section className="main-area" ref={topRef}>
         <div className="tabs sticky-fade">
           <button
-            className={`tab-btn ${activeTab === "read" ? "active" : ""}`}
-            onClick={() => handleTabClick("read")}
-          >
+            className={`tab-btn ${activeTab === 'read' ? 'active' : ''}`}
+            onClick={() => handleTabClick('read')}>
             Read
           </button>
           <button
-            className={`tab-btn ${activeTab === "study" ? "active" : ""}`}
-            onClick={() => handleTabClick("study")}
-          >
+            className={`tab-btn ${activeTab === 'study' ? 'active' : ''}`}
+            onClick={() => handleTabClick('study')}>
             Study
           </button>
           <button
-            className={`tab-btn ${activeTab === "translate" ? "active" : ""}`}
-            onClick={() => handleTabClick("translate")}
-          >
+            className={`tab-btn ${activeTab === 'translate' ? 'active' : ''}`}
+            onClick={() => handleTabClick('translate')}>
             Translate
           </button>
         </div>
@@ -258,24 +245,14 @@ export default function DemoTextPage({ getText, updateText }) {
               <h1 className="textpage-heading-title zh">{text.title}</h1>
               <article className="textpage-difficulty-tag">
                 <DemoDifficultyTag textSelection={textSelection} />
-                <a
-                  href={text.source}
-                  className="link-view-source"
-                  target="_blank"
-                  rel="noreferrer"
-                >
+                <a href={text.source} className="link-view-source" target="_blank" rel="noreferrer">
                   View Source <BiLinkExternal />
                 </a>
               </article>
-
             </div>
           </div>
 
-          <div
-            id="study"
-            className={`study-container ${activeTab === "study" ? "active" : ""
-              }`}
-          >
+          <div id="study" className={`study-container ${activeTab === 'study' ? 'active' : ''}`}>
             <div className="Text study-content">
               {text ? (
                 <DemoStudyText
@@ -289,50 +266,37 @@ export default function DemoTextPage({ getText, updateText }) {
                   setShowPopup={setShowPopup}
                 />
               ) : (
-                "Loading text"
+                'Loading text'
               )}
             </div>
           </div>
 
-          <div
-            id="read"
-            className={`read-container ${activeTab === "read" ? "active" : ""}`}
-          >
-            <div className="Text">
-              {text ? <DemoReadText text={text} /> : "Loading text"}
-            </div>
+          <div id="read" className={`read-container ${activeTab === 'read' ? 'active' : ''}`}>
+            <div className="Text">{text ? <DemoReadText text={text} /> : 'Loading text'}</div>
           </div>
 
           <div
             id="translate"
-            className={`translate-container ${activeTab === "translate" ? "active" : ""
-              }`}
-          >
-            <div className="Text">
-              {text ? <DemoTranslateText text={text} /> : "Loading text"}
-            </div>
+            className={`translate-container ${activeTab === 'translate' ? 'active' : ''}`}>
+            <div className="Text">{text ? <DemoTranslateText text={text} /> : 'Loading text'}</div>
           </div>
         </div>
       </section>
       <div id="exit-modal">
-        {
-          <DemoExitModal
-            showExitModal={showExitModal}
-            handleCloseExit={handleCloseExit}
-          />
-        }
+        {showExitModal ? <DemoExitModal setShowModal={setShowExitModal} /> : null}
       </div>
 
-      {welcomeModalComplete ? ""
-        : (<DemoWelcomeModal
+      {welcomeModalComplete ? (
+        ''
+      ) : (
+        <DemoWelcomeModal
           isOpen={isDemoWelcomeModalOpen}
           onSubmit={handleWelcomeModalSubmit}
           onClose={handleCloseDemoWelcomeModal}
           textSelection={textSelection}
           setTextSelection={setTextSelection}
-        />)
-      }
-
+        />
+      )}
     </main>
   );
 }
