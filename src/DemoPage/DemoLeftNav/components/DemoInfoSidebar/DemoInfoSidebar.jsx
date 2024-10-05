@@ -1,6 +1,5 @@
 import './DemoInfoSidebar.css';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
 export default function DemoInfoSidebar({ handleShowExit, handleBackArrowClick }) {
@@ -61,9 +60,6 @@ export default function DemoInfoSidebar({ handleShowExit, handleBackArrowClick }
           </button>
         </>
       )}
-      <Link className="demo-info-light-btn" onClick={null} to="/contact">
-        Contact us
-      </Link>
       <button
         className="demo-info-light-btn"
         onClick={() => window.open('https://github.com/AbigailDawson/knownative', '_blank')}>
