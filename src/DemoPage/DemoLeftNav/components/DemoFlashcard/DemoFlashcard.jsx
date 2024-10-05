@@ -1,19 +1,15 @@
 import './DemoFlashcard.css';
 
-export default function DemoFlashcard({ 
-  chinese, 
-  pinyin, 
-  english, 
-  selectedFront, 
-  showPinyin, 
-  onCorrect, 
-  onIncorrect,
-  isFlipped,
-  onToggle, // Added callback for toggling from parent
+export default function DemoFlashcard({
+  chinese,
+  pinyin,
+  english,
+  selectedFront,
+  showPinyin,
+  isFlipped
 }) {
-
   const englishTextStyle = {
-    fontSize: '20px',
+    fontSize: '20px'
   };
 
   return (
@@ -31,7 +27,7 @@ export default function DemoFlashcard({
             </div>
           )}
         </div>
-        
+
         {isFlipped && (
           <div className="flashcard-back">
             {selectedFront === 'english' ? (

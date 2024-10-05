@@ -21,7 +21,7 @@ import { getWordInfo } from '../utilities/words-service';
 import DemoDifficultyTag from './components/DemoDifficultyTag/DemoDifficultyTag';
 import demoTexts from './demodata';
 
-export default function DemoTextPage({ getText, updateText }) {
+export default function DemoTextPage() {
   // --- DISPLAY STATE VALUES ---
   const [activeTab, setActiveTab] = useState('read');
   const [sidebarCategory, setSidebarCategory] = useState(null);
@@ -54,7 +54,6 @@ export default function DemoTextPage({ getText, updateText }) {
   // --- EXIT MODAL ---
   const [showExitModal, setShowExitModal] = useState(false);
   const handleShowExit = () => setShowExitModal(true);
-  const handleCloseExit = () => setShowExitModal(false);
 
   // --- WELCOME MODAL ---
   const [isDemoWelcomeModalOpen, setDemoWelcomeModalOpen] = useState(true);
@@ -71,7 +70,7 @@ export default function DemoTextPage({ getText, updateText }) {
     localStorage.setItem('welcomeModalComplete', 'true');
   };
 
-  const handleWelcomeModalSubmit = (data) => {
+  const handleWelcomeModalSubmit = () => {
     //setDemoWelcomeModalData(data);
     handleCloseDemoWelcomeModal();
   };

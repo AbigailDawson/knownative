@@ -9,7 +9,6 @@ export default function DemoLeftNav({
 }) {
   function handleCardsClick(e) {
     const selectedIcon = e.currentTarget.id;
-    console.log('selected icon: ', selectedIcon);
     //if there's no sidebar present, then expand the sidebar based on what the user clicked.
     if (sidebarCategory === null) {
       changeSidebarCategory(selectedIcon);
