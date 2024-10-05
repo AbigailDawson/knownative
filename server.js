@@ -4,6 +4,8 @@ const favicon = require('serve-favicon')
 const logger = require('morgan')
 
 require('dotenv').config()
+console.log("Environment variables loaded", process.env.DATABASE_URL);
+require('./config/database')
 
 const app = express()
 
