@@ -6,10 +6,10 @@ coverage
 **/*.html
 
 #Ignore files not under src
-public
-routes
-models
-controllers
-config
-server.js
+client/public
+server/routes
+server/models
+server/controllers
+server/config
+server/server.js
 crud-helper.js
