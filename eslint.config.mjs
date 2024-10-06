@@ -8,10 +8,10 @@ export default [
   pluginJs.configs.recommended,
   pluginReact.configs.flat.recommended,
   {
-    files: ['src/**/*.jsx']
+    files: ['client/src/**/*.jsx']
   },
   {
-    ignores: ['build/', 'config/', 'controllers/', 'src/utilities/', 'routes/', 'server.js']
+    ignores: ['client/build/', 'server/build/', 'server/config/', 'server/controllers/', 'client/src/utilities/', 'server/routes/', 'server/server.js']
   },
   {
     rules: {

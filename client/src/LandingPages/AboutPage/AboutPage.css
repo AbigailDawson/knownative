@@ -1,0 +1,173 @@
+.intro,
+.creator,
+.core-contributors,
+.how-to-contribute,
+.backstory {
+  margin: 2rem 0;
+  font-size: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.about-header {
+  margin-bottom: 2rem;
+}
+
+.about-body {
+  margin-top: 1.5rem;
+  max-width: 70ch;
+  line-height: 1.7;
+}
+
+/* Creator section */
+.creator {
+  background-color: var(--light);
+  border-radius: 20px;
+  padding: 40px;
+  font-size: 1rem;
+}
+
+.creator-heading {
+  text-align: left;
+  margin: 0 0 20px 0;
+}
+
+.creator-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  text-align: left;
+}
+
+.creator-container-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.abigail-taiwan {
+  border-radius: 10px;
+  width: 400px;
+}
+
+.creator-container-left {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  padding-right: 60px;
+}
+
+/* Backstory section */
+.backstory-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+}
+
+.backstory-grid div {
+  border-radius: 10px;
+  background-color: var(--lightest);
+  padding: 20px;
+}
+
+.backstory-grid div h4 {
+  margin-bottom: 1rem;
+}
+
+.backstory-grid div p {
+  font-size: 1rem;
+}
+
+/* Media queries for small screens */
+@media (max-width: 768px) {
+  p {
+    font-size: 1rem;
+  }
+  /* Media queries for creator section */
+  .creator {
+    padding: 20px;
+  }
+
+  .creator-heading {
+    text-align: center;
+    margin: 0 0 15px 0;
+  }
+
+  .creator-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .creator-container-left {
+    padding: 0;
+    padding-bottom: 20px;
+    text-align: center;
+  }
+
+  .creator-container-right {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .abigail-taiwan {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  /* Media queries for how to contribute section */
+  .how-to-contribute {
+    padding: 20px;
+    text-align: center;
+  }
+
+  .how-to-contribute-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .how-to-contribute-left {
+    margin-right: 0;
+  }
+
+  .how-to-contribute ul {
+    text-align: center;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  .how-to-contribute ul li {
+    margin: 10px 0;
+    padding: 15px;
+    font-size: 0.9rem;
+  }
+
+  .li-header {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  /* Media queries for backstory section */
+  .backstory-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .backstory-grid div {
+    padding: 15px;
+  }
+
+  .backstory-grid div h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .backstory-grid div p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+}

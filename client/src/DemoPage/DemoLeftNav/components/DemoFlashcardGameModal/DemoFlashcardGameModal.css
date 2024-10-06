@@ -1,0 +1,21 @@
+.quiz-play-btn {
+    margin-top: 3vmin;
+    font-size: 1.1rem;
+    padding: 1vmin 2vmin;
+    background-color: #006769;
+    color: white;
+    transition: transform 0.3s ease-in-out;
+}
+
+.quiz-play-btn:not(:disabled):hover {
+    background-color: var(--teal);
+    transform: scale(1.1);
+}
+
+.quiz-play-btn:disabled {
+    margin-top: 3vmin;
+    font-size: 1.1rem;
+    padding: 1vmin 2vmin;
+    background-color: var(--medium);
+    opacity: 0.6;
+}

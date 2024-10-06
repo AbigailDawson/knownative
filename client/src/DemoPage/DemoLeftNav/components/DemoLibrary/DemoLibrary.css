@@ -1,0 +1,66 @@
+.DemoLibrary {
+    display: flex;
+    flex-direction: column;
+    padding: 3vmin 3vmin;
+    width: 100%;
+    background-color: #f5faf9;
+    color: black;
+    margin-top: 1rem;
+}
+
+.demo-library-arrowBack:hover {
+    background-color: var(--light);
+    border-radius: 0.7vmin;
+    cursor: pointer;
+}
+
+.demo-library-header-container {
+    display: flex;
+    justify-content: space-between;
+}
+.demo-library-sidebar-heading {
+    text-align: left;
+    font-size: 1.75rem;
+    margin: 0;
+}
+
+.demo-library-subtext {
+    text-align: left;
+    margin-top: 2vmin;
+}
+
+.demo-library-currently-reading-container,
+.demo-library-bookshelf-container {
+  text-align: left;
+  color: #006769;
+  margin-top: 2vmin;
+}
+
+.demo-library-currently-reading-container {
+    margin-top: 2vmin;
+}
+
+.demo-library-currently-reading {
+  border-radius: 5%;
+  border: solid #006769 2px;
+}
+
+.demo-library-top-bookshelf-card {
+  border-top: solid grey 1px;
+}
+
+.demo-library-bookshelf-cards {
+  border-bottom: solid grey 1px;
+}
+
+.demo-library-text-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3.5vmin;
+}
+
+.demo-library-chinese-characters {
+  color: black;
+  margin-bottom: 3vmin;
+}
