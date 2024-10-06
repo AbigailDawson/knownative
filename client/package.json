@@ -1,14 +1,12 @@
 {
-  "name": "knownative-client",
+  "name": "client",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.13.0",
     "@emotion/styled": "^11.13.0",
-    "@google-cloud/translate": "^8.0.3",
     "@mui/icons-material": "^5.16.6",
     "@mui/material": "^5.15.6",
-    "bcrypt": "^5.1.1",
     "bootstrap": "^5.0.2",
     "react": "^18.3.1",
     "react-bootstrap": "^2.10.2",
