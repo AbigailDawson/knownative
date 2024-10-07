@@ -44,23 +44,35 @@ npm install npm@latest -g
 git clone https://github.com/AbigailDawson/knownative.git
 ```
 
-#### 2. Install all packages and build
+#### 2. Install all packages
 
 ```
-npm install
+cd client
+npm i
+cd server
+npm i
+```
+
+#### 3. Create a `.env` file in the `server` folder.
+
+Your `.env` file will need the following variables:
+
+- `DATABASE_URL` contains the connection string for MongoDB. [Learn how to connect](https://www.mongodb.com/resources/products/fundamentals/mongodb-connection-string).
+- `GOOGLE_TRANSLATE_API_KEY` contains the API key for sentence translations. [Get a key](https://cloud.google.com/translate/docs/setup).
+
+#### 4. Build & run the client
+
+```
+cd client
 npm run build
-```
-
-#### 3. Run the Express server
-
-```
-npm run dev
-```
-
-#### 4. Run the React server
-
-```
 npm run start
+```
+
+#### 5. Run the server
+
+```
+cd server
+npm run dev
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
