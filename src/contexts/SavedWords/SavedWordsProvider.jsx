@@ -25,13 +25,13 @@ function useSavedWordsDispatch() {
 }
 
 function SavedWordsProvider({ children }) {
-  // placed this function inside of the SavedWordsProvider function because ESLint was giving me trouble. Will just use a placeholder for now until useSavedwordsState is fleshed out.
-  const placeholder = useSavedWordsState();
+  //destructured state and dispatch from usedWordState
+  const { state, dispatch } = useSavedWordsState();
 
   //will set values to null until the reducer and dispatch fucntions are made.
   return (
-    <SavedWordsContext.Provider value={null}>
-      <SavedWordsDispatchContext.Provider value={null}>
+    <SavedWordsContext.Provider value={state}>
+      <SavedWordsDispatchContext.Provider value={dispatch}>
         {children}
       </SavedWordsDispatchContext.Provider>
     </SavedWordsContext.Provider>
