@@ -57,6 +57,9 @@ export default function LandingPage() {
                   className="btn btn-lg px-4 github-button">
                   GitHub
                 </a>
+                <Link to="/login" className="btn btn-lg px-4 login-button">
+                  Login
+                </Link>
               </div>
             </div>
             <div className="overflow-hidden" style={{ maxHeight: 30 + 'vh' }}>

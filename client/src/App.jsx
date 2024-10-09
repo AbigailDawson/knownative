@@ -4,6 +4,7 @@ import DemoTextPage from './DemoPage/DemoTextPage';
 import AboutPage from './LandingPages/AboutPage/AboutPage';
 import ContributePage from './LandingPages/ContributePage/ContributePage';
 import LandingPage from './LandingPages/LandingPage/LandingPage';
+import LoginPage from './LandingPages/LoginPage/LoginPage';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path="/demo" element={<DemoTextPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contribute" element={<ContributePage />} />
+        <Route path="/login" element={<LoginPage />} />
         <Route path="/*" element={<LandingPage />} />
       </Routes>
     </main>
