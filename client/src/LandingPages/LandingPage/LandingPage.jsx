@@ -8,6 +8,7 @@ import { FaLinkedin } from 'react-icons/fa';
 import { FaGithub } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md';
 import { FaXTwitter } from 'react-icons/fa6';
+import { Link } from 'react-router-dom';
 
 export default function LandingPage() {
   const [showModal, setShowModal] = useState(false);
@@ -16,17 +17,17 @@ export default function LandingPage() {
 
   const navigate = useNavigate();
 
-  function handleScreenCheck() {
+  function handleScreenCheck(route) {
     if (screenHeight <= 1024 || screenWidth <= 1366) {
       setShowModal(true);
     } else {
-      navigate(`/demo`);
+      navigate(`${route}`);
     }
   }
 
-  function handleModalButtonClick() {
+  function handleModalButtonClick(route) {
     setShowModal(false);
-    navigate(`/demo`);
+    navigate(`${route}`);
   }
 
   return (
@@ -46,7 +47,7 @@ export default function LandingPage() {
                 tailored learning tools that are uniquely yours.
               </p>
               <div className="d-grid gap-2 d-sm-flex justify-content-sm-center my-5">
-                <button className="btn btn-lg px-4 me-sm-3 demo-button" onClick={handleScreenCheck}>
+                <button className="btn btn-lg px-4 me-sm-3 demo-button" onClick={() => handleScreenCheck('/demo')}>
                   Demo
                 </button>
                 <a
@@ -159,7 +160,7 @@ export default function LandingPage() {
             buttonPrimaryText="Continue Anyways"
             buttonSecondaryText="Back"
             handleSecondaryButtonOnClick={() => setShowModal(false)}
-            handlePrimaryButtonOnClick={handleModalButtonClick}
+            handlePrimaryButtonOnClick={() => handleModalButtonClick('/demo')}
             hasCloseButton={false}
             modalTitle="KnowNative is not optimized for mobile devices!"
             setShowModal={setShowModal}>
