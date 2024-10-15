@@ -9,7 +9,7 @@
     Transform your language learning with real-world articles written by native speakers. KnowNative personalizes your study experience with automatically generated flashcards, inline annotations and context-driven translations, creating tailored learning tools that are uniquely yours.
     <br />
     <br />
-    <a href="knownative.io">- Live Demo -</a>
+    <a href="https://knownative.io" target="_blank">- Live Demo -</a>
   </p>
 </div>
 
