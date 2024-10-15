@@ -93,7 +93,7 @@ Don't forget to give the project a star while you're at it!
 
 ### Core Contributors
 
-As the creator of KnowNative, I am eager to collaborate with others who are excited about this project and are looking to contribute to on a more regular and consistent (volunteer) basis. We currently have a small team of Core Contributors who are innovating behind the scenes to bring high quality features and exceptional user experience to KnowNative. Read more here: <a href="#">Core Contributors</a>.
+As the creator of KnowNative, I am eager to collaborate with others who are excited about this project and are looking to contribute to on a more regular and consistent (volunteer) basis. We currently have a small team of Core Contributors who are innovating behind the scenes to bring high quality features and exceptional user experience to KnowNative. Read more here: <a href="https://knownative.io/contribute" target="_blank">Core Contributors</a>.
 
 Becoming a Core Contributor is an excellent way to gain real-world experience working with a team and add to your own portfolio or resume, all while being a part of a project you're passionate about! I'm currently open to Core Contributors with skills in:
 
