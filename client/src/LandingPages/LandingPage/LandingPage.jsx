@@ -47,7 +47,9 @@ export default function LandingPage() {
                 tailored learning tools that are uniquely yours.
               </p>
               <div className="d-grid gap-2 d-sm-flex justify-content-sm-center my-5">
-                <button className="btn btn-lg px-4 me-sm-3 demo-button" onClick={() => handleScreenCheck('/demo')}>
+                <button
+                  className="btn btn-lg px-4 me-sm-3 demo-button"
+                  onClick={() => handleScreenCheck('/demo')}>
                   Demo
                 </button>
                 <a

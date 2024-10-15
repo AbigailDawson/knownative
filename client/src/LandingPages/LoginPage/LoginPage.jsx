@@ -15,9 +15,10 @@ export default function LoginPage() {
     });
   };
 
+  //
   return (
-    <main className="login-form-container">
-      <form className="login-form">
+    <main className="login-page-login-form-container">
+      <form className="login-page-login-form">
         <label>Email/Username:</label>
         <input type="text" name="email" value={inputValue.email} onChange={handleChange} />
         <label>Password:</label>
@@ -27,7 +28,7 @@ export default function LoginPage() {
           value={inputValue.password}
           onChange={handleChange}
         />
-        <button type="submit" className="login-button">
+        <button type="submit" className="login-page-login-button">
           Login
         </button>
       </form>
