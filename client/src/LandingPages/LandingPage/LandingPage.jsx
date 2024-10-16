@@ -62,6 +62,9 @@ export default function LandingPage() {
                 <Link to="/login" className="btn btn-lg px-4 login-button">
                   Login
                 </Link>
+                <Link to="/signup" className="btn btn-lg px-4 signup-button">
+                  Sign up
+                </Link>
               </div>
             </div>
             <div className="overflow-hidden" style={{ maxHeight: 30 + 'vh' }}>
