@@ -1,8 +1,12 @@
-.login-page-login-form-container {
+.login-page-main {
   min-height: 100vh;
+}
+
+.login-page-login-form-container {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 
 .login-page-login-form {

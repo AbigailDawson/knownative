@@ -1,30 +1,75 @@
-import React from 'react'
-import './SignupPage.css'
+import React from 'react';
+import './SignupPage.css';
+import { Link } from 'react-router-dom';
+import LandingPageNav from '../components/LandingPageHeader/LandingPageNav';
+import { useState } from 'react';
 
 const SignupPage = () => {
-  return (
-    <main>
-        <div className="signup-container signup-text">
-            <h1 className=''>SIGN UP</h1>
-            <form className="form-container" onSubmit={() => console.log("submit")}>
-                <div className="">
-                    <label htmlFor="signup-email">Email</label>
-                    <input id="signup-email" type="text" />
-                </div>
-                <div>
-                    <label htmlFor="signup-password">Password</label>
-                    <input id="signup-password" type="text" />
-                </div>
-                <button>
-                    SIGN UP
-                </button>
-                {/* line */}
-                <div></div>
-                 {/* oAuth  */}
-            </form>
-        </div>
-    </main>
-  )
-}
+  const [inputValue, setInputValue] = useState({
+    email: '',
+    password: ''
+  });
 
-export default SignupPage
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setInputValue({
+      ...inputValue,
+      [name]: value
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('submit');
+  };
+
+  return (
+    <main className="signup-page-main">
+      <LandingPageNav />
+      <div className="signup-page">
+        <div className="signup-container">
+          <h1 className="">SIGN UP</h1>
+          <form className="form-container" onSubmit={handleSubmit}>
+            <div className="">
+              <label htmlFor="signup-email" className="signup-text">
+                Email
+              </label>
+              <input
+                id="signup-email"
+                type="email"
+                name="email"
+                value={inputValue.email}
+                onChange={handleChange}
+              />
+            </div>
+            <div>
+              <label htmlFor="signup-password" className="signup-text">
+                Password
+              </label>
+              <input
+                id="signup-password"
+                type="password"
+                name="password"
+                value={inputValue.password}
+                onChange={handleChange}
+              />
+            </div>
+            <button type="submit">SIGN UP</button>
+            {/* oAuth  */}
+            <div>
+              <button>Sign up with Google</button>
+            </div>
+            {/* line */}
+            <div>
+              <Link to="/login" className="signup-text">
+                Already have an account? Log in
+              </Link>
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
+  );
+};
+
+export default SignupPage;
