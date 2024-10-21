@@ -5,14 +5,27 @@ const bcrypt = require('bcrypt')
 module.exports = {
   create,
   logIn,
-  checkToken
+  //checkToken
 }
+
+//cookie storage?
+//res.cookie on the server.
+//react-cookie on the front-end.
+//task- figure out how storing the token in cookies would work. 
+/*
+res.cookie("token", token, {
+      withCredentials: true,
+      httpOnly: false,
+    });
+*/
 
 async function create(req, res) {
   try {
     const user = await User.create(req.body)
     const token = createJWT(user)
-    res.json(token)
+    //res.json(token) -> previous code
+    //insert token storage into a cookie here.
+    res.json(user);
   } catch(error) {
     res.status(400).json(error)
   }
@@ -28,7 +41,9 @@ async function logIn(req, res) {
     if (!passwordMatch) {
       throw new Error('Invalid credentials')
     }
-    res.json(createJWT(user)) // creates token
+    const token = createJWT(user)
+    // res.json(createJWT(user)) -> previous code
+    //insert token storage into a cookie here.
   } catch(error) {
     console.log(error)
     res.status(400).json('Invalid credentials')

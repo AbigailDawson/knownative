@@ -1,6 +1,6 @@
-import { Schema as _Schema, model } from 'mongoose';
+const { Schema: _Schema, model } = require('mongoose');
 const Schema = _Schema;
-import { hash } from 'bcrypt';
+const { hash } = require('bcrypt');
 
 const SALT_ROUNDS = 6
 
@@ -10,9 +10,6 @@ const userSchema = new Schema({
   },
   lastName: {
     type: String,
-  },
-  username: {
-    type: String
   },
   avatarImg: { type: String },
   username: {
@@ -50,4 +47,4 @@ userSchema.pre('save', async function(next) {
   return next()
 })
 
-export default model('User', userSchema)
+module.exports = model('User', userSchema)

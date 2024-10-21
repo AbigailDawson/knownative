@@ -18,6 +18,7 @@ const SignupPage = () => {
     });
   };
 
+  //CHANGE THIS FUNCTION FOR SIGNUP TASK #2
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('submit');
