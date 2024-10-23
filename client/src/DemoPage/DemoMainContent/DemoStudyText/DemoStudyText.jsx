@@ -18,7 +18,6 @@ export default function DemoStudyText({
   const [tokenizedText, setTokenizedText] = useState([]);
   const [popupPosition, setPopupPosition] = useState([0, 0]);
   const containerRef = useRef(null);
-
   useEffect(
     function () {
       async function getTokenizedText() {

@@ -1,0 +1,49 @@
+.reusable-button {
+  border: 1px solid transparent;
+}
+
+.primary-button {
+  background-color: #57bcaa;
+  color: #0c1f1b;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.primary-button:hover {
+  background-color: #3d8679;
+  color: var(--darkest);
+  box-shadow: none;
+  transition: 0.2s;
+}
+
+.secondary-button {
+  background-color: #dadada;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.secondary-button:hover {
+  background-color: #b0b0b0;
+  box-shadow: none;
+  transition: 0.2s;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tertiary-button {
+  background: none;
+}
+
+.tertiary-button:hover {
+  border: 1px solid black;
+  transition: 0.2s;
+}
+
+.danger-button {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.danger-button:hover {
+  background-color: #bb2d3b;
+  color: #fff;
+  box-shadow: none;
+  transition: 0.2s;
+}

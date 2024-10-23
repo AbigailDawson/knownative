@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import { createPortal } from 'react-dom';
+import Button from '../Button/button';
 import './modal.css';
 
 const Modal = ({
@@ -50,20 +51,44 @@ const Modal = ({
       </div>
       {children}
       <div className="reusable-modal-buttons">
-        {buttonDeleteText ? (
+        {/* {buttonDeleteText ? (
           <button
             className="reusable-modal-delete-button"
             id="reusable-modal-delete-button"
             onClick={handleDeleteButtonOnClick}>
             {buttonDeleteText}
           </button>
-        ) : null}
-        <button className="reusable-modal-secondary-button" onClick={handleSecondaryButtonOnClick}>
+        ) : null} */}
+        {/* <button className="reusable-modal-secondary-button" onClick={handleSecondaryButtonOnClick}>
           {buttonSecondaryText}
         </button>
         <button className="reusable-modal-primary-button" onClick={handlePrimaryButtonOnClick}>
           {buttonPrimaryText}
-        </button>
+        </button> */}
+
+        <Button
+          buttonText={'Danger'}
+          buttonOnClickFunc={handleDeleteButtonOnClick}
+          buttonVariant={'danger'}
+        />
+
+        <Button
+          buttonText={'Secondary'}
+          buttonOnClickFunc={handleSecondaryButtonOnClick}
+          buttonVariant={'secondary'}
+        />
+
+        <Button
+          buttonText={'Primary'}
+          buttonOnClickFunc={handlePrimaryButtonOnClick}
+          buttonVariant={'primary'}
+        />
+
+        <Button
+          buttonText={'Testing'}
+          buttonOnClickFunc={() => console.log('button pressed')}
+          buttonVariant={'tertiary'}
+        />
       </div>
     </div>,
     elRef.current
