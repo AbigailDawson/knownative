@@ -17,6 +17,8 @@ export default function LoginPage() {
     });
   };
 
+  //handleLogin function goes here
+
   return (
     <main>
       <LandingPageNav />
