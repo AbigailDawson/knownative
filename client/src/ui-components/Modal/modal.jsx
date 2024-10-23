@@ -51,44 +51,27 @@ const Modal = ({
       </div>
       {children}
       <div className="reusable-modal-buttons">
-        {/* {buttonDeleteText ? (
-          <button
-            className="reusable-modal-delete-button"
-            id="reusable-modal-delete-button"
-            onClick={handleDeleteButtonOnClick}>
-            {buttonDeleteText}
-          </button>
-        ) : null} */}
-        {/* <button className="reusable-modal-secondary-button" onClick={handleSecondaryButtonOnClick}>
-          {buttonSecondaryText}
-        </button>
-        <button className="reusable-modal-primary-button" onClick={handlePrimaryButtonOnClick}>
-          {buttonPrimaryText}
-        </button> */}
-
-        <Button
-          buttonText={'Danger'}
-          buttonOnClickFunc={handleDeleteButtonOnClick}
-          buttonVariant={'danger'}
-        />
-
-        <Button
-          buttonText={'Secondary'}
-          buttonOnClickFunc={handleSecondaryButtonOnClick}
-          buttonVariant={'secondary'}
-        />
-
-        <Button
-          buttonText={'Primary'}
-          buttonOnClickFunc={handlePrimaryButtonOnClick}
-          buttonVariant={'primary'}
-        />
-
-        <Button
-          buttonText={'Testing'}
-          buttonOnClickFunc={() => console.log('button pressed')}
-          buttonVariant={'tertiary'}
-        />
+        {buttonDeleteText ? (
+          <div className="danger-button-container">
+            <Button
+              buttonText={'Danger'}
+              buttonOnClickFunc={handleDeleteButtonOnClick}
+              buttonVariant={'danger'}
+            />
+          </div>
+        ) : null}
+        <div className="modal-button-container">
+          <Button
+            buttonText={buttonSecondaryText}
+            buttonOnClickFunc={handleSecondaryButtonOnClick}
+            buttonVariant={'secondary'}
+          />
+          <Button
+            buttonText={buttonPrimaryText}
+            buttonOnClickFunc={handlePrimaryButtonOnClick}
+            buttonVariant={'primary'}
+          />
+        </div>
       </div>
     </div>,
     elRef.current
