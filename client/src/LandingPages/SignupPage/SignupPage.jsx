@@ -89,7 +89,7 @@ const SignupPage = () => {
   return (
     <main className="signup-page-main">
       <LandingPageNav />
-      <div className="signup-page">
+      <section className="signup-page">
         <div className="signup-container">
           <h1 className="">SIGN UP</h1>
           <form className="form-container" onSubmit={handleSubmit}>
@@ -115,7 +115,7 @@ const SignupPage = () => {
             </div>
           </form>
         </div>
-      </div>
+      </section>
     </main>
   );
 };

@@ -11,18 +11,23 @@ const FormInput = (props) => {
 
     return (
             <div className="input-box">
-                <input className
+                <input
                 {...otherInputProps} 
                 id={id} 
                 onChange={onChange}
                 onBlur={handleFocus}
                 onFocus={() => otherInputProps.name === 'confirmPassword' && setFocused(true)}
-                focused={focused.toString()}/>
+                focused={focused.toString()}
+                aria-describedby={`${id}-error`}
+                aria-invalid={!!errorMessage}
+                />
                 <label className="label-container" htmlFor={htmlFor}>
                     {icon}
                     <span className="label-text">{label}</span>
                 </label>
-                <span className="input-error-message">{errorMessage}</span>
+                <span id={`${id}-error`} className="input-error-message" role="alert">
+                    {errorMessage}
+                </span>
             </div>
     )
 }
