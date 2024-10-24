@@ -79,6 +79,7 @@
     
     
 .input-box > input:valid ~ label,
+.input-box > input:invalid[focused="true"] ~ label,
 .input-box > input:focus ~ label {
     color: teal;
     transform: translateX(8px) translateY(-8px);
