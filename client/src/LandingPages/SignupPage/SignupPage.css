@@ -108,3 +108,24 @@ button > span {
     text-align: left;
     vertical-align: middle;
 }
+
+.password-validation {
+    list-style-type: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+.password-validation li {
+    font-size: 0.9rem;
+    color: #556163;
+    text-align: left;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    column-gap: 8px;
+    margin: 8px;
+}
+
+.password-validation svg {
+    max-width: 24px;
+}

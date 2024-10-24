@@ -25,9 +25,11 @@ const FormInput = (props) => {
                     {icon}
                     <span className="label-text">{label}</span>
                 </label>
+                {otherInputProps.name !== 'password' && (
                 <span id={`${id}-error`} className="input-error-message" role="alert">
                     {errorMessage}
                 </span>
+                )}
             </div>
     )
 }

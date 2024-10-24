@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import LandingPageNav from '../components/LandingPageHeader/LandingPageNav';
 import { useState } from 'react';
 import FormInput from '../components/Forms/FormInput'
+import PasswordValidation from '../components/Forms/PasswordValidation';
 import { MdAlternateEmail } from "react-icons/md";
 import { TbPencilCheck } from "react-icons/tb";
 import { RiLockPasswordFill } from "react-icons/ri";
@@ -100,8 +101,9 @@ const SignupPage = () => {
               value={inputValue[formFields.name]} 
               onChange={handleChange}/>
             ))}
+            <PasswordValidation password={inputValue.password} />
             <button type="submit">
-              <FaUserPlus /><span> &nbsp; SIGN UP</span>
+              <FaUserPlus style={{color:"#556163"}}/><span> &nbsp; SIGN UP</span>
             </button>
             {/* oAuth  */}
             <div>
