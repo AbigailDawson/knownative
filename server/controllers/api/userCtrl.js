@@ -23,11 +23,12 @@ async function create(req, res) {
   try {
     const user = await User.create(req.body)
     const token = createJWT(user)
-    //res.json(token) -> previous code
+    // res.json(token)
     //insert token storage into a cookie here.
     res.json(user);
+    console.log('User created:', user)
   } catch(error) {
-    res.status(400).json(error)
+    res.status(400).json({ message: 'Duplicate email'});
   }
 }
 

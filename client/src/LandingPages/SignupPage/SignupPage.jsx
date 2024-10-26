@@ -9,8 +9,9 @@ import { MdAlternateEmail } from "react-icons/md";
 import { TbPencilCheck } from "react-icons/tb";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { FaUserPlus } from "react-icons/fa6";
+import * as authService from '../../services/authService';
 
-const SignupPage = () => {
+const SignupPage = ({ setUser }) => {
   const [inputValue, setInputValue] = useState({
     firstName: '',
     lastName: '',
@@ -18,6 +19,10 @@ const SignupPage = () => {
     password: '',
     confirmPassword: '',
   });
+
+  const [errorMsg, setErrorMsg] = useState('')
+  const [successMsg, setSuccessMsg] = useState('')
+
 
   // Add more form fields as needed here:
   const formFields = [
@@ -41,6 +46,17 @@ const SignupPage = () => {
       errorMessage: "Last name needs to be 2 to 20 characters long and shouldn't contain special characters.",
       pattern: "^[A-Za-z]{2,20}$",
       icon: <TbPencilCheck />,
+      required: true,
+    },
+    {
+      name: 'username',
+      label: 'Username',
+      type: 'text',
+      id: "signup-username",
+      htmlFor: "signup-username",
+      errorMessage: "Username should be 3-20 characters. Only letters, numbers and underscores are allowed.",
+      pattern: "^[A-Za-z0-9_]{3,20}$",
+      icon: <FaUserPlus />,
       required: true,
     },
     {
@@ -81,11 +97,17 @@ const SignupPage = () => {
     setInputValue({...inputValue, [e.target.name]: e.target.value});
   };
 
-  //CHANGE THIS FUNCTION FOR SIGNUP TASK #2
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('submit');
-  };
+  async function handleSubmit(evt) {
+    evt.preventDefault();
+    try {
+      const user = await authService.signUp(inputValue);
+      setUser(user);
+      setSuccessMsg('Sign Up Successful', user);
+    } catch (err) {
+      console.log(err);
+      setErrorMsg('Sign Up Failed - Try Again');
+    }
+  }
 
   return (
     <main className="signup-page-main">
