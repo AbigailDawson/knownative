@@ -4,7 +4,7 @@ const favicon = require('serve-favicon')
 const logger = require('morgan')
 
 require('dotenv').config()
-console.log("Environment variables loaded", process.env.DATABASE_URL);
+console.log("Environment variables loaded", process.env.MONGODB_URI);
 require('./config/database')
 
 const app = express()
@@ -28,7 +28,9 @@ app.use('/api/demo', require('./routes/api/demo'))
 // The following "catch all" route (note the *) is necessary
 // to return the index.html on all non-AJAX requests
 app.get('/*', function (req, res) {
-  res.sendFile(path.join(__dirname, '../client/dist', 'index.html'))
+  const filePath = path.join(__dirname, '../client/dist', 'index.html');
+  console.log('Serving file from path:', filePath);
+  res.sendFile(path.join(__dirname, '../client/dist', 'index.html'));
 })
 
 // Configure to use port 3001 instead of 3000 during
