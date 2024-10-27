@@ -54,7 +54,7 @@ const coreContributors = [
   },
   {
     name: 'Parker Machemer',
-    role: 'Back-End Developer',
+    role: 'UX/UI Designer',
     image: '/images/core-contributors/Parker-Machemer.png',
     bio: '<p>Parker is a UI/UX designer for KnowNative. With backgrounds in tech, art, language learning, and translation, he is excited to contribute in various ways while improving his design skills.</p>',
     linkedin: 'https://www.linkedin.com/in/parker-machemer/',
