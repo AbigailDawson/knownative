@@ -14,9 +14,7 @@ app.use(express.json())
 
 // Configure both serve-favicon & static middleware
 // to serve from the production 'dist' folder
-// moved favicon to server/public folder for heroku build
 app.use(favicon(path.join(__dirname, '../client/dist', 'favicon.ico')))
-app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(express.static(path.join(__dirname, '../client/dist')))
 
 
