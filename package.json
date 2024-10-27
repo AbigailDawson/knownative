@@ -1,0 +1,10 @@
+{
+  "name": "knownative",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node server/server.js",
+    "build": "npm run build --prefix client",
+    "heroku-postbuild": "npm run build"
+  },
+  "dependencies": {}
+}
