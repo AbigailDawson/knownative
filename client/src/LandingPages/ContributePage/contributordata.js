@@ -39,7 +39,7 @@ const coreContributors = [
     name: 'Alex Grimes',
     role: 'Developer',
     image: '/images/core-contributors/Alex-Grimes.png',
-    bio: "<p> Alex is a software developer with experience in React, TypeScript, Next.js, and Python. Alex spent two years in Japan as an English teaching assistant, where she worked with local teachers to create engaging learning activities. Along the way, she gained intermediate proficiency in Japanese and passed the N3 JLPT exam.</p><p>As an IT Junior Software Engineer, Alex managed a Python project that analyzed website performance metrics using API results, optimized data retrieval with stored procedures, and leveraged Power BI for insightful visualizations. Her experience includes migrating services to third-party APIs with Flask and writing a comprehensive suite of parameterized unit tests to ensure high code quality. In a previous role in accounting, she used Power Automate to shift from a paper-based approval system to an online one, speeding up approvals and making processes more efficient.</p>",
+    bio: '<p> Alex is a software developer with experience in React, TypeScript, Next.js, and Python. Alex spent two years in Japan as an English teaching assistant, where she worked with local teachers to create engaging learning activities. Along the way, she gained intermediate proficiency in Japanese and passed the N3 JLPT exam.</p><p>As an IT Junior Software Engineer, Alex managed a Python project that analyzed website performance metrics using API results, optimized data retrieval with stored procedures, and leveraged Power BI for insightful visualizations. Her experience includes migrating services to third-party APIs with Flask and writing a comprehensive suite of parameterized unit tests to ensure high code quality. In a previous role in accounting, she used Power Automate to shift from a paper-based approval system to an online one, speeding up approvals and making processes more efficient.</p>',
     linkedin: 'https://www.linkedin.com/in/alex-grimes-dev/',
     github: 'https://github.com/agrimes23',
     portfolio: 'https://alex-grimes-software-engineer.vercel.app/'
@@ -51,6 +51,14 @@ const coreContributors = [
     bio: '<p>Jason is a software developer driven by a passion for music and language. With over 6 years in the music industry and a strong background in language learning, Jason strives to blend his experiences with his programming skills to contribute to impactful projects!</p>',
     linkedin: 'https://www.linkedin.com/in/jason-houn/',
     github: 'https://github.com/jsnhn'
+  },
+  {
+    name: 'Parker Machemer',
+    role: 'Back-End Developer',
+    image: '/images/core-contributors/Parker-Machemer.png',
+    bio: '<p>Parker is a UI/UX designer for KnowNative. With backgrounds in tech, art, language learning, and translation, he is excited to contribute in various ways while improving his design skills.</p>',
+    linkedin: 'https://www.linkedin.com/in/parker-machemer/',
+    portfolio: 'https://www.kupobox.com/'
   },
   {
     name: 'Kate McElhaney',
@@ -92,15 +100,6 @@ const coreContributors = [
     bio: '<p>Ellie Wright is a software developer with experience in various languages and libraries, including HTML/CSS, JavaScript, and React. She uses these skills to improve the structure, layout/styling, and components of the KnowNative frontend.</p><p>Graduating with a BA in Psychology in 2022, Ellie began her switch to the software field in 2023, completing her Software Development bootcamp in 2024. She is based in the Kansas City Metropolitan Area.</p>',
     linkedin: 'https://www.linkedin.com/in/ellewri/',
     github: 'https://github.com/ellewright'
-  },
-  {
-    name: 'Lisa Young',
-    role: 'Back-End Developer',
-    image: '/images/core-contributors/Lisa-Young.png',
-    bio: '<p> Lisa is always looking to learn something new and improve their approach to what they already know. With nine years of professional experience as the team member who evaluates workflows to save time and increase revenue, Lisa uses their sharp eye for detail to improve communication, automate routine processes, and turn unruly data into insights, leading to more efficient work and happier customers.</p>',
-    linkedin: 'https://www.linkedin.com/in/lisa-young-eayand/',
-    github: 'https://github.com/eayand',
-    portfolio: 'https://eayand.com/'
   }
 ];
 
