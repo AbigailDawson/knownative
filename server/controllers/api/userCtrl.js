@@ -29,6 +29,7 @@ async function create(req, res) {
     console.log('User created:', user)
   } catch(error) {
     res.status(400).json({ message: 'Duplicate email'});
+    console.log(error)
   }
 }
 
