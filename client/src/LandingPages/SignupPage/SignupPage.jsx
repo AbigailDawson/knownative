@@ -1,6 +1,6 @@
 import React from 'react';
 import './SignupPage.css';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import LandingPageNav from '../components/LandingPageHeader/LandingPageNav';
 import { useState } from 'react';
 import FormInput from '../components/Forms/FormInput'
@@ -22,6 +22,7 @@ const SignupPage = ({ setUser }) => {
 
   const [errorMsg, setErrorMsg] = useState('')
   const [successMsg, setSuccessMsg] = useState('')
+  const navigate = useNavigate();
 
 
   // Add more form fields as needed here:
@@ -103,6 +104,8 @@ const SignupPage = ({ setUser }) => {
       const user = await authService.signUp(inputValue);
       setUser(user);
       setSuccessMsg('Sign Up Successful', user);
+      console.log(successMsg);
+      navigate('/demo');
     } catch (err) {
       console.log(err);
       setInputValue({
