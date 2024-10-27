@@ -105,7 +105,12 @@ const SignupPage = ({ setUser }) => {
       setSuccessMsg('Sign Up Successful', user);
     } catch (err) {
       console.log(err);
-      setErrorMsg('Sign Up Failed - Try Again');
+      setInputValue({
+        ...inputValue,
+        password: '',
+        confirmPassword: '',
+      });
+      setErrorMsg('Sign Up Failed. Please Try Again!');
     }
   }
 
@@ -115,12 +120,13 @@ const SignupPage = ({ setUser }) => {
       <section className="signup-page">
         <div className="signup-container">
           <h1 className="">SIGN UP</h1>
+          {errorMsg && <div className="error-message"><h5><em>{errorMsg}</em></h5></div>}
           <form className="form-container" onSubmit={handleSubmit}>
             {formFields.map((input, idx) => (
               <FormInput 
               key={idx} 
               {...input} 
-              value={inputValue[formFields.name]} 
+              value={inputValue[input.name]} 
               onChange={handleChange}/>
             ))}
             <PasswordValidation password={inputValue.password} />
