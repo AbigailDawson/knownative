@@ -15,7 +15,6 @@ app.use(express.json())
 // Configure both serve-favicon & static middleware
 // to serve from the production 'dist' folder
 // moved favicon to server/public folder for heroku build
-// trigger heroku re-build
 // app.use(favicon(path.join(__dirname, '../client/dist', 'favicon.ico')))
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(express.static(path.join(__dirname, '../client/dist')))
@@ -29,7 +28,7 @@ app.use('/api/demo', require('./routes/api/demo'))
 // The following "catch all" route (note the *) is necessary
 // to return the index.html on all non-AJAX requests
 app.get('/*', function (req, res) {
-  res.sendFile(path.join(__dirname, '../client/build', 'index.html'))
+  res.sendFile(path.join(__dirname, '../client/dist', 'index.html'))
 })
 
 // Configure to use port 3001 instead of 3000 during
