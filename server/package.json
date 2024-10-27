@@ -18,7 +18,8 @@
     "dev": "nodemon server",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "format": "prettier --write ./**/*.{js,json} --config ./.prettierrc"
+    "format": "prettier --write ./**/*.{js,json} --config ./.prettierrc",
+    "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "devDependencies": {
     "eslint": "^9.9.0",
