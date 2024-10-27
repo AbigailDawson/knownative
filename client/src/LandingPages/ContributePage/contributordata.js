@@ -70,6 +70,14 @@ const coreContributors = [
     portfolio: 'https://katemcelhaney.com/'
   },
   {
+    name: 'Austin Rzansa',
+    role: 'Developer',
+    image: '/images/core-contributors/Austin-Rzansa.png',
+    bio: '<p>Austin is a passionate software engineer and language learner with 5 years of experience working on enterprise applications. He has filled many hats, from QA to production support as well as database developer. More recently, he has pivoted into cloud architecture and web development. His love for languages has led him to reach an intermediate level in Chinese.</p>',
+    linkedin: 'https://www.linkedin.com/in/austin-rzansa/',
+    github: 'https://github.com/arzansa'
+  },
+  {
     name: 'Paul Santos',
     role: 'Developer',
     image: '/images/core-contributors/Paul-Santos.png',
