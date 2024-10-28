@@ -46,6 +46,8 @@ async function logIn(req, res) {
     const token = createJWT(user)
     // res.json(createJWT(user)) -> previous code
     //insert token storage into a cookie here.
+    res.json(user);
+    console.log('User successfully logged in:', user)
   } catch(error) {
     console.log(error)
     res.status(400).json('Invalid credentials')
