@@ -14,9 +14,8 @@ app.use(express.json())
 
 // Configure both serve-favicon & static middleware
 // to serve from the production 'dist' folder
-app.use(favicon(path.join(__dirname, '../client/dist', 'favicon.ico')))
+app.use(favicon(path.join(__dirname, '../client/dist/favicon.ico')))
 app.use(express.static(path.join(__dirname, '../client/dist')))
-
 
 // Put API routes here, before the "catch all" route
 // const ensureLoggedIn = require('./config/ensureLoggedIn');
