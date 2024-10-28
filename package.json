@@ -4,5 +4,8 @@
   "private": true,
   "scripts": {
     "start": "npm run start:client && npm run start:server"
+  },
+  "dependencies": {
+    "express": "^4.21.1"
   }
 }
