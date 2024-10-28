@@ -52,7 +52,7 @@ export default function LoginPage() {
           <button type="submit" className="login-page-login-button">
             Login
           </button>
-          {errorMessage && <p>{errorMessage}</p>}
+          {errorMessage && <p className="login-error-message">{errorMessage}</p>}
         </form>
         <div>
           <button>Sign in with Google</button>
