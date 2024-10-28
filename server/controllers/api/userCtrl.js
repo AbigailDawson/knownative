@@ -35,7 +35,12 @@ async function create(req, res) {
 
 async function logIn(req, res) {
   try {
-    const user = await User.findOne({ email: req.body.email })
+    const user = await User.findOne({
+      $or: [
+          { email: req.body.email },
+          { username: req.body.email }
+      ]
+    });
     if (!user) {
       throw new Error('Invalid credentials')
     }
