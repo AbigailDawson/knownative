@@ -28,9 +28,12 @@ export default function LoginPage() {
       navigate('/demo');
     } catch (error) {
       setErrorMessage('Invalid credentials.');
-      setInputValue({
-        email: '',
-        password: ''
+      setInputValue((inputValue) => {
+        const clearedFields = { ...inputValue };
+        for (let field in clearedFields) {
+          clearedFields[field] = '';
+        }
+        return clearedFields;
       });
     }
   }
