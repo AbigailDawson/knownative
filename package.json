@@ -6,6 +6,7 @@
     "start": "npm run start:client && npm run start:server"
   },
   "dependencies": {
-    "express": "^4.21.1"
+    "express": "^4.21.1",
+    "serve-favicon": "^2.5.0"
   }
 }
