@@ -57,7 +57,7 @@ npm i
 
 Your `.env` file will need the following variables:
 
-- `DATABASE_URL` contains the connection string for MongoDB. [Learn how to connect](https://www.mongodb.com/resources/products/fundamentals/mongodb-connection-string).
+- `MONGODB_URI` contains the connection string for MongoDB. [Learn how to connect](https://www.mongodb.com/resources/products/fundamentals/mongodb-connection-string).
 - `GOOGLE_TRANSLATE_API_KEY` contains the API key for sentence translations. [Get a key](https://cloud.google.com/translate/docs/setup).
 
 #### 4. Build & run the client
