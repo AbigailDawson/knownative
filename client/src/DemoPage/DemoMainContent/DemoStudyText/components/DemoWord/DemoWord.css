@@ -8,18 +8,18 @@
   flex-direction: column;
   height: 6.05rem;
   max-width: 6.7rem;
-  margin: 0 .2vmin;
+  margin: 0 0.2vmin;
   font-size: 1.7rem;
   text-wrap: wrap;
   min-height: 8.5rem;
   text-align: center;
-  align-items: center; 
+  align-items: center;
   justify-content: center;
 }
 
 .annotation p {
-  font-size: .9rem;
-  font-family:'Montserrat', 'Roboto', sans-serif;
+  font-size: 0.9rem;
+  font-family: 'Montserrat', 'Roboto', sans-serif;
 }
 
 .meaning {
@@ -51,8 +51,7 @@
 }
 
 /* medium screens and smaller */
-@media (max-width: 768px) { 
-
+@media (max-width: 768px) {
   .Word,
   .specialChar {
     font-size: 1.3rem;
@@ -61,5 +60,4 @@
   .annotation {
     font-size: 0.8rem;
   }
-
 }

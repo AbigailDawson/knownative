@@ -125,28 +125,32 @@ export default function ContributePage() {
                               <b>{contributor.role}</b>
                             </p>
                             <div className="contributor-links">
-                              <a
-                                rel="noopener noreferrer"
-                                href={contributor.linkedin}
-                                target="_blank">
-                                <img
-                                  src="/images/linkedin-icon.png"
-                                  width="32"
-                                  height="32"
-                                  alt="LinkedIn"
-                                />
-                              </a>
-                              <a
-                                rel="noopener noreferrer"
-                                href={contributor.github}
-                                target="_blank">
-                                <img
-                                  src="/images/github-icon.png"
-                                  width="32"
-                                  height="32"
-                                  alt="Github"
-                                />
-                              </a>
+                              {contributor.linkedin && (
+                                <a
+                                  rel="noopener noreferrer"
+                                  href={contributor.linkedin}
+                                  target="_blank">
+                                  <img
+                                    src="/images/linkedin-icon.png"
+                                    width="32"
+                                    height="32"
+                                    alt="LinkedIn"
+                                  />
+                                </a>
+                              )}
+                              {contributor.github && (
+                                <a
+                                  rel="noopener noreferrer"
+                                  href={contributor.github}
+                                  target="_blank">
+                                  <img
+                                    src="/images/github-icon.png"
+                                    width="32"
+                                    height="32"
+                                    alt="Github"
+                                  />
+                                </a>
+                              )}
                               {contributor.portfolio && (
                                 <a
                                   rel="noopener noreferrer"

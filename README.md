@@ -57,7 +57,7 @@ npm i
 
 Your `.env` file will need the following variables:
 
-- `DATABASE_URL` contains the connection string for MongoDB. [Learn how to connect](https://www.mongodb.com/resources/products/fundamentals/mongodb-connection-string).
+- `MONGODB_URI` contains the connection string for MongoDB. [Learn how to connect](https://www.mongodb.com/resources/products/fundamentals/mongodb-connection-string).
 - `GOOGLE_TRANSLATE_API_KEY` contains the API key for sentence translations. [Get a key](https://cloud.google.com/translate/docs/setup).
 
 #### 4. Build & run the client
@@ -93,7 +93,7 @@ Don't forget to give the project a star while you're at it!
 
 ### Core Contributors
 
-As the creator of KnowNative, I am eager to collaborate with others who are excited about this project and are looking to contribute to on a more regular and consistent (volunteer) basis. We currently have a small team of Core Contributors who are innovating behind the scenes to bring high quality features and exceptional user experience to KnowNative. Read more here: <a href="#">Core Contributors</a>.
+As the creator of KnowNative, I am eager to collaborate with others who are excited about this project and are looking to contribute to on a more regular and consistent (volunteer) basis. We currently have a small team of Core Contributors who are innovating behind the scenes to bring high quality features and exceptional user experience to KnowNative. Read more here: <a href="https://knownative.io/contribute" target="_blank">Core Contributors</a>.
 
 Becoming a Core Contributor is an excellent way to gain real-world experience working with a team and add to your own portfolio or resume, all while being a part of a project you're passionate about! I'm currently open to Core Contributors with skills in:
 
