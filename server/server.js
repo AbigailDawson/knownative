@@ -21,6 +21,7 @@ app.use(express.static(path.join(__dirname, '../client/dist')))
 // const ensureLoggedIn = require('./config/ensureLoggedIn');
 
 app.use('/api/demo', require('./routes/api/demo'))
+app.use('/api/users', require('./routes/api/userRouter'))
 
 // The following "catch all" route (note the *) is necessary
 // to return the index.html on all non-AJAX requests
