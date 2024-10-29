@@ -54,7 +54,7 @@ const Modal = ({
         {buttonDeleteText ? (
           <div className="danger-button-container">
             <Button
-              buttonText={'Danger'}
+              buttonText={buttonDeleteText}
               buttonOnClickFunc={handleDeleteButtonOnClick}
               buttonVariant={'danger'}
             />
