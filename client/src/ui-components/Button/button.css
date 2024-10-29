@@ -1,17 +1,22 @@
 .reusable-button {
   border: 1px solid transparent;
+  border-radius: 8px;
+  font-size: 1.25rem;
+  padding-left: 15px;
+  padding-right: 15px;
+  min-width: 110px;
 }
 
 .primary-button {
-  background-color: #57bcaa;
-  color: #0c1f1b;
+  background-color: var(--primary);
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+  color: #0c1f1b;
 }
 
 .primary-button:hover {
   background-color: #3d8679;
-  color: var(--darkest);
   box-shadow: none;
+  color: var(--darkest);
   transition: 0.2s;
 }
 
@@ -22,17 +27,18 @@
 
 .secondary-button:hover {
   background-color: #b0b0b0;
-  box-shadow: none;
-  transition: 0.2s;
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+  transition: 0.2s;
 }
 
 .tertiary-button {
   background: none;
+  border: 1px solid var(--primary);
+  color: #006769;
 }
 
 .tertiary-button:hover {
-  border: 1px solid black;
+  background-color: var(--light);
   transition: 0.2s;
 }
 
@@ -43,7 +49,7 @@
 
 .danger-button:hover {
   background-color: #bb2d3b;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
   color: #fff;
-  box-shadow: none;
   transition: 0.2s;
 }
