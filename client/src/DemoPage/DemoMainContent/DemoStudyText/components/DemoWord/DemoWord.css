@@ -28,10 +28,6 @@
   z-index: 1;
 }
 
-.specialChar {
-  width: 2vmin;
-}
-
 .Word p,
 .specialChar p {
   margin: 0;

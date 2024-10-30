@@ -8,12 +8,15 @@ export default function DemoWord({ word, pinyin, meaning, isSaved, isSpecialChar
         className={`zh ${isSaved ? 'saved' : ''}`}
         onClick={!isSpecialChar ? onClick : undefined}
         style={{ color: isSaved ? '#056a6d' : 'var(--drk-txt)' }}>
-        {word.text}
+        {word}
       </p>
-      <div className="annotation" style={{ visibility: isSaved ? 'visible' : 'hidden' }}>
+
+      {/* will need once pinyin and meaning is added back to object */}
+
+      {/* <div className="annotation">
         <p className="pinyin">{pinyin}</p>
         <p className="meaning">{meaning}</p>
-      </div>
+      </div> */}
     </div>
   );
 }
