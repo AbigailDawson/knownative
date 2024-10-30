@@ -107,13 +107,14 @@ const SignupPage = ({ setUser }) => {
       console.log(successMsg);
       navigate('/demo');
     } catch (err) {
-      console.log(err);
+      console.log('This is the error btw:', err);
+      console.dir(err)
       setInputValue({
         ...inputValue,
         password: '',
         confirmPassword: '',
       });
-      setErrorMsg('Sign Up Failed. Please Try Again!');
+      setErrorMsg(err.message);
     }
   }
 
