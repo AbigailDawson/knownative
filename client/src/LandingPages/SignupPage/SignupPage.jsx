@@ -104,11 +104,8 @@ const SignupPage = ({ setUser }) => {
       const user = await authService.signUp(inputValue);
       setUser(user);
       setSuccessMsg('Sign Up Successful', user);
-      console.log(successMsg);
       navigate('/demo');
     } catch (err) {
-      console.log('This is the error btw:', err);
-      console.dir(err)
       setInputValue({
         ...inputValue,
         password: '',
