@@ -7,6 +7,7 @@ import ContributePage from './LandingPages/ContributePage/ContributePage';
 import LandingPage from './LandingPages/LandingPage/LandingPage';
 import LoginPage from './LandingPages/LoginPage/LoginPage';
 import SignupPage from './LandingPages/SignupPage/SignupPage';
+import DashboardPage from './LandingPages/DashboardPage/DashboardPage';
 
 function App() {
   const [user, setUser] = useState();
@@ -14,11 +15,12 @@ function App() {
   return (
     <main className="App">
       <Routes>
+        <Route path="/dashboard" element={<DashboardPage />} />
         <Route path="/demo" element={<DemoTextPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contribute" element={<ContributePage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<SignupPage setUser={setUser}/>} />
+        <Route path="/signup" element={<SignupPage setUser={setUser} />} />
         <Route path="/*" element={<LandingPage />} />
       </Routes>
     </main>
