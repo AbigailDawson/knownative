@@ -7,7 +7,7 @@ import ContributePage from './LandingPages/ContributePage/ContributePage';
 import LandingPage from './LandingPages/LandingPage/LandingPage';
 import LoginPage from './LandingPages/LoginPage/LoginPage';
 import SignupPage from './LandingPages/SignupPage/SignupPage';
-import DashboardPage from './LandingPages/DashboardPage/DashboardPage';
+import DashboardPage from './KnowNativePage/DashboardPage/DashboardPage';
 
 function App() {
   const [user, setUser] = useState();
