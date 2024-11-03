@@ -22,7 +22,6 @@
 
 .reusable-modal-buttons {
   display: flex;
-  gap: 10px;
 }
 
 .reusable-modal-close-button {
@@ -31,40 +30,13 @@
   padding: 0;
 }
 
-.reusable-modal-primary-button {
-  background-color: #57bcaa;
-  color: #0c1f1b;
-  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
-}
-
-.reusable-modal-primary-button:hover {
-  background-color: #3d8679;
-  color: var(--darkest);
-  box-shadow: none;
-  transition: 0.2s;
-}
-
-.reusable-modal-secondary-button {
-  margin-left: auto;
-  background-color: #dadada;
-  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
-}
-
-.reusable-modal-secondary-button:hover {
-  background-color: #b0b0b0;
-  box-shadow: none;
-  transition: 0.2s;
-}
-
-.reusable-modal-delete-button {
+.danger-button-container {
   margin-right: auto;
-  background-color: #dc3545;
-  color: #fff;
 }
 
-.reusable-modal-delete-button:hover {
-  background-color: #bb2d3b;
-  color: #fff;
-  box-shadow: none;
-  transition: 0.2s;
+.modal-button-container {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-left: auto;
 }

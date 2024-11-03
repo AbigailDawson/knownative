@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import LandingPageNav from '../components/LandingPageHeader/LandingPageNav';
 import LandingPageFooter from '../components/LandingPageFooter/LandingPageFooter';
+import Button from '../../ui-components/Button/button';
 import Modal from '../../ui-components/Modal/modal';
 import './LandingPage.css';
 import { FaLinkedin } from 'react-icons/fa';
@@ -47,11 +48,11 @@ export default function LandingPage() {
                 tailored learning tools that are uniquely yours.
               </p>
               <div className="d-grid gap-2 d-sm-flex justify-content-sm-center my-5">
-                <button
-                  className="btn btn-lg px-4 me-sm-3 demo-button"
-                  onClick={() => handleScreenCheck('/demo')}>
-                  Demo
-                </button>
+                <Button
+                  buttonText={'Demo'}
+                  buttonOnClickFunc={() => handleScreenCheck('/demo')}
+                  buttonVariant={'primary'}
+                />
                 <a
                   href="https://github.com/AbigailDawson/knownative"
                   target="_blank"
