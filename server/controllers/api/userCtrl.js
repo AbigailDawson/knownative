@@ -26,10 +26,14 @@ async function create(req, res) {
     const token = jwt.createJWT(user);
     res.cookie("token", token, cookieOptions);
     res.json(user);
-    console.log("User created:", user);
+    console.log('User created:', user)
   } catch (error) {
-    res.status(400).json({ message: "Duplicate email" });
-    console.log(error);
+    if (error.code === 11000) { // MongoDB duplicate key error code
+      console.log(`We found a dup email Error: ${error}`);
+      res.status(400).json({ message: 'A user with that email address already exists!' });
+    } else {
+      res.status(400).json({ message: 'An error occurred during sign-up. Please try again.' });
+    }
   }
 }
 
