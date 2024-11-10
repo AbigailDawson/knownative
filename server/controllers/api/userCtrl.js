@@ -1,17 +1,24 @@
-const User = require('../../models/user')
-const jwt = require('jsonwebtoken')
-const bcrypt = require('bcrypt')
+const User = require("../../models/user");
+const bcrypt = require("bcrypt");
+const jwt = require("./../../utils/jwt");
 
 module.exports = {
   create,
   logIn,
   //checkToken
-}
+};
+
+const cookieOptions = {
+  httpOnly: true, // Prevents JavaScript access to the cookie
+  // secure: true, // Ensures the cookie is only sent over HTTPS
+  sameSite: "strict", // Prevents CSRF by limiting where the cookie can be sent
+  maxAge: 24 * 60 * 60 * 1000, // Adjust expiration as needed
+};
 
 //cookie storage?
 //res.cookie on the server.
 //react-cookie on the front-end.
-//task- figure out how storing the token in cookies would work. 
+//task- figure out how storing the token in cookies would work.
 /*
 res.cookie("token", token, {
       withCredentials: true,
@@ -21,54 +28,42 @@ res.cookie("token", token, {
 
 async function create(req, res) {
   try {
-    const user = await User.create(req.body)
-    const token = createJWT(user)
-    // res.json(token)
-    //insert token storage into a cookie here.
+    const user = await User.create(req.body);
+    const token = jwt.createJWT(user);
+    res.cookie("token", token, cookieOptions);
     res.json(user);
-    console.log('User created:', user)
-  } catch(error) {
-    res.status(400).json({ message: 'Duplicate email'});
-    console.log(error)
+    console.log("User created:", user);
+  } catch (error) {
+    res.status(400).json({ message: "Duplicate email" });
+    console.log(error);
   }
 }
 
 async function logIn(req, res) {
   try {
     const user = await User.findOne({
-      $or: [
-          { email: req.body.email },
-          { username: req.body.email }
-      ]
+      $or: [{ email: req.body.email }, { username: req.body.email }],
     });
     if (!user) {
-      throw new Error('Invalid credentials')
+      throw new Error("Invalid credentials");
     }
-    const passwordMatch = await bcrypt.compare(req.body.password, user.password)
+    const passwordMatch = await bcrypt.compare(
+      req.body.password,
+      user.password
+    );
     if (!passwordMatch) {
-      throw new Error('Invalid credentials')
+      throw new Error("Invalid credentials");
     }
-    const token = createJWT(user)
-    // res.json(createJWT(user)) -> previous code
-    //insert token storage into a cookie here.
+    const token = jwt.createJWT(user);
+    res.cookie("token", token, cookieOptions);
     res.json(user);
-    console.log('User successfully logged in:', user)
-  } catch(error) {
-    console.log(error)
-    res.status(400).json('Invalid credentials')
+    console.log("User successfully logged in:", user);
+  } catch (error) {
+    console.log(error);
+    res.status(400).json("Invalid credentials");
   }
 }
 
 // function checkToken(req, res) {
 //   res.json(req.exp)
 // }
-
-/*-- Helper Functions --*/
-
-function createJWT(user) {
-  return jwt.sign( // creates a web token from the JWT library
-    { user },
-    process.env.SECRET, // signs to the server
-    { expiresIn: '24h' }
-  )
-}
