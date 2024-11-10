@@ -25,7 +25,7 @@ export default function LoginPage() {
     e.preventDefault();
     try {
       const user = await authService.logIn(inputValue);
-      navigate('/demo');
+      navigate('/dashboard');
     } catch (error) {
       setErrorMessage('Invalid credentials.');
       setInputValue((inputValue) => {

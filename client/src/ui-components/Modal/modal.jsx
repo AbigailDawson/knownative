@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import { createPortal } from 'react-dom';
+import Button from '../Button/button';
 import './modal.css';
 
 const Modal = ({
@@ -51,19 +52,26 @@ const Modal = ({
       {children}
       <div className="reusable-modal-buttons">
         {buttonDeleteText ? (
-          <button
-            className="reusable-modal-delete-button"
-            id="reusable-modal-delete-button"
-            onClick={handleDeleteButtonOnClick}>
-            {buttonDeleteText}
-          </button>
+          <div className="danger-button-container">
+            <Button
+              buttonText={buttonDeleteText}
+              buttonOnClickFunc={handleDeleteButtonOnClick}
+              buttonVariant={'danger'}
+            />
+          </div>
         ) : null}
-        <button className="reusable-modal-secondary-button" onClick={handleSecondaryButtonOnClick}>
-          {buttonSecondaryText}
-        </button>
-        <button className="reusable-modal-primary-button" onClick={handlePrimaryButtonOnClick}>
-          {buttonPrimaryText}
-        </button>
+        <div className="modal-button-container">
+          <Button
+            buttonText={buttonSecondaryText}
+            buttonOnClickFunc={handleSecondaryButtonOnClick}
+            buttonVariant={'secondary'}
+          />
+          <Button
+            buttonText={buttonPrimaryText}
+            buttonOnClickFunc={handlePrimaryButtonOnClick}
+            buttonVariant={'primary'}
+          />
+        </div>
       </div>
     </div>,
     elRef.current
