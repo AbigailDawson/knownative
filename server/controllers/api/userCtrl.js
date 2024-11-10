@@ -19,12 +19,6 @@ const cookieOptions = {
 //res.cookie on the server.
 //react-cookie on the front-end.
 //task- figure out how storing the token in cookies would work.
-/*
-res.cookie("token", token, {
-      withCredentials: true,
-      httpOnly: false,
-    });
-*/
 
 async function create(req, res) {
   try {
