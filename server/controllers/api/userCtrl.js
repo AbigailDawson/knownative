@@ -10,8 +10,8 @@ module.exports = {
 
 const cookieOptions = {
   httpOnly: true, // Prevents JavaScript access to the cookie
-  secure: process.env.NODE_ENV === "production",
-  sameSite: "none", // Prevents CSRF by limiting where the cookie can be sent
+  secure: false,
+  sameSite: "lax", // Prevents CSRF by limiting where the cookie can be sent
   maxAge: 24 * 60 * 60 * 1000, //Equals 1 day.
 };
 
@@ -56,6 +56,7 @@ async function logIn(req, res) {
     }
     const token = createJWT(user);
     res.cookie("token", token, cookieOptions);
+    console.log("it was supposed to create a cookie here!!");
     res.json(user);
     console.log("User successfully logged in:", user);
   } catch (error) {

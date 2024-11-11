@@ -3,9 +3,11 @@ import { useAuthContext } from '../../contexts/Auth/AuthProvider';
 import { Link } from 'react-router-dom';
 
 export default function DashboardPage() {
-  const { user } = useAuthContext();
+  // const { user } = useAuthContext();
 
-  return user ? (
+  const user = true;
+
+  return (
     <div className="dashboard">
       <div className="dashboard side-nav">
         <div className="nav-main-container">
@@ -140,12 +142,6 @@ export default function DashboardPage() {
           <button className="view-all-button">View all</button>
         </div>
       </div>
-    </div>
-  ) : (
-    <div>
-      <p>
-        User is not logged in. Please sign in <Link to="/login">here</Link>.
-      </p>
     </div>
   );
 }
