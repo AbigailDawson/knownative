@@ -10,6 +10,7 @@ import { TbPencilCheck } from 'react-icons/tb';
 import { RiLockPasswordFill } from 'react-icons/ri';
 import { FaUserPlus } from 'react-icons/fa6';
 import * as authService from '../../services/authService';
+import { useAuthContext } from '../../contexts/Auth/AuthProvider';
 
 const SignupPage = () => {
   const [inputValue, setInputValue] = useState({
@@ -21,8 +22,8 @@ const SignupPage = () => {
   });
 
   const [errorMsg, setErrorMsg] = useState('');
-  const [successMsg, setSuccessMsg] = useState('');
   const navigate = useNavigate();
+  const { setUser } = useAuthContext();
 
   // Add more form fields as needed here:
   const formFields = [
@@ -105,11 +106,8 @@ const SignupPage = () => {
     evt.preventDefault();
     try {
       const user = await authService.signUp(inputValue);
-      setSuccessMsg('Sign Up Successful', user);
-      console.log(successMsg);
-      if (user) {
-        navigate('/dashboard');
-      }
+      setUser(user);
+      navigate('/signup-success');
     } catch (err) {
       setInputValue({
         ...inputValue,
