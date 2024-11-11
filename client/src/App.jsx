@@ -8,22 +8,23 @@ import LandingPage from './LandingPages/LandingPage/LandingPage';
 import LoginPage from './LandingPages/LoginPage/LoginPage';
 import SignupPage from './LandingPages/SignupPage/SignupPage';
 import DashboardPage from './KnowNativePage/DashboardPage/DashboardPage';
+import AppProvider from './contexts/AppProvider';
 
 function App() {
-  const [user, setUser] = useState();
-
   return (
-    <main className="App">
-      <Routes>
-        <Route path="/dashboard" element={<DashboardPage />} />
-        <Route path="/demo" element={<DemoTextPage />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/contribute" element={<ContributePage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<SignupPage setUser={setUser} />} />
-        <Route path="/*" element={<LandingPage />} />
-      </Routes>
-    </main>
+    <AppProvider>
+      <main className="App">
+        <Routes>
+          <Route path="/dashboard" element={<DashboardPage />} />
+          <Route path="/demo" element={<DemoTextPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/contribute" element={<ContributePage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/signup" element={<SignupPage />} />
+          <Route path="/*" element={<LandingPage />} />
+        </Routes>
+      </main>
+    </AppProvider>
   );
 }
 

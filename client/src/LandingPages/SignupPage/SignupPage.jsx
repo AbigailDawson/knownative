@@ -11,7 +11,7 @@ import { RiLockPasswordFill } from 'react-icons/ri';
 import { FaUserPlus } from 'react-icons/fa6';
 import * as authService from '../../services/authService';
 
-const SignupPage = ({ setUser }) => {
+const SignupPage = () => {
   const [inputValue, setInputValue] = useState({
     firstName: '',
     lastName: '',
@@ -105,7 +105,6 @@ const SignupPage = ({ setUser }) => {
     evt.preventDefault();
     try {
       const user = await authService.signUp(inputValue);
-      setUser(user);
       setSuccessMsg('Sign Up Successful', user);
       console.log(successMsg);
       navigate('/dashboard');

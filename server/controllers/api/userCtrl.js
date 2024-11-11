@@ -54,7 +54,7 @@ async function logIn(req, res) {
     if (!passwordMatch) {
       throw new Error("Invalid credentials");
     }
-    const token = jwt.createJWT(user);
+    const token = createJWT(user);
     res.cookie("token", token, cookieOptions);
     res.json(user);
     console.log("User successfully logged in:", user);

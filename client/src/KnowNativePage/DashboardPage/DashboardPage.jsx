@@ -1,16 +1,11 @@
 import './DashboardPage.css';
-import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useAuthContext } from '../../contexts/Auth/AuthProvider';
+import { Link } from 'react-router-dom';
 
 export default function DashboardPage() {
-  useEffect(() => {
-    //make sure to utilize the contextAPI to get user info if available in the token.
-    //navigate AWAY from the page if user is NULL.
-    //per SE friend, don't use useEffect. Ternary operator?
-    //create a pop up that tells you that you cannot log in.
-  }, []);
+  const { user } = useAuthContext();
 
-  return (
+  return user ? (
     <div className="dashboard">
       <div className="dashboard side-nav">
         <div className="nav-main-container">
@@ -145,6 +140,12 @@ export default function DashboardPage() {
           <button className="view-all-button">View all</button>
         </div>
       </div>
+    </div>
+  ) : (
+    <div>
+      <p>
+        User is not logged in. Please sign in <Link to="/login">here</Link>.
+      </p>
     </div>
   );
 }
