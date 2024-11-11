@@ -1,38 +1,40 @@
 const User = require("../../models/user");
 const bcrypt = require("bcrypt");
-const jwt = require("./../../utils/jwt");
+const { createJWT } = require("./../../utils/jwt");
 
 module.exports = {
   create,
   logIn,
-  //checkToken
+  getUser,
 };
 
 const cookieOptions = {
   httpOnly: true, // Prevents JavaScript access to the cookie
-  // secure: true, // Ensures the cookie is only sent over HTTPS
-  sameSite: "strict", // Prevents CSRF by limiting where the cookie can be sent
-  maxAge: 24 * 60 * 60 * 1000, // Adjust expiration as needed
+  secure: process.env.NODE_ENV === "production",
+  sameSite: "none", // Prevents CSRF by limiting where the cookie can be sent
+  maxAge: 24 * 60 * 60 * 1000, //Equals 1 day.
 };
 
-//cookie storage?
-//res.cookie on the server.
-//react-cookie on the front-end.
-//task- figure out how storing the token in cookies would work.
+//NEEDED: create a csrf token as well!
 
 async function create(req, res) {
   try {
     const user = await User.create(req.body);
-    const token = jwt.createJWT(user);
+    const token = createJWT(user);
     res.cookie("token", token, cookieOptions);
     res.json(user);
-    console.log('User created:', user)
+    console.log("User created:", user);
   } catch (error) {
-    if (error.code === 11000) { // MongoDB duplicate key error code
+    if (error.code === 11000) {
+      // MongoDB duplicate key error code
       console.log(`We found a dup email Error: ${error}`);
-      res.status(400).json({ message: 'A user with that email address already exists!' });
+      res
+        .status(400)
+        .json({ message: "A user with that email address already exists!" });
     } else {
-      res.status(400).json({ message: 'An error occurred during sign-up. Please try again.' });
+      res.status(400).json({
+        message: "An error occurred during sign-up. Please try again.",
+      });
     }
   }
 }
@@ -62,6 +64,16 @@ async function logIn(req, res) {
   }
 }
 
-// function checkToken(req, res) {
-//   res.json(req.exp)
-// }
+async function getUser(req, res) {
+  try {
+    const user = await User.findById(req.user._id);
+    if (!user) {
+      throw new Error(
+        "Unable to find user in the database. Please try logging in again."
+      );
+    }
+    res.json(user);
+  } catch (error) {
+    res.status(400).json(error.message);
+  }
+}
