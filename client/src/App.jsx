@@ -12,19 +12,19 @@ import AppProvider from './contexts/AppProvider';
 
 function App() {
   return (
-    // <AppProvider>
-    <main className="App">
-      <Routes>
-        <Route path="/dashboard" element={<DashboardPage />} />
-        <Route path="/demo" element={<DemoTextPage />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/contribute" element={<ContributePage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<SignupPage />} />
-        <Route path="/*" element={<LandingPage />} />
-      </Routes>
-    </main>
-    // </AppProvider>
+    <AppProvider>
+      <main className="App">
+        <Routes>
+          <Route path="/dashboard" element={<DashboardPage />} />
+          <Route path="/demo" element={<DemoTextPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/contribute" element={<ContributePage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/signup" element={<SignupPage />} />
+          <Route path="/*" element={<LandingPage />} />
+        </Routes>
+      </main>
+    </AppProvider>
   );
 }
 

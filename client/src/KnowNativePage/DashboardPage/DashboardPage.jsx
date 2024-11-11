@@ -3,11 +3,9 @@ import { useAuthContext } from '../../contexts/Auth/AuthProvider';
 import { Link } from 'react-router-dom';
 
 export default function DashboardPage() {
-  // const { user } = useAuthContext();
+  const { user } = useAuthContext();
 
-  const user = true;
-
-  return (
+  return user ? (
     <div className="dashboard">
       <div className="dashboard side-nav">
         <div className="nav-main-container">
@@ -76,7 +74,8 @@ export default function DashboardPage() {
           </button>
         </div>
         <div className="dashboard header-container">
-          <h1>Dashboard</h1>
+          {/*Just added user.username for testing of the token. Please adjust as needed. */}
+          <h1>{`${user.username}'s Dashboard`}</h1>
         </div>
         <div className="stats-container">
           <div className="stat">
@@ -142,6 +141,12 @@ export default function DashboardPage() {
           <button className="view-all-button">View all</button>
         </div>
       </div>
+    </div>
+  ) : (
+    <div>
+      <p>
+        User not logged in. Please log in <Link to="/login">here</Link>.
+      </p>
     </div>
   );
 }
