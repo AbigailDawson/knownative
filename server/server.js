@@ -38,4 +38,4 @@ app.listen(port, function () {
   console.log(`Express app running on port ${port}`)
 })
 
-// trigger re-deploy to heroku
+// trigger re-deploy to Heroku
