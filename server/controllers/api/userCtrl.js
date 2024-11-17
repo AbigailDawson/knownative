@@ -6,6 +6,7 @@ module.exports = {
   create,
   logIn,
   getUser,
+  logOut,
 };
 
 const cookieOptions = {
@@ -76,5 +77,25 @@ async function getUser(req, res) {
     res.json(user);
   } catch (error) {
     res.status(400).json(error.message);
+  }
+}
+
+async function logOut(req, res) {
+  console.log("Entered the logout function.");
+  try {
+    res.cookie(
+      "token",
+      {},
+      {
+        httpOnly: true,
+        sameSite: "lax",
+        secure: false,
+        maxAge: 0,
+        path: "/",
+      }
+    );
+    res.status(200).json({ message: "Successfully logged out" });
+  } catch (error) {
+    res.status(403).json({ message: "Unable to log out successfully" });
   }
 }

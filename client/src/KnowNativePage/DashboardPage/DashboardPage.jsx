@@ -1,9 +1,23 @@
 import './DashboardPage.css';
+import { useEffect } from 'react';
 import { useAuthContext } from '../../contexts/Auth/AuthProvider';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import * as authService from './../../services/authService';
 
 export default function DashboardPage() {
-  const { user } = useAuthContext();
+  const { user, setUser } = useAuthContext();
+  const navigate = useNavigate();
+
+  async function handleLogOut() {
+    try {
+      await authService.logOut();
+      setUser(null);
+      navigate('/');
+    } catch (error) {
+      console.error(error.message);
+      alert('There was an issue logging out. Please try again.');
+    }
+  }
 
   return user ? (
     <div className="dashboard">
@@ -44,9 +58,9 @@ export default function DashboardPage() {
         <div className="nav-footer-container">
           <ul className="nav-links">
             <li>
-              <a className="link" href="/">
+              <button className="link" onClick={handleLogOut}>
                 Logout
-              </a>
+              </button>
             </li>
             <li>
               <a className="link" href="/">
@@ -64,7 +78,7 @@ export default function DashboardPage() {
       <div className="main-container">
         <div className="user-info">
           <button>
-            <p>Abigail</p>
+            <p>{user.username}</p>
             <img
               className="user-profile-picture"
               src="/images/square-logo.png"
@@ -75,7 +89,7 @@ export default function DashboardPage() {
         </div>
         <div className="dashboard header-container">
           {/*Just added user.username for testing of the token. Please adjust as needed. */}
-          <h1>{`${user.username}'s Dashboard`}</h1>
+          <h1>Dashboard</h1>
         </div>
         <div className="stats-container">
           <div className="stat">
