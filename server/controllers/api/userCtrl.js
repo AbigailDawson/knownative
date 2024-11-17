@@ -28,10 +28,12 @@ async function create(req, res) {
   } catch (error) {
     if (error.code === 11000) {
       // MongoDB duplicate key error code
-      console.log(`We found a dup email Error: ${error}`);
+      console.log(`We found a dup email or username Error: ${error}`);
       res
         .status(400)
-        .json({ message: "A user with that email address already exists!" });
+        .json({
+          message: "A user with that email address or username already exists!",
+        });
     } else {
       res.status(400).json({
         message: "An error occurred during sign-up. Please try again.",
