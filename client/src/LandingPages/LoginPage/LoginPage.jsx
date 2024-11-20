@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import LandingPageNav from '../components/LandingPageHeader/LandingPageNav';
 import * as authService from '../../services/authService';
 import { useNavigate } from 'react-router-dom';
+import { useAuthContext } from '../../contexts/Auth/AuthProvider';
 
 export default function LoginPage() {
   const [inputValue, setInputValue] = useState({
@@ -12,6 +13,7 @@ export default function LoginPage() {
   });
   const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
+  const { setUser } = useAuthContext();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -25,7 +27,8 @@ export default function LoginPage() {
     e.preventDefault();
     try {
       const user = await authService.logIn(inputValue);
-      navigate('/demo');
+      setUser(user);
+      navigate('/login-success');
     } catch (error) {
       setErrorMessage('Invalid credentials.');
       setInputValue((inputValue) => {
