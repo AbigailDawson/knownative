@@ -19,3 +19,59 @@
     background-color: var(--medium);
     opacity: 0.6;
 }
+
+.flashcard-btns {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    gap: 2vmin;
+  }
+  
+  .correct-btn,
+  .incorrect-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1vmin;
+    padding: 1vmin 2vmin;
+  }
+  
+  .correct-btn {
+    border: 2px solid var(--action);
+    color: var(--darkest);
+    background-color: var(--action);
+    color: var(--white);
+  }
+  
+  .correct-btn:hover {
+    border: 2px solid var(--medium);
+    background-color: var(--medium);
+  }
+  
+  .incorrect-btn {
+    border: 2px solid var(--red-brick);
+    color: var(--red-brick);
+    background-color: var(--red-brick-transparent);
+  }
+  
+  .incorrect-btn:hover {
+    background-color: white;
+  }
+  
+  .flashcard-icon {
+    font-size: 3vmin;
+  }
+  
+  .flashcard-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .flash-zh {
+    color: var(--darkest);
+    font-weight: bold;
+    font-size: 50px;
+  }
