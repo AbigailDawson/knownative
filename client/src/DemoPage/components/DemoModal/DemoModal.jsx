@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react'
-import './DemoModal.css'
+import './DemoModal.scss'
 
 const DemoModal = ({
   isOpen,
@@ -51,9 +51,9 @@ const DemoModal = ({
   }, [isModalOpen])
 
   return (
-    <dialog ref={modalRef} onKeyDown={handleKeyDown} className='demo-modal'>
+    <dialog ref={modalRef} onKeyDown={handleKeyDown} className='demo-modal-dialog'>
       {hasCloseBtn && (
-        <button className='demo-modal-close-btn' onClick={handleCloseModal}>
+        <button className='demo-modal__close-btn' onClick={handleCloseModal}>
           Close
         </button>
       )}
