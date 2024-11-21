@@ -1,0 +1,107 @@
+@mixin hover-effect($bg-color, $text-color, $scale: 1) {
+    cursor: pointer;
+    background-color: $bg-color;
+    color: $text-color;
+    transform: scale($scale);
+}
+
+.SavedWord-card {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    color: black;
+    padding: 2vmin 3.5vmin;
+    margin: 0.5vmin 1vmin;
+    border-bottom: 2px solid var(--medium);
+    border-radius: 0.5vmin;
+    position: relative;
+    -webkit-box-shadow: 7px 7px 5px -8px rgba(235, 235, 235, 0.4);
+    -moz-box-shadow: 7px 7px 5px -8px rgba(235, 235, 235, 0.4);
+    box-shadow: 7px 7px 5px -8px rgba(235, 235, 235, 0.4);
+    
+    &__menu-icon {
+        color: #00b9bc;
+        position: absolute;
+        top: 1vmin;
+        right: 1vmin;
+        font-size: 1.3rem;
+        transition: transform 0.3s ease-in-out;
+        border-radius: 50%;
+
+        &:hover {
+            @include hover-effect(#00b9bc, white, 1.3);
+        }
+        
+        &--open {
+            background-color: #00b9bc;
+            color: white;
+        }
+    }
+
+    &__menu {
+        width: fit-content;
+        min-width: 90px;
+        box-shadow: 0 2px 6px hsla(0, 0%, 7%, 0.5);
+        position: absolute;
+        top: 2px;
+        right: 2px;
+        
+        &-label {
+            margin: 0px;
+        }
+
+        &-button {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 0.5vmin 1vmin;
+            
+            &--edit {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                font-size: 14px;
+                font-weight: 500;
+                padding: 0.5vmin 1vmin;
+                background-color: #e1faf7;
+                color: #24312f;
+
+                &:hover {
+                    @include hover-effect(#24312f, #e1faf7);
+                }
+            }
+    
+            &--delete {
+                cursor: pointer;
+                background-color: #ffe6e6;
+                color: #660000;
+
+                &:hover {
+                    @include hover-effect(#660000, #ffe6e6);
+                }
+            } 
+        }
+    }
+
+    &__char {
+        &--pinyin {
+            font-size: 0.8rem;
+            margin-bottom: 0px;
+            color: var(--dark);
+        }
+        &--char {
+            font-size: 1.7rem;
+            margin-bottom: 0px;
+        }
+
+        &--meaning {
+            margin-bottom: 0px;
+            text-align: center;
+        }
+    }
+}

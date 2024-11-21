@@ -35,3 +35,9 @@
       border: solid #006769 2px;
     }
 }
+
+.arrowBack:hover {
+  background-color: var(--light);
+  border-radius: 0.7vmin;
+  cursor: pointer;
+}
