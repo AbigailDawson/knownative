@@ -1,0 +1,37 @@
+.DemoLibrary {
+    display: flex;
+    flex-direction: column;
+    padding: 3vmin 3vmin;
+    width: 100%;
+    background-color: #f5faf9;
+    color: black;
+    margin-top: 1rem;
+
+    &__header-container {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &__sidebar-heading {
+      text-align: left;
+      font-size: 1.75rem;
+      margin: 0;
+    }
+
+    &__sidebar-subtext {
+      text-align: left;
+      margin-top: 2vmin;
+    }
+
+    &__currently-reading-container,
+    &__bookshelf-container {
+      text-align: left;
+      color: #006769;
+      margin-top: 2vmin;
+    }
+
+    &__currently-reading {
+      border-radius: 5%;
+      border: solid #006769 2px;
+    }
+}
