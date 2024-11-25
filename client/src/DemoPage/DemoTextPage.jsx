@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { BiLinkExternal } from 'react-icons/bi';
-import './DemoTextPage.css';
+import './DemoTextPage.scss';
 
 import DemoStudyText from './DemoMainContent/DemoStudyText/DemoStudyText';
 import DemoReadText from './DemoMainContent/DemoReadText/DemoReadText';
@@ -243,12 +243,12 @@ export default function DemoTextPage() {
         </div>
 
         <div className="text-area" ref={blurRef}>
-          <div className="textpage-heading">
+          <div className="text-area__heading">
             <div className="flex-row">
-              <h1 className="textpage-heading-title zh">{text.title}</h1>
-              <article className="textpage-difficulty-tag">
+              <h1 className="text-area__heading--title zh">{text.title}</h1>
+              <article className="text-area__difficulty-tag">
                 <DemoDifficultyTag textSelection={textSelection} />
-                <a href={text.source} className="link-view-source" target="_blank" rel="noreferrer">
+                <a href={text.source} className="text-area__view-source-link" target="_blank" rel="noreferrer">
                   View Source <BiLinkExternal />
                 </a>
               </article>
@@ -274,7 +274,7 @@ export default function DemoTextPage() {
             </div>
           </div>
 
-          <div id="read" className={`read-container ${activeTab === 'read' ? 'active' : ''}`}>
+          <div id="read" className={`read-container ${activeTab === 'read' ? 'read-container--active' : ''}`}>
             <div className="Text">{text ? <DemoReadText text={text} /> : 'Loading text'}</div>
           </div>
 
