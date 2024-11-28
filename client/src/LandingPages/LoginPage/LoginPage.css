@@ -19,9 +19,52 @@
 }
 
 .login-page-login-button {
-  margin-top: 20px;
+  background-color: #086A6C;
+  color: white;
+}
+
+.login-page-button {
+  margin: 20px;
+  width: 400px;
+}
+
+.google-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #086A6C;
+  background-color: #E5F2F6;
+  font-weight: 600;
+}
+
+.google-icon {
+  padding: 0px 8px;
 }
 
 .login-error-message {
   color: red;
+}
+
+.login-page-input {
+  background-color: #E1E3E3;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* Adjust spacing between label and input */
+}
+
+.input-with-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  position: absolute;
+  right: 8px; /* Adjust distance from the right edge */
+  cursor: pointer; /* Indicate the icon is interactive */
+  color: #666; /* Icon color */
+  user-select: none; /* Prevent text selection */
 }
