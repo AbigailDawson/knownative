@@ -7,6 +7,11 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+
+}
+
+.login-page-container {
+  max-width: 400px;
 }
 
 .login-page-login-form {
@@ -24,7 +29,8 @@
 }
 
 .login-page-button {
-  margin: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   width: 400px;
 }
 
@@ -47,24 +53,51 @@
 
 .login-page-input {
   background-color: #E1E3E3;
+  width: 100%;
+  border-radius: 8px;
+  border: #E1E3E3;
+  height: 55px;
 }
 
 .input-container {
   display: flex;
   flex-direction: column;
-  gap: 8px; /* Adjust spacing between label and input */
+  gap: 8px;
 }
 
 .input-with-icon {
   position: relative;
   display: flex;
   align-items: center;
+  width: 100%;
 }
 
 .icon {
   position: absolute;
-  right: 8px; /* Adjust distance from the right edge */
-  cursor: pointer; /* Indicate the icon is interactive */
-  color: #666; /* Icon color */
-  user-select: none; /* Prevent text selection */
+  right: 15px;
+  cursor: pointer;
+  color: black;
+  user-select: none;
+}
+
+
+/* OR separator between buttons */
+.separator {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: black;
+}
+
+.separator::before,
+.separator::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid rgb(136, 136, 136);
+}
+
+.separator span {
+  font-size: 14px;
+  text-transform: uppercase;
+  padding: 0 10px; /* Creates a padding around the text */
 }
