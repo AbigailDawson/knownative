@@ -48,30 +48,43 @@ export default function LoginPage() {
       <div className="login-page-login-form-container">
         <div className="login-page-container">
           <form className="login-page-login-form" onSubmit={handleLogin}>
-            <label>Email/Username:</label>
-            <input
-              type="text"
-              name="email"
-              value={inputValue.email}
-              onChange={handleChange}
-              className="login-page-input"
-            />
+            <div className="login-input-box">
+              <input
+                type="text"
+                name="email"
+                value={inputValue.email}
+                onChange={handleChange}
+                id="login-email" // Update the ID to include "login" prefix
+                className="login-page-input"
+                placeholder=" " // Add placeholder attribute for spacing
+                required
+              />
+              <label htmlFor="login-email" className="login-label-container">
+                <span className="login-label-text">Email/Username:</span>
+              </label>
+            </div>
 
-            <label>Password:</label>
-            <div className="input-with-icon">
+            <div className="login-input-box">
               <input
                 type={showPassword ? 'text' : 'password'}
                 name="password"
+                id="login-password" // Update the ID to include "login" prefix
                 value={inputValue.password}
                 onChange={handleChange}
                 className="login-page-input"
+                placeholder=" " // Add placeholder attribute for spacing
+                required
               />
+              <label htmlFor="login-password" className="login-label-container">
+                <span className="login-label-text">Password:</span>
+              </label>
               <span
                 className="material-symbols-outlined icon"
                 onClick={() => setShowPassword(!showPassword)}>
                 {showPassword ? 'visibility_off' : 'visibility'}
               </span>
             </div>
+
             <p>Forgot Password?</p>
             <button type="submit" className="login-page-login-button login-page-button">
               Log In

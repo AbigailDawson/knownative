@@ -57,12 +57,14 @@
   border-radius: 8px;
   border: #E1E3E3;
   height: 55px;
+  gap: 8px;
+  margin: 20px 0px;
 }
 
 .input-container {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+
 }
 
 .input-with-icon {
@@ -100,4 +102,75 @@
   font-size: 14px;
   text-transform: uppercase;
   padding: 0 10px; /* Creates a padding around the text */
+}
+
+/* for input's placeholder to label animation  */
+
+.login-input-box {
+  position: relative;
+  width: 100%;
+}
+
+/* Hide the placeholder text when input is focused or has value */
+.login-page-input::placeholder {
+  color: transparent;
+  transition: color 0.3s ease;
+}
+
+.login-page-input:focus::placeholder {
+  color: transparent;
+}
+
+/* Label styles for default state */
+.login-label-container {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  transition: all 0.3s ease;
+  font-size: 16px;
+  color: #888;
+  pointer-events: none;
+}
+
+/* Move label to top when input is focused or has value */
+.login-page-input:focus + .login-label-container .login-label-text,
+.login-page-input:not(:placeholder-shown) + .login-label-container .login-label-text {
+  top: -10px; /* Adjust this value for desired position */
+  left: 10px; /* Align with input padding */
+  font-size: 14px;
+  background-color: var(--white);
+  padding: 0px 5px;
+}
+
+/* Change label color when input is focused */
+.login-page-input:focus + .login-label-container {
+  top: 20px;
+}
+
+.login-page-input:focus {
+  background-color: white; /* Background becomes white */
+  border: 1px solid black; /* Optional: Add focus border highlight */
+  outline: none;
+}
+
+/* Adjust input padding to make space for the label */
+.login-page-input {
+  padding: 20px 10px 10px; /* Top padding allows space for the label */
+  background-color: #E1E3E3;
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid #E1E3E3;
+  height: 55px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+/* Password visibility icon styles */
+.icon {
+  position: absolute;
+  right: 15px;
+  top: 35px;
+  cursor: pointer;
+  color: black;
+  user-select: none;
 }
