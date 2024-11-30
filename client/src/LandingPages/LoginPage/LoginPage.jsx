@@ -5,6 +5,7 @@ import LandingPageNav from '../components/LandingPageHeader/LandingPageNav';
 import * as authService from '../../services/authService';
 import { useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../../contexts/Auth/AuthProvider';
+import { validateLogin } from '../../utilities/validation';
 
 export default function LoginPage() {
   const [inputValue, setInputValue] = useState({
@@ -26,6 +27,14 @@ export default function LoginPage() {
 
   async function handleLogin(e) {
     e.preventDefault();
+    setErrorMessage('');
+
+    const error = validateLogin(inputValue);
+    if (error) {
+      setErrorMessage(error);
+      return;
+    }
+
     try {
       const user = await authService.logIn(inputValue);
       setUser(user);
@@ -83,12 +92,15 @@ export default function LoginPage() {
                 {showPassword ? 'visibility_off' : 'visibility'}
               </span>
             </div>
+
             {/* Needs functionality */}
             <p className="login-page-forgot">Forgot Password?</p>
+            <div className="login-error-container">
+              {errorMessage && <p className="login-error-message">{errorMessage}</p>}
+            </div>
             <button type="submit" className="login-page-login-button login-page-button">
               Log In
             </button>
-            {errorMessage && <p className="login-error-message">{errorMessage}</p>}
           </form>
 
           <div className="separator">
