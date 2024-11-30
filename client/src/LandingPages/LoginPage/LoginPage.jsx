@@ -24,18 +24,6 @@ export default function LoginPage() {
     });
   };
 
-  const [focused, setFocused] = useState({ email: false, password: false }); // Track focused inputs
-
-  const handleFocus = (e) => {
-    setFocused({ ...focused, [e.target.name]: true });
-  };
-
-  const handleBlur = (e) => {
-    if (!inputValue[e.target.name]) {
-      setFocused({ ...focused, [e.target.name]: false });
-    }
-  };
-
   async function handleLogin(e) {
     e.preventDefault();
     try {
@@ -59,6 +47,7 @@ export default function LoginPage() {
       <LandingPageNav />
       <div className="login-page-login-form-container">
         <div className="login-page-container">
+          <h1 className="login-page-header">Log in to view your dashboard</h1>
           <form className="login-page-login-form" onSubmit={handleLogin}>
             <div className="login-input-box">
               <input
@@ -66,15 +55,12 @@ export default function LoginPage() {
                 name="email"
                 value={inputValue.email}
                 onChange={handleChange}
-                id="login-email" // Update the ID to include "login" prefix
+                id="login-email"
                 className="login-page-input"
-                onFocus={handleFocus}
-                onBlur={handleBlur}
-                placeholder=" " // Add placeholder attribute for spacing
-                required
+                placeholder=" "
               />
               <label htmlFor="login-email" className="login-label-container">
-                <span className="login-label-text">Email/Username:</span>
+                <span className="login-label-text">Email Address</span>
               </label>
             </div>
 
@@ -82,17 +68,14 @@ export default function LoginPage() {
               <input
                 type={showPassword ? 'text' : 'password'}
                 name="password"
-                id="login-password" // Update the ID to include "login" prefix
+                id="login-password"
                 value={inputValue.password}
                 onChange={handleChange}
-                onFocus={handleFocus}
-                onBlur={handleBlur}
                 className="login-page-input"
-                placeholder=" " // Add placeholder attribute for spacing
-                required
+                placeholder=" "
               />
               <label htmlFor="login-password" className="login-label-container">
-                <span className="login-label-text">Password:</span>
+                <span className="login-label-text">Password</span>
               </label>
               <span
                 className="material-symbols-outlined icon"
@@ -100,8 +83,8 @@ export default function LoginPage() {
                 {showPassword ? 'visibility_off' : 'visibility'}
               </span>
             </div>
-
-            <p>Forgot Password?</p>
+            {/* Needs functionality */}
+            <p className="login-page-forgot">Forgot Password?</p>
             <button type="submit" className="login-page-login-button login-page-button">
               Log In
             </button>
@@ -112,9 +95,13 @@ export default function LoginPage() {
             <span>OR</span>
           </div>
           <div className="">
-            <button className="google-button login-page-button">
-              <img src="/images/google_icon.svg" alt="google sign in" className="google-icon" />
-              Sign in with Google
+            <button className="login-google-button login-page-button">
+              <img
+                src="/images/google_icon.svg"
+                alt="google sign in"
+                className="login-google-icon"
+              />
+              Log in with Google
             </button>
           </div>
           <Link to="/signup" className="login-page-signup-link">
