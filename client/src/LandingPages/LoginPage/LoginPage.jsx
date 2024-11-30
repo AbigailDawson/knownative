@@ -24,6 +24,18 @@ export default function LoginPage() {
     });
   };
 
+  const [focused, setFocused] = useState({ email: false, password: false }); // Track focused inputs
+
+  const handleFocus = (e) => {
+    setFocused({ ...focused, [e.target.name]: true });
+  };
+
+  const handleBlur = (e) => {
+    if (!inputValue[e.target.name]) {
+      setFocused({ ...focused, [e.target.name]: false });
+    }
+  };
+
   async function handleLogin(e) {
     e.preventDefault();
     try {
@@ -56,6 +68,8 @@ export default function LoginPage() {
                 onChange={handleChange}
                 id="login-email" // Update the ID to include "login" prefix
                 className="login-page-input"
+                onFocus={handleFocus}
+                onBlur={handleBlur}
                 placeholder=" " // Add placeholder attribute for spacing
                 required
               />
@@ -71,6 +85,8 @@ export default function LoginPage() {
                 id="login-password" // Update the ID to include "login" prefix
                 value={inputValue.password}
                 onChange={handleChange}
+                onFocus={handleFocus}
+                onBlur={handleBlur}
                 className="login-page-input"
                 placeholder=" " // Add placeholder attribute for spacing
                 required
