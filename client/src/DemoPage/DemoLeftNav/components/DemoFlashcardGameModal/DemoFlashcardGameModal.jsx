@@ -10,6 +10,7 @@ export default function DemoFlashcardGameModal({ wordList, selectedFront, showPi
   const [open, setOpen] = useState(false);
   const [flashcards, setFlashcards] = useState([]);
   const [gameInProgress, setGameInProgress] = useState(false);
+  const [quizCompleted, setQuizCompleted] = useState(false);
   const [correctCount, setCorrectCount] = useState(0);
   const [remainingCount, setRemainingCount] = useState(0);
   const [isFlipped, setIsFlipped] = useState(false);
@@ -58,6 +59,11 @@ export default function DemoFlashcardGameModal({ wordList, selectedFront, showPi
     setRemainingCount(remainingCount - 1);
     setIsFlipped(false);
     setHasBeenFlipped(false);
+
+    // Check if the quiz is completed after updating the flashcards
+    if (remainingCount === 1) {
+      setQuizCompleted(true);
+    }
   }
 
   function handleIncorrect() {
@@ -72,6 +78,7 @@ export default function DemoFlashcardGameModal({ wordList, selectedFront, showPi
     setFlashcards(flashcardsArray);
     setRemainingCount(flashcardsArray.length);
     setGameInProgress(true);
+    setQuizCompleted(false);
     setOpen(true);
     blurText(true);
   }
@@ -175,21 +182,25 @@ export default function DemoFlashcardGameModal({ wordList, selectedFront, showPi
               </div>
             </>
           ) : (
-            <div className="congrats">
-              <div>
-                <dotlottie-player
-                  src="https://lottie.host/9279b8f8-2d84-4077-aaf6-db967f8ec7bb/3JRYmBPJgq.json"
-                  background="transparent"
-                  speed="1"
-                  style={{ height: '20vmin' }}
-                  loop
-                  autoplay></dotlottie-player>
-              </div>
-              <h2>You completed the deck!</h2>
-              <button className="play-btn" onClick={handlePlayAgain}>
-                Play Again
-              </button>
-            </div>
+            <>
+              {quizCompleted && (
+                <div className="congrats">
+                  <div>
+                    <dotlottie-player
+                      src="https://lottie.host/9279b8f8-2d84-4077-aaf6-db967f8ec7bb/3JRYmBPJgq.json"
+                      background="transparent"
+                      speed="1"
+                      style={{ height: '20vmin' }}
+                      loop
+                      autoplay></dotlottie-player>
+                  </div>
+                  <h2>You completed the deck!</h2>
+                  <button className="play-btn" onClick={handlePlayAgain}>
+                    Play Again
+                  </button>
+                </div>
+              )}
+            </>
           )}
         </DialogContent>
       </Dialog>
