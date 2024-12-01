@@ -10,6 +10,8 @@
 
 .login-modal-container {
   max-width: 400px;
+  width: 100%;
+  padding-bottom: 100px;
 }
 
 .login-modal-login-form {
@@ -41,7 +43,7 @@
 
 .login-modal-button {
   margin-bottom: 20px;
-  width: 400px;
+  width: 100%;
   border-radius: 6px;
   padding: 6px;
 }
@@ -199,4 +201,52 @@
   padding: 12px;
   font-size: 16px;
   position: relative;
+}
+
+@media (max-width: 1025px) {
+  .login-modal-login-form-container {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .login-modal-input, .login-modal-button {
+    font-size: 14px;  /* Slightly smaller text for mobile */
+  }
+
+  .login-modal-header{
+    font-size: 20px;
+  }
+
+  .login-modal-secondary-text {
+    font-size: 15px;
+  }
+
+  .login-label-container {
+    font-size: 14px;
+    top: 64%;
+  }
+  .login-modal-login-form {
+    margin-top: 20px;
+  }
+  
+  .login-modal-forgot, .login-modal-signup-link, .login-modal-input:focus + .login-label-container,
+  .login-modal-input:not(:placeholder-shown) + .login-label-container {
+    font-size: 13px;
+  }
+
+  .login-error-container {
+    height: 20px;
+  }
+
+  .login-modal-login-form-container {
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+
+  .login-modal-container {
+    padding-bottom: 5px;
+  }
+
 }

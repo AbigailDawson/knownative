@@ -222,6 +222,12 @@
   }
 
   .login-error-container {
+    height: 15px;
+  }
+}
+
+@media (max-width: 320px) {
+  .login-error-container {
     height: 40px;
   }
 }
