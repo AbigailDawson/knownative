@@ -11,7 +11,7 @@ import { MdEmail } from 'react-icons/md';
 import { FaXTwitter } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
 import { useAuthContext } from '../../contexts/Auth/AuthProvider';
-import LoginModal from './LandingPageComponents/LoginModal';
+import LoginModal from '../components/LandingPageLoginModal/LoginModal';
 
 export default function LandingPage() {
   const [showModal, setShowModal] = useState(false);
