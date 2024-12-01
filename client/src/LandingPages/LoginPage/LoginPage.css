@@ -81,15 +81,13 @@
   margin-top: -15px;
 }
 
-/* Styling for the error message */
 .login-error-message {
   color: red;
   font-size: 14px;
   text-align: center;
-  display: inline-block; /* Ensures it behaves like text */
+  display: inline-block;
 }
 
-/* Optional: If you want to keep the error message from pushing content, you can set opacity to 0 when hidden */
 .login-error-message.hidden {
   opacity: 0;
   visibility: hidden;
@@ -153,7 +151,7 @@
 .login-page-input:focus,
 .login-page-input:not(:placeholder-shown) {
   background-color: white;
-  border: 2px solid var(--action); /* Make sure --action is defined */
+  border: 2px solid var(--action);
 }
 
 /* Label animation */
