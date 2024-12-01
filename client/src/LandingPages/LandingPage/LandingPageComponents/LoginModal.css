@@ -1,34 +1,18 @@
-.login-page-main {
-  min-height: 100vh;
-}
-
-.login-page-forgot {
-  color: black;
-  margin-bottom: 0rem;
-  font-size: 14px;
-}
-
-.login-page-signup-link {
-  color: black;
-  font-size: 14px;
-}
-.login-page-forgot:hover, .login-page-signup-link:hover {
-  text-decoration: underline;
-  cursor: pointer;
-}
-
-.login-page-login-form-container {
+.login-modal-login-form-container {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  text-align: center;
+  padding-right: 100px;
+  padding-left: 100px;
 }
 
-.login-page-container {
+.login-modal-container {
   max-width: 400px;
 }
 
-.login-page-login-form {
+.login-modal-login-form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -39,20 +23,36 @@
   margin-top: 35px;
 }
 
-.login-page-button {
+.login-modal-forgot {
+  color: black;
+  margin-bottom: 0rem;
+  font-size: 14px;
+}
+
+.login-modal-signup-link {
+  color: black;
+  font-size: 14px;
+}
+.login-modal-forgot:hover, .login-modal-signup-link:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+
+.login-modal-button {
   margin-bottom: 20px;
   width: 400px;
   border-radius: 6px;
   padding: 6px;
 }
 
-.login-page-login-button {
+.login-modal-login-button {
   background-color: #086A6C;
   color: white;
   border: 1px solid #086A6C;
 }
 
-.login-page-login-button:hover {
+.login-modal-login-button:hover {
   background-color: var(--dark-action);
 }
 
@@ -95,9 +95,16 @@
   visibility: hidden;
 }
 
-.login-page-header {
+.login-modal-header {
   color: black;
   font-size: 24px;
+}
+
+.login-modal-secondary-text {
+  font-size: 18px;
+  color: black;
+  padding-top: 15px;
+  font-weight: 400;
 }
 
 .input-container {
@@ -152,8 +159,8 @@
   }
 
 /* Keeps background white when there's text but user clicks away */
-.login-page-input:focus,
-.login-page-input:not(:placeholder-shown) {
+.login-modal-input:focus,
+.login-modal-input:not(:placeholder-shown) {
   background-color: white;
   border: 2px solid var(--action);
 }
@@ -170,8 +177,8 @@
   pointer-events: none;
 }
 
-.login-page-input:focus + .login-label-container,
-.login-page-input:not(:placeholder-shown) + .login-label-container {
+.login-modal-input:focus + .login-label-container,
+.login-modal-input:not(:placeholder-shown) + .login-label-container {
   top: 10px;
   font-size: 14px;
   background-color: white;
@@ -180,11 +187,11 @@
   border-radius: 5px;
 }
 
-.login-page-input:focus {
+.login-modal-input:focus {
   outline: none;
 }
 
-.login-page-input {
+.login-modal-input {
   background-color: #E1E3E3;
   width: 100%;
   border-radius: 8px;

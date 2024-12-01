@@ -14,7 +14,8 @@ const Modal = ({
   handleSecondaryButtonOnClick,
   hasCloseButton,
   modalTitle,
-  setShowModal
+  setShowModal,
+  hasCustomButtons
 }) => {
   const elRef = useRef(null);
 
@@ -60,18 +61,20 @@ const Modal = ({
             />
           </div>
         ) : null}
-        <div className="modal-button-container">
-          <Button
-            buttonText={buttonSecondaryText}
-            buttonOnClickFunc={handleSecondaryButtonOnClick}
-            buttonVariant={'secondary'}
-          />
-          <Button
-            buttonText={buttonPrimaryText}
-            buttonOnClickFunc={handlePrimaryButtonOnClick}
-            buttonVariant={'primary'}
-          />
-        </div>
+        {hasCustomButtons ? null : (
+          <div className="modal-button-container">
+            <Button
+              buttonText={buttonSecondaryText}
+              buttonOnClickFunc={handleSecondaryButtonOnClick}
+              buttonVariant={'secondary'}
+            />
+            <Button
+              buttonText={buttonPrimaryText}
+              buttonOnClickFunc={handlePrimaryButtonOnClick}
+              buttonVariant={'primary'}
+            />
+          </div>
+        )}
       </div>
     </div>,
     elRef.current
