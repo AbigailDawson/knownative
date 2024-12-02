@@ -1,0 +1,49 @@
+.signup-page {
+
+    &__title {
+        font-size: 2rem;
+        text-align: center;
+        color: black;
+        padding: 1em;
+    }
+
+    &__error-message {
+        color: red;
+        font-size: 1.2rem;
+        margin-bottom: 0.5em;
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        gap: 0.8em;
+        align-items: center;
+    }
+
+    &__button {
+        &--icon {
+            max-height: 2em;
+        }
+    }
+}
+
+.password-validation {
+    list-style-type: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+.password-validation li {
+    font-size: 0.9rem;
+    color: #556163;
+    text-align: left;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    column-gap: 8px;
+    margin: 8px;
+}
+
+.password-validation svg {
+    max-width: 24px;
+}

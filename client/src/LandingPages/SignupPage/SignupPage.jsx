@@ -1,5 +1,5 @@
 import React from 'react';
-import './SignupPage.css';
+import './SignupPage.scss';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import LandingPageNav from '../components/LandingPageHeader/LandingPageNav';
 import { useState } from 'react';
@@ -121,17 +121,16 @@ const SignupPage = () => {
   return (
     <main className="signup-page-main">
       <LandingPageNav />
-      <section className="signup-page">
-        <div className="signup-container">
-          <h1 className="">SIGN UP</h1>
+      <section className="signup-page__container">
+          <h1 className="signup-page__title">Create Your Knownative Account</h1>
           {errorMsg && (
-            <div className="error-message">
+            <div className="signup-page__error-message">
               <h5>
                 <em>{errorMsg}</em>
               </h5>
             </div>
           )}
-          <form className="form-container" onSubmit={handleSubmit}>
+          <form className="signup-page__form" onSubmit={handleSubmit}>
             {formFields.map((input, idx) => (
               <FormInput
                 key={idx}
@@ -141,13 +140,15 @@ const SignupPage = () => {
               />
             ))}
             <PasswordValidation password={inputValue.password} />
-            <button type="submit">
-              <FaUserPlus style={{ color: '#556163' }} />
-              <span> &nbsp; SIGN UP</span>
+            <button className='signup-page__button' type="submit">
+              SIGN UP
             </button>
             {/* oAuth  */}
             <div>
-              <button>Sign up with Google</button>
+              <button className='signup-page__button'>
+                <img className='signup-page__button--icon' src='../../../public/images/google-icon.png' />
+                Sign up with Google
+              </button>
             </div>
             {/* line */}
             <div>
@@ -156,7 +157,7 @@ const SignupPage = () => {
               </Link>
             </div>
           </form>
-        </div>
+    
       </section>
     </main>
   );
