@@ -36,7 +36,7 @@ const SignupPage = () => {
       errorMessage:
         "First name needs to be 2 to 20 characters long and shouldn't contain special characters.",
       pattern: '^[A-Za-z]{2,20}$',
-      icon: <TbPencilCheck />,
+      // icon: <TbPencilCheck />,
       required: true
     },
     {
@@ -48,7 +48,7 @@ const SignupPage = () => {
       errorMessage:
         "Last name needs to be 2 to 20 characters long and shouldn't contain special characters.",
       pattern: '^[A-Za-z]{2,20}$',
-      icon: <TbPencilCheck />,
+      // icon: <TbPencilCheck />,
       required: true
     },
     {
@@ -60,17 +60,17 @@ const SignupPage = () => {
       errorMessage:
         'Username should be 3-20 characters. Only letters, numbers and underscores are allowed.',
       pattern: '^[A-Za-z0-9_]{3,20}$',
-      icon: <FaUserPlus />,
+      // icon: <FaUserPlus />,
       required: true
     },
     {
       name: 'email',
-      label: 'Email',
+      label: 'Email Address',
       type: 'email',
       id: 'signup-email',
       htmlFor: 'signup-email',
       errorMessage: 'Please use a valid email address.',
-      icon: <MdAlternateEmail />,
+      // icon: <MdAlternateEmail />,
       required: true
     },
     {
@@ -82,7 +82,7 @@ const SignupPage = () => {
       errorMessage:
         'Password should be 6-20 characters. Include letters, numbers and at least one special character.',
       pattern: '^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{6,20}$',
-      icon: <RiLockPasswordFill />,
+      // icon: <RiLockPasswordFill />,
       required: true
     },
     {
@@ -93,7 +93,7 @@ const SignupPage = () => {
       htmlFor: 'signup-confirmPassword',
       errorMessage: 'Passwords do not match',
       pattern: inputValue.password,
-      icon: <RiLockPasswordFill />,
+      // icon: <RiLockPasswordFill />,
       required: true
     }
   ];
@@ -141,15 +141,13 @@ const SignupPage = () => {
             ))}
             <PasswordValidation password={inputValue.password} />
             <button className='signup-page__button' type="submit">
-              SIGN UP
+              Sign Up
             </button>
             {/* oAuth  */}
-            <div>
-              <button className='signup-page__button'>
-                <img className='signup-page__button--icon' src='../../../public/images/google-icon.png' />
+            <button className='signup-page__button signup-page__button-google'>
+              <img className='signup-page__button-google--icon' src='../../../public/images/google-icon.png' />
                 Sign up with Google
-              </button>
-            </div>
+            </button>
             {/* line */}
             <div>
               <Link to="/login" className="signup-text">

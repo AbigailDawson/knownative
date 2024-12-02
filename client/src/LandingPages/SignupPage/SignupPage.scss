@@ -1,5 +1,11 @@
 .signup-page {
 
+    &__container {
+        display: grid;
+        grid-template-columns: 1fr;
+        margin-inline: auto;
+    }
+
     &__title {
         font-size: 2rem;
         text-align: center;
@@ -21,8 +27,18 @@
     }
 
     &__button {
-        &--icon {
-            max-height: 2em;
+        width: 100%;
+        max-width: 400px;
+        background-color: #086A6C;
+        color: white;
+        font-weight: 600;
+
+        &-google {
+            background-color: #E5F2F6;
+            color: #086A6C;
+            &--icon {
+                max-height: 2em;
+            }
         }
     }
 }

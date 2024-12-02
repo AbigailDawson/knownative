@@ -20,7 +20,7 @@ const FormInput = (props) => {
                 focused={focused.toString()}
                 aria-describedby={`${id}-error`}
                 aria-invalid={!!errorMessage}
-                className="input-box__input"
+                className="input-box__input-field"
                 />
                 <label className="input-box__label" htmlFor={htmlFor}>
                     {icon}
