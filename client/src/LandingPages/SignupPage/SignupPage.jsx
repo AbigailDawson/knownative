@@ -3,7 +3,7 @@ import './SignupPage.css';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import LandingPageNav from '../components/LandingPageHeader/LandingPageNav';
 import { useState } from 'react';
-import FormInput from '../components/Forms/FormInput';
+import FormInput from '../components/Forms/FormInput/FormInput';
 import PasswordValidation from '../components/Forms/PasswordValidation';
 import { MdAlternateEmail } from 'react-icons/md';
 import { TbPencilCheck } from 'react-icons/tb';

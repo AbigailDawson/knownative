@@ -1,0 +1,69 @@
+.input-box {
+    display: grid;
+    position: relative;
+    grid-template-areas: "stack";
+    margin: 4px;
+}
+
+.input-box__input {
+    height: 3.25vh;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: inset -3px -3px 3px rgba(0, 0, 0, 0.2),
+    inset 3px 3px 2px rgba(0, 0, 0, 0.4);
+    cursor: auto;
+    width: 100%;
+    grid-area: stack;
+}    
+    
+.input-box__label {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    padding: 8px;
+    pointer-events: none;
+    font-size: 1em;
+    color: rgba(107, 8, 105, 0.653);
+    transition: 0.5s;
+    grid-area: stack;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+    
+.input-box__input:valid ~ .input-box__label,
+.input-box__input:invalid[focused="true"] ~ .input-box__label,
+.input-box__input:focus ~ .input-box__label {
+    color: #556163;
+    transform: translateX(8px) translateY(-8px);
+    font-size: 0.65em;
+    padding: 0 4px;
+    background: white;
+    border-left: 3px double black;
+    border-right: 3px double black;
+    letter-spacing: 0.2em;
+    width: min-content;
+}
+
+.input-box__label > svg {
+    max-width: 24px;
+}
+
+.input-box__label-text {
+    text-align: left;
+    width: max-content;
+}
+
+.input-box__label-text--error {
+    font-size: 0.75rem;
+    display: flex;
+    align-items: flex-start;
+    text-align: left;
+    font-style: italic;
+    color: rgb(0, 31, 31);
+    display: none;
+}
+
+.input-box__input:invalid[focused="true"] ~ .input-box__label-text--error {
+        display: block;
+}
