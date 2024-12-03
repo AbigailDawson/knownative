@@ -54,37 +54,37 @@ export default function LoginPage() {
   return (
     <main>
       <LandingPageNav />
-      <div className="login-page-login-form-container">
-        <div className="login-page-container">
-          <h1 className="login-page-header">Log in to view your dashboard</h1>
-          <form className="login-page-login-form" onSubmit={handleLogin}>
-            <div className="login-input-box">
+      <div className="login-page__form-container">
+        <div className="login-page__container">
+          <h1 className="login-page__header">Log in to view your dashboard</h1>
+          <form className="login-page__form" onSubmit={handleLogin}>
+            <div className="login-page__input-box">
               <input
                 type="text"
                 name="email"
                 value={inputValue.email}
                 onChange={handleChange}
                 id="login-email"
-                className="login-page-input"
+                className="login-page__input"
                 placeholder=" "
               />
-              <label htmlFor="login-email" className="login-label-container">
-                <span className="login-label-text">Email Address</span>
+              <label htmlFor="login-email" className="login-page__label-container">
+                <span className="">Email Address</span>
               </label>
             </div>
 
-            <div className="login-input-box">
+            <div className="login-page__input-box">
               <input
                 type={showPassword ? 'text' : 'password'}
                 name="password"
                 id="login-password"
                 value={inputValue.password}
                 onChange={handleChange}
-                className="login-page-input"
+                className="login-page__input"
                 placeholder=" "
               />
-              <label htmlFor="login-password" className="login-label-container">
-                <span className="login-label-text">Password</span>
+              <label htmlFor="login-password" className="login-page__label-container">
+                <span className="">Password</span>
               </label>
               <span
                 className="material-symbols-outlined icon"
@@ -94,11 +94,11 @@ export default function LoginPage() {
             </div>
 
             {/* Needs functionality */}
-            <p className="login-page-forgot">Forgot Password?</p>
-            <div className="login-error-container">
-              {errorMessage && <p className="login-error-message">{errorMessage}</p>}
+            <p className="login-page__forgot">Forgot Password?</p>
+            <div className="login-page__error-container">
+              {errorMessage && <p className="login-page__error-message">{errorMessage}</p>}
             </div>
-            <button type="submit" className="login-page-login-button login-page-button">
+            <button type="submit" className="login-page__button--primary login-page__button">
               Log In
             </button>
           </form>
@@ -107,16 +107,16 @@ export default function LoginPage() {
             <span>OR</span>
           </div>
           <div className="">
-            <button className="login-google-button login-page-button">
+            <button className="login-page__button--google login-page__button">
               <img
                 src="/images/google_icon.svg"
                 alt="google sign in"
-                className="login-google-icon"
+                className="login-page__google-icon"
               />
               Log in with Google
             </button>
           </div>
-          <Link to="/signup" className="login-page-signup-link">
+          <Link to="/signup" className="login-page__signup-link">
             Don't have an account? Sign-Up
           </Link>
         </div>
