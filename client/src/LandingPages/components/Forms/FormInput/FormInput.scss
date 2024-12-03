@@ -1,70 +1,96 @@
 .input-box {
-  display: grid;
+
+   /* Password visibility icon */
+   &__icon {
+    position: absolute;
+    right: 15px;
+    top: 23px;
+    cursor: pointer;
+    color: black;
+    user-select: none;
+  }
+
+  
+   /* --- INPUT STYLING & ANIMATION --- */
+&__input-container {
   position: relative;
-  grid-template-areas: 'stack';
-  margin: 0.2em;
-  margin-inline: auto;
   max-width: 400px;
   width: 100%;
-  align-items: center;
+  height: 50px;
+  padding-top: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
-.input-box__input-field {
-  min-height: 50px;
-  padding: 1em;
+&__input-field {
+  background-color: #E1E3E3;
+  width: 100%;
   border-radius: 8px;
-  border: none;
-  cursor: auto;
-  grid-area: stack;
-  background-color: #e1e3e3;
+  border: #E1E3E3;
+  padding: 12px;
+  font-size: 16px;
+  position: relative;
+
+  &:focus,
+  &:not(:placeholder-shown) {
+    background-color: white;
+    border: 2px solid var(--action);
+  }
+
+  &:focus {
+    outline: none;
+  }
 }
 
-.input-box__label {
+&__label-container {
   position: absolute;
-  padding: 18px;
+  top: 70%;
+  left: 10px;
+  transform: translateY(-50%);
+  transition: all 0.3s ease;
+  font-size: 16px;
+  color: #383E40;
   pointer-events: none;
-  font-size: 1em;
-  color: black;
-  transition: 0.3s ease;
-  grid-area: stack;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+
+
 }
 
-.input-box__input-field:valid ~ .input-box__label,
-.input-box__input-field:invalid[focused='true'] ~ .input-box__label,
-.input-box__input-field:focus ~ .input-box__label {
-  color: #556163;
-  transform: translateX(18px) translateY(-28px);
-  font-size: 0.65em;
-  padding: 0 4px;
-  background: white;
-  border-left: 3px double black;
-  border-right: 3px double black;
-  letter-spacing: 0.2em;
-  width: min-content;
+&__label-text--error {
+  font-size: 12px;
 }
 
-.input-box__label > svg {
-  max-width: 24px;
+/* Focused state for the label */
+&__input-field:focus + &__label-container,
+&__input-field:not(:placeholder-shown) + &__label-container {
+  top: 10px;
+  font-size: 14px;
+  background-color: white;
+  padding: 0 5px;
+  color: var(--action);
+  border-radius: 5px;
+}
 }
 
-.input-box__label-text {
-  text-align: left;
-  width: max-content;
+@media (max-width: 768px) {
+.login-page {
+  &__input-field {
+    font-size: 14px;
+  }
+
+  &__label-container {
+    font-size: 14px;
+    top: 64%;
+  }
+ 
+  &__input-field:focus + &__label-container,
+  &__input-field:not(:placeholder-shown) + &__label-container {
+    font-size: 13px;
+  }
+}
 }
 
-.input-box__label-text--error {
-  font-size: 0.75rem;
-  display: flex;
-  align-items: flex-start;
-  text-align: left;
-  font-style: italic;
-  color: rgb(0, 31, 31);
-  display: none;
+@media (max-width: 320px) {
+.login-page__error-container {
+  height: 40px;
 }
-
-.input-box__input:invalid[focused='true'] ~ .input-box__label-text--error {
-  display: block;
 }

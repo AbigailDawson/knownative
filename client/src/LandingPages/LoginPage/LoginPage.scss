@@ -108,12 +108,7 @@
       color: black;
       font-size: 24px;
     }
-  
-    .input-container {
-      display: flex;
-      flex-direction: column;
-    }
-  
+
     &__separator {
       display: flex;
       align-items: center;
@@ -134,66 +129,6 @@
       }
     }
   
-    /* Password visibility icon */
-    &__icon {
-      position: absolute;
-      right: 15px;
-      top: 23px;
-      cursor: pointer;
-      color: black;
-      user-select: none;
-    }
-  
-    
-     /* --- INPUT STYLING & ANIMATION --- */
-  &__input-box {
-    position: relative;
-    width: 100%;
-    height: 50px;
-    padding-top: 10px;
-  }
-
-  &__input {
-    background-color: #E1E3E3;
-    width: 100%;
-    border-radius: 8px;
-    border: #E1E3E3;
-    padding: 12px;
-    font-size: 16px;
-    position: relative;
-
-    &:focus,
-    &:not(:placeholder-shown) {
-      background-color: white;
-      border: 2px solid var(--action);
-    }
-
-    &:focus {
-      outline: none;
-    }
-  }
-
-  &__label-container {
-    position: absolute;
-    top: 70%;
-    left: 10px;
-    transform: translateY(-50%);
-    transition: all 0.3s ease;
-    font-size: 16px;
-    color: #383E40;
-    pointer-events: none;
-  }
-
-  /* Focused state for the label */
-  &__input:focus + .login-page__label-container,
-  &__input:not(:placeholder-shown) + .login-page__label-container {
-    top: 10px;
-    font-size: 14px;
-    background-color: white;
-    padding: 0 5px;
-    color: var(--action);
-    border-radius: 5px;
-  }
 }
 
 @media (max-width: 768px) {
