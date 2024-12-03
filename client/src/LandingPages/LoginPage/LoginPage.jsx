@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import './LoginPage.css';
+import './LoginPage.scss';
 import { Link } from 'react-router-dom';
 import LandingPageNav from '../components/LandingPageHeader/LandingPageNav';
 import * as authService from '../../services/authService';
@@ -87,7 +87,7 @@ export default function LoginPage() {
                 <span className="">Password</span>
               </label>
               <span
-                className="material-symbols-outlined icon"
+                className="login-page__icon material-symbols-outlined"
                 onClick={() => setShowPassword(!showPassword)}>
                 {showPassword ? 'visibility_off' : 'visibility'}
               </span>
@@ -103,8 +103,8 @@ export default function LoginPage() {
             </button>
           </form>
 
-          <div className="separator">
-            <span>OR</span>
+          <div className="login-page__separator">
+            <span className="login-page__separator__text">OR</span>
           </div>
           <div className="">
             <button className="login-page__button--google login-page__button">
