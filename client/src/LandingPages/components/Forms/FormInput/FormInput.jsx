@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../../SignupPage/SignupPage.css"
+import "./FormInput.scss"
 
 const FormInput = (props) => {
     const { label, htmlFor, onChange, id, errorMessage, icon, ...otherInputProps } = props;
@@ -20,13 +20,14 @@ const FormInput = (props) => {
                 focused={focused.toString()}
                 aria-describedby={`${id}-error`}
                 aria-invalid={!!errorMessage}
+                className="input-box__input-field"
                 />
-                <label className="label-container" htmlFor={htmlFor}>
+                <label className="input-box__label" htmlFor={htmlFor}>
                     {icon}
-                    <span className="label-text">{label}</span>
+                    <span className="input-box__label-text">{label}</span>
                 </label>
                 {otherInputProps.name !== 'password' && (
-                <span id={`${id}-error`} className="input-error-message" role="alert">
+                <span id={`${id}-error`} className="input-box__label-text--error" role="alert">
                     {errorMessage}
                 </span>
                 )}

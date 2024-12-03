@@ -1,0 +1,70 @@
+.input-box {
+  display: grid;
+  position: relative;
+  grid-template-areas: 'stack';
+  margin: 0.2em;
+  margin-inline: auto;
+  max-width: 400px;
+  width: 100%;
+  align-items: center;
+}
+
+.input-box__input-field {
+  min-height: 50px;
+  padding: 1em;
+  border-radius: 8px;
+  border: none;
+  cursor: auto;
+  grid-area: stack;
+  background-color: #e1e3e3;
+}
+
+.input-box__label {
+  position: absolute;
+  padding: 18px;
+  pointer-events: none;
+  font-size: 1em;
+  color: black;
+  transition: 0.3s ease;
+  grid-area: stack;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.input-box__input-field:valid ~ .input-box__label,
+.input-box__input-field:invalid[focused='true'] ~ .input-box__label,
+.input-box__input-field:focus ~ .input-box__label {
+  color: #556163;
+  transform: translateX(18px) translateY(-28px);
+  font-size: 0.65em;
+  padding: 0 4px;
+  background: white;
+  border-left: 3px double black;
+  border-right: 3px double black;
+  letter-spacing: 0.2em;
+  width: min-content;
+}
+
+.input-box__label > svg {
+  max-width: 24px;
+}
+
+.input-box__label-text {
+  text-align: left;
+  width: max-content;
+}
+
+.input-box__label-text--error {
+  font-size: 0.75rem;
+  display: flex;
+  align-items: flex-start;
+  text-align: left;
+  font-style: italic;
+  color: rgb(0, 31, 31);
+  display: none;
+}
+
+.input-box__input:invalid[focused='true'] ~ .input-box__label-text--error {
+  display: block;
+}

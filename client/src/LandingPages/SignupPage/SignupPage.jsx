@@ -1,9 +1,9 @@
 import React from 'react';
-import './SignupPage.css';
+import './SignupPage.scss';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import LandingPageNav from '../components/LandingPageHeader/LandingPageNav';
 import { useState } from 'react';
-import FormInput from '../components/Forms/FormInput';
+import FormInput from '../components/Forms/FormInput/FormInput';
 import PasswordValidation from '../components/Forms/PasswordValidation';
 import { MdAlternateEmail } from 'react-icons/md';
 import { TbPencilCheck } from 'react-icons/tb';
@@ -36,7 +36,7 @@ const SignupPage = () => {
       errorMessage:
         "First name needs to be 2 to 20 characters long and shouldn't contain special characters.",
       pattern: '^[A-Za-z]{2,20}$',
-      icon: <TbPencilCheck />,
+      // icon: <TbPencilCheck />,
       required: true
     },
     {
@@ -48,7 +48,7 @@ const SignupPage = () => {
       errorMessage:
         "Last name needs to be 2 to 20 characters long and shouldn't contain special characters.",
       pattern: '^[A-Za-z]{2,20}$',
-      icon: <TbPencilCheck />,
+      // icon: <TbPencilCheck />,
       required: true
     },
     {
@@ -60,17 +60,17 @@ const SignupPage = () => {
       errorMessage:
         'Username should be 3-20 characters. Only letters, numbers and underscores are allowed.',
       pattern: '^[A-Za-z0-9_]{3,20}$',
-      icon: <FaUserPlus />,
+      // icon: <FaUserPlus />,
       required: true
     },
     {
       name: 'email',
-      label: 'Email',
+      label: 'Email Address',
       type: 'email',
       id: 'signup-email',
       htmlFor: 'signup-email',
       errorMessage: 'Please use a valid email address.',
-      icon: <MdAlternateEmail />,
+      // icon: <MdAlternateEmail />,
       required: true
     },
     {
@@ -82,7 +82,7 @@ const SignupPage = () => {
       errorMessage:
         'Password should be 6-20 characters. Include letters, numbers and at least one special character.',
       pattern: '^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{6,20}$',
-      icon: <RiLockPasswordFill />,
+      // icon: <RiLockPasswordFill />,
       required: true
     },
     {
@@ -93,7 +93,7 @@ const SignupPage = () => {
       htmlFor: 'signup-confirmPassword',
       errorMessage: 'Passwords do not match',
       pattern: inputValue.password,
-      icon: <RiLockPasswordFill />,
+      // icon: <RiLockPasswordFill />,
       required: true
     }
   ];
@@ -121,17 +121,16 @@ const SignupPage = () => {
   return (
     <main className="signup-page-main">
       <LandingPageNav />
-      <section className="signup-page">
-        <div className="signup-container">
-          <h1 className="">SIGN UP</h1>
+      <section className="signup-page__container">
+          <h1 className="signup-page__title">Create Your Knownative Account</h1>
           {errorMsg && (
-            <div className="error-message">
+            <div className="signup-page__error-message">
               <h5>
                 <em>{errorMsg}</em>
               </h5>
             </div>
           )}
-          <form className="form-container" onSubmit={handleSubmit}>
+          <form className="signup-page__form" onSubmit={handleSubmit}>
             {formFields.map((input, idx) => (
               <FormInput
                 key={idx}
@@ -141,14 +140,14 @@ const SignupPage = () => {
               />
             ))}
             <PasswordValidation password={inputValue.password} />
-            <button type="submit">
-              <FaUserPlus style={{ color: '#556163' }} />
-              <span> &nbsp; SIGN UP</span>
+            <button className='signup-page__button' type="submit">
+              Sign Up
             </button>
             {/* oAuth  */}
-            <div>
-              <button>Sign up with Google</button>
-            </div>
+            <button className='signup-page__button signup-page__button-google'>
+              <img className='signup-page__button-google--icon' src='../../../public/images/google-icon.png' />
+                Sign up with Google
+            </button>
             {/* line */}
             <div>
               <Link to="/login" className="signup-text">
@@ -156,7 +155,7 @@ const SignupPage = () => {
               </Link>
             </div>
           </form>
-        </div>
+    
       </section>
     </main>
   );
