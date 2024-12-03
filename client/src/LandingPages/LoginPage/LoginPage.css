@@ -2,11 +2,35 @@
   min-height: 100vh;
 }
 
+.login-page-forgot {
+  color: black;
+  margin-bottom: 0rem;
+  font-size: 14px;
+}
+
+.login-page-signup-link {
+  color: black;
+  font-size: 14px;
+}
+
+.login-page-forgot:hover, .login-page-signup-link:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 .login-page-login-form-container {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.login-page-container {
+  max-width: 400px;
+  width: 100%;
+  padding-bottom: 100px;
 }
 
 .login-page-login-form {
@@ -16,12 +40,194 @@
   justify-content: center;
   width: 100%;
   height: 100%;
+  gap: 20px;
+  margin-top: 35px;
+}
+
+.login-page-button {
+  margin-bottom: 20px;
+  width: 100%;
+  border-radius: 6px;
+  padding: 6px;
 }
 
 .login-page-login-button {
-  margin-top: 20px;
+  background-color: #086A6C;
+  color: white;
+  border: 1px solid #086A6C;
+}
+
+.login-page-login-button:hover {
+  background-color: var(--dark-action);
+}
+
+.login-google-button {
+  display: flex;
+  margin-top: 15px;
+  justify-content: center;
+  align-items: center;
+  color: #086A6C;
+  background-color: #E5F2F6;
+  font-weight: 600;
+  border: 1px solid #E5F2F6;
+}
+
+.login-google-button:hover {
+  border: 1px solid var(--action);
+}
+
+.login-google-icon {
+  padding: 0px 8px;
+}
+
+.login-error-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 20px;
+  margin-top: -15px;
 }
 
 .login-error-message {
   color: red;
+  font-size: 14px;
+  text-align: center;
+  display: inline-block;
+}
+
+.login-error-message.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.login-page-header {
+  color: black;
+  font-size: 24px;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-with-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.separator {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: black;
+}
+
+.separator::before,
+.separator::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid rgb(136, 136, 136);
+}
+
+.separator span {
+  font-size: 14px;
+  text-transform: uppercase;
+  padding: 0 10px;
+}
+
+/* Password visibility icon */
+.icon {
+  position: absolute;
+  right: 15px;
+  top: 23px;
+  cursor: pointer;
+  color: black;
+  user-select: none;
+}
+
+/* --- INPUT STYLING & ANIMATION --- */
+
+.login-input-box {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  padding-top: 10px;
+}
+
+/* Keeps background white when there's text but user clicks away */
+.login-page-input:focus,
+.login-page-input:not(:placeholder-shown) {
+  background-color: white;
+  border: 2px solid var(--action);
+}
+
+/* Label animation */
+.login-label-container {
+  position: absolute;
+  top: 70%;
+  left: 10px;
+  transform: translateY(-50%);
+  transition: all 0.3s ease;
+  font-size: 16px;
+  color: #383E40;
+  pointer-events: none;
+}
+
+.login-page-input:focus + .login-label-container,
+.login-page-input:not(:placeholder-shown) + .login-label-container {
+  top: 10px;
+  font-size: 14px;
+  background-color: white;
+  padding: 0px 5px;
+  color: var(--action);
+  border-radius: 5px;
+}
+
+.login-page-input:focus {
+  outline: none;
+}
+
+.login-page-input {
+  background-color: #E1E3E3;
+  width: 100%;
+  border-radius: 8px;
+  border: #E1E3E3;
+  padding: 12px;
+  font-size: 16px;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .login-page-input, .login-page-button {
+    font-size: 14px;  /* Slightly smaller text for mobile */
+  }
+
+  .login-page-header{
+    font-size: 21px;
+  }
+
+  .login-label-container {
+    font-size: 14px;
+    top: 64%;
+  }
+  .login-page-login-form {
+    margin-top: 20px;
+  }
+  
+  .login-page-forgot, .login-page-signup-link, .login-page-input:focus + .login-label-container,
+  .login-page-input:not(:placeholder-shown) + .login-label-container {
+    font-size: 13px;
+  }
+
+  .login-error-container {
+    height: 15px;
+  }
+}
+
+@media (max-width: 320px) {
+  .login-error-container {
+    height: 40px;
+  }
 }
