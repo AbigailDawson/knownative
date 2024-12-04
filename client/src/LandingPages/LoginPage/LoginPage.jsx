@@ -6,6 +6,7 @@ import * as authService from '../../services/authService';
 import { useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../../contexts/Auth/AuthProvider';
 import { validateLogin } from '../../utilities/validation';
+import FormInput from '../components/Forms/FormInput/FormInput';
 
 export default function LoginPage() {
   const [inputValue, setInputValue] = useState({
@@ -16,6 +17,25 @@ export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const { setUser } = useAuthContext();
+
+  // Add more form fields as needed here:
+  const formFields = [
+    {
+      name: 'email',
+      label: 'Email Address',
+      type: 'email',
+      id: 'login-email',
+      htmlFor: 'login-email'
+    },
+    {
+      name: 'password',
+      label: 'Password',
+      type: 'password',
+      id: 'login-password',
+      htmlFor: 'login-password',
+      pattern: '^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{6,20}$'
+    }
+  ];
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -58,7 +78,15 @@ export default function LoginPage() {
         <div className="login-page__container">
           <h1 className="login-page__header">Log in to view your dashboard</h1>
           <form className="login-page__form" onSubmit={handleLogin}>
-            <div className="login-page__input-box">
+            {formFields.map((input, idx) => (
+              <FormInput
+                key={idx}
+                {...input}
+                value={inputValue[input.name]}
+                onChange={handleChange}
+              />
+            ))}
+            {/* <div className="login-page__input-box">
               <input
                 type="text"
                 name="email"
@@ -91,7 +119,7 @@ export default function LoginPage() {
                 onClick={() => setShowPassword(!showPassword)}>
                 {showPassword ? 'visibility_off' : 'visibility'}
               </span>
-            </div>
+            </div> */}
 
             {/* Needs functionality */}
             <p className="login-page__forgot">Forgot Password?</p>
