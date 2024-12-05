@@ -5,10 +5,17 @@ const FormInput = (props) => {
   const { label, htmlFor, onChange, id, errorMessage, ...otherInputProps } = props;
 
   const [focused, setFocused] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleFocus = (e) => {
     setFocused(true);
   };
+
+  const inputType = label.toLowerCase().includes('password')
+    ? showPassword
+      ? 'text'
+      : 'password'
+    : otherInputProps.type || 'text';
 
   return (
     <div className="input-box__input-container has-error">
@@ -16,6 +23,7 @@ const FormInput = (props) => {
         {...otherInputProps}
         id={id}
         onChange={onChange}
+        type={inputType}
         placeholder=" "
         onBlur={handleFocus}
         onFocus={() => otherInputProps.name === 'confirmPassword' && setFocused(true)}
@@ -27,6 +35,14 @@ const FormInput = (props) => {
       <label className="input-box__label-container" htmlFor={htmlFor}>
         <span className="input-box__label-text">{label}</span>
       </label>
+
+      {label.toLowerCase().includes('password') ? (
+        <span
+          className="input-box__icon material-symbols-outlined"
+          onClick={() => setShowPassword(!showPassword)}>
+          {showPassword ? 'visibility_off' : 'visibility'}
+        </span>
+      ) : null}
       {otherInputProps.name !== 'password' && (
         <div id={`${id}-error`} className="input-box__label-text--error" role="alert">
           <img
