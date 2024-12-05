@@ -226,17 +226,17 @@ export default function DemoTextPage() {
         {/* Potential to be separate component: ArticleHeader */}
         <div className="tabs sticky-fade">
           <button
-            className={`tab-btn ${activeTab === 'read' ? 'active' : ''}`}
+            className={`tabs__btn ${activeTab === 'read' ? 'tabs__btn--active' : ''}`}
             onClick={() => handleTabClick('read')}>
             Read
           </button>
           <button
-            className={`tab-btn ${activeTab === 'study' ? 'active' : ''}`}
+            className={`tabs__btn ${activeTab === 'study' ? 'tabs__btn--active' : ''}`}
             onClick={() => handleTabClick('study')}>
             Study
           </button>
           <button
-            className={`tab-btn ${activeTab === 'translate' ? 'active' : ''}`}
+            className={`tabs__btn ${activeTab === 'translate' ? 'tabs__btn--active' : ''}`}
             onClick={() => handleTabClick('translate')}>
             Translate
           </button>
@@ -255,8 +255,8 @@ export default function DemoTextPage() {
             </div>
           </div>
 
-          <div id="study" className={`study-container ${activeTab === 'study' ? 'active' : ''}`}>
-            <div className="Text study-content">
+          <div id="study" className={`study-container ${activeTab === 'study' ? 'study-container--active' : ''}`}>
+            <div className="Text study-container__content">
               {text ? (
                 <DemoStudyText
                   text={text}
@@ -280,7 +280,7 @@ export default function DemoTextPage() {
 
           <div
             id="translate"
-            className={`translate-container ${activeTab === 'translate' ? 'active' : ''}`}>
+            className={`translate-container ${activeTab === 'translate' ? 'translate-container--active' : ''}`}>
             <div className="Text">{text ? <DemoTranslateText text={text} /> : 'Loading text'}</div>
           </div>
         </div>
