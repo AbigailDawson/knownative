@@ -2,7 +2,7 @@ import { useState } from 'react';
 import './FormInput.scss';
 
 const FormInput = (props) => {
-  const { label, htmlFor, onChange, id, errorMessage, ...otherInputProps } = props;
+  const { label, htmlFor, onChange, id, errorInputMessage, ...otherInputProps } = props;
 
   const [focused, setFocused] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -18,19 +18,19 @@ const FormInput = (props) => {
     : otherInputProps.type || 'text';
 
   return (
-    <div className="input-box__input-container has-error">
+    <div className={`input-box__input-container ${errorInputMessage ? 'has-error' : ''}`}>
       <input
         {...otherInputProps}
         id={id}
         onChange={onChange}
         type={inputType}
         placeholder=" "
-        onBlur={handleFocus}
+        onBlur={errorInputMessage && handleFocus}
         onFocus={() => otherInputProps.name === 'confirmPassword' && setFocused(true)}
         focused={focused.toString()}
         aria-describedby={`${id}-error`}
-        aria-invalid={!!errorMessage}
-        className="input-box__input-field"
+        aria-invalid={!!errorInputMessage}
+        className={`input-box__input-field ${errorInputMessage ? 'has-error' : ''}`}
       />
       <label className="input-box__label-container" htmlFor={htmlFor}>
         <span className="input-box__label-text">{label}</span>
@@ -50,7 +50,7 @@ const FormInput = (props) => {
             src="/images/error_note.svg"
             alt="error symbol"
           />
-          <span>{errorMessage}</span>
+          <span>{errorInputMessage}</span>
         </div>
       )}
     </div>

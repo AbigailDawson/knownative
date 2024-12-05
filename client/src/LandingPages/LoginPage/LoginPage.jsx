@@ -5,7 +5,6 @@ import LandingPageNav from '../components/LandingPageHeader/LandingPageNav';
 import * as authService from '../../services/authService';
 import { useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../../contexts/Auth/AuthProvider';
-import { validateLogin } from '../../utilities/validation';
 import FormInput from '../components/Forms/FormInput/FormInput';
 
 export default function LoginPage() {
@@ -14,7 +13,6 @@ export default function LoginPage() {
     password: ''
   });
   const [errorMessage, setErrorMessage] = useState('');
-  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const { setUser } = useAuthContext();
 
@@ -32,8 +30,7 @@ export default function LoginPage() {
       label: 'Password',
       type: 'password',
       id: 'login-password',
-      htmlFor: 'login-password',
-      pattern: '^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{6,20}$'
+      htmlFor: 'login-password'
     }
   ];
 
@@ -48,12 +45,6 @@ export default function LoginPage() {
   async function handleLogin(e) {
     e.preventDefault();
     setErrorMessage('');
-
-    const error = validateLogin(inputValue);
-    if (error) {
-      setErrorMessage(error);
-      return;
-    }
 
     try {
       const user = await authService.logIn(inputValue);
@@ -86,45 +77,20 @@ export default function LoginPage() {
                 onChange={handleChange}
               />
             ))}
-            {/* <div className="login-page__input-box">
-              <input
-                type="text"
-                name="email"
-                value={inputValue.email}
-                onChange={handleChange}
-                id="login-email"
-                className="login-page__input"
-                placeholder=" "
-              />
-              <label htmlFor="login-email" className="login-page__label-container">
-                <span className="">Email Address</span>
-              </label>
-            </div>
-
-            <div className="login-page__input-box">
-              <input
-                type={showPassword ? 'text' : 'password'}
-                name="password"
-                id="login-password"
-                value={inputValue.password}
-                onChange={handleChange}
-                className="login-page__input"
-                placeholder=" "
-              />
-              <label htmlFor="login-password" className="login-page__label-container">
-                <span className="">Password</span>
-              </label>
-              <span
-                className="login-page__icon material-symbols-outlined"
-                onClick={() => setShowPassword(!showPassword)}>
-                {showPassword ? 'visibility_off' : 'visibility'}
-              </span>
-            </div> */}
 
             {/* Needs functionality */}
             <p className="login-page__forgot">Forgot Password?</p>
             <div className="login-page__error-container">
-              {errorMessage && <p className="login-page__error-message">{errorMessage}</p>}
+              {errorMessage && (
+                <div>
+                  <img
+                    className="login-page__error-symbol"
+                    src="/images/error_note.svg"
+                    alt="error symbol"
+                  />{' '}
+                  <p className="login-page__error-message">{errorMessage}</p>{' '}
+                </div>
+              )}
             </div>
             <button type="submit" className="login-page__button--primary login-page__button">
               Log In
