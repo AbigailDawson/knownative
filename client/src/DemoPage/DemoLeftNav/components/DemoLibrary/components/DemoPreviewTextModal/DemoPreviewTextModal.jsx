@@ -27,7 +27,7 @@ function DemoPreviewTextModal({
       show={showPreviewTextModal}
       centered
       backdrop
-      ClassName="show-preview-modal__backdrop"
+      className="show-preview-modal__backdrop"
       onHide={handleCloseShowPreviewModal}
       size="lg">
       <main className="show-preview-modal">
