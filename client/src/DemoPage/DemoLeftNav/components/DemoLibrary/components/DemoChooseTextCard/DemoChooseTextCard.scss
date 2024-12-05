@@ -1,0 +1,33 @@
+.demo-choose-text-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3.5vmin;
+
+  &__currently-reading {
+    border-radius: 10px;
+    border: solid #006769 2px;
+  }
+
+  &__bookshelf-cards {
+    border: solid grey 0.5px;
+    border-radius: 0.7vmin;
+    margin-bottom: 3vmin;
+
+    &:hover {
+      border-radius: 10px;
+      border: solid #006769 2px;
+      cursor: pointer;
+    }
+
+    &--top {
+      // Add styles for top card here.
+    }
+  }
+
+  &__chinese-characters {
+    color: black;
+    margin-bottom: 3vmin;
+  }
+
+}

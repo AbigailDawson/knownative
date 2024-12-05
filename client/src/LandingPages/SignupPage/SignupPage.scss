@@ -1,0 +1,147 @@
+.signup-page {
+
+    &__main {
+        display: grid;
+        grid-template-rows: auto 1fr;
+    }
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-width: fit-content;
+        padding: 1em 2em;
+    }
+
+    &__title {
+        color: black;
+        margin-inline: auto;
+    }
+
+    &--error-message {
+        
+    }
+}
+
+.signup-form {
+    
+    &__container {
+        display: grid;
+        gap: 0px;
+        align-items: center;
+        max-width: 90vw;
+    }
+
+    &__input-box {
+        display: grid;
+        position: relative;
+        grid-template-areas: "stack";
+        margin: 1em;
+        grid-template-columns: 1fr;
+    }
+
+    &__input {
+        height: 3em;
+        padding: 12px;
+        border-radius: 8px;
+        cursor: auto;
+        width: 100%;
+        grid-area: stack;
+        background-color: #E1E3E3;
+        border: none;
+
+        &:valid ~ label,
+        &:invalid[focused="true"] ~ label,
+        &:focus ~ label {
+            color: black;
+            transform: translateX(8px) translateY(-8px);
+            font-size: 0.65em;
+            padding: 0 4px;
+            background: white;
+            border-left: 3px double black;
+            border-right: 3px double black;
+            letter-spacing: 0.2em;
+            width: max-content;
+        }
+    }
+    
+    &__label {
+
+        &-container {
+            position: absolute;
+            left: 0px;
+            top: 4px;
+            padding: 8px;
+            pointer-events: none;
+            font-size: 1em;
+            color: black;
+            transition: 0.5s;
+            grid-area: stack;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        &-text {
+            text-align: left;
+            width: max-content;
+        }
+
+    }
+
+    &__input {
+        &--error {
+            font-size: 0.75rem;
+            display: flex;
+            align-items: flex-start;
+            text-align: left;
+            font-style: italic;
+            color: rgb(0, 31, 31);
+            display: none;
+        }
+
+        &:invalid[focused="true"] ~ &--error {
+            display: block;
+        }
+    }
+}    
+    
+
+label > svg {
+    max-width: 24px;
+}
+
+input:invalid[focused="true"] ~ .input-error-message {
+        display: block;
+}
+
+button > svg {
+    max-width: 25px;
+}
+
+button > span {
+    text-align: left;
+    vertical-align: middle;
+}
+
+.password-validation {
+    list-style-type: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+.password-validation li {
+    font-size: 0.9rem;
+    color: #556163;
+    text-align: left;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    column-gap: 8px;
+    margin: 8px;
+}
+
+.password-validation svg {
+    max-width: 24px;
+}

@@ -1,4 +1,4 @@
-import './DemoFlashcard.css';
+import './DemoFlashcard.scss';
 
 export default function DemoFlashcard({
   chinese,
@@ -15,11 +15,11 @@ export default function DemoFlashcard({
   return (
     <>
       <div className="flashcard">
-        <div className="flashcard-front">
+        <div className="flashcard__front">
           {selectedFront === 'chinese' ? (
             <div>
-              {showPinyin && <p className="pinyin">{pinyin}</p>}
-              <p className="zh flash-zh">{chinese}</p>
+              {showPinyin && <p className="flashcard__front--pinyin">{pinyin}</p>}
+              <p className="flashcard__front--zh zh">{chinese}</p>
             </div>
           ) : (
             <div>
@@ -29,11 +29,11 @@ export default function DemoFlashcard({
         </div>
 
         {isFlipped && (
-          <div className="flashcard-back">
+          <div className="flashcard__back">
             {selectedFront === 'english' ? (
               <div>
-                {showPinyin && <p className="pinyin">{pinyin}</p>}
-                <p className="zh flash-zh">{chinese}</p>
+                {showPinyin && <p className="flashcard__back--pinyin">{pinyin}</p>}
+                <p className="flashcard__back--zh zh">{chinese}</p>
               </div>
             ) : (
               <div>

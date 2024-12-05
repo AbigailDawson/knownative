@@ -1,0 +1,121 @@
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.game-modal {
+  &__play-btn {
+    margin-top: 3vmin;
+    font-size: 1.1rem;
+    padding: 1vmin 2vmin;
+    background-color: #006769;
+    color: white;
+    transition: transform 0.3s ease-in-out;
+
+    &:not(:disabled):hover {
+      background-color: var(--teal);
+      transform: scale(1.1);
+    }
+
+    &:disabled {
+      background-color: var(--medium);
+      opacity: 0.6;
+    }
+  }
+
+  &__congrats-msg {
+    @include flex-center;
+    flex-direction: column;
+  }
+}
+
+.button-container {
+  @include flex-center;
+
+  &__flip-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--action);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: var(--medium);
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.flashcard-buttons {
+  @include flex-center;
+  margin: 0;
+  gap: 2vmin;
+
+  &__correct-btn,
+  &__incorrect-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1vmin;
+    padding: 1vmin 2vmin;
+  }
+
+  &__correct-btn {
+    border: 2px solid var(--action);
+    color: var(--darkest);
+    background-color: var(--action);
+    color: var(--white);
+
+    &:hover {
+      background-color: var(--medium);
+      border: 2px solid var(--medium);
+    }
+  }
+
+  &__incorrect-btn {
+    border: 2px solid var(--red-brick);
+    color: var(--red-brick);
+    background-color: var(--red-brick-transparent);
+
+    &:hover {
+      background-color: white;
+    }
+  }
+
+  &__icon {
+    font-size: 3vmin;
+  }
+}
+
+.flashcard-count {
+  @include flex-center;
+  text-align: center;
+  padding-top: 2vmin;
+  gap: 1rem;
+  margin-bottom: 2rem;
+
+  &__correct {
+    color: var(--green-drk);
+    font-weight: 800;
+  }
+
+  &__remaining {
+    color: var(--red-poppy);
+    font-weight: 800;
+  }
+
+  & p {
+    margin: 0;
+  }
+}

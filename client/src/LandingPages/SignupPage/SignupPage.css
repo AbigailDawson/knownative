@@ -1,16 +1,12 @@
-.signup-page-main {
+.signup-page__main {
     min-height: 100vh;
-  }
+}
 
 .signup-page {
     display: flex;
     width: 100vw;
     justify-content: center;
     align-items: center;
-}
-
-.signup-container {
-    background-color: aquamarine;
     min-width: fit-content;
     padding: 2rem;
     border-radius: 5px;

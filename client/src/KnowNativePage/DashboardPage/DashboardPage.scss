@@ -1,0 +1,236 @@
+.dashboard {
+    display: flex;
+
+    &__side-nav {
+        border-color: rgb(217, 217, 217);
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-between;
+        background-color: white;
+        width: 350px;
+
+        &-links-container {
+            display: flex;
+            flex-direction: column;
+            margin-top: 2rem;
+            margin-left: 1rem;
+            width: 95%;
+        }     
+    }
+
+    &__nav-links {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        list-style: none;
+        padding-left: 0;
+    }
+
+    &__nav-item {
+        margin-bottom: 0.5 rem;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    &__link {
+        color: black;
+        text-decoration: none;
+        margin-bottom: 0.5rem;
+
+        &--active {
+            font-weight: 600;
+        }
+    }
+
+    &__logo-container {
+        width: 95%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin-bottom: 2rem;
+        color: black;
+    }
+
+    &__logo {
+        width: 50px;
+    }
+
+    &__nav-footer {
+        padding-bottom: 0;
+        margin-bottom: 0;
+        margin-left: 1rem;
+        width: 95%;
+    }
+
+    &__main{
+        display: flex;
+        flex-direction: column;
+        width: 100vw;
+        height: 100vh;
+    }
+
+    &__user{
+        &-info {
+            width: 100%;
+            height: 5rem;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+        &-dropdown-options {
+            background-color: white;
+            display: flex;
+        }
+        &-name {
+            margin: 0.5rem;
+        }
+        &-profile-pic {
+            width: 37.5px;
+        }
+        &-dropdown-icon {
+            font-weight: bold;
+            color: rgb(8, 106, 108);
+            transform: rotateZ(-45deg);
+        }
+    }
+
+    &__title {
+        color: black;
+        margin-left: 1 rem;
+        display: flex;
+        &--subtitle {
+            margin-top: 2rem;
+            margin-bottom: 0.5rem;
+        }
+    }
+
+    &__stats-container {
+        color: rgb(50, 106, 118);
+        display: flex;
+        justify-content: space-around;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    &__stat {
+        
+        width: 23%;
+        height: 10rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: flex-start;
+        background-color: rgb(229, 242, 246);
+        border-radius: 0.5rem;
+        overflow: hidden;
+        white-space: nowrap;
+        
+        & > * {
+            margin: 0;
+            margin-left: 1rem;
+        }
+
+        &-description {
+            &--hidden {
+                visibility: hidden;
+            }
+        }
+    }
+
+    &__sub-container {
+        width: 100%;
+        margin-top: 0.5rem;
+        height: 6rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__card {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-around;
+        background-color: rgb(229, 242, 246);
+        border: 2px solid rgb(8, 106, 108);
+        border-radius: 0.5rem;
+        width: 90%;
+        height: 100%;
+        margin-left: 1rem;
+        margin-right: 1rem;
+
+        & > * {
+            margin: 0;
+            margin-left: 1rem;
+        }
+
+        &-title{
+            color: black;
+            font-size: 1.75rem;
+            margin-top: 1rem;
+            margin-bottom: 0.25rem;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        &-body {
+            margin-top: 0rem;
+            margin-bottom: 1rem;
+            margin-top: 0.25rem;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+    }
+
+    &__study-button{
+        background-color: rgb(8, 106, 108);
+        color: white;
+        width: 7.5rem;
+        height: 100%;
+        margin-right: 1rem;
+    }
+
+    &__recently-added {
+        display: flex;
+        flex-direction: column;
+
+        &-content {
+            background-color: white;
+            // border: 1px solid rgb(8, 106, 108);
+        }
+    }
+
+    &__card-buttons {
+        height: 6rem;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-top: 1rem;
+        margin-left: 1rem;
+        margin-right: 1rem;
+
+        &--add-item,
+        &--view-all  {
+            height: 2.5rem;
+        }
+
+        &--add-item {
+            background-color: rgb(8, 106, 108);
+            color: white;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 0.5rem;
+        }
+
+        &--view-all {
+            background-color: rgb(229, 242, 246);
+            color: rgb(8, 106, 108);
+            display: flex;
+            justify-content: center;
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+    }
+}

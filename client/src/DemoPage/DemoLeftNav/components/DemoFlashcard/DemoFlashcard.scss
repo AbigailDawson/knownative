@@ -1,0 +1,40 @@
+.flashcard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1vmin;
+  box-shadow: none;
+  height: auto;
+  overflow: hidden;
+  margin: auto;
+
+  &__front,
+  &__back {
+    padding: 1rem;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 4vmin;
+    border-radius: 1vmin;
+    border: none;
+
+    &--pinyin {
+      font-size: 2vmin;
+      margin: auto;
+    }
+  }
+  
+  &__front {
+    margin-bottom: -20px;
+  }
+
+  &__back {
+    border-top: 0.5px solid var(--dark);
+    border-radius: 0;
+  }
+}
