@@ -57,7 +57,7 @@ const DemoWelcomeModal = ({ onSubmit, isOpen, onClose, textSelection, setTextSel
             <h1 className="demo-modal__title">Choose your level</h1>
             <p>How would you describe your proficiency in Mandarin?</p>
             <form>
-              <label htmlFor="beginnerRadioButton" aria-label='Beginner'>
+              <label className='demo-modal__label' htmlFor="beginnerRadioButton" aria-label='Beginner'>
                 <div
                   className={`demo-modal__level
                    ${textSelection === 'beginner' ? 'demo-modal__level--active' : ''}`}>
@@ -77,7 +77,7 @@ const DemoWelcomeModal = ({ onSubmit, isOpen, onClose, textSelection, setTextSel
                 </div>
               </label>
 
-              <label htmlFor="intermediateRadioButton" aria-label='Intermediate'>
+              <label className='demo-modal__label' htmlFor="intermediateRadioButton" aria-label='Intermediate'>
                 <div
                   className={`demo-modal__level
                    ${textSelection === 'intermediate' ? 'demo-modal__level--active' : ''}`}>
@@ -97,7 +97,7 @@ const DemoWelcomeModal = ({ onSubmit, isOpen, onClose, textSelection, setTextSel
                 </div>
               </label>
 
-              <label htmlFor="advancedRadioButton" aria-label='Advanced'>
+              <label className='demo-modal__label' htmlFor="advancedRadioButton" aria-label='Advanced'>
                 <div
                   className={`demo-modal__level
                    ${textSelection === 'advanced' ? 'demo-modal__level--active' : ''}`}>
