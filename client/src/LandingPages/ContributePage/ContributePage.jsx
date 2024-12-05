@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import LandingPageNav from '../components/LandingPageHeader/LandingPageNav';
 import LandingPageFooter from '../components/LandingPageFooter/LandingPageFooter';
-import './ContributePage.css';
+import './ContributePage.scss';
 import contributorData from './contributordata';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
@@ -20,18 +20,18 @@ export default function ContributePage() {
     <>
       <div className="container">
         <LandingPageNav />
-        <section className="intro">
+        <section className="contribute-page__intro-section">
           <div>
-            <h1 className="about-header">Contribute to KnowNative</h1>
-            <p className="about-body">
+            <h1 className="contribute-page__header">Contribute to KnowNative</h1>
+            <p className="contribute-page__body">
               There are many ways to get involved with the KnowNative project - see how below!
             </p>
           </div>
         </section>
-        <section className="how-to-contribute">
-          <div className="how-to-contribute-grid">
-            <div className="how-to-contribute-left">
-              <h1>How to contribute</h1>
+        <section className="how-to-contribute__section">
+          <div className="how-to-contribute__grid">
+            <div className="how-to-contribute__grid--left">
+              <h1 className='how-to-contribute__title'>How to contribute</h1>
               <p className="about-body">
                 KnowNative is a community-driven project that thrives on the ideas, inspiration and
                 expertise from our contributors. We&apos;re eager to collaborate with community
@@ -42,9 +42,9 @@ export default function ContributePage() {
               </p>
             </div>
             <div className="how-to-contribute-right">
-              <ul>
-                <li>
-                  <span className="li-header">Contribute to the open source project</span>
+              <ul className='how-to-contribute__list'>
+                <li className='how-to-contribute__list-item'>
+                  <span className="how-to-contribute__list-item--header">Contribute to the open source project</span>
                   Software developers are welcome to contribute code to the project! Any kind of
                   contribution is meaningful, whether it&apos;s a few lines of CSS to improve some
                   styling or an entirely new feature. To contribute to the open source project,
@@ -57,7 +57,7 @@ export default function ContributePage() {
                   </a>{' '}
                   to run KnowNative locally, create your own branch and submit a pull request!
                 </li>
-                <li>
+                <li className='how-to-contribute__list-item'>
                   <span className="li-header">Become a Core Contributor</span>
                   Core Contributors are involved in the long-term creative vision for the KnowNative
                   project. We work together as a team to plan and implement new features and improve
@@ -89,7 +89,7 @@ export default function ContributePage() {
                   <Button
                     variant="light"
                     onClick={() => handleShow(contributor.name)}
-                    className="btn-outline-secondary core-contributor-card p-4">
+                    className="btn-outline-secondary core-contributors__card p-4">
                     <img
                       src={contributor.image}
                       alt={contributor.name}
@@ -97,7 +97,7 @@ export default function ContributePage() {
                       width="200"
                       height="200"
                     />
-                    <div className="contributor-name mb-3 mt-4">
+                    <div className="core-contributors__name mb-3 mt-4">
                       <h4>{contributor.name}</h4>
                       <p>{contributor.role}</p>
                     </div>
@@ -119,12 +119,12 @@ export default function ContributePage() {
                               src={contributor.image}
                               alt={contributor.name}
                               width="100%"
-                              className="contributor-image mb-3"
+                              className="core-contributors__image mb-3"
                             />
                             <p>
                               <b>{contributor.role}</b>
                             </p>
-                            <div className="contributor-links">
+                            <div className="core-contributors__links">
                               {contributor.linkedin && (
                                 <a
                                   rel="noopener noreferrer"
@@ -188,7 +188,7 @@ export default function ContributePage() {
             {pastCoreContributors.map((contributor) => (
               <div key={contributor.name}>
                 <ul>
-                  <li className="past-core-contributor">
+                  <li className="core-contributors__past">
                     <strong>{contributor.name}</strong> - {contributor.role}
                   </li>
                 </ul>
