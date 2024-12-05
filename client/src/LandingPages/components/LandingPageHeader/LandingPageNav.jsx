@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom';
-import './LandingPageNav.css';
+import './LandingPageNav.scss';
 
 export default function LandingPageNav() {
   return (
     <nav className="navbar navbar-expand-lg navbar-light mx-4 py-3">
       <div className="container px-4 px-lg-5">
         <a className="navbar-brand" href="/">
-          <img src="/images/horizontal-logo.png" alt="logo" className="horizontal-logo" />
+          <img src="/images/horizontal-logo.png" alt="logo" className="navbar__logo" />
         </a>
         <button
           className="navbar-toggler navbar-toggler-right"
