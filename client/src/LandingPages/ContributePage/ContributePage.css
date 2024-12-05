@@ -1,11 +1,22 @@
 /* How to contribute section */
 
+.core-contributors,
+.how-to-contribute {
+  margin: 2rem 0;
+  font-size: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .how-to-contribute {
   background-color: var(--light);
   border-radius: 20px;
   padding: 40px;
   font-size: 1rem;
   text-align: left;
+
+
 }
 
 .how-to-contribute h1 {
@@ -71,4 +82,38 @@
   list-style: none;
   padding: 0;
   margin: 0;
+}
+
+@media (max-width: 768px) {
+
+  .how-to-contribute {
+    padding: 20px;
+    text-align: center;
+  }
+
+  .how-to-contribute-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .how-to-contribute-left {
+    margin-right: 0;
+  }
+
+  .how-to-contribute ul {
+    text-align: center;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  .how-to-contribute ul li {
+    margin: 10px 0;
+    padding: 15px;
+    font-size: 0.9rem;
+  }
+
+  .li-header {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+  }
 }
