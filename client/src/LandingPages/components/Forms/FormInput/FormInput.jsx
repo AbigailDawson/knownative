@@ -2,7 +2,7 @@ import { useState } from 'react';
 import './FormInput.scss';
 
 const FormInput = (props) => {
-  const { label, htmlFor, onChange, id, errorInputMessage, ...otherInputProps } = props;
+  const { label, htmlFor, onChange, id, errorInputMessage, handleBlur, ...otherInputProps } = props;
 
   const [focused, setFocused] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -25,9 +25,7 @@ const FormInput = (props) => {
         onChange={onChange}
         type={inputType}
         placeholder=" "
-        onBlur={errorInputMessage && handleFocus}
-        onFocus={() => otherInputProps.name === 'confirmPassword' && setFocused(true)}
-        focused={focused.toString()}
+        onBlur={handleBlur}
         aria-describedby={`${id}-error`}
         aria-invalid={!!errorInputMessage}
         className={`input-box__input-field ${errorInputMessage ? 'has-error' : ''}`}

@@ -45,7 +45,7 @@
       outline: none;
     }
 
-    &:invalid[focused="true"] {
+    &:invalid[aria-invalid="true"] {
       border: 2px solid $deep-red;
     }
   }
@@ -62,7 +62,7 @@
   }
 
 
-  input:invalid[focused="true"] ~ &__label-text--error {
+  input[aria-invalid="true"] ~ &__label-text--error {
     display: flex;
     text-align: left;
     align-items: center;
@@ -73,10 +73,6 @@
 
   &__label-text--error {
     display: none; /* Initially hidden */
-  }
-
-  &__input-container.has-error {
-    display: block;
   }
 
   &__error-symbol {
@@ -98,7 +94,7 @@
     border-radius: 5px;
   }
 
-  input:invalid[focused="true"] + &__label-container {
+  input:invalid[aria-invalid="true"] + &__label-container {
     color: $deep-red;
   }
 }
