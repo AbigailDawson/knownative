@@ -62,7 +62,7 @@
   }
 
 
-  input[aria-invalid="true"] ~ &__label-text--error {
+  input:invalid[aria-invalid="true"] ~ &__label-text--error {
     display: flex;
     text-align: left;
     align-items: center;
