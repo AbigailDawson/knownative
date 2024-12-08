@@ -45,7 +45,7 @@
       outline: none;
     }
 
-    &:invalid[aria-invalid="true"] {
+    &[aria-invalid="true"] {
       border: 2px solid $deep-red;
     }
   }
@@ -62,7 +62,7 @@
   }
 
 
-  input:invalid[aria-invalid="true"] ~ &__label-text--error {
+  input[aria-invalid="true"] ~ &__label-text--error {
     display: flex;
     text-align: left;
     align-items: center;
@@ -94,7 +94,7 @@
     border-radius: 5px;
   }
 
-  input:invalid[aria-invalid="true"] + &__label-container {
+  input[aria-invalid="true"] + &__label-container {
     color: $deep-red;
   }
 }

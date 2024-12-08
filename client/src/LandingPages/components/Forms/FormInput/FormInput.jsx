@@ -1,15 +1,19 @@
 import { useState } from 'react';
 import './FormInput.scss';
 
+/**
+ * Form Input for login/signup flow.
+ *
+ * This component renders an input field with validation and error message display.
+ * It should be used within a form, where the following props and functions are required:
+ *
+ * Required Functions and Props:
+ * - handleChange, handleBlur, and formFields
+ */
+
 const FormInput = (props) => {
-  const { label, htmlFor, onChange, id, errorInputMessage, handleBlur, ...otherInputProps } = props;
-
-  const [focused, setFocused] = useState(false);
+  const { label, onChange, htmlFor, id, errorInputMessage, handleBlur, ...otherInputProps } = props;
   const [showPassword, setShowPassword] = useState(false);
-
-  const handleFocus = (e) => {
-    setFocused(true);
-  };
 
   const inputType = label.toLowerCase().includes('password')
     ? showPassword
@@ -34,13 +38,16 @@ const FormInput = (props) => {
         <span className="input-box__label-text">{label}</span>
       </label>
 
-      {label.toLowerCase().includes('password') ? (
+      {/* If the input is a password field, include the visibility icon & functionality */}
+      {otherInputProps.name.toLowerCase().includes('password') ? (
         <span
           className="input-box__icon material-symbols-outlined"
           onClick={() => setShowPassword(!showPassword)}>
           {showPassword ? 'visibility_off' : 'visibility'}
         </span>
       ) : null}
+
+      {/* Show error symbol if the input is not a password and input is invalid */}
       {otherInputProps.name !== 'password' && (
         <div id={`${id}-error`} className="input-box__label-text--error" role="alert">
           <img

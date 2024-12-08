@@ -2,17 +2,7 @@
   $deep-red: #962828;
   min-height: 100vh;
 
-  &__forgot {
-    color: black;
-    margin-bottom: 0;
-    font-size: 14px;
-
-    &:hover {
-      text-decoration: underline;
-      cursor: pointer;
-    }
-  }
-
+  &__forgot,
   &__signup-link {
     color: black;
     font-size: 14px;
@@ -145,18 +135,11 @@
       font-size: 21px;
     }
 
-    &__label-container {
-      font-size: 14px;
-      top: 64%;
-    }
-
     &__form {
       margin-top: 20px;
     }
 
-    &__forgot, &__signup-link, 
-    &__input:focus + &__label-container,
-    &__input:not(:placeholder-shown) + &__label-container {
+    &__forgot, &__signup-link {
       font-size: 13px;
     }
 
