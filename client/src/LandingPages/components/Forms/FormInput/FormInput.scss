@@ -93,9 +93,8 @@
     color: var(--action);
     border-radius: 5px;
   }
-
   input[aria-invalid="true"] + &__label-container {
-    color: $deep-red;
+    color: $deep-red !important;
   }
 }
 
