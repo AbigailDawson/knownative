@@ -1,5 +1,5 @@
 import React from 'react';
-import './SignupPage.css';
+import './SignupPage.scss';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import LandingPageNav from '../components/LandingPageHeader/LandingPageNav';
 import { useState } from 'react';
@@ -13,6 +13,7 @@ import * as authService from '../../services/authService';
 import { useAuthContext } from '../../contexts/Auth/AuthProvider';
 
 const SignupPage = () => {
+
   const [inputValue, setInputValue] = useState({
     firstName: '',
     lastName: '',
@@ -119,11 +120,10 @@ const SignupPage = () => {
   }
 
   return (
-    <main className="signup-page-main">
+    <main className="signup-page__main">
       <LandingPageNav />
-      <section className="signup-page">
-        <div className="signup-container">
-          <h1 className="">SIGN UP</h1>
+      <section className="signup-page__container">
+          <h1 className="signup-page__title">Create Your Know Native Account</h1>
           {errorMsg && (
             <div className="error-message">
               <h5>
@@ -131,7 +131,7 @@ const SignupPage = () => {
               </h5>
             </div>
           )}
-          <form className="form-container" onSubmit={handleSubmit}>
+          <form className="signup-form__container" onSubmit={handleSubmit}>
             {formFields.map((input, idx) => (
               <FormInput
                 key={idx}
@@ -156,7 +156,7 @@ const SignupPage = () => {
               </Link>
             </div>
           </form>
-        </div>
+        
       </section>
     </main>
   );

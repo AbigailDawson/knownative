@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import './DemoWelcomeModal.css';
+import './DemoWelcomeModal.scss';
 import DemoModal from '../DemoModal/DemoModal';
 
 const DemoWelcomeModal = ({ onSubmit, isOpen, onClose, textSelection, setTextSelection }) => {
@@ -25,20 +25,20 @@ const DemoWelcomeModal = ({ onSubmit, isOpen, onClose, textSelection, setTextSel
 
   return (
     <DemoModal hasCloseBtn={false} isOpen={isOpen} onClose={onClose} hasEscKeyExit={false}>
-      <div className="dialog-padding">
+      <div className="demo-modal">
         {/* Modal Page 1 */}
         {pageCount === 1 ? (
-          <div className="page-one">
-            <div className="progress-div">
-              <div className="progress-dashes dashes-active"></div>
-              <div className="progress-dashes dashes-inactive"></div>
-              <div className="progress-dashes dashes-inactive"></div>
+          <div aria-label='page-one'>
+            <div className="demo-modal__progress">
+              <div className="demo-modal__progress-dashes demo-modal__progress-dashes--active"></div>
+              <div className="demo-modal__progress-dashes demo-modal__progress-dashes--inactive"></div>
+              <div className="demo-modal__progress-dashes demo-modal__progress-dashes--inactive"></div>
             </div>
-            <h1 className="welcome-modal">Welcome to KnowNative!</h1>
+            <h1 className="demo-modal__title">Welcome to KnowNative!</h1>
             <p>KnowNative can help you read and study articles written in Mandarin.</p>
             <p>
               We&apos;ll help you choose a{' '}
-              <span className="welcome-modal-bold">sample article</span> for this demo based on your
+              <span className="bold">sample article</span> for this demo based on your
               language level. No prior knowledge of Mandarin is needed to explore this demo!
             </p>
           </div>
@@ -48,21 +48,20 @@ const DemoWelcomeModal = ({ onSubmit, isOpen, onClose, textSelection, setTextSel
 
         {/* Modal Page 2 */}
         {pageCount === 2 ? (
-          <div className="page-two">
-            <div className="progress-div">
-              <div className="progress-dashes dashes-active"></div>
-              <div className="progress-dashes dashes-active"></div>
-              <div className="progress-dashes dashes-inactive"></div>
+          <div aria-label="page-two">
+            <div className="demo-modal__progress">
+              <div className="demo-modal__progress-dashes demo-modal__progress-dashes--active"></div>
+              <div className="demo-modal__progress-dashes demo-modal__progress-dashes--active"></div>
+              <div className="demo-modal__progress-dashes demo-modal__progress-dashes--inactive"></div>
             </div>
-            <h1 className="welcome-modal">Choose your level</h1>
+            <h1 className="demo-modal__title">Choose your level</h1>
             <p>How would you describe your proficiency in Mandarin?</p>
             <form>
-              <label className="welcome-modal" htmlFor="beginnerRadioButton">
+              <label className='demo-modal__label' htmlFor="beginnerRadioButton" aria-label='Beginner'>
                 <div
-                  className={`radio-div beginner-div
-                   ${textSelection === 'beginner' ? 'active-radio-div' : ''}`}>
+                  className={`demo-modal__level
+                   ${textSelection === 'beginner' ? 'demo-modal__level--active' : ''}`}>
                   <input
-                    className="welcome-modal"
                     type="radio"
                     value="beginner"
                     id="beginnerRadioButton"
@@ -78,12 +77,11 @@ const DemoWelcomeModal = ({ onSubmit, isOpen, onClose, textSelection, setTextSel
                 </div>
               </label>
 
-              <label className="welcome-modal" htmlFor="intermediateRadioButton">
+              <label className='demo-modal__label' htmlFor="intermediateRadioButton" aria-label='Intermediate'>
                 <div
-                  className={`radio-div intermediate-div
-                   ${textSelection === 'intermediate' ? 'active-radio-div' : ''}`}>
+                  className={`demo-modal__level
+                   ${textSelection === 'intermediate' ? 'demo-modal__level--active' : ''}`}>
                   <input
-                    className="welcome-modal"
                     type="radio"
                     value="intermediate"
                     id="intermediateRadioButton"
@@ -99,12 +97,11 @@ const DemoWelcomeModal = ({ onSubmit, isOpen, onClose, textSelection, setTextSel
                 </div>
               </label>
 
-              <label className="welcome-modal" htmlFor="advancedRadioButton">
+              <label className='demo-modal__label' htmlFor="advancedRadioButton" aria-label='Advanced'>
                 <div
-                  className={`radio-div advanced-div
-                   ${textSelection === 'advanced' ? 'active-radio-div' : ''}`}>
+                  className={`demo-modal__level
+                   ${textSelection === 'advanced' ? 'demo-modal__level--active' : ''}`}>
                   <input
-                    className="welcome-modal"
                     type="radio"
                     value="advanced"
                     id="advancedRadioButton"
@@ -127,16 +124,16 @@ const DemoWelcomeModal = ({ onSubmit, isOpen, onClose, textSelection, setTextSel
 
         {/* Modal Page 3 */}
         {pageCount === 3 ? (
-          <div className="page-three">
-            <div className="progress-div">
-              <div className="progress-dashes dashes-active"></div>
-              <div className="progress-dashes dashes-active"></div>
-              <div className="progress-dashes dashes-active"></div>
+          <div aria-label="page-three">
+            <div className="demo-modal__progress">
+              <div className="demo-modal__progress-dashes demo-modal__progress-dashes--active"></div>
+              <div className="demo-modal__progress-dashes demo-modal__progress-dashes--active"></div>
+              <div className="demo-modal__progress-dashes demo-modal__progress-dashes--active"></div>
             </div>
-            <h1 className="welcome-modal">Great!</h1>
+            <h1 className="demo-modal__title">Great!</h1>
             <p>
               Let&apos;s get started with a{' '}
-              <span id="textChoice" className="welcome-modal-bold">
+              <span id="textChoice" className="bold">
                 {textSelection}
               </span>
               -level text.
@@ -151,9 +148,9 @@ const DemoWelcomeModal = ({ onSubmit, isOpen, onClose, textSelection, setTextSel
         )}
 
         {/* Conditionally render buttons depending on pageState */}
-        <div className="button-div">
+        <div className="demo-modal__buttons-container">
           {pageCount === 3 ? (
-            <button className="exit next welcome-modal" onClick={handleSubmit}>
+            <button className="demo-modal__button demo-modal__button--next" onClick={handleSubmit}>
               Let&apos;s go!
             </button>
           ) : (
@@ -162,7 +159,7 @@ const DemoWelcomeModal = ({ onSubmit, isOpen, onClose, textSelection, setTextSel
 
           {pageCount !== 3 ? (
             <button
-              className="dialog-two next welcome-modal"
+              className="demo-modal__button demo-modal__button--next"
               onClick={() => setPageCount((pageCount) => pageCount + 1)}>
               Next
             </button>
@@ -172,7 +169,7 @@ const DemoWelcomeModal = ({ onSubmit, isOpen, onClose, textSelection, setTextSel
 
           {pageCount !== 1 ? (
             <button
-              className="dialog-three back welcome-modal"
+              className="demo-modal__button demo-modal__button--back"
               onClick={() => setPageCount((pageCount) => pageCount - 1)}>
               Back
             </button>
