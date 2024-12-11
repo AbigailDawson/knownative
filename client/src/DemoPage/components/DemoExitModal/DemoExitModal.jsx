@@ -1,4 +1,4 @@
-import './DemoExitModal.css';
+import './DemoExitModal.scss';
 import { useNavigate } from 'react-router-dom';
 import Modal from '../../../ui-components/Modal/modal';
 
@@ -19,7 +19,7 @@ export default function DemoExitModal({ setShowModal }) {
       hasCloseButton={true}
       modalTitle={'Exit Demo Session?'}
       setShowModal={setShowModal}>
-      <div className="exit-demo-modal-content">
+      <div className="exit-demo-modal__content">
         <p>Your vocabulary list may disappear after you leave. Are you sure you want to proceed?</p>
       </div>
     </Modal>

@@ -1,0 +1,21 @@
+@mixin difficulty-tag-styles($bg-color, $text-color) {
+  background-color: $bg-color;
+  padding: 1vmin 1vmin;
+  border-radius: 10px;
+  color: $text-color;
+  width: 100%;
+}
+
+.difficulty-tag {
+  &--beginner {
+    @include difficulty-tag-styles(#cce4f0, #094a68);
+  }
+
+  &--intermediate {
+    @include difficulty-tag-styles(#f0edcc, #6b6202);
+  }
+
+  &--advanced {
+    @include difficulty-tag-styles(#efbdbd, #560404);
+  }
+}

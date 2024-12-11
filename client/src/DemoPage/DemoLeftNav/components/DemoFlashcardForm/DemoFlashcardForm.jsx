@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import './DemoFlashcardForm.css';
+import './DemoFlashcardForm.scss';
 import DemoFlashcardGameModal from '../DemoFlashcardGameModal/DemoFlashcardGameModal';
 import {
   Radio,
@@ -21,13 +21,13 @@ export default function DemoFlashcardForm({ localSavedWords, handleBackArrowClic
 
   return (
     <>
-      <div className="FlashCardForm">
-        <header className="header">
+      <div className="flashcard-form">
+        <header className="flashcard-form__header">
           <h3>Learn</h3>
           <div>
             <ChevronLeftIcon
               fontSize="large"
-              className="arrowBack"
+              className="flashcard-form__arrow-back"
               data-tooltip-id="flashcards-tooltip"
               onClick={handleBackArrowClick}
             />
@@ -38,7 +38,7 @@ export default function DemoFlashcardForm({ localSavedWords, handleBackArrowClic
             <FormGroup>
               <FormLabel
                 id="radio-buttons-group-label"
-                className="radio-buttons-group-label"
+                className="form-group__label"
                 sx={{ color: 'black' }}>
                 <p>Review your saved terms with a short quiz.</p>
                 <p>Choose which to display on the front:</p>
@@ -48,7 +48,7 @@ export default function DemoFlashcardForm({ localSavedWords, handleBackArrowClic
                   column
                   aria-labelledby="demo-row-radio-buttons-group-label"
                   name="row-radio-buttons-group"
-                  className="radio-buttons-group">
+                  className="form-group__radio-buttons">
                   <FormControlLabel
                     value="chinese"
                     control={
@@ -101,13 +101,13 @@ export default function DemoFlashcardForm({ localSavedWords, handleBackArrowClic
                   />
                 }
                 label="Show pinyin"
-                className="show-pinyin"
+                className="form-group__checkbox--show-pinyin"
               />
             </FormGroup>
           </>
         ) : (
           <>
-            <div className="quiz-subtext">
+            <div className="flashcard-form__quiz-subtext">
               <p>No words have been saved yet!</p>
               <p>
                 Get started by navigating to the Study tab and selecting some words you&apos;d like
