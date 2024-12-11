@@ -10,7 +10,7 @@
         font-size: 2rem;
         text-align: center;
         color: black;
-        padding: 1em;
+        padding: 1em 0 0 0;
     }
 
     &__error-message {
@@ -24,6 +24,7 @@
         flex-direction: column;
         gap: 0.8em;
         align-items: center;
+        justify-content: center;
     }
 
     &__button {
@@ -33,6 +34,10 @@
         color: white;
         font-weight: 600;
 
+        &-email {
+            margin-top: 2em;
+        }
+
         &-google {
             background-color: #E5F2F6;
             color: #086A6C;
@@ -41,12 +46,49 @@
             }
         }
     }
+
+    &__separator {
+        display: flex;
+        align-items: center;
+        text-align: center;
+        color: black;
+        width: 400px;
+    
+        &::before,
+        &::after {
+        content: "";
+        flex: 1;
+        border-bottom: 1px solid rgb(136, 136, 136);
+        }
+        
+        &--text {
+            text-transform: uppercase;
+            padding: 0 10px;
+          }
+    }
+}
+
+.password-validation__wrapper {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+  
+    &--visible {
+      max-height: 500px;
+      opacity: 1;
+      transition: max-height 0.5s ease-in, opacity 0.5s ease-in;
+    }
+    &--hidden {
+        max-height: 0px;
+        opacity: 0;
+        margin-top: -12px;
+    }
 }
 
 .password-validation {
     list-style-type: none;
     padding: 0;
-    margin: 10px 0;
+    margin: 10px 0px;
 }
 
 .password-validation li {
@@ -63,3 +105,5 @@
 .password-validation svg {
     max-width: 24px;
 }
+
+
