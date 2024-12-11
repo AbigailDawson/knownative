@@ -1,0 +1,10 @@
+.add-text-form {
+    display: grid;
+    width: 55vw;
+    max-width: 820px;
+    margin-inline: auto;
+
+    &__title {
+        color: var(--darkest)
+    }
+}

@@ -1,0 +1,94 @@
+.sidebar-icons {
+
+  &__top-icons {
+    padding: 5px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    gap: 8px;
+  }
+
+  &__square-logo {
+    width: 80%;
+    margin: 30px 0 40px 0;
+  }
+
+  &__icontip-container {
+    color: var(--dark-action);
+    background-color: inherit;
+    font-weight: 500;
+    opacity: 0.95;
+    margin-left: 0px;
+    border-radius: 5px;
+    font-size: 90%;
+    padding: 20px 0px 15px;
+    width: 100%;
+    position: relative;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+
+    &:hover  {
+      background-color: var(--light);
+    }
+
+    &--label {
+      cursor: pointer;
+      display: block;
+    }
+  }
+
+  &__button{
+      &--active {
+      background-color: var(--light);
+    }
+  }
+    
+  &__google-icons {
+    &--shaded span {
+      font-variation-settings: 'FILL' 1, 'wght' 600, 'GRAD' 0, 'opsz' 48;
+    }
+    &--outline span {
+      font-variation-settings: 'FILL' 0, 'wght' 600, 'GRAD' 0, 'opsz' 48;
+    }
+  }
+
+  &__sidenav-icon {
+    font-size: 4vmin;
+    margin: 0;
+    padding: 5px 0;
+    color: var(--dark-action);
+
+    @media (max-width: 768px) { 
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    &--flipped {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__badge {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    background-color: var(--medium);
+    color: var(--dark-action);
+    padding: 6px 7px 4px 6px;
+    border-radius: 25%;
+    font-size: 0.8rem;
+    line-height: 1;
+    z-index: 1;
+  }
+
+  &__bottom-icons {
+    padding: 5px 0;
+    width: 100%;
+    gap: 5px;
+  }
+}
+

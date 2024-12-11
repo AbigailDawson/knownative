@@ -1,4 +1,4 @@
-import './LandingPageFooter.css';
+import './LandingPageFooter.scss';
 
 export default function LandingPageFooter() {
   return (

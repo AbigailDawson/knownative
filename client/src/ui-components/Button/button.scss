@@ -1,0 +1,53 @@
+@mixin hoverFX ($color: var(--darkest), $bg-color: #3d8679, $shadow: 1px 1px 4px rgba(0, 0, 0, 0.1), $transition: 0.2s){
+  color: $color;
+  background-color: $bg-color;
+  box-shadow: $shadow;
+  transition: $transition;
+}
+
+.reusable-button {
+  border: 1px solid transparent;
+  border-radius: 8px;
+  font-size: 1.25rem;
+  padding-left: 15px;
+  padding-right: 15px;
+  min-width: 110px;
+
+  &--primary {
+    background-color: var(--primary);
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+    color: #0c1f1b;
+
+    &:hover {
+      @include hoverFX;
+    }
+  }
+
+  &--secondary {
+    background-color: #dadada;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+
+    &:hover {
+      @include hoverFX($bg-color: #b0b0b0)
+    }
+  }
+
+  &--tertiary {
+    background: none;
+    border: 1px solid var(--primary);
+    color: #006769;
+
+    &:hover{
+      @include hoverFX($bg-color: var(--light))
+    }
+  }
+
+  &--danger {
+    background-color: #dc3545;
+    color: #fff;
+
+    &:hover {
+      @include hoverFX($color: #fff, $bg-color: #bb2deb)
+    }
+  }
+}

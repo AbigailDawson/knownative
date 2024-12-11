@@ -1,4 +1,4 @@
-import './DemoInfoSidebar.css';
+import './DemoInfoSidebar.scss';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import { useState } from 'react';
 
@@ -11,8 +11,8 @@ export default function DemoInfoSidebar({ handleShowExit, handleBackArrowClick }
 
   return (
     <div className="info-section">
-      <header className="demo-info-header-container">
-        <h3 className="sidebar-heading">Info</h3>
+      <header className="info-section__header">
+        <h3 className='info-section__title'>Info</h3>
         <ChevronLeftIcon
           fontSize="large"
           data-tooltip-id="info-tooltip"
@@ -48,24 +48,24 @@ export default function DemoInfoSidebar({ handleShowExit, handleBackArrowClick }
         </div>
       ) : (
         <>
-          <div className="info-section-subtext">
+          <div className="info-section__subtext">
             <p>Thank you for trying the KnowNative demo!</p>
             <p>
               KnowNative is currently in development. Check out the links below to learn more or get
               in touch.
             </p>
           </div>
-          <button className="demo-info-dark-btn" onClick={handleMailingListClick}>
+          <button className="info-button info-button--dark" onClick={handleMailingListClick}>
             Join our mailing list
           </button>
         </>
       )}
       <button
-        className="demo-info-light-btn"
+        className="info-button info-button--light"
         onClick={() => window.open('https://github.com/AbigailDawson/knownative', '_blank')}>
         Visit GitHub
       </button>
-      <button className="demo-info-light-btn" onClick={handleShowExit}>
+      <button className="info-button info-button--light" onClick={handleShowExit}>
         <label htmlFor="exit-tooltip">Return to homepage</label>
       </button>
     </div>

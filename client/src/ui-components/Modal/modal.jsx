@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import Button from '../Button/button';
-import './modal.css';
+import './modal.scss';
 
 const Modal = ({
   canCloseOnEscapeKey,
@@ -41,18 +41,18 @@ const Modal = ({
 
   return createPortal(
     <div className="reusable-modal">
-      <div className="reusable-modal-header-contents">
-        <h1 className="reusable-modal-title">{modalTitle}</h1>
+      <div className="reusable-modal-header__contents">
+        <h1 className="reusable-modal__title">{modalTitle}</h1>
         {hasCloseButton ? (
-          <button className="reusable-modal-close-button" onClick={() => setShowModal(false)}>
+          <button className="reusable-modal__buttons--close" onClick={() => setShowModal(false)}>
             ×
           </button>
         ) : null}
       </div>
       {children}
-      <div className="reusable-modal-buttons">
+      <div className="reusable-modal__buttons">
         {buttonDeleteText ? (
-          <div className="danger-button-container">
+          <div className="reusable-modal__button-container">
             <Button
               buttonText={buttonDeleteText}
               buttonOnClickFunc={handleDeleteButtonOnClick}
@@ -60,7 +60,7 @@ const Modal = ({
             />
           </div>
         ) : null}
-        <div className="modal-button-container">
+        <div className="reusable-modal__button-container--modal">
           <Button
             buttonText={buttonSecondaryText}
             buttonOnClickFunc={handleSecondaryButtonOnClick}

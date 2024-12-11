@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import './DemoEditWordModal.css';
+import './DemoEditWordModal.scss';
 import Modal from '../../../ui-components/Modal/modal';
 
 function DemoEditWordModal({ handleDeleteWord, setShowModal, updateWord, word }) {
@@ -34,18 +34,18 @@ function DemoEditWordModal({ handleDeleteWord, setShowModal, updateWord, word })
       hasCloseButton={true}
       modalTitle={'Edit Card'}
       setShowModal={setShowModal}>
-      <div className="edit-word-modal-content">
+      <div className="edit-word-modal__content">
         <div>Term</div>
-        <textarea className="edit-word-modal-textarea" value={inputTerm} disabled />
+        <textarea className="edit-word-modal__textarea" value={inputTerm} disabled />
         <div>Reading</div>
         <textarea
-          className="edit-word-modal-textarea"
+          className="edit-word-modal__textarea"
           value={inputReading}
           onChange={handleInputReadingChange}
         />
         <div>Meaning</div>
         <textarea
-          className="edit-word-modal-textarea"
+          className="edit-word-modal__textarea"
           value={inputMeaning}
           onChange={handleInputMeaningChange}
         />
