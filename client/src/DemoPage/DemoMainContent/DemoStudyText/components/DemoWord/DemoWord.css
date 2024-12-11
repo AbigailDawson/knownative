@@ -1,0 +1,63 @@
+.Word:not(.specialChar) {
+  cursor: pointer;
+}
+
+.Word,
+.specialChar {
+  display: flex;
+  flex-direction: column;
+  height: 6.05rem;
+  max-width: 6.7rem;
+  margin: 0 0.2vmin;
+  font-size: 1.7rem;
+  text-wrap: wrap;
+  min-height: 8.5rem;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.annotation p {
+  font-size: 0.9rem;
+  font-family: 'Montserrat', 'Roboto', sans-serif;
+}
+
+.meaning {
+  font-weight: bold;
+  min-width: 10rem;
+  z-index: 1;
+}
+
+.specialChar {
+  width: 2vmin;
+}
+
+.Word p,
+.specialChar p {
+  margin: 0;
+}
+
+.saved.zh {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1.5px;
+}
+
+.Word:not(.specialChar) .zh:hover {
+  background-color: #d5fbf4;
+  border-radius: 0.5vmin;
+  padding: 2px;
+  opacity: 0.8;
+}
+
+/* medium screens and smaller */
+@media (max-width: 768px) {
+  .Word,
+  .specialChar {
+    font-size: 1.3rem;
+  }
+
+  .annotation {
+    font-size: 0.8rem;
+  }
+}

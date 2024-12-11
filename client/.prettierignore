@@ -1,0 +1,15 @@
+# Ignore artifacts:
+build
+coverage
+
+# Ignore all HTML files:
+**/*.html
+
+#Ignore files not under src
+client/public
+server/routes
+server/models
+server/controllers
+server/config
+server/server.js
+crud-helper.js
