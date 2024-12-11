@@ -25,6 +25,7 @@ const SignupPage = () => {
 
   const [inputErrors, setInputErrors] = useState({});
   const [errorMsg, setErrorMsg] = useState('');
+  const [isPasswordTyping, setIsPasswordTyping] = useState(false);
   const navigate = useNavigate();
   const { setUser } = useAuthContext();
 
@@ -93,6 +94,9 @@ const SignupPage = () => {
 
   const handleChange = (e) => {
     setInputValue({ ...inputValue, [e.target.name]: e.target.value });
+    if (e.target.name === 'password') {
+      setIsPasswordTyping(true);
+    }
   };
 
   const handleBlur = (e) => {
@@ -135,34 +139,46 @@ const SignupPage = () => {
           </div>
         )}
         <form className="signup-page__form" onSubmit={handleSubmit}>
-          {formFields.map((input, idx) => (
-            <FormInput
-              key={idx}
-              {...input}
-              value={inputValue[input.name]}
-              onChange={handleChange}
-              errorInputMessage={inputErrors[input.name]}
-              handleBlur={handleBlur}
-            />
-          ))}
-          <PasswordValidation password={inputValue.password} />
-          <button className="signup-page__button" type="submit">
-            Sign Up
-          </button>
-          {/* oAuth  */}
-          <button className="signup-page__button signup-page__button-google">
-            <img
-              className="signup-page__button-google--icon"
-              src="../../../public/images/google-icon.png"
-            />
-            Sign up with Google
-          </button>
-          {/* line */}
-          <div>
-            <Link to="/login" className="signup-text">
-              Already have an account? Log in
-            </Link>
-          </div>
+            {formFields.map((input, idx) => (
+              <React.Fragment key={idx}>
+                <FormInput
+                  key={idx}
+                  {...input}
+                  value={inputValue[input.name]}
+                  onChange={handleChange}
+                  errorInputMessage={inputErrors[input.name]}
+                  handleBlur={handleBlur}
+                />
+                {input.name === 'password' && (
+                  <div 
+                  className={`password-validation__wrapper 
+                    ${isPasswordTyping 
+                      ? 'password-validation__wrapper--visible' 
+                      : 'password-validation__wrapper--hidden'}`}>
+                    <PasswordValidation password={inputValue.password} />
+                  </div>
+                )}
+              </React.Fragment>
+            ))}
+            <button className="signup-page__button signup-page__button-email" type="submit">
+              Sign Up
+            </button>
+            <div className="signup-page__separator">
+              <span className="signup-page__separator--text">OR</span>
+            </div>
+            <button className="signup-page__button signup-page__button-google">
+              <img
+                className="signup-page__button-google--icon"
+                src="../../../public/images/google-icon.png"
+              />
+              Sign up with Google
+            </button>
+            {/* line */}
+            <div>
+              <Link to="/login" className="signup-text">
+                Already have an account? Log in
+              </Link>
+            </div>
         </form>
       </section>
     </main>
