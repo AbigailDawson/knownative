@@ -32,6 +32,7 @@ export default function DemoStudyText({
     [text]
   );
 
+  //CHANGE!!!-----------------
   function checkSaved(word) {
     return savedWords.some((savedWord) => savedWord.charGroup === word.traditional);
   }
@@ -74,7 +75,7 @@ export default function DemoStudyText({
     });
     return foundWord[propertyType];
   }
-
+  console.log(tokenizedText);
   const words = tokenizedText.map((word, idx) => {
     const isSaved = checkSaved(word);
     const wordInfo = wordsAPI.getWordInfo(word);
