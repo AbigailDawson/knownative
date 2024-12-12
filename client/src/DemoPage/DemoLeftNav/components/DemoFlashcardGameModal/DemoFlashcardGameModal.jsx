@@ -4,7 +4,7 @@ import { Button, Dialog, DialogActions, DialogContent } from '@mui/material';
 import { IoMdClose } from 'react-icons/io';
 import { GiCheckMark } from 'react-icons/gi';
 import { PiRepeatBold } from 'react-icons/pi';
-import './DemoFlashcardGameModal.css';
+import './DemoFlashcardGameModal.scss';
 
 export default function DemoFlashcardGameModal({ wordList, selectedFront, showPinyin, blurText }) {
   const [open, setOpen] = useState(false);
@@ -92,7 +92,7 @@ export default function DemoFlashcardGameModal({ wordList, selectedFront, showPi
 
   return (
     <>
-      <button className="quiz-play-btn" disabled={wordList.length === 0} onClick={startQuiz}>
+      <button className="game-modal__play-btn" disabled={wordList.length === 0} onClick={startQuiz}>
         Start Quiz
       </button>
       <Dialog
@@ -145,37 +145,37 @@ export default function DemoFlashcardGameModal({ wordList, selectedFront, showPi
                 flashcards={flashcards}
               />
               <div>
-                <div className="flip-button-container">
+                <div className="button-container">
                   {!hasBeenFlipped && !isFlipped && (
-                    <button className="flip-button" onClick={handleToggle}>
+                    <button className="button-container__flip-button" onClick={handleToggle}>
                       {isFlipped ? 'Show Front' : 'Show Answer'}
                     </button>
                   )}
                 </div>
                 {(isFlipped || hasBeenFlipped) && (
-                  <div className="flashcard-btns">
-                    <button className="correct-btn" onClick={handleCorrect}>
-                      <GiCheckMark className="flashcard-icon" />
+                  <div className="flashcard-buttons">
+                    <button className="flashcard-buttons__correct-btn" onClick={handleCorrect}>
+                      <GiCheckMark className="flashcard-buttons__icon" />
                       Correct!
                     </button>
-                    <button className="incorrect-btn" onClick={handleIncorrect}>
-                      <PiRepeatBold className="flashcard-icon" />
+                    <button className="flashcard-buttons__incorrect-btn" onClick={handleIncorrect}>
+                      <PiRepeatBold className="flashcard-buttons__icon" />
                       Try again
                     </button>
                   </div>
                 )}
                 <div className="flashcard-count">
                   <p>
-                    <span className="correct-count">{correctCount}</span> Correct
+                    <span className="flashcard-count__correct">{correctCount}</span> Correct
                   </p>
                   <p>
-                    <span className="remaining-count">{remainingCount}</span> Remaining
+                    <span className="flashcard-count__remaining">{remainingCount}</span> Remaining
                   </p>
                 </div>
               </div>
             </>
           ) : (
-            <div className="congrats">
+            <div className="game-modal__congrats-msg">
               <div>
                 <dotlottie-player
                   src="https://lottie.host/9279b8f8-2d84-4077-aaf6-db967f8ec7bb/3JRYmBPJgq.json"
@@ -186,7 +186,7 @@ export default function DemoFlashcardGameModal({ wordList, selectedFront, showPi
                   autoplay></dotlottie-player>
               </div>
               <h2>You completed the deck!</h2>
-              <button className="play-btn" onClick={handlePlayAgain}>
+              <button className="game-modal__play-btn" onClick={handlePlayAgain}>
                 Play Again
               </button>
             </div>
