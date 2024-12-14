@@ -1,5 +1,5 @@
 import React from 'react';
-import './button.css';
+import './button.scss';
 
 const Button = ({ buttonText, buttonOnClickFunc, buttonVariant }) => {
   /*
@@ -11,7 +11,7 @@ Button Variants:
 */
 
   return (
-    <button className={`reusable-button ${buttonVariant}-button`} onClick={buttonOnClickFunc}>
+    <button className={`reusable-button reusable-button--${buttonVariant}`} onClick={buttonOnClickFunc}>
       {buttonText}
     </button>
   );

@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import './LoginPage.css';
+import './LoginPage.scss';
 import { Link } from 'react-router-dom';
 import LandingPageNav from '../components/LandingPageHeader/LandingPageNav';
 import * as authService from '../../services/authService';
 import { useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../../contexts/Auth/AuthProvider';
+import FormInput from '../components/Forms/FormInput/FormInput';
 
 export default function LoginPage() {
   const [inputValue, setInputValue] = useState({
@@ -14,6 +15,24 @@ export default function LoginPage() {
   const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
   const { setUser } = useAuthContext();
+
+  // Add more form fields as needed here:
+  const formFields = [
+    {
+      name: 'email',
+      label: 'Email Address',
+      type: 'email',
+      id: 'login-email',
+      htmlFor: 'login-email'
+    },
+    {
+      name: 'password',
+      label: 'Password',
+      type: 'password',
+      id: 'login-password',
+      htmlFor: 'login-password'
+    }
+  ];
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -25,6 +44,8 @@ export default function LoginPage() {
 
   async function handleLogin(e) {
     e.preventDefault();
+    setErrorMessage('');
+
     try {
       const user = await authService.logIn(inputValue);
       setUser(user);
@@ -44,28 +65,55 @@ export default function LoginPage() {
   return (
     <main>
       <LandingPageNav />
-      <div className="login-page-login-form-container">
-        <form className="login-page-login-form" onSubmit={handleLogin}>
-          <label>Email/Username:</label>
-          <input type="text" name="email" value={inputValue.email} onChange={handleChange} />
-          <label>Password:</label>
-          <input
-            type="password"
-            name="password"
-            value={inputValue.password}
-            onChange={handleChange}
-          />
-          <button type="submit" className="login-page-login-button">
-            Login
-          </button>
-          {errorMessage && <p className="login-error-message">{errorMessage}</p>}
-        </form>
-        <div>
-          <button>Sign in with Google</button>
+      <div className="login-page__form-container">
+        <div className="login-page__container">
+          <h1 className="login-page__header">Log in to view your dashboard</h1>
+          <form className="login-page__form" onSubmit={handleLogin}>
+            {formFields.map((input, idx) => (
+              <FormInput
+                key={idx}
+                {...input}
+                value={inputValue[input.name]}
+                onChange={handleChange}
+              />
+            ))}
+
+            {/* Needs functionality */}
+            <p className="login-page__forgot">Forgot Password?</p>
+            <div className="login-page__error-container">
+              {errorMessage && (
+                <div>
+                  <img
+                    className="login-page__error-symbol"
+                    src="/images/error_note.svg"
+                    alt="error symbol"
+                  />{' '}
+                  <p className="login-page__error-message">{errorMessage}</p>{' '}
+                </div>
+              )}
+            </div>
+            <button type="submit" className="login-page__button--primary login-page__button">
+              Log In
+            </button>
+          </form>
+
+          <div className="login-page__separator">
+            <span className="login-page__separator__text">OR</span>
+          </div>
+          <div className="">
+            <button className="login-page__button--google login-page__button">
+              <img
+                src="/images/google_icon.svg"
+                alt="google sign in"
+                className="login-page__google-icon"
+              />
+              Log in with Google
+            </button>
+          </div>
+          <Link to="/signup" className="login-page__signup-link">
+            Don't have an account? Sign-Up
+          </Link>
         </div>
-        <Link to="/signup" className="login-page-signup-link">
-          Don't have an account? Sign-Up
-        </Link>
       </div>
     </main>
   );

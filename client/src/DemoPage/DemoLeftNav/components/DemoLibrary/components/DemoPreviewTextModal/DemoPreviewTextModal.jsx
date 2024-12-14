@@ -1,4 +1,4 @@
-import './DemoPreviewTextModal.css';
+import './DemoPreviewTextModal.scss';
 import { Modal } from 'react-bootstrap';
 import { BsX } from 'react-icons/bs';
 import { BiLinkExternal } from 'react-icons/bi';
@@ -26,49 +26,50 @@ function DemoPreviewTextModal({
     <Modal
       show={showPreviewTextModal}
       centered
-      backdropClassName="show-preview-modal-backdrop"
+      backdrop
+      className="show-preview-modal__backdrop"
       onHide={handleCloseShowPreviewModal}
       size="lg">
       <main className="show-preview-modal">
         <Modal.Header>
-          <Modal.Title className="show-preview-modal-header-container">
-            <p className="show-preview-modal-header-message">
+          <Modal.Title className="show-preview-modal__header">
+            <p className="show-preview-modal__header--message">
               <strong>This is a preview.</strong> Click &quot;Load Text&quot; to replace your
               current text with this one. <strong>WARNING:</strong> your current list of saved words
               WILL BE LOST when the text is changed.
             </p>
-            <BsX className="show-preview-modal-exit-button" onClick={handleCloseShowPreviewModal} />
+            <BsX className="show-preview-modal__exit-button" onClick={handleCloseShowPreviewModal} />
           </Modal.Title>
         </Modal.Header>
-        <Modal.Body className="show-preview-modal-body">
-          <h3 className="show-preview-modal-chinese-character zh">
+        <Modal.Body className="show-preview-modal__body">
+          <h3 className="show-preview-modal__chinese-character zh">
             {demoTexts[textSelection].title}
           </h3>
-          <section className="show-preview-modal-difficulty-source-ctn">
-            <article className="show-preview-modal-difficulty-tag">
+          <section className="show-preview-modal__difficulty-source-container">
+            <article className="show-preview-modal__difficulty-tag">
               <DemoDifficultyTag textSelection={textSelection} />
             </article>
             <a
               href={demoTexts[textSelection].source}
-              className="show-preview-modal-view-source"
+              className="show-preview-modal__view-source"
               target="_blank"
               rel="noreferrer">
               View Source <BiLinkExternal />
             </a>
           </section>
-          <section className="show-preview-modal-text zh">
+          <section className="show-preview-modal__body show-preview-modal__body--text zh">
             <p>
               {demoTexts[textSelection].content.slice(0, 75)}
               ...
             </p>
           </section>
         </Modal.Body>
-        <Modal.Footer className="show-preview-modal-footer">
-          <section className="show-preview-modal-btns-ctn">
-            <button className="show-preview-modal-load-text-btn" onClick={handleLoadNewText}>
+        <Modal.Footer className="show-preview-modal__footer">
+          <section className="show-preview-modal__buttons">
+            <button className="show-preview-modal__buttons--load" onClick={handleLoadNewText}>
               <strong>Load Text</strong>
             </button>
-            <button className="show-preview-modal-close-btn" onClick={handleCloseShowPreviewModal}>
+            <button className="show-preview-modal__buttons--close" onClick={handleCloseShowPreviewModal}>
               <strong>Close</strong>
             </button>
           </section>

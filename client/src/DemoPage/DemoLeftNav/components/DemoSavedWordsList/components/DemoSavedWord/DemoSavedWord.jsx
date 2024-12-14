@@ -1,4 +1,4 @@
-import './DemoSavedWord.css';
+import './DemoSavedWord.scss';
 import { useState } from 'react';
 import { BiDotsVerticalRounded } from 'react-icons/bi';
 import { FaPencilAlt, FaTrashAlt } from 'react-icons/fa';
@@ -44,10 +44,10 @@ export default function DemoSavedWord({ word, updateWord, deleteWord }) {
   }
 
   return (
-    <article className="SavedWord" onMouseLeave={handleMouseleaveCard}>
+    <article className="SavedWord-card" onMouseLeave={handleMouseleaveCard}>
       {/* This the three dots. I placed it absolutely to the corner of every saved word. */}
       <BiDotsVerticalRounded
-        className={`edit-menu-icon ${showingEditWordModal && 'edit-menu-currently-open'}`}
+        className={`SavedWord-card__menu-icon ${showingEditWordModal && 'SavedWord-card__menu-icon--open'}`}
         onClick={handleEditIconClick}
       />
       {/* Code that allows for the edit word modal to show up*/}
@@ -62,25 +62,30 @@ export default function DemoSavedWord({ word, updateWord, deleteWord }) {
       {/* If the editMenuOpen state variable is true, display the edit/delete menu. */}
       {isEditMenuOpen && (
         <article
-          className="edit-delete-menu"
+          className="SavedWord-card__menu"
           onMouseEnter={handleMouseEnterMenu}
           onMouseLeave={handleEditMenuMouseleave}>
-          <section className="edit-button" onClick={handleOpenEditModal}>
-            <p>Edit</p>
+          <section 
+          className="SavedWord-card__menu-button SavedWord-card__menu-button--edit" 
+          onClick={handleOpenEditModal}>
+            <p className="SavedWord-card__menu-label">Edit</p>
             <FaPencilAlt />
           </section>
-          <section className="delete-button" onClick={handleDeleteWord}>
-            <p>Delete</p>
+          <section 
+          className="SavedWord-card__menu-button 
+          SavedWord-card__menu-button--delete" 
+          onClick={handleDeleteWord}>
+            <p className="SavedWord-card__menu-label">Delete</p>
             <FaTrashAlt />
           </section>
         </article>
       )}
-      <section className="char-pinyin">
-        <p className="pinyin"> {word.pinyin} </p>
-        <p className="char zh">{word.charGroup} </p>
+      <section className="SavedWord-card__char">
+        <p className="SavedWord-card__char--pinyin"> {word.pinyin} </p>
+        <p className="SavedWord-card__char--char zh">{word.charGroup} </p>
       </section>
       <section>
-        <p className="word-meaning">{word.meaning}</p>
+        <p className="SavedWord-card__char--meaning">{word.meaning}</p>
       </section>
     </article>
   );

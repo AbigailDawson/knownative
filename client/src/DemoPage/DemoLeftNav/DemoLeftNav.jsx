@@ -1,4 +1,4 @@
-import './DemoLeftNav.css';
+import './DemoLeftNav.scss';
 
 export default function DemoLeftNav({
   expandSidebar,
@@ -31,79 +31,79 @@ export default function DemoLeftNav({
   return (
     <>
       {/* Sidebar Icons */}
-      <div className="top-icons">
+      <div className="sidebar-icons__top-icons">
         <img
           src="/images/transparent-square-logo.png"
           alt="knownative logo"
-          className="square-logo"
+          className="sidebar-icons__square-logo"
         />
         {/* Saved Words Icon*/}
         <button
           id="savedwords-tooltip"
-          className={`icontip-container ${
+          className={`sidebar-icons__icontip-container ${
             sidebarCategory === 'savedwords-tooltip'
-              ? 'button-active google-icons-shaded'
-              : 'google-icons-outline'
+              ? 'sidebar-icons__button--active sidebar-icons__google-icons--shaded'
+              : 'sidebar-icons__google-icons--outline'
           }`}
           onClick={handleCardsClick}
           aria-label="Saved Words"
           aria-expanded={sidebarCategory === 'savedwords-tooltip' ? 'true' : 'false'}>
-          <span className="material-symbols-outlined side-nav-icon-top icon-flipped">&#xe41d;</span>
-          <label htmlFor="savedwords-tooltip">Terms</label>
-          {savedWords.length > 0 && <span className="badge">{savedWords.length}</span>}
+          <span className="sidebar-icons__sidenav-icon sidebar-icons__sidenav-icon--flipped material-symbols-outlined">&#xe41d;</span>
+          <label className='sidebar-icons__icontip-container--label' htmlFor="savedwords-tooltip">Terms</label>
+          {savedWords.length > 0 && <span className="sidebar-icons__badge">{savedWords.length}</span>}
         </button>
         {/* Learn Icon */}
         <button
           id="flashcards-tooltip"
-          className={`icontip-container ${
+          className={`sidebar-icons__icontip-container ${
             sidebarCategory === 'flashcards-tooltip'
-              ? 'button-active google-icons-shaded'
-              : 'google-icons-outline'
+              ? 'sidebar-icons__button--active sidebar-icons__google-icons--shaded'
+              : 'sidebar-icons__google-icons--outline'
           }`}
           onClick={handleCardsClick}
           aria-label="Learn"
           aria-expanded={sidebarCategory === 'flashcards-tooltip' ? 'true' : 'false'}>
-          <span className="material-symbols-outlined side-nav-icon-top">&#xe80c;</span>
-          <label htmlFor="flashcards-tooltip">Learn</label>
+          <span className="material-symbols-outlined sidebar-icons__sidenav-icon">&#xe80c;</span>
+          <label className='sidebar-icons__icontip-container--label' htmlFor="flashcards-tooltip">Learn</label>
         </button>
         {/* Library Icon */}
         <button
           id="library-tooltip"
-          className={`icontip-container ${
+          className={`sidebar-icons__icontip-container ${
             sidebarCategory === 'library-tooltip'
-              ? 'button-active google-icons-shaded'
-              : 'google-icons-outline'
+              ? 'sidebar-icons__button--active sidebar-icons__google-icons--shaded'
+              : 'sidebar-icons__google-icons--outline'
           }`}
           onClick={handleCardsClick}
           aria-label="Library"
           aria-expanded={sidebarCategory === 'library-tooltip' ? 'true' : 'false'}>
-          <span className="material-symbols-outlined side-nav-icon-top">&#xf53e;</span>
-          <label htmlFor="library-tooltip">Library</label>
+          <span className="sidebar-icons__sidenav-icon material-symbols-outlined">&#xf53e;</span>
+          <label className='sidebar-icons__icontip-container--label' htmlFor="library-tooltip">Library</label>
         </button>
         {/* Info Icon */}
         <button
           id="info-tooltip"
-          className={`icontip-container ${
-            sidebarCategory === 'info-tooltip' ? 'button-active google-icons-shaded' : ''
+          className={`sidebar-icons__icontip-container ${
+            sidebarCategory === 'info-tooltip' ? 'sidebar-icons__button--active sidebar-icons__google-icons--shaded' : ''
           }`}
           onClick={handleCardsClick}
           aria-label="Info"
           aria-expanded={sidebarCategory === 'info-tooltip' ? 'true' : 'false'}>
-          <span className="material-symbols-outlined side-nav-icon-top">&#xe88e;</span>
-          <label htmlFor="info-tooltip">Info</label>
+          <span className="sidebar-icons__sidenav-icon material-symbols-outlined">&#xe88e;</span>
+          <label className='sidebar-icons__icontip-container--label' htmlFor="info-tooltip">Info</label>
         </button>
       </div>
-      <div className="bottom-icons">
+      <div className="sidebar-icons__bottom-icons">
         <button
           id="exit-tooltip"
-          className={`icontip-container ${
-            sidebarCategory === 'exit-tooltip' ? 'button-active google-icons-shaded' : ''
+          className={`sidebar-icons__icontip-container ${
+            sidebarCategory === 'exit-tooltip' ? 'sidebar-icons__button--active sidebar-icons__google-icons--shaded' : ''
           }`}
           onClick={handleShowExit}
           aria-label="Exit"
           aria-expanded={sidebarCategory === 'exit-tooltip' ? 'true' : 'false'}>
-          <span className="material-symbols-outlined side-nav-icon-top">&#xe9ba;</span>
-          <label htmlFor="exit-tooltip">Exit</label>
+          <span className="material-symbols-outlined sidebar-icons__sidenav-icon">&#xe9ba;</span>
+          <label className='sidebar-icons__icontip-container--label' htmlFor="exit-tooltip">Exit</label>
         </button>
       </div>
     </>

@@ -276,6 +276,10 @@ a {
   font-family: 'Noto Serif TC', serif;
 }
 
+.bold {
+  font-weight: 600;
+}
+
 /* xsmall screens and smaller */
 @media (max-width: 400px) {
   .tab-btn {
