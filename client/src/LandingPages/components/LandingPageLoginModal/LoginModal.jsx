@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import Modal from '../../../ui-components/Modal/modal';
-import './LoginModal.css';
+import './LoginModal.scss';
 import { Link } from 'react-router-dom';
 import * as authService from '../../../services/authService';
 import { useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../../../contexts/Auth/AuthProvider';
+import FormInput from '../Forms/FormInput/FormInput';
 
 const LoginModal = ({ setShowModal }) => {
   const [inputValue, setInputValue] = useState({
@@ -12,9 +13,25 @@ const LoginModal = ({ setShowModal }) => {
     password: ''
   });
   const [errorMessage, setErrorMessage] = useState('');
-  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const { setUser } = useAuthContext();
+
+  const formFields = [
+    {
+      name: 'email',
+      label: 'Email Address',
+      type: 'email',
+      id: 'login-email',
+      htmlFor: 'login-email'
+    },
+    {
+      name: 'password',
+      label: 'Password',
+      type: 'password',
+      id: 'login-password',
+      htmlFor: 'login-password'
+    }
+  ];
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -49,69 +66,53 @@ const LoginModal = ({ setShowModal }) => {
       setShowModal={setShowModal}
       hasCloseButton={true}
       hasCustomButtons={true}>
-      <div className="login-modal-login-form-container">
-        <div className="login-modal-container">
-          <h1 className="login-modal-header">Log Into Your KnowNative Account</h1>
-          <h2 className="login-modal-secondary-text">Lorem ipsum dolor sit amet consectetur.</h2>
-          <form className="login-modal-login-form" onSubmit={handleLogin}>
-            <div className="login-input-box">
-              <input
-                type="text"
-                name="email"
-                value={inputValue.email}
+      <div className="login-modal__login-form-container">
+        <div className="login-modal__container">
+          <h1 className="login-modal__header">Log Into Your KnowNative Account</h1>
+          <h2 className="login-modal__secondary-text">Lorem ipsum dolor sit amet consectetur.</h2>
+          <form className="login-page__form" onSubmit={handleLogin}>
+            {formFields.map((input, idx) => (
+              <FormInput
+                key={idx}
+                {...input}
+                value={inputValue[input.name]}
                 onChange={handleChange}
-                id="login-email"
-                className="login-modal-input"
-                placeholder=" "
               />
-              <label htmlFor="login-email" className="login-label-container">
-                <span className="login-label-text">Email Address</span>
-              </label>
-            </div>
+            ))}
 
-            <div className="login-input-box">
-              <input
-                type={showPassword ? 'text' : 'password'}
-                name="password"
-                id="login-password"
-                value={inputValue.password}
-                onChange={handleChange}
-                className="login-modal-input"
-                placeholder=" "
-              />
-              <label htmlFor="login-password" className="login-label-container">
-                <span className="login-label-text">Password</span>
-              </label>
-              <span
-                className="material-symbols-outlined icon"
-                onClick={() => setShowPassword(!showPassword)}>
-                {showPassword ? 'visibility_off' : 'visibility'}
-              </span>
-            </div>
             {/* Needs functionality */}
-            <p className="login-modal-forgot">Forgot Password?</p>
-            <div className="login-error-container">
-              {errorMessage && <p className="login-error-message">{errorMessage}</p>}
+            <p className="login-page__forgot">Forgot Password?</p>
+            <div className="login-page__error-container">
+              {errorMessage && (
+                <div>
+                  <img
+                    className="login-page__error-symbol"
+                    src="/images/error_note.svg"
+                    alt="error symbol"
+                  />{' '}
+                  <p className="login-page__error-message login-modal__no-margin">{errorMessage}</p>{' '}
+                </div>
+              )}
             </div>
-            <button type="submit" className="login-modal-login-button login-modal-button">
+            <button type="submit" className="login-page__button--primary login-page__button">
               Log In
             </button>
           </form>
 
-          <div className="separator">
-            <span>OR</span>
+          <div className="login-page__separator">
+            <span className="login-page__separator__text">OR</span>
           </div>
           <div className="">
-            <button className="login-google-button login-modal-button">
+            <button className="login-page__button--google login-page__button">
               <img
                 src="/images/google_icon.svg"
                 alt="google sign in"
-                className="login-google-icon"
+                className="login-page__google-icon"
               />
               Log in with Google
             </button>
           </div>
-          <Link to="/signup" className="login-modal-signup-link">
+          <Link to="/signup" className="login-page__signup-link">
             Don't have an account? Sign-Up
           </Link>
         </div>

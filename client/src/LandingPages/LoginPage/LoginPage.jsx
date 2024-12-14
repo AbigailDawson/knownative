@@ -13,7 +13,6 @@ export default function LoginPage() {
     password: ''
   });
   const [errorMessage, setErrorMessage] = useState('');
-  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const { setUser } = useAuthContext();
 
