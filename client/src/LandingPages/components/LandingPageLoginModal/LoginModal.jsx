@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import * as authService from '../../../services/authService';
 import { useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../../../contexts/Auth/AuthProvider';
-import { validateLogin } from '../../../utilities/validation';
 
 const LoginModal = ({ setShowModal }) => {
   const [inputValue, setInputValue] = useState({
@@ -27,13 +26,6 @@ const LoginModal = ({ setShowModal }) => {
 
   async function handleLogin(e) {
     e.preventDefault();
-    setErrorMessage('');
-
-    const error = validateLogin(inputValue);
-    if (error) {
-      setErrorMessage(error);
-      return;
-    }
 
     try {
       const user = await authService.logIn(inputValue);

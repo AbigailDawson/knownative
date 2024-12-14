@@ -1,0 +1,42 @@
+.reusable-modal {
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100vh - 200px);
+  max-width: calc(100vw - 400px);
+  min-width: 300px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 0 15px 15px 15px;
+
+  &__header-contents {
+    align-items: flex-start;
+    display: flex;
+    gap: 15px;
+    justify-content: space-between;
+  }
+
+  &__title {
+    padding-top: 15px;
+  }
+
+  &__button-container {
+    margin-right: auto;
+
+    &--modal{
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+      margin-left: auto;
+    }
+  }
+
+  &__buttons{
+    display: flex;
+    
+    &--close{
+      background: none;
+      font-size: 40px;
+      padding: 0;
+    }
+  }
+}

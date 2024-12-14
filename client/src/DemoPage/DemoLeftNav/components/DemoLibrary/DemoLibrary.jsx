@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import './DemoLibrary.css';
+import './DemoLibrary.scss';
 import DemoChooseTextCard from './components/DemoChooseTextCard/DemoChooseTextCard';
 
 function DemoLibrary({
@@ -14,7 +14,8 @@ function DemoLibrary({
   const [bookshelfTexts, setBookShelfTexts] = useState([]);
 
   useEffect(() => {
-    //the filtered books will determine what goes in the "bookshelf" section. all of this will be based on the textSelection variable, which is determined by the welcome modal.
+    // The filtered books will determine what goes in the "bookshelf" section. 
+    // All of this will be based on the textSelection variable, which is determined by the welcome modal.
     const difficulties = ['beginner', 'intermediate', 'advanced'];
     const filteredBooks = difficulties.filter((difficulty) => difficulty !== textSelection);
 
@@ -25,24 +26,24 @@ function DemoLibrary({
 
   return (
     <main className="DemoLibrary">
-      <header className="demo-library-header-container">
-        <h1 className="demo-library-sidebar-heading">Library</h1>
+      <header className="DemoLibrary__header-container">
+        <h1 className="DemoLibrary__sidebar-heading">Library</h1>
         <ChevronLeftIcon
           fontSize="large"
           data-tooltip-id="library-tooltip"
           onClick={handleBackArrowClick}
-          className="demo-library-arrowBack"
+          className="arrowBack"
           color="#006769"
         />
       </header>
-      <section className="demo-library-subtext">
+      <section className="DemoLibrary__sidebar-subtext">
         <p>
           Choose a different text for this demo. You will be able to see a preview of the text prior
           to loading it.
         </p>
         <p>In the full version of KnowNative, you can import any text you want.</p>
       </section>
-      <section className="demo-library-currently-reading-container">
+      <section className="DemoLibrary__currently-reading-container">
         <h5>Currently Reading:</h5>
         <DemoChooseTextCard
           textSelection={mainText}
@@ -51,8 +52,8 @@ function DemoLibrary({
           textTitle={demoTexts[textSelection].title}
         />
       </section>
-      <section className="demo-library-bookshelf-container">
-        <h5 className="demo-library-bookshelf-label">Bookshelf:</h5>
+      <section className="DemoLibrary__bookshelf-container">
+        <h5 className="DemoLibrary__bookshelf-label">Bookshelf:</h5>
         {bookshelfTexts.map((difficulty, i) => {
           return (
             <DemoChooseTextCard

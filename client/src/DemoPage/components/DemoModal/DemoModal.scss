@@ -1,4 +1,4 @@
-dialog.demo-modal {
+.demo-modal-dialog {
   margin: auto;
   text-align: left;
   box-sizing: border-box;
@@ -12,6 +12,6 @@ dialog.demo-modal {
  }
  
  
- .demo-modal::backdrop {
+ .demo-modal-dialog::backdrop {
   background: hsl(0 0% 0% / 50%);
  } 
