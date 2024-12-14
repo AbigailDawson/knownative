@@ -62,7 +62,7 @@ const Modal = ({
           </div>
         ) : null}
         {hasCustomButtons ? null : (
-          <div className="modal-button-container">
+          <div className="reusable-modal__button-container--modal">
             <Button
               buttonText={buttonSecondaryText}
               buttonOnClickFunc={handleSecondaryButtonOnClick}
