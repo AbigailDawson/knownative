@@ -20,14 +20,14 @@ export default function AboutPage() {
             </p>
           </div>
         </section>
-        <section>
-          <div className="creator">
-            <div className="creator__container">  {/* creator */}
-              <div className="creator__left">  {/* creator */}
-                <h3 className="creator__heading">  {/* creator__heading */}
+        <section className="creator__section">
+          <div>
+            <div className="creator__card">
+              <div className="creator__card--left">
+                <h3 className="creator__card--heading">
                   Meet Abigail, owner and creator of the KnowNative project
                 </h3>
-                <p>Hi! I&apos;m Abigail, the creator and owner of the KnowNative project.</p>  {/* creator__description */}
+                <p>Hi! I&apos;m Abigail, the creator and owner of the KnowNative project.</p>
                 <p>
                   My love for languages began with my first Japanese class in college. During my
                   first semester, I had my first real conversation with an exchange student entirely
@@ -56,8 +56,8 @@ export default function AboutPage() {
                   imagined it!
                 </p>
               </div>
-              <div className="creator__right">
-                <img className="creator__img" src="./images/abigail-taiwan.jpg" alt="" />
+              <div className="creator__card--right">
+                <img className="creator__img" src="./images/abigail-taiwan.jpg" alt="Picture of Abigail, smiling with arms wide open at the entrance of Huwei Fort in New Taipei, China" />
               </div>
             </div>
           </div>
