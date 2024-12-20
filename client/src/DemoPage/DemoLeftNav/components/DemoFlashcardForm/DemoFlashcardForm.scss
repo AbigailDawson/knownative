@@ -1,0 +1,45 @@
+.flashcard-form {
+  display: flex;
+  flex-direction: column;
+  padding: 3vmin 3vmin;
+  margin-top: 1rem;
+  width: 100%;
+  color: black;
+
+    &__header {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &__arrow-back:hover {
+      background-color: var(--light);
+      border-radius: 0.7vmin;
+      cursor: pointer;
+    }
+
+    &__quiz-subtext {
+      text-align: left;
+  margin-top: 2vmin;
+    }
+
+}
+
+.form-group{
+
+  &__label {
+    text-align: left;
+    margin-top: 1rem;
+    color: black;
+  }
+
+  &__radio-buttons {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__checkbox{
+    &--show-pinyin {
+      margin-top: 0.5rem;
+    }
+  }
+}
