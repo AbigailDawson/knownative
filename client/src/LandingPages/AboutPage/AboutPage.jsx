@@ -21,7 +21,6 @@ export default function AboutPage() {
           </div>
         </section>
         <section className="creator__section">
-        <section className="creator__section">
           <div>
             <div className="creator__card">
               <div className="creator__card--left">
