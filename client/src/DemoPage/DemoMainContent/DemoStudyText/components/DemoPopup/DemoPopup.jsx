@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import './DemoPopup.css';
+import './DemoPopup.scss';
 
 export default function Popup({ word, popupPosition, saveWord, onClose, checkSaved }) {
   const [popupHeight, setPopupHeight] = useState('15%');
@@ -19,7 +19,7 @@ export default function Popup({ word, popupPosition, saveWord, onClose, checkSav
   }, [onClose]);
 
   useEffect(() => {
-    const popupMeaning = document.querySelector('.popup-meaning');
+    const popupMeaning = document.querySelector('.save-word-popup__meaning');
     const html = popupMeaning.innerHTML;
     const lines = html.split('<br>').length; // count the number of lines by splitting on <br> elements
 
@@ -43,17 +43,17 @@ export default function Popup({ word, popupPosition, saveWord, onClose, checkSav
 
   return (
     <div
-      className="Popup"
+      className="save-word-popup"
       style={{
         left: `${popupPosition[0] + 105}px`,
         top: popupHeight === '11rem' ? `${popupPosition[1] - 100}px` : `${popupPosition[1] - 50}px`,
         height: popupHeight
       }}
       ref={popupRef}>
-      <div className="popup-content">
-        <p className="popup-pinyin">{pinyin}</p>
-        <p className="popup-glyphs">{word.text}</p>
-        <p className="popup-meaning">
+      <div className="save-word-popup__content">
+        <p className="save-word-popup__pinyin">{pinyin}</p>
+        <p className="save-word-popup__glyphs">{word.text}</p>
+        <p className="save-word-popup__meaning">
           {meaning.length > 25 ? (
             <span>
               {meaning.substring(0, meaning.lastIndexOf(' ', 20))}
@@ -66,23 +66,23 @@ export default function Popup({ word, popupPosition, saveWord, onClose, checkSav
         </p>
       </div>
       {!isSaved ? (
-        <button className="save-button" onClick={handleSaveClick}>
+        <button className="save-word-popup__save-button" onClick={handleSaveClick}>
           {' '}
           +{' '}
         </button>
       ) : (
-        <button className="save-button saved-button" disabled="true">
+        <button className="save-word-popup__save-button--saved" disabled="true">
           {' '}
           ✓{' '}
         </button>
       )}
       &nbsp;
       {/* <button className="save-button" onClick={handleSaveClick} disabled={isSaved}> + </button>&nbsp; */}
-      <button className="close-btn" onClick={onClose}>
+      <button className="save-word-popup__close-btn" onClick={onClose}>
         {' '}
         x{' '}
       </button>
-      <div className="popup-arrow" />
+      <div className="save-word-popup__arrow" />
     </div>
   );
 }
