@@ -13,6 +13,7 @@
     "mongoose": "^8.7.0",
     "morgan": "^1.10.0",
     "nodejieba": "^3.4.3",
+    "pinyin-pro": "^3.26.0",
     "serve-favicon": "^2.5.0"
   },
   "scripts": {
