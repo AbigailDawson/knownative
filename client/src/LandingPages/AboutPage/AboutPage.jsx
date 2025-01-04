@@ -24,7 +24,7 @@ export default function AboutPage() {
           <div>
             <div className="creator__card">
               <div className="creator__card--left">
-                <h3 className="creator__card-heading">
+                <h3 className="creator__card--heading">
                   Meet Abigail, owner and creator of the KnowNative project
                 </h3>
                 <p>Hi! I&apos;m Abigail, the creator and owner of the KnowNative project.</p>
@@ -57,7 +57,7 @@ export default function AboutPage() {
                 </p>
               </div>
               <div className="creator__card--right">
-                <img className="creator__card--abigail-taiwan" src="./images/abigail-taiwan.jpg" alt="Picture of Abigail, smiling with arms wide open at the entrance of Huwei Fort in New Taipei, China" />
+                <img className="creator__img" src="./images/abigail-taiwan.jpg" alt="Picture of Abigail, smiling with arms wide open at the entrance of Huwei Fort in New Taipei, China" />
               </div>
             </div>
           </div>
