@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import './DemoStudyText.css';
+import './DemoStudyText.scss';
 import DemoPopup from './components/DemoPopup/DemoPopup';
 import DemoWord from './components/DemoWord/DemoWord';
 import * as demoAPI from '../../../utilities/demo-api';
@@ -100,7 +100,7 @@ export default function DemoStudyText({
   return (
     <>
       <div className="StudyText" ref={containerRef}>
-        <div className="study-text-block">{words}</div>
+        <div className="StudyText__block">{words}</div>
       </div>
       {showPopup && (
         <DemoPopup

@@ -1,0 +1,31 @@
+.navbar {
+    &-nav {
+        column-gap: 16px;
+    }
+    &__logo {
+        height: 120px;
+    }
+}
+
+.nav {
+    &-link {
+        position: relative;
+        transition: all 0.3s;
+    
+        &::after {
+            content: "";
+            position: absolute;
+            left: 3px;
+            bottom: 3px;
+            width: 0;
+            height: 2px;
+            background-color: hsl(169, 43%, 54%);
+            transition: width 0.3s ease-in-out;
+        }
+    
+        &:hover::after {
+            width: 90%;
+            color: hsl(169, 43%, 54%);
+        }
+    }
+}

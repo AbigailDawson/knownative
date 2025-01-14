@@ -1,0 +1,82 @@
+.study-word:not(.specialChar) {
+  cursor: pointer;
+}
+
+.specialChar {
+  width: 2vmin;
+}
+
+.study-word,
+.specialChar {
+  display: flex;
+  flex-direction: column;
+  height: 6.05rem;
+  max-width: 6.7rem;
+  margin: 0 0.2vmin;
+  font-size: 1.7rem;
+  text-wrap: wrap;
+  min-height: 8.5rem;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Montserrat', 'Roboto', sans-serif;
+  
+  & p {
+    margin: 0;
+  }
+
+  &__zh {
+    margin: 0;
+
+    &:hover {
+      background-color: #d5fbf4;
+      border-radius: 0.5vmin;
+      padding: 2px;
+      opacity: 0.8;
+    }
+  }
+
+  &__special-char {
+    display: flex;
+    flex-direction: column;
+    height: 6.05rem;
+    max-width: 6.7rem;
+    margin: 0 0.2vmin;
+    font-size: 1.7rem;
+    text-wrap: wrap;
+    min-height: 8.5rem;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    width: 2vmin;
+  }
+
+  &__annotation {
+    font-size: 0.9rem;
+    font-family: 'Montserrat', 'Roboto', sans-serif;
+  }
+
+  &__meaning {
+    font-weight: bold;
+    min-width: 10rem;
+    z-index: 1;
+  }
+
+  &__zh--saved {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 1.5px;
+  }
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .study-word,
+  .study-word__special-char {
+    font-size: 1.3rem;
+  }
+
+  .study-word__annotation {
+    font-size: 0.8rem;
+  }
+}

@@ -1,0 +1,27 @@
+.translate-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2vmin;
+  margin: 0 3vmin;
+  padding: 4vmin 2vmin;
+  color: var(--drk-txt);
+
+  &__block {
+    margin-top: 2vmin;
+    font-size: 1.8rem;
+    text-align: left;
+    max-width: 900px;
+  }
+
+  @media (max-width: 768px) {
+    &__block {
+      font-size: 1.3rem;
+    }
+  }
+
+  @media (max-width: 550px) {
+    & {
+      padding: 4vmin 0 0 5.5vmin;
+    }
+  }
+}

@@ -36,6 +36,14 @@ const coreContributors = [
     portfolio: 'https://www.projectcarver.com/portfolio'
   },
   {
+    name: 'JP Escobari',
+    role: 'Developer',
+    image: '/images/core-contributors/JP-Escobari.png',
+    bio: '<p>JP is a bilingual full-stack software developer with a background in Cybersecurity and Computer Networks Engineering. He&apos;s got a deep passion for React, CSS, and crafting responsive, user-friendly designs, although really, he&apos;s always been the type to dive into anything that&apos;s new and cool in tech - from building custom PCs to exploring the latest in gaming. His background naturally brings a lot of attention to detail and a unique perspective to his development work. JP&apos;s continuous curiosity and enthusiasm for tech make him a versatile developer who&apos;s excited to keep growing in the ever-evolving world of software.</p>',
+    linkedin: 'https://www.linkedin.com/in/juanpabloescobari/',
+    github: 'https://github.com/JPEscobari'
+  },
+  {
     name: 'Alex Grimes',
     role: 'Developer',
     image: '/images/core-contributors/Alex-Grimes.png',
@@ -86,14 +94,6 @@ const coreContributors = [
     github: 'https://github.com/psantos2107'
   },
   {
-    name: 'Nakita Strangeways',
-    role: 'Developer',
-    image: '/images/core-contributors/Nakita-Strangeways.png',
-    bio: '<p>Nakita is a dedicated Software Engineer with over 4 years of experience, specializing in front-end web development using React and CSS. She is adept at creating intuitive and visually appealing user interfaces. In her spare time, she enjoys gaming, spending time with her pets, and expanding her horizons through travel and learning.</p>',
-    linkedin: 'https://www.linkedin.com/in/nakita-strangeways/',
-    github: 'https://github.com/nakita-strangeways'
-  },
-  {
     name: 'Zephyr Worthington',
     role: 'Back-End Developer',
     image: '/images/core-contributors/Zephyr-Worthington.png',
@@ -119,6 +119,10 @@ const pastCoreContributors = [
   {
     name: 'Light Liu',
     role: 'UX/UI Designer'
+  },
+  {
+    name: 'Nakita Strangeways',
+    role: 'Developer'
   }
 ];
 
