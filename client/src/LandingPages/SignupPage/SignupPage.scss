@@ -1,134 +1,94 @@
 .signup-page {
 
-    &__main {
-        display: grid;
-        grid-template-rows: auto 1fr;
-    }
-
     &__container {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        min-width: fit-content;
-        padding: 1em 2em;
-    }
-
-    &__title {
-        color: black;
+        display: grid;
+        grid-template-columns: 1fr;
         margin-inline: auto;
     }
 
-    &--error-message {
-        
+    &__title {
+        font-size: 2rem;
+        text-align: center;
+        color: black;
+        padding: 1em 0 0 0;
     }
-}
 
-.signup-form {
-    
-    &__container {
-        display: grid;
-        gap: 0px;
+    &__error-message {
+        color: red;
+        font-size: 1.2rem;
+        margin-bottom: 0.5em;
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        gap: 0.8em;
         align-items: center;
-        max-width: 90vw;
+        justify-content: center;
     }
 
-    &__input-box {
-        display: grid;
-        position: relative;
-        grid-template-areas: "stack";
-        margin: 1em;
-        grid-template-columns: 1fr;
-    }
-
-    &__input {
-        height: 3em;
-        padding: 12px;
-        border-radius: 8px;
-        cursor: auto;
+    &__button {
         width: 100%;
-        grid-area: stack;
-        background-color: #E1E3E3;
-        border: none;
+        max-width: 400px;
+        background-color: #086A6C;
+        color: white;
+        font-weight: 600;
 
-        &:valid ~ label,
-        &:invalid[focused="true"] ~ label,
-        &:focus ~ label {
-            color: black;
-            transform: translateX(8px) translateY(-8px);
-            font-size: 0.65em;
-            padding: 0 4px;
-            background: white;
-            border-left: 3px double black;
-            border-right: 3px double black;
-            letter-spacing: 0.2em;
-            width: max-content;
+        &-email {
+            margin-top: 2em;
+        }
+
+        &-google {
+            background-color: #E5F2F6;
+            color: #086A6C;
+            &--icon {
+                max-height: 2em;
+            }
         }
     }
+
+    &__separator {
+        display: flex;
+        align-items: center;
+        text-align: center;
+        color: black;
+        width: 400px;
     
-    &__label {
-
-        &-container {
-            position: absolute;
-            left: 0px;
-            top: 4px;
-            padding: 8px;
-            pointer-events: none;
-            font-size: 1em;
-            color: black;
-            transition: 0.5s;
-            grid-area: stack;
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
+        &::before,
+        &::after {
+        content: "";
+        flex: 1;
+        border-bottom: 1px solid rgb(136, 136, 136);
         }
-
-        &-text {
-            text-align: left;
-            width: max-content;
-        }
-
+        
+        &--text {
+            text-transform: uppercase;
+            padding: 0 10px;
+          }
     }
+}
 
-    &__input {
-        &--error {
-            font-size: 0.75rem;
-            display: flex;
-            align-items: flex-start;
-            text-align: left;
-            font-style: italic;
-            color: rgb(0, 31, 31);
-            display: none;
-        }
-
-        &:invalid[focused="true"] ~ &--error {
-            display: block;
-        }
+.password-validation__wrapper {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+  
+    &--visible {
+      max-height: 500px;
+      opacity: 1;
+      transition: max-height 0.5s ease-in, opacity 0.5s ease-in;
     }
-}    
-    
-
-label > svg {
-    max-width: 24px;
-}
-
-input:invalid[focused="true"] ~ .input-error-message {
-        display: block;
-}
-
-button > svg {
-    max-width: 25px;
-}
-
-button > span {
-    text-align: left;
-    vertical-align: middle;
+    &--hidden {
+        max-height: 0px;
+        opacity: 0;
+        margin-top: -12px;
+    }
 }
 
 .password-validation {
     list-style-type: none;
     padding: 0;
-    margin: 10px 0;
+    margin: 10px 0px;
 }
 
 .password-validation li {
@@ -145,3 +105,5 @@ button > span {
 .password-validation svg {
     max-width: 24px;
 }
+
+

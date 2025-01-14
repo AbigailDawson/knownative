@@ -11,9 +11,12 @@ import { MdEmail } from 'react-icons/md';
 import { FaXTwitter } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
 import { useAuthContext } from '../../contexts/Auth/AuthProvider';
+import LoginModal from '../components/LandingPageLoginModal/LoginModal';
 
 export default function LandingPage() {
   const [showModal, setShowModal] = useState(false);
+  const [showLoginModal, setShowLoginModal] = useState(false);
+
   const screenHeight = window.screen.height;
   const screenWidth = window.screen.width;
   const { user } = useAuthContext();
@@ -62,9 +65,18 @@ export default function LandingPage() {
                   className="btn btn-lg px-4 github-button">
                   GitHub
                 </a>
-                <Link to="/login" className="btn btn-lg px-4 login-button">
-                  Login
-                </Link>
+
+                {/* temporary button element for login modal. Based on wireframes, this might move elsewhere */}
+                <div>
+                  <button
+                    className="btn btn-lg px-4 login-button"
+                    onClick={() => setShowLoginModal(true)}>
+                    Login
+                  </button>
+
+                  {/* Conditionally render the LoginModal */}
+                  {showLoginModal && <LoginModal setShowModal={() => setShowLoginModal(false)} />}
+                </div>
                 <Link to="/signup" className="btn btn-lg px-4 signup-button">
                   Sign up
                 </Link>
