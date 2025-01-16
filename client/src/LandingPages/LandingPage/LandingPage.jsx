@@ -12,10 +12,12 @@ import { FaXTwitter } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
 import { useAuthContext } from '../../contexts/Auth/AuthProvider';
 import LoginModal from '../components/LandingPageLoginModal/LoginModal';
+import SignupModal from '../components/LandingPageSignupModal/SignupModal';
 
 export default function LandingPage() {
   const [showModal, setShowModal] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false);
+  const [showSignupModal, setShowSignupModal] = useState(false);
 
   const screenHeight = window.screen.height;
   const screenWidth = window.screen.width;
@@ -77,9 +79,15 @@ export default function LandingPage() {
                   {/* Conditionally render the LoginModal */}
                   {showLoginModal && <LoginModal setShowModal={() => setShowLoginModal(false)} />}
                 </div>
-                <Link to="/signup" className="btn btn-lg px-4 signup-button">
-                  Sign up
-                </Link>
+                <div>
+                  <button
+                    className="btn btn-lg px-4 login-button"
+                    onClick={() => setShowSignupModal(true)}>
+                    Sign up
+                  </button>
+                </div>
+                {/* Conditionally render the SignupModal */}
+                {showSignupModal && <SignupModal setShowModal={() => setShowSignupModal(false)} />}
               </div>
             </div>
             <div className="overflow-hidden" style={{ maxHeight: 30 + 'vh' }}>
