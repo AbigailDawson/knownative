@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Modal from '../../../ui-components/Modal/modal';
-import './SignupModal.scss';
+import '../../SignupPage/SignupPage.scss';
 import { Link, useNavigate } from 'react-router-dom';
 import FormInput from '../Forms/FormInput/FormInput';
 import PasswordValidation from '../Forms/PasswordValidation';
@@ -161,7 +161,7 @@ const SignupModal = ({ setShowModal }) => {
                 Sign up with Google
               </button>
               <div>
-                <Link to="/login" className="signup-text">
+                <Link to="/login" className="signup-page__login-link">
                   Already have an account? Log in
                 </Link>
               </div>
