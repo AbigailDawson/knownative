@@ -1,116 +1,119 @@
 .signup-page {
+  &__container {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-inline: auto;
+  }
 
-    &__container {
-        display: grid;
-        grid-template-columns: 1fr;
-        margin-inline: auto;
+  &__title {
+    font-size: 1.5rem;
+    text-align: center;
+    color: black;
+    padding: 1em 0 0 0;
+  }
+
+  &__error-message {
+    color: black;
+    font-size: 1.2rem;
+    margin-bottom: 0.5em;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8em;
+    align-items: center;
+    justify-content: center;
+    padding: 0 160px;
+  }
+
+  &__button {
+    width: 100%;
+    max-width: 400px;
+    background-color: #086a6c;
+    color: white;
+    font-weight: 600;
+
+    &-email {
+      margin-top: 2em;
     }
 
-    &__title {
-        font-size: 1.5rem;
-        text-align: center;
-        color: black;
-        padding: 1em 0 0 0;
+    &-google {
+      background-color: #e5f2f6;
+      color: #086a6c;
+      &--icon {
+        max-height: 2em;
+      }
+    }
+  }
+
+  &__separator {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: black;
+    width: 400px;
+
+    &::before,
+    &::after {
+      content: '';
+      flex: 1;
+      border-bottom: 1px solid rgb(136, 136, 136);
     }
 
-    &__error-message {
-        color: black;
-        font-size: 1.2rem;
-        margin-bottom: 0.5em;
+    &--text {
+      text-transform: uppercase;
+      padding: 0 10px;
     }
+  }
 
-    &__form {
-        display: flex;
-        flex-direction: column;
-        gap: 0.8em;
-        align-items: center;
-        justify-content: center;
-        padding: 0 160px;
-    }
+  &__login-link {
+    color: black;
+    font-size: 14px;
+    text-align: center;
+  }
 
-    &__button {
-        width: 100%;
-        max-width: 400px;
-        background-color: #086A6C;
-        color: white;
-        font-weight: 600;
-
-        &-email {
-            margin-top: 2em;
-        }
-
-        &-google {
-            background-color: #E5F2F6;
-            color: #086A6C;
-            &--icon {
-                max-height: 2em;
-            }
-        }
-    }
-
-    &__separator {
-        display: flex;
-        align-items: center;
-        text-align: center;
-        color: black;
-        width: 400px;
-    
-        &::before,
-        &::after {
-        content: "";
-        flex: 1;
-        border-bottom: 1px solid rgb(136, 136, 136);
-        }
-        
-        &--text {
-            text-transform: uppercase;
-            padding: 0 10px;
-          }
-    }
-
-    &__login-link {
-        color: black;
-        font-size: 14px;
-        text-align: center;
-    }
+  &__login-link:hover {
+    text-decoration: underline;
+  }
 }
 
 .password-validation__wrapper {
-    max-height: 0;
-    overflow: hidden;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+
+  &--visible {
+    max-height: 500px;
+    opacity: 1;
+    transition:
+      max-height 0.5s ease-in,
+      opacity 0.5s ease-in;
+  }
+  &--hidden {
+    max-height: 0px;
     opacity: 0;
-  
-    &--visible {
-      max-height: 500px;
-      opacity: 1;
-      transition: max-height 0.5s ease-in, opacity 0.5s ease-in;
-    }
-    &--hidden {
-        max-height: 0px;
-        opacity: 0;
-        margin-top: -12px;
-    }
+    margin-top: -12px;
+  }
 }
 
 .password-validation {
-    list-style-type: none;
-    padding: 0;
-    margin: 10px 0px;
+  list-style-type: none;
+  padding: 0;
+  margin: 10px 0px;
 }
 
 .password-validation li {
-    font-size: 0.9rem;
-    color: #556163;
-    text-align: left;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    column-gap: 8px;
-    margin: 8px;
+  font-size: 0.9rem;
+  color: #556163;
+  text-align: left;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  column-gap: 8px;
+  margin: 8px;
 }
 
 .password-validation svg {
-    max-width: 24px;
+  max-width: 24px;
 }
-
-
