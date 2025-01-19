@@ -1,0 +1,175 @@
+import React, { useState } from 'react';
+import Modal from '../../../ui-components/Modal/modal';
+import '../../SignupPage/SignupPage.scss';
+import { Link, useNavigate } from 'react-router-dom';
+import FormInput from '../Forms/FormInput/FormInput';
+import PasswordValidation from '../Forms/PasswordValidation';
+import * as authService from '../../../services/authService';
+import { useAuthContext } from '../../../contexts/Auth/AuthProvider';
+import { validateInput } from '../../../utilities/validation';
+
+const SignupModal = ({ setShowModal }) => {
+  const [inputValue, setInputValue] = useState({
+    firstName: '',
+    lastName: '',
+    username: '',
+    email: '',
+    password: '',
+    confirmPassword: ''
+  });
+
+  const [inputErrors, setInputErrors] = useState({});
+  const [errorMsg, setErrorMsg] = useState('');
+  const [isPasswordTyping, setIsPasswordTyping] = useState(false);
+  const navigate = useNavigate();
+  const { setUser } = useAuthContext();
+
+  const formFields = [
+    {
+      name: 'firstName',
+      label: 'First Name',
+      type: 'text',
+      id: 'signup-firstName',
+      htmlFor: 'signup-firstName',
+      required: true
+    },
+    {
+      name: 'lastName',
+      label: 'Last Name',
+      type: 'text',
+      id: 'signup-lastName',
+      htmlFor: 'signup-lastName',
+      required: true
+    },
+    {
+      name: 'username',
+      label: 'Username',
+      type: 'text',
+      id: 'signup-username',
+      htmlFor: 'signup-username',
+      required: true
+    },
+    {
+      name: 'email',
+      label: 'Email Address',
+      type: 'email',
+      id: 'signup-email',
+      htmlFor: 'signup-email',
+      required: true
+    },
+    {
+      name: 'password',
+      label: 'Password',
+      type: 'password',
+      id: 'signup-password',
+      htmlFor: 'signup-password',
+      required: true
+    },
+    {
+      name: 'confirmPassword',
+      label: 'Confirm Password',
+      type: 'password',
+      id: 'signup-confirmPassword',
+      htmlFor: 'signup-confirmPassword',
+      pattern: inputValue.password,
+      required: true
+    }
+  ];
+
+  const handleChange = (e) => {
+    setInputValue({ ...inputValue, [e.target.name]: e.target.value });
+    if (e.target.name === 'password') {
+      setIsPasswordTyping(true);
+    }
+  };
+
+  const handleBlur = (e) => {
+    const fieldName = e.target.name;
+    const fieldValue = e.target.value;
+    const newErrors = validateInput({ ...inputValue, [fieldName]: fieldValue });
+    setInputErrors({ ...inputErrors, [fieldName]: newErrors[fieldName] });
+  };
+
+  async function handleSubmit(evt) {
+    evt.preventDefault();
+    try {
+      const user = await authService.signUp(inputValue);
+      setUser(user);
+      navigate('/signup-success');
+    } catch (err) {
+      setInputValue({
+        ...inputValue,
+        password: '',
+        confirmPassword: ''
+      });
+      setErrorMsg(err.message);
+    }
+  }
+
+  return (
+    <Modal
+      canCloseOnEscapeKey={true}
+      setShowModal={setShowModal}
+      hasCloseButton={true}
+      hasCustomButtons={true}>
+        <main className='signup-page__main'>
+          <section className="signup-page__container">
+            <h1 className="signup-page__title">Create Your Knownative Account</h1>
+            {errorMsg && (
+              <div className="signup-page__error-message">
+                <h5>
+                  <em>{errorMsg}</em>
+                </h5>
+              </div>
+            )}
+            <form className="signup-page__form" onSubmit={handleSubmit}>
+              {formFields.map((input, idx) => (
+                <React.Fragment key={idx}>
+                  <FormInput
+                    key={idx}
+                    {...input}
+                    value={inputValue[input.name]}
+                    onChange={handleChange}
+                    errorInputMessage={inputErrors[input.name]}
+                    handleBlur={handleBlur}
+                  />
+                  {input.name === 'password' && (
+                    <div
+                      className={`password-validation__wrapper 
+                        ${
+                          isPasswordTyping
+                            ? 'password-validation__wrapper--visible'
+                            : 'password-validation__wrapper--hidden'
+                        }`}>
+                      <PasswordValidation password={inputValue.password} />
+                    </div>
+                  )}
+                </React.Fragment>
+              ))}
+              <button className="signup-page__button signup-page__button-email" type="submit">
+                Sign Up
+              </button>
+              <div className="signup-page__separator">
+                <span className="signup-page__separator--text">OR</span>
+              </div>
+              <button className="signup-page__button signup-page__button-google">
+                <img
+                  className="signup-page__button-google--icon"
+                  src="../../../public/images/google-icon.png"
+                  alt="google sign in"
+                />
+                Sign up with Google
+              </button>
+              <div>
+                <Link to="/login" className="signup-page__login-link">
+                  Already have an account? Log in
+                </Link>
+              </div>
+            </form>
+          </section>
+      </main>
+    </Modal>
+  );
+};
+
+export default SignupModal;
