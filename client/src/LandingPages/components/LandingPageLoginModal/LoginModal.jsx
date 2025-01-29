@@ -1,13 +1,13 @@
-import { useState } from 'react';
-import './LoginPage.scss';
+import React, { useState } from 'react';
+import Modal from '../../../ui-components/Modal/modal';
+import './LoginModal.scss';
 import { Link } from 'react-router-dom';
-import LandingPageNav from '../components/LandingPageHeader/LandingPageNav';
-import * as authService from '../../services/authService';
+import * as authService from '../../../services/authService';
 import { useNavigate } from 'react-router-dom';
-import { useAuthContext } from '../../contexts/Auth/AuthProvider';
-import FormInput from '../components/Forms/FormInput/FormInput';
+import { useAuthContext } from '../../../contexts/Auth/AuthProvider';
+import FormInput from '../Forms/FormInput/FormInput';
 
-export default function LoginPage() {
+const LoginModal = ({ setShowModal }) => {
   const [inputValue, setInputValue] = useState({
     email: '',
     password: ''
@@ -16,7 +16,6 @@ export default function LoginPage() {
   const navigate = useNavigate();
   const { setUser } = useAuthContext();
 
-  // Add more form fields as needed here:
   const formFields = [
     {
       name: 'email',
@@ -44,7 +43,6 @@ export default function LoginPage() {
 
   async function handleLogin(e) {
     e.preventDefault();
-    setErrorMessage('');
 
     try {
       const user = await authService.logIn(inputValue);
@@ -63,11 +61,15 @@ export default function LoginPage() {
   }
 
   return (
-    <main>
-      <LandingPageNav />
-      <div className="login-page__form-container">
-        <div className="login-page__container">
-          <h1 className="login-page__header">Log in to view your dashboard</h1>
+    <Modal
+      canCloseOnEscapeKey={true}
+      setShowModal={setShowModal}
+      hasCloseButton={true}
+      hasCustomButtons={true}>
+      <div className="login-modal__login-form-container">
+        <div className="login-modal__container">
+          <h1 className="login-modal__header">Log Into Your KnowNative Account</h1>
+          <h2 className="login-modal__secondary-text">Lorem ipsum dolor sit amet consectetur.</h2>
           <form className="login-page__form" onSubmit={handleLogin}>
             {formFields.map((input, idx) => (
               <FormInput
@@ -88,7 +90,7 @@ export default function LoginPage() {
                     src="/images/error_note.svg"
                     alt="error symbol"
                   />{' '}
-                  <p className="login-page__error-message">{errorMessage}</p>{' '}
+                  <p className="login-page__error-message login-modal__no-margin">{errorMessage}</p>{' '}
                 </div>
               )}
             </div>
@@ -115,6 +117,8 @@ export default function LoginPage() {
           </Link>
         </div>
       </div>
-    </main>
+    </Modal>
   );
-}
+};
+
+export default LoginModal;
