@@ -24,11 +24,11 @@ app.use('/api/demo', require('./routes/api/demo'))
 
 // The following "catch all" route (note the *) is necessary
 // to return the index.html on all non-AJAX requests
-app.get('/*', function (req, res) {
+app.get('*', function (req, res) {
   const filePath = path.join(__dirname, '../client/dist', 'index.html');
   console.log('Serving file from path:', filePath);
-  res.sendFile(path.join(__dirname, '../client/dist', 'index.html'));
-})
+  res.sendFile(filePath);
+});
 
 // Configure to use port 3001 instead of 3000 during
 // development to avoid collision with React's dev server
