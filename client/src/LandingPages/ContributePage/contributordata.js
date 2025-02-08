@@ -9,15 +9,6 @@ const coreContributors = [
   //   portfolio: delete if not provided
   //   }
   {
-    name: 'Sarma Akondi',
-    role: 'Developer',
-    image: '/images/core-contributors/Sarma-Akondi.png',
-    bio: "<p>Sarma made the big move from India to Australia in January 2024 and jumped straight into the tech world, graduating from the Software Engineering Immersive bootcamp at General Assembly, Sydney, in August 2024. Currently, Sarma is having a blast working with the team at KnowNative, where he is putting his skills to good use. When he's not coding, he's probably diving into some anime, hitting the gym, or just chilling with a book or some tunes—Sarma's taste in music is all over the place!</p>",
-    linkedin: 'https://www.linkedin.com/in/sarmaakondi/',
-    github: 'https://github.com/sarmaakondi',
-    portfolio: 'https://sarmaakondi.github.io/portfolio/'
-  },
-  {
     name: 'Seanna Arnold',
     role: 'Front-End Developer',
     image: '/images/core-contributors/Seanna-Arnold.png',
@@ -25,15 +16,6 @@ const coreContributors = [
     linkedin: 'https://www.linkedin.com/in/seanna-arnold/',
     github: 'https://github.com/Seanna-Arnold',
     portfolio: 'https://seanna-arnold.com/'
-  },
-  {
-    name: 'Renna Carver',
-    role: 'Developer',
-    image: '/images/core-contributors/Renna-Carver.png',
-    bio: '<p>Renna is a software engineer dedicated to making education more accessible through interactive learning tools. When Renna is not working on a project or teaching, you can find her lacing up her roller skates and hitting the pavement or learning a new language. Current stack: React, Node, Express, and MongoDB.</p>',
-    linkedin: 'https://www.linkedin.com/in/rennacarver',
-    github: 'http://github.com/rennacarver',
-    portfolio: 'https://www.projectcarver.com/portfolio'
   },
   {
     name: 'JP Escobari',
@@ -61,21 +43,20 @@ const coreContributors = [
     github: 'https://github.com/jsnhn'
   },
   {
+    name: 'Sara Korman',
+    role: 'UX/UI Designer',
+    image: '/images/core-contributors/Sara-Korman.png',
+    bio: '<p>Sara is a UX/UI designer passionate about crafting intuitive and engaging digital experiences. With a keen eye for user needs, Sara designs seamless interfaces that enhance accessibility and usability. When not working on a project, you can find her exploring new design trends, playing with her dog, or watching a good sunset.</p>',
+    linkedin: 'https://www.linkedin.com/in/sarakorman/',
+    portfolio: 'https://www.sarakorman.com/'
+  },
+  {
     name: 'Parker Machemer',
     role: 'UX/UI Designer',
     image: '/images/core-contributors/Parker-Machemer.png',
     bio: '<p>Parker is a UI/UX designer for KnowNative. With backgrounds in tech, art, language learning, and translation, he is excited to contribute in various ways while improving his design skills.</p>',
     linkedin: 'https://www.linkedin.com/in/parker-machemer/',
     portfolio: 'https://www.kupobox.com/'
-  },
-  {
-    name: 'Kate McElhaney',
-    role: 'Front-End Developer',
-    image: '/images/core-contributors/Kate-McElhaney.png',
-    bio: '<p>Kate started her career in project management within the nonprofit and quasi-government sectors, where she implemented, designed, launched, and managed Customer Relationship Management(CRM) systems and other efficiency web based tools.  It was during this time that her love for building tech tools to enhance workflows and improve efficiency blossomed, ultimately leading her to take a deep dive into software engineering by enrolling in an immersive software engineering program. She successfully completed the program, and her passion for building full stack applications, particularly in React, continues as she gets to work with the KnowNative team.</p>',
-    linkedin: 'https://www.linkedin.com/in/kate-mcelhaney/',
-    github: 'https://github.com/K8MacEl',
-    portfolio: 'https://katemcelhaney.com/'
   },
   {
     name: 'Austin Rzansa',
@@ -114,14 +95,26 @@ const coreContributors = [
 const pastCoreContributors = [
   {
     name: 'Mel Boyajian',
-    role: 'Developer'
+    role: 'Developer',
   },
   {
     name: 'Light Liu',
     role: 'UX/UI Designer'
   },
   {
+    name: 'Sarma Akondi',
+    role: 'Front End Developer'
+  },
+  {
     name: 'Nakita Strangeways',
+    role: 'Developer'
+  },
+  {
+    name: 'Kate McElhaney',
+    role: 'Front End Developer'
+  },
+  {
+    name: 'Renna Carver',
     role: 'Developer'
   }
 ];
