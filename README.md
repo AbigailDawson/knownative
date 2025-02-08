@@ -82,41 +82,32 @@ npm run dev
 KnowNative can only improve with fresh perspectives and creative insights from contributors! We welcome any suggestions, fixes and improvements that can make KnowNative an even better resource for learners.
 
 ### Contribution Workflow
-1. **Look for an issue** – Check out the issues tab for something to work on. If you’re new, look for issues labeled “good first issue.”
+1. **Find issue** – Check out the issues tab for something to work on. If you’re new, look for issues labeled “good first issue.” Comment on the issue to let us know if you’d like to work on it so we can assign it to you.
 
-2. **Comment on the issue** – Let us know if you’d like to work on it so we can assign it to you.
-
-3. **Fork the repository** – Click the Fork button at the top right of this page to create a copy under your GitHub account.
-
-4. **Clone your fork** – On your local machine, run:
+2. **Fork and clone the repository** – Click the Fork button at the top right of this page to create a copy under your GitHub account. Then, clone the project and set the upstream remote. This allows you to pull in the latest changes from the main project.
 
 ```bash
 git clone https://github.com/<your-username>/knownative.git
 cd knownative
+git remote add upstream https://github.com/AbigailDawson/knownative.git
 ```
 
-5. **Set the upstream remote** – This allows you to pull in the latest changes from the main project.
-
-```bash
-git remote add upstream https://github.com/ORIGINAL-OWNER/knownative.git
-```
-
-6. **Switch to the develop branch** – All new contributions should be based on `develop`, not `main`.
+3. **Switch to the develop branch** – All new contributions should be based on `develop`, not `main`.
 
 ```bash
 git checkout develop
 git pull upstream develop  # Ensure you have the latest changes
 ```
 
-7. **Create a new branch** – Always work on a new branch from `develop`. Name your branch something related to the issue you're working on; for example, `fix-button-bug`.
+4. **Create a new branch** – Always work on a new branch from `develop`. Name your branch something related to the issue you're working on; for example, `fix-button-bug`.
 
 ```bash
 git checkout -b fix-button-bug
 ```
 
-8. **Make your changes** – Follow coding best practices and add helpful comments as needed. Put yourself in the shoes of someone who will come along later and build on your work.
+5. **Make your changes** – Follow coding best practices and add helpful comments as needed. Put yourself in the shoes of someone who will come along later and build on your work.
 
-9. Commit and push your changes to your forked repository:
+6. Commit and push your changes to your forked repository:
 
 ```bash
 git add .
@@ -124,7 +115,7 @@ git commit -m "Fix button alignment issue"
 git push origin fix-button-bug
 ```
 
-10. **Keep your branch updated** – If changes have been made in develop while you were working, update your branch before submitting a PR:
+> **Note:** If changes have been made in develop while you were working, update your branch before submitting a PR:
 
 ```bash
 git checkout develop
@@ -134,15 +125,15 @@ git merge develop  # Merge the latest changes into your branch
 git push origin fix-button-bug
 ```
 
-11. Create a Pull Request (PR) against `develop`:
+7. Create a Pull Request (PR) against `develop`:
 
-* Go to your forked repository on GitHub (https://github.com/<your-username>/knownative).
+* Go to your forked repository on GitHub.
 * Click "Contribute" → "Open pull request."
 * Ensure you’re merging your branch into the original project’s `develop` branch (not `main`).
 * Add a clear title and description for your changes.
 * Click "Create pull request." 🎉
 
-12. **Wait for review!** – We will review your PR and may suggest improvements.
+We will review your PR and may suggest improvements.
 
 ## Core Contributors
 
