@@ -151,7 +151,11 @@ export default function DashboardPage() {
           </div>
         </div>
         <div className="dashboard dashboard__card-buttons">
-          <button className="dashboard__card-buttons--add-item">+ Add text</button>
+          <button 
+            className="dashboard__card-buttons--add-item" 
+            onClick={() => navigate('/add-text')}>
+            + Add text
+          </button>
           <button className="dashboard__card-buttons--view-all">View all</button>
         </div>
       </div>

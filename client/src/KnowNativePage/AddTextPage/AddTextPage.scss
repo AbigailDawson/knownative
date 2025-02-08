@@ -1,0 +1,19 @@
+.add-text-form {
+    display: grid;
+    width: 55vw;
+    max-width: 820px;
+    margin-inline: auto;
+
+    &__title {
+        color: var(--darkest)
+    }
+
+    &__buttons {
+        margin-top: 22px;
+    }
+
+}
+
+.input-box__input-container {
+    width: 100%;
+}
