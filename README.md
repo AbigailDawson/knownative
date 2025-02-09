@@ -162,6 +162,7 @@ There are several resources available to you to reference as you work on the Kno
 
 * [KnowNative Project Roadmap](https://huly.app/guest/knownative?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsaW5rSWQiOiI2NzlmZTI2NTdiYTM4NjQzNjlkNWU4MTkiLCJndWVzdCI6InRydWUiLCJlbWFpbCI6IiNndWVzdEBoYy5lbmdpbmVlcmluZyIsIndvcmtzcGFjZSI6InctYWJpZ2FpbGRhd3NvLWtub3duYXRpdmUtNjYzMjgxYjEtODdiZTE2ZDY5OS0yYTZiY2QifQ.R2e7LjugpIXVF2wTT50v5FjatUSsrkoXOB3UzK0z4qI) - Learn about where the project is headed next.
 * [Entity Relationship Diagram (WIP)](https://www.figma.com/board/Z2vctFif3yeoOPypYDiE5U/KnowNative?node-id=0-1&p=f&t=32wHrtl03Wfyn8or-0) - map of data entities in KnowNative and how they are related; provides a birds eye view of how the project features fit together.
+* [Figma files](https://www.figma.com/design/EqPH1otHNLl7NI3AML3VbU/KnowNative-v2) - All designs for KnowNative, including reusable components and the beginnings of a design system.
 * [Source Code Guide](https://huly.app/guest/knownative?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsaW5rSWQiOiI2NzlmZTIzYzdiYTM4NjQzNjlkNWU3ZTMiLCJndWVzdCI6InRydWUiLCJlbWFpbCI6IiNndWVzdEBoYy5lbmdpbmVlcmluZyIsIndvcmtzcGFjZSI6InctYWJpZ2FpbGRhd3NvLWtub3duYXRpdmUtNjYzMjgxYjEtODdiZTE2ZDY5OS0yYTZiY2QifQ.jA738ZXI0uiicsxCBkRUv-d8VQyPaHg82qc0rcCduZo) - This guide is for developers working on the KnowNative project, designed to orient you to the source code so you can understand how to navigate the file structure, find what you’re looking for, and put all the necessary pieces together when working on features and fixes.
 * [SAAS Fundamentals](https://huly.app/guest/knownative?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsaW5rSWQiOiI2NzMzZmQ1MTZkMzkzMDY5ODVhM2YzNTYiLCJndWVzdCI6InRydWUiLCJlbWFpbCI6IiNndWVzdEBoYy5lbmdpbmVlcmluZyIsIndvcmtzcGFjZSI6InctYWJpZ2FpbGRhd3NvLWtub3duYXRpdmUtNjYzMjgxYjEtODdiZTE2ZDY5OS0yYTZiY2QifQ.aoe4oyOFSKqztSugYb-fd9B1eY5IMYX3K1ynDe5dfi8) - Get up to speed on Sass and SCSS syntax. It assumes no prior knowledge with Sass, and covers many of the core features that we'll be using and building upon in Know Native.
 * [CSS Style Guide (WIP)](https://huly.app/guest/knownative?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsaW5rSWQiOiI2NzlmZTFlNjdiYTM4NjQzNjlkNWU3YTciLCJndWVzdCI6InRydWUiLCJlbWFpbCI6IiNndWVzdEBoYy5lbmdpbmVlcmluZyIsIndvcmtzcGFjZSI6InctYWJpZ2FpbGRhd3NvLWtub3duYXRpdmUtNjYzMjgxYjEtODdiZTE2ZDY5OS0yYTZiY2QifQ.bApnd0tAJQNl_Nv3Tr7onBxg0xrJ4wAd1cCa8W2AL-c) - Overview of our CSS rules & best practices. Note: KnowNative is in the process of migrating from CSS to SASS & BEM. This guide is for reference only, and not fully implemented.
@@ -170,7 +171,7 @@ There are several resources available to you to reference as you work on the Kno
 
 Have questions or need help? Join our community!
 
-- 💬 **Discord:** Coming Soon!
+- 💬 **Discord:** Join the conversation [here](https://discord.gg/Rsc7TAyw3T)! Meet other contributors, get help with your own contributions, and share feedback and feature requests.
 
 ## License
 
