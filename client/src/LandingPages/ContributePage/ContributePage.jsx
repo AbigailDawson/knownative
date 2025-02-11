@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import LandingPageNav from '../components/LandingPageHeader/LandingPageNav';
 import LandingPageFooter from '../components/LandingPageFooter/LandingPageFooter';
 import './ContributePage.css';
@@ -9,12 +9,29 @@ import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 const { coreContributors, pastCoreContributors } = contributorData;
+import * as githubAPI from '../../utilities/github-api';
+
 
 export default function ContributePage() {
   const [show, setShow] = useState(null); // Change initial state to null
 
   const handleClose = () => setShow(null); // Set show to null on close
   const handleShow = (name) => setShow(name); // Set show to the contributor's name so that only that contributor's modal opens
+
+  const [pullRequests, setPullRequests] = useState([]);
+
+  useEffect(() => {
+    async function fetchPullRequests() {
+      try {
+        const data = await githubAPI.getPullRequests();
+        setPullRequests(data);
+      } catch (error) {
+        console.error('Error fetching PRs:', error);
+      }
+    }
+
+    fetchPullRequests();
+  }, []);
 
   return (
     <>
@@ -195,6 +212,22 @@ export default function ContributePage() {
               </div>
             ))}
           </div>
+        </section>
+        <section className="github-contributions mt-5">
+          <h1>GitHub Contributions</h1>
+          {pullRequests.length > 0 ? (
+              <ul>
+                {pullRequests.map((pr) => (
+                  <li key={pr.id}>
+                    <a href={pr.html_url} target="_blank" rel="noopener noreferrer">
+                      {pr.title}
+                    </a> by {pr.user.login}
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p>No pull requests found.</p>
+            )}
         </section>
         <LandingPageFooter />
       </div>
