@@ -80,7 +80,7 @@ const coreContributors = [
     image: '/images/core-contributors/Zephyr-Worthington.png',
     bio: '<p>A theatre kid turned software engineer, Zephyr is a versatile full-stack developer with a passion for solving complex technical puzzles. When not coding, you can find them rock climbing, hanging out with their dog, trying a new cupcake recipe, or working on their latest crochet project.</p>',
     linkedin: 'https://www.linkedin.com/in/zephyrworthington',
-    github: 'https://www.github.com/zephyr-c'
+    github: 'https://github.com/zephyr-c'
   },
   {
     name: 'Ellie Wright',
@@ -89,6 +89,14 @@ const coreContributors = [
     bio: '<p>Ellie Wright is a software developer with experience in various languages and libraries, including HTML/CSS, JavaScript, and React. She uses these skills to improve the structure, layout/styling, and components of the KnowNative frontend.</p><p>Graduating with a BA in Psychology in 2022, Ellie began her switch to the software field in 2023, completing her Software Development bootcamp in 2024. She is based in the Kansas City Metropolitan Area.</p>',
     linkedin: 'https://www.linkedin.com/in/ellewri/',
     github: 'https://github.com/ellewright'
+  },
+  {
+    name: 'Christina Pham',
+    role: 'UX/UI Designer',
+    image: '/images/core-contributors/Christina-Pham.png',
+    bio: '<p>Christina is a software engineer with a passion for creating user-friendly applications. She has experience in front-end development, particularly with React and CSS, and is always eager to learn new technologies. Christina is excited to contribute to KnowNative and help make language learning more accessible and enjoyable for everyone.</p>',
+    linkedin: 'https://www.linkedin.com/in/christina-pham-592010291/',
+    portfolio: 'https://hien.framer.website/',
   }
 ];
 

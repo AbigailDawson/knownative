@@ -72,3 +72,74 @@
   padding: 0;
   margin: 0;
 }
+
+
+.github-contributions {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.github-contributions h1 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.table {
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.table th,
+.table td {
+  padding: 12px;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.table th {
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #f9f9f9;
+}
+
+.table-bordered {
+  border: 1px solid #dee2e6;
+}
+
+.table-hover tbody tr:hover {
+  background-color: #e9ecef;
+}
+
+.github-contributions .btn-info {
+  background-color: #17a2b8;
+  border: none;
+  padding: 8px 12px;
+  font-size: 0.9rem;
+}
+
+.github-contributions .btn-info:hover {
+  background-color: #138496;
+}
+
+.contributor-image {
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+  .table th,
+  .table td {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+
+  .github-contributions .btn-info {
+    font-size: 0.8rem;
+    padding: 6px 10px;
+  }
+}

@@ -2,22 +2,27 @@ import { useState, useEffect } from 'react';
 import LandingPageNav from '../components/LandingPageHeader/LandingPageNav';
 import LandingPageFooter from '../components/LandingPageFooter/LandingPageFooter';
 import './ContributePage.css';
-import contributorData from './contributordata';
-import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import Col from 'react-bootstrap/Col';
+import Table from 'react-bootstrap/Table';
+import Button from 'react-bootstrap/Button';
+import Collapse from 'react-bootstrap/Collapse';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
-const { coreContributors, pastCoreContributors } = contributorData;
+import Col from 'react-bootstrap/Col';
 import * as githubAPI from '../../utilities/github-api';
+import contributorData from './contributordata';
+import contributionData from './contributiondata';
 
+const { contributions } = contributionData;
 
 export default function ContributePage() {
-  const [show, setShow] = useState(null); // Change initial state to null
+  // State related to contribution modals
+  const [show, setShow] = useState(null);
+  const handleClose = () => setShow(null);
+  const handleShow = (name) => setShow(name);
 
-  const handleClose = () => setShow(null); // Set show to null on close
-  const handleShow = (name) => setShow(name); // Set show to the contributor's name so that only that contributor's modal opens
-
+  // State related to pull requests table
+  const [openPR, setOpenPR] = useState(null);
   const [pullRequests, setPullRequests] = useState([]);
 
   useEffect(() => {
@@ -29,7 +34,6 @@ export default function ContributePage() {
         console.error('Error fetching PRs:', error);
       }
     }
-
     fetchPullRequests();
   }, []);
 
@@ -38,153 +42,72 @@ export default function ContributePage() {
       <div className="container">
         <LandingPageNav />
         <section className="intro">
-          <div>
-            <h1 className="about-header">Contribute to KnowNative</h1>
-            <p className="about-body">
-              There are many ways to get involved with the KnowNative project - see how below!
-            </p>
-          </div>
+          <h1 className="about-header">Contribute to KnowNative</h1>
+          <p className="about-body">There are many ways to get involved with the KnowNative project - see how below!</p>
         </section>
         <section className="how-to-contribute">
-          <div className="how-to-contribute-grid">
-            <div className="how-to-contribute-left">
-              <h1>How to contribute</h1>
-              <p className="about-body">
-                KnowNative is a community-driven project that thrives on the ideas, inspiration and
-                expertise from our contributors. We&apos;re eager to collaborate with community
-                members skilled in software development, UX/UI design, graphic art and illustration,
-                branding, copywriting and content creation. If you have an interest in linguistics
-                or language study, we invite you to join us in shaping KnowNative&apos;s
-                development!
-              </p>
-            </div>
-            <div className="how-to-contribute-right">
-              <ul>
-                <li>
-                  <span className="li-header">Contribute to the open source project</span>
-                  Software developers are welcome to contribute code to the project! Any kind of
-                  contribution is meaningful, whether it&apos;s a few lines of CSS to improve some
-                  styling or an entirely new feature. To contribute to the open source project,
-                  follow the instructions on{' '}
-                  <a
-                    href="https://github.com/AbigailDawson/knownative"
-                    target="_blank"
-                    rel="noreferrer">
-                    GitHub
-                  </a>{' '}
-                  to run KnowNative locally, create your own branch and submit a pull request!
-                </li>
-                <li>
-                  <span className="li-header">Become a Core Contributor</span>
-                  Core Contributors are involved in the long-term creative vision for the KnowNative
-                  project. We work together as a team to plan and implement new features and improve
-                  the app experience for our users. Core Contributors commit to participating in
-                  regular team meetings and contribute to the project on a regular consistent basis.
-                  If you&apos;re interested in becoming a Core Contributor, please reach out to
-                  Abigail on{' '}
-                  <a
-                    href="https://www.linkedin.com/in/abigaildawsondev/"
-                    target="_blank"
-                    rel="noreferrer">
-                    LinkedIn
-                  </a>
-                  .
-                </li>
-              </ul>
-            </div>
-          </div>
+          <h1>How to contribute</h1>
+          <p className="about-body">KnowNative is a community-driven project that thrives on the ideas, inspiration, and expertise from our contributors.</p>
         </section>
-        <section className="core-contributors mt-5">
-          <h1>Core Contributors</h1>
-          <p className="about-body">
-            Click on any of the cards below to learn more about the team!
-          </p>
-          <div className="row mt-5">
-            {coreContributors.map((contributor) => (
-              <div className="col-3" key={contributor.name}>
+        <div className="row mt-5">
+            {contributions.map((contribution) => (
+              <div className="col-3" key={contribution.title}>
                 <div className="core-container">
                   <Button
                     variant="light"
-                    onClick={() => handleShow(contributor.name)}
+                    onClick={() => handleShow(contribution.contributor)}
                     className="btn-outline-secondary core-contributor-card p-4">
                     <img
-                      src={contributor.image}
-                      alt={contributor.name}
-                      className="rounded-circle"
-                      width="200"
-                      height="200"
+                      src={contribution.image}
+                      alt={contribution.title}
+                      width="100%"
+                      height="100%"
                     />
+
                     <div className="contributor-name mb-3 mt-4">
-                      <h4>{contributor.name}</h4>
-                      <p>{contributor.role}</p>
+                      <h4>{contribution.title}</h4>
+                      <p>{contribution.contributor}</p>
                     </div>
+                      <p>{contribution.caption}</p>
                   </Button>
                   <Modal
-                    show={show === contributor.name}
+                    show={show === contribution.contributor}
                     onHide={handleClose}
                     size="lg"
                     aria-labelledby="contained-modal-title-vcenter"
                     centered>
                     <Modal.Header closeButton>
-                      <Modal.Title>{contributor.name}</Modal.Title>
+                      <Modal.Title>{contribution.title}</Modal.Title>
                     </Modal.Header>
                     <Modal.Body className="grid-example">
                       <Container>
                         <Row>
                           <Col xs={12} md={5}>
                             <img
-                              src={contributor.image}
-                              alt={contributor.name}
+                              src={contribution.image}
+                              alt={contribution.title}
                               width="100%"
-                              className="contributor-image mb-3"
-                            />
-                            <p>
-                              <b>{contributor.role}</b>
-                            </p>
-                            <div className="contributor-links">
-                              {contributor.linkedin && (
-                                <a
-                                  rel="noopener noreferrer"
-                                  href={contributor.linkedin}
-                                  target="_blank">
-                                  <img
-                                    src="/images/linkedin-icon.png"
-                                    width="32"
-                                    height="32"
-                                    alt="LinkedIn"
-                                  />
-                                </a>
-                              )}
-                              {contributor.github && (
-                                <a
-                                  rel="noopener noreferrer"
-                                  href={contributor.github}
-                                  target="_blank">
-                                  <img
-                                    src="/images/github-icon.png"
-                                    width="32"
-                                    height="32"
-                                    alt="Github"
-                                  />
-                                </a>
-                              )}
-                              {contributor.portfolio && (
-                                <a
-                                  rel="noopener noreferrer"
-                                  href={contributor.portfolio}
-                                  target="_blank">
-                                  <img
-                                    src="/images/portfolio-icon.png"
-                                    width="32"
-                                    height="32"
-                                    alt="WWW Icon"
-                                  />
-                                </a>
-                              )}
-                            </div>
+                            />  
+                            {/** Find the contributor's bio and display it **/}
+                            {contributorData.coreContributors.map((contributor) => {
+                              if (contributor.name === contribution.contributor) {
+                                return (
+                                  <div key={contributor.name} className="mt-3">
+                                    <p><b>Bio:</b> <span dangerouslySetInnerHTML={{ __html: contributor.bio }} /></p>
+                                    {contributor.linkedin && (
+                                      <p><b>LinkedIn:</b> <a href={contributor.linkedin} target="_blank" rel="noopener noreferrer">{contributor.linkedin}</a></p>
+                                    )}
+                                    {contributor.portfolio && (
+                                      <p><b>Portfolio:</b> <a href={contributor.portfolio} target="_blank" rel="noopener noreferrer">{contributor.portfolio}</a></p>
+                                    )}
+                                  </div>
+                                );
+                              }
+                              return null;
+                            })}
                           </Col>
                           <Col xs={12} md={7}>
-                            <div dangerouslySetInnerHTML={{ __html: contributor.bio }} />
+                            <div dangerouslySetInnerHTML={{ __html: contribution.description }} />
                           </Col>
                         </Row>
                       </Container>
@@ -194,40 +117,69 @@ export default function ContributePage() {
               </div>
             ))}
           </div>
-        </section>
-        <section className="core-contributors mt-5">
-          <h1>Past Core Contributors</h1>
-          <p className="about-body">
-            We appreciate everyone who has been a member of our team in the past for their important
-            contributions to the project!
-          </p>
-          <div className="row mt-5">
-            {pastCoreContributors.map((contributor) => (
-              <div key={contributor.name}>
-                <ul>
-                  <li className="past-core-contributor">
-                    <strong>{contributor.name}</strong> - {contributor.role}
-                  </li>
-                </ul>
-              </div>
-            ))}
-          </div>
-        </section>
         <section className="github-contributions mt-5">
           <h1>GitHub Contributions</h1>
           {pullRequests.length > 0 ? (
-              <ul>
-                {pullRequests.map((pr) => (
-                  <li key={pr.id}>
-                    <a href={pr.html_url} target="_blank" rel="noopener noreferrer">
-                      {pr.title}
-                    </a> by {pr.user.login}
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <p>No pull requests found.</p>
-            )}
+            <Table striped bordered hover responsive>
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Contributor</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {pullRequests.map((pr) => {
+                  const contributor = contributorData.coreContributors.find(c => c.github === pr.user.html_url);
+                  return (
+                    <>
+                      <tr key={pr.id}>
+                        <td>
+                          <a href={pr.html_url} target="_blank" rel="noopener noreferrer">{pr.title}</a>
+                        </td>
+                        <td>{pr.user.login}</td>
+                        <td>
+                          <Button variant="info" onClick={() => setOpenPR(openPR === pr.id ? null : pr.id)}>
+                            More Info
+                          </Button>
+                        </td>
+                      </tr>
+                      {openPR === pr.id && (
+                      <tr>
+                        <td colSpan="3">
+                          <Collapse in={openPR === pr.id}>
+                            <div>
+                              <Container>
+                                <Row>
+                                  <Col xs={12} md={4}>
+                                    <img src={pr.user.avatar_url} alt={pr.user.login} className="contributor-image" width="100" height="100" />
+                                  </Col>
+                                  <Col xs={12} md={8}>
+                                    <p><b>Username:</b> {pr.user.login}</p>
+                                    <p><b>GitHub Profile:</b> <a href={pr.user.html_url} target="_blank" rel="noopener noreferrer">{pr.user.html_url}</a></p>
+                                    {contributor && (
+                                      <>
+                                        <p><b>Bio:</b> <span dangerouslySetInnerHTML={{ __html: contributor.bio }} /></p>
+                                        <p><b>LinkedIn:</b> <a href={contributor.linkedin} target="_blank" rel="noopener noreferrer">{contributor.linkedin}</a></p>
+                                        {contributor.portfolio && <p><b>Portfolio:</b> <a href={contributor.portfolio} target="_blank" rel="noopener noreferrer">{contributor.portfolio}</a></p>}
+                                      </>
+                                    )}
+                                  </Col>
+                                </Row>
+                              </Container>
+                            </div>
+                          </Collapse>
+                        </td>
+                      </tr>
+                      )}
+                    </>
+                  );
+                })}
+              </tbody>
+            </Table>
+          ) : (
+            <p>No pull requests found.</p>
+          )}
         </section>
         <LandingPageFooter />
       </div>
