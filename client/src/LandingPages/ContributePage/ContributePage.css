@@ -44,13 +44,29 @@
 /* Core Contributor section */
 
 .core-contributor-card {
-  width: 30vmin;
-  margin: 20px;
+  width: auto;
+  height: auto;
+  margin: 5px;
   border: 1px solid var(--medium);
+  display: flex;
+  align-items: center;
+  
+}
+
+.core-contributor-circle {
+  width: 5vmin;
+  height: 5vmin;
 }
 
 .contributor-name {
+  text-align: left;
   font-weight: bold;
+  font-size: 1rem;
+}
+
+.contributor-role { 
+  text-align: left;
+  font-size: 0.8rem;
 }
 
 .contributor-links {
@@ -197,14 +213,7 @@
 
 .contributors {
   margin-top: 10px;
-}
-
-.contributor-name {
-  font-size: 1rem;
-  color: #007bff;
-  padding: 0;
-  margin-right: 10px;
-  text-decoration: none;
+  display: flex;
 }
 
 .contributor-name:hover {

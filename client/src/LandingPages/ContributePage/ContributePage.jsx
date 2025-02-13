@@ -11,17 +11,10 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import * as githubAPI from '../../utilities/github-api';
 import contributorData from './contributordata';
-import contributionData from './contributiondata';
 import ContributionCards from './ContributionCards';
 
-
-const { contributions } = contributionData;
-
 export default function ContributePage() {
-  // State related to contribution modals
-  const [show, setShow] = useState(null);
-  const handleClose = () => setShow(null);
-  const handleShow = (name) => setShow(name);
+
 
   // State related to pull requests table
   const [openPR, setOpenPR] = useState(null);
