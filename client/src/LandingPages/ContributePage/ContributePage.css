@@ -143,3 +143,93 @@
     padding: 6px 10px;
   }
 }
+/* Container and Section Titles */
+.contributions-container {
+  padding: 20px;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* Card Styling */
+.contribution-card {
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  transition: box-shadow 0.3s ease;
+}
+
+.contribution-card:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Image and Card Layout */
+.image-container {
+  padding: 15px;
+  border-right: 1px solid #f0f0f0;
+}
+
+.contribution-image {
+  max-height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Body Styling */
+.card-body {
+  padding: 1.5rem;
+  text-align: left;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.card-subtitle {
+  font-size: 1.1rem;
+  color: #6c757d;
+}
+
+.contributors {
+  margin-top: 10px;
+}
+
+.contributor-name {
+  font-size: 1rem;
+  color: #007bff;
+  padding: 0;
+  margin-right: 10px;
+  text-decoration: none;
+}
+
+.contributor-name:hover {
+  text-decoration: underline;
+}
+
+.expand-button {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/* Expanded Section */
+.expanded-section {
+  margin-top: 15px;
+}
+
+.contributor-bio {
+  margin-bottom: 15px;
+}
+
+.contributor-bio strong {
+  font-size: 1.1rem;
+}
+
+.contributor-bio p {
+  font-size: 1rem;
+  color: #6c757d;
+}

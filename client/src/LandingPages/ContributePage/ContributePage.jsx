@@ -12,6 +12,8 @@ import Col from 'react-bootstrap/Col';
 import * as githubAPI from '../../utilities/github-api';
 import contributorData from './contributordata';
 import contributionData from './contributiondata';
+import ContributionCards from './ContributionCards';
+
 
 const { contributions } = contributionData;
 
@@ -49,74 +51,9 @@ export default function ContributePage() {
           <h1>How to contribute</h1>
           <p className="about-body">KnowNative is a community-driven project that thrives on the ideas, inspiration, and expertise from our contributors.</p>
         </section>
-        <div className="row mt-5">
-            {contributions.map((contribution) => (
-              <div className="col-3" key={contribution.title}>
-                <div className="core-container">
-                  <Button
-                    variant="light"
-                    onClick={() => handleShow(contribution.contributor)}
-                    className="btn-outline-secondary core-contributor-card p-4">
-                    <img
-                      src={contribution.image}
-                      alt={contribution.title}
-                      width="100%"
-                      height="100%"
-                    />
-
-                    <div className="contributor-name mb-3 mt-4">
-                      <h4>{contribution.title}</h4>
-                      <p>{contribution.contributor}</p>
-                    </div>
-                      <p>{contribution.caption}</p>
-                  </Button>
-                  <Modal
-                    show={show === contribution.contributor}
-                    onHide={handleClose}
-                    size="lg"
-                    aria-labelledby="contained-modal-title-vcenter"
-                    centered>
-                    <Modal.Header closeButton>
-                      <Modal.Title>{contribution.title}</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body className="grid-example">
-                      <Container>
-                        <Row>
-                          <Col xs={12} md={5}>
-                            <img
-                              src={contribution.image}
-                              alt={contribution.title}
-                              width="100%"
-                            />  
-                            {/** Find the contributor's bio and display it **/}
-                            {contributorData.coreContributors.map((contributor) => {
-                              if (contributor.name === contribution.contributor) {
-                                return (
-                                  <div key={contributor.name} className="mt-3">
-                                    <p><b>Bio:</b> <span dangerouslySetInnerHTML={{ __html: contributor.bio }} /></p>
-                                    {contributor.linkedin && (
-                                      <p><b>LinkedIn:</b> <a href={contributor.linkedin} target="_blank" rel="noopener noreferrer">{contributor.linkedin}</a></p>
-                                    )}
-                                    {contributor.portfolio && (
-                                      <p><b>Portfolio:</b> <a href={contributor.portfolio} target="_blank" rel="noopener noreferrer">{contributor.portfolio}</a></p>
-                                    )}
-                                  </div>
-                                );
-                              }
-                              return null;
-                            })}
-                          </Col>
-                          <Col xs={12} md={7}>
-                            <div dangerouslySetInnerHTML={{ __html: contribution.description }} />
-                          </Col>
-                        </Row>
-                      </Container>
-                    </Modal.Body>
-                  </Modal>
-                </div>
-              </div>
-            ))}
-          </div>
+        <section className="contribution-section">
+          <ContributionCards />
+        </section>
         <section className="github-contributions mt-5">
           <h1>GitHub Contributions</h1>
           {pullRequests.length > 0 ? (
