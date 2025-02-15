@@ -1,3 +1,23 @@
+@use 'sass:map';
+$icon-colors: (
+  red: (
+    background: var(--KN-error-100, #ffeded),
+    color: #962828
+  ),
+  green: (
+    background: var(--KN-success-100, #EBF8E8),
+    color: #197D00
+  ),
+  blue: (
+    background: var(--KN-primary-200, #E5F2F6),
+    color: #074B59
+  ),
+  yellow: (
+    background: var(--KN-warning-100, #F8F3E8),
+    color: #9F6B02
+  )
+);
+
 .dashboard {
     display: flex;
 
@@ -18,6 +38,14 @@
             width: 95%;
         }     
     }
+    &__icon-color {
+        @each $color, $properties in $icon-colors {
+            &--#{"#{$color}"} {
+            background: map.get($properties, background);
+            color: map.get($properties, color);
+          }
+        }
+      }
 
     &__nav-links {
         display: flex;
@@ -29,7 +57,7 @@
     }
 
     &__nav-item {
-        margin-bottom: 0.5 rem;
+        margin-bottom: 0.5rem;
 
         &:last-child {
             margin-bottom: 0;
@@ -69,8 +97,9 @@
     &__main{
         display: flex;
         flex-direction: column;
-        width: 100vw;
+        width: calc(100vw - 285px); // factors in space taken from nav (new width in figma)
         height: 100vh;
+        max-width: 1500px;
     }
 
     &__user{
@@ -100,7 +129,6 @@
 
     &__title {
         color: black;
-        margin-left: 1 rem;
         display: flex;
         &--subtitle {
             margin-top: 2rem;
@@ -109,37 +137,118 @@
     }
 
     &__stats-container {
-        color: rgb(50, 106, 118);
+        color: black;
         display: flex;
-        justify-content: space-around;
-        margin-top: 1rem;
-        margin-bottom: 1rem;
+        padding: 1rem 0.5rem;
+        border: 1px #E1E3E3 solid;
+        border-radius: 8px;
+        width: calc(100% - 1rem);
+        margin: 2rem auto 1rem 0;
+        align-items: center;
+        align-self: center;
+
     }
 
     &__stat {
-        
-        width: 23%;
-        height: 10rem;
         display: flex;
-        flex-direction: column;
-        justify-content: space-around;
         align-items: flex-start;
-        background-color: rgb(229, 242, 246);
-        border-radius: 0.5rem;
-        overflow: hidden;
-        white-space: nowrap;
-        
+        flex: 1;
+        height: 100%;
+        text-align: left;
+        border-right: 1px solid #E1E3E3;
+        align-self: start;
+        justify-content: flex-start;
+        padding: 1.2rem 0rem;
+
+        &:last-child {
+            border-right: none;
+        }
+
+        &__stat-info {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            padding: 0.5rem 0.5rem 0rem 0rem;
+        }
+
         & > * {
             margin: 0;
             margin-left: 1rem;
         }
 
-        &-description {
-            &--hidden {
-                visibility: hidden;
+        &__label {
+            color: var(--KN-gray-500, #556163) !important;
+        }
+
+
+        &__stat-image {
+            padding: 1.2rem 1.3rem;
+            border-radius: 2rem;
+            align-self: center;
+            align-items: center;
+            justify-content: center;
+
+            img {
+                width: 1.3rem;
             }
         }
+        &__stat-icon {
+            padding: 0.75rem 1.125rem;
+            width: 4rem;
+            height: 4rem;
+            border-radius: 2rem;
+            display: flex;
+            justify-content: center;
+            align-self: center;
+            align-items: center;
+            
+            .material-symbols-outlined {
+                font-size: 2rem;
+            }
+
+            &--flipped {
+                transform: rotateX(180deg) rotateY(180deg);
+            }
+        }
+
+        @media (max-width: 1262px) {
+            &__stat-info {
+                padding-top: 1.8rem;
+            }
+        }
+
+        @media (max-width: 950px) {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+
+            h3 {
+                font-size: 1.5rem  !important;
+            }
+
+            &__stat-info {
+                padding-top: 0.8rem;
+            }
+            
+            & > * {
+                margin: 0;
+                margin-left: 0rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h3 {
+                font-size: 1.3rem !important;
+            }
+            &__label {
+                font-size: 0.9rem;
+                padding: 0 0.4rem;
+            }
+
+        }
     }
+
+
 
     &__sub-container {
         width: 100%;
