@@ -22,7 +22,7 @@ export default function DashboardPage() {
   const RoundIcon = ({ isImage, src, iconName, color }) => {
     return (
       <div
-        className={`dashboard__stat__stat-${isImage ? 'image' : 'icon'} dashboard__icon-color--${color} ${color === 'green' ? 'dashboard__stat__stat-icon--flipped' : ''}`}>
+        className={`dashboard__round-${isImage ? 'image' : 'icon'} dashboard__icon-color--${color} ${color === 'green' ? 'dashboard__round-icon--flipped' : ''}`}>
         {isImage ? (
           <img src={src} alt="icon" />
         ) : (

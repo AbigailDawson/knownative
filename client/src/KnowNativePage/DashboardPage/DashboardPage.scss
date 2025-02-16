@@ -181,36 +181,6 @@ $icon-colors: (
         }
 
 
-        &__stat-image {
-            padding: 1.2rem 1.3rem;
-            border-radius: 2rem;
-            align-self: center;
-            align-items: center;
-            justify-content: center;
-
-            img {
-                width: 1.3rem;
-            }
-        }
-        &__stat-icon {
-            padding: 0.75rem 1.125rem;
-            width: 4rem;
-            height: 4rem;
-            border-radius: 2rem;
-            display: flex;
-            justify-content: center;
-            align-self: center;
-            align-items: center;
-            
-            .material-symbols-outlined {
-                font-size: 2rem;
-            }
-
-            &--flipped {
-                transform: rotateX(180deg) rotateY(180deg);
-            }
-        }
-
         @media (max-width: 1262px) {
             &__stat-info {
                 padding-top: 1.8rem;
@@ -248,7 +218,38 @@ $icon-colors: (
         }
     }
 
+    &__round-image {
+        padding: 1.2rem 1.3rem;
+        border-radius: 2rem;
+        align-self: center;
+        align-items: center;
+        justify-content: center;
+        user-select: none;
 
+        img {
+            width: 1.3rem;
+        }
+    }
+
+    &__round-icon {
+        padding: 0.75rem 1.125rem;
+        width: 4rem;
+        height: 4rem;
+        border-radius: 2rem;
+        display: flex;
+        justify-content: center;
+        align-self: center;
+        align-items: center;
+        user-select: none;
+        
+        .material-symbols-outlined {
+            font-size: 2rem;
+        }
+
+        &--flipped {
+            transform: rotateX(180deg) rotateY(180deg);
+        }
+    }
 
     &__sub-container {
         width: 100%;
