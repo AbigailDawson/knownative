@@ -41,6 +41,12 @@
   font-size: 1.2rem;
 }
 
+.contributions-body {
+  margin-top: 1.5rem;
+  max-width: 70ch;
+  line-height: 1.7;
+  font-size: 1.2rem;
+}
 /* Core Contributor section */
 
 .core-contributor-card {
@@ -162,19 +168,22 @@
 /* Container and Section Titles */
 .contributions-container {
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .section-title {
   font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 /* Card Styling */
 .contribution-card {
+  padding: 5px 10px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
+  margin: 20px 0;
   transition: box-shadow 0.3s ease;
 }
 
@@ -184,7 +193,7 @@
 
 /* Image and Card Layout */
 .image-container {
-  padding: 15px;
+  padding: 15px 20px;
   border-right: 1px solid #f0f0f0;
 }
 
@@ -209,6 +218,8 @@
 .card-subtitle {
   font-size: 1.1rem;
   color: #6c757d;
+  line-height: 1.5;
+  margin: 8px 0;
 }
 
 .contributors {
@@ -223,22 +234,4 @@
 .expand-button {
   margin-top: 10px;
   margin-bottom: 10px;
-}
-
-/* Expanded Section */
-.expanded-section {
-  margin-top: 15px;
-}
-
-.contributor-bio {
-  margin-bottom: 15px;
-}
-
-.contributor-bio strong {
-  font-size: 1.1rem;
-}
-
-.contributor-bio p {
-  font-size: 1rem;
-  color: #6c757d;
 }
