@@ -260,6 +260,70 @@ $icon-colors: (
         justify-content: space-between;
     }
 
+    &__table-container {
+        width: calc(100% - 1rem);
+        display: table;
+        table-layout: fixed;
+        border-collapse: collapse;
+        overflow-x: auto; 
+    
+        thead {
+            tr {
+                border-bottom: 1px solid #E1E3E3;
+            }
+            th {
+                padding: 8px;
+                text-align: left;
+    
+                &:first-child, 
+                &:last-child { 
+                    min-width: 40px;
+                    text-align: center;
+                }
+    
+                &:nth-child(2) {
+                    max-width: 60%;
+                    width: 50%;
+                }
+            }
+        }
+    
+        tbody {
+            display: table-row-group;
+    
+            tr {
+                display: table-row;
+                border-bottom: 1px solid #E1E3E3;
+            }
+    
+            td {
+                padding: 8px;
+                text-align: left;
+                margin: 15px 0px;
+    
+                &:first-child, 
+                &:last-child { 
+                    min-width: 40px;                }
+    
+
+                &:first-child {
+                    display: flex;
+                    justify-self: center;
+                }
+                &:nth-child(2) {
+                    width: 70%;
+                }
+            }
+            
+        }
+    
+        &__item-row {
+            overflow-x: auto; 
+            display: flex;
+        }
+    }
+
+    // might need to replace with new styling for cards in library table
     &__card {
         flex-direction: column;
         align-items: flex-start;
@@ -301,46 +365,5 @@ $icon-colors: (
         width: 7.5rem;
         height: 100%;
         margin-right: 1rem;
-    }
-
-    &__recently-added {
-        display: flex;
-        flex-direction: column;
-
-        &-content {
-            background-color: white;
-            // border: 1px solid rgb(8, 106, 108);
-        }
-    }
-
-    &__card-buttons {
-        height: 6rem;
-        flex-direction: column;
-        justify-content: space-between;
-        margin-top: 1rem;
-        margin-left: 1rem;
-        margin-right: 1rem;
-
-        &--add-item,
-        &--view-all  {
-            height: 2.5rem;
-        }
-
-        &--add-item {
-            background-color: rgb(8, 106, 108);
-            color: white;
-            display: flex;
-            justify-content: center;
-            margin-bottom: 0.5rem;
-        }
-
-        &--view-all {
-            background-color: rgb(229, 242, 246);
-            color: rgb(8, 106, 108);
-            display: flex;
-            justify-content: center;
-            margin-top: 0.5rem;
-            margin-bottom: 0.5rem;
-        }
     }
 }

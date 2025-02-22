@@ -4,6 +4,23 @@ import { useAuthContext } from '../../contexts/Auth/AuthProvider';
 import { Link, useNavigate } from 'react-router-dom';
 import * as authService from './../../services/authService';
 
+const mockData = [
+  {
+    id: 1,
+    name: 'React Basics',
+    preview: 'An introduction to React fundamentals...',
+    cards: 10,
+    lastOpened: '2025-02-21'
+  },
+  {
+    id: 2,
+    name: 'Advanced Hooks',
+    preview: 'Exploring useReducer and useMemo...',
+    cards: 8,
+    lastOpened: '2025-02-19'
+  }
+];
+
 export default function DashboardPage() {
   const { user, setUser } = useAuthContext();
   const navigate = useNavigate();
@@ -154,36 +171,41 @@ export default function DashboardPage() {
             <button className="dashboard__study-button">Study</button>
           </div>
         </div>
-        <div className="dashboard__title dashboard__title--subtitle">
-          <h4>Recently added</h4>
-        </div>
-        <div className="dashboard__recently-added">
-          <div className="dashboard dashboard__recently-added-content">
-            <div className="dashboard dashboard__card">
-              <h2 className="dashboard dashboard__card-title">信用卡雌然很方便</h2>
-              <p className="dashboard dashboard__card-body">
-                信用卡雏然很方便，但是不小心的话，一下子就會花掉很多绕，所以現在還不了錢的人越来越多。…
-              </p>
-            </div>
-            <button className="dashboard__study-button">Study</button>
+
+        {/* Library */}
+        <div className="dashboard__library">
+          <div className="dashboard__title dashboard__title--subtitle">
+            <h4>Library</h4>
           </div>
-          <div className="dashboard__sub-container">
-            <div className="dashboard dashboard__card">
-              <h2 className="dashboard dashboard__card-title">信用卡雌然很方便</h2>
-              <p className="dashboard dashboard__card-body">
-                信用卡雏然很方便，但是不小心的话，一下子就會花掉很多绕，所以現在還不了錢的人越来越多。…
-              </p>
-            </div>
-            <button className="dashboard__study-button">Study</button>
-          </div>
-        </div>
-        <div className="dashboard dashboard__card-buttons">
-          <button
-            className="dashboard__card-buttons--add-item"
-            onClick={() => navigate('/add-text')}>
-            + Add text
-          </button>
-          <button className="dashboard__card-buttons--view-all">View all</button>
+          <table className="dashboard__table-container">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Cards</th>
+                <th>Last Opened</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {mockData.map((item) => (
+                <tr key={item.id} className="dashboard__table-container__item-row">
+                  <td>
+                    <RoundIcon iconName="book_2" color="blue" />
+                  </td>
+                  <td>
+                    <div className="name">{item.name}</div>
+                    <div className="preview">{item.preview}</div>
+                  </td>
+                  <td>{item.cards}</td>
+                  <td>{item.lastOpened}</td>
+                  <td>
+                    <button className="review-btn">Review</button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
