@@ -260,12 +260,45 @@ $icon-colors: (
         justify-content: space-between;
     }
 
+    &__library {
+        display: flex;
+        flex-direction: column;
+        margin-top: 3rem;
+    }
+
+    &__library-container {
+        display: flex;
+        justify-content: space-between;
+        width: calc(100% - 1rem);
+        margin-bottom: 0.5rem;
+    }
+
     &__table-container {
         width: calc(100% - 1rem);
         display: table;
         table-layout: fixed;
         border-collapse: collapse;
-        overflow-x: auto; 
+        overflow-x: auto;
+
+        &__name {
+            font-size: 22px;
+            font-weight: 700;
+            color: #161717;
+            font-family: 'Noto Serif TC', serif;
+        }
+
+        &__desc {
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            line-clamp: 2; 
+            -webkit-box-orient: vertical;
+            font-size: 18px;
+            font-weight: 300;
+            color: #556163;
+            font-family: 'Noto Serif TC', serif;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
     
         thead {
             tr {
@@ -275,16 +308,23 @@ $icon-colors: (
                 padding: 8px;
                 text-align: left;
     
-                &:first-child, 
-                &:last-child { 
-                    min-width: 40px;
-                    text-align: center;
+                &:nth-child(1) {
+                    width: 80px;
                 }
-    
+
                 &:nth-child(2) {
                     max-width: 60%;
-                    width: 50%;
+                    width: 55%;
                 }
+
+                &:nth-child(3) {
+                    width: 4.6875rem;;
+                }
+
+                &:nth-child(4) {
+                    width: 7.5rem;
+                }
+
             }
         }
     
@@ -303,24 +343,27 @@ $icon-colors: (
     
                 &:first-child, 
                 &:last-child { 
-                    min-width: 40px;                }
+                    min-width: 30px;                }
     
 
                 &:first-child {
                     display: flex;
                     justify-self: center;
                 }
+
+
                 &:nth-child(2) {
-                    width: 70%;
+                    width: 50%;
+                }
+
+                &:nth-child(5) {
+                    display: flex;
+                    justify-self: end;
                 }
             }
             
         }
     
-        &__item-row {
-            overflow-x: auto; 
-            display: flex;
-        }
     }
 
     // might need to replace with new styling for cards in library table

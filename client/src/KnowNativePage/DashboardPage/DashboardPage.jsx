@@ -3,21 +3,22 @@ import { useEffect } from 'react';
 import { useAuthContext } from '../../contexts/Auth/AuthProvider';
 import { Link, useNavigate } from 'react-router-dom';
 import * as authService from './../../services/authService';
+import DashboardButton from './components/DashboardButton';
 
 const mockData = [
   {
     id: 1,
     name: 'React Basics',
-    preview: 'An introduction to React fundamentals...',
+    desc: 'An introduction to React fundamentals...',
     cards: 10,
-    lastOpened: '2025-02-21'
+    lastOpened: 'Oct 29, 2024'
   },
   {
     id: 2,
-    name: 'Advanced Hooks',
-    preview: 'Exploring useReducer and useMemo...',
+    name: '開計程車',
+    desc: '每天我要到許多地方去，也會遇到很多人。有些人喜歡叫我「左轉」、「右轉」、「停」；有些人會把髒東西留在我的車上。不過也有一些不錯的人，可以從他們身上學到很多東西，所以我也交了好幾個朋友。真是什麼樣的人都有啊！',
     cards: 8,
-    lastOpened: '2025-02-19'
+    lastOpened: 'Oct 25, 2024'
   }
 ];
 
@@ -174,8 +175,15 @@ export default function DashboardPage() {
 
         {/* Library */}
         <div className="dashboard__library">
-          <div className="dashboard__title dashboard__title--subtitle">
+          <div className="dashboard__title dashboard__library-container">
             <h4>Library</h4>
+            <DashboardButton
+              iconName="new_window"
+              iconStyling="dashboard-button__icon-flip"
+              buttonVariant="primary"
+              label="Add Text"
+              onClick={() => console.log('click click')}
+            />
           </div>
           <table className="dashboard__table-container">
             <thead>
@@ -194,13 +202,19 @@ export default function DashboardPage() {
                     <RoundIcon iconName="book_2" color="blue" />
                   </td>
                   <td>
-                    <div className="name">{item.name}</div>
-                    <div className="preview">{item.preview}</div>
+                    <div className="dashboard__table-container__name">{item.name}</div>
+                    <div className="dashboard__table-container__desc">{item.desc}</div>
                   </td>
                   <td>{item.cards}</td>
                   <td>{item.lastOpened}</td>
                   <td>
-                    <button className="review-btn">Review</button>
+                    <DashboardButton
+                      iconName="&#xe41d;"
+                      iconStyling="dashboard-button__icon-flip"
+                      buttonVariant="secondary"
+                      label="Review"
+                      onClick={() => console.log('click click')}
+                    />
                   </td>
                 </tr>
               ))}

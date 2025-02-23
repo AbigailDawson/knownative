@@ -1,0 +1,56 @@
+:root {
+    --primary-color: #086A6C; // Primary button background color
+    --primary-hover-color: #044d4e; // Slightly darker color for hover
+    --secondary-bg-color: white; // Secondary button background color
+    --secondary-text-color: #086A6C; // Text color for secondary button
+    --secondary-hover-bg-color: var(--light); // Slightly darker background for secondary hover
+}
+
+@mixin hoverFX($bg-color, $text-color) {
+    background-color: $bg-color;
+    color: $text-color;
+    transition: background-color 0.2s ease, color 0.2s ease; // Transition effect for both properties
+}
+
+.dashboard-button {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    padding-left: 15px;
+    padding-right: 15px;
+
+    &__icon-flip {
+        transform: rotateX(180deg) rotateY(180deg);
+    }
+
+    &:disabled {
+        border-radius: 0.375rem;
+        border: 1px solid var(--KN-gray-400, #E1E3E3);
+        background: var(--KN-gray-100, #FFF);
+        color: #E1E3E3;
+    }
+
+    &--primary {
+        background-color: var(--primary-color);
+        box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+        color: white;
+
+        &:hover {
+            @include hoverFX(var(--primary-hover-color), white); // Using variables for hover
+        }
+    }
+
+    &--secondary {
+        background-color: var(--secondary-bg-color);
+        color: var(--secondary-text-color);
+        border: 1px solid var(--secondary-text-color);
+
+        box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+
+        &:hover {
+            @include hoverFX(var(--secondary-hover-bg-color), var(--secondary-text-color)); // Using variables for hover
+        }
+    }
+}
