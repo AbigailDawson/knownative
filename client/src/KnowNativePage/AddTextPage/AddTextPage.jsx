@@ -3,6 +3,7 @@ import { useAuthContext } from '../../contexts/Auth/AuthProvider';
 import { Link, useNavigate } from 'react-router-dom';
 import FormInput from '../../LandingPages/components/Forms/FormInput/FormInput';
 import Button from '../../ui-components/Button/button';
+import sendRequest from '../../utilities/send-request';
 import './AddTextPage.scss';
 
 export default function AddTextPage() {
@@ -23,30 +24,28 @@ export default function AddTextPage() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    // We are using the sendRequest utility function to send the form data to the /api/demo/texts endpoint.
+    try {
+      const response = await sendRequest('/api/demo/texts', 'POST', formData, {
+        Authorization: `Bearer ${user.token}`
+      });
 
-    // Handle form submission logic here
-    // Example:
-    // const response = await fetch('/api/texts', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //     Authorization: `Bearer ${user.token}`
-    //   },
-    //   body: JSON.stringify(formData)
-    // });
-    // const data = await response.json();
-    // if (response.ok) {
-    //   navigate('/texts');
-    // } else {
-    //   console.error('Error adding text:', data.error);
-    // }
-
-    // For now, let's simulate the success and redirect to the dashboard page
-    navigate('/dashboard');
-    console.log('Form submitted:', formData);
+      console.log('Text added:', response.data);
+      if (response.ok) {
+        // Temporarily redirecting to the dashboard after successfully adding a text.
+        navigate('/dashboard');
+        console.log('Form submitted:', formData);
+      } else {
+        const errorData = await response.json();
+        console.error('Error adding text:', errorData.error);
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+    }
   };
+
 
   async function handleLogOut() {
     try {
