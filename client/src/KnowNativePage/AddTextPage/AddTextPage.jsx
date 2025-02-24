@@ -26,26 +26,19 @@ export default function AddTextPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // We are using the sendRequest utility function to send the form data to the /api/demo/texts endpoint.
     try {
-      const response = await sendRequest('/api/demo/texts', 'POST', formData, {
+      const data = await sendRequest('/api/demo/texts', 'POST', formData, {
         Authorization: `Bearer ${user.token}`
       });
-
-      console.log('Text added:', response.data);
-      if (response.ok) {
-        // Temporarily redirecting to the dashboard after successfully adding a text.
-        navigate('/dashboard');
-        console.log('Form submitted:', formData);
-      } else {
-        const errorData = await response.json();
-        console.error('Error adding text:', errorData.error);
-      }
+  
+      console.log('Text added:', data);
+      // Temporarily redirecting to the dashboard after successfully adding a text.
+      navigate('/dashboard');
+      console.log('Form submitted:', formData);
     } catch (error) {
-      console.error('Error submitting form:', error);
+      console.error('Oops! Error submitting form:', error);
     }
   };
-
 
   async function handleLogOut() {
     try {
