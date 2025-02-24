@@ -1,11 +1,3 @@
-:root {
-    --primary-color: #086A6C; // Primary button background color
-    --primary-hover-color: #044d4e; // Slightly darker color for hover
-    --secondary-bg-color: white; // Secondary button background color
-    --secondary-text-color: #086A6C; // Text color for secondary button
-    --secondary-hover-bg-color: var(--light); // Slightly darker background for secondary hover
-}
-
 @mixin hoverFX($bg-color, $text-color) {
     background-color: $bg-color;
     color: $text-color;
@@ -33,24 +25,24 @@
     }
 
     &--primary {
-        background-color: var(--primary-color);
+        background-color: var(--action);
         box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
         color: white;
 
         &:hover {
-            @include hoverFX(var(--primary-hover-color), white); // Using variables for hover
+            @include hoverFX(var(--dark-action), white); // Using variables for hover
         }
     }
 
     &--secondary {
-        background-color: var(--secondary-bg-color);
-        color: var(--secondary-text-color);
-        border: 1px solid var(--secondary-text-color);
+        background-color: white;
+        color: var(--action);
+        border: 1px solid var(--action);
 
         box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
 
         &:hover {
-            @include hoverFX(var(--secondary-hover-bg-color), var(--secondary-text-color)); // Using variables for hover
+            @include hoverFX(var(--light), var(--action)); // Using variables for hover
         }
     }
 }

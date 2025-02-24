@@ -21,7 +21,16 @@ $icon-colors: (
 .dashboard {
     display: flex;
 
+    &--text-red {
+        color: var(--red);
+        font-weight: 600;
+    }
+
     &__side-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
         border-color: rgb(217, 217, 217);
         display: flex;
         flex-direction: column;
@@ -97,9 +106,9 @@ $icon-colors: (
     &__main{
         display: flex;
         flex-direction: column;
-        width: calc(100vw - 285px); // factors in space taken from nav (new width in figma)
-        height: 100vh;
+        width: calc(100vw - 285px); // factors in space taken from nav
         max-width: 1500px;
+        margin-left: 350px;
     }
 
     &__user{
@@ -130,6 +139,7 @@ $icon-colors: (
     &__title {
         color: black;
         display: flex;
+
         &--subtitle {
             margin-top: 2rem;
             margin-bottom: 0.5rem;
@@ -260,25 +270,43 @@ $icon-colors: (
         justify-content: space-between;
     }
 
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(10px); /* Optional: Add a slight slide effect */
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
     &__library {
         display: flex;
         flex-direction: column;
         margin-top: 3rem;
+        margin-bottom: 2.3rem;
     }
 
     &__library-container {
         display: flex;
         justify-content: space-between;
         width: calc(100% - 1rem);
-        margin-bottom: 0.5rem;
     }
 
     &__table-container {
         width: calc(100% - 1rem);
+        max-width: 1500px;
         display: table;
         table-layout: fixed;
         border-collapse: collapse;
         overflow-x: auto;
+
+
+        &__fade-in {
+            animation: fadeIn 0.5s ease-in forwards;
+        }
 
         &__name {
             font-size: 22px;
@@ -330,7 +358,6 @@ $icon-colors: (
     
         tbody {
             display: table-row-group;
-    
             tr {
                 display: table-row;
                 border-bottom: 1px solid #E1E3E3;
@@ -366,6 +393,14 @@ $icon-colors: (
     
     }
 
+    &__view-more-button {
+        margin-top: 0.5rem;
+        background-color: white;
+        color: var(--action);
+        display: flex;
+        justify-content: center;
+        font-weight: 600;
+    }
     // might need to replace with new styling for cards in library table
     &__card {
         flex-direction: column;
