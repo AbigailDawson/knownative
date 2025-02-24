@@ -114,9 +114,17 @@ export default function DashboardPage() {
 
   const sortData = (data) => {
     return data.sort((a, b) => {
-      const comparison = a[sortColumn].localeCompare(b[sortColumn], 'zh-Hant', {
-        sensitivity: 'base'
-      });
+      let comparison = 0;
+
+      if (typeof a[sortColumn] === 'string' && typeof b[sortColumn] === 'string') {
+        comparison = a[sortColumn].localeCompare(b[sortColumn], 'zh-Hant', {
+          sensitivity: 'base'
+        });
+      } else if (typeof a[sortColumn] === 'number' && typeof b[sortColumn] === 'number') {
+        comparison = a[sortColumn] - b[sortColumn];
+      } else if (a[sortColumn] instanceof Date && b[sortColumn] instanceof Date) {
+        comparison = a[sortColumn] - b[sortColumn];
+      }
 
       return sortDirection === 'asc' ? comparison : -comparison;
     });
@@ -292,28 +300,49 @@ export default function DashboardPage() {
               <tr>
                 <th></th>
                 <th onClick={() => handleSort('name')}>
-                  Name
-                  {sortColumn === 'name' && (
-                    <span className="material-symbols-outlined">
-                      {sortDirection === 'asc' ? 'arrow_drop_up' : 'arrow_drop_down'}
-                    </span>
-                  )}
+                  <span className="dashboard__sortable-header">
+                    <span>Name</span>
+                    {sortColumn === 'name' && (
+                      <span
+                        className={`material-symbols-outlined dashboard__table-container__sort-arrow ${
+                          sortDirection === 'asc'
+                            ? 'dashboard__table-container__rotate-up'
+                            : 'dashboard__table-container__rotate-down'
+                        }`}>
+                        arrow_drop_down
+                      </span>
+                    )}
+                  </span>
                 </th>
                 <th onClick={() => handleSort('cards')}>
-                  Cards
-                  {sortColumn === 'cards' && (
-                    <span className="material-symbols-outlined">
-                      {sortDirection === 'asc' ? 'arrow_drop_up' : 'arrow_drop_down'}
-                    </span>
-                  )}
+                  <span className="dashboard__sortable-header">
+                    <span>Cards</span>
+                    {sortColumn === 'cards' && (
+                      <span
+                        className={`material-symbols-outlined dashboard__table-container__sort-arrow ${
+                          sortDirection === 'asc'
+                            ? 'dashboard__table-container__rotate-up'
+                            : 'dashboard__table-container__rotate-down'
+                        }`}>
+                        arrow_drop_down
+                      </span>
+                    )}
+                  </span>
                 </th>
                 <th onClick={() => handleSort('lastOpened')}>
-                  Last Opened{' '}
-                  {sortColumn === 'lastOpened' && (
-                    <span className="material-symbols-outlined">
-                      {sortDirection === 'asc' ? 'arrow_drop_up' : 'arrow_drop_down'}
-                    </span>
-                  )}
+                  <span className="dashboard__sortable-header">
+                    <span>Last Opened </span>
+                    {sortColumn === 'lastOpened' && (
+                      <span
+                        className={`material-symbols-outlined dashboard__table-container__sort-arrow ${
+                          sortDirection === 'asc'
+                            ? 'dashboard__table-container__rotate-down'
+                            : 'dashboard__table-container__rotate-up'
+                        }`}>
+                        arrow_drop_down
+                      </span>
+                    )}
+                  </span>
                 </th>
                 <th></th>
               </tr>

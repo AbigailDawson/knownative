@@ -295,6 +295,15 @@ $icon-colors: (
         width: calc(100% - 1rem);
     }
 
+    &__sortable-header {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        cursor: pointer;
+        user-select: none;
+    }
+
+
     &__table-container {
         width: calc(100% - 1rem);
         max-width: 1500px;
@@ -327,7 +336,14 @@ $icon-colors: (
             overflow: hidden;
             text-overflow: ellipsis;
         }
-    
+        &__sort-arrow {
+            transition: transform 0.2s ease-in-out;
+            }
+            
+            &__rotate-up {
+                transform: rotate(180deg);
+            }
+            
         thead {
             tr {
                 border-bottom: 1px solid #E1E3E3;
@@ -335,7 +351,6 @@ $icon-colors: (
             th {
                 padding: 8px;
                 text-align: left;
-    
                 &:nth-child(1) {
                     width: 80px;
                 }
@@ -346,11 +361,11 @@ $icon-colors: (
                 }
 
                 &:nth-child(3) {
-                    width: 4.6875rem;;
+                    width: 5.5rem;
                 }
 
                 &:nth-child(4) {
-                    width: 7.5rem;
+                    width: 9rem;
                 }
 
             }
