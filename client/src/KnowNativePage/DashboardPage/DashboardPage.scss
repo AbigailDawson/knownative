@@ -282,6 +282,28 @@ $icon-colors: (
         }
     }
 
+    &__no-text-library {
+        border: 2px dashed #E1E3E3; // Dashed border
+        margin-top: 3rem;
+        padding: 4rem 1rem;
+        max-width: 1500px;
+        width: calc(100vw - 400px);
+        text-align: center;
+        gap: 1.5rem;
+        border-radius: 0.625rem;
+
+        &__text-margin {
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+    }
+    
+    &--bold {
+        font-weight: 600;
+        color: black;
+    }
+
+
     &__library {
         display: flex;
         flex-direction: column;
@@ -413,6 +435,7 @@ $icon-colors: (
         background-color: white;
         color: var(--action);
         display: flex;
+        width: 100%;
         justify-content: center;
         font-weight: 600;
     }

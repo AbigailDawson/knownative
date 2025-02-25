@@ -268,21 +268,26 @@ export default function DashboardPage() {
           </div>
         </div>
 
-        <div className="dashboard__title dashboard__title--subtitle">
-          <h4>Jump back in</h4>
-        </div>
-        <div>
-          <div className="dashboard__sub-container">
-            <div className="dashboard dashboard__card">
-              <h2 className="dashboard dashboard__card-title">開計程車</h2>
-              <p className="dashboard dashboard__card-body">
-                每天我要到許多地方去，也會遇到很多人。有些人喜款叫我「左轉」、「右轉」、「停」...
-              </p>
+        {mockData.length !== 0 ? (
+          <div>
+            <div className="dashboard__title dashboard__title--subtitle">
+              <h4>Jump back in</h4>
             </div>
-            <button className="dashboard__study-button">Study</button>
+            <div>
+              <div className="dashboard__sub-container">
+                <div className="dashboard dashboard__card">
+                  <h2 className="dashboard dashboard__card-title">開計程車</h2>
+                  <p className="dashboard dashboard__card-body">
+                    每天我要到許多地方去，也會遇到很多人。有些人喜款叫我「左轉」、「右轉」、「停」...
+                  </p>
+                </div>
+                <button className="dashboard__study-button">Study</button>
+              </div>
+            </div>
           </div>
-        </div>
-
+        ) : (
+          <></>
+        )}
         {/* Library */}
         <div className="dashboard__library">
           <div className="dashboard__title dashboard__library-container">
@@ -295,90 +300,109 @@ export default function DashboardPage() {
               onClick={() => console.log('click click')}
             />
           </div>
-          <table className="dashboard__table-container">
-            <thead>
-              <tr>
-                <th></th>
-                <th onClick={() => handleSort('name')}>
-                  <span className="dashboard__sortable-header">
-                    <span>Name</span>
-                    {sortColumn === 'name' && (
-                      <span
-                        className={`material-symbols-outlined dashboard__table-container__sort-arrow ${
-                          sortDirection === 'asc'
-                            ? 'dashboard__table-container__rotate-up'
-                            : 'dashboard__table-container__rotate-down'
-                        }`}>
-                        arrow_drop_down
+          {mockData.length !== 0 ? (
+            <div>
+              <table className="dashboard__table-container">
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th onClick={() => handleSort('name')}>
+                      <span className="dashboard__sortable-header">
+                        <span>Name</span>
+                        {sortColumn === 'name' && (
+                          <span
+                            className={`material-symbols-outlined dashboard__table-container__sort-arrow ${
+                              sortDirection === 'asc'
+                                ? 'dashboard__table-container__rotate-up'
+                                : 'dashboard__table-container__rotate-down'
+                            }`}>
+                            arrow_drop_down
+                          </span>
+                        )}
                       </span>
-                    )}
-                  </span>
-                </th>
-                <th onClick={() => handleSort('cards')}>
-                  <span className="dashboard__sortable-header">
-                    <span>Cards</span>
-                    {sortColumn === 'cards' && (
-                      <span
-                        className={`material-symbols-outlined dashboard__table-container__sort-arrow ${
-                          sortDirection === 'asc'
-                            ? 'dashboard__table-container__rotate-up'
-                            : 'dashboard__table-container__rotate-down'
-                        }`}>
-                        arrow_drop_down
+                    </th>
+                    <th onClick={() => handleSort('cards')}>
+                      <span className="dashboard__sortable-header">
+                        <span>Cards</span>
+                        {sortColumn === 'cards' && (
+                          <span
+                            className={`material-symbols-outlined dashboard__table-container__sort-arrow ${
+                              sortDirection === 'asc'
+                                ? 'dashboard__table-container__rotate-up'
+                                : 'dashboard__table-container__rotate-down'
+                            }`}>
+                            arrow_drop_down
+                          </span>
+                        )}
                       </span>
-                    )}
-                  </span>
-                </th>
-                <th onClick={() => handleSort('lastOpened')}>
-                  <span className="dashboard__sortable-header">
-                    <span>Last Opened </span>
-                    {sortColumn === 'lastOpened' && (
-                      <span
-                        className={`material-symbols-outlined dashboard__table-container__sort-arrow ${
-                          sortDirection === 'asc'
-                            ? 'dashboard__table-container__rotate-down'
-                            : 'dashboard__table-container__rotate-up'
-                        }`}>
-                        arrow_drop_down
+                    </th>
+                    <th onClick={() => handleSort('lastOpened')}>
+                      <span className="dashboard__sortable-header">
+                        <span>Last Opened </span>
+                        {sortColumn === 'lastOpened' && (
+                          <span
+                            className={`material-symbols-outlined dashboard__table-container__sort-arrow ${
+                              sortDirection === 'asc'
+                                ? 'dashboard__table-container__rotate-down'
+                                : 'dashboard__table-container__rotate-up'
+                            }`}>
+                            arrow_drop_down
+                          </span>
+                        )}
                       </span>
-                    )}
-                  </span>
-                </th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              {sortData(mockData.slice(0, itemsToShow)).map((item, index) => (
-                <tr
-                  key={item.id}
-                  className={`dashboard__table-container__item-row ${fadeIn && index >= itemsToShow - 5 ? 'dashboard__table-container__fade-in' : ''}`}>
-                  <td>
-                    <RoundIcon iconName="book_2" color="blue" />
-                  </td>
-                  <td>
-                    <div className="dashboard__table-container__name">{item.name}</div>
-                    <div className="dashboard__table-container__desc">{item.desc}</div>
-                  </td>
-                  <td className={item.cards === 0 ? 'dashboard--text-red' : ''}>{item.cards}</td>
-                  <td>{item.lastOpened}</td>
-                  <td>
-                    <DashboardButton
-                      iconName="&#xe41d;"
-                      iconStyling="dashboard-button__icon-flip"
-                      buttonVariant="secondary"
-                      label="Review"
-                      onClick={() => console.log('click click')}
-                    />
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          {itemsToShow < mockData.length && ( // Only show button if there are more items to load
-            <button className="dashboard__view-more-button" onClick={loadMoreItems}>
-              View More
-              <span className="material-symbols-outlined">keyboard_arrow_down</span>
-            </button>
+                    </th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {sortData(mockData.slice(0, itemsToShow)).map((item, index) => (
+                    <tr
+                      key={item.id}
+                      className={`dashboard__table-container__item-row ${fadeIn && index >= itemsToShow - 5 ? 'dashboard__table-container__fade-in' : ''}`}>
+                      <td>
+                        <RoundIcon iconName="book_2" color="blue" />
+                      </td>
+                      <td>
+                        <div className="dashboard__table-container__name">{item.name}</div>
+                        <div className="dashboard__table-container__desc">{item.desc}</div>
+                      </td>
+                      <td className={item.cards === 0 ? 'dashboard--text-red' : ''}>
+                        {item.cards}
+                      </td>
+                      <td>{item.lastOpened}</td>
+                      <td>
+                        <DashboardButton
+                          iconName="&#xe41d;"
+                          iconStyling="dashboard-button__icon-flip"
+                          buttonVariant="secondary"
+                          label="Review"
+                          onClick={() => console.log('click click')}
+                          disabled={item.cards === 0 ? true : false}
+                        />
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              {itemsToShow < mockData.length && ( // Only show button if there are more items to load
+                <button className="dashboard__view-more-button" onClick={loadMoreItems}>
+                  View More
+                  <span className="material-symbols-outlined">keyboard_arrow_down</span>
+                </button>
+              )}
+            </div>
+          ) : (
+            <div className="dashboard__no-text-library">
+              <img src="/images/no_text_library.svg" />
+              <div>
+                <p className="dashboard--bold dashboard__no-text-library__text-margin">
+                  Nothing here yet!
+                </p>
+                <p>
+                  Add your own text, or <u>use a sample text</u>
+                </p>
+              </div>
+            </div>
           )}
         </div>
       </div>

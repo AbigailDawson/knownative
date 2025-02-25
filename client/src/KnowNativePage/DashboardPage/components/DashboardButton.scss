@@ -22,6 +22,11 @@
         border: 1px solid var(--KN-gray-400, #E1E3E3);
         background: var(--KN-gray-100, #FFF);
         color: #E1E3E3;
+        cursor:initial;
+        &:hover {
+            background: var(--KN-gray-100, #FFF);
+            color: #E1E3E3;
+        }
     }
 
     &--primary {
