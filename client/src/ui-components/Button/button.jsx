@@ -1,7 +1,15 @@
 import React from 'react';
 import './button.scss';
 
-const Button = ({ buttonText, buttonOnClickFunc, buttonVariant }) => {
+const Button = ({
+  buttonText,
+  buttonOnClickFunc,
+  buttonVariant,
+  disabled = false,
+  iconName,
+  iconStyling,
+  textSize
+}) => {
   /*
 Button Variants:
    - primary: First priority button. Call To Action(cta): Submit, Complete, Continue. Solid color
@@ -11,7 +19,13 @@ Button Variants:
 */
 
   return (
-    <button className={`reusable-button reusable-button--${buttonVariant}`} onClick={buttonOnClickFunc}>
+    <button
+      className={`reusable-button reusable-button--${buttonVariant} ${textSize}`}
+      onClick={buttonOnClickFunc}
+      disabled={disabled}>
+      {iconName && (
+        <span className={`material-symbols-outlined button__icon ${iconStyling}`}>{iconName}</span>
+      )}
       {buttonText}
     </button>
   );

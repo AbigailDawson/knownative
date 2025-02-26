@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useAuthContext } from '../../contexts/Auth/AuthProvider';
 import { Link, useNavigate } from 'react-router-dom';
 import * as authService from './../../services/authService';
-import DashboardButton from './components/DashboardButton';
+import Button from '../../ui-components/Button/button';
 
 const mockData = [
   {
@@ -292,12 +292,12 @@ export default function DashboardPage() {
         <div className="dashboard__library">
           <div className="dashboard__title dashboard__library-container">
             <h4>Library</h4>
-            <DashboardButton
+            <Button
               iconName="new_window"
               iconStyling="dashboard-button__icon-flip"
               buttonVariant="primary"
-              label="Add Text"
-              onClick={() => console.log('click click')}
+              buttonText="Add Text"
+              buttonOnClickFunc={() => console.log('click click')}
             />
           </div>
           {mockData.length !== 0 ? (
@@ -371,12 +371,12 @@ export default function DashboardPage() {
                       </td>
                       <td>{item.lastOpened}</td>
                       <td>
-                        <DashboardButton
+                        <Button
                           iconName="&#xe41d;"
                           iconStyling="dashboard-button__icon-flip"
-                          buttonVariant="secondary"
-                          label="Review"
-                          onClick={() => console.log('click click')}
+                          buttonVariant="tertiary"
+                          buttonText="Review"
+                          buttonOnClickFunc={() => console.log('click click')}
                           disabled={item.cards === 0 ? true : false}
                         />
                       </td>
