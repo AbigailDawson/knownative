@@ -59,6 +59,7 @@ export default function LandingPage() {
                   buttonText={'Demo'}
                   buttonOnClickFunc={() => handleScreenCheck('/demo')}
                   buttonVariant={'primary'}
+                  textSize={'reusable-button--text-lg'}
                 />
                 <a
                   href="https://github.com/AbigailDawson/knownative"
