@@ -373,21 +373,22 @@ $icon-colors: (
             th {
                 padding: 8px;
                 text-align: left;
+                white-space: nowrap;
+
                 &:nth-child(1) {
                     width: 80px;
                 }
 
                 &:nth-child(2) {
-                    max-width: 60%;
-                    width: 55%;
+                    width: auto;
                 }
 
-                &:nth-child(3) {
-                    width: 5.5rem;
+                &:nth-child(3), &:nth-child(4) {
+                    width: 8rem;
                 }
 
-                &:nth-child(4) {
-                    width: 9rem;
+                &:nth-child(5) {
+                    width: 12.5rem;
                 }
 
             }
