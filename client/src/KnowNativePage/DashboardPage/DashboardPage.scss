@@ -391,7 +391,37 @@ $icon-colors: (
                     width: 12.5rem;
                 }
 
+                @media (max-width: 1300px) {
+                    &:nth-child(3) {
+                        width: 5rem;
+                    }
+
+                    &:nth-child(4) {
+                        width: 7.5rem;
+                    }
+    
+                    &:nth-child(5) {
+                        width: 10rem;
+                    }
+        
+                }
+
+                @media (max-width: 1000px) {
+                    &:nth-child(3) {
+                        width: 4.2rem;
+                    }
+                    &:nth-child(4) {
+                        width: 5rem;
+                    }
+
+                    &:nth-child(5) {
+                        width: 9rem;
+                    }
+        
+                }
+
             }
+            
         }
     
         tbody {
@@ -425,6 +455,13 @@ $icon-colors: (
                     display: flex;
                     justify-self: end;
                 }
+
+                @media (max-width: 1000px) {
+                    &:nth-child(3), &:nth-child(4) {
+                        font-size: 0.9rem;
+                    }
+                }
+
             }
             
         }
