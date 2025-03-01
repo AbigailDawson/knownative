@@ -21,7 +21,16 @@ $icon-colors: (
 .dashboard {
     display: flex;
 
+    &--text-red {
+        color: var(--red);
+        font-weight: 600;
+    }
+
     &__side-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
         border-color: rgb(217, 217, 217);
         display: flex;
         flex-direction: column;
@@ -97,9 +106,9 @@ $icon-colors: (
     &__main{
         display: flex;
         flex-direction: column;
-        width: calc(100vw - 285px); // factors in space taken from nav (new width in figma)
-        height: 100vh;
+        width: calc(100vw - 285px); // factors in space taken from nav
         max-width: 1500px;
+        margin-left: 350px;
     }
 
     &__user{
@@ -130,6 +139,7 @@ $icon-colors: (
     &__title {
         color: black;
         display: flex;
+
         &--subtitle {
             margin-top: 2rem;
             margin-bottom: 0.5rem;
@@ -260,6 +270,257 @@ $icon-colors: (
         justify-content: space-between;
     }
 
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(10px); /* Optional: Add a slight slide effect */
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes fadeOut {
+        from {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        to {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+      }
+
+    &__no-text-library {
+        border: 2px dashed #E1E3E3; // Dashed border
+        margin-top: 3rem;
+        padding: 4rem 1rem;
+        max-width: 1500px;
+        width: calc(100vw - 400px);
+        text-align: center;
+        gap: 1.5rem;
+        border-radius: 0.625rem;
+
+        &__text-margin {
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+    }
+    
+    &--bold {
+        font-weight: 600;
+        color: black;
+    }
+
+
+    &__library {
+        display: flex;
+        flex-direction: column;
+        margin-top: 3rem;
+        margin-bottom: 2.3rem;
+    }
+
+    &__library-container {
+        display: flex;
+        justify-content: space-between;
+        width: calc(100% - 1rem);
+    }
+
+    &__sortable-header {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        cursor: pointer;
+        user-select: none;
+    }
+
+
+    &__table-container {
+        width: calc(100% - 1rem);
+        max-width: 1500px;
+        display: table;
+        table-layout: fixed;
+        border-collapse: collapse;
+        overflow-x: auto;
+
+        &__item-row{
+            transition: opacity 0.4s ease-out, height 0.4s ease-out, margin 0.4s ease-out;
+        }
+
+        &__fade-in {
+            animation: fadeIn 0.5s ease-in forwards;
+        }
+
+        &__fade-out {
+            opacity: 0;
+            height: 0;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        &__name {
+            font-size: 22px;
+            font-weight: 700;
+            color: #161717;
+            font-family: 'Noto Serif TC', serif;
+        }
+
+        &__desc {
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            line-clamp: 2; 
+            -webkit-box-orient: vertical;
+            font-size: 18px;
+            font-weight: 300;
+            color: #556163;
+            font-family: 'Noto Serif TC', serif;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        &__sort-arrow {
+            transition: transform 0.2s ease-in-out;
+        }
+            
+        &__rotate-up {
+            transform: rotate(180deg);
+        }
+        
+        &__rotate-down {
+            transform: rotate(0deg);
+        }
+
+        &__sort-inactive {
+            color: var(--teal-lt);
+        }
+
+        thead {
+            tr {
+                border-bottom: 1px solid #E1E3E3;
+            }
+            th {
+                padding: 8px;
+                text-align: left;
+                white-space: nowrap;
+
+                &:nth-child(1) {
+                    width: 80px;
+                }
+
+                &:nth-child(2) {
+                    width: auto;
+                }
+
+                &:nth-child(3), &:nth-child(4) {
+                    width: 8rem;
+                }
+
+                &:nth-child(5) {
+                    width: 12.5rem;
+                }
+
+                @media (max-width: 1300px) {
+                    &:nth-child(3) {
+                        width: 5rem;
+                    }
+
+                    &:nth-child(4) {
+                        width: 7.5rem;
+                    }
+    
+                    &:nth-child(5) {
+                        width: 10rem;
+                    }
+        
+                }
+
+                @media (max-width: 1000px) {
+                    &:nth-child(3) {
+                        width: 4.2rem;
+                    }
+                    &:nth-child(4) {
+                        width: 5rem;
+                    }
+
+                    &:nth-child(5) {
+                        width: 9rem;
+                    }
+        
+                }
+
+            }
+            
+        }
+    
+        tbody {
+            display: table-row-group;
+            tr {
+                display: table-row;
+                border-bottom: 1px solid #E1E3E3;
+            }
+    
+            td {
+                padding: 8px;
+                text-align: left;
+                margin: 15px 0px;
+    
+                &:first-child, 
+                &:last-child { 
+                    min-width: 30px;                }
+    
+
+                &:first-child {
+                    display: flex;
+                    justify-self: center;
+                }
+
+
+                &:nth-child(2) {
+                    width: 50%;
+                }
+
+                &:nth-child(5) {
+                    display: flex;
+                    justify-self: end;
+                }
+
+                @media (max-width: 1000px) {
+                    &:nth-child(3), &:nth-child(4) {
+                        font-size: 0.9rem;
+                    }
+                }
+
+            }
+            
+        }
+    
+    }
+
+    &__view-container {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        justify-content: center;
+    }
+
+    &__view-button {
+        margin-top: 0.5rem;
+        background-color: white;
+        color: var(--action);
+        display: flex;
+        width: 20%;
+        justify-content: center;
+        font-weight: 600;
+
+        &:disabled {
+            color: var(--teal-lt);
+            font-weight: 400;
+            cursor: initial;
+        }
+    
+    }
+
     &__card {
         flex-direction: column;
         align-items: flex-start;
@@ -301,46 +562,5 @@ $icon-colors: (
         width: 7.5rem;
         height: 100%;
         margin-right: 1rem;
-    }
-
-    &__recently-added {
-        display: flex;
-        flex-direction: column;
-
-        &-content {
-            background-color: white;
-            // border: 1px solid rgb(8, 106, 108);
-        }
-    }
-
-    &__card-buttons {
-        height: 6rem;
-        flex-direction: column;
-        justify-content: space-between;
-        margin-top: 1rem;
-        margin-left: 1rem;
-        margin-right: 1rem;
-
-        &--add-item,
-        &--view-all  {
-            height: 2.5rem;
-        }
-
-        &--add-item {
-            background-color: rgb(8, 106, 108);
-            color: white;
-            display: flex;
-            justify-content: center;
-            margin-bottom: 0.5rem;
-        }
-
-        &--view-all {
-            background-color: rgb(229, 242, 246);
-            color: rgb(8, 106, 108);
-            display: flex;
-            justify-content: center;
-            margin-top: 0.5rem;
-            margin-bottom: 0.5rem;
-        }
     }
 }
