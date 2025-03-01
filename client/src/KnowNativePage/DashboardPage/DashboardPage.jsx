@@ -4,83 +4,283 @@ import { useAuthContext } from '../../contexts/Auth/AuthProvider';
 import { Link, useNavigate } from 'react-router-dom';
 import * as authService from './../../services/authService';
 import Button from '../../ui-components/Button/button';
+import { getUserTexts } from '../../utilities/texts-api';
 
 const mockData = [
   {
-    id: 1,
-    name: '駕駛執照',
-    desc: '每天我要到許多地方去，也會遇到很多人。有些人喜歡叫我「左轉」、「右轉」、「停」；有些人會把髒東西留在我的車上。不過也有一些不錯的人，可以從他們身上學到很多東西，所以我也交了好幾個朋友。真是什麼樣的人都有啊！',
-    cards: 10,
+    _id: 1,
+    title: '駕駛執照',
+    content:
+      '每天我要到許多地方去，也會遇到很多人。有些人喜歡叫我「左轉」、「右轉」、「停」；有些人會把髒東西留在我的車上。不過也有一些不錯的人，可以從他們身上學到很多東西，所以我也交了好幾個朋友。真是什麼樣的人都有啊！',
+    cards: [
+      {
+        text: 'asdfasdfasd',
+        status: 'active',
+        frontProperties: 'asdfasdf',
+        backProperties: 'aslfjasd;f'
+      },
+      {
+        text: 'asdfasdfasd',
+        status: 'active',
+        frontProperties: 'asdfasdf',
+        backProperties: 'aslfjasd;f'
+      },
+      {
+        text: 'asdfasdfasd',
+        status: 'active',
+        frontProperties: 'asdfasdf',
+        backProperties: 'aslfjasd;f'
+      },
+      {
+        text: 'asdfasdfasd',
+        status: 'active',
+        frontProperties: 'asdfasdf',
+        backProperties: 'aslfjasd;f'
+      },
+      {
+        text: 'asdfasdfasd',
+        status: 'active',
+        frontProperties: 'asdfasdf',
+        backProperties: 'aslfjasd;f'
+      },
+      {
+        text: 'asdfasdfasd',
+        status: 'active',
+        frontProperties: 'asdfasdf',
+        backProperties: 'aslfjasd;f'
+      }
+    ],
     lastOpened: 'Oct 29, 2024'
   },
   {
-    id: 2,
-    name: '銷售促進',
-    desc: '每天我要到許多地方去，也會遇到很多人。有些人喜歡叫我「左轉」、「右轉」、「停」；有些人會把髒東西留在我的車上。不過也有一些不錯的人，可以從他們身上學到很多東西，所以我也交了好幾個朋友。真是什麼樣的人都有啊！',
-    cards: 8,
+    _id: 2,
+    title: '銷售促進',
+    content:
+      '每天我要到許多地方去，也會遇到很多人。有些人喜歡叫我「左轉」、「右轉」、「停」；有些人會把髒東西留在我的車上。不過也有一些不錯的人，可以從他們身上學到很多東西，所以我也交了好幾個朋友。真是什麼樣的人都有啊！',
+    cards: [
+      {
+        text: 'asdfasdfasd',
+        status: 'active',
+        frontProperties: 'asdfasdf',
+        backProperties: 'aslfjasd;f'
+      },
+      {
+        text: 'asdfasdfasd',
+        status: 'active',
+        frontProperties: 'asdfasdf',
+        backProperties: 'aslfjasd;f'
+      },
+      {
+        text: 'asdfasdfasd',
+        status: 'active',
+        frontProperties: 'asdfasdf',
+        backProperties: 'aslfjasd;f'
+      }
+    ],
     lastOpened: 'Oct 25, 2024'
   },
   {
-    id: 3,
-    name: '開計程車',
-    desc: '每天我要到許多地方去，也會遇到很多人。有些人喜歡叫我「左轉」、「右轉」、「停」；有些人會把髒東西留在我的車上。不過也有一些不錯的人，可以從他們身上學到很多東西，所以我也交了好幾個朋友。真是什麼樣的人都有啊！',
-    cards: 0,
+    _id: 3,
+    title: '開計程車',
+    content:
+      '每天我要到許多地方去，也會遇到很多人。有些人喜歡叫我「左轉」、「右轉」、「停」；有些人會把髒東西留在我的車上。不過也有一些不錯的人，可以從他們身上學到很多東西，所以我也交了好幾個朋友。真是什麼樣的人都有啊！',
+    cards: [],
     lastOpened: 'Feb 25, 2025'
   },
   {
-    id: 4,
-    name: '開計程車',
-    desc: '每天我要到許多地方去，也會遇到很多人。有些人喜歡叫我「左轉」、「右轉」、「停」；有些人會把髒東西留在我的車上。不過也有一些不錯的人，可以從他們身上學到很多東西，所以我也交了好幾個朋友。真是什麼樣的人都有啊！',
-    cards: 8,
+    _id: 4,
+    title: '開計程車',
+    content:
+      '每天我要到許多地方去，也會遇到很多人。有些人喜歡叫我「左轉」、「右轉」、「停」；有些人會把髒東西留在我的車上。不過也有一些不錯的人，可以從他們身上學到很多東西，所以我也交了好幾個朋友。真是什麼樣的人都有啊！',
+    cards: [
+      {
+        text: 'asdfasdfasd',
+        status: 'active',
+        frontProperties: 'asdfasdf',
+        backProperties: 'aslfjasd;f'
+      },
+      {
+        text: 'asdfasdfasd',
+        status: 'active',
+        frontProperties: 'asdfasdf',
+        backProperties: 'aslfjasd;f'
+      }
+    ],
     lastOpened: 'Feb 25, 2025'
   },
   {
-    id: 5,
-    name: '開計程車',
-    desc: '每天我要到許多地方去，也會遇到很多人。有些人喜歡叫我「左轉」、「右轉」、「停」；有些人會把髒東西留在我的車上。不過也有一些不錯的人，可以從他們身上學到很多東西，所以我也交了好幾個朋友。真是什麼樣的人都有啊！',
-    cards: 8,
+    _id: 5,
+    title: '開計程車',
+    content:
+      '每天我要到許多地方去，也會遇到很多人。有些人喜歡叫我「左轉」、「右轉」、「停」；有些人會把髒東西留在我的車上。不過也有一些不錯的人，可以從他們身上學到很多東西，所以我也交了好幾個朋友。真是什麼樣的人都有啊！',
+    cards: [
+      {
+        text: 'asdfasdfasd',
+        status: 'active',
+        frontProperties: 'asdfasdf',
+        backProperties: 'aslfjasd;f'
+      }
+    ],
     lastOpened: 'Feb 25, 2025'
   },
   {
-    id: 6,
-    name: '開計程車',
-    desc: '每天我要到許多地方去，也會遇到很多人。有些人喜歡叫我「左轉」、「右轉」、「停」；有些人會把髒東西留在我的車上。不過也有一些不錯的人，可以從他們身上學到很多東西，所以我也交了好幾個朋友。真是什麼樣的人都有啊！',
-    cards: 0,
+    _id: 6,
+    title: '開計程車',
+    content:
+      '每天我要到許多地方去，也會遇到很多人。有些人喜歡叫我「左轉」、「右轉」、「停」；有些人會把髒東西留在我的車上。不過也有一些不錯的人，可以從他們身上學到很多東西，所以我也交了好幾個朋友。真是什麼樣的人都有啊！',
+    cards: [
+      {
+        text: 'asdfasdfasd',
+        status: 'active',
+        frontProperties: 'asdfasdf',
+        backProperties: 'aslfjasd;f'
+      },
+      {
+        text: 'asdfasdfasd',
+        status: 'active',
+        frontProperties: 'asdfasdf',
+        backProperties: 'aslfjasd;f'
+      },
+      {
+        text: 'asdfasdfasd',
+        status: 'active',
+        frontProperties: 'asdfasdf',
+        backProperties: 'aslfjasd;f'
+      },
+      {
+        text: 'asdfasdfasd',
+        status: 'active',
+        frontProperties: 'asdfasdf',
+        backProperties: 'aslfjasd;f'
+      },
+      {
+        text: 'asdfasdfasd',
+        status: 'active',
+        frontProperties: 'asdfasdf',
+        backProperties: 'aslfjasd;f'
+      },
+      {
+        text: 'asdfasdfasd',
+        status: 'active',
+        frontProperties: 'asdfasdf',
+        backProperties: 'aslfjasd;f'
+      }
+    ],
     lastOpened: 'Feb 25, 2025'
   },
   {
-    id: 7,
-    name: '快遞服務',
-    desc: '每天我要到許多地方去，也會遇到很多人。有些人喜歡叫我「左轉」、「右轉」、「停」；有些人會把髒東西留在我的車上。不過也有一些不錯的人，可以從他們身上學到很多東西，所以我也交了好幾個朋友。真是什麼樣的人都有啊！',
-    cards: 8,
+    _id: 7,
+    title: '快遞服務',
+    content:
+      '每天我要到許多地方去，也會遇到很多人。有些人喜歡叫我「左轉」、「右轉」、「停」；有些人會把髒東西留在我的車上。不過也有一些不錯的人，可以從他們身上學到很多東西，所以我也交了好幾個朋友。真是什麼樣的人都有啊！',
+    cards: [],
     lastOpened: 'Feb 25, 2025'
   },
   {
-    id: 8,
-    name: '開計程車',
-    desc: '每天我要到許多地方去，也會遇到很多人。有些人喜歡叫我「左轉」、「右轉」、「停」；有些人會把髒東西留在我的車上。不過也有一些不錯的人，可以從他們身上學到很多東西，所以我也交了好幾個朋友。真是什麼樣的人都有啊！',
-    cards: 8,
+    _id: 8,
+    title: '開計程車',
+    content:
+      '每天我要到許多地方去，也會遇到很多人。有些人喜歡叫我「左轉」、「右轉」、「停」；有些人會把髒東西留在我的車上。不過也有一些不錯的人，可以從他們身上學到很多東西，所以我也交了好幾個朋友。真是什麼樣的人都有啊！',
+    cards: [
+      {
+        text: 'asdfasdfasd',
+        status: 'active',
+        frontProperties: 'asdfasdf',
+        backProperties: 'aslfjasd;f'
+      },
+      {
+        text: 'asdfasdfasd',
+        status: 'active',
+        frontProperties: 'asdfasdf',
+        backProperties: 'aslfjasd;f'
+      },
+      {
+        text: 'asdfasdfasd',
+        status: 'active',
+        frontProperties: 'asdfasdf',
+        backProperties: 'aslfjasd;f'
+      }
+    ],
     lastOpened: 'Feb 25, 2025'
   },
   {
-    id: 9,
-    name: '乘車券',
-    desc: '每天我要到許多地方去，也會遇到很多人。有些人喜歡叫我「左轉」、「右轉」、「停」；有些人會把髒東西留在我的車上。不過也有一些不錯的人，可以從他們身上學到很多東西，所以我也交了好幾個朋友。真是什麼樣的人都有啊！',
-    cards: 8,
+    _id: 9,
+    title: '乘車券',
+    content:
+      '每天我要到許多地方去，也會遇到很多人。有些人喜歡叫我「左轉」、「右轉」、「停」；有些人會把髒東西留在我的車上。不過也有一些不錯的人，可以從他們身上學到很多東西，所以我也交了好幾個朋友。真是什麼樣的人都有啊！',
+    cards: [
+      {
+        text: 'asdfasdfasd',
+        status: 'active',
+        frontProperties: 'asdfasdf',
+        backProperties: 'aslfjasd;f'
+      },
+      {
+        text: 'asdfasdfasd',
+        status: 'active',
+        frontProperties: 'asdfasdf',
+        backProperties: 'aslfjasd;f'
+      },
+      {
+        text: 'asdfasdfasd',
+        status: 'active',
+        frontProperties: 'asdfasdf',
+        backProperties: 'aslfjasd;f'
+      },
+      {
+        text: 'asdfasdfasd',
+        status: 'active',
+        frontProperties: 'asdfasdf',
+        backProperties: 'aslfjasd;f'
+      },
+      {
+        text: 'asdfasdfasd',
+        status: 'active',
+        frontProperties: 'asdfasdf',
+        backProperties: 'aslfjasd;f'
+      },
+      {
+        text: 'asdfasdfasd',
+        status: 'active',
+        frontProperties: 'asdfasdf',
+        backProperties: 'aslfjasd;f'
+      },
+      {
+        text: 'asdfasdfasd',
+        status: 'active',
+        frontProperties: 'asdfasdf',
+        backProperties: 'aslfjasd;f'
+      },
+      {
+        text: 'asdfasdfasd',
+        status: 'active',
+        frontProperties: 'asdfasdf',
+        backProperties: 'aslfjasd;f'
+      }
+    ],
     lastOpened: 'Feb 25, 2025'
   },
   {
-    id: 10,
-    name: '計畫書',
-    desc: '每天我要到許多地方去，也會遇到很多人。有些人喜歡叫我「左轉」、「右轉」、「停」；有些人會把髒東西留在我的車上。不過也有一些不錯的人，可以從他們身上學到很多東西，所以我也交了好幾個朋友。真是什麼樣的人都有啊！',
-    cards: 8,
+    _id: 10,
+    title: '計畫書',
+    content:
+      '每天我要到許多地方去，也會遇到很多人。有些人喜歡叫我「左轉」、「右轉」、「停」；有些人會把髒東西留在我的車上。不過也有一些不錯的人，可以從他們身上學到很多東西，所以我也交了好幾個朋友。真是什麼樣的人都有啊！',
+    cards: [
+      {
+        text: 'asdfasdfasd',
+        status: 'active',
+        frontProperties: 'asdfasdf',
+        backProperties: 'aslfjasd;f'
+      }
+    ],
     lastOpened: 'Feb 25, 2025'
   },
   {
-    id: 11,
-    name: '開發者',
-    desc: '每天我要到許多地方去，也會遇到很多人。有些人喜歡叫我「左轉」、「右轉」、「停」；有些人會把髒東西留在我的車上。不過也有一些不錯的人，可以從他們身上學到很多東西，所以我也交了好幾個朋友。真是什麼樣的人都有啊！',
-    cards: 8,
+    _id: 11,
+    title: '開發者',
+    content:
+      '每天我要到許多地方去，也會遇到很多人。有些人喜歡叫我「左轉」、「右轉」、「停」；有些人會把髒東西留在我的車上。不過也有一些不錯的人，可以從他們身上學到很多東西，所以我也交了好幾個朋友。真是什麼樣的人都有啊！',
+    cards: [],
     lastOpened: 'Feb 25, 2025'
   }
 ];
@@ -91,8 +291,11 @@ export default function DashboardPage() {
   const [itemsToShow, setItemsToShow] = useState(3);
   const [fadeIn, setFadeIn] = useState(false);
   const [fadeOut, setFadeOut] = useState(false);
-  const [sortColumn, setSortColumn] = useState('name');
+  const [sortColumn, setSortColumn] = useState('title');
   const [sortDirection, setSortDirection] = useState('asc');
+
+  const [texts, setTexts] = useState([]);
+  const [error, setError] = useState(null);
 
   const showMoreItems = (amount) => {
     setItemsToShow((prev) => prev + amount);
@@ -133,7 +336,6 @@ export default function DashboardPage() {
         } else {
           setTimeout(() => {
             setItemsToShow((prev) => {
-              console.log(`prev amoutn: ${prev}`);
               const newAmount = Math.max(prev - amount, 3);
               return newAmount;
             });
@@ -165,7 +367,7 @@ export default function DashboardPage() {
   };
 
   const handleSort = (column) => {
-    const newDirection = sortColumn === column && sortDirection === 'asc' ? 'desc' : 'asc';
+    const newDirection = sortColumn === column && sortDirection === 'asc' ? 'content' : 'asc';
     setSortColumn(column);
     setSortDirection(newDirection);
   };
@@ -193,6 +395,20 @@ export default function DashboardPage() {
       </div>
     );
   };
+
+  useEffect(() => {
+    const fetchTexts = async () => {
+      try {
+        if (user._id) {
+          const texts = await getUserTexts(user._id);
+          setTexts(texts);
+        }
+      } catch (error) {
+        console.log('Error fetching texts:', error);
+      }
+    };
+    fetchTexts();
+  }, [user]);
 
   return user ? (
     <div className="dashboard">
@@ -302,7 +518,7 @@ export default function DashboardPage() {
           </div>
         </div>
 
-        {mockData.length !== 0 ? (
+        {texts.length !== 0 ? (
           <div>
             <div className="dashboard__title dashboard__title--subtitle">
               <h4>Jump back in</h4>
@@ -334,18 +550,18 @@ export default function DashboardPage() {
               buttonOnClickFunc={() => navigate('/add-text')}
             />
           </div>
-          {mockData.length !== 0 ? (
+          {texts.length !== 0 ? (
             <div>
               <table className="dashboard__table-container">
                 <thead>
                   <tr>
                     <th></th>
-                    <th onClick={() => handleSort('name')}>
+                    <th onClick={() => handleSort('title')}>
                       <span className="dashboard__sortable-header">
                         <span>Name</span>
                         <span
                           className={`material-symbols-outlined dashboard__table-container__sort-arrow ${
-                            sortColumn === 'name'
+                            sortColumn === 'title'
                               ? sortDirection === 'asc'
                                 ? 'dashboard__table-container__rotate-up'
                                 : 'dashboard__table-container__rotate-down'
@@ -389,9 +605,9 @@ export default function DashboardPage() {
                   </tr>
                 </thead>
                 <tbody>
-                  {sortData(mockData.slice(0, itemsToShow)).map((item, index) => (
+                  {sortData(texts.slice(0, itemsToShow)).map((item, index) => (
                     <tr
-                      key={item.id}
+                      key={item._id}
                       className={`dashboard__table-container__item-row 
                         ${fadeIn && index >= itemsToShow - 5 ? 'dashboard__table-container__fade-in' : ''}
                         ${fadeOut && index >= itemsToShow - 5 ? 'dashboard__table-container__fade-out' : ''}`}>
@@ -399,11 +615,11 @@ export default function DashboardPage() {
                         <RoundIcon iconName="book_2" color="blue" />
                       </td>
                       <td>
-                        <div className="dashboard__table-container__name">{item.name}</div>
-                        <div className="dashboard__table-container__desc">{item.desc}</div>
+                        <div className="dashboard__table-container__name">{item.title}</div>
+                        <div className="dashboard__table-container__desc">{item.content}</div>
                       </td>
-                      <td className={item.cards === 0 ? 'dashboard--text-red' : ''}>
-                        {item.cards}
+                      <td className={item.cards.length === 0 ? 'dashboard--text-red' : ''}>
+                        {item.cards.length}
                       </td>
                       <td>{item.lastOpened}</td>
                       <td>
@@ -413,7 +629,7 @@ export default function DashboardPage() {
                           buttonVariant="tertiary"
                           buttonText="Review"
                           buttonOnClickFunc={() => console.log('click click')}
-                          disabled={item.cards === 0 ? true : false}
+                          disabled={item.cards.length === 0 ? true : false}
                         />
                       </td>
                     </tr>
@@ -422,7 +638,7 @@ export default function DashboardPage() {
               </table>
               <div className="dashboard__view-container">
                 <button
-                  disabled={itemsToShow >= mockData.length}
+                  disabled={itemsToShow >= texts.length}
                   className="dashboard__view-button"
                   onClick={() => showMoreItems(5)}>
                   View More

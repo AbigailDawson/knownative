@@ -34,6 +34,7 @@ app.use(express.static(path.join(__dirname, "../client/dist")));
 
 app.use("/api/demo", require("./routes/api/demo"));
 app.use("/api/users", require("./routes/api/userRouter"));
+app.use("/api/texts", require("./routes/api/textRoutes"));
 
 // The following "catch all" route (note the *) is necessary
 // to return the index.html on all non-AJAX requests
