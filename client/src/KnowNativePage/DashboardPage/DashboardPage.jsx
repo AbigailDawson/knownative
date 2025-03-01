@@ -636,22 +636,24 @@ export default function DashboardPage() {
                   ))}
                 </tbody>
               </table>
-              <div className="dashboard__view-container">
-                <button
-                  disabled={itemsToShow >= texts.length}
-                  className="dashboard__view-button"
-                  onClick={() => showMoreItems(5)}>
-                  View More
-                  <span className="material-symbols-outlined">keyboard_arrow_down</span>
-                </button>
-                <button
-                  disabled={itemsToShow <= 3}
-                  className={`dashboard__view-button`}
-                  onClick={() => showLessItems(5)}>
-                  View Less
-                  <span className="material-symbols-outlined">keyboard_arrow_up</span>
-                </button>
-              </div>
+              {texts.length > 3 && (
+                <div className="dashboard__view-container">
+                  <button
+                    disabled={itemsToShow >= texts.length}
+                    className="dashboard__view-button"
+                    onClick={() => showMoreItems(5)}>
+                    View More
+                    <span className="material-symbols-outlined">keyboard_arrow_down</span>
+                  </button>
+                  <button
+                    disabled={itemsToShow <= 3}
+                    className={`dashboard__view-button`}
+                    onClick={() => showLessItems(5)}>
+                    View Less
+                    <span className="material-symbols-outlined">keyboard_arrow_up</span>
+                  </button>
+                </div>
+              )}
             </div>
           ) : (
             <div className="dashboard__no-text-library">
