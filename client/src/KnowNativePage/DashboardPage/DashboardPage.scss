@@ -282,6 +282,17 @@ $icon-colors: (
         }
     }
 
+    @keyframes fadeOut {
+        from {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        to {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+      }
+
     &__no-text-library {
         border: 2px dashed #E1E3E3; // Dashed border
         margin-top: 3rem;
@@ -334,9 +345,19 @@ $icon-colors: (
         border-collapse: collapse;
         overflow-x: auto;
 
+        &__item-row{
+            transition: opacity 0.4s ease-out, height 0.4s ease-out, margin 0.4s ease-out;
+        }
 
         &__fade-in {
             animation: fadeIn 0.5s ease-in forwards;
+        }
+
+        &__fade-out {
+            opacity: 0;
+            height: 0;
+            margin: 0;
+            overflow: hidden;
         }
 
         &__name {
@@ -360,12 +381,20 @@ $icon-colors: (
         }
         &__sort-arrow {
             transition: transform 0.2s ease-in-out;
-            }
+        }
             
-            &__rotate-up {
-                transform: rotate(180deg);
-            }
-            
+        &__rotate-up {
+            transform: rotate(180deg);
+        }
+        
+        &__rotate-down {
+            transform: rotate(0deg);
+        }
+
+        &__sort-inactive {
+            color: var(--teal-lt);
+        }
+
         thead {
             tr {
                 border-bottom: 1px solid #E1E3E3;
@@ -468,16 +497,30 @@ $icon-colors: (
     
     }
 
-    &__view-more-button {
+    &__view-container {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        justify-content: center;
+    }
+
+    &__view-button {
         margin-top: 0.5rem;
         background-color: white;
         color: var(--action);
         display: flex;
-        width: 100%;
+        width: 20%;
         justify-content: center;
         font-weight: 600;
+
+        &:disabled {
+            color: var(--teal-lt);
+            font-weight: 400;
+            cursor: initial;
+        }
+    
     }
-    // might need to replace with new styling for cards in library table
+
     &__card {
         flex-direction: column;
         align-items: flex-start;

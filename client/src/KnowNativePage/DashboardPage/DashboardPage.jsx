@@ -90,26 +90,61 @@ export default function DashboardPage() {
   const navigate = useNavigate();
   const [itemsToShow, setItemsToShow] = useState(3);
   const [fadeIn, setFadeIn] = useState(false);
+  const [fadeOut, setFadeOut] = useState(false);
   const [sortColumn, setSortColumn] = useState('name');
   const [sortDirection, setSortDirection] = useState('asc');
 
-  const loadMoreItems = () => {
-    setItemsToShow((prev) => {
-      const newCount = prev + 5;
-      setFadeIn(true);
-      requestAnimationFrame(() => {
-        window.scrollTo({
-          top: document.body.scrollHeight,
-          behavior: 'smooth'
-        });
+  const showMoreItems = (amount) => {
+    setItemsToShow((prev) => prev + amount);
+    setFadeIn(true);
+
+    requestAnimationFrame(() => {
+      window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: 'smooth'
       });
-
-      setTimeout(() => {
-        setFadeIn(false);
-      }, 500);
-
-      return newCount;
     });
+
+    setTimeout(() => {
+      setFadeIn(false);
+    }, 500);
+  };
+
+  const showLessItems = (amount) => {
+    if (itemsToShow > 3) {
+      setFadeOut(true); // Start fade-out animation
+
+      const listContainer = document.querySelector('.dashboard__table-container');
+      const firstVisibleItem = document.querySelector('.dashboard__table-container__item-row');
+
+      if (!listContainer || !firstVisibleItem) return;
+
+      const startScroll = window.scrollY;
+      const endScroll = firstVisibleItem.getBoundingClientRect().top + window.scrollY - 20; // Adjust target scroll
+      const duration = 500; // Matches fade animation
+      let startTime;
+
+      // Smooth scroll function
+      const smoothScroll = (timestamp) => {
+        if (!startTime) startTime = timestamp;
+        const progress = Math.min((timestamp - startTime) / duration, 1);
+        const easedProgress = progress * (2 - progress); // Ease-out effect
+
+        window.scrollTo(0, startScroll - easedProgress * (startScroll - endScroll));
+
+        if (progress < 1) {
+          requestAnimationFrame(smoothScroll);
+        }
+      };
+
+      requestAnimationFrame(smoothScroll);
+
+      // Hide items *after* scrolling starts
+      setTimeout(() => {
+        setItemsToShow((prev) => prev - amount);
+        setFadeOut(false);
+      }, duration - 50);
+    }
   };
 
   const sortData = (data) => {
@@ -297,7 +332,7 @@ export default function DashboardPage() {
               iconStyling="dashboard-button__icon-flip"
               buttonVariant="primary"
               buttonText="Add Text"
-              buttonOnClickFunc={() => console.log('click click')}
+              buttonOnClickFunc={() => navigate('/add-text')}
             />
           </div>
           {mockData.length !== 0 ? (
@@ -309,46 +344,46 @@ export default function DashboardPage() {
                     <th onClick={() => handleSort('name')}>
                       <span className="dashboard__sortable-header">
                         <span>Name</span>
-                        {sortColumn === 'name' && (
-                          <span
-                            className={`material-symbols-outlined dashboard__table-container__sort-arrow ${
-                              sortDirection === 'asc'
+                        <span
+                          className={`material-symbols-outlined dashboard__table-container__sort-arrow ${
+                            sortColumn === 'name'
+                              ? sortDirection === 'asc'
                                 ? 'dashboard__table-container__rotate-up'
                                 : 'dashboard__table-container__rotate-down'
-                            }`}>
-                            arrow_drop_down
-                          </span>
-                        )}
+                              : 'dashboard__table-container__sort-inactive'
+                          }`}>
+                          arrow_drop_down
+                        </span>
                       </span>
                     </th>
                     <th onClick={() => handleSort('cards')}>
                       <span className="dashboard__sortable-header">
                         <span>Cards</span>
-                        {sortColumn === 'cards' && (
-                          <span
-                            className={`material-symbols-outlined dashboard__table-container__sort-arrow ${
-                              sortDirection === 'asc'
+                        <span
+                          className={`material-symbols-outlined dashboard__table-container__sort-arrow ${
+                            sortColumn === 'cards'
+                              ? sortDirection === 'asc'
                                 ? 'dashboard__table-container__rotate-up'
                                 : 'dashboard__table-container__rotate-down'
-                            }`}>
-                            arrow_drop_down
-                          </span>
-                        )}
+                              : 'dashboard__table-container__sort-inactive'
+                          }`}>
+                          arrow_drop_down
+                        </span>
                       </span>
                     </th>
                     <th onClick={() => handleSort('lastOpened')}>
                       <span className="dashboard__sortable-header">
                         <span>Last Opened </span>
-                        {sortColumn === 'lastOpened' && (
-                          <span
-                            className={`material-symbols-outlined dashboard__table-container__sort-arrow ${
-                              sortDirection === 'asc'
-                                ? 'dashboard__table-container__rotate-down'
-                                : 'dashboard__table-container__rotate-up'
-                            }`}>
-                            arrow_drop_down
-                          </span>
-                        )}
+                        <span
+                          className={`material-symbols-outlined dashboard__table-container__sort-arrow ${
+                            sortColumn === 'lastOpened'
+                              ? sortDirection === 'asc'
+                                ? 'dashboard__table-container__rotate-up'
+                                : 'dashboard__table-container__rotate-down'
+                              : 'dashboard__table-container__sort-inactive'
+                          }`}>
+                          arrow_drop_down
+                        </span>
                       </span>
                     </th>
                     <th></th>
@@ -358,7 +393,9 @@ export default function DashboardPage() {
                   {sortData(mockData.slice(0, itemsToShow)).map((item, index) => (
                     <tr
                       key={item.id}
-                      className={`dashboard__table-container__item-row ${fadeIn && index >= itemsToShow - 5 ? 'dashboard__table-container__fade-in' : ''}`}>
+                      className={`dashboard__table-container__item-row 
+                        ${fadeIn && index >= itemsToShow - 5 ? 'dashboard__table-container__fade-in' : ''}
+                        ${fadeOut && index >= itemsToShow - 5 ? 'dashboard__table-container__fade-out' : ''}`}>
                       <td>
                         <RoundIcon iconName="book_2" color="blue" />
                       </td>
@@ -373,7 +410,7 @@ export default function DashboardPage() {
                       <td>
                         <Button
                           iconName="&#xe41d;"
-                          iconStyling="dashboard-button__icon-flip"
+                          iconStyling="reusable-button__icon-flip"
                           buttonVariant="tertiary"
                           buttonText="Review"
                           buttonOnClickFunc={() => console.log('click click')}
@@ -384,12 +421,22 @@ export default function DashboardPage() {
                   ))}
                 </tbody>
               </table>
-              {itemsToShow < mockData.length && ( // Only show button if there are more items to load
-                <button className="dashboard__view-more-button" onClick={loadMoreItems}>
+              <div className="dashboard__view-container">
+                <button
+                  disabled={itemsToShow >= mockData.length}
+                  className="dashboard__view-button"
+                  onClick={() => showMoreItems(5)}>
                   View More
                   <span className="material-symbols-outlined">keyboard_arrow_down</span>
                 </button>
-              )}
+                <button
+                  disabled={itemsToShow <= 3}
+                  className={`dashboard__view-button`}
+                  onClick={() => showLessItems(5)}>
+                  View Less
+                  <span className="material-symbols-outlined">keyboard_arrow_up</span>
+                </button>
+              </div>
             </div>
           ) : (
             <div className="dashboard__no-text-library">
