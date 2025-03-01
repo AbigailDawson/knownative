@@ -120,30 +120,29 @@ export default function DashboardPage() {
       if (!listContainer || !firstVisibleItem) return;
 
       const startScroll = window.scrollY;
-      const endScroll = firstVisibleItem.getBoundingClientRect().top + window.scrollY - 20; // Adjust target scroll
-      const duration = 500; // Matches fade animation
+      const endScroll = firstVisibleItem.getBoundingClientRect().top + window.scrollY - 20;
+      const duration = 500;
       let startTime;
 
-      // Smooth scroll function
       const smoothScroll = (timestamp) => {
         if (!startTime) startTime = timestamp;
         const progress = Math.min((timestamp - startTime) / duration, 1);
-        const easedProgress = progress * (2 - progress); // Ease-out effect
-
-        window.scrollTo(0, startScroll - easedProgress * (startScroll - endScroll));
 
         if (progress < 1) {
           requestAnimationFrame(smoothScroll);
+        } else {
+          setTimeout(() => {
+            setItemsToShow((prev) => {
+              console.log(`prev amoutn: ${prev}`);
+              const newAmount = Math.max(prev - amount, 3);
+              return newAmount;
+            });
+            setFadeOut(false);
+          }, 10);
         }
       };
 
       requestAnimationFrame(smoothScroll);
-
-      // Hide items *after* scrolling starts
-      setTimeout(() => {
-        setItemsToShow((prev) => prev - amount);
-        setFadeOut(false);
-      }, duration - 50);
     }
   };
 
