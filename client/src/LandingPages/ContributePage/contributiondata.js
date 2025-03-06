@@ -26,7 +26,7 @@ const contributions = [
     id: 3,
     title: 'File Structure Refactor & Reusable Components',
     timeline: 'September - November 2024',
-    description: 'KnowNative was originally designed and created with desktop users in mind, but it has always been a goal to make the interface accessible for mobile and tablet users. Christina has taken the lead on this project, creating a responsive design for the KnowNative demo that adapts to different screen sizes and orientations while maintaining visual consistency with the desktop interface.',
+    description: 'Nakita took on the challenge of refactoring the entire KnowNative codebase to improve the file structure and create reusable components. The new file structure has made it much easier for contributors to find the files they need, and reusable components such as modals and buttons have helped us achieve a more consistent look and feel across the app. There are still several components that can be refactored to be more modular and reusable, so we welcome any additional contributions in this area!',
     contributors: [112],
   },
   {
