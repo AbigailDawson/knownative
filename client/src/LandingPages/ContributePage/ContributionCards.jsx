@@ -22,7 +22,7 @@ export default function ContributionCards() {
             <Col md={4} className="image-container">
               <Card.Img
                 variant="top"
-                src={`/images/contributions/${contribution.id}.jpg`} // Image file should be named after contribution ID
+                src={`/images/contributions/${contribution.id}.png`} // Image file should be named after contribution ID
                 alt={contribution.title}
                 className="contribution-image"
               />
