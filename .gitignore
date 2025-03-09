@@ -10,7 +10,7 @@
 
 # production
 /client/build
-/client/dist
+/client/dist/
 /server/build
 /server/dist
 
