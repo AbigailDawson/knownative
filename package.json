@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "npm run start:client && npm run start:server",
-    "heroku-postbuild": "cd client && npm install && npm run build"
+    "start": "npm run start:client && npm run start:server"
   },
   "dependencies": {
     "@google-cloud/translate": "^8.0.3",
