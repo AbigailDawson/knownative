@@ -4,7 +4,6 @@
   "private": true,
   "scripts": {
     "start": "npm run start:client && npm run start:server",
-    "build": "cd client && npm install && npm run build"
   },
   "dependencies": {
     "@google-cloud/translate": "^8.0.3",
