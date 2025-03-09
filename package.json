@@ -16,7 +16,6 @@
     "mongodb": "^6.9.0",
     "mongoose": "^8.7.0",
     "morgan": "^1.10.0",
-    "serve-favicon": "^2.5.0",
-    "vite": "^6.2.1"
+    "serve-favicon": "^2.5.0"
   }
 }
