@@ -55,23 +55,19 @@ export default function ContributePage() {
                     rel="noreferrer">
                     GitHub
                   </a>{' '}
-                  to run KnowNative locally, create your own branch and submit a pull request!
+                  to run KnowNative locally, create your own branch and submit a pull request! UX/UI designers, researchers and other contributors are encouraged to connect with the team first before contributing (see below).
                 </li>
                 <li>
-                  <span className="li-header">Become a Core Contributor</span>
-                  Core Contributors are involved in the long-term creative vision for the KnowNative
-                  project. We work together as a team to plan and implement new features and improve
-                  the app experience for our users. Core Contributors commit to participating in
-                  regular team meetings and contribute to the project on a regular consistent basis.
-                  If you&apos;re interested in becoming a Core Contributor, please reach out to
-                  Abigail on{' '}
+                  <span className="li-header">Join the Discord community</span>
+                  If you'd like to be involved in the long-term creative vision for the KnowNative
+                  project, join me and our other contributors in our{'  '}
                   <a
-                    href="https://www.linkedin.com/in/abigaildawsondev/"
+                    href="https://discord.gg/Rsc7TAyw3T"
                     target="_blank"
                     rel="noreferrer">
-                    LinkedIn
-                  </a>
-                  .
+                    Discord community
+                  </a>!{' '}
+                  Our small volunteer team works together as a team to plan and implement new features and improve the app experience for our users. This is a great opportunity to gain experience working in a collaborative team environment while building a real-world project for your resume and portfolio. We hope to see you there!
                 </li>
               </ul>
             </div>
@@ -81,6 +77,9 @@ export default function ContributePage() {
           <h1>Core Contributors</h1>
           <p className="about-body">
             Click on any of the cards below to learn more about the team!
+          </p>
+          <p className="about-body">
+            <b>Note:</b> As of February 2025, we are changing "Core Contributors" to "Core Contributions". Instead of featuring only the name and bio of contributors, we'll highlight specific contributions and who was involved. This will be a great way to showcase your work on the project and be recognized for your contributions. Our website will be updated soon to reflect this change.
           </p>
           <div className="row mt-5">
             {coreContributors.map((contributor) => (
