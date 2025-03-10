@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import LandingPageNav from '../components/LandingPageHeader/LandingPageNav';
 import LandingPageFooter from '../components/LandingPageFooter/LandingPageFooter';
-import './ContributePage.css';
+import './ContributePage.scss';
 import Modal from 'react-bootstrap/Modal';
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
@@ -12,6 +12,7 @@ import Col from 'react-bootstrap/Col';
 import * as githubAPI from '../../utilities/github-api';
 import contributorData from './contributordata';
 import ContributionCards from './ContributionCards';
+
 
 export default function ContributePage() {
 
