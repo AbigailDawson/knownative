@@ -43,7 +43,6 @@ const FormInput = (props) => {
         <span
           className="input-box__icon material-symbols-outlined"
           onClick={() => setShowPassword(!showPassword)}>
-          {showPassword ? 'visibility_off' : 'visibility'}
         </span>
       ) : null}
 
