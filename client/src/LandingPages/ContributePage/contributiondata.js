@@ -1,38 +1,19 @@
 const contributions = [
+  // Contributions should be added by project owner Abigail Dawson only. If your contribution is missing from this page, please reach out via Discord: https://discord.gg/Rsc7TAyw3T
+  // All new contributions should be added to the BOTTOM of the list.
+  // Most recent contributions (highest ID numbers) will be displayed first on the page.
+  // Fomatting for each contribution is as follows:
+  // id: Increment 1 from the previous
+  // title: 1-5 words
+  // image: All contributions will need an image saved in images/core-contributions in a square png and naming convention should be id.png.
+  // description: Single paragraph description of the work. Include any relevant about the significance of the work, how it improved KnowNative, and what next steps remain for future contributors.
+  // contributors: Array of contributor ids. See below for contributor details.
   {
-    id: 7,
-    title: 'User Accounts',
-    timeline: 'November 2024 - present ',
-    description: 'While our demo app allows anybody to see what KnowNative is all about, our team is hard at work building user accounts — where you will be able to create an account, import your own texts, generate flashcards and save your progress. We are working full steam ahead on developing the core functionality and designs for an intuitive user experience. We are excitedly planning to launch an MVP of user accounts in KnowNative in Spring 2025 — stay tuned!',
-    contributors: [102, 103, 105, 106, 108, 101, 110],
-  },
-  {
-    id: 6,
-    title: 'Responsive Design - Demo',
-    timeline: 'November 2024 - February ',
-    description: 'KnowNative was originally designed and created with desktop users in mind, but it has always been a goal to make the interface accessible for mobile and tablet users. Christina has taken the lead on this project, creating a responsive design for the KnowNative demo that adapts to different screen sizes and orientations while maintaining visual consistency with the desktop interface.',
-    contributors: [111],
-  },
-  {
-    id: 5,
-    title: 'State Management',
-    timeline: 'August 2024 - present',
-    description: 'The original KnowNative project was quite disorganized in terms of state management, relying on useState and useEffect hooks to manage state in various components. Zephyr and Paul took on the challenge of refactoring the project to use useReducer and Context to manage global state. The work has begun with the demo app and will continue with the main app as development continues.',
-    contributors: [109, 108],
-  },
-  {
-    id: 4,
-    title: 'User Login & Signup',
-    timeline: 'September 2024 - present',
-    description: 'After shipping the KnowNative demo app, our attention turned to implementing a system for users to create their own KnowNative account, where they could import their own texts, create flashcards and save their progress. Paul and JP took the lead on this project, with creating a secure user authentication system to create and log in to an account. While Paul and JP worked on developing the functionality, Sara created designs for a seamless experience for the user. The work is ongoing, as we add advanced functionality like password reset and email verification.',
-    contributors: [108, 102, 105],
-  },
-  {
-    id: 3,
-    title: 'File Structure Refactor & Reusable Components',
-    timeline: 'September - November 2024',
-    description: 'KnowNative was originally designed and created with desktop users in mind, but it has always been a goal to make the interface accessible for mobile and tablet users. Christina has taken the lead on this project, creating a responsive design for the KnowNative demo that adapts to different screen sizes and orientations while maintaining visual consistency with the desktop interface.',
-    contributors: [112],
+    id: 1,
+    title: '2024 KnowNative Redesign',
+    timeline: 'April - July 2024',
+    description: 'When I built KnowNative as my capstone for my software engineering bootcamp program, I prioritized functionality over the appearance of the user interface. Thankfully, when I opened the project to contributors in April 2024, Parker joined the team and completely transformed the KnowNative UI with the first complete redesign and new design system. At this time, Kate developed a new logo for the project, which is still being used today. Creating the KnowNative user experience has been a collaborative process, and the design direction is continuing to evolve as we welcome fresh perspectives and feedback from the community.',
+    contributors: [106, 113, 114],
   },
   {
     id: 2,
@@ -42,20 +23,48 @@ const contributions = [
     contributors: [114, 101],
   },
   {
-    id: 1,
-    title: '2024 KnowNative Redesign',
-    timeline: 'April - July 2024',
-    description: 'When I built KnowNative as my capstone for my software engineering bootcamp program, I prioritized functionality over the appearance of the user interface. Thankfully, when I opened the project to contributors in April 2024, Parker joined the team and completely transformed the KnowNative UI with the first complete redesign and new design system. At this time, Kate developed a new logo for the project, which is still being used today. Creating the KnowNative user experience has been a collaborative process, and the design direction is continuing to evolve as we welcome fresh perspectives and feedback from the community.',
-    contributors: [106, 113, 114],
+    id: 3,
+    title: 'File Structure Refactor & Reusable Components',
+    timeline: 'September - November 2024',
+    description: 'Nakita took on the challenge of refactoring the entire KnowNative codebase to improve the file structure and create reusable components. The new file structure has made it much easier for contributors to find the files they need, and reusable components such as modals and buttons have helped us achieve a more consistent look and feel across the app. There are still several components that can be refactored to be more modular and reusable, so we welcome any additional contributions in this area!',
+    contributors: [112],
+  },
+  {
+    id: 4,
+    title: 'User Login & Signup',
+    timeline: 'September 2024 - present',
+    description: 'After shipping the KnowNative demo app, our attention turned to implementing a system for users to create their own KnowNative account, where they could import their own texts, create flashcards and save their progress. Paul and JP took the lead on this project, with creating a secure user authentication system to create and log in to an account. While Paul and JP worked on developing the functionality, Sara created designs for a seamless experience for the user. The work is ongoing, as we add advanced functionality like password reset and email verification.',
+    contributors: [108, 102, 105],
+  },
+  {
+    id: 5,
+    title: 'State Management',
+    timeline: 'August 2024 - present',
+    description: 'The original KnowNative project was quite disorganized in terms of state management, relying on useState and useEffect hooks to manage state in various components. Zephyr and Paul took on the challenge of refactoring the project to use useReducer and Context to manage global state. The work has begun with the demo app and will continue with the main app as development continues.',
+    contributors: [109, 108],
+  },
+  {
+    id: 6,
+    title: 'Responsive Design - Demo',
+    timeline: 'November 2024 - February ',
+    description: 'KnowNative was originally designed and created with desktop users in mind, but it has always been a goal to make the interface accessible for mobile and tablet users. Christina has taken the lead on this project, creating a responsive design for the KnowNative demo that adapts to different screen sizes and orientations while maintaining visual consistency with the desktop interface.',
+    contributors: [111],
+  },
+  {
+    id: 7,
+    title: 'User Accounts',
+    timeline: 'November 2024 - present ',
+    description: 'While our demo app allows anybody to see what KnowNative is all about, our team is hard at work building user accounts — where you will be able to create an account, import your own texts, generate flashcards and save your progress. We are working full steam ahead on developing the core functionality and designs for an intuitive user experience. We are excitedly planning to launch an MVP of user accounts in KnowNative in Spring 2025 — stay tuned!',
+    contributors: [102, 103, 105, 106, 108, 101, 110],
   },
 ]
 
 const contributors = [
-  // when adding new in contributors add to the bottom of the list
-  // fomatting for each contributor is as follows (delete social links if they do not have one):
+  // All new contributors should be added to the BOTTOM of this list.
+  // Fomatting for each contributor is as follows (delete social links if they do not have one):
   // id: increment 1 from the previous
   // name: first last
-  // image: ***New Contributors will need an image saved in images/core-contributors in a  500px x 500 px png and naming convention should be First-Last.png**,
+  // image: ** New contributors will need an image saved in images/core-contributors in a square png and naming convention should be First-Last.png **,
   // bio: in html with <p> elements
   // linkedin: full url  (delete if not provided)
   // github: full url  (delete if not provided)

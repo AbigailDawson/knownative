@@ -90,21 +90,12 @@ export default function ContributionCards() {
         <Card key={contribution.id} className="mb-4 contribution-card">
           <Row>
             <Col md={4} className="image-container">
-              <div 
-                className="clickable-image-container"
-                onClick={() => handleExpandImage(
-                  `/images/contributions/${contribution.id}.jpg`, 
-                  contribution.title
-                )}
-              >
-                <Card.Img
-                  variant="top"
-                  src={`/images/contributions/${contribution.id}.jpg`}
-                  alt={contribution.title}
-                  className="contribution-image"
-                  onError={handleImageError}
-                />
-              </div>
+              <Card.Img
+                variant="top"
+                src={`/images/contributions/${contribution.id}.png`} // Image file should be named after contribution ID
+                alt={contribution.title}
+                className="contribution-image"
+              />
             </Col>
             <Col md={8}>
               <Card.Body>
