@@ -1,6 +1,22 @@
+import React, { useState } from 'react';
 import { Pagination } from 'react-bootstrap';
 
+// Custom Chevron SVG components
+const ChevronLeft = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="10" height="16" viewBox="0 0 10 16" fill="none">
+    <path d="M9.88 14.1067L3.77333 8L9.88 1.88L8 0L0 8L8 16L9.88 14.1067Z" fill="#556163"/>
+  </svg>
+);
+
+const ChevronRight = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="10" height="16" viewBox="0 0 10 16" fill="none">
+    <path d="M0.12 1.89333L6.22667 8L0.12 14.12L2 16L10 8L2 0L0.12 1.89333Z" fill="#556163"/>
+  </svg>
+);
+
 const PaginationComponent = ({ currentPage, totalPages, onPageChange }) => {
+  const [hoveredButton, setHoveredButton] = useState(null);
+  
   // Create array of page numbers
   let pages = [];
   for (let i = 1; i <= totalPages; i++) {
@@ -37,35 +53,58 @@ const PaginationComponent = ({ currentPage, totalPages, onPageChange }) => {
   };
 
   const visiblePages = getVisiblePages();
+  
+  // Custom button to replace the default Prev/Next
+  const CustomChevronButton = ({ direction, onClick, disabled }) => {
+    const isLeft = direction === 'left';
+    const buttonClass = `custom-chevron-button ${disabled ? 'disabled' : ''}`;
+    const hoverState = hoveredButton === direction && !disabled ? 'hovered' : '';
+    
+    return (
+      <button 
+        className={`${buttonClass} ${hoverState}`} 
+        onClick={onClick}
+        disabled={disabled}
+        onMouseEnter={() => setHoveredButton(direction)}
+        onMouseLeave={() => setHoveredButton(null)}
+      >
+        {isLeft ? <ChevronLeft /> : <ChevronRight />}
+      </button>
+    );
+  };
 
   return (
-    <Pagination className="justify-content-center">
-      <Pagination.Prev 
+    <div className="custom-pagination-container">
+      <CustomChevronButton 
+        direction="left" 
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
       />
       
-      {visiblePages.map((page, index) => {
-        if (page === '...') {
-          return <Pagination.Ellipsis key={`ellipsis-${index}`} disabled />;
-        }
-        
-        return (
-          <Pagination.Item 
-            key={`page-${page}`} 
-            active={page === currentPage}
-            onClick={() => onPageChange(page)}
-          >
-            {page}
-          </Pagination.Item>
-        );
-      })}
+      <div className="custom-pagination-numbers">
+        {visiblePages.map((page, index) => {
+          if (page === '...') {
+            return <span key={`ellipsis-${index}`} className="pagination-ellipsis">...</span>;
+          }
+          
+          return (
+            <button
+              key={`page-${page}`}
+              className={`pagination-number-item ${page === currentPage ? 'active' : ''}`}
+              onClick={() => onPageChange(page)}
+            >
+              {page}
+            </button>
+          );
+        })}
+      </div>
       
-      <Pagination.Next 
+      <CustomChevronButton 
+        direction="right" 
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
       />
-    </Pagination>
+    </div>
   );
 };
 

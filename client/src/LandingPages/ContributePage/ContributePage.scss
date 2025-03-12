@@ -22,11 +22,21 @@ $color-medium: var(--medium);
 $color-dark: var(--dark);
 $color-white: #fff;
 $color-primary: #007bff;
+$color-primary-dark: #0062cc;
 $color-info: #17a2b8;
+$color-info-dark: #138496;
 $color-text-muted: #6c757d;
 $color-border-light: #f0f0f0;
 $color-bg-light: #f9f9f9;
 $color-bg-hover: #e9ecef;
+
+/* Design system colors from Figma */
+$color-teal-500: #086A6C;
+$color-teal-100: #EFF6F8;
+$color-teal-200: #D3ECEF;
+$color-teal-300: #D3ECEF;
+$color-teal-border: #20A6A8;
+$color-gray-500: #556163;
 
 /* Shadow variables */
 $box-shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.2);
@@ -164,7 +174,7 @@ $box-shadow-lg: 0 6px 16px rgba(0, 0, 0, 0.15);
     
     &:hover {
       text-decoration: underline;
-      color: darken($color-primary, 10%);
+      color: $color-primary-dark; /* Using the new variable instead of darken() */
     }
   }
   
@@ -251,7 +261,7 @@ $box-shadow-lg: 0 6px 16px rgba(0, 0, 0, 0.15);
     font-size: 0.9rem;
     
     &:hover {
-      background-color: darken($color-info, 5%);
+      background-color: $color-info-dark; /* Using the new variable instead of darken() */
     }
   }
 }
@@ -355,40 +365,84 @@ $box-shadow-lg: 0 6px 16px rgba(0, 0, 0, 0.15);
   margin-bottom: $spacing-sm;
 }
 
-/* Pagination styling */
-.pagination {
+/* Updated Pagination styling */
+.custom-pagination-container {
   display: flex;
+  align-items: center;
   justify-content: center;
   margin: $spacing-xl 0;
+  gap: $spacing-md;
+}
+
+.custom-pagination-numbers {
+  display: flex;
+  gap: $spacing-xs;
+}
+
+.pagination-number-item {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: $border-radius-md;
+  background-color: $color-white;
+  border: 1px solid $color-teal-border;
+  color: $color-teal-500;
+  font-weight: normal;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 0;
   
-  .page-item {
-    margin: 0 $spacing-xs;
-    
-    &.active .page-link {
-      background-color: $color-primary;
-      border-color: $color-primary;
-      color: $color-white;
-    }
-    
-    &.disabled .page-link {
-      color: $color-text-muted;
-      pointer-events: none;
-      cursor: default;
-    }
+  &:hover {
+    background-color: $color-teal-100;
   }
   
-  .page-link {
-    padding: $spacing-sm $spacing-md;
-    border-radius: $border-radius-sm;
-    border: 1px solid $color-border-light;
-    color: $color-primary;
-    background-color: $color-white;
-    transition: all 0.2s ease;
-    
-    &:hover {
-      background-color: $color-bg-light;
-      text-decoration: none;
-    }
+  &.active {
+    background-color: $color-teal-500;
+    border-color: $color-teal-500;
+    color: $color-white;
+    font-weight: bold;
+  }
+}
+
+.pagination-ellipsis {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  color: $color-text-muted;
+}
+
+.custom-chevron-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 4px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  
+  &:focus {
+    outline: none;
+  }
+  
+  &.hovered {
+    background-color: $color-teal-100;
+  }
+  
+  &:active {
+    background-color: $color-teal-200;
+  }
+  
+  &.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
   }
 }
 
