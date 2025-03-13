@@ -76,7 +76,7 @@ export default function ContributionCards() {
   // Handle contributor image errors
   const handleContributorImageError = (e) => {
     e.target.onerror = null; // Prevent infinite error loop
-    e.target.src = "https://via.placeholder.com/50x50/e0e0e0/333333?text=Profile";
+    e.target.src = "/images/core-contributors/placeholder.png";
   };
 
   return (
