@@ -212,12 +212,7 @@ $box-shadow-lg: 0 6px 16px rgba(0, 0, 0, 0.15);
   border-radius: $border-radius-sm;
   box-shadow: none;
   margin: $spacing-lg 0;
-  transition: transform 0.2s ease;
   border: none;
-  
-  &:hover {
-    transform: translateY(-2px);
-  }
 }
 
 /* Clickable Image Container */
