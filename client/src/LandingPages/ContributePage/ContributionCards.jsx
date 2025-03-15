@@ -89,7 +89,7 @@ export default function ContributionCards() {
       {currentContributions.map((contribution) => (
         <Card key={contribution.id} className="mb-4 contribution-card">
           <Row>
-            <Col md={4} className="image-container">
+            <Col md={4} className="image-container" onClick={() => handleExpandImage(`/images/contributions/${contribution.id}.png`, contribution.title)}>
               <Card.Img
                 variant="top"
                 src={`/images/contributions/${contribution.id}.png`} // Image file should be named after contribution ID

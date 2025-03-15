@@ -45,7 +45,7 @@ $box-shadow-lg: 0 6px 16px rgba(0, 0, 0, 0.15);
 
 /* Typography */
 .section-title {
-  font-size: $font-size-xxl;
+  font-size: $font-size-xl;
   margin-bottom: $spacing-sm;
   text-align: center;
 }
@@ -65,7 +65,7 @@ $box-shadow-lg: 0 6px 16px rgba(0, 0, 0, 0.15);
 
 /* Layout Components */
 .intro {
-  margin-bottom: $spacing-xl;
+  margin-bottom: $spacing-sm;
   max-width: 1200px;
   width: 100%;
   margin-left: auto;
@@ -214,14 +214,10 @@ $box-shadow-lg: 0 6px 16px rgba(0, 0, 0, 0.15);
   margin: $spacing-lg 0;
   transition: transform 0.2s ease;
   border: none;
-  
-  &:hover {
-    transform: translateY(-2px);
-  }
 }
 
 /* Clickable Image Container */
-.clickable-image-container {
+.clickable-image-wrapper {
   cursor: pointer;
   overflow: hidden;
   border-radius: $border-radius-sm;
@@ -322,6 +318,18 @@ $box-shadow-lg: 0 6px 16px rgba(0, 0, 0, 0.15);
   position: relative;
   overflow: hidden;
   border-right: none;
+  cursor: pointer;
+
+  &:hover::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.1);
+    z-index: 1;
+  }
 }
 
 .contribution-image {
@@ -330,10 +338,6 @@ $box-shadow-lg: 0 6px 16px rgba(0, 0, 0, 0.15);
   object-fit: cover;
   border-radius: $border-radius-sm;
   transition: transform 0.3s ease;
-  
-  &:hover {
-    transform: scale(1.02);
-  }
 }
 
 /* Body Styling */
