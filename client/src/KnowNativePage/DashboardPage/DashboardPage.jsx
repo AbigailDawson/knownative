@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import * as authService from './../../services/authService';
 import Button from '../../ui-components/Button/button';
 import { getUserTexts } from '../../utilities/texts-api';
+import DashboardNavbar from '../components/DashboardNavbar';
 
 const mockData = [
   {
@@ -372,17 +373,6 @@ export default function DashboardPage() {
     setSortDirection(newDirection);
   };
 
-  async function handleLogOut() {
-    try {
-      await authService.logOut();
-      setUser(null);
-      navigate('/');
-    } catch (error) {
-      console.error(error.message);
-      alert('There was an issue logging out. Please try again.');
-    }
-  }
-
   const RoundIcon = ({ isImage, src, iconName, color }) => {
     return (
       <div
@@ -412,60 +402,7 @@ export default function DashboardPage() {
 
   return user ? (
     <div className="dashboard">
-      <div className="dashboard__side-nav">
-        <div className="dashboard__side-nav-links-container">
-          <a href="../" className="dashboard__logo-container">
-            <img src="/images/square-logo.png" alt="KnowNative logo." className="dashboard__logo" />
-            <h4>KnowNative</h4>
-          </a>
-          <ul className="dashboard__nav-links">
-            <li className="dashboard__nav-item">
-              <a className="dashboard__link dashboard__link--active" href="/dashboard">
-                Dashboard
-              </a>
-            </li>
-            <li className="dasboard__nav-item">
-              <a className="dashboard__link" href="/">
-                Cards
-              </a>
-            </li>
-            <li className="dashboard__nav-item">
-              <a className="dashboard__link" href="/">
-                Library
-              </a>
-            </li>
-            <li className="dashboard__nav-item">
-              <a className="dashboard__link" href="/">
-                Progress
-              </a>
-            </li>
-            <li className="dashboard__nav-item">
-              <a className="dashboard__link" href="/">
-                Resources
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div className="dashboard__nav-footer">
-          <ul className="dashboard__nav-links">
-            <li className="dashboard__nav-item">
-              <button className="dashboard__link" onClick={handleLogOut}>
-                Logout
-              </button>
-            </li>
-            <li className="dashboard__nav-item">
-              <a className="dashboard__link" href="/">
-                GitHub
-              </a>
-            </li>
-            <li className="dashboard__nav-item">
-              <a className="dashboard__link" href="/">
-                Contact Us
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
+      <DashboardNavbar />
       <div className="dashboard__main">
         <div className="dashboard__user-info">
           <button className="dashboard__user-dropdown-options">
