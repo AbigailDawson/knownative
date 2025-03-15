@@ -49,7 +49,7 @@ const DashboardNavbar = ({ activeTab }) => {
 
             <a
               className={`dashboard-nav__link dashboard-nav__link${activeTab === 'Study' ? '--active' : ''}`}
-              href="add-text">
+              href="/">
               Study
             </a>
           </li>
