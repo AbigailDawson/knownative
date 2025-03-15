@@ -19,7 +19,7 @@
         justify-content: space-between;
         background-color: white;
         width: 285px;
-        padding: 2rem 1rem;
+        padding: 2rem 1rem 0.5rem 1rem;
         border: 1px solid #E1E3E3;
         
 
@@ -34,13 +34,11 @@
         display: flex;
         flex-direction: column;
         padding-left: 0;
-        gap: 0.5rem;
     }
 
     &__nav-footer {
         padding-bottom: 0;
         margin-bottom: 0;
-        margin-left: 0.5rem;
         width: 95%;
     }
 
@@ -50,6 +48,7 @@
 
         &--active {
             font-weight: 600;
+            margin-left: 4px;
         }
     }
 
@@ -94,6 +93,7 @@
 
     &__nav-icon {
         color: #C0E7EB;
+        font-size: 28px;
 
         &--active {
             color: var(--dark-action);

@@ -32,7 +32,7 @@ const DashboardNavbar = ({ activeTab }) => {
         <ul className="dashboard-nav__nav-links">
           <li className={`dashboard-nav__nav-item${activeTab === 'Dashboard' ? '--active' : ''}`}>
             <span
-              class={`material-symbols-outlined dashboard-nav__dash-icon dashboard-nav__nav-icon${activeTab === 'Dashboard' ? '--active' : ''}`}>
+              className={`material-symbols-outlined dashboard-nav__dash-icon dashboard-nav__nav-icon${activeTab === 'Dashboard' ? '--active' : ''}`}>
               dashboard
             </span>
             <a
@@ -43,19 +43,19 @@ const DashboardNavbar = ({ activeTab }) => {
           </li>
           <li className={`dashboard-nav__nav-item${activeTab === 'Study' ? '--active' : ''}`}>
             <span
-              class={`material-symbols-outlined dashboard-nav__flipped dashboard-nav__nav-icon${activeTab === 'Study' ? '--active' : ''}`}>
+              className={`material-symbols-outlined dashboard-nav__flipped dashboard-nav__nav-icon${activeTab === 'Study' ? '--active' : ''}`}>
               &#xe41d;
             </span>
 
             <a
               className={`dashboard-nav__link dashboard-nav__link${activeTab === 'Study' ? '--active' : ''}`}
-              href="/">
+              href="add-text">
               Study
             </a>
           </li>
           <li className={`dashboard-nav__nav-item${activeTab === 'Resources' ? '--active' : ''}`}>
             <span
-              class={`material-symbols-outlined dashboard-nav__nav-icon${activeTab === 'Resources' ? '--active' : ''}`}>
+              className={`material-symbols-outlined dashboard-nav__nav-icon${activeTab === 'Resources' ? '--active' : ''}`}>
               info
             </span>
             <a
@@ -69,19 +69,23 @@ const DashboardNavbar = ({ activeTab }) => {
       <div className="dashboard-nav__nav-footer">
         <ul className="dashboard-nav__nav-links">
           <li className="dashboard-nav__nav-item">
-            <span class={'material-symbols-outlined dashboard-nav__nav-icon'}>logout</span>
+            <span className={'material-symbols-outlined dashboard-nav__nav-icon'}>logout</span>
             <button className="dashboard-nav__link dashboard-nav__button" onClick={handleLogOut}>
               Logout
             </button>
           </li>
           <li className="dashboard-nav__nav-item">
             <img src="/images/github-light-icon.svg" alt="" />
-            <a className="dashboard-nav__link" href="/">
+            <a
+              className="dashboard-nav__link"
+              href="https://github.com/AbigailDawson/knownative"
+              target="_blank"
+              rel="noopener noreferrer">
               GitHub
             </a>
           </li>
           <li className="dashboard-nav__nav-item">
-            <span class="material-symbols-outlined dashboard-nav__nav-icon">help</span>
+            <span className="material-symbols-outlined dashboard-nav__nav-icon">help</span>
             <a className="dashboard-nav__link" href="/">
               Contact Us
             </a>
