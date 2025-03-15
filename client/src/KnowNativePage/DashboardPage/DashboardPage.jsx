@@ -2,7 +2,6 @@ import './DashboardPage.scss';
 import { useEffect, useState } from 'react';
 import { useAuthContext } from '../../contexts/Auth/AuthProvider';
 import { Link, useNavigate } from 'react-router-dom';
-import * as authService from './../../services/authService';
 import Button from '../../ui-components/Button/button';
 import { getUserTexts } from '../../utilities/texts-api';
 import DashboardNavbar from '../components/DashboardNavbar';
@@ -287,7 +286,7 @@ const mockData = [
 ];
 
 export default function DashboardPage() {
-  const { user, setUser } = useAuthContext();
+  const { user } = useAuthContext();
   const navigate = useNavigate();
   const [itemsToShow, setItemsToShow] = useState(3);
   const [fadeIn, setFadeIn] = useState(false);
@@ -402,7 +401,7 @@ export default function DashboardPage() {
 
   return user ? (
     <div className="dashboard">
-      <DashboardNavbar />
+      <DashboardNavbar activeTab="Dashboard" />
       <div className="dashboard__main">
         <div className="dashboard__user-info">
           <button className="dashboard__user-dropdown-options">

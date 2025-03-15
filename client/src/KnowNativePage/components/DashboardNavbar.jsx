@@ -1,7 +1,13 @@
 import React from 'react';
 import './DashboardNavbar.scss';
+import * as authService from './../../services/authService';
+import { useAuthContext } from '../../contexts/Auth/AuthProvider';
+import { useNavigate } from 'react-router-dom';
 
-const DashboardNavbar = () => {
+const DashboardNavbar = ({ activeTab }) => {
+  const { setUser } = useAuthContext();
+  const navigate = useNavigate();
+
   async function handleLogOut() {
     try {
       await authService.logOut();
@@ -24,22 +30,37 @@ const DashboardNavbar = () => {
           />
         </a>
         <ul className="dashboard-nav__nav-links">
-          <li className="dashboard-nav__nav-item">
-            <span class="material-symbols-outlined dashboard-nav__browse-icon">dashboard</span>
-            <a className="dashboard-nav__link dashboard-nav__link--active" href="/dashboard">
+          <li className={`dashboard-nav__nav-item${activeTab === 'Dashboard' ? '--active' : ''}`}>
+            <span
+              class={`material-symbols-outlined dashboard-nav__dash-icon dashboard-nav__nav-icon${activeTab === 'Dashboard' ? '--active' : ''}`}>
+              dashboard
+            </span>
+            <a
+              className={`dashboard-nav__link dashboard-nav__link${activeTab === 'Dashboard' ? '--active' : ''}`}
+              href="/dashboard">
               Dashboard
             </a>
           </li>
-          <li className="dasboard__nav-item">
-            <span class="material-symbols-outlined">&#xe41d;</span>
+          <li className={`dashboard-nav__nav-item${activeTab === 'Study' ? '--active' : ''}`}>
+            <span
+              class={`material-symbols-outlined dashboard-nav__flipped dashboard-nav__nav-icon${activeTab === 'Study' ? '--active' : ''}`}>
+              &#xe41d;
+            </span>
 
-            <a className="dashboard-nav__link" href="/">
-              Cards
+            <a
+              className={`dashboard-nav__link dashboard-nav__link${activeTab === 'Study' ? '--active' : ''}`}
+              href="/">
+              Study
             </a>
           </li>
-          <li className="dashboard-nav__nav-item">
-            <span class="material-symbols-outlined">info</span>
-            <a className="dashboard-nav__link" href="/">
+          <li className={`dashboard-nav__nav-item${activeTab === 'Resources' ? '--active' : ''}`}>
+            <span
+              class={`material-symbols-outlined dashboard-nav__nav-icon${activeTab === 'Resources' ? '--active' : ''}`}>
+              info
+            </span>
+            <a
+              className={`dashboard-nav__link dashboard-nav__link${activeTab === 'Resources' ? '--active' : ''}`}
+              href="/">
               Resources
             </a>
           </li>
@@ -48,8 +69,8 @@ const DashboardNavbar = () => {
       <div className="dashboard-nav__nav-footer">
         <ul className="dashboard-nav__nav-links">
           <li className="dashboard-nav__nav-item">
-            <span class="material-symbols-outlined">logout</span>
-            <button className="dashboard-nav__link" onClick={handleLogOut}>
+            <span class={'material-symbols-outlined dashboard-nav__nav-icon'}>logout</span>
+            <button className="dashboard-nav__link dashboard-nav__button" onClick={handleLogOut}>
               Logout
             </button>
           </li>
@@ -60,7 +81,7 @@ const DashboardNavbar = () => {
             </a>
           </li>
           <li className="dashboard-nav__nav-item">
-            <span class="material-symbols-outlined">help</span>
+            <span class="material-symbols-outlined dashboard-nav__nav-icon">help</span>
             <a className="dashboard-nav__link" href="/">
               Contact Us
             </a>
