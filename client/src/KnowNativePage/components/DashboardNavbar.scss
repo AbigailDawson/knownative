@@ -57,13 +57,16 @@
     }
 
     &__nav-item {
+        position: relative;
         display: flex;
         align-items: center;
         gap: 1rem;
         padding: 0.625rem;
         border-radius: 0.5rem;
         align-self: stretch;
-        
+        overflow: hidden;
+        cursor: pointer;
+
         &--active{
             display: flex;
             background-color: #e3f0f3;
@@ -71,6 +74,28 @@
             align-items: center;
             padding: 0.625rem;
             border-radius: 0.5rem;
+            cursor: default;
+        }
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background-color: #e3f0f3;
+            transition: width 0.3s ease-in-out;
+            z-index: 0;
+        }
+    
+        &:hover::before {
+            width: 100%;
+        }
+
+        * {
+            position: relative;
+            z-index: 1;
         }
     }
 

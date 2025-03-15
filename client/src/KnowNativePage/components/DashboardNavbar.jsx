@@ -37,7 +37,7 @@ const DashboardNavbar = ({ activeTab }) => {
             </span>
             <a
               className={`dashboard-nav__link dashboard-nav__link${activeTab === 'Dashboard' ? '--active' : ''}`}
-              href="/dashboard">
+              onClick={() => navigate('/dashboard')}>
               Dashboard
             </a>
           </li>
@@ -49,7 +49,7 @@ const DashboardNavbar = ({ activeTab }) => {
 
             <a
               className={`dashboard-nav__link dashboard-nav__link${activeTab === 'Study' ? '--active' : ''}`}
-              href="/">
+              onClick={() => console.log('navigation coming soon!')}>
               Study
             </a>
           </li>
