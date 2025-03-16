@@ -50,8 +50,13 @@
     }
 
     &__link {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        width: 100%;
         color: black;
         text-decoration: none;
+        border-radius: 0.5rem;
 
         &--active {
             font-weight: 600;

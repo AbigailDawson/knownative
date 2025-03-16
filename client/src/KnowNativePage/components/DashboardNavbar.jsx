@@ -31,37 +31,36 @@ const DashboardNavbar = ({ activeTab }) => {
         </a>
         <ul className="dashboard-nav__nav-links">
           <li className={`dashboard-nav__nav-item${activeTab === 'Dashboard' ? '--active' : ''}`}>
-            <span
-              className={`material-symbols-outlined dashboard-nav__dash-icon dashboard-nav__nav-icon${activeTab === 'Dashboard' ? '--active' : ''}`}>
-              dashboard
-            </span>
             <a
               className={`dashboard-nav__link dashboard-nav__link${activeTab === 'Dashboard' ? '--active' : ''}`}
               onClick={() => navigate('/dashboard')}>
+              <span
+                className={`material-symbols-outlined dashboard-nav__dash-icon dashboard-nav__nav-icon${activeTab === 'Dashboard' ? '--active' : ''}`}>
+                dashboard
+              </span>
               Dashboard
             </a>
           </li>
           <li
             className={`dashboard-nav__nav-item${activeTab === 'Cards' ? '--active' : ''} dashboard-nav__nav-item--inactive`}>
-            <span
-              className={`material-symbols-outlined dashboard-nav__flipped dashboard-nav__nav-icon${activeTab === 'Cards' ? '--active' : ''}`}>
-              &#xe41d;
-            </span>
-
             <a
               className={`dashboard-nav__link dashboard-nav__link${activeTab === 'Cards' ? '--active' : ''}`}
               onClick={() => console.log('coming soon!')}>
+              <span
+                className={`material-symbols-outlined dashboard-nav__flipped dashboard-nav__nav-icon${activeTab === 'Cards' ? '--active' : ''}`}>
+                &#xe41d;
+              </span>
               Cards <span className="dashboard-nav__temp-styling">Coming Soon!</span>
             </a>
           </li>
           <li className={`dashboard-nav__nav-item${activeTab === 'Resources' ? '--active' : ''}`}>
-            <span
-              className={`material-symbols-outlined dashboard-nav__nav-icon${activeTab === 'Resources' ? '--active' : ''}`}>
-              info
-            </span>
             <a
               className={`dashboard-nav__link dashboard-nav__link${activeTab === 'Resources' ? '--active' : ''}`}
               href="/">
+              <span
+                className={`material-symbols-outlined dashboard-nav__nav-icon${activeTab === 'Resources' ? '--active' : ''}`}>
+                info
+              </span>
               Resources
             </a>
           </li>
@@ -70,24 +69,24 @@ const DashboardNavbar = ({ activeTab }) => {
       <div className="dashboard-nav__nav-footer">
         <ul className="dashboard-nav__nav-links">
           <li className="dashboard-nav__nav-item">
-            <span className={'material-symbols-outlined dashboard-nav__nav-icon'}>logout</span>
             <button className="dashboard-nav__link dashboard-nav__button" onClick={handleLogOut}>
+              <span className={'material-symbols-outlined dashboard-nav__nav-icon'}>logout</span>
               Logout
             </button>
           </li>
           <li className="dashboard-nav__nav-item">
-            <img src="/images/github-light-icon.svg" alt="" />
             <a
               className="dashboard-nav__link"
               href="https://github.com/AbigailDawson/knownative"
               target="_blank"
               rel="noopener noreferrer">
+              <img src="/images/github-light-icon.svg" alt="" />
               GitHub
             </a>
           </li>
           <li className="dashboard-nav__nav-item">
-            <span className="material-symbols-outlined dashboard-nav__nav-icon">help</span>
             <a className="dashboard-nav__link" href="/">
+              <span className="material-symbols-outlined dashboard-nav__nav-icon">help</span>
               Contact Us
             </a>
           </li>
