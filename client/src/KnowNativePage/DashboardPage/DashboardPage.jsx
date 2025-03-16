@@ -2,9 +2,9 @@ import './DashboardPage.scss';
 import { useEffect, useState } from 'react';
 import { useAuthContext } from '../../contexts/Auth/AuthProvider';
 import { Link, useNavigate } from 'react-router-dom';
-import * as authService from './../../services/authService';
 import Button from '../../ui-components/Button/button';
 import { getUserTexts } from '../../utilities/texts-api';
+import DashboardNavbar from '../components/DashboardNavbar';
 
 const mockData = [
   {
@@ -286,7 +286,7 @@ const mockData = [
 ];
 
 export default function DashboardPage() {
-  const { user, setUser } = useAuthContext();
+  const { user } = useAuthContext();
   const navigate = useNavigate();
   const [itemsToShow, setItemsToShow] = useState(3);
   const [fadeIn, setFadeIn] = useState(false);
@@ -360,6 +360,8 @@ export default function DashboardPage() {
         comparison = a[sortColumn] - b[sortColumn];
       } else if (a[sortColumn] instanceof Date && b[sortColumn] instanceof Date) {
         comparison = a[sortColumn] - b[sortColumn];
+      } else if (sortColumn === 'cards' && Array.isArray(a.cards) && Array.isArray(b.cards)) {
+        comparison = a.cards.length - b.cards.length;
       }
 
       return sortDirection === 'asc' ? comparison : -comparison;
@@ -371,17 +373,6 @@ export default function DashboardPage() {
     setSortColumn(column);
     setSortDirection(newDirection);
   };
-
-  async function handleLogOut() {
-    try {
-      await authService.logOut();
-      setUser(null);
-      navigate('/');
-    } catch (error) {
-      console.error(error.message);
-      alert('There was an issue logging out. Please try again.');
-    }
-  }
 
   const RoundIcon = ({ isImage, src, iconName, color }) => {
     return (
@@ -412,60 +403,7 @@ export default function DashboardPage() {
 
   return user ? (
     <div className="dashboard">
-      <div className="dashboard__side-nav">
-        <div className="dashboard__side-nav-links-container">
-          <a href="../" className="dashboard__logo-container">
-            <img src="/images/square-logo.png" alt="KnowNative logo." className="dashboard__logo" />
-            <h4>KnowNative</h4>
-          </a>
-          <ul className="dashboard__nav-links">
-            <li className="dashboard__nav-item">
-              <a className="dashboard__link dashboard__link--active" href="/dashboard">
-                Dashboard
-              </a>
-            </li>
-            <li className="dasboard__nav-item">
-              <a className="dashboard__link" href="/">
-                Cards
-              </a>
-            </li>
-            <li className="dashboard__nav-item">
-              <a className="dashboard__link" href="/">
-                Library
-              </a>
-            </li>
-            <li className="dashboard__nav-item">
-              <a className="dashboard__link" href="/">
-                Progress
-              </a>
-            </li>
-            <li className="dashboard__nav-item">
-              <a className="dashboard__link" href="/">
-                Resources
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div className="dashboard__nav-footer">
-          <ul className="dashboard__nav-links">
-            <li className="dashboard__nav-item">
-              <button className="dashboard__link" onClick={handleLogOut}>
-                Logout
-              </button>
-            </li>
-            <li className="dashboard__nav-item">
-              <a className="dashboard__link" href="/">
-                GitHub
-              </a>
-            </li>
-            <li className="dashboard__nav-item">
-              <a className="dashboard__link" href="/">
-                Contact Us
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
+      <DashboardNavbar activeTab="Dashboard" />
       <div className="dashboard__main">
         <div className="dashboard__user-info">
           <button className="dashboard__user-dropdown-options">
@@ -523,15 +461,28 @@ export default function DashboardPage() {
             <div className="dashboard__title dashboard__title--subtitle">
               <h4>Jump back in</h4>
             </div>
-            <div>
-              <div className="dashboard__sub-container">
-                <div className="dashboard dashboard__card">
-                  <h2 className="dashboard dashboard__card-title">開計程車</h2>
+            <div className="dashboard dashboard__card">
+              <div className="dashboard__card__sub-container">
+                <div className="dashboard__card__icon">
+                  <RoundIcon iconName="book_2" color="teal" />
+                </div>
+                <div className="dashboard__card__last-opened-content">
+                  <h2 className="dashboard__card-title">開計程車</h2>
                   <p className="dashboard dashboard__card-body">
-                    每天我要到許多地方去，也會遇到很多人。有些人喜款叫我「左轉」、「右轉」、「停」...
+                    每天我要到許多地方去，也會遇到很多人。有些人喜歡叫我「左轉」、「右轉」、「停」；
+                    有些人會把髒東西留在我的車上。不過也有一些不錯的人，可以從他們身上學到很多東西，
+                    所以我也交了好幾個朋友。真是什麼樣的人都有啊！
                   </p>
                 </div>
-                <button className="dashboard__study-button">Study</button>
+              </div>
+              <div className="dashboard__card-button">
+                <Button
+                  iconName="&#xe41d;"
+                  iconStyling="reusable-button__icon-flip"
+                  buttonVariant="tertiary"
+                  buttonText="Review"
+                  buttonOnClickFunc={() => console.log('click click')}
+                />
               </div>
             </div>
           </div>
