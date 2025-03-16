@@ -12,8 +12,8 @@ const contributions = [
     id: 1,
     title: '2024 KnowNative Redesign',
     timeline: 'April - July 2024',
-    description: 'When I built KnowNative as my capstone for my software engineering bootcamp program, I prioritized functionality over the appearance of the user interface. Thankfully, when I opened the project to contributors in April 2024, Parker joined the team and completely transformed the KnowNative UI with the first complete redesign and new design system. At this time, Kate developed a new logo for the project, which is still being used today. Creating the KnowNative user experience has been a collaborative process, and the design direction is continuing to evolve as we welcome fresh perspectives and feedback from the community.',
-    contributors: [106, 113, 114],
+    description: 'When I built KnowNative as my capstone for my software engineering bootcamp program, I prioritized functionality over the appearance of the user interface. Thankfully, when I opened the project to contributors in April 2024, Parker joined the team and completely transformed the KnowNative UI with the first complete redesign and new design system. At this time, Kate developed a new logo for the project, which is still being used today. Our developers worked hard to refactor the entire project to implement the new designs. Creating the KnowNative user experience has been a collaborative process, and the design direction is continuing to evolve as we welcome fresh perspectives and feedback from the community.',
+    contributors: [106, 113, 114, 104, 108, 103, 109, 101],
   },
   {
     id: 2,
@@ -27,14 +27,14 @@ const contributions = [
     title: 'File Structure Refactor & Reusable Components',
     timeline: 'September - November 2024',
     description: 'Nakita took on the challenge of refactoring the entire KnowNative codebase to improve the file structure and create reusable components. The new file structure has made it much easier for contributors to find the files they need, and reusable components such as modals and buttons have helped us achieve a more consistent look and feel across the app. There are still several components that can be refactored to be more modular and reusable, so we welcome any additional contributions in this area!',
-    contributors: [112],
+    contributors: [112, 103, 109, 114],
   },
   {
     id: 4,
     title: 'User Login & Signup',
     timeline: 'September 2024 - present',
     description: 'After shipping the KnowNative demo app, our attention turned to implementing a system for users to create their own KnowNative account, where they could import their own texts, create flashcards and save their progress. Paul and JP took the lead on this project, with creating a secure user authentication system to create and log in to an account. While Paul and JP worked on developing the functionality, Sara created designs for a seamless experience for the user. The work is ongoing, as we add advanced functionality like password reset and email verification.',
-    contributors: [108, 102, 105],
+    contributors: [108, 102, 105, 110],
   },
   {
     id: 5,
@@ -57,6 +57,13 @@ const contributions = [
     description: 'While our demo app allows anybody to see what KnowNative is all about, our team is hard at work building user accounts — where you will be able to create an account, import your own texts, generate flashcards and save your progress. We are working full steam ahead on developing the core functionality and designs for an intuitive user experience. We are excitedly planning to launch an MVP of user accounts in KnowNative in Spring 2025 — stay tuned!',
     contributors: [102, 103, 105, 106, 108, 101, 110],
   },
+  {
+    id: 8,
+    title: 'AI Text Tokenization & Translations',
+    timeline: 'December 2024 - present ',
+    description: 'KnowNative is currently relying on the chinese-tokenizer package for single-word lookups and Google Translate for full sentence translations. These both present several limitations in accuracy and word parsing. We are in the process of replacing chinese-tokenizer and Google Translate with AI-powered language processing, which will allow for more accurate and context-aware word lookups and translations, and lay the foundation for advanced study features.',
+    contributors: [107, 108, 102],
+  }
 ]
 
 const contributors = [
