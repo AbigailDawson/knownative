@@ -84,11 +84,6 @@ export default function ContributionCards() {
 
   return (
     <Container className="contributions-container">
-      <h2 className="section-title">Featured Contributions</h2>
-      <p className="contributions-body">
-        Contributors can have a major impact on the design and development direction of the project, and we greatly value the creative input and perspective of everyone who participates. Each of the projects featured below has helped the project move forward in some meaningful way. If you're interested in participating in or leading a new design initiative, new feature or other meaningful contribution, please get in touch!
-      </p>
-      
       {currentContributions.map((contribution) => (
         <Card key={contribution.id} className="mb-4 contribution-card">
           <Row>
