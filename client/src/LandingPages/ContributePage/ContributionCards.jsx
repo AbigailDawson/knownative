@@ -26,10 +26,13 @@ export default function ContributionCards() {
   // State for expanded contributor modal
   const [selectedContributor, setSelectedContributor] = useState(null);
   
+  // Sort contributions by ID in descending order
+  const sortedContributions = [...enrichedContributions].sort((a, b) => b.id - a.id);
+
   // Calculate the current items to display
   const indexOfLastItem = currentPage * ITEMS_PER_PAGE;
   const indexOfFirstItem = indexOfLastItem - ITEMS_PER_PAGE;
-  const currentContributions = enrichedContributions.slice(indexOfFirstItem, indexOfLastItem);
+  const currentContributions = sortedContributions.slice(indexOfFirstItem, indexOfLastItem);
 
   // Handle page change
   const handlePageChange = (pageNumber) => {
