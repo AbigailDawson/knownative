@@ -360,6 +360,8 @@ export default function DashboardPage() {
         comparison = a[sortColumn] - b[sortColumn];
       } else if (a[sortColumn] instanceof Date && b[sortColumn] instanceof Date) {
         comparison = a[sortColumn] - b[sortColumn];
+      } else if (sortColumn === 'cards' && Array.isArray(a.cards) && Array.isArray(b.cards)) {
+        comparison = a.cards.length - b.cards.length;
       }
 
       return sortDirection === 'asc' ? comparison : -comparison;
