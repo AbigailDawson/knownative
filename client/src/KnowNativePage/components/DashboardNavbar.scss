@@ -2,6 +2,13 @@
 .dashboard-nav {
     display: flex;
 
+    // please remove once Cards functionality is available
+    &__temp-styling {
+        font-size: 14px;
+        margin-left: 25px;
+        font-style: italic;
+    }
+
     &__button {
         background-color: unset;
         padding: 0px;
@@ -66,6 +73,7 @@
         align-self: stretch;
         overflow: hidden;
         cursor: pointer;
+        user-select: none;
 
         &--active{
             display: flex;
@@ -75,6 +83,13 @@
             padding: 0.625rem;
             border-radius: 0.5rem;
             cursor: default;
+        }
+
+        &--inactive {
+            color: #a0a0a0;
+            cursor: not-allowed;
+            pointer-events: none;
+            opacity: 0.3;
         }
 
         &::before {
