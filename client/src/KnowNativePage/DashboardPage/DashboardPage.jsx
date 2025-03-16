@@ -459,15 +459,28 @@ export default function DashboardPage() {
             <div className="dashboard__title dashboard__title--subtitle">
               <h4>Jump back in</h4>
             </div>
-            <div>
-              <div className="dashboard__sub-container">
-                <div className="dashboard dashboard__card">
-                  <h2 className="dashboard dashboard__card-title">開計程車</h2>
+            <div className="dashboard dashboard__card">
+              <div className="dashboard__card__sub-container">
+                <div className="dashboard__card__icon">
+                  <RoundIcon iconName="book_2" color="teal" />
+                </div>
+                <div className="dashboard__card__last-opened-content">
+                  <h2 className="dashboard__card-title">開計程車</h2>
                   <p className="dashboard dashboard__card-body">
-                    每天我要到許多地方去，也會遇到很多人。有些人喜款叫我「左轉」、「右轉」、「停」...
+                    每天我要到許多地方去，也會遇到很多人。有些人喜歡叫我「左轉」、「右轉」、「停」；
+                    有些人會把髒東西留在我的車上。不過也有一些不錯的人，可以從他們身上學到很多東西，
+                    所以我也交了好幾個朋友。真是什麼樣的人都有啊！
                   </p>
                 </div>
-                <button className="dashboard__study-button">Study</button>
+              </div>
+              <div className="dashboard__card-button">
+                <Button
+                  iconName="&#xe41d;"
+                  iconStyling="reusable-button__icon-flip"
+                  buttonVariant="tertiary"
+                  buttonText="Review"
+                  buttonOnClickFunc={() => console.log('click click')}
+                />
               </div>
             </div>
           </div>
