@@ -29,14 +29,19 @@ function PasswordValidation({ password }) {
   return (
     <ul className="password-validation">
       {validations.map((validation, index) => (
-        <li key={index}>
+        <li
+          key={index}
+          style={{
+            color: hasTyped ? (validation.test ? "var(--green-lt)" : "var(--red-poppy)") : "#556163"
+          }}
+        >
           {validation.test ? (
             <FaCheckCircle
-              style={hasTyped ? { color: "#556163" } : { color: "transparent" }}
+              style={hasTyped ? { color: "var(--green-lt)" } : { color: "transparent" }}
               title="Test passed" />
           ) : (
             <FaExclamationTriangle
-              style={hasTyped ? { color: "red" } : { color: "transparent" }}
+              style={hasTyped ? { color: "var(--red-poppy)" } : { color: "transparent" }}
               title={validation.message} />
           )}
           {validation.message}
