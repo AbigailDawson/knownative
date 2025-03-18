@@ -21,6 +21,7 @@ const SignupModal = ({ setShowModal }) => {
   const [inputErrors, setInputErrors] = useState({});
   const [errorMsg, setErrorMsg] = useState('');
   const [isPasswordTyping, setIsPasswordTyping] = useState(false);
+  const [isConfirmPasswordTyping, setIsConfirmPasswordTyping] = useState(false);
   const navigate = useNavigate();
   const { setUser } = useAuthContext();
 
@@ -91,6 +92,10 @@ const SignupModal = ({ setShowModal }) => {
     setIsPasswordTyping(true);
   };
 
+  const handleConfirmPasswordFocus = () => {
+    setIsConfirmPasswordTyping(true);
+  };
+
   async function handleSubmit(evt) {
     evt.preventDefault();
     try {
@@ -133,7 +138,9 @@ const SignupModal = ({ setShowModal }) => {
                   onChange={handleChange}
                   errorInputMessage={inputErrors[input.name]}
                   handleBlur={handleBlur}
-                  onFocus={input.name === 'password' ? handlePasswordFocus : undefined}
+                  onFocus={input.name === 'password' ? handlePasswordFocus
+                    : input.name === 'confirmPassword' ? handleConfirmPasswordFocus
+                      : undefined}
                 />
                 {input.name === 'password' && (
                   <div
@@ -145,6 +152,22 @@ const SignupModal = ({ setShowModal }) => {
                     <PasswordValidation password={inputValue.password} />
                   </div>
                 )}
+                {
+                  input.name === 'confirmPassword' && (
+                    <div
+                      className={`password-validation__wrapper 
+                        ${isConfirmPasswordTyping
+                          ? 'password-validation__wrapper--visible'
+                          : 'password-validation__wrapper--hidden'
+                        }`}>
+                      <PasswordValidation
+                        password={inputValue.password}
+                        confirmPassword={inputValue.confirmPassword}
+                        isConfirmField={true}
+                      />
+                    </div>
+                  )
+                }
               </React.Fragment>
             ))}
             <button className="signup-page__button signup-page__button-email" type="submit">
