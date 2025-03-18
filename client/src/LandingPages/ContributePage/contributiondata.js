@@ -55,7 +55,7 @@ const contributions = [
     title: 'Website Redesign',
     timeline: 'April 2024 - present ',
     description: 'As soon as we started redesigning the KnowNative app, we knew that the website would need a makeover as well. Parker and Light came up with new designs for the home page, and Kate built the first Core Contributors page. Core Contributors has since been replaced with the current Contribute page, designed and built by one of our latest team members, Patricia!',
-    contributors: [106, 113, 115],
+    contributors: [106, 113],
   },
   {
     id: 8,
