@@ -1,0 +1,86 @@
+@mixin hoverFX ($color: var(--darkest), $bg-color: #3d8679, $shadow: 1px 1px 4px rgba(0, 0, 0, 0.1), $transition: 0.2s){
+  color: $color;
+  background-color: $bg-color;
+  box-shadow: $shadow;
+  transition: $transition;
+}
+
+.reusable-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  padding-left: 15px;
+  padding-right: 15px;
+  min-width: 110px;
+  font-weight: 600;
+
+  &__icon {
+      display: flex;
+      align-items: center;
+  }
+
+  &__icon-flip {
+      transform: rotateX(180deg) rotateY(180deg);
+  }
+
+  &:disabled {
+      border-radius: 0.375rem;
+      border: 1px solid var(--KN-gray-400, #E1E3E3);
+      background: var(--KN-gray-100, #FFF);
+      color: #E1E3E3;
+      cursor: initial;
+
+      &:hover {
+          background: var(--KN-gray-100, #FFF);
+          color: #E1E3E3;
+          box-shadow: none; 
+      }
+  }
+
+  &--text-lg {
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+  
+
+  &--primary {
+    background-color: var(--primary);
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+    color: white;
+
+    &:hover {
+      @include hoverFX($bg-color: var(--dark-action), $color: white)
+    }
+  }
+
+  &--secondary {
+    background-color: #dadada;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+
+    &:hover {
+      @include hoverFX($bg-color: #b0b0b0, $color: var(--primary))
+    }
+  }
+
+  &--tertiary {
+    background-color: white;
+    border: 1px solid var(--primary);
+    color: var(--action);
+
+    &:hover{
+      @include hoverFX($bg-color: var(--light), $color: var(--primary))
+    }
+  }
+
+  &--danger {
+    background-color: #dc3545;
+    color: #fff;
+
+    &:hover {
+      @include hoverFX($color: #fff, $bg-color: #bb2deb)
+    }
+  }
+}
