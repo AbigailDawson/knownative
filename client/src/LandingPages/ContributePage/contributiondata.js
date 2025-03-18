@@ -52,13 +52,20 @@ const contributions = [
   },
   {
     id: 7,
+    title: 'Website Redesign',
+    timeline: 'April 2024 - present ',
+    description: 'As soon as we started redesigning the KnowNative app, we knew that the website would need a makeover as well. Parker and Light came up with new designs for the home page, and Kate built the first Core Contributors page. Core Contributors has since been replaced with the current Contribute page, designed and built by one of our latest team members, Patricia!',
+    contributors: [106, 113, 115],
+  },
+  {
+    id: 8,
     title: 'User Accounts',
     timeline: 'November 2024 - present ',
     description: 'While our demo app allows anybody to see what KnowNative is all about, our team is hard at work building user accounts — where you will be able to create an account, import your own texts, generate flashcards and save your progress. We are working full steam ahead on developing the core functionality and designs for an intuitive user experience. We are excitedly planning to launch an MVP of user accounts in KnowNative in Spring 2025 — stay tuned!',
     contributors: [102, 103, 105, 106, 108, 101, 110],
   },
   {
-    id: 8,
+    id: 9,
     title: 'AI Text Tokenization & Translations',
     timeline: 'December 2024 - present ',
     description: 'KnowNative is currently relying on the chinese-tokenizer package for single-word lookups and Google Translate for full sentence translations. These both present several limitations in accuracy and word parsing. We are in the process of replacing chinese-tokenizer and Google Translate with AI-powered language processing, which will allow for more accurate and context-aware word lookups and translations, and lay the foundation for advanced study features.',
@@ -205,6 +212,15 @@ const contributors = [
     linkedin: 'https://www.linkedin.com/in/rennacarver',
     github: 'http://github.com/rennacarver',
     portfolio: 'https://www.projectcarver.com/portfolio'
+  },
+  {
+    id: 115,
+    name: 'Patricia Kimmerle',
+    role: 'Developer',
+    image: '/images/core-contributors/Renna-Carver.png',
+    bio: '<p>Developer with UX and IT background who bridges frontend and backend development. Building experience with backend systems and cloud infrastructure, and working with APIs while applying design thinking to technical problems. Self-taught in the MERN stack and Python through practical projects. Currently exploring cloud technologies and AI automation for workflow optimization.<br><br>Stack: JavaScript, React, Node.js, Python, MongoDB, Figma, Adobe Creative Suite</p>',
+    linkedin: 'https://www.linkedin.com/in/patriciakimmerle',
+    github: 'https://github.com/PFKimmerle',
   },
 ]
 
