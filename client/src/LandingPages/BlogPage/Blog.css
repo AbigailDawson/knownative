@@ -9,6 +9,17 @@ $box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 $font-size-base: 1rem;
 $font-size-lg: 1.25rem;
 $font-size-xl: 1.5rem;
+$font-size-xxl: 2rem; /* Added extra size for larger titles */
+
+/* Global Styles */
+body {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  background-color: $bg-light;
+  color: $bg-dark;
+  margin: 0;
+  padding: 0;
+}
 
 /* Container for both BlogPage and PostPage */
 .container {
@@ -19,7 +30,8 @@ $font-size-xl: 1.5rem;
 }
 
 /* General Styles */
-h1, h2 {
+h1, h2, h3, h4 {
+  font-family: 'Arial', sans-serif;
   color: $bg-dark;
 }
 
@@ -35,7 +47,7 @@ a {
 
 /* BlogPage Styles */
 .blog-header {
-  font-size: $font-size-xl;
+  font-size: $font-size-xxl;
   font-weight: 700;
   text-align: center;
   margin-bottom: 20px;
@@ -46,12 +58,12 @@ a {
   color: $secondary-color;
   text-align: center;
   margin-bottom: 40px;
+  font-weight: 400;
 }
 
 .posts-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 30px;
+  display: block; /* Changed from grid to block for vertical alignment */
+  margin-top: 20px;
 }
 
 .post-card {
@@ -60,7 +72,9 @@ a {
   box-shadow: $box-shadow;
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-
+  padding: 20px;
+  margin-bottom: 30px; /* Added margin between posts */
+  
   &:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
@@ -78,22 +92,23 @@ a {
     padding: 15px;
     background-color: $bg-dark;
     color: $white;
-    text-align: center;
+    text-align: left; /* Aligned to the left */
   }
 
-  .post-excerpt {
+  .post-caption {
     font-size: $font-size-base;
     padding: 15px;
     color: $secondary-color;
     line-height: 1.6;
+    text-align: left; /* Aligned to the left */
   }
 
   .post-date {
     font-size: $font-size-base;
     color: $secondary-color;
     padding: 15px;
-    background-color: $f8f9fa;
-    text-align: center;
+    background-color: $bg-light;
+    text-align: left; /* Aligned to the left */
   }
 }
 
@@ -107,13 +122,15 @@ a {
   font-size: $font-size-xl;
   font-weight: 700;
   color: $bg-dark;
+  margin-bottom: 15px;
+  text-align: left; /* Aligned to the left */
 }
 
 .post-author,
 .post-date {
   font-size: $font-size-base;
   color: $secondary-color;
-  text-align: center;
+  text-align: left; /* Aligned to the left */
 }
 
 .post-content {
@@ -130,8 +147,33 @@ a {
 
   a {
     color: $primary-color;
+    transition: color 0.3s ease;
+
     &:hover {
       color: darken($primary-color, 10%);
     }
+  }
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 768px) {
+  .blog-header {
+    font-size: $font-size-lg;
+  }
+
+  .blog-intro {
+    font-size: $font-size-base;
+  }
+
+  .post-card {
+    padding: 10px;
+  }
+
+  .post-title {
+    font-size: $font-size-lg;
+  }
+
+  .post-caption {
+    font-size: $font-size-base;
   }
 }

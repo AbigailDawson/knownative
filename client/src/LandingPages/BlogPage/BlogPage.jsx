@@ -12,8 +12,9 @@ export default function BlogPage() {
     const fetchPosts = async () => {
       try {
         // Fetch all blog posts from Prismic
-        const posts = await client.getAllByType('blog_post'); // Replace with your Prismic type
+        const posts = await client.getAllByType('blog_post')
         setPosts(posts);
+        console.log(posts);
       } catch (error) {
         console.error('Error fetching posts:', error);
       }
@@ -35,19 +36,15 @@ export default function BlogPage() {
         <section className="posts-list">
           {posts.map((post) => (
             <div className="post-card" key={post.id}>
-              <img 
-                src={post.data.cover_image.url} 
-                alt={post.data.title[0].text} 
-                className="post-cover-image" 
-              />
               <h2 className="post-title">
                 <Link to={`/post/${post.id}`}>{post.data.title[0].text}</Link>
               </h2>
-              <p className="post-excerpt">
-                {post.data.excerpt[0].text}
-              </p>
+              <p className="post-author">By {post.data.author}</p>
               <p className="post-date">
-                {new Date(post.data.date).toLocaleDateString()} {/* Format the date */}
+                {new Date(post.data.date).toLocaleDateString()}
+              </p>
+              <p className="post-caption">
+                {post.data.caption[0].text}
               </p>
             </div>
           ))}
