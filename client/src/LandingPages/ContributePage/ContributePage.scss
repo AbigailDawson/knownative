@@ -57,9 +57,12 @@ $box-shadow-lg: 0 6px 16px rgba(0, 0, 0, 0.15);
 }
 
 .about-body {
-  font-size: $font-size-md;
+  max-width: 70ch;
+  margin: 0 auto;
+  font-size: $font-size-base;
   line-height: 1.7;
   margin-bottom: $spacing-xl;
+  margin-top: $spacing-xl;
   text-align: center;
 }
 
