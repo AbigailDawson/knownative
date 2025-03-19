@@ -180,7 +180,7 @@ const contributors = [
     name: 'Christina Pham',
     role: 'UX/UI Designer',
     image: '/images/core-contributors/Christina-Pham.png',
-    bio: '<p>Christina is a software engineer with a passion for creating user-friendly applications. She has experience in front-end development, particularly with React and CSS, and is always eager to learn new technologies. Christina is excited to contribute to KnowNative and help make language learning more accessible and enjoyable for everyone.</p>',
+    bio: '<p>Christina is a UX/UI Designer passionate about improving lives through digital interfaces. Transitioning from nursing, she witnessed firsthand how digital interfaces can impact people’s well-being, inspiring her to create intuitive and meaningful user experiences. Growing up, she spent hours watching Korean dramas, which sparked her interest in learning Korean. While not fluent, this experience ignited her love for language learning–a passion that aligns with her dedication to UX design. She is excited to contribute to KnowNative and support language learners through thoughtful design. When not designing, you can find her crocheting, watching One Piece, experimenting with digital art, or playing with her cat, Pico de Gato.</p>',
     linkedin: 'https://www.linkedin.com/in/christina-pham-592010291/',
     portfolio: 'https://hien.framer.website/',
   },
