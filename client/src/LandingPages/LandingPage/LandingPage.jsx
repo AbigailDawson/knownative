@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import LandingPageNav from '../components/LandingPageHeader/LandingPageNav';
 import LandingPageFooter from '../components/LandingPageFooter/LandingPageFooter';
 import Modal from '../../ui-components/Modal/modal';
-import './LandingPage.css';
+import './LandingPage.scss';
 import { FaLinkedin } from 'react-icons/fa';
 import { FaGithub } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md';

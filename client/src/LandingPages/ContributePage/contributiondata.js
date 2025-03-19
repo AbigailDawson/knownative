@@ -213,6 +213,15 @@ const contributors = [
     github: 'http://github.com/rennacarver',
     portfolio: 'https://www.projectcarver.com/portfolio'
   },
+  {
+    id: 115,
+    name: 'Patricia Kimmerle',
+    role: 'Developer',
+    image: '/images/core-contributors/Renna-Carver.png',
+    bio: '<p>Developer with UX and IT background who bridges frontend and backend development. Building experience with backend systems and cloud infrastructure, and working with APIs while applying design thinking to technical problems. Self-taught in the MERN stack and Python through practical projects. Currently exploring cloud technologies and AI automation for workflow optimization.<br><br>Stack: JavaScript, React, Node.js, Python, MongoDB, Figma, Adobe Creative Suite</p>',
+    linkedin: 'https://www.linkedin.com/in/patriciakimmerle',
+    github: 'https://github.com/PFKimmerle',
+  },
 ]
 
 const enrichedContributions = contributions.map(contribution => {

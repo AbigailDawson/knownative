@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import './modal.css';
+import Button from '../Button/button';
+import './modal.scss';
 
 const Modal = ({
   canCloseOnEscapeKey,
@@ -13,7 +14,8 @@ const Modal = ({
   handleSecondaryButtonOnClick,
   hasCloseButton,
   modalTitle,
-  setShowModal
+  setShowModal,
+  hasCustomButtons
 }) => {
   const elRef = useRef(null);
 
@@ -40,30 +42,39 @@ const Modal = ({
 
   return createPortal(
     <div className="reusable-modal">
-      <div className="reusable-modal-header-contents">
-        <h1 className="reusable-modal-title">{modalTitle}</h1>
+      <div className="reusable-modal__header-contents">
+        <h1 className="reusable-modal__title">{modalTitle}</h1>
         {hasCloseButton ? (
-          <button className="reusable-modal-close-button" onClick={() => setShowModal(false)}>
+          <button className="reusable-modal__buttons--close" onClick={() => setShowModal(false)}>
             ×
           </button>
         ) : null}
       </div>
       {children}
-      <div className="reusable-modal-buttons">
+      <div className="reusable-modal__buttons">
         {buttonDeleteText ? (
-          <button
-            className="reusable-modal-delete-button"
-            id="reusable-modal-delete-button"
-            onClick={handleDeleteButtonOnClick}>
-            {buttonDeleteText}
-          </button>
+          <div className="reusable-modal__button-container">
+            <Button
+              buttonText={buttonDeleteText}
+              buttonOnClickFunc={handleDeleteButtonOnClick}
+              buttonVariant={'danger'}
+            />
+          </div>
         ) : null}
-        <button className="reusable-modal-secondary-button" onClick={handleSecondaryButtonOnClick}>
-          {buttonSecondaryText}
-        </button>
-        <button className="reusable-modal-primary-button" onClick={handlePrimaryButtonOnClick}>
-          {buttonPrimaryText}
-        </button>
+        {hasCustomButtons ? null : (
+          <div className="reusable-modal__button-container--modal">
+            <Button
+              buttonText={buttonSecondaryText}
+              buttonOnClickFunc={handleSecondaryButtonOnClick}
+              buttonVariant={'secondary'}
+            />
+            <Button
+              buttonText={buttonPrimaryText}
+              buttonOnClickFunc={handlePrimaryButtonOnClick}
+              buttonVariant={'primary'}
+            />
+          </div>
+        )}
       </div>
     </div>,
     elRef.current
