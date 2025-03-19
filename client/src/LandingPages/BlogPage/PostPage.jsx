@@ -28,6 +28,7 @@ export default function PostPage() {
 
   const components = {
     heading1: ({ children }) => <h1 className="post__heading">{children}</h1>,
+    heading2: ({ children }) => <h2 className="post__heading">{children}</h2>,
     paragraph: ({ children }) => <p className="post__paragraph">{children}</p>,
   };
 
@@ -35,7 +36,7 @@ export default function PostPage() {
     <>
       <div className="container">
         <LandingPageNav />
-        <section className="post">
+        <section className="post__container">
           <h1 className="post__title">{post.data.title[0].text}</h1>
           <p className="post__author">By {post.data.author}</p>
           <p className="post__date">
