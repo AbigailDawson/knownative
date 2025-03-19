@@ -1,8 +1,7 @@
 import { FaExclamationTriangle, FaCheckCircle } from "react-icons/fa";
 
 function PasswordValidation({ password, confirmPassword = null, isConfirmField = false }) {
-  const hasTypedPassword = password.length > 0;
-  const hasTypedConfirmPassword = isConfirmField ? confirmPassword.length > 0 : null;
+  const hasTypedConfirmPassword = confirmPassword?.length;
 
   const validations = !isConfirmField ? [
     {
@@ -28,59 +27,49 @@ function PasswordValidation({ password, confirmPassword = null, isConfirmField =
   ] : [
     {
       test: confirmPassword === password,
-      message: 'Passwords must match.'
+      message: 'Passwords do not match.'
     }
   ];
 
-  if (!isConfirmField) {
-    return (
-      <ul className="password-validation">
-        {validations.map((validation, index) => (
+  return (
+    <ul className="password-validation">
+      {validations.map((validation, index) => {
+        const isValid = validation.test;
+        const shouldShow = (!isConfirmField) || (isConfirmField && hasTypedConfirmPassword && !isValid);
+
+        return (
           <li
             key={index}
-            style={{
-              color: hasTypedPassword ? (validation.test ? "var(--green-lt)" : "var(--red-poppy)") : "#556163"
-            }}
-          >
-            {validation.test ? (
-              <FaCheckCircle
-                style={hasTypedPassword ? { color: "var(--green-lt)" } : { color: "transparent" }}
-                title="Test passed" />
+            style={shouldShow ? (
+              {
+                color: "#556163"
+              }
             ) : (
-              <FaExclamationTriangle
-                style={hasTypedPassword ? { color: "var(--red-poppy)" } : { color: "transparent" }}
-                title={validation.message} />
+              {
+                display: "none"
+              }
             )}
+          >
+            {shouldShow ? (
+              isValid ? (
+                <FaCheckCircle
+                  title="Test passed"
+                  style={{ color: "#197D00" }}
+                />
+              ) : (
+                <FaExclamationTriangle
+                  title={validation.message}
+                  style={{ color: "#962828" }}
+                />
+              )
+            ) : <FaExclamationTriangle style={{ color: "transparent" }} />
+            }
             {validation.message}
           </li>
-        ))}
-      </ul>
-    );
-  } else {
-    return (
-      <ul className="password-validation">
-        {validations.map((validation, index) => (
-          <li
-            key={index}
-            style={{
-              color: hasTypedConfirmPassword ? (validation.test ? "var(--green-lt)" : "var(--red-poppy)") : "#556163"
-            }}
-          >
-            {validation.test ? (
-              <FaCheckCircle
-                style={hasTypedConfirmPassword ? { color: "var(--green-lt)" } : { color: "transparent" }}
-                title="Test passed" />
-            ) : (
-              <FaExclamationTriangle
-                style={hasTypedConfirmPassword ? { color: "var(--red-poppy)" } : { color: "transparent" }}
-                title={validation.message} />
-            )}
-            {validation.message}
-          </li>
-        ))}
-      </ul>
-    );
-  };
-};
+        );
+      })}
+    </ul>
+  );
+}
 
 export default PasswordValidation;
