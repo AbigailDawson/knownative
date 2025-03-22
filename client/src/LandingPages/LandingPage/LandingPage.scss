@@ -1,21 +1,135 @@
-.early-access-form {
-  border-radius: 4px;
-  margin: 0;
+// Colors
+$teal: #086A6C;
+$light-teal: #E5F2F6;
+$dark-text: #161717;
+$medium-text: #383E40;
+
+// Text styles
+.landing-page-bold {
+  font-weight: 600;
+}
+
+// Button styles
+.btn-teal {
+  background-color: $teal;
+  border-color: $teal;
+  color: white;
+  font-weight: 600;
+  
+  &:hover {
+    background-color: #075758;
+    color: white;
+  }
+}
+
+.btn-secondary-teal {
+  background-color: #E5F2F6;
+  color: $teal;
+  border: none;
+  font-weight: 600;
+  
+  &:hover {
+    background-color: #C0E7EB;
+    color: $teal;
+  }
+}
+
+.btn-outline-teal {
   background-color: transparent;
+  border-color: $teal;
+  color: $teal;
+  border: 1px solid $teal;
+  font-weight: 600;
+  
+  &:hover {
+    background-color: #C0E7EB;
+    color: $teal;
+  }
 }
 
-.early-access {
-  background-color: var(--light);
-  padding: 30px;
-  border-radius: 7px;
+// Link styles
+.login-link {
+  color: $medium-text;
+  text-decoration: none;
+  
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
+// Feature images
+.feature-image {
+  width: 450px;
+  height: 300px;
+  border-radius: 8px;
+  display: block;
+  margin: 0 auto;
+  object-fit: cover;
+}
+
+// Features section styling
+.features {
+  h2 {
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: $dark-text;
+  }
+  
+  p {
+    color: $dark-text;
+  }
+}
+
+// CTA section
+.cta {
+  width: 100%;
+  background-color: $light-teal;
+  padding: 2rem 0;
+  margin: 2rem 0 0 0;
+
+  h2 {
+    font-weight: 600;
+    color: $dark-text;
+  }
+  
+  p {
+    color: $dark-text;
+  }
+}
+
+// Footer styles
+.footer {
+  padding: 2rem 0;
+  
+  &-link {
+    color: $dark-text;
+    text-decoration: none;
+    
+    &:hover {
+      text-decoration: underline;
+      color: $teal;
+    }
+  }
+  
+  &-divider {
+    border-top: 1px solid #e5e5e5;
+    margin: 1rem 0;
+  }
+  
+  .copyright {
+    color: $dark-text;
+    font-size: 0.9rem;
+  }
+}
+
+// Text colors
+.text-dark {
+  color: $dark-text;
+}
+
+// Modal content
 .landing-page-modal-content {
   display: flex;
   flex-direction: column;
   margin-bottom: 30px;
-}
-
-.landing-page-bold {
-  font-weight: 600;
 }

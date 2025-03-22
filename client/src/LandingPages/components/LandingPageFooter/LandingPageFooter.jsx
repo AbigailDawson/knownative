@@ -1,4 +1,5 @@
 import './LandingPageFooter.scss';
+import { Link } from 'react-router-dom';
 
 export default function LandingPageFooter() {
   return (
