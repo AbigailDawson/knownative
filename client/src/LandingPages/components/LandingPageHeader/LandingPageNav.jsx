@@ -26,9 +26,13 @@ export default function LandingPageNav() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link"
-              href="mailto:abigaildawson.dev@gmail.com">
-              Contact
+              <Link className="nav-link" to="/blog">
+                Blog
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/contribute">
+                Contribute
               </Link>
             </li>
             <li className="nav-item">
@@ -41,9 +45,9 @@ export default function LandingPageNav() {
               </a>
             </li>
             <li className="nav-item">
-            <Link className="nav-link" to="/login">
-            Login
-          </Link>
+              <Link className="nav-link" to="/login">
+                Login
+              </Link>
             </li>
             <li className="nav-item">
               <Link className="nav-link nav-link--secondary" to="/demo">
