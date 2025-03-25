@@ -3,7 +3,7 @@ import './LandingPageNav.scss';
 
 export default function LandingPageNav() {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light py-3">
+    <nav className="navbar navbar-expand-lg navbar-light">
       <div className="container">
         <a className="navbar-brand" href="/">
           <img src="/images/horizontal-logo.png" alt="logo" className="navbar__logo" />

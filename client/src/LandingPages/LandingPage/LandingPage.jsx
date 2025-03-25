@@ -9,7 +9,7 @@ export default function LandingPage() {
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
 
-  // Check screen size and show warning for small screens
+// Event Handlers
   function handleScreenCheck() {
     if (window.screen.height <= 1024 || window.screen.width <= 1366) {
       setShowModal(true);
@@ -25,15 +25,17 @@ export default function LandingPage() {
 
   return (
     <>
-      <LandingPageNav />
+      <div className="container">
+        <LandingPageNav />
+      </div>
       
       <main>
         {/* Hero Section */}
         <section className="hero">
           <div className="container px-4 pt-5 my-5 text-center border-bottom">
-            <h1 className="display-4 fw-bold text-dark">Welcome to KnowNative</h1>
+            <h1 className="hero-title text-dark">Welcome to KnowNative</h1>
             <div className="col-lg-6 mx-auto">
-              <p className="lead my-4 text-dark">
+              <p className="hero-subtitle my-4 text-dark">
                 Ditch the textbooks and learn from real native speakers by studying
                 articles written by real native speakers. Learning with KnowNative is like
                 building your own study guide designed specifically for you.
@@ -55,50 +57,47 @@ export default function LandingPage() {
                 </button>
               </div>
             </div>
-            <div className="overflow-hidden" style={{ maxHeight: '30vh' }}>
-              <div className="container px-5">
+              <div className="hero-img-container">
+                <div className="img-clip-container">
                 <img
                   src="/images/landing-image.png"
-                  className="img-fluid border rounded-3 shadow-lg mb-4"
                   alt="KnowNative app"
-                  width="700"
-                  height="500"
                   loading="lazy"
                 />
+                </div>
               </div>
             </div>
-          </div>
         </section>
 
         {/* Feature Sections */}
         <section className="features py-5">
           <div className="container">
             <div className="row align-items-center mb-5">
-              <div className="col-md-6">
+              <div className="col-md-6 text-start">
                 <h2>Learn with Real Content</h2>
                 <p>Study language through authentic articles written by native speakers, not textbook examples.</p>
               </div>
-              <div className="col-md-6">
+              <div className="col-md-6 text-center">
                 <img src="/images/imageComingSoon.png" alt="Real Content" className="feature-image"/>
               </div>
             </div>
             
             <div className="row align-items-center mb-5">
-              <div className="col-md-6 order-md-2">
+              <div className="col-md-6 order-md-2 text-start">
                 <h2>Personalized Flashcards</h2>
                 <p>Automatically generate flashcards based on your reading activities.</p>
               </div>
-              <div className="col-md-6 order-md-1">
+              <div className="col-md-6 order-md-1 text-center">
                 <img src="/images/imageComingSoon.png" alt="Flashcards" className="feature-image"/>
               </div>
             </div>
             
             <div className="row align-items-center mb-5">
-              <div className="col-md-6">
+              <div className="col-md-6 text-start">
                 <h2>Smart Annotations</h2>
                 <p>Get helpful translations and explanations directly within the text.</p>
               </div>
-              <div className="col-md-6">
+              <div className="col-md-6 text-center">
                 <img src="/images/imageComingSoon.png" alt="Annotations" className="feature-image"/>
               </div>
             </div>
@@ -131,18 +130,7 @@ export default function LandingPage() {
         </section>
       </main>
       
-      <footer className="footer">
-        <div className="container text-center py-4">
-          <div className="footer-links mb-3">
-            <a href="/features" className="footer-link mx-3">Features</a>
-            <a href="/pricing" className="footer-link mx-3">Pricing</a>
-            <a href="/faqs" className="footer-link mx-3">FAQs</a>
-            <a href="/about" className="footer-link mx-3">About</a>
-          </div>
-          <hr className="footer-divider" />
-          <p className="copyright">© 2024 KnowNative</p>
-        </div>
-      </footer>
+      <LandingPageFooter showLinks={true} />
       
       {/* Modal for mobile warning */}
       {showModal && (

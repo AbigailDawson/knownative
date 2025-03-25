@@ -9,6 +9,19 @@ $medium-text: #383E40;
   font-weight: 600;
 }
 
+.hero-title {
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 54px;
+}
+
+.hero-subtitle {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+
 // Button styles
 .btn-teal {
   background-color: $teal;
@@ -57,6 +70,55 @@ $medium-text: #383E40;
   }
 }
 
+// Hero image
+.hero-img-container {
+  max-width: 700px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  line-height: 0;
+  margin-bottom: -1px !important;
+  
+  .img-clip-container {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #dee2e6;
+    border-bottom: 0; 
+    box-shadow: 0 -0.5rem 1rem rgba(0,0,0,.15);
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    font-size: 0;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: transparent;
+      z-index: 2;
+    }
+  }
+  
+  img {
+    display: block;
+    width: 100%;
+    border: none;
+    border-radius: 0;
+    height: 400px;
+    object-fit: cover;
+    object-position: top;
+    vertical-align: bottom;
+  }
+}
+
+.hero .container.border-bottom {
+  padding-bottom: 0 !important;
+  position: relative;
+  z-index: 2;
+  border-bottom: 1px solid #dee2e6 !important;
+}
+
 // Feature images
 .feature-image {
   width: 450px;
@@ -86,6 +148,10 @@ $medium-text: #383E40;
   background-color: $light-teal;
   padding: 2rem 0;
   margin: 2rem 0 0 0;
+
+  .container {
+    background-color: inherit;
+  }
 
   h2 {
     font-weight: 600;
