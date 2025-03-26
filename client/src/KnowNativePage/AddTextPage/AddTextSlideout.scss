@@ -1,0 +1,102 @@
+.add-text-slideout {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    max-width: 50%;
+    height: 100%;
+    color: black;
+    background-color: white;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+    transition: right 0.3s ease-in-out;
+    z-index: 1000;
+  
+    &.open {
+      right: 0;
+    }
+  
+    &__content {
+      padding: 1em;
+      height: 100%;
+      overflow-y: auto;
+      display: grid;
+      grid-template-rows: auto auto 1fr auto;
+      text-align: left;
+    }
+  
+    &__close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 32px;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+  
+    &__header{
+      display: flex;
+      flex-direction: column;
+      margin-top: 3em;
+      margin-bottom: 2em;
+      
+    }
+
+    &__title {
+      font-weight: 600;
+      font-size: 2em;
+
+    }
+  
+    &__buttons {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 4em;
+    }
+
+    &__form-group {
+        margin-bottom: 2rem;
+
+        label {
+          display: block;
+          margin-bottom: 5px;
+          font-weight: 400;
+          font-size: 1.25em;
+        }
+
+        &.has-error {
+          label {
+            color: #962828;
+            display: hidden;
+          }
+        }
+    
+        input,
+        textarea {
+          width: 100%;
+          padding: 0.5rem;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          font-size: 1rem;
+          transition: border-color 0.3 ease;
+
+          &.error{
+            border-color: #962828;
+            border-width: 1px;
+          }
+        }
+    
+        textarea {
+          height: 250px;
+          resize: vertical;
+        }
+
+        .error-message {
+          color: #962828;
+          font-size: 0.8em;
+          display: flex;
+          align-items: center;
+        }    
+      }
+  }
