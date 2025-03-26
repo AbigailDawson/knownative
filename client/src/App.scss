@@ -1,31 +1,36 @@
+// Variables
+$primary-color: #282c34;
+$link-color: #61dafb;
+$font-size-base: 10px;
+$logo-size: 40vmin;
+
+
 .App {
   text-align: center;
-}
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+  $-logo {
+    height: $logo-size;
+    pointer-events: none;
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+    @media (prefers-reduced-motion: no-preference) {
+      animation: logo-spin infinite 20s linear;
+    }
   }
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
+  $-header {
+    background-color: $primary-color;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(#{$font-size-base}  + 2vmin);
+    color: white;
+  }
 
-.App-link {
-  color: #61dafb;
+  $-link {
+    color: $link-color;
+  }
 }
 
 @keyframes App-logo-spin {
@@ -35,4 +40,3 @@
   to {
     transform: rotate(360deg);
   }
-}
