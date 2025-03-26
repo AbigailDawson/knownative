@@ -2,8 +2,13 @@
   "name": "knownative",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
-    "start": "npm run start:client && npm run start:server"
+    "dev": "vite",
+    "build": "node .sass-suppress.js && cross-env VITE_CJS_IGNORE_WARNING=true vite build",
+    "start": "npm run start:client && npm run start:server",
+    "start:client": "vite",
+    "start:server": "node server.js"
   },
   "dependencies": {
     "@google-cloud/translate": "^8.0.3",
@@ -20,5 +25,11 @@
     "morgan": "^1.10.0",
     "sass": "^1.80.6",
     "serve-favicon": "^2.5.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.2.0",
+    "cross-env": "^7.0.3",
+    "sass": "^1.69.5",
+    "vite": "^5.0.0"
   }
 }
