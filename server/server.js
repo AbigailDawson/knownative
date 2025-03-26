@@ -26,7 +26,8 @@ app.use(cookieParser());
 
 // Configure both serve-favicon & static middleware
 // to serve from the production 'dist' folder
-app.use(favicon(path.join(__dirname, "../client/dist/favicon.ico")));
+// app.use(favicon(path.join(__dirname, 'public/favicon.ico')));
+// app.use(favicon(path.join(__dirname, "../client/dist/favicon.ico")));
 app.use(express.static(path.join(__dirname, "../client/dist")));
 
 // Put API routes here, before the "catch all" route
@@ -38,6 +39,11 @@ app.use("/api/texts", require("./routes/api/textRoutes"));
 
 // The following "catch all" route (note the *) is necessary
 // to return the index.html on all non-AJAX requests
+app.get('*', function (req, res) {
+  const filePath = path.join(__dirname, '../client/dist', 'index.html');
+  console.log('Serving file from path:', filePath);
+  res.sendFile(filePath);
+});
 app.get("/*", function (req, res) {
   const filePath = path.join(__dirname, "../client/dist", "index.html");
   console.log("Serving file from path:", filePath);
