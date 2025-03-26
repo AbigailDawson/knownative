@@ -12,7 +12,7 @@ function verifyJWT(req, res, next) {
     if (!token) {
       throw new Error("No token present. Please log in or sign up");
     }
-    const decoded = jwt.verify(token, process.env.process.env.JWT_SECRET);
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
     req.user = decoded.user;
     next();
   } catch (error) {
