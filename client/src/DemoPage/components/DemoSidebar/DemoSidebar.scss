@@ -1,0 +1,53 @@
+.sidebar__heading {
+  align-self: center;
+
+  &__welcome {
+    margin-top: 2vmin;
+  }
+
+  & > h1 {
+    font-size: 2.2rem;
+    color: var(--red-brick);
+    margin: 1vmin 0 0 0;
+  }
+
+  & > h3 {
+    font-size: 1rem;
+  }
+}
+
+.stats-container {
+  padding: 1vmin 3vmin;
+
+  &__num{
+    font-size: 4rem;
+    color: var(--teal);
+  }
+
+  &__stat {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    border-bottom: 1px solid var(--slate);
+    padding: 2vmin 0;
+
+    &---icon {
+      font-size: 3.5rem;
+      color: var(--teal);
+      margin-bottom: 1vmin;
+    }
+
+    &--heading,
+    &--subheading {
+      font-size: 1rem;
+    }
+  }
+}
+
+
+
+
+
+
+

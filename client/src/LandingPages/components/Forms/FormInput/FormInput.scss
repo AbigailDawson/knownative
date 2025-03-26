@@ -1,0 +1,123 @@
+
+.input-box {
+  $deep-red: #962828;
+
+   /* Password visibility icon */
+   &__icon {
+    position: absolute;
+    right: 15px;
+    top: 26px;
+    cursor: pointer;
+    color: black;
+    user-select: none;
+  }
+
+  
+   /* --- INPUT STYLING & ANIMATION --- */
+  &__input-container {
+    position: relative;
+    max-width: 400px;
+    width: 100%;
+    height: 50px;
+    margin: 12px;
+    padding-top: 10px;
+  }
+
+  &__input-field {
+    background-color: #E1E3E3;
+    width: 100%;
+    height: 55px;
+    border-radius: 8px;
+    border: #E1E3E3;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 14px;
+    font-size: 16px;
+    position: relative;
+
+    &:focus,
+    &:not(:placeholder-shown) {
+      background-color: white;
+      border: 2px solid var(--action);
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &[aria-invalid="true"] {
+      border: 2px solid $deep-red;
+    }
+  }
+
+  &__label-container {
+    position: absolute;
+    top: 75%;
+    left: 10px;
+    transform: translateY(-50%);
+    transition: all 0.3s ease;
+    font-size: 16px;
+    color: #383E40;
+    pointer-events: none;
+  }
+
+
+  input[aria-invalid="true"] ~ &__label-text--error {
+    display: flex;
+    text-align: left;
+    align-items: center;
+    font-size: 12px;
+    color: $deep-red;
+    margin-top: 2px;
+  }
+
+  &__label-text--error {
+    display: none; /* Initially hidden */
+  }
+
+  &__error-symbol {
+    display: flex;
+    align-self: self-start;
+    padding: 3px;
+    height: 20px;
+  }
+
+  /*-------------------------------------------------------------------*/
+  /* Focused state for the label */
+  &__input-field:focus + &__label-container,
+  &__input-field:not(:placeholder-shown) + &__label-container {
+    top: 22px;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 0 3px;
+    color: var(--action);
+    border-radius: 5px;
+  }
+  input[aria-invalid="true"] + &__label-container {
+    color: $deep-red !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .login-page {
+    &__input-field {
+      font-size: 14px;
+    }
+
+    &__label-container {
+      font-size: 14px;
+      top: 64%;
+    }
+  
+    &__input-field:focus + &__label-container,
+    &__input-field:not(:placeholder-shown) + &__label-container {
+      font-size: 13px;
+    }
+  }
+}
+
+@media (max-width: 320px) {
+  .login-page__error-container {
+    height: 40px;
+  }
+}

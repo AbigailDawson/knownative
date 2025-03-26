@@ -2,25 +2,40 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import LandingPageNav from '../components/LandingPageHeader/LandingPageNav';
 import LandingPageFooter from '../components/LandingPageFooter/LandingPageFooter';
+import Button from '../../ui-components/Button/button';
 import Modal from '../../ui-components/Modal/modal';
 import './LandingPage.scss';
+import { FaLinkedin } from 'react-icons/fa';
+import { FaGithub } from 'react-icons/fa';
+import { MdEmail } from 'react-icons/md';
+import { FaXTwitter } from 'react-icons/fa6';
+import { Link } from 'react-router-dom';
+import { useAuthContext } from '../../contexts/Auth/AuthProvider';
+import LoginModal from '../components/LandingPageLoginModal/LoginModal';
+import SignupModal from '../components/LandingPageSignupModal/SignupModal';
 
 export default function LandingPage() {
   const [showModal, setShowModal] = useState(false);
+  const [showLoginModal, setShowLoginModal] = useState(false);
+  const [showSignupModal, setShowSignupModal] = useState(false);
+
+  const screenHeight = window.screen.height;
+  const screenWidth = window.screen.width;
+  const { user } = useAuthContext();
+
   const navigate = useNavigate();
 
-// Event Handlers
-  function handleScreenCheck() {
-    if (window.screen.height <= 1024 || window.screen.width <= 1366) {
+  function handleScreenCheck(route) {
+    if (screenHeight <= 1024 || screenWidth <= 1366) {
       setShowModal(true);
     } else {
-      navigate('/demo');
+      navigate(`${route}`);
     }
   }
 
-  function handleModalButtonClick() {
+  function handleModalButtonClick(route) {
     setShowModal(false);
-    navigate('/demo');
+    navigate(`${route}`);
   }
 
   return (
@@ -29,7 +44,6 @@ export default function LandingPage() {
         <LandingPageNav />
       </div>
       
-      <main>
         {/* Hero Section */}
         <section className="hero">
           <div className="container px-4 pt-5 my-5 text-center border-bottom">
@@ -51,7 +65,7 @@ export default function LandingPage() {
                 </button>
                 <button
                   className="btn btn-secondary-teal btn-lg px-4" 
-                  onClick={handleScreenCheck}
+                  onClick={() => handleScreenCheck('/demo')}
                 >
                   Try demo
                 </button>
@@ -103,7 +117,6 @@ export default function LandingPage() {
             </div>
           </div>
         </section>
-
         {/* CTA Section */}
         <section className="cta">
           <div className="container text-center py-5">
@@ -118,7 +131,7 @@ export default function LandingPage() {
               </button>
               <button 
                 className="btn btn-outline-teal btn-lg px-4" 
-                onClick={handleScreenCheck}
+                onClick={() => handleScreenCheck('/demo')}
               >
                 Try demo
               </button>
@@ -128,30 +141,29 @@ export default function LandingPage() {
             </p>
           </div>
         </section>
-      </main>
-      
-      <LandingPageFooter showLinks={true} />
-      
-      {/* Modal for mobile warning */}
-      {showModal && (
-        <Modal
-          canCloseOnEscapeKey={false}
-          buttonPrimaryText="Continue Anyways"
-          buttonSecondaryText="Back"
-          handleSecondaryButtonOnClick={() => setShowModal(false)}
-          handlePrimaryButtonOnClick={handleModalButtonClick}
-          hasCloseButton={false}
-          modalTitle="KnowNative is not optimized for mobile devices!"
-          setShowModal={setShowModal}
-        >
-          <div className="landing-page-modal-content">
-            <div>
-              Please consider using KnowNative on your desktop device until our mobile version is
-              available.
+        <LandingPageFooter showLinks={true} />
+        {/* Modal for mobile warning */}
+        {showModal && (
+          <Modal
+            canCloseOnEscapeKey={false}
+            buttonPrimaryText="Continue Anyways"
+            buttonSecondaryText="Back"
+            handleSecondaryButtonOnClick={() => setShowModal(false)}
+            handlePrimaryButtonOnClick={handleModalButtonClick}
+            hasCloseButton={false}
+            modalTitle="KnowNative is not optimized for mobile devices!"
+            setShowModal={setShowModal}
+          >
+            <div className="landing-page-modal-content">
+              <div>
+                Please consider using KnowNative on your desktop device until our mobile version is
+                available.
+              </div>
             </div>
-          </div>
-        </Modal>
-      )}
-    </>
+            
+          </Modal>
+        )}
+      
+</>
   );
 }

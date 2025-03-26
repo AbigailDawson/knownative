@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import './DemoStudyText.css';
+import './DemoStudyText.scss';
 import DemoPopup from './components/DemoPopup/DemoPopup';
 import DemoWord from './components/DemoWord/DemoWord';
 import * as demoAPI from '../../../utilities/demo-api';
@@ -18,7 +18,6 @@ export default function DemoStudyText({
   const [tokenizedText, setTokenizedText] = useState([]);
   const [popupPosition, setPopupPosition] = useState([0, 0]);
   const containerRef = useRef(null);
-
   useEffect(
     function () {
       async function getTokenizedText() {
@@ -75,6 +74,7 @@ export default function DemoStudyText({
     return foundWord[propertyType];
   }
 
+  console.log(tokenizedText);
   const words = tokenizedText.map((word, idx) => {
     const isSaved = checkSaved(word);
     const wordInfo = wordsAPI.getWordInfo(word);
@@ -100,7 +100,7 @@ export default function DemoStudyText({
   return (
     <>
       <div className="StudyText" ref={containerRef}>
-        <div className="study-text-block">{words}</div>
+        <div className="StudyText__block">{words}</div>
       </div>
       {showPopup && (
         <DemoPopup

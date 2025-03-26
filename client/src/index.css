@@ -26,15 +26,30 @@
   --gold: #f2cf0a;
   --yellow: #fae365;
 
-  --primary: #57bcaa; /* actions */
+  --primary: #086A6C;
+  /* actions */
   --action: #006769;
   --dark-action: #074b59;
-  --darkest: #0c1f1b; /* heading text */
-  --dark: #526662; /* secondary text */
-  --medium: #9cc3bc; /* non-decorative borders */
-  --light: #daf2ee; /* decorative borders */
-  --lightest: #f5faf9; /* alternate backgrounds */
-  --white: #ffffff; /* main background */
+  --darkest: #0c1f1b;
+  /* heading text */
+  --dark: #526662;
+  /* secondary text */
+  --medium: #9cc3bc;
+  /* non-decorative borders */
+  --light: #daf2ee;
+  /* decorative borders */
+  --lightest: #f5faf9;
+  /* alternate backgrounds */
+  --white: #ffffff;
+  /* main background */
+}
+
+body::before {
+  content: "visibility visibility_off";
+  font-family: "Material Symbols Outlined";
+  font-size: 0;
+  position: absolute;
+  visibility: hidden;
 }
 
 body {
@@ -152,7 +167,8 @@ a {
   background: white;
   padding: 0 3vmin;
   height: 100vh;
-  overflow-y: auto; /* Enable vertical scrolling if content overflows */
+  overflow-y: auto;
+  /* Enable vertical scrolling if content overflows */
 }
 
 .page.collapsed-sidebar .sidebar {
@@ -264,7 +280,7 @@ a {
   display: none;
 }
 
-#portal-modal > div {
+#portal-modal>div {
   padding: 15px;
   border-radius: 10px;
   background: #f9f9f9;
@@ -274,6 +290,10 @@ a {
 
 .zh {
   font-family: 'Noto Serif TC', serif;
+}
+
+.bold {
+  font-weight: 600;
 }
 
 /* xsmall screens and smaller */

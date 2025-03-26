@@ -1,4 +1,4 @@
-import './DemoSavedWordsList.css';
+import './DemoSavedWordsList.scss';
 import DemoSavedWord from './components/DemoSavedWord/DemoSavedWord';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 
@@ -23,9 +23,9 @@ export default function DemoSavedWordsList({
   ));
 
   return (
-    <div className="SavedWordsList">
-      <header className="demo-saved-words-header-container">
-        <h3 className="sidebar-heading">Saved Words</h3>
+    <div className="DemoLibrary">
+      <header className="DemoLibrary__header-container">
+        <h3 className="DemoLibrary__sidebar-heading">Saved Words</h3>
         <ChevronLeftIcon
           fontSize="large"
           data-tooltip-id="savedwords-tooltip"
@@ -35,7 +35,7 @@ export default function DemoSavedWordsList({
         />
       </header>
       {savedWords.length === 0 ? (
-        <div className="saved-word-list-subtext">
+        <div className="DemoLibrary__sidebar-subtext">
           <p>No words have been saved yet!</p>
           <p>
             Get started by navigating to the Study tab and selecting some words you&apos;d like to

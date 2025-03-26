@@ -40,3 +40,7 @@ export function archiveText(text, id) {
 export function favoriteText(text, id) {
   return sendRequest(`${BASE_URL}/${id}/favorite`, 'POST', { text })
 }
+
+export const getUserTexts = async (userId) => {
+  return sendRequest(`${BASE_URL}/${userId}`, 'GET');
+};

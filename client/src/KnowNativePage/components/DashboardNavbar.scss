@@ -1,0 +1,147 @@
+
+.dashboard-nav {
+    display: flex;
+
+    // please remove once Cards functionality is available
+    &__temp-styling {
+        font-size: 14px;
+        margin-left: 25px;
+        font-style: italic;
+    }
+
+    &__button {
+        background-color: unset;
+        padding: 0px;
+    }
+
+    &__side-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        border-color: rgb(217, 217, 217);
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-between;
+        background-color: white;
+        width: 285px;
+        padding: 2rem 1rem 0.5rem 1rem;
+        border: 1px solid #E1E3E3;
+        
+
+        &-links-container {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }     
+    }
+
+    &__nav-links {
+        display: flex;
+        flex-direction: column;
+        padding-left: 0;
+    }
+
+    &__nav-footer {
+        padding-bottom: 0;
+        margin-bottom: 0;
+        width: 95%;
+    }
+
+    &__link {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        width: 100%;
+        color: black;
+        text-decoration: none;
+        border-radius: 0.5rem;
+
+        &--active {
+            font-weight: 600;
+            margin-left: 4px;
+        }
+    }
+
+    &__flipped {
+        transform: rotateX(180deg) rotateY(180deg);
+    }
+
+    &__nav-item {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 0.625rem;
+        border-radius: 0.5rem;
+        align-self: stretch;
+        overflow: hidden;
+        cursor: pointer;
+        user-select: none;
+
+        &--active{
+            display: flex;
+            background-color: #e8f7fa;
+            gap: 1rem;
+            align-items: center;
+            padding: 0.625rem;
+            border-radius: 0.5rem;
+            cursor: default;
+        }
+
+        &--inactive {
+            color: #a0a0a0;
+            cursor: not-allowed;
+            pointer-events: none;
+            opacity: 0.3;
+        }
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background-color: #e8f7fa;
+            transition: width 0.3s ease-in-out;
+            z-index: 0;
+        }
+    
+        &:hover::before {
+            width: 100%;
+        }
+
+        * {
+            position: relative;
+            z-index: 1;
+        }
+    }
+
+    &__logo {
+        width: 11rem;
+    }
+
+    &__logo-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 2rem;
+        color: black;
+    }
+
+    &__dash-icon {
+        font-family: "Material Symbols Outlined";
+        font-variation-settings: "FILL" 1;        
+    }
+
+    &__nav-icon {
+        color: #C0E7EB;
+        font-size: 28px;
+
+        &--active {
+            color: var(--dark-action);
+        }
+    }
+}

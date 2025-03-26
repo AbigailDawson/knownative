@@ -10,13 +10,14 @@
 
 # production
 /client/build
-/client/dist/
+/client/dist
 /server/build
 /server/dist
 
 # misc
 .DS_Store
 *.env
+.vite
 
 npm-debug.log*
 yarn-debug.log*
