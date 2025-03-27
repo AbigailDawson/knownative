@@ -6,6 +6,7 @@ import * as authService from '../../../services/authService';
 import { useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../../../contexts/Auth/AuthProvider';
 import FormInput from '../Forms/FormInput/FormInput';
+import Button from '../../../ui-components/Button/button';
 
 const LoginModal = ({ setShowModal }) => {
   const [inputValue, setInputValue] = useState({
@@ -132,9 +133,17 @@ const LoginModal = ({ setShowModal }) => {
       <Modal
         hasCustomButtons={true}
       >
-        <p>Login was successful!</p>
-        <p>Please wait a moment as we redirect you to the dashboard.</p>
-        <p>Or click{' '}<Link to={'/dashboard'}>here</Link> to go there directly!</p>
+        <h5>Login was successful!</h5>
+        <p>
+          Please wait a moment as we redirect you to<br />
+          the dashboard.
+        </p>
+        <Link to="/dashboard">
+          <Button
+            buttonVariant={"primary"}
+            buttonText={"Continue to Dashboard"}
+          />
+        </Link>
       </Modal>
     )
   }

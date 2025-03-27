@@ -207,7 +207,7 @@ const SignupModal = ({ setShowModal }) => {
       <Modal
         hasCustomButtons={true}
       >
-        <p>Your account has been created!</p>
+        <h5>Your account has been created!</h5>
         <p>
           A confirmation email has been sent to your inbox.<br />
           Please check your email and click with verification<br />
