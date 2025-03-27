@@ -8,7 +8,7 @@ $logo-size: 40vmin;
 .App {
   text-align: center;
 
-  $-logo {
+  &-logo {
     height: $logo-size;
     pointer-events: none;
 
@@ -17,7 +17,7 @@ $logo-size: 40vmin;
     }
   }
 
-  $-header {
+  &-header {
     background-color: $primary-color;
     min-height: 100vh;
     display: flex;
@@ -28,7 +28,7 @@ $logo-size: 40vmin;
     color: white;
   }
 
-  $-link {
+  &-link {
     color: $link-color;
   }
 }
