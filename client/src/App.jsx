@@ -9,8 +9,6 @@ import LoginPage from './LandingPages/LoginPage/LoginPage';
 import SignupPage from './LandingPages/SignupPage/SignupPage';
 import DashboardPage from './KnowNativePage/DashboardPage/DashboardPage';
 import AppProvider from './contexts/AppProvider';
-import SignupSuccessful from './KnowNativePage/SignupSuccessful/SignupSuccessful';
-import LoginSuccessful from './KnowNativePage/LoginSuccessful/LoginSuccessful';
 import AddTextPage from './KnowNativePage/AddTextPage/AddTextPage';
 
 function App() {
@@ -24,8 +22,6 @@ function App() {
           <Route path="/contribute" element={<ContributePage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
-          <Route path="/login-success" element={<LoginSuccessful />} />
-          <Route path="/signup-success" element={<SignupSuccessful />} />
           <Route path="/add-text" element={<AddTextPage />} />
           <Route path="/*" element={<LandingPage />} />
         </Routes>
