@@ -1,25 +1,25 @@
-@use 'sass:map';
+@use "sass:map";
 $icon-colors: (
-  red: (
-    background: var(--KN-error-100, #ffeded),
-    color: #962828
-  ),
-  green: (
-    background: var(--KN-success-100, #EBF8E8),
-    color: #197D00
-  ),
-  blue: (
-    background: var(--KN-primary-200, #E5F2F6),
-    color: #074B59
-  ),
-  yellow: (
-    background: var(--KN-warning-100, #F8F3E8),
-    color: #9F6B02
-  ),
-  teal: (
-    background: var(--KN-primary-100, #FFF),
-    color: #31a3a5
-  )
+    red: (
+        background: var(--KN-error-100, #ffeded),
+        color: #962828
+    ),
+    green: (
+        background: var(--KN-success-100, #ebf8e8),
+        color: #197d00
+    ),
+    blue: (
+        background: var(--KN-primary-200, #e5f2f6),
+        color: #074b59
+    ),
+    yellow: (
+        background: var(--KN-warning-100, #f8f3e8),
+        color: #9f6b02
+    ),
+    teal: (
+        background: var(--KN-primary-100, #fff),
+        color: #31a3a5
+    )
 );
 
 .dashboard {
@@ -34,11 +34,11 @@ $icon-colors: (
     &__icon-color {
         @each $color, $properties in $icon-colors {
             &--#{"#{$color}"} {
-            background: map.get($properties, background);
-            color: map.get($properties, color);
-          }
+                background: map.get($properties, background);
+                color: map.get($properties, color);
+            }
         }
-      }
+    }
 
     &__link {
         color: black;
@@ -50,15 +50,14 @@ $icon-colors: (
         }
     }
 
-    &__main{
+    &__main {
         display: flex;
         flex-direction: column;
-        width: calc(100vw - 285px); // factors in space taken from nav
-        max-width: 1500px;
+        max-width: 1250px;
         margin-left: 350px;
     }
 
-    &__user{
+    &__user {
         &-info {
             width: 100%;
             height: 5rem;
@@ -97,13 +96,12 @@ $icon-colors: (
         color: black;
         display: flex;
         padding: 1rem 0.5rem;
-        border: 1px #E1E3E3 solid;
+        border: 1px #e1e3e3 solid;
         border-radius: 8px;
         width: calc(100% - 1rem);
         margin: 2rem auto 1rem 0;
         align-items: center;
         align-self: center;
-
     }
 
     &__stat {
@@ -112,7 +110,7 @@ $icon-colors: (
         flex: 1;
         height: 100%;
         text-align: left;
-        border-right: 1px solid #E1E3E3;
+        border-right: 1px solid #e1e3e3;
         align-self: start;
         justify-content: flex-start;
         padding: 1.2rem 0rem;
@@ -137,7 +135,6 @@ $icon-colors: (
             color: var(--KN-gray-500, #556163) !important;
         }
 
-
         @media (max-width: 1262px) {
             &__stat-info {
                 padding-top: 1.8rem;
@@ -150,13 +147,13 @@ $icon-colors: (
             text-align: center;
 
             h3 {
-                font-size: 1.5rem  !important;
+                font-size: 1.5rem !important;
             }
 
             &__stat-info {
                 padding-top: 0.8rem;
             }
-            
+
             & > * {
                 margin: 0;
                 margin-left: 0rem;
@@ -171,7 +168,6 @@ $icon-colors: (
                 font-size: 0.9rem;
                 padding: 0 0.4rem;
             }
-
         }
     }
 
@@ -198,7 +194,7 @@ $icon-colors: (
         align-self: center;
         align-items: center;
         user-select: none;
-        
+
         .material-symbols-outlined {
             font-size: 2rem;
         }
@@ -217,7 +213,6 @@ $icon-colors: (
         justify-content: space-between;
     }
 
-
     @keyframes fadeIn {
         from {
             opacity: 0;
@@ -231,21 +226,19 @@ $icon-colors: (
 
     @keyframes fadeOut {
         from {
-          opacity: 1;
-          transform: translateY(0);
+            opacity: 1;
+            transform: translateY(0);
         }
         to {
-          opacity: 0;
-          transform: translateY(-10px);
+            opacity: 0;
+            transform: translateY(-10px);
         }
-      }
+    }
 
     &__no-text-library {
-        border: 2px dashed #E1E3E3; // Dashed border
+        border: 2px dashed #e1e3e3; // Dashed border
         margin-top: 3rem;
         padding: 4rem 1rem;
-        max-width: 1500px;
-        width: calc(100vw - 400px);
         text-align: center;
         gap: 1.5rem;
         border-radius: 0.625rem;
@@ -255,12 +248,11 @@ $icon-colors: (
             margin-bottom: 0.5rem;
         }
     }
-    
+
     &--bold {
         font-weight: 600;
         color: black;
     }
-
 
     &__library {
         display: flex;
@@ -283,17 +275,17 @@ $icon-colors: (
         user-select: none;
     }
 
-
     &__table-container {
-        width: calc(100% - 1rem);
-        max-width: 1500px;
         display: table;
         table-layout: fixed;
         border-collapse: collapse;
         overflow-x: auto;
 
-        &__item-row{
-            transition: opacity 0.4s ease-out, height 0.4s ease-out, margin 0.4s ease-out;
+        &__item-row {
+            transition:
+                opacity 0.4s ease-out,
+                height 0.4s ease-out,
+                margin 0.4s ease-out;
         }
 
         &__fade-in {
@@ -311,29 +303,29 @@ $icon-colors: (
             font-size: 22px;
             font-weight: 700;
             color: #161717;
-            font-family: 'Noto Serif TC', serif;
+            font-family: "Noto Serif TC", serif;
         }
 
         &__desc {
             display: -webkit-box;
             -webkit-line-clamp: 1;
-            line-clamp: 2; 
+            line-clamp: 2;
             -webkit-box-orient: vertical;
             font-size: 18px;
             font-weight: 300;
             color: #556163;
-            font-family: 'Noto Serif TC', serif;
+            font-family: "Noto Serif TC", serif;
             overflow: hidden;
             text-overflow: ellipsis;
         }
         &__sort-arrow {
             transition: transform 0.2s ease-in-out;
         }
-            
+
         &__rotate-up {
             transform: rotate(180deg);
         }
-        
+
         &__rotate-down {
             transform: rotate(0deg);
         }
@@ -344,7 +336,7 @@ $icon-colors: (
 
         thead {
             tr {
-                border-bottom: 1px solid #E1E3E3;
+                border-bottom: 1px solid #e1e3e3;
             }
             th {
                 padding: 8px;
@@ -359,7 +351,8 @@ $icon-colors: (
                     width: auto;
                 }
 
-                &:nth-child(3), &:nth-child(4) {
+                &:nth-child(3),
+                &:nth-child(4) {
                     width: 8rem;
                 }
 
@@ -375,11 +368,10 @@ $icon-colors: (
                     &:nth-child(4) {
                         width: 7.5rem;
                     }
-    
+
                     &:nth-child(5) {
                         width: 10rem;
                     }
-        
                 }
 
                 @media (max-width: 1000px) {
@@ -393,35 +385,31 @@ $icon-colors: (
                     &:nth-child(5) {
                         width: 9rem;
                     }
-        
                 }
-
             }
-            
         }
-    
+
         tbody {
             display: table-row-group;
             tr {
                 display: table-row;
-                border-bottom: 1px solid #E1E3E3;
+                border-bottom: 1px solid #e1e3e3;
             }
-    
+
             td {
                 padding: 8px;
                 text-align: left;
                 margin: 15px 0px;
-    
-                &:first-child, 
-                &:last-child { 
-                    min-width: 30px;                }
-    
+
+                &:first-child,
+                &:last-child {
+                    min-width: 30px;
+                }
 
                 &:first-child {
                     display: flex;
                     justify-self: center;
                 }
-
 
                 &:nth-child(2) {
                     width: 50%;
@@ -433,15 +421,13 @@ $icon-colors: (
                 }
 
                 @media (max-width: 1000px) {
-                    &:nth-child(3), &:nth-child(4) {
+                    &:nth-child(3),
+                    &:nth-child(4) {
                         font-size: 0.9rem;
                     }
                 }
-
             }
-            
         }
-    
     }
 
     &__view-container {
@@ -465,14 +451,13 @@ $icon-colors: (
             font-weight: 400;
             cursor: initial;
         }
-    
     }
 
     &__card {
         display: flex;
         flex-direction: row;
         background-color: rgb(229, 242, 246);
-        border: 1px solid #2BA6A8;
+        border: 1px solid #2ba6a8;
         border-radius: 0.5rem;
         width: calc(100% - 1rem);
         padding: 1rem;
@@ -493,13 +478,12 @@ $icon-colors: (
         &-title {
             font-size: 1.5rem;
             font-weight: bold;
-            color: #003C49;
+            color: #003c49;
             margin-bottom: 0.5rem;
             text-align: left;
-            font-family: 'Noto Serif TC', serif;
-
+            font-family: "Noto Serif TC", serif;
         }
-        
+
         &-body {
             font-size: 1rem;
             color: var(--dark-action);
@@ -508,7 +492,7 @@ $icon-colors: (
             margin-bottom: 0px;
             overflow-wrap: break-word;
             font-weight: 500;
-            font-family: 'Noto Serif TC', serif;
+            font-family: "Noto Serif TC", serif;
             text-overflow: ellipsis;
             display: -webkit-box;
             -webkit-line-clamp: 2;
@@ -534,16 +518,15 @@ $icon-colors: (
             flex-shrink: 0;
             padding: 1rem;
         }
-        @media (max-width: 640px) { // Adjust breakpoint as needed
+        @media (max-width: 640px) {
+            // Adjust breakpoint as needed
 
             flex-direction: column;
             width: 100%;
 
-        
             &__sub-container {
                 flex-direction: column;
             }
         }
     }
-
 }
