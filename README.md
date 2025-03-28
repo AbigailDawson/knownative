@@ -17,7 +17,7 @@ KnowNative was originally created by Abigail Dawson, who now oversees the contin
 ## Table of Contents
 - [Contribute](#contribute)
 - [Getting started](#getting-started)
-- [How to contribute](#how-to-contribute)
+- [How to submit your work](#how-to-submit-your-work)
 - [Resources](#resources)
 - [Community and support](#community-and-support)
 - [License](#license)
