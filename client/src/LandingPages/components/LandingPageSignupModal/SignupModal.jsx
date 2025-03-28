@@ -8,6 +8,7 @@ import * as authService from '../../../services/authService';
 import { useAuthContext } from '../../../contexts/Auth/AuthProvider';
 import { validateInput } from '../../../utilities/validation';
 import Button from '../../../ui-components/Button/button';
+import RedirectModal from '../LandingPageRedirectModal/RedirectModal';
 
 const SignupModal = ({ setShowModal }) => {
   const [inputValue, setInputValue] = useState({
@@ -204,22 +205,7 @@ const SignupModal = ({ setShowModal }) => {
     );
   } else {
     return (
-      <Modal
-        hasCustomButtons={true}
-      >
-        <h5>Your account has been created!</h5>
-        <p>
-          A confirmation email has been sent to your inbox.<br />
-          Please check your email and click with verification<br />
-          link to complete your registration.
-        </p>
-        <Link to="/dashboard">
-          <Button
-            buttonVariant={"primary"}
-            buttonText={"Continue to Dashboard"}
-          />
-        </Link>
-      </Modal>
+      <RedirectModal login={false} />
     )
   };
 

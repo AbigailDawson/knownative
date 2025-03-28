@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../../../contexts/Auth/AuthProvider';
 import FormInput from '../Forms/FormInput/FormInput';
 import Button from '../../../ui-components/Button/button';
+import RedirectModal from '../LandingPageRedirectModal/RedirectModal';
 
 const LoginModal = ({ setShowModal }) => {
   const [inputValue, setInputValue] = useState({
@@ -130,23 +131,9 @@ const LoginModal = ({ setShowModal }) => {
     );
   } else {
     return (
-      <Modal
-        hasCustomButtons={true}
-      >
-        <h5>Login was successful!</h5>
-        <p>
-          Please wait a moment as we redirect you to<br />
-          the dashboard.
-        </p>
-        <Link to="/dashboard">
-          <Button
-            buttonVariant={"primary"}
-            buttonText={"Continue to Dashboard"}
-          />
-        </Link>
-      </Modal>
-    )
-  }
+      <RedirectModal login={true} />
+    );
+  };
 };
 
 export default LoginModal;
