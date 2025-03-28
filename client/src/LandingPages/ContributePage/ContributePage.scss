@@ -17,7 +17,7 @@
   }
 
   &__section {
-    background-color: var(--light);
+    background-color: $light;
     border-radius: 20px;
     padding: 40px;
     font-size: 1rem;
@@ -88,7 +88,7 @@
   &__card {
     width: 30vmin;
     margin: 20px;
-    border: 1px solid var(--medium);
+    border: 1px solid $medium;
   }
 
   &__name {

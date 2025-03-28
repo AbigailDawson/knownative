@@ -13,7 +13,7 @@
     
     &__toggle-translation {
       position: absolute;
-      color: var(--primary);
+      color: $primary;
       background-color: inherit;
       left: -3.4rem;
       top: 1.2rem;
@@ -24,8 +24,8 @@
   
       &:hover,
       &.translation-visible {
-        color: var(--white);
-        background-color: var(--primary);
+        color: $white;
+        background-color: $primary;
         border-radius: 100%;
       }
     }

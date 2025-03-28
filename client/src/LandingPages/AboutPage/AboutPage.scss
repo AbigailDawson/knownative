@@ -23,7 +23,7 @@
 
 .creator {
   &__section {
-    background-color: var(--light);
+    background-color: $light;
     border-radius: 20px;
     padding: 40px;
     font-size: 1rem;
@@ -107,7 +107,7 @@
 
   &__card {
     border-radius: 10px;
-    background-color: var(--lightest);
+    background-color: $lightest;
     padding: 20px;
 
     @media (max-width: 768px) {

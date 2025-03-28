@@ -52,7 +52,7 @@
       border: 1px solid #086A6C;
 
       &:hover {
-        background-color: var(--dark-action);
+        background-color: $dark-action;
       }
     }
 
@@ -67,7 +67,7 @@
       border: 1px solid #E5F2F6;
 
       &:hover {
-        border: 1px solid var(--action);
+        border: 1px solid $action;
       }
 
       .login-page__google-icon {
