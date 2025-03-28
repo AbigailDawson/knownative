@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom"
 import Modal from "../../../ui-components/Modal/modal"
 import Button from "../../../ui-components/Button/button"
+import { useAuthContext } from "../../../contexts/Auth/AuthProvider"
 
-export default function RedirectModal({ login }) {
+export default function RedirectModal({ login, firstName = undefined }) {
+    const { user } = useAuthContext();
+
     if (login) {
         return (
             <Modal
@@ -10,8 +13,7 @@ export default function RedirectModal({ login }) {
             >
                 <h5>Login was successful!</h5>
                 <p>
-                    Please wait a moment as we redirect you to<br />
-                    the dashboard.
+                    Welcome back, {user.firstName}!
                 </p>
                 <Link to="/dashboard">
                     <Button
