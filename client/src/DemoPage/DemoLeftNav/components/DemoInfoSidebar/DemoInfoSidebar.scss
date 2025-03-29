@@ -34,7 +34,7 @@
         background-color: #e5f2f6;
         color: #006769;
         &:hover {
-            background-color: var(--teal);
+            background-color: $teal;
             transform: scale(1.03);
             color: white;
         }
@@ -44,7 +44,7 @@
         background-color: #006769;
         color: white;
         &:hover {
-            background-color: var(--teal);
+            background-color: $teal;
             transform: scale(1.03);
         }
     }

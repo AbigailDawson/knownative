@@ -6,51 +6,36 @@
   padding: 0;
 }
 
-:root {
-  --teal: #7ea5a4;
-  --teal-lt: #d1dddd;
-  --red-poppy: #e0595c;
-  --red-brick: #b64340;
-  --red-brick-transparent: rgba(178, 34, 34, 0.05);
-  --pink: #ff9389;
-  --beige-lt: #f1d7bc;
-  --beige-med: #e5c4a3;
-  --brown: #65302a;
-  --off-white: #eff0eb;
-  --gray-lt: #b9b9b9;
-  --slate: #607377;
-  /* --dark: #2d2d2f; */
-  --red: #8c0000;
-  --green-lt: #00b700;
-  --green-drk: #008a00;
-  --gold: #f2cf0a;
-  --yellow: #fae365;
 
-  --primary: #086A6C;
-  /* actions */
-  --action: #006769;
-  --dark-action: #074b59;
-  --darkest: #0c1f1b;
-  /* heading text */
-  --dark: #526662;
-  /* secondary text */
-  --medium: #9cc3bc;
-  /* non-decorative borders */
-  --light: #daf2ee;
-  /* decorative borders */
-  --lightest: #f5faf9;
-  /* alternate backgrounds */
-  --white: #ffffff;
-  /* main background */
-}
+// Define variables
+$teal: #7ea5a4;
+$teal-lt: #d1dddd;
+$red-poppy: #e0595c;
+$red-brick: #b64340;
+$red-brick-transparent: rgba(178, 34, 34, 0.05);
+$pink: #ff9389;
+$beige-lt: #f1d7bc;
+$beige-med: #e5
+$brown: #65302a;
+$off-white: #eff0eb;
+$gray-lt: #b9b9b9;
+$slate: #607377;
+$red: #8c0000;
+$green-lt: #00b700;
+$green-drk: #008a00;
+$gold: #f2cf0a;
+$yellow: #fae365;
+$primary: #086A6C;
+$action: #006769;
+$dark-action: #074b59;
+$darkest: #0c1f1b;
+$dark: #526662;
+$medium: #9cc3bc;
+$light: #daf2ee;
+$lightest: #f5faf9;
+$white: #ffffff;
 
-body::before {
-  content: "visibility visibility_off";
-  font-family: "Material Symbols Outlined";
-  font-size: 0;
-  position: absolute;
-  visibility: hidden;
-}
+
 
 body {
   font-family: 'Libre Franklin', sans-serif;
@@ -59,8 +44,16 @@ body {
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--white);
-  color: var(--dark);
+  background-color: $--white;
+  color: $dark;
+
+   &::before {
+    content: "visibility visibility_off";
+    font-family: "Material Symbols Outlined";
+    font-size: 0;
+    position: absolute;
+    visibility: hidden;
+  }
 }
 
 #root {
@@ -79,47 +72,47 @@ button {
 }
 
 .demo-button {
-  background-color: var(--primary);
-  color: var(--darkest);
+  background-color: $primary;
+  color: $darkest;
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
   gap: 10px;
-}
 
-.demo-button:hover {
-  background-color: var(--light);
-  color: var(--darkest);
-  box-shadow: none;
-  gap: 10px;
+  &:hover {
+    background-color: $light;
+    color: $darkest;
+    box-shadow: none;
+    gap: 10px;
+  }
 }
 
 .github-button {
-  background-color: var(--white);
-  color: var(--action);
-  outline: 1px solid var(--primary);
+  background-color: $white;
+  color: $action;
+  outline: 1px solid $primary;
   gap: 10px;
-}
 
-.github-button:hover {
-  background-color: var(--light);
-  color: var(--darkest);
-  border: 1px solid var(--light);
+  &:hover {
+    background-color: $light;
+    color: $darkest;
+    border: 1px solid $light;
+  }
 }
 
 .social-links {
-  background-color: var(--white);
-  color: var(--action);
-  border: 1px solid var(--primary);
+  background-color: $white;
+  color: $action;
+  border: 1px solid $primary;
   gap: 10px;
   padding: 3px;
   border-radius: 4px;
   font-size: 12px;
-}
 
-.social-links:hover {
-  background-color: var(--light);
-  color: var(--darkest);
-  border: 1px solid var(--light);
-  outline: 1px solid var(--light);
+  &:hover {
+    background-color: $light;
+    color: $darkest;
+    border: 1px solid $light;
+    outline: 1px solid $light;
+  }
 }
 
 .close-btn:hover {
@@ -132,7 +125,7 @@ button {
 
 .close-icon {
   font-size: 3vmin;
-  color: var(--slate);
+  color: $slate;
 }
 
 a {
@@ -187,8 +180,8 @@ a {
   height: 100vh;
   width: 180px;
   padding: 0 10px;
-  background-color: var(--lightest);
-  border-right: 1px solid var(--medium);
+  background-color: $lightest;
+  border-right: 1px solid $medium;
   z-index: 5;
 }
 
@@ -198,7 +191,7 @@ a {
   justify-content: start;
   align-items: center;
   background-color: #f5faf9;
-  border-right: 1px solid var(--medium);
+  border-right: 1px solid $medium;
   height: 100vh;
   width: 420px;
 }
@@ -221,33 +214,33 @@ a {
 
 .form {
   background-color: none;
-  border: 1px solid var(--light);
+  border: 1px solid $light;
   border-radius: 8px;
 }
 
 .form-input {
-  background-color: var(--lightest);
+  background-color: $lightest;
   border: none;
   width: 100%;
 }
 
 .sign-up {
-  background-color: var(--primary);
-  color: var(--darkest);
+  background-color: $primary;
+  color: $darkest;
   border: none;
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
   margin-left: 0;
-}
 
-.sign-up:hover {
-  background-color: var(--light);
-  color: var(--darkest);
-  box-shadow: none;
-  gap: 10px;
+  &:hover {
+    background-color: $light;
+    color: $darkest;
+    box-shadow: none;
+    gap: 10px;
+  }
 }
 
 .contact-hr {
-  border: 0.2px solid var(--primary);
+  border: 0.2px solid $primary;
   margin: 2rem 0;
 }
 
@@ -258,7 +251,7 @@ a {
 }
 
 .knownative-link {
-  color: var(--action);
+  color: $action;
   text-decoration: underline;
 }
 
@@ -274,16 +267,16 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
-}
 
-#portal-modal:empty {
-  display: none;
-}
+  &:empty {
+    display: none;
+  }
 
-#portal-modal>div {
-  padding: 15px;
-  border-radius: 10px;
-  background: #f9f9f9;
+  > div {
+    padding: 15px;
+    border-radius: 10px;
+    background: #f9f9f9;
+  }
 }
 
 /* contact page ends */

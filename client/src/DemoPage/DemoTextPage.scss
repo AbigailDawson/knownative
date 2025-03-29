@@ -13,7 +13,7 @@
     text-align: left;
     width: 100%;
     margin: 0 3vmin 0 0;
-    color: var(--darkest);
+    color: $darkest;
 
     &--center{
       justify-content: center;
@@ -75,7 +75,7 @@
 }
 
 .star-filled {
-  color: var(--gold);
+  color: $gold;
 }
 
 .star-empty,
@@ -89,23 +89,23 @@
 
 @keyframes sparkle {
   0% {
-    color: var(--gold);
+    color: $gold;
   }
   50% {
-    color: var(--yellow);
+    color: $yellow;
   }
   100% {
-    color: var(--gold);
+    color: $gold;
   }
 }
 
 .star-empty:hover {
-  color: var(--gold);
+  color: $gold;
   animation: sparkle 0.8s infinite;
 }
 
 .star-filled:hover {
-  color: var(--yellow);
+  color: $yellow;
   animation: sparkle 0.8s infinite;
 }
 
@@ -113,13 +113,13 @@
   margin-top: 3vmin;
   font-size: 1.1rem;
   padding: 1vmin 2vmin;
-  background-color: var(--teal-lt);
+  background-color: $teal-lt;
   transition: transform 0.3s ease-in-out;
-}
 
-.play-again-btn:hover {
-  background-color: var(--teal-lt);
-  transform: scale(1.1);
+  &:hover {
+    background-color: $teal-lt;
+    transform: scale(1.1);
+  }
 }
 
 .tabs {
@@ -135,7 +135,7 @@
     cursor: pointer;
     background-color: transparent;
     position: relative;
-    color: var(--dark);
+    color: $dark;
     margin: 1vmin 0 3vmin 0;
     border-radius: 1vmin;
     padding: 0.5vmin 2vmin;
@@ -156,8 +156,8 @@
     &--active {
       
       &::after{
-        background-color: var(--primary);
-        color: var(--darkest);
+        background-color: $primary;
+        color: $darkest;
         transform: scaleX(1);
       }
     }
@@ -168,7 +168,7 @@
   }
 
   &__indicator {
-    background-color: var(--primary);
+    background-color: $primary;
     width: 100px;
     transition: transform 0.3s ease-in-out;
   }
