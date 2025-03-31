@@ -29,7 +29,7 @@ export default function BlogPage() {
         <section className="blog__header">
           <h1>Blog</h1>
           <p className="blog__intro">
-          Go behind the scenes to see how we're building KnowNative, the problems we're solving, and what drives our vision for the product. In this blog, I'll be sharing insights on educational technology, how we're building a better experience for learners and where we’re headed next.
+          Go behind the scenes to see how we're building KnowNative, the problems we're solving, and what drives our vision for the product. In this blog, I'll be sharing insights on educational technology, how we're building a better experience for learners and where we're headed next.
           </p>
         </section>
         <section className="posts__list">
@@ -47,7 +47,7 @@ export default function BlogPage() {
           ))}
         </section>
         <LandingPageFooter />
-        </div>
+      </div>
     </>
   );
 }
