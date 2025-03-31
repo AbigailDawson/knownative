@@ -133,13 +133,9 @@ const SignupModal = ({ setShowModal }) => {
     return (
       <>
         {loading ? (
-          <Modal
-            canCloseOnEscapeKey={false}
-            hasCloseButton={false}
-            hasCustomButtons={true}
-          >
+          <div className="signup-page__loading-overlay">
             <CircularProgress />
-          </Modal>
+          </div>
         ) : (
           <Modal
             canCloseOnEscapeKey={true}

@@ -81,13 +81,9 @@ const LoginModal = ({ setShowModal }) => {
     return (
       <>
         {loading ? (
-          <Modal
-            canCloseOnEscapeKey={false}
-            hasCloseButton={false}
-            hasCustomButtons={true}
-          >
+          <div className="login-modal__loading-overlay">
             <CircularProgress />
-          </Modal>
+          </div>
         ) : (
           <Modal
             canCloseOnEscapeKey={true}
