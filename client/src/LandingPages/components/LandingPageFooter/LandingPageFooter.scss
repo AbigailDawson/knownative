@@ -1,3 +1,23 @@
 .footer {
-  bottom: 0;
+  padding: 2rem 0;
+  
+  &-link {
+    color: #161717;
+    text-decoration: none;
+    
+    &:hover {
+      text-decoration: underline;
+      color: #086A6C;
+    }
+  }
+  
+  &-divider {
+    border-top: 1px solid #e5e5e5;
+    margin: 1rem 0;
+  }
+  
+  .copyright {
+    color: #161717;
+    font-size: 0.9rem;
+  }
 }
