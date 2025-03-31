@@ -8,7 +8,7 @@ import * as authService from '../../../services/authService';
 import { useAuthContext } from '../../../contexts/Auth/AuthProvider';
 import { validateInput } from '../../../utilities/validation';
 import RedirectModal from '../LandingPageRedirectModal/RedirectModal';
-import { Box, CircularProgress } from '@mui/material';
+import Spinner from '../../../ui-components/Spinner/spinner';
 
 const SignupModal = ({ setShowModal }) => {
   const [inputValue, setInputValue] = useState({
@@ -134,25 +134,7 @@ const SignupModal = ({ setShowModal }) => {
       <>
         {loading ? (
           <div className="signup-page__loading-overlay">
-            <svg width={0} height={0}>
-              <defs>
-                <linearGradient id="my_gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#333" />
-                  <stop offset="100%" stopColor="transparent" />
-                </linearGradient>
-              </defs>
-            </svg>
-            <Box>
-              <CircularProgress
-                variant="indeterminate"
-                disableShrink
-                sx={{
-                  'svg circle': { stroke: 'url(#my_gradient)' }
-                }}
-                size={80}
-                thickness={4}
-              />
-            </Box>
+            <Spinner />
           </div>
         ) : (
           <Modal
