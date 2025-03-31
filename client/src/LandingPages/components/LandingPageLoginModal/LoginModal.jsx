@@ -72,7 +72,7 @@ const LoginModal = ({ setShowModal }) => {
       } finally {
         setLoading(false);
       }
-    }, 3000);
+    }, 1000);
 
     return () => clearTimeout(loadingTimer);
   };
