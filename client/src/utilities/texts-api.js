@@ -1,5 +1,5 @@
 import sendRequest from './send-request'
-const BASE_URL = '/api/texts'
+const BASE_URL = `${import.meta.env.VITE_API_BASE_URL}/api/texts`
 
 export async function tokenizeText(text) {
   return sendRequest(`${BASE_URL}/tokenize`, 'POST', { text })
