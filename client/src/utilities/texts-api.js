@@ -9,8 +9,8 @@ export function getAll() {
   return sendRequest(`${BASE_URL}`)
 }
 
-export function addNewText(textData) {
-  return sendRequest(`${BASE_URL}/add`, 'POST', textData)
+export async function addNewText(textData) {
+  return await sendRequest(`${BASE_URL}/add`, 'POST', textData)
 }
 
 export function deleteText(text, id) {
