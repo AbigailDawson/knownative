@@ -14,12 +14,12 @@
     transition: transform 0.3s ease-in-out;
 
     &:not(:disabled):hover {
-      background-color: var(--teal);
+      background-color: $teal;
       transform: scale(1.1);
     }
 
     &:disabled {
-      background-color: var(--medium);
+      background-color: $medium;
       opacity: 0.6;
     }
   }
@@ -37,7 +37,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--action);
+    background-color: $action;
     color: white;
     border: none;
     border-radius: 6px;
@@ -47,7 +47,7 @@
     transition: background-color 0.3s ease;
 
     &:hover {
-      background-color: var(--medium);
+      background-color: $medium;
     }
 
     &:focus {
@@ -72,21 +72,21 @@
   }
 
   &__correct-btn {
-    border: 2px solid var(--action);
-    color: var(--darkest);
-    background-color: var(--action);
-    color: var(--white);
+    border: 2px solid $action;
+    color: $darkest;
+    background-color: $action;
+    color: $white;
 
     &:hover {
-      background-color: var(--medium);
-      border: 2px solid var(--medium);
+      background-color: $medium;
+      border: 2px solid $medium;
     }
   }
 
   &__incorrect-btn {
-    border: 2px solid var(--red-brick);
-    color: var(--red-brick);
-    background-color: var(--red-brick-transparent);
+    border: 2px solid $red-brick;
+    color: $red-brick;
+    background-color: $red-brick-transparent;
 
     &:hover {
       background-color: white;
@@ -106,12 +106,12 @@
   margin-bottom: 2rem;
 
   &__correct {
-    color: var(--green-drk);
+    color: $green-drk;
     font-weight: 800;
   }
 
   &__remaining {
-    color: var(--red-poppy);
+    color: $red-poppy;
     font-weight: 800;
   }
 
