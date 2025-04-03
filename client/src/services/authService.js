@@ -1,6 +1,6 @@
 import sendRequest from './sendRequest';
 
-const BASE_URL = '/api/users';
+const BASE_URL = import.meta.env.VITE_API_BASE_URL + "api/users";
 
 export async function signUp(userData) {
   return await sendRequest(`${BASE_URL}/signup`, 'POST', userData);
