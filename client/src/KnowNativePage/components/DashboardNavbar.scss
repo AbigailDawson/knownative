@@ -1,3 +1,4 @@
+@use "../../index.scss" as *;
 
 .dashboard-nav {
     display: flex;
@@ -54,7 +55,7 @@
         align-items: center;
         gap: 1rem;
         width: 100%;
-        color: black;
+        color: darkest;
         text-decoration: none;
         border-radius: 0.5rem;
 
@@ -128,7 +129,7 @@
         justify-content: center;
         align-items: center;
         margin-bottom: 2rem;
-        color: black;
+        color: darkest;
     }
 
     &__dash-icon {

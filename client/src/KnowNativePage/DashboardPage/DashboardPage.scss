@@ -1,4 +1,5 @@
 @use "sass:map";
+
 $icon-colors: (
     red: (
         background: var(--KN-error-100, #ffeded),
@@ -41,7 +42,7 @@ $icon-colors: (
     }
 
     &__link {
-        color: black;
+        color: darkest;
         text-decoration: none;
         margin-bottom: 0.5rem;
 
@@ -83,7 +84,7 @@ $icon-colors: (
     }
 
     &__title {
-        color: black;
+        color: darkest;
         display: flex;
 
         &--subtitle {
@@ -93,7 +94,7 @@ $icon-colors: (
     }
 
     &__stats-container {
-        color: black;
+        color: darkest;
         display: flex;
         padding: 1rem 0.5rem;
         border: 1px #e1e3e3 solid;
@@ -251,7 +252,7 @@ $icon-colors: (
 
     &--bold {
         font-weight: 600;
-        color: black;
+        color: darkest;
     }
 
     &__library {

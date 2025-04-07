@@ -1,10 +1,12 @@
+@use "../../../index.scss" as *;
+
 .read-text {
   display: flex;
   flex-direction: column;
   grid-template-columns: 50% 50%;
   gap: 2vmin;
   padding: 4vmin 2vmin;
-  color: $drk-txt;
+  color: $dark;
 
   &__block {
     margin-top: 2vmin;
@@ -86,7 +88,7 @@
 
 .remove-easier {
   background-color: $off-white;
-  color: $drk-txt;
+  color: $dark;
   border: 1px solid $gray-lt;
   padding: 0 1.5vmin;
 }
@@ -102,7 +104,7 @@
 }
 
 .expand-icon:hover {
-  color: $red-poppy);
+  color: $red-poppy;;
   transform: scale(1.1);
   cursor: pointer;
 }

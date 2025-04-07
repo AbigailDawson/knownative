@@ -1,3 +1,5 @@
+@use "../../../../index.scss" as *;
+
 .flashcard {
   display: flex;
   flex-direction: column;

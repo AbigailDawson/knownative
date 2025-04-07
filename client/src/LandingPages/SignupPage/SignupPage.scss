@@ -8,12 +8,12 @@
   &__title {
     font-size: 1.5rem;
     text-align: center;
-    color: black;
+    color: darkest;
     padding: 1em 0 0 0;
   }
 
   &__error-message {
-    color: black;
+    color: darkest;
     font-size: 1.2rem;
     margin-bottom: 0.5em;
   }
@@ -51,7 +51,7 @@
     display: flex;
     align-items: center;
     text-align: center;
-    color: black;
+    color: darkest;
     width: 400px;
 
     &::before,
@@ -68,7 +68,7 @@
   }
 
   &__login-link {
-    color: black;
+    color: darkestst;
     font-size: 14px;
     text-align: center;
   }

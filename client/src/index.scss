@@ -15,7 +15,6 @@ $red-brick: #b64340;
 $red-brick-transparent: rgba(178, 34, 34, 0.05);
 $pink: #ff9389;
 $beige-lt: #f1d7bc;
-$beige-med: #e5
 $brown: #65302a;
 $off-white: #eff0eb;
 $gray-lt: #b9b9b9;
@@ -44,7 +43,7 @@ body {
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: $--white;
+  background-color: $white;
   color: $dark;
 
    &::before {
