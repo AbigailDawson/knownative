@@ -1,8 +1,10 @@
+@use "../../../../../index.scss" as *;
+
 .sentence-translation {
   letter-spacing: 0;
   font-size: 1.1rem;
   margin: 1vmin 0 4vmin 0;
-  color: $black;
+  color: $darkest;
   line-height: 1.8rem;
 
   /* Transition properties */

@@ -1,10 +1,12 @@
+@use "../../index.scss" as *;
+
 .login-page {
   $deep-red: #962828;
   min-height: 100vh;
 
   &__forgot,
   &__signup-link {
-    color: black;
+    color: darkest;
     font-size: 14px;
     margin-bottom: 0rem;
 
@@ -101,7 +103,7 @@
   }
 
   &__header {
-    color: black;
+    color: darkest;
     font-size: 24px;
   }
 
@@ -109,7 +111,7 @@
     display: flex;
     align-items: center;
     text-align: center;
-    color: black;
+    color: darkest;
 
     &::before,
     &::after {

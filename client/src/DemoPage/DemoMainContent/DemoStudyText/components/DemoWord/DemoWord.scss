@@ -20,6 +20,13 @@
   align-items: center;
   justify-content: center;
   font-family: 'Montserrat', 'Roboto', sans-serif;
+    
+  /* Prevent long words from wrapping and handle overflow text */
+  white-space: nowrap;
+  /*Handle overflow text*/
+  overflow: hidden;
+  /*Adds an ellipsis to indicate that the text is truncated*/
+  text-overflow: ellipsis;
   
   & p {
     margin: 0;
@@ -61,19 +68,12 @@
     min-width: 10rem;
     z-index: 1;
   }
-
+  
   &__zh--saved {
     text-decoration: underline;
     text-underline-offset: 4px;
     text-decoration-thickness: 1.5px;
   }
-
-  /* Prevent long words from wrapping and handle overflow text */
-  white-space: nowrap;
-  /*Handle overflow text*/
-  overflow: hidden;
-  /*Adds an ellipsis to indicate that the text is truncated*/
-  text-overflow: ellipsis;
 }
 
 /* Media Queries */

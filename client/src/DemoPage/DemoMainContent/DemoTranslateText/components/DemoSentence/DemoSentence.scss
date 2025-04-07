@@ -1,3 +1,5 @@
+@use "../../../../../index.scss" as *;
+
 .sentence {
     margin-bottom: 2vmin;
     position: relative;
@@ -8,7 +10,7 @@
       font-size: 1.5rem;
       line-height: 32px;
       letter-spacing: 0.3rem;
-      color: black;
+      color: darkest;
     }
     
     &__toggle-translation {

@@ -1,3 +1,5 @@
+@use "../../../../../../index.scss" as *;
+
 @mixin hover-effect($bg-color, $text-color, $scale: 1) {
     cursor: pointer;
     background-color: $bg-color;
@@ -12,7 +14,7 @@
     align-items: center;
     justify-content: center;
     background-color: white;
-    color: black;
+    color: darkest;
     padding: 2vmin 3.5vmin;
     margin: 0.5vmin 1vmin;
     border-bottom: 2px solid $medium;
