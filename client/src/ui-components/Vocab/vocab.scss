@@ -1,0 +1,33 @@
+@mixin hover-effect($bg-color, $text-color, $scale: 1) {
+   cursor: pointer;
+   background-color: $bg-color;
+   color: $text-color;
+   transform: scale($scale);
+}
+
+.Vocab-card  {
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   background-color: white;
+   color: darkest;
+
+   &__char {
+       &--pinyin {
+           font-size: 0.8rem;
+           margin-bottom: 0px;
+           color: var(--dark);
+       }
+       &--char {
+           font-size: 1.7rem;
+           margin-bottom: 0px;
+       }
+
+       &--meaning {
+           margin-bottom: 0px;
+           text-align: center;
+       }
+   }
+}
