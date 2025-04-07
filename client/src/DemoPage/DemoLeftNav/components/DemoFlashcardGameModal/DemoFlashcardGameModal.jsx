@@ -104,7 +104,7 @@ export default function DemoFlashcardGameModal({ wordList, selectedFront, showPi
               width: '60vmin',
               height: '55vmin',
               backgroundColor: 'white',
-              color: 'var(--dark)',
+              color: 'var(--drk-txt)',
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',

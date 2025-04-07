@@ -7,7 +7,7 @@
 
   & > h1 {
     font-size: 2.2rem;
-    color: $red-brick;
+    color: var(--red-brick);
     margin: 1vmin 0 0 0;
   }
 
@@ -21,7 +21,7 @@
 
   &__num{
     font-size: 4rem;
-    color: $teal;
+    color: var(--teal);
   }
 
   &__stat {
@@ -29,12 +29,12 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    border-bottom: 1px solid $slate;
+    border-bottom: 1px solid var(--slate);
     padding: 2vmin 0;
 
     &---icon {
       font-size: 3.5rem;
-      color: $teal;
+      color: var(--teal);
       margin-bottom: 1vmin;
     }
 

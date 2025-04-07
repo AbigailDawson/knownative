@@ -10,9 +10,10 @@ module.exports = {
   getDemo,
   tokenizeText,
   translateSentence,
+  addText,
 };
 
-async function getDemo(req, res) { }
+async function getDemo(req, res) {}
 
 function tokenizeText(req, res) {
   const { text } = req.body;
@@ -31,5 +32,28 @@ async function translateSentence(req, res) {
     res.json(translations[0]);
   } catch (error) {
     res.status(400).json(error);
+  }
+}
+
+async function addText(req, res) {
+  const { content, title, source } = req.body;
+  const userId = req.user._id;
+
+  console.log('User ID in addText:', userId);
+  console.log('Adding text:', content);
+  
+  try {
+    const newText = new Text({
+      user: userId,
+      title,
+      source,
+      content
+    });
+    console.log('New text:', newText);
+    await newText.save();
+    res.status(201).json({ message: 'Text added successfully', text: newText });
+  } catch (error) {
+    console.error('Error saving text:', error);
+    res.status(500).json({ error: 'Failed to add text' });
   }
 }

@@ -37,7 +37,7 @@
   &__body {
     display: flex;
     flex-direction: column;
-    color: darkest;
+    color: black;
 
     &--text{
       font-size: 1.3rem;
@@ -49,7 +49,7 @@
   &__chinese-character {
     font-size: 3rem;
     margin-bottom: 1.5rem;
-    color: darkest;
+    color: black;
   }
 
   &__difficulty-source-container {

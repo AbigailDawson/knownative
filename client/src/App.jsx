@@ -1,6 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
 import { useState } from 'react';
-import './index.scss';
 import './App.scss';
 import DemoTextPage from './DemoPage/DemoTextPage';
 import AboutPage from './LandingPages/AboutPage/AboutPage';

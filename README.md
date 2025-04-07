@@ -77,28 +77,17 @@ cd server
 npm i
 ```
 
-### 3. Create your `.env` files
+### 3. Create a `.env` file in the `server` folder.
 
-You will need a `.env` file in both the `client` and `server` directories. 
-
-In the `server` directory: 
+Create a new file named `.env` inside the server directory and add the following variables:
 
 ```
-PORT=3001
-MONGODB_URI=<your-mongodb-connection-string>
-JWT_SECRET=<any-string>
+DATABASE_URL=<your-mongodb-connection-string>
 GOOGLE_TRANSLATE_API_KEY=<your-google-translate-api-key>
 ```
 
 - `MONGODB_URI` contains the connection string for MongoDB. [Learn how to connect](https://www.mongodb.com/resources/products/fundamentals/mongodb-connection-string).
-- `JWT_SECRET` contains a string. It can be anything you want.
 - `GOOGLE_TRANSLATE_API_KEY` contains the API key for sentence translations. [Get a key](https://cloud.google.com/translate/docs/setup).
-
-In the `client` directory:
-
-```
-VITE_API_BASE_URL=http://localhost:3001
-```
 
 ### 4. Build & run the client
 

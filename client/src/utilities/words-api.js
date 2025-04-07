@@ -1,5 +1,5 @@
 import sendRequest from './send-request'
-const BASE_URL = `${import.meta.env.VITE_API_BASE_URL}/api/words`
+const BASE_URL = '/api/words'
 
 export function updateMeaning(word, formData) {
   return sendRequest(`${BASE_URL}/${word._id}/update`, 'POST', { word, meaning: formData })

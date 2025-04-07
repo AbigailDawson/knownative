@@ -1,5 +1,3 @@
-@use "../../index.scss" as *;
-
 .add-text-form {
     display: grid;
     width: 55vw;
@@ -7,7 +5,7 @@
     margin-inline: auto;
 
     &__title {
-        color: $darkest
+        color: var(--darkest)
     }
 
     &__buttons {

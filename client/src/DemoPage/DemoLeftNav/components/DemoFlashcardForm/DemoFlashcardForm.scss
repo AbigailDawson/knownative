@@ -1,12 +1,10 @@
-@use "../../../../index.scss" as *;
-
 .flashcard-form {
   display: flex;
   flex-direction: column;
   padding: 3vmin 3vmin;
   margin-top: 1rem;
   width: 100%;
-  color: darkest;
+  color: black;
 
     &__header {
       display: flex;
@@ -14,7 +12,7 @@
     }
 
     &__arrow-back:hover {
-      background-color: $light;
+      background-color: var(--light);
       border-radius: 0.7vmin;
       cursor: pointer;
     }
@@ -31,7 +29,7 @@
   &__label {
     text-align: left;
     margin-top: 1rem;
-    color: darkest;
+    color: black;
   }
 
   &__radio-buttons {

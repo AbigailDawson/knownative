@@ -1,5 +1,3 @@
-@use '../../index.scss' as *;
-
 .sidebar-icons {
 
   &__top-icons {
@@ -18,7 +16,7 @@
   }
 
   &__icontip-container {
-    color: $dark-action;
+    color: var(--dark-action);
     background-color: inherit;
     font-weight: 500;
     opacity: 0.95;
@@ -34,7 +32,7 @@
     -ms-user-select: none;
 
     &:hover  {
-      background-color: $light;
+      background-color: var(--light);
     }
 
     &--label {
@@ -45,7 +43,7 @@
 
   &__button{
       &--active {
-      background-color: $light;
+      background-color: var(--light);
     }
   }
     
@@ -62,7 +60,7 @@
     font-size: 4vmin;
     margin: 0;
     padding: 5px 0;
-    color: $dark-action;
+    color: var(--dark-action);
 
     @media (max-width: 768px) { 
         margin-top: 0.5rem;
@@ -78,8 +76,8 @@
     position: absolute;
     top: 20px;
     right: 30px;
-    background-color: $medium;
-    color: $dark-action;
+    background-color: var(--medium);
+    color: var(--dark-action);
     padding: 6px 7px 4px 6px;
     border-radius: 25%;
     font-size: 0.8rem;

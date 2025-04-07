@@ -1,12 +1,10 @@
-@use "../../../../index.scss" as *;
-
 .DemoLibrary {
     display: flex;
     flex-direction: column;
     padding: 3vmin 3vmin;
     width: 100%;
     background-color: #f5faf9;
-    color: darkest;
+    color: black;
     margin-top: 1rem;
 
     &__header-container {
@@ -39,7 +37,7 @@
 }
 
 .arrowBack:hover {
-  background-color: $light;
+  background-color: var(--light);
   border-radius: 0.7vmin;
   cursor: pointer;
 }

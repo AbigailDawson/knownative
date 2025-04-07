@@ -1,5 +1,3 @@
-@use "../../../../../index.scss" as *;
-
 .sentence {
     margin-bottom: 2vmin;
     position: relative;
@@ -10,12 +8,12 @@
       font-size: 1.5rem;
       line-height: 32px;
       letter-spacing: 0.3rem;
-      color: darkest;
+      color: black;
     }
     
     &__toggle-translation {
       position: absolute;
-      color: $primary;
+      color: var(--primary);
       background-color: inherit;
       left: -3.4rem;
       top: 1.2rem;
@@ -26,8 +24,8 @@
   
       &:hover,
       &.translation-visible {
-        color: $white;
-        background-color: $primary;
+        color: var(--white);
+        background-color: var(--primary);
         border-radius: 100%;
       }
     }

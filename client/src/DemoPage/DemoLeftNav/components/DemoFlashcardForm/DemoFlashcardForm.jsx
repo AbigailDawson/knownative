@@ -39,7 +39,7 @@ export default function DemoFlashcardForm({ localSavedWords, handleBackArrowClic
               <FormLabel
                 id="radio-buttons-group-label"
                 className="form-group__label"
-                sx={{ color: 'darkest' }}>
+                sx={{ color: 'black' }}>
                 <p>Review your saved terms with a short quiz.</p>
                 <p>Choose which to display on the front:</p>
               </FormLabel>
@@ -93,7 +93,7 @@ export default function DemoFlashcardForm({ localSavedWords, handleBackArrowClic
                     checked={showPinyin}
                     onChange={() => setShowPinyin(!showPinyin)}
                     sx={{
-                      color: 'darkest',
+                      color: 'black',
                       '&.Mui-checked': {
                         color: '#00b9bc'
                       }

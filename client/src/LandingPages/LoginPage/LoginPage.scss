@@ -1,12 +1,10 @@
-@use "../../index.scss" as *;
-
 .login-page {
   $deep-red: #962828;
   min-height: 100vh;
 
   &__forgot,
   &__signup-link {
-    color: darkest;
+    color: black;
     font-size: 14px;
     margin-bottom: 0rem;
 
@@ -54,7 +52,7 @@
       border: 1px solid #086A6C;
 
       &:hover {
-        background-color: $dark-action;
+        background-color: var(--dark-action);
       }
     }
 
@@ -69,7 +67,7 @@
       border: 1px solid #E5F2F6;
 
       &:hover {
-        border: 1px solid $action;
+        border: 1px solid var(--action);
       }
 
       .login-page__google-icon {
@@ -103,7 +101,7 @@
   }
 
   &__header {
-    color: darkest;
+    color: black;
     font-size: 24px;
   }
 
@@ -111,7 +109,7 @@
     display: flex;
     align-items: center;
     text-align: center;
-    color: darkest;
+    color: black;
 
     &::before,
     &::after {

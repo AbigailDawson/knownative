@@ -1,12 +1,10 @@
-@use "../../../index.scss" as *;
-
 .translate-text {
   display: flex;
   flex-direction: column;
   gap: 2vmin;
   margin: 0 3vmin;
   padding: 4vmin 2vmin;
-  color: $dark;
+  color: var(--drk-txt);
 
   &__block {
     margin-top: 2vmin;

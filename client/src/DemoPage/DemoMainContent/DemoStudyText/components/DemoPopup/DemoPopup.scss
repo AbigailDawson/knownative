@@ -1,5 +1,3 @@
-@use "../../../../../index.scss" as *;
-
 .save-word-popup {
     position: absolute;
     background-color: #effffc;
@@ -39,14 +37,14 @@
   
     &__glyphs {
       font-size: 2rem;
-      color: darkest;
+      color: black;
       font-weight: bold;
     }
   
     &__pinyin,
     .popup-meaning {
       font-size: 0.9rem;
-      color: $dark;
+      color: var(--drk-txt);
       margin: 0.5vmin 0;
     }
   
