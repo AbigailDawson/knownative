@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import Button from '../../ui-components/Button/button';
 import { getUserTexts } from '../../utilities/texts-api';
 import DashboardNavbar from '../components/DashboardNavbar';
+import AddTextSlideout from '../AddTextPage/AddTextSlideout';
 
 const mockData = [
   {
@@ -293,6 +294,7 @@ export default function DashboardPage() {
   const [fadeOut, setFadeOut] = useState(false);
   const [sortColumn, setSortColumn] = useState('title');
   const [sortDirection, setSortDirection] = useState('asc');
+  const [isAddTextOpen, setIsAddTextOpen] = useState(false);
 
   const [texts, setTexts] = useState([]);
   const [error, setError] = useState(null);
@@ -498,7 +500,7 @@ export default function DashboardPage() {
               iconStyling="dashboard-button__icon-flip"
               buttonVariant="primary"
               buttonText="Add Text"
-              buttonOnClickFunc={() => navigate('/add-text')}
+              buttonOnClickFunc={() => setIsAddTextOpen(true)}
             />
           </div>
           {texts.length !== 0 ? (
@@ -621,6 +623,8 @@ export default function DashboardPage() {
           )}
         </div>
       </div>
+      <div className={`dashboard__overlay ${isAddTextOpen ? 'dashboard__overlay--active' : ''}`} onClick={() => setIsAddTextOpen(false)}></div>
+      <AddTextSlideout isOpen={isAddTextOpen} onClose={() => setIsAddTextOpen(false)} />
     </div>
   ) : (
     <div>
