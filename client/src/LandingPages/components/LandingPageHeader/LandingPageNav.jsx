@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import './LandingPageNav.scss';
 
-export default function LandingPageNav() {
+export default function LandingPageNav({ setShowLoginModal }) {
   return (
     <nav className="navbar navbar-expand-lg navbar-light">
       <div className="container">
@@ -45,7 +45,7 @@ export default function LandingPageNav() {
               </a>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/login">
+              <Link className="nav-link" onClick={setShowLoginModal}>
                 Login
               </Link>
             </li>
@@ -55,9 +55,9 @@ export default function LandingPageNav() {
               </Link>
             </li>
             <li className="nav-item">
-            <Link className="nav-link nav-link--primary" to="/signup">
-            Sign up
-            </Link>
+              <Link className="nav-link nav-link--primary" to="/signup">
+                Sign up
+              </Link>
             </li>
           </ul>
         </div>
