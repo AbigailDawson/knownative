@@ -35,9 +35,7 @@ async function create(req, res) {
           message: "A user with that email address or username already exists!",
         });
     } else {
-      res.status(400).json({
-        message: "An error occurred during sign-up. Please try again.",
-      });
+      res.status(400).json({ message: error.message });
     }
   }
 }
