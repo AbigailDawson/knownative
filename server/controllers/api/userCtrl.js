@@ -1,12 +1,18 @@
 const User = require("../../models/user");
 const bcrypt = require("bcrypt");
 const { createJWT } = require("./../../utils/jwt");
+const { sendResetPasswordMail } = require("../../utils/mail/customMail");
+const ResetUserPassword = require("../../models/resetPassword");
+const { generateToken } = require("../../utils/index");
+
 
 module.exports = {
   create,
   logIn,
   getUser,
   logOut,
+  forgotPassword,
+  resetPassword
 };
 
 const cookieOptions = {
@@ -99,5 +105,76 @@ async function logOut(req, res) {
     res.status(200).json({ message: "Successfully logged out" });
   } catch (error) {
     res.status(403).json({ message: "Unable to log out successfully" });
+  }
+}
+
+/**
+ * @api { POST } /users/forgot-password
+ * @param {*} req 
+ * @param { email } req.body
+ * @param {*} res 
+ */
+
+async function forgotPassword(req, res) {
+  try {
+    const { email } = req.body;
+
+    const user = await User.findOne({ email });
+
+    if (!user) {
+      throw new Error("User not found")
+    }
+
+    let resetUserPassData = await ResetUserPassword.findOne({ userId: user._id });
+
+    if (!resetUserPassData) {
+      // Generate token
+      const token = generateToken();
+      resetUserPassData = await ResetUserPassword.create({ userId: user._id, token });
+    }
+
+    const resetPasswordUrl = `${process.env.RESET_PASS_URL}?token=${resetUserPassData.token}`;
+
+    await sendResetPasswordMail(email, resetPasswordUrl, user.username);
+
+    res.status(200).json({ message: "Password resent link sent to your email account." });
+  }
+  catch (error) {
+    console.log(error.message)
+    res.status(400).json({ message: error.message });
+  }
+}
+/**
+ * @api { POST } /users/reset-password/:token
+ * @param {*} req
+ * @param { token } req.params
+ * @param { newPassword } req.body
+ * @param {*} res 
+ */
+async function resetPassword(req, res) {
+  try {
+    const { token } = req.params;
+
+    const resetPasswordData = await ResetUserPassword.findOne({ token });
+
+    if (!resetPasswordData) throw new Error("Reset password link has been expired!");
+
+    const userData = await User.findById(resetPasswordData.userId);
+
+    if (!userData) throw new Error("User not found!");
+
+    // Hash the new password before saving
+    const hashedPassword = await bcrypt.hash(req.body.password, 10);
+    userData.password = hashedPassword;
+
+    await userData.save();  // Save the updated user
+
+    // Clean up the reset token entry
+    await resetPasswordData.deleteOne();
+
+    res.status(200).json({ message: "Password reset successfully" });
+  } catch (error) {
+    console.error(error);
+    res.status(400).json({ message: error.message });
   }
 }
