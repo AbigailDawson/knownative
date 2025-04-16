@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './DemoWelcomeModal.scss';
 import DemoModal from '../DemoModal/DemoModal';
+import Radio from '../../../ui-components/Radio/radio';
 
 const DemoWelcomeModal = ({ onSubmit, isOpen, onClose, textSelection, setTextSelection }) => {
   const focusInputRef = useRef(null);
@@ -28,7 +29,7 @@ const DemoWelcomeModal = ({ onSubmit, isOpen, onClose, textSelection, setTextSel
       <div className="demo-modal">
         {/* Modal Page 1 */}
         {pageCount === 1 ? (
-          <div aria-label='page-one'>
+          <div aria-label="page-one">
             <div className="demo-modal__progress">
               <div className="demo-modal__progress-dashes demo-modal__progress-dashes--active"></div>
               <div className="demo-modal__progress-dashes demo-modal__progress-dashes--inactive"></div>
@@ -37,9 +38,9 @@ const DemoWelcomeModal = ({ onSubmit, isOpen, onClose, textSelection, setTextSel
             <h1 className="demo-modal__title">Welcome to KnowNative!</h1>
             <p>KnowNative can help you read and study articles written in Mandarin.</p>
             <p>
-              We&apos;ll help you choose a{' '}
-              <span className="bold">sample article</span> for this demo based on your
-              language level. No prior knowledge of Mandarin is needed to explore this demo!
+              We&apos;ll help you choose a <span className="bold">sample article</span> for this
+              demo based on your language level. No prior knowledge of Mandarin is needed to explore
+              this demo!
             </p>
           </div>
         ) : (
@@ -57,12 +58,14 @@ const DemoWelcomeModal = ({ onSubmit, isOpen, onClose, textSelection, setTextSel
             <h1 className="demo-modal__title">Choose your level</h1>
             <p>How would you describe your proficiency in Mandarin?</p>
             <form>
-              <label className='demo-modal__label' htmlFor="beginnerRadioButton" aria-label='Beginner'>
+              <label
+                className="demo-modal__label"
+                htmlFor="beginnerRadioButton"
+                aria-label="Beginner">
                 <div
                   className={`demo-modal__level
                    ${textSelection === 'beginner' ? 'demo-modal__level--active' : ''}`}>
-                  <input
-                    type="radio"
+                  <Radio
                     value="beginner"
                     id="beginnerRadioButton"
                     checked={textSelection === 'beginner'}
@@ -77,17 +80,20 @@ const DemoWelcomeModal = ({ onSubmit, isOpen, onClose, textSelection, setTextSel
                 </div>
               </label>
 
-              <label className='demo-modal__label' htmlFor="intermediateRadioButton" aria-label='Intermediate'>
+              <label
+                className="demo-modal__label"
+                htmlFor="intermediateRadioButton"
+                aria-label="Intermediate">
                 <div
                   className={`demo-modal__level
                    ${textSelection === 'intermediate' ? 'demo-modal__level--active' : ''}`}>
-                  <input
-                    type="radio"
+                  <Radio
                     value="intermediate"
                     id="intermediateRadioButton"
                     checked={textSelection === 'intermediate'}
                     onChange={onRadioChange}
                   />
+
                   <h3>Intermediate</h3>
                   <span>TOCFL 3-4</span>
                   <p>
@@ -97,12 +103,14 @@ const DemoWelcomeModal = ({ onSubmit, isOpen, onClose, textSelection, setTextSel
                 </div>
               </label>
 
-              <label className='demo-modal__label' htmlFor="advancedRadioButton" aria-label='Advanced'>
+              <label
+                className="demo-modal__label"
+                htmlFor="advancedRadioButton"
+                aria-label="Advanced">
                 <div
                   className={`demo-modal__level
                    ${textSelection === 'advanced' ? 'demo-modal__level--active' : ''}`}>
-                  <input
-                    type="radio"
+                  <Radio
                     value="advanced"
                     id="advancedRadioButton"
                     checked={textSelection === 'advanced'}

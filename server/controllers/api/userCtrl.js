@@ -133,7 +133,7 @@ async function forgotPassword(req, res) {
       resetUserPassData = await ResetUserPassword.create({ userId: user._id, token });
     }
 
-    const resetPasswordUrl = `${process.env.RESET_PASS_URL}/:${resetUserPassData.token}`;
+    const resetPasswordUrl = `${process.env.RESET_PASS_URL}?token=${resetUserPassData.token}`;
 
     await sendResetPasswordMail(email, resetPasswordUrl, user.username);
 
@@ -161,17 +161,20 @@ async function resetPassword(req, res) {
 
     const userData = await User.findById(resetPasswordData.userId);
 
-    if (!userData) throw new Error("User not found!")
+    if (!userData) throw new Error("User not found!");
 
-    userData.password = req.body.newPassword;
+    // Hash the new password before saving
+    const hashedPassword = await bcrypt.hash(req.body.password, 10);
+    userData.password = hashedPassword;
 
-    await userData.save();
+    await userData.save();  // Save the updated user
+
+    // Clean up the reset token entry
     await resetPasswordData.deleteOne();
 
     res.status(200).json({ message: "Password reset successfully" });
-  }
-  catch (error) {
-    console.error(error)
+  } catch (error) {
+    console.error(error);
     res.status(400).json({ message: error.message });
   }
 }

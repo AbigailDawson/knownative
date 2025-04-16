@@ -1,28 +1,33 @@
 import { Link } from 'react-router-dom';
 import './LandingPageNav.scss';
 
-export default function LandingPageNav() {
+export default function LandingPageNav({ setShowLoginModal }) {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light mx-4 py-3">
-      <div className="container px-4 px-lg-5">
+    <nav className="navbar navbar-expand-lg navbar-light">
+      <div className="container">
         <a className="navbar-brand" href="/">
           <img src="/images/horizontal-logo.png" alt="logo" className="navbar__logo" />
         </a>
         <button
-          className="navbar-toggler navbar-toggler-right"
+          className="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
-          data-bs-target="#navbarResponsive"
-          aria-controls="navbarResponsive"
+          data-bs-target="#navbarMenu"
+          aria-controls="navbarMenu"
           aria-expanded="false"
           aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
-        <div className="collapse navbar-collapse" id="navbarResponsive">
-          <ul className="navbar-nav ms-auto my-2 my-lg-0">
+        <div className="collapse navbar-collapse" id="navbarMenu">
+          <ul className="navbar-nav ms-auto">
             <li className="nav-item">
               <Link className="nav-link" to="/about">
                 About
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/blog">
+                Blog
               </Link>
             </li>
             <li className="nav-item">
@@ -35,9 +40,24 @@ export default function LandingPageNav() {
                 className="nav-link"
                 href="https://github.com/AbigailDawson/knownative"
                 target="_blank"
-                rel="noreferrer">
+                rel="noopener noreferrer">
                 GitHub
               </a>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" onClick={setShowLoginModal}>
+                Login
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link nav-link--secondary" to="/demo">
+                Try demo
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link nav-link--primary" to="/signup">
+                Sign up
+              </Link>
             </li>
           </ul>
         </div>
