@@ -66,20 +66,49 @@ $icon-colors: (
             justify-content: flex-end;
             align-items: center;
         }
-        &-dropdown-options {
-            background-color: white;
-            display: flex;
-        }
         &-name {
             margin: 0.5rem;
         }
         &-profile-pic {
             width: 37.5px;
         }
-        &-dropdown-icon {
-            font-weight: bold;
-            color: rgb(8, 106, 108);
-            transform: rotateZ(-45deg);
+        &-dropdown {
+            position: relative;
+        
+            &-options {
+                background-color: white;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                border: none;
+                cursor: pointer;
+            }
+        
+            &-panel {
+                position: absolute;
+                text-align: left;
+                top: 100%;
+                right: 10%;
+                margin-top: 0.5rem;
+                padding: 1rem 1.5rem;
+                background-color: white;
+                border: 2px solid #C0E7EB;
+                border-radius: 0.5rem;
+                font-size: 0.9rem;
+                animation: fadeIn 0.2s ease-in;
+                z-index: 10;
+            
+                & > p {
+                    margin-bottom: 0.5rem;
+                }
+            }
+        
+
+            &-icon {
+                font-weight: bold;
+                color: rgb(8, 106, 108);
+                transform: rotateZ(-45deg);
+            }
         }
     }
 

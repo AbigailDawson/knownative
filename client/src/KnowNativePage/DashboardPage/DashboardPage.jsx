@@ -295,6 +295,7 @@ export default function DashboardPage() {
   const [sortColumn, setSortColumn] = useState('title');
   const [sortDirection, setSortDirection] = useState('asc');
   const [isAddTextOpen, setIsAddTextOpen] = useState(false);
+  const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
 
   const [texts, setTexts] = useState([]);
   const [error, setError] = useState(null);
@@ -407,17 +408,31 @@ export default function DashboardPage() {
     <div className="dashboard">
       <DashboardNavbar activeTab="Dashboard" />
       <div className="dashboard__main">
-        <div className="dashboard__user-info">
-          <button className="dashboard__user-dropdown-options">
+      <div className="dashboard__user-info">
+        <div className="dashboard__user-dropdown">
+          <button
+            className="dashboard__user-dropdown-options"
+            onClick={() => setIsUserDropdownOpen((prev) => !prev)}
+          >
             <p className="dashboard__user-name">{user.username}</p>
             <img
               className="dashboard__user-profile-pic"
               src="/images/square-logo.png"
               alt="User profile picture."
             />
-            <p className="dashboard__user-dropdown-icon">┕</p>
+            <p className="dashboard__user-dropdown-icon">
+              {isUserDropdownOpen ? '┓' : '┕'}
+            </p>
           </button>
+
+          {isUserDropdownOpen && (
+            <div className="dashboard__user-dropdown-panel">
+              <p><strong>{user.firstName} {user.lastName}</strong></p>
+              <p>Joined {new Date(user.createdAt).toLocaleDateString()}</p>
+            </div>
+          )}
         </div>
+      </div>
         <div className="dashboard__title">
           {/*Just added user.username for testing of the token. Please adjust as needed. */}
           <h1>Dashboard</h1>
