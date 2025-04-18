@@ -105,7 +105,7 @@ const LoginModal = ({ setShowModal }) => {
                   ))}
 
                   {/* Needs functionality */}
-                  <p className="login-page__forgot">Forgot Password?</p>
+                  <Link to="/forgot-password" className="login-page__forgot">Forgot Password?</Link>
                   <div className="login-page__error-container">
                     {errorMessage && (
                       <div>

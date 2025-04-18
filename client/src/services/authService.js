@@ -13,3 +13,11 @@ export async function logIn(credentials) {
 export async function logOut() {
   return await sendRequest(`${BASE_URL}/logout`, 'POST');
 }
+
+export async function forgotPassword(data) {
+  return await sendRequest(`${BASE_URL}/forgot-password`, 'POST', data);
+}
+
+export async function resetPassword(data) {
+  return await sendRequest(`${BASE_URL}/reset-password/${data.token}`, 'POST', { password: data.newPassword });
+}
