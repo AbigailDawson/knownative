@@ -67,6 +67,13 @@
     text-underline-offset: 4px;
     text-decoration-thickness: 1.5px;
   }
+
+  /* Prevent long words from wrapping and handle overflow text */
+  white-space: nowrap;
+  /*Handle overflow text*/
+  overflow: hidden;
+  /*Adds an ellipsis to indicate that the text is truncated*/
+  text-overflow: ellipsis;
 }
 
 /* Media Queries */

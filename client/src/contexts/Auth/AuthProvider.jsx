@@ -13,8 +13,6 @@ function useAuthContext() {
 
 function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
-  //const [loading, setLoading] = useState(true);
-  //add a spinner? for UX enhancements, consult w/ abigail
 
   useEffect(() => {
     async function getUser() {
@@ -34,7 +32,6 @@ function AuthProvider({ children }) {
         console.error(err.message);
         setUser(null);
       }
-      //add a finally block set make setLoading(false)
     }
     getUser();
   }, []);

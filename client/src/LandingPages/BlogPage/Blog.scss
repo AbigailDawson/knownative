@@ -1,0 +1,190 @@
+// Blog-specific Variables (mapped to your global CSS variables for consistency)
+$blog-primary: var(--primary);
+$blog-secondary: var(--dark);
+$blog-bg-light: var(--white);
+$blog-bg-dark: var(--darkest);
+$blog-white: var(--white);
+$blog-dark: var(--dark);
+$border-radius: 8px;
+$box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+$font-size-base: 1rem;
+$font-size-lg: 1.25rem;
+$font-size-xl: 1.5rem;
+$font-size-xxl: 2rem;
+
+@mixin transition($property) {
+  transition: $property 0.3s ease;
+}
+
+body {
+  line-height: 1.6;
+  background-color: $blog-bg-light;
+  color: $blog-bg-dark;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: $blog-bg-light;
+}
+
+.blog {
+  &__header {
+    font-size: $font-size-xxl;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 4rem;
+  }
+
+  &__intro {
+    max-width: 70ch;
+    margin: 0 auto;
+    font-size: $font-size-base;
+    color: $blog-secondary;
+    text-align: center;
+    margin-bottom: 40px;
+    margin-top: 40px;
+    font-weight: 400;
+  }
+}
+
+.posts {
+  &__list {
+    max-width: 70ch;
+    margin: 0 auto;
+    margin-top: 20px;
+  }
+}
+
+.post {
+  &__container {
+    max-width: 70ch;
+    margin: 0 auto;
+  }
+  
+  &__card {
+    background-color: $blog-white;
+    border-radius: $border-radius;
+    overflow: hidden;
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: $box-shadow;
+    @include transition(box-shadow);
+
+    &:hover {
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    .post__cover-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .post__title {
+      font-size: $font-size-lg;
+      font-weight: 700;
+      padding: 15px;
+      color: $blog-dark;
+      text-align: left;
+    }
+
+    .post__caption,
+    .post__author,
+    .post__date {
+      font-size: $font-size-base;
+      padding: 0 15px;
+      color: $blog-secondary;
+      line-height: 1.6;
+      text-align: left;
+    }
+  }
+
+  &__header {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  &__title {
+    font-size: $font-size-xl;
+    font-weight: 700;
+    color: $blog-bg-dark;
+    margin-bottom: 15px;
+    text-align: left;
+  }
+
+  &__author,
+  &__date {
+    font-size: $font-size-base;
+    color: $blog-secondary;
+    text-align: left;
+  }
+
+  &__content {
+    font-size: $font-size-base;
+    color: $blog-bg-dark;
+    line-height: 1.8;
+    padding: 20px 0;
+    margin-bottom: 50px;
+    text-align: left;
+
+    p {
+      margin-bottom: 20px;
+    }
+
+    a {
+      color: $blog-dark;
+      @include transition(color);
+    }
+  }
+
+  &__heading {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-top: 35px;
+    margin-bottom: 20px;
+    color: $blog-dark;
+  }
+
+  &__paragraph {
+    font-size: 1rem;
+    margin-bottom: 15px;
+    color: $blog-dark;
+  }
+}
+
+a {
+  @include transition(color);
+  &:hover {
+    color: $blog-primary;
+  }
+}
+
+@media (max-width: 768px) {
+  .blog__header {
+    font-size: $font-size-lg;
+  }
+
+  .blog__intro {
+    font-size: $font-size-base;
+  }
+
+  .post__card {
+    padding: 10px;
+  }
+
+  .post__title {
+    font-size: $font-size-lg;
+  }
+
+  .post__heading {
+    font-size: 1.5rem;
+  }
+
+  .post__paragraph {
+    font-size: 1rem;
+  }
+}

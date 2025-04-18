@@ -1,56 +1,68 @@
 // This is specific styling only for the login modal
 // See rest of the styling in LoginPage.scss (<--shared between login page and login modal)
 .login-modal {
-    &__login-form-container {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      text-align: center;
-      padding-right: 100px;
-      padding-left: 100px;
-  
-      @media (max-width: 1025px) {
-        padding-right: 20px;
-        padding-left: 20px;
-      }
-  
-      @media (max-width: 768px) {
-        padding-right: 0px;
-        padding-left: 0px;
-      }
-    }
-  
-    &__container {
-      max-width: 400px;
-      width: 100%;
-      padding-bottom: 50px;
-      
-      
-    @media (max-width: 768px) {
-        padding-bottom: 5px
-      }
-    }
-  
-    &__header {
-      color: black;
-      font-size: 24px;
-  
-      @media (max-width: 768px) {
-        font-size: 20px;
-      }
-    }
-  
-    &__secondary-text {
-      font-size: 18px;
-      color: black;
-      padding-top: 15px;
-      font-weight: 400;
-  
-      @media (max-width: 768px) {
-        padding-top: 5px;
-        font-size: 15px;
-      }
+  &__login-form-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding-right: 100px;
+    padding-left: 100px;
+
+    @media (max-width: 1025px) {
+      padding-right: 20px;
+      padding-left: 20px;
     }
 
+    @media (max-width: 768px) {
+      padding-right: 0px;
+      padding-left: 0px;
+    }
   }
+
+  &__container {
+    max-width: 400px;
+    width: 100%;
+    padding-bottom: 50px;
+
+
+    @media (max-width: 768px) {
+      padding-bottom: 5px
+    }
+  }
+
+  &__header {
+    color: black;
+    font-size: 24px;
+
+    @media (max-width: 768px) {
+      font-size: 20px;
+    }
+  }
+
+  &__secondary-text {
+    font-size: 18px;
+    color: black;
+    padding-top: 15px;
+    font-weight: 400;
+
+    @media (max-width: 768px) {
+      padding-top: 5px;
+      font-size: 15px;
+    }
+  }
+
+  &__loading-overlay {
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
