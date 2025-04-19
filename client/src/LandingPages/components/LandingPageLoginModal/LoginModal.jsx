@@ -9,7 +9,7 @@ import FormInput from '../Forms/FormInput/FormInput';
 import RedirectModal from '../LandingPageRedirectModal/RedirectModal';
 import Spinner from '../../../ui-components/Spinner/spinner';
 
-const LoginModal = ({ setShowModal }) => {
+const LoginModal = ({ setShowModal, openSignupModal }) => {
   const [inputValue, setInputValue] = useState({
     email: '',
     password: ''
@@ -77,6 +77,14 @@ const LoginModal = ({ setShowModal }) => {
     return () => clearTimeout(loadingTimer);
   };
 
+  // Handle switching to signup modal.
+  const handleSignupClick = (e) => {
+    e.preventDefault();
+    if (openSignupModal) {
+      openSignupModal();
+    }
+  };
+
   if (!isLoggedIn) {
     return (
       <>
@@ -136,20 +144,21 @@ const LoginModal = ({ setShowModal }) => {
                     Log in with Google
                   </button>
                 </div>
-                <Link to="/signup" className="login-page__signup-link">
+                {/* Changed from Link to anchor with onClick handler */}
+                <a href="#" className="login-page__signup-link" onClick={handleSignupClick}>
                   Don't have an account? Sign-Up
-                </Link>
+                </a>
               </div>
             </div>
           </Modal>
-        )};
+        )}
       </>
     );
   } else {
     return (
       <RedirectModal login={true} />
     );
-  };
+  }
 };
 
 export default LoginModal;

@@ -1,18 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './SignupPage.scss';
-import './SignupPage.scss';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import LandingPageNav from '../components/LandingPageHeader/LandingPageNav';
-import { useState } from 'react';
 import FormInput from '../components/Forms/FormInput/FormInput';
 import PasswordValidation from '../components/Forms/PasswordValidation';
-import { MdAlternateEmail } from 'react-icons/md';
-import { TbPencilCheck } from 'react-icons/tb';
-import { RiLockPasswordFill } from 'react-icons/ri';
-import { FaUserPlus } from 'react-icons/fa6';
 import * as authService from '../../services/authService';
 import { useAuthContext } from '../../contexts/Auth/AuthProvider';
 import { validateInput } from '../../utilities/validation';
+import Spinner from '../../ui-components/Spinner/spinner';
+import RedirectModal from '../components/LandingPageRedirectModal/RedirectModal';
 
 const SignupPage = () => {
   const [inputValue, setInputValue] = useState({
@@ -27,10 +23,12 @@ const SignupPage = () => {
   const [inputErrors, setInputErrors] = useState({});
   const [errorMsg, setErrorMsg] = useState('');
   const [isPasswordTyping, setIsPasswordTyping] = useState(false);
+  const [isConfirmPasswordTyping, setIsConfirmPasswordTyping] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [isSignedUp, setIsSignedUp] = useState(false);
   const navigate = useNavigate();
   const { setUser } = useAuthContext();
 
-  // Add more form fields as needed here:
   const formFields = [
     {
       name: 'firstName',
@@ -38,8 +36,6 @@ const SignupPage = () => {
       type: 'text',
       id: 'signup-firstName',
       htmlFor: 'signup-firstName',
-      // pattern: '^[A-Za-z]{2,20}$',
-      // icon: <TbPencilCheck />,
       required: true
     },
     {
@@ -48,8 +44,6 @@ const SignupPage = () => {
       type: 'text',
       id: 'signup-lastName',
       htmlFor: 'signup-lastName',
-      // pattern: '^[A-Za-z]{2,20}$',
-      // icon: <TbPencilCheck />,
       required: true
     },
     {
@@ -58,8 +52,6 @@ const SignupPage = () => {
       type: 'text',
       id: 'signup-username',
       htmlFor: 'signup-username',
-      // pattern: '^[A-Za-z0-9_]{3,20}$',
-      // icon: <FaUserPlus />,
       required: true
     },
     {
@@ -68,7 +60,6 @@ const SignupPage = () => {
       type: 'email',
       id: 'signup-email',
       htmlFor: 'signup-email',
-      // icon: <MdAlternateEmail />,
       required: true
     },
     {
@@ -77,8 +68,6 @@ const SignupPage = () => {
       type: 'password',
       id: 'signup-password',
       htmlFor: 'signup-password',
-      // pattern: '^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{6,20}$',
-      // icon: <RiLockPasswordFill />,
       required: true
     },
     {
@@ -88,43 +77,125 @@ const SignupPage = () => {
       id: 'signup-confirmPassword',
       htmlFor: 'signup-confirmPassword',
       pattern: inputValue.password,
-      // icon: <RiLockPasswordFill />,
       required: true
     }
   ];
 
   const handleChange = (e) => {
-    setInputValue({ ...inputValue, [e.target.name]: e.target.value });
-    if (e.target.name === 'password') {
-      setIsPasswordTyping(true);
+    const { name, value } = e.target;
+    setInputValue({ ...inputValue, [name]: value });
+    
+    // Clear error for this field when user starts typing
+    if (inputErrors[name]) {
+      setInputErrors({
+        ...inputErrors,
+        [name]: ''
+      });
     }
   };
 
   const handleBlur = (e) => {
     const fieldName = e.target.name;
     const fieldValue = e.target.value;
-
-    // Validate the specific field
+    
+    // Use the existing validation utility
     const newErrors = validateInput({ ...inputValue, [fieldName]: fieldValue });
-
-    // Update the error state only for the specific field
     setInputErrors({ ...inputErrors, [fieldName]: newErrors[fieldName] });
+  };
+
+  const validateForm = () => {
+    const errors = validateInput(inputValue);
+    setInputErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
+  const handlePasswordFocus = () => {
+    setIsPasswordTyping(true);
+  };
+
+  const handleConfirmPasswordFocus = () => {
+    setIsConfirmPasswordTyping(true);
+  };
+
+  const handleGoogleSignup = (e) => {
+    e.preventDefault();
+    setLoading(true);
+    
+    // Simulate loading time similar to LoginModal
+    const loadingTimer = setTimeout(async () => {
+      try {
+        // Implement Google signup functionality
+        const user = await authService.googleLogin();
+        setUser(user);
+        setIsSignedUp(true);
+        
+        // Redirect to dashboard after 3 seconds
+        const redirectTimer = setTimeout(() => {
+          navigate('/dashboard');
+        }, 3000);
+        
+        return () => clearTimeout(redirectTimer);
+      } catch (error) {
+        setErrorMsg('Google signup failed. Please try again.');
+      } finally {
+        setLoading(false);
+      }
+    }, 1000);
+    
+    return () => clearTimeout(loadingTimer);
   };
 
   async function handleSubmit(evt) {
     evt.preventDefault();
-    try {
-      const user = await authService.signUp(inputValue);
-      setUser(user);
-      navigate('/signup-success');
-    } catch (err) {
-      setInputValue({
-        ...inputValue,
-        password: '',
-        confirmPassword: ''
-      });
-      setErrorMsg(err.message);
+    
+    // Validate form before submission
+    if (!validateForm()) {
+      return;
     }
+    
+    setErrorMsg('');
+    setLoading(true);
+
+    // Simulate loading time similar to LoginModal
+    const loadingTimer = setTimeout(async () => {
+      try {
+        const user = await authService.signUp(inputValue);
+        setUser(user);
+        setIsSignedUp(true);
+        
+        // Redirect to dashboard after 3 seconds
+        const redirectTimer = setTimeout(() => {
+          navigate('/dashboard');
+        }, 3000);
+        
+        return () => clearTimeout(redirectTimer);
+      } catch (error) {
+        // More specific error messages based on error type
+        if (error.message.includes('email')) {
+          setErrorMsg('This email is already registered. Please use a different email or log in.');
+        } else if (error.message.includes('username')) {
+          setErrorMsg('This username is already taken. Please choose a different username.');
+        } else if (error.message.includes('network')) {
+          setErrorMsg('Network error. Please check your connection and try again.');
+        } else {
+          setErrorMsg(error.message || 'Signup failed. Please try again.');
+        }
+        
+        setInputValue({
+          ...inputValue,
+          password: '',
+          confirmPassword: ''
+        });
+      } finally {
+        setLoading(false);
+      }
+    }, 1000);
+    
+    return () => clearTimeout(loadingTimer);
+  }
+
+  if (isSignedUp) {
+    return <RedirectModal login={false} />;
   }
 
   return (
@@ -132,57 +203,99 @@ const SignupPage = () => {
       <LandingPageNav />
       <section className="signup-page__container">
         <h1 className="signup-page__title">Create Your Knownative Account</h1>
-        {errorMsg && (
-          <div className="signup-page__error-message">
-            <h5>
-              <em>{errorMsg}</em>
-            </h5>
+        
+        {loading ? (
+          <div className="signup-page__loading-overlay">
+            <Spinner />
           </div>
+        ) : (
+          <>
+            {errorMsg && (
+              <div className="signup-page__error-message">
+                <h5>
+                  <em>{errorMsg}</em>
+                </h5>
+              </div>
+            )}
+            
+            <form className="signup-page__form" onSubmit={handleSubmit}>
+              {formFields.map((input, idx) => (
+                <React.Fragment key={idx}>
+                  <FormInput
+                    key={idx}
+                    {...input}
+                    value={inputValue[input.name]}
+                    onChange={handleChange}
+                    errorInputMessage={inputErrors[input.name]}
+                    handleBlur={handleBlur}
+                    onFocus={
+                      input.name === 'password' 
+                        ? handlePasswordFocus
+                        : input.name === 'confirmPassword' 
+                          ? handleConfirmPasswordFocus
+                          : undefined
+                    }
+                  />
+                  {input.name === 'password' && (
+                    <div
+                      className={`password-validation__wrapper 
+                        ${isPasswordTyping
+                          ? 'password-validation__wrapper--visible'
+                          : 'password-validation__wrapper--hidden'
+                        }`}>
+                      <PasswordValidation password={inputValue.password} />
+                    </div>
+                  )}
+                  {input.name === 'confirmPassword' && (
+                    <div
+                      className={`password-validation__wrapper 
+                        ${isConfirmPasswordTyping
+                          ? 'password-validation__wrapper--visible'
+                          : 'password-validation__wrapper--hidden'
+                        }`}>
+                      <PasswordValidation
+                        password={inputValue.password}
+                        confirmPassword={inputValue.confirmPassword}
+                        isConfirmField={true}
+                      />
+                    </div>
+                  )}
+                </React.Fragment>
+              ))}
+              
+              <button 
+                className="signup-page__button signup-page__button-email" 
+                type="submit"
+                disabled={loading}
+              >
+                Sign Up
+              </button>
+              
+              <div className="signup-page__separator">
+                <span className="signup-page__separator--text">OR</span>
+              </div>
+              
+              <button 
+                className="signup-page__button signup-page__button-google"
+                onClick={handleGoogleSignup}
+                disabled={loading}
+              >
+                <img
+                  className="signup-page__button-google--icon"
+                  src="/images/google-icon.png"
+                  alt="Google sign up"
+                />
+                Sign up with Google
+              </button>
+              
+              <div>
+                <Link to="/login" className="signup-text">
+                  Already have an account? Log in
+                </Link>
+              </div>
+            </form>
+          </>
         )}
-        <form className="signup-page__form" onSubmit={handleSubmit}>
-          {formFields.map((input, idx) => (
-            <React.Fragment key={idx}>
-              <FormInput
-                key={idx}
-                {...input}
-                value={inputValue[input.name]}
-                onChange={handleChange}
-                errorInputMessage={inputErrors[input.name]}
-                handleBlur={handleBlur}
-              />
-              {input.name === 'password' && (
-                <div
-                  className={`password-validation__wrapper 
-                    ${
-                      isPasswordTyping
-                        ? 'password-validation__wrapper--visible'
-                        : 'password-validation__wrapper--hidden'
-                    }`}>
-                  <PasswordValidation password={inputValue.password} />
-                </div>
-              )}
-            </React.Fragment>
-          ))}
-          <button className="signup-page__button signup-page__button-email" type="submit">
-            Sign Up
-          </button>
-          <div className="signup-page__separator">
-            <span className="signup-page__separator--text">OR</span>
-          </div>
-          <button className="signup-page__button signup-page__button-google">
-            <img
-              className="signup-page__button-google--icon"
-              src="../../../public/images/google-icon.png"
-            />
-            Sign up with Google
-          </button>
-          {/* line */}
-          <div>
-            <Link to="/login" className="signup-text">
-              Already have an account? Log in
-            </Link>
-          </div>
-        </form>
       </section>
     </main>
   );

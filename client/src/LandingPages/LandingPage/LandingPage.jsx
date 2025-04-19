@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useReducer } from 'react';
 import { useNavigate } from 'react-router-dom';
 import LandingPageNav from '../components/LandingPageHeader/LandingPageNav';
 import LandingPageFooter from '../components/LandingPageFooter/LandingPageFooter';
@@ -14,10 +14,37 @@ import { useAuthContext } from '../../contexts/Auth/AuthProvider';
 import LoginModal from '../components/LandingPageLoginModal/LoginModal';
 import SignupModal from '../components/LandingPageSignupModal/SignupModal';
 
+// Our authModalReducer function will handle the opening and closing of the authenticantion modals.
+const authModalInitialState = { 
+  isLoginModalOpen: false, 
+  isSignupModalOpen: false 
+};
+
+const authModalReducer = function (state, action) {
+  switch (action.type) {
+    case 'OPEN_LOGIN_MODAL':
+      return { 
+        isLoginModalOpen: true, 
+        isSignupModalOpen: false 
+      };
+    case 'OPEN_SIGNUP_MODAL':
+      return { 
+        isLoginModalOpen: false, 
+        isSignupModalOpen: true 
+      };
+    case 'CLOSE_ALL_MODALS':
+      return { 
+        isLoginModalOpen: false, 
+        isSignupModalOpen: false 
+      };
+    default:
+      return state;
+  }
+};
+
 export default function LandingPage() {
   const [showModal, setShowModal] = useState(false);
-  const [showLoginModal, setShowLoginModal] = useState(false);
-  const [showSignupModal, setShowSignupModal] = useState(false);
+  const [authModalState, authModalDispatch] = useReducer(authModalReducer, authModalInitialState);
 
   const screenHeight = window.screen.height;
   const screenWidth = window.screen.width;
@@ -39,11 +66,15 @@ export default function LandingPage() {
   }
 
   function handleLoginToggle() {
-    setShowLoginModal(prev => !prev);
+    authModalDispatch({ type: 'OPEN_LOGIN_MODAL' });
   }
 
   function handleSignupToggle() {
-    setShowSignupModal(prev => !prev);
+    authModalDispatch({ type: 'OPEN_SIGNUP_MODAL' });
+  }
+
+  function handleCloseAuthModals() {
+    authModalDispatch({ type: 'CLOSE_ALL_MODALS' });
   }
 
   return (
@@ -171,14 +202,19 @@ export default function LandingPage() {
 
         </Modal>
       )}
-      {
-        showLoginModal ? (
-          <LoginModal setShowModal={setShowLoginModal} />
-        ) :
-          showSignupModal && (
-            <SignupModal setShowModal={setShowSignupModal} />
-          )
-      }
+      {authModalState.isLoginModalOpen && (
+        <LoginModal 
+          setShowModal={() => authModalDispatch({ type: 'CLOSE_ALL_MODALS' })}
+          openSignupModal={() => authModalDispatch({ type: 'OPEN_SIGNUP_MODAL' })}
+        />
+      )}
+
+      {authModalState.isSignupModalOpen && (
+        <SignupModal 
+          setShowModal={() => authModalDispatch({ type: 'CLOSE_ALL_MODALS' })}
+          openLoginModal={() => authModalDispatch({ type: 'OPEN_LOGIN_MODAL' })}
+        />
+      )}
     </>
   );
 }
