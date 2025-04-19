@@ -30,11 +30,8 @@ async function create(req, res) {
     const token = createJWT(user);
     res.cookie("token", token, cookieOptions);
     res.json(user);
-    console.log("User created:", user);
   } catch (error) {
     if (error.code === 11000) {
-      // MongoDB duplicate key error code
-      console.log(`We found a dup email or username Error: ${error}`);
       res
         .status(400)
         .json({
@@ -64,19 +61,10 @@ async function logIn(req, res) {
       throw new Error("Invalid credentials");
     }
 
-    console.log("User found:", {
-      id: user._id,
-      email: user.email,
-      username: user.username,
-      passwordHash: user.password.substring(0, 10) + "..." // Only log part of the hash for security
-    });
-
     const passwordMatch = await bcrypt.compare(
       req.body.password,
       user.password
     );
-
-    console.log("Password match result:", passwordMatch);
 
     if (!passwordMatch) {
       throw new Error("Invalid credentials");
@@ -84,10 +72,8 @@ async function logIn(req, res) {
 
     const token = createJWT(user);
     res.cookie("token", token, cookieOptions);
-    console.log("Login successful, token created");
     res.json(user);
   } catch (error) {
-    console.log("Login error:", error.message);
     res.status(400).json("Invalid credentials");
   }
 }
@@ -107,7 +93,6 @@ async function getUser(req, res) {
 }
 
 async function logOut(req, res) {
-  console.log("Entered the logout function.");
   try {
     res.cookie(
       "token",
@@ -158,7 +143,6 @@ async function forgotPassword(req, res) {
     res.status(200).json({ message: "Password resent link sent to your email account." });
   }
   catch (error) {
-    console.log(error.message)
     res.status(400).json({ message: error.message });
   }
 }
@@ -178,9 +162,6 @@ async function resetPassword(req, res) {
     if (!newPassword) {
       return res.status(400).json({ message: "New password is required" });
     }
-
-    console.log("Received reset request with token:", token);
-    console.log("Password data received:", newPassword ? "Password provided" : "No password provided");
 
     const resetPasswordData = await ResetUserPassword.findOne({ token });
 
@@ -202,7 +183,6 @@ async function resetPassword(req, res) {
 
     res.status(200).json({ message: "Password reset successfully" });
   } catch (error) {
-    console.error("Reset password error:", error);
     res.status(400).json({ message: error.message });
   }
 }
