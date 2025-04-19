@@ -50,26 +50,44 @@ async function create(req, res) {
 
 async function logIn(req, res) {
   try {
+    console.log("Login attempt with:", {
+      email: req.body.email,
+      passwordProvided: !!req.body.password
+    });
+
     const user = await User.findOne({
       $or: [{ email: req.body.email }, { username: req.body.email }],
     });
+
     if (!user) {
+      console.log("User not found with email/username:", req.body.email);
       throw new Error("Invalid credentials");
     }
+
+    console.log("User found:", {
+      id: user._id,
+      email: user.email,
+      username: user.username,
+      passwordHash: user.password.substring(0, 10) + "..." // Only log part of the hash for security
+    });
+
     const passwordMatch = await bcrypt.compare(
       req.body.password,
       user.password
     );
+
+    console.log("Password match result:", passwordMatch);
+
     if (!passwordMatch) {
       throw new Error("Invalid credentials");
     }
+
     const token = createJWT(user);
     res.cookie("token", token, cookieOptions);
-    console.log("it was supposed to create a cookie here!!");
+    console.log("Login successful, token created");
     res.json(user);
-    console.log("User successfully logged in:", user);
   } catch (error) {
-    console.log(error);
+    console.log("Login error:", error.message);
     res.status(400).json("Invalid credentials");
   }
 }
@@ -154,6 +172,15 @@ async function forgotPassword(req, res) {
 async function resetPassword(req, res) {
   try {
     const { token } = req.params;
+    const { newPassword } = req.body;
+
+    // Add validation to ensure newPassword exists
+    if (!newPassword) {
+      return res.status(400).json({ message: "New password is required" });
+    }
+
+    console.log("Received reset request with token:", token);
+    console.log("Password data received:", newPassword ? "Password provided" : "No password provided");
 
     const resetPasswordData = await ResetUserPassword.findOne({ token });
 
@@ -163,18 +190,19 @@ async function resetPassword(req, res) {
 
     if (!userData) throw new Error("User not found!");
 
-    // Hash the new password before saving
-    const hashedPassword = await bcrypt.hash(req.body.password, 10);
-    userData.password = hashedPassword;
-
-    await userData.save();  // Save the updated user
+    // Instead of setting the hashed password directly and calling save(),
+    // use the updateOne method which bypasses the pre-save hook
+    await User.updateOne(
+      { _id: userData._id },
+      { $set: { password: await bcrypt.hash(newPassword, 10) } }
+    );
 
     // Clean up the reset token entry
     await resetPasswordData.deleteOne();
 
     res.status(200).json({ message: "Password reset successfully" });
   } catch (error) {
-    console.error(error);
+    console.error("Reset password error:", error);
     res.status(400).json({ message: error.message });
   }
 }
