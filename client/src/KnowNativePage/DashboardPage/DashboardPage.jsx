@@ -296,6 +296,7 @@ export default function DashboardPage() {
   const [sortDirection, setSortDirection] = useState('asc');
   const [isAddTextOpen, setIsAddTextOpen] = useState(false);
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
+  const [openMenuId, setOpenMenuId] = useState(false);
 
   const [texts, setTexts] = useState([]);
   const [error, setError] = useState(null);
@@ -393,6 +394,7 @@ export default function DashboardPage() {
   useEffect(() => {
     const fetchTexts = async () => {
       try {
+        setTexts(mockData);
         if (user._id) {
           const texts = await getUserTexts(user._id);
           setTexts(texts);
@@ -408,31 +410,32 @@ export default function DashboardPage() {
     <div className="dashboard">
       <DashboardNavbar activeTab="Dashboard" />
       <div className="dashboard__main">
-      <div className="dashboard__user-info">
-        <div className="dashboard__user-dropdown">
-          <button
-            className="dashboard__user-dropdown-options"
-            onClick={() => setIsUserDropdownOpen((prev) => !prev)}
-          >
-            <p className="dashboard__user-name">{user.username}</p>
-            <img
-              className="dashboard__user-profile-pic"
-              src="/images/square-logo.png"
-              alt="User profile picture."
-            />
-            <p className="dashboard__user-dropdown-icon">
-              {isUserDropdownOpen ? '┓' : '┕'}
-            </p>
-          </button>
+        <div className="dashboard__user-info">
+          <div className="dashboard__user-dropdown">
+            <button
+              className="dashboard__user-dropdown-options"
+              onClick={() => setIsUserDropdownOpen((prev) => !prev)}>
+              <p className="dashboard__user-name">{user.username}</p>
+              <img
+                className="dashboard__user-profile-pic"
+                src="/images/square-logo.png"
+                alt="User profile picture."
+              />
+              <p className="dashboard__user-dropdown-icon">{isUserDropdownOpen ? '┓' : '┕'}</p>
+            </button>
 
-          {isUserDropdownOpen && (
-            <div className="dashboard__user-dropdown-panel">
-              <p><strong>{user.firstName} {user.lastName}</strong></p>
-              <p>Joined {new Date(user.createdAt).toLocaleDateString()}</p>
-            </div>
-          )}
+            {isUserDropdownOpen && (
+              <div className="dashboard__user-dropdown-panel">
+                <p>
+                  <strong>
+                    {user.firstName} {user.lastName}
+                  </strong>
+                </p>
+                <p>Joined {new Date(user.createdAt).toLocaleDateString()}</p>
+              </div>
+            )}
+          </div>
         </div>
-      </div>
         <div className="dashboard__title">
           {/*Just added user.username for testing of the token. Please adjust as needed. */}
           <h1>Dashboard</h1>
@@ -590,7 +593,7 @@ export default function DashboardPage() {
                         {item.cards.length}
                       </td>
                       <td>{item.lastOpened}</td>
-                      <td>
+                      <td className="dashboard__table-container__options">
                         <Button
                           iconName="&#xe41d;"
                           iconStyling="reusable-button__icon-flip"
@@ -599,6 +602,21 @@ export default function DashboardPage() {
                           buttonOnClickFunc={() => console.log('click click')}
                           disabled={item.cards.length === 0 ? true : false}
                         />
+                        <button
+                          onClick={() => setOpenMenuId(!openMenuId ? item._id : null)}
+                          className="options-button"
+                          aria-label="More options">
+                          <i className="material-symbols-outlined">more_horiz</i>
+                        </button>
+
+                        {openMenuId === item._id && (
+                          <div className="options-menu">
+                            <button onClick={() => handleEdit(item._id)}>Archive</button>
+                            <button onClick={() => handleDelete(item._id)} className="danger">
+                              Delete
+                            </button>
+                          </div>
+                        )}
                       </td>
                     </tr>
                   ))}
@@ -638,7 +656,9 @@ export default function DashboardPage() {
           )}
         </div>
       </div>
-      <div className={`dashboard__overlay ${isAddTextOpen ? 'dashboard__overlay--active' : ''}`} onClick={() => setIsAddTextOpen(false)}></div>
+      <div
+        className={`dashboard__overlay ${isAddTextOpen ? 'dashboard__overlay--active' : ''}`}
+        onClick={() => setIsAddTextOpen(false)}></div>
       <AddTextSlideout isOpen={isAddTextOpen} onClose={() => setIsAddTextOpen(false)} />
     </div>
   ) : (

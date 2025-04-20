@@ -593,3 +593,66 @@ $icon-colors: (
     }
 
 }
+
+.dashboard__table-container__options {
+    position: relative; /* Relative positioning for parent container */
+  
+    .options-button {
+      position: absolute; /* Absolute positioning for the button */
+      top: -2rem; /* Adjust top margin */
+      right: 0; /* Adjust right margin */
+      background: none;
+      border: none;
+      color: #9ca3af; /* Light gray */
+      cursor: pointer;
+      transition: color 0.2s ease;
+  
+      i {
+        font-size: 1.5rem;
+      }
+  
+      &:hover {
+        color: #374151; /* Darker gray on hover */
+      }
+  
+      &:focus {
+        outline: none;
+      }
+    }
+  
+    .options-menu {
+      position: absolute;
+      top: -0.3rem; /* Adjust top to give space for the button */
+      right: 0.8rem;
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.25rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      z-index: 10;
+  
+      button {
+        display: block;
+        width: 100%;
+        padding: 0.5rem 1rem;
+        background: none;
+        border: none;
+        text-align: left;
+        font-size: 0.875rem;
+        color: #374151;
+        cursor: pointer;
+  
+        &:hover {
+          background: #f3f4f6;
+        }
+  
+        &.danger {
+          color: #ef4444;
+  
+          &:hover {
+            background: #fee2e2;
+          }
+        }
+      }
+    }
+  }
+  
