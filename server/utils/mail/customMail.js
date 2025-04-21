@@ -18,7 +18,7 @@ async function sendResetPasswordMail(to, resetUrl, username) {
          * @todo update mailoption
          */
         const mailOption = {
-            from: 'knownative@resend.dev', // sender address -- sample mail 'knownative@resend.dev'
+            from: 'onboarding@resend.dev', // sender address -- sample mail 'knownative@resend.dev'
             to: to, // list of receivers -- for test use your own email
             subject: "KnowNative - Reset Forgotten Password", // Subject line
             html: htmlContent
