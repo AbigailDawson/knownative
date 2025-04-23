@@ -5,6 +5,7 @@ Welcome to **KnowNative**! KnowNative is an open-source language learning app de
 KnowNative was originally created by Abigail Dawson, who now oversees the continued development of the project by volunteer Core Contributors and the broader open-source community. Whether you're new to open-source or an experienced contributor, we’d love your help in making this project a success!
 
 **Our tech stack**
+
 > You do not need to be proficient in all of these technologies to contribute! We have front-end, back-end, beginner and no-code issues for contributors of all experience levels.
 
 - Node
@@ -15,6 +16,7 @@ KnowNative was originally created by Abigail Dawson, who now oversees the contin
 - Sass
 
 ## Table of Contents
+
 - [Contribute](#contribute)
 - [Getting started](#getting-started)
 - [How to submit your work](#how-to-submit-your-work)
@@ -27,7 +29,7 @@ KnowNative was originally created by Abigail Dawson, who now oversees the contin
 
 ## Contribute
 
-While anyone can contribute to the KnowNative open-source project on GitHub, I am also eager to collaborate more closely with others who are excited about this project and are looking to contribute to on a more regular and consistent (volunteer) basis. 
+While anyone can contribute to the KnowNative open-source project on GitHub, I am also eager to collaborate more closely with others who are excited about this project and are looking to contribute to on a more regular and consistent (volunteer) basis.
 
 We currently have a small team of Core Contributors who are innovating behind the scenes to bring high quality features and exceptional user experience to KnowNative, and we're always looking for more help!
 
@@ -48,7 +50,7 @@ By contributing to the project, you'll benefit from the following:
 - Add real-world project experience to your portfolio and resume
 - Contribute to the long-term vision of the KnowNative project
 
-The best way to get in touch about contributing to KnowNative is by joining our <a href="https://discord.gg/Rsc7TAyw3T" target="_blank">Discord community</a>! However, if you're not ready to make the leap just yet, I'm happy to answer any questions via <a href="https://www.linkedin.com/in/abigaildawsondev" target="_blank">LinkedIn</a> as well. 
+The best way to get in touch about contributing to KnowNative is by joining our <a href="https://discord.gg/Rsc7TAyw3T" target="_blank">Discord community</a>! However, if you're not ready to make the leap just yet, I'm happy to answer any questions via <a href="https://www.linkedin.com/in/abigaildawsondev" target="_blank">LinkedIn</a> as well.
 
 ---
 
@@ -88,6 +90,14 @@ GOOGLE_TRANSLATE_API_KEY=<your-google-translate-api-key>
 
 - `MONGODB_URI` contains the connection string for MongoDB. [Learn how to connect](https://www.mongodb.com/resources/products/fundamentals/mongodb-connection-string).
 - `GOOGLE_TRANSLATE_API_KEY` contains the API key for sentence translations. [Get a key](https://cloud.google.com/translate/docs/setup).
+
+### 3b. Create a `.env` file in the `client` folder.
+
+Create a new file named `.env` inside the server directory and add the following variables:
+
+```
+VITE_SERVER_BASE_URL=http://localhost:3001/
+```
 
 ### 4. Build & run the client
 
@@ -153,11 +163,11 @@ git push origin fix-button-bug
 
 7. Create a Pull Request (PR) against `develop`:
 
-* Go to your forked repository on GitHub.
-* Click "Contribute" → "Open pull request."
-* Ensure you’re merging your branch into the original project’s `develop` branch (not `main`).
-* Add a clear title and description for your changes.
-* Click "Create pull request." 🎉
+- Go to your forked repository on GitHub.
+- Click "Contribute" → "Open pull request."
+- Ensure you’re merging your branch into the original project’s `develop` branch (not `main`).
+- Add a clear title and description for your changes.
+- Click "Create pull request." 🎉
 
 We will review your PR and may suggest improvements.
 
@@ -165,13 +175,13 @@ We will review your PR and may suggest improvements.
 
 There are several resources available to you to reference as you work on the KnowNative project:
 
-* [KnowNative Product Strategy](https://abigaildawson.onlyoffice.com/s/kbhw7rs5CYP-Cct) - Learn about our mission for the project.
-* [KnowNative Roadmap](https://abigaildawson.onlyoffice.com/s/4C7y92S3gZH_hPq) - Learn about where the project is headed next.
-* [Entity Relationship Diagram (WIP)](https://www.figma.com/board/Z2vctFif3yeoOPypYDiE5U/KnowNative?node-id=0-1&p=f&t=32wHrtl03Wfyn8or-0) - map of data entities in KnowNative and how they are related; provides a birds eye view of how the project features fit together.
-* [Figma files](https://www.figma.com/design/EqPH1otHNLl7NI3AML3VbU/KnowNative-v2) - All designs for KnowNative, including reusable components and the beginnings of a design system.
-* [Source Code Guide](https://huly.app/guest/knownative?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsaW5rSWQiOiI2NzlmZTIzYzdiYTM4NjQzNjlkNWU3ZTMiLCJndWVzdCI6InRydWUiLCJlbWFpbCI6IiNndWVzdEBoYy5lbmdpbmVlcmluZyIsIndvcmtzcGFjZSI6InctYWJpZ2FpbGRhd3NvLWtub3duYXRpdmUtNjYzMjgxYjEtODdiZTE2ZDY5OS0yYTZiY2QifQ.jA738ZXI0uiicsxCBkRUv-d8VQyPaHg82qc0rcCduZo) - This guide is for developers working on the KnowNative project, designed to orient you to the source code so you can understand how to navigate the file structure, find what you’re looking for, and put all the necessary pieces together when working on features and fixes.
-* [SAAS Fundamentals](https://huly.app/guest/knownative?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsaW5rSWQiOiI2NzMzZmQ1MTZkMzkzMDY5ODVhM2YzNTYiLCJndWVzdCI6InRydWUiLCJlbWFpbCI6IiNndWVzdEBoYy5lbmdpbmVlcmluZyIsIndvcmtzcGFjZSI6InctYWJpZ2FpbGRhd3NvLWtub3duYXRpdmUtNjYzMjgxYjEtODdiZTE2ZDY5OS0yYTZiY2QifQ.aoe4oyOFSKqztSugYb-fd9B1eY5IMYX3K1ynDe5dfi8) - Get up to speed on Sass and SCSS syntax. It assumes no prior knowledge with Sass, and covers many of the core features that we'll be using and building upon in Know Native.
-* [CSS Style Guide (WIP)](https://huly.app/guest/knownative?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsaW5rSWQiOiI2NzlmZTFlNjdiYTM4NjQzNjlkNWU3YTciLCJndWVzdCI6InRydWUiLCJlbWFpbCI6IiNndWVzdEBoYy5lbmdpbmVlcmluZyIsIndvcmtzcGFjZSI6InctYWJpZ2FpbGRhd3NvLWtub3duYXRpdmUtNjYzMjgxYjEtODdiZTE2ZDY5OS0yYTZiY2QifQ.bApnd0tAJQNl_Nv3Tr7onBxg0xrJ4wAd1cCa8W2AL-c) - Overview of our CSS rules & best practices. Note: KnowNative is in the process of migrating from CSS to SASS & BEM. This guide is for reference only, and not fully implemented.
+- [KnowNative Product Strategy](https://abigaildawson.onlyoffice.com/s/kbhw7rs5CYP-Cct) - Learn about our mission for the project.
+- [KnowNative Roadmap](https://abigaildawson.onlyoffice.com/s/4C7y92S3gZH_hPq) - Learn about where the project is headed next.
+- [Entity Relationship Diagram (WIP)](https://www.figma.com/board/Z2vctFif3yeoOPypYDiE5U/KnowNative?node-id=0-1&p=f&t=32wHrtl03Wfyn8or-0) - map of data entities in KnowNative and how they are related; provides a birds eye view of how the project features fit together.
+- [Figma files](https://www.figma.com/design/EqPH1otHNLl7NI3AML3VbU/KnowNative-v2) - All designs for KnowNative, including reusable components and the beginnings of a design system.
+- [Source Code Guide](https://huly.app/guest/knownative?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsaW5rSWQiOiI2NzlmZTIzYzdiYTM4NjQzNjlkNWU3ZTMiLCJndWVzdCI6InRydWUiLCJlbWFpbCI6IiNndWVzdEBoYy5lbmdpbmVlcmluZyIsIndvcmtzcGFjZSI6InctYWJpZ2FpbGRhd3NvLWtub3duYXRpdmUtNjYzMjgxYjEtODdiZTE2ZDY5OS0yYTZiY2QifQ.jA738ZXI0uiicsxCBkRUv-d8VQyPaHg82qc0rcCduZo) - This guide is for developers working on the KnowNative project, designed to orient you to the source code so you can understand how to navigate the file structure, find what you’re looking for, and put all the necessary pieces together when working on features and fixes.
+- [SAAS Fundamentals](https://huly.app/guest/knownative?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsaW5rSWQiOiI2NzMzZmQ1MTZkMzkzMDY5ODVhM2YzNTYiLCJndWVzdCI6InRydWUiLCJlbWFpbCI6IiNndWVzdEBoYy5lbmdpbmVlcmluZyIsIndvcmtzcGFjZSI6InctYWJpZ2FpbGRhd3NvLWtub3duYXRpdmUtNjYzMjgxYjEtODdiZTE2ZDY5OS0yYTZiY2QifQ.aoe4oyOFSKqztSugYb-fd9B1eY5IMYX3K1ynDe5dfi8) - Get up to speed on Sass and SCSS syntax. It assumes no prior knowledge with Sass, and covers many of the core features that we'll be using and building upon in Know Native.
+- [CSS Style Guide (WIP)](https://huly.app/guest/knownative?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsaW5rSWQiOiI2NzlmZTFlNjdiYTM4NjQzNjlkNWU3YTciLCJndWVzdCI6InRydWUiLCJlbWFpbCI6IiNndWVzdEBoYy5lbmdpbmVlcmluZyIsIndvcmtzcGFjZSI6InctYWJpZ2FpbGRhd3NvLWtub3duYXRpdmUtNjYzMjgxYjEtODdiZTE2ZDY5OS0yYTZiY2QifQ.bApnd0tAJQNl_Nv3Tr7onBxg0xrJ4wAd1cCa8W2AL-c) - Overview of our CSS rules & best practices. Note: KnowNative is in the process of migrating from CSS to SASS & BEM. This guide is for reference only, and not fully implemented.
 
 ## Community and support
 
