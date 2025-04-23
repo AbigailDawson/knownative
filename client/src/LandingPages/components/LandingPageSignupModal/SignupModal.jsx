@@ -10,7 +10,7 @@ import { validateInput } from '../../../utilities/validation';
 import RedirectModal from '../LandingPageRedirectModal/RedirectModal';
 import Spinner from '../../../ui-components/Spinner/spinner';
 
-const SignupModal = ({ setShowModal }) => {
+const SignupModal = ({ setShowModal, openLoginModal }) => {
   const [inputValue, setInputValue] = useState({
     firstName: '',
     lastName: '',
@@ -98,6 +98,14 @@ const SignupModal = ({ setShowModal }) => {
 
   const handleConfirmPasswordFocus = () => {
     setIsConfirmPasswordTyping(true);
+  };
+
+  // Handle switching to login modal
+  const handleLoginClick = (e) => {
+    e.preventDefault();
+    if (openLoginModal) {
+      openLoginModal();
+    }
   };
 
   async function handleSubmit(evt) {
@@ -209,9 +217,9 @@ const SignupModal = ({ setShowModal }) => {
                     Sign up with Google
                   </button>
                   <div>
-                    <Link to="/login" className="signup-page__login-link">
+                    <a href="#" onClick={handleLoginClick} className="signup-page__login-link">
                       Already have an account? Log in
-                    </Link>
+                    </a>
                   </div>
                 </form>
               </section>
@@ -225,8 +233,6 @@ const SignupModal = ({ setShowModal }) => {
       <RedirectModal login={false} />
     )
   };
-
-
 };
 
 export default SignupModal;
