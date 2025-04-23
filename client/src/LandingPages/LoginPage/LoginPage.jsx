@@ -209,31 +209,24 @@ export default function LoginPage() {
                   />
                 ))}
 
-                <p className="login-page__forgot" onClick={handleForgotPassword}>
-                  Forgot Password?
-                </p>
-                
-                <div className="login-page__error-container">
-                  {errorMessage && (
-                    <div>
-                      <img
-                        className="login-page__error-symbol"
-                        src="/images/error_note.svg"
-                        alt="error symbol"
-                      />{' '}
-                      <p className="login-page__error-message">{errorMessage}</p>{' '}
-                    </div>
-                  )}
+            {/* Needs functionality */}
+            <Link to="/forgot-password" className="login-page__forgot">Forgot Password?</Link>
+            <div className="login-page__error-container">
+              {errorMessage && (
+                <div>
+                  <img
+                    className="login-page__error-symbol"
+                    src="/images/error_note.svg"
+                    alt="error symbol"
+                  />{' '}
+                  <p className="login-page__error-message">{errorMessage}</p>{' '}
                 </div>
-                
-                <button 
-                  type="submit" 
-                  className="login-page__button--primary login-page__button"
-                  disabled={loading}
-                >
-                  Log In
-                </button>
-              </form>
+              )}
+            </div>
+            <button type="submit" className="login-page__button--primary login-page__button">
+              Log In
+            </button>
+          </form>
 
               <div className="login-page__separator">
                 <span className="login-page__separator__text">OR</span>
