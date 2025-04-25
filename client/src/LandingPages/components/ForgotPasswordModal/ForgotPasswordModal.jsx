@@ -29,7 +29,6 @@ export default function ForgotPasswordModal({ setShowModal }) {
   async function handleSubmit(e) {
     e.preventDefault();
     
-    // Validate email before submission
     const error = validateEmail(email);
     if (error) {
       setInputErrors({ email: error });
