@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useReducer } from 'react';
 import './LoginPage.scss';
 import { Link } from 'react-router-dom';
 import LandingPageNav from '../components/LandingPageHeader/LandingPageNav';
@@ -8,6 +8,28 @@ import { useAuthContext } from '../../contexts/Auth/AuthProvider';
 import FormInput from '../components/Forms/FormInput/FormInput';
 import Spinner from '../../ui-components/Spinner/spinner';
 import RedirectModal from '../components/LandingPageRedirectModal/RedirectModal';
+import ForgotPasswordModal from '../components/ForgotPasswordModal/ForgotPasswordModal';
+
+// Modal states
+const MODAL_STATES = {
+  LOGIN: 'LOGIN',
+  FORGOT_PASSWORD: 'FORGOT_PASSWORD',
+  NONE: 'NONE'
+};
+
+// Modal Reducer function to manage modal states
+const modalReducer = (state, action) => {
+  switch (action.type) {
+    case 'SHOW_LOGIN':
+      return MODAL_STATES.LOGIN;
+    case 'SHOW_FORGOT_PASSWORD':
+      return MODAL_STATES.FORGOT_PASSWORD;
+    case 'CLOSE_ALL':
+      return MODAL_STATES.NONE;
+    default:
+      return state;
+  }
+};
 
 export default function LoginPage() {
   const [inputValue, setInputValue] = useState({
@@ -18,6 +40,7 @@ export default function LoginPage() {
   const [errorMessage, setErrorMessage] = useState('');
   const [loading, setLoading] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [currentModal, dispatchModal] = useReducer(modalReducer, MODAL_STATES.LOGIN);
   const navigate = useNavigate();
   const { setUser } = useAuthContext();
 
@@ -101,9 +124,13 @@ export default function LoginPage() {
     return Object.keys(errors).length === 0;
   };
 
-  const handleForgotPassword = (e) => {
+  const handleForgotPasswordClick = (e) => {
     e.preventDefault();
-    navigate('/forgot-password');
+    dispatchModal({ type: 'SHOW_FORGOT_PASSWORD' });
+  };
+
+  const handleCloseForgotPassword = () => {
+    dispatchModal({ type: 'SHOW_LOGIN' });
   };
 
   const handleGoogleLogin = (e) => {
@@ -208,25 +235,25 @@ export default function LoginPage() {
                     errorInputMessage={inputErrors[input.name]}
                   />
                 ))}
-
-            {/* Needs functionality */}
-            <Link to="/forgot-password" className="login-page__forgot">Forgot Password?</Link>
-            <div className="login-page__error-container">
-              {errorMessage && (
-                <div>
-                  <img
-                    className="login-page__error-symbol"
-                    src="/images/error_note.svg"
-                    alt="error symbol"
-                  />{' '}
-                  <p className="login-page__error-message">{errorMessage}</p>{' '}
+                <a href="#" onClick={handleForgotPasswordClick} className="login-page__forgot">
+                  Forgot Password?
+                </a>
+                <div className="login-page__error-container">
+                  {errorMessage && (
+                    <div>
+                      <img
+                        className="login-page__error-symbol"
+                        src="/images/error_note.svg"
+                        alt="error symbol"
+                      />{' '}
+                      <p className="login-page__error-message">{errorMessage}</p>{' '}
+                    </div>
+                  )}
                 </div>
-              )}
-            </div>
-            <button type="submit" className="login-page__button--primary login-page__button">
-              Log In
-            </button>
-          </form>
+                <button type="submit" className="login-page__button--primary login-page__button">
+                  Log In
+                </button>
+              </form>
 
               <div className="login-page__separator">
                 <span className="login-page__separator__text">OR</span>
@@ -254,6 +281,10 @@ export default function LoginPage() {
           )}
         </div>
       </div>
+      
+      {currentModal === MODAL_STATES.FORGOT_PASSWORD && (
+        <ForgotPasswordModal setShowModal={handleCloseForgotPassword} />
+      )}
     </main>
   );
 }
