@@ -41,16 +41,15 @@ const DashboardNavbar = ({ activeTab }) => {
               Dashboard
             </a>
           </li>
-          <li
-            className={`dashboard-nav__nav-item${activeTab === 'Cards' ? '--active' : ''} dashboard-nav__nav-item--inactive`}>
+          <li className={`dashboard-nav__nav-item${activeTab === 'Study' ? '--active' : ''}`}>
             <a
-              className={`dashboard-nav__link dashboard-nav__link${activeTab === 'Cards' ? '--active' : ''}`}
-              onClick={() => console.log('coming soon!')}>
+              className={`dashboard-nav__link dashboard-nav__link${activeTab === 'Study' ? '--active' : ''}`}
+              href="/">
               <span
                 className={`material-symbols-outlined dashboard-nav__flipped dashboard-nav__nav-icon${activeTab === 'Cards' ? '--active' : ''}`}>
                 &#xe41d;
               </span>
-              Cards <span className="dashboard-nav__temp-styling">Coming Soon!</span>
+              Study
             </a>
           </li>
           <li className={`dashboard-nav__nav-item${activeTab === 'Resources' ? '--active' : ''}`}>
