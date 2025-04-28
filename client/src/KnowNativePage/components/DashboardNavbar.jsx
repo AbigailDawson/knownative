@@ -41,15 +41,15 @@ const DashboardNavbar = ({ activeTab }) => {
               Dashboard
             </a>
           </li>
-          <li className={`dashboard-nav__nav-item${activeTab === 'Study' ? '--active' : ''}`}>
+          <li className={`dashboard-nav__nav-item${activeTab === 'Cards' ? '--active' : ''}`}>
             <a
-              className={`dashboard-nav__link dashboard-nav__link${activeTab === 'Study' ? '--active' : ''}`}
+              className={`dashboard-nav__link dashboard-nav__link${activeTab === 'Cards' ? '--active' : ''}`}
               href="/">
               <span
                 className={`material-symbols-outlined dashboard-nav__flipped dashboard-nav__nav-icon${activeTab === 'Cards' ? '--active' : ''}`}>
                 &#xe41d;
               </span>
-              Study
+              Cards
             </a>
           </li>
           <li className={`dashboard-nav__nav-item${activeTab === 'Resources' ? '--active' : ''}`}>
