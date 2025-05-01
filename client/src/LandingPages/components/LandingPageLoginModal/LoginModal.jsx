@@ -75,7 +75,7 @@ const LoginModal = ({ setShowModal, openSignupModal }) => {
     }, 1000);
 
     return () => clearTimeout(loadingTimer);
-  };
+  }
 
   // Handle switching to signup modal.
   const handleSignupClick = (e) => {
@@ -101,7 +101,9 @@ const LoginModal = ({ setShowModal, openSignupModal }) => {
             <div className="login-modal__login-form-container">
               <div className="login-modal__container">
                 <h1 className="login-modal__header">Log Into Your KnowNative Account</h1>
-                <h2 className="login-modal__secondary-text">Lorem ipsum dolor sit amet consectetur.</h2>
+                <h2 className="login-modal__secondary-text">
+                  Lorem ipsum dolor sit amet consectetur.
+                </h2>
                 <form className="login-page__form" onSubmit={handleLogin}>
                   {formFields.map((input, idx) => (
                     <FormInput
@@ -113,7 +115,9 @@ const LoginModal = ({ setShowModal, openSignupModal }) => {
                   ))}
 
                   {/* Needs functionality */}
-                  <Link to="/forgot-password" className="login-page__forgot">Forgot Password?</Link>
+                  <Link to="/forgot-password" className="login-page__forgot">
+                    Forgot Password?
+                  </Link>
                   <div className="login-page__error-container">
                     {errorMessage && (
                       <div>
@@ -122,7 +126,9 @@ const LoginModal = ({ setShowModal, openSignupModal }) => {
                           src="/images/error_note.svg"
                           alt="error symbol"
                         />{' '}
-                        <p className="login-page__error-message login-modal__no-margin">{errorMessage}</p>{' '}
+                        <p className="login-page__error-message login-modal__no-margin">
+                          {errorMessage}
+                        </p>{' '}
                       </div>
                     )}
                   </div>
@@ -155,9 +161,7 @@ const LoginModal = ({ setShowModal, openSignupModal }) => {
       </>
     );
   } else {
-    return (
-      <RedirectModal login={true} />
-    );
+    return <RedirectModal login={true} />;
   }
 };
 

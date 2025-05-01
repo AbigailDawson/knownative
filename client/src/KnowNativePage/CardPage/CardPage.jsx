@@ -394,8 +394,10 @@ export default function CardPage() {
     const fetchTexts = async () => {
       try {
         if (user._id) {
+          console.log(user);
           const texts = await getUserTexts(user._id);
           setTexts(texts);
+          console.log(texts);
         }
       } catch (error) {
         console.log('Error fetching texts:', error);
