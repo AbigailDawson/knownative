@@ -408,7 +408,7 @@ export default function CardPage() {
 
   return user ? (
     <div className="dashboard">
-      <DashboardNavbar activeTab="Dashboard" />
+      <DashboardNavbar activeTab="Cards" />
       <div className="dashboard__main">
         <div className="dashboard__user-info">
           <div className="dashboard__user-dropdown">
