@@ -1,0 +1,123 @@
+/*  Main layout styles */
+.text-page-container {
+    display: flex;
+  }
+  
+  .text-page {
+    margin-left: 285px; /* Width of the DashboardNavbar */
+    width: calc(100% - 285px);
+  }
+  
+  // Back button to Dashboard
+  .text-page__back {
+    display: inline-flex;
+    align-items: center;
+    margin: 2vmin 0;
+    color: #383E40;
+    text-decoration: none;
+    font-weight: 16px;
+  }
+  
+  .text-page__title {
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .text-page__source {
+    display: block;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    color: #555;
+  }
+  
+  /* Tabs styles */
+  .tabs__btn {
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    color: #383E40;
+    background: transparent;
+    border: none;
+    padding: 0.5rem 1.25rem;
+    cursor: pointer;
+    position: relative;
+  
+    &--active {
+      font-weight: 600;
+      color: #074B59;
+    }
+  
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: transparent;
+      transition: all 0.3s ease;
+    }
+  
+    &--active::after {
+      background-color: #2BA6A8;
+    }
+  }
+  
+  .text-page__tabs span:first-child {
+    border-bottom: 2px solid var(--teal);
+  }
+  
+  .text-page__tabs span {
+    font-weight: bold;
+    background-color: #eee;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+  }
+  
+  /* Read Tab Content Styles */
+  .text-page__content {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #333;
+    text-align: left;
+  }
+
+  .read-container {
+    display: flex;
+    justify-content: left;
+  }
+  
+  .Text {
+    width: 100%;
+    line-height: 1.75;
+    font-size: 1rem;
+    color: #222;
+  }
+  
+  .text-title {
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    text-align: left;
+  }
+  
+  .text-source {
+    display: block;
+    margin-bottom: 1rem;
+    text-align: left; 
+    font-size: 0.9rem;
+    color: #282B2B;
+    text-decoration: underline;
+  }
+  
+  // Article content
+  .text-body {
+    white-space: pre-wrap;
+    text-align: left;
+  }
+  
+  .text-divider {
+    border-top: 1px solid #E1E3E3;
+    margin: 0.5rem 0 1.25rem;
+  }
+  
