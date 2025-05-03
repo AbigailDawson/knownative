@@ -9,6 +9,7 @@ import PostPage from './LandingPages/BlogPage/PostPage';
 import LandingPage from './LandingPages/LandingPage/LandingPage';
 import LoginPage from './LandingPages/LoginPage/LoginPage';
 import SignupPage from './LandingPages/SignupPage/SignupPage';
+import ResetPasswordPage from './LandingPages/ResetPasswordPage/ResetPasswordPage';
 import DashboardPage from './KnowNativePage/DashboardPage/DashboardPage';
 import AppProvider from './contexts/AppProvider';
 import AddTextPage from './KnowNativePage/AddTextPage/AddTextPage';
@@ -26,6 +27,7 @@ function App() {
           <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
+          <Route path="/reset-password" element={<ResetPasswordPage />} />
           <Route path="/add-text" element={<AddTextPage />} />
           <Route path="/*" element={<LandingPage />} />
         </Routes>
