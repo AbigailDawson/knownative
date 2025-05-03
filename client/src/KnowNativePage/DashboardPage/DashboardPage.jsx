@@ -685,7 +685,6 @@ export default function DashboardPage() {
         <Modal
           modalTitle="Are you sure you want to delete this text?"
           setShowModal={setShowModal}
-          hasCloseButton={true}
           hasCustomButtons={true}>
           <div>Deleting this text cannot be undone.</div>
           <div className="reusable-modal__button-container--modal dashboard__cancel-buttons">
