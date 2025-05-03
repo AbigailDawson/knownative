@@ -637,7 +637,6 @@ export default function DashboardPage() {
 
                         {openMenuId === item._id && (
                           <div className="options-menu">
-                            <button onClick={() => handleEdit(item._id)}>Archive</button>
                             <button onClick={() => confirmDelete(item._id)} className="danger">
                               Delete
                             </button>
