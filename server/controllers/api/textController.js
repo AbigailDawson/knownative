@@ -19,9 +19,8 @@ const getUserTexts = async (req, res) => {
 
   const deleteUserText = async (req, res) => {
     const { userId, textId } = req.params;
-  
+
     try {
-      // TODO: can't currently test, once card functionality is up, need to see if cards are actually deleted
       await Card.deleteMany({ text: textId });
   
       // This works

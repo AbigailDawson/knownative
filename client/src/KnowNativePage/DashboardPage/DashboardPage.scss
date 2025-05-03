@@ -307,6 +307,9 @@ $icon-colors: (
         color: black;
     }
 
+    &__cancel-buttons {
+        margin-top: 20px;
+    }
 
     &__library {
         display: flex;

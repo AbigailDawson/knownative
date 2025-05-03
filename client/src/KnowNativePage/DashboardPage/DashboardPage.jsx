@@ -6,6 +6,8 @@ import Button from '../../ui-components/Button/button';
 import { getUserTexts } from '../../utilities/texts-api';
 import DashboardNavbar from '../components/DashboardNavbar';
 import AddTextSlideout from '../AddTextPage/AddTextSlideout';
+import { deleteText } from '../../utilities/texts-api';
+import Modal from '../../ui-components/Modal/modal';
 
 const mockData = [
   {
@@ -297,6 +299,8 @@ export default function DashboardPage() {
   const [isAddTextOpen, setIsAddTextOpen] = useState(false);
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
   const [openMenuId, setOpenMenuId] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [textToDelete, setTextToDelete] = useState(null);
 
   const [texts, setTexts] = useState([]);
   const [error, setError] = useState(null);
@@ -376,6 +380,28 @@ export default function DashboardPage() {
     const newDirection = sortColumn === column && sortDirection === 'asc' ? 'content' : 'asc';
     setSortColumn(column);
     setSortDirection(newDirection);
+  };
+
+  const confirmDelete = (itemId) => {
+    setTextToDelete(itemId);
+    setOpenMenuId(false);
+    setShowModal(true);
+  };
+
+  const handleConfirmedDelete = async () => {
+    if (!textToDelete) return;
+
+    const updatedTexts = texts.filter((item) => item._id !== textToDelete);
+    setTexts(updatedTexts);
+    setOpenMenuId(false);
+    setShowModal(false);
+
+    try {
+      await deleteText(textToDelete, user._id);
+      console.log('Deleted item with ID:', textToDelete);
+    } catch (error) {
+      console.error('Failed to delete from server:', error);
+    }
   };
 
   const RoundIcon = ({ isImage, src, iconName, color }) => {
@@ -612,7 +638,7 @@ export default function DashboardPage() {
                         {openMenuId === item._id && (
                           <div className="options-menu">
                             <button onClick={() => handleEdit(item._id)}>Archive</button>
-                            <button onClick={() => handleDelete(item._id)} className="danger">
+                            <button onClick={() => confirmDelete(item._id)} className="danger">
                               Delete
                             </button>
                           </div>
@@ -656,6 +682,27 @@ export default function DashboardPage() {
           )}
         </div>
       </div>
+      {showModal && (
+        <Modal
+          modalTitle="Are you sure you want to delete this text?"
+          setShowModal={setShowModal}
+          hasCloseButton={true}
+          hasCustomButtons={true}>
+          <div>Deleting this text cannot be undone.</div>
+          <div className="reusable-modal__button-container--modal dashboard__cancel-buttons">
+            <Button
+              buttonText="Cancel"
+              buttonOnClickFunc={() => setShowModal(false)}
+              buttonVariant="secondary"
+            />
+            <Button
+              buttonText="Delete"
+              buttonOnClickFunc={handleConfirmedDelete}
+              buttonVariant="danger"
+            />
+          </div>
+        </Modal>
+      )}
       <div
         className={`dashboard__overlay ${isAddTextOpen ? 'dashboard__overlay--active' : ''}`}
         onClick={() => setIsAddTextOpen(false)}></div>
