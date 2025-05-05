@@ -1,5 +1,6 @@
 import sendRequest from './send-request'
-const BASE_URL = '/api/texts'
+
+const BASE_URL = `${import.meta.env.VITE_SERVER_BASE_URL}api/texts`
 
 export async function tokenizeText(text) {
   return sendRequest(`${BASE_URL}/tokenize`, 'POST', { text })
@@ -14,7 +15,7 @@ export function addNewText(textData) {
 }
 
 export function deleteText(text, id) {
-  return sendRequest(`${BASE_URL}/${id}/delete`, 'DELETE', { text })
+  return sendRequest(`${BASE_URL}/${id}/delete/${text}`, 'DELETE')
 }
 
 export function getText(id) {

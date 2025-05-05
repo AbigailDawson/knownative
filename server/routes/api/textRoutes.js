@@ -3,6 +3,6 @@ const { getUserTexts, deleteUserText } = require("../../controllers/api/textCont
 const router = express.Router();
 
 router.get("/:userId", getUserTexts);
-router.delete("/:userId/text/:textId", deleteUserText);
+router.delete("/:userId/delete/:textId", deleteUserText);
 
 module.exports = router;
