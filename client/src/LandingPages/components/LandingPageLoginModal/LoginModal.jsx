@@ -98,7 +98,7 @@ const LoginModal = ({ setShowModal, openSignupModal }) => {
     }, 1000);
 
     return () => clearTimeout(loadingTimer);
-  };
+  }
 
   const handleSignupClick = (e) => {
     e.preventDefault();
@@ -138,7 +138,9 @@ const LoginModal = ({ setShowModal, openSignupModal }) => {
                 <div className="login-modal__login-form-container">
                   <div className="login-modal__container">
                     <h1 className="login-modal__header">Log Into Your KnowNative Account</h1>
-                    <h2 className="login-modal__secondary-text">Lorem ipsum dolor sit amet consectetur.</h2>
+                    <h2 className="login-modal__secondary-text">
+                      Lorem ipsum dolor sit amet consectetur.
+                    </h2>
                     <form className="login-page__form" onSubmit={handleLogin}>
                       {formFields.map((input, idx) => (
                         <FormInput
@@ -149,7 +151,10 @@ const LoginModal = ({ setShowModal, openSignupModal }) => {
                         />
                       ))}
 
-                      <a href="#" onClick={handleForgotPasswordClick} className="login-page__forgot">
+                      <a
+                        href="#"
+                        onClick={handleForgotPasswordClick}
+                        className="login-page__forgot">
                         Forgot Password?
                       </a>
                       <div className="login-page__error-container">
@@ -160,11 +165,15 @@ const LoginModal = ({ setShowModal, openSignupModal }) => {
                               src="/images/error_note.svg"
                               alt="error symbol"
                             />{' '}
-                            <p className="login-page__error-message login-modal__no-margin">{errorMessage}</p>{' '}
+                            <p className="login-page__error-message login-modal__no-margin">
+                              {errorMessage}
+                            </p>{' '}
                           </div>
                         )}
                       </div>
-                      <button type="submit" className="login-page__button--primary login-page__button">
+                      <button
+                        type="submit"
+                        className="login-page__button--primary login-page__button">
                         Log In
                       </button>
                     </form>
@@ -198,9 +207,7 @@ const LoginModal = ({ setShowModal, openSignupModal }) => {
       </>
     );
   } else {
-    return (
-      <RedirectModal login={true} />
-    );
+    return <RedirectModal login={true} />;
   }
 };
 
