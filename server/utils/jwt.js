@@ -9,7 +9,7 @@ function createJWT(user) {
 function verifyJWT(req, res, next) {
   const token = req.cookies.token;
   try {
-    if (!token) {
+    if (!token || token === 'undefined') {
       throw new Error('No token present. Please log in or sign up');
     }
     const decoded = jwt.verify(token, process.env.JWT_SECRET);

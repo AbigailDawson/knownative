@@ -3,7 +3,7 @@ const Card = require("../../models/card")
 
 const getUserTexts = async (req, res) => {
     try {
-      const userId = req.params.userId;
+      const userId = req.user._id;
   
       // texts for the specific user
       const texts = await Text.find({ user: userId })
