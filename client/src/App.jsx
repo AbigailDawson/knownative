@@ -13,7 +13,7 @@ import ResetPasswordPage from './LandingPages/ResetPasswordPage/ResetPasswordPag
 import DashboardPage from './KnowNativePage/DashboardPage/DashboardPage';
 import AppProvider from './contexts/AppProvider';
 import AddTextPage from './KnowNativePage/AddTextPage/AddTextPage';
-import CardPage from './KnowNativePage/CardPage/CardPage';
+import CardsPage from './KnowNativePage/CardPage/CardPage';
 
 function App() {
   return (
@@ -26,7 +26,7 @@ function App() {
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/post/:postId" element={<PostPage />} />
           <Route path="/dashboard" element={<DashboardPage />} />
-          <Route path="/card" element={<CardPage />} />
+          <Route path="/card" element={<CardsPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/reset-password" element={<ResetPasswordPage />} />
