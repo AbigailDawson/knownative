@@ -44,7 +44,7 @@ const DashboardNavbar = ({ activeTab }) => {
           <li className={`dashboard-nav__nav-item${activeTab === 'Cards' ? '--active' : ''}`}>
             <a
               className={`dashboard-nav__link dashboard-nav__link${activeTab === 'Cards' ? '--active' : ''}`}
-              href="/card">
+              href="/cards">
               <span
                 className={`material-symbols-outlined dashboard-nav__flipped dashboard-nav__nav-icon${activeTab === 'Cards' ? '--active' : ''}`}>
                 &#xe41d;

@@ -26,7 +26,7 @@ function App() {
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/post/:postId" element={<PostPage />} />
           <Route path="/dashboard" element={<DashboardPage />} />
-          <Route path="/card" element={<CardsPage />} />
+          <Route path="/cards" element={<CardsPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/reset-password" element={<ResetPasswordPage />} />
