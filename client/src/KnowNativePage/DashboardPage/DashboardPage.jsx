@@ -6,6 +6,7 @@ import Button from '../../ui-components/Button/button';
 import { getUserTexts } from '../../utilities/texts-api';
 import DashboardNavbar from '../components/DashboardNavbar';
 import AddTextSlideout from '../AddTextPage/AddTextSlideout';
+import Spinner from '../../ui-components/Spinner/spinner';
 
 const mockData = [
   {
@@ -287,7 +288,7 @@ const mockData = [
 ];
 
 export default function DashboardPage() {
-  const { user } = useAuthContext();
+  const { user, loading } = useAuthContext();
   const navigate = useNavigate();
   const [itemsToShow, setItemsToShow] = useState(3);
   const [fadeIn, setFadeIn] = useState(false);
@@ -404,7 +405,29 @@ export default function DashboardPage() {
     fetchTexts();
   }, [user]);
 
-  return user ? (
+  if (loading) {
+    return (
+      <div className="dashboard">
+        <div className="dashboard__main">
+          <div className="dashboard__loading-overlay">
+            <Spinner />
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (!user) {
+    return (
+      <div>
+        <p>
+          User not logged in. Please log in <Link to="/login">here</Link>.
+        </p>
+      </div>
+    );
+  }
+
+  return (
     <div className="dashboard">
       <DashboardNavbar activeTab="Dashboard" />
       <div className="dashboard__main">
@@ -643,12 +666,6 @@ export default function DashboardPage() {
         className={`dashboard__overlay ${isAddTextOpen ? 'dashboard__overlay--active' : ''}`}
         onClick={() => setIsAddTextOpen(false)}></div>
       <AddTextSlideout isOpen={isAddTextOpen} onClose={() => setIsAddTextOpen(false)} />
-    </div>
-  ) : (
-    <div>
-      <p>
-        User not logged in. Please log in <Link to="/login">here</Link>.
-      </p>
     </div>
   );
 }
