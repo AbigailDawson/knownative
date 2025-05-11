@@ -18,6 +18,8 @@ export default function LandingPage() {
   const [showModal, setShowModal] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showSignupModal, setShowSignupModal] = useState(false);
+  const [showLoadingSpinner, setShowLoadingSpinner] = useState(false);
+  const [showConfirmationMsg, setShowConfirmationMsg] = useState(false);
 
   const screenHeight = window.screen.height;
   const screenWidth = window.screen.width;
