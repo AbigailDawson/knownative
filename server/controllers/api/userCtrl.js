@@ -5,14 +5,13 @@ const { sendResetPasswordMail } = require("../../utils/mail/customMail");
 const ResetUserPassword = require("../../models/resetPassword");
 const { generateToken } = require("../../utils/index");
 
-
 module.exports = {
   create,
   logIn,
   getUser,
   logOut,
   forgotPassword,
-  resetPassword
+  resetPassword,
 };
 
 const cookieOptions = {
@@ -26,18 +25,18 @@ const cookieOptions = {
 
 async function create(req, res) {
   try {
+    console.log(req.body);
     const user = await User.create(req.body);
     const token = createJWT(user);
     res.cookie("token", token, cookieOptions);
     res.json(user);
   } catch (error) {
     if (error.code === 11000) {
-      res
-        .status(400)
-        .json({
-          message: "A user with that email address or username already exists!",
-        });
+      res.status(400).json({
+        message: "A user with that email address or username already exists!",
+      });
     } else {
+      console.log(error);
       res.status(400).json({
         message: "An error occurred during sign-up. Please try again.",
       });
@@ -49,7 +48,7 @@ async function logIn(req, res) {
   try {
     console.log("Login attempt with:", {
       email: req.body.email,
-      passwordProvided: !!req.body.password
+      passwordProvided: !!req.body.password,
     });
 
     const user = await User.findOne({
@@ -113,9 +112,9 @@ async function logOut(req, res) {
 
 /**
  * @api { POST } /users/forgot-password
- * @param {*} req 
+ * @param {*} req
  * @param { email } req.body
- * @param {*} res 
+ * @param {*} res
  */
 
 async function forgotPassword(req, res) {
@@ -125,24 +124,30 @@ async function forgotPassword(req, res) {
     const user = await User.findOne({ email });
 
     if (!user) {
-      throw new Error("User not found")
+      throw new Error("User not found");
     }
 
-    let resetUserPassData = await ResetUserPassword.findOne({ userId: user._id });
+    let resetUserPassData = await ResetUserPassword.findOne({
+      userId: user._id,
+    });
 
     if (!resetUserPassData) {
       // Generate token
       const token = generateToken();
-      resetUserPassData = await ResetUserPassword.create({ userId: user._id, token });
+      resetUserPassData = await ResetUserPassword.create({
+        userId: user._id,
+        token,
+      });
     }
 
     const resetPasswordUrl = `${process.env.RESET_PASS_URL}?token=${resetUserPassData.token}`;
 
     await sendResetPasswordMail(email, resetPasswordUrl, user.username);
 
-    res.status(200).json({ message: "Password resent link sent to your email account." });
-  }
-  catch (error) {
+    res
+      .status(200)
+      .json({ message: "Password resent link sent to your email account." });
+  } catch (error) {
     res.status(400).json({ message: error.message });
   }
 }
@@ -151,7 +156,7 @@ async function forgotPassword(req, res) {
  * @param {*} req
  * @param { token } req.params
  * @param { newPassword } req.body
- * @param {*} res 
+ * @param {*} res
  */
 async function resetPassword(req, res) {
   try {
@@ -165,7 +170,8 @@ async function resetPassword(req, res) {
 
     const resetPasswordData = await ResetUserPassword.findOne({ token });
 
-    if (!resetPasswordData) throw new Error("Reset password link has been expired!");
+    if (!resetPasswordData)
+      throw new Error("Reset password link has been expired!");
 
     const userData = await User.findById(resetPasswordData.userId);
 
