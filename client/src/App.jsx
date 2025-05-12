@@ -13,7 +13,7 @@ import ResetPasswordPage from './LandingPages/ResetPasswordPage/ResetPasswordPag
 import DashboardPage from './KnowNativePage/DashboardPage/DashboardPage';
 import AppProvider from './contexts/AppProvider';
 import AddTextPage from './KnowNativePage/AddTextPage/AddTextPage';
-import CardsPage from './KnowNativePage/CardPage/CardPage';
+import CardsPage from './KnowNativePage/CardsPage/CardsPage';
 
 function App() {
   return (

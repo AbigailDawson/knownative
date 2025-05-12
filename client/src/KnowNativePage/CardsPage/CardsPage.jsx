@@ -1,4 +1,4 @@
-import './CardPage.scss';
+import './CardsPage.scss';
 import { useEffect, useState } from 'react';
 import { useAuthContext } from '../../contexts/Auth/AuthProvider';
 import { Link, useNavigate } from 'react-router-dom';
