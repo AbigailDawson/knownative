@@ -1,10 +1,9 @@
-const User = require("../../models/user");
-const bcrypt = require("bcrypt");
-const { createJWT } = require("./../../utils/jwt");
-const { sendResetPasswordMail } = require("../../utils/mail/customMail");
-const ResetUserPassword = require("../../models/resetPassword");
-const { generateToken } = require("../../utils/index");
-
+const User = require('../../models/user');
+const bcrypt = require('bcrypt');
+const { createJWT } = require('./../../utils/jwt');
+const { sendResetPasswordMail } = require('../../utils/mail/customMail');
+const ResetUserPassword = require('../../models/resetPassword');
+const { generateToken } = require('../../utils/index');
 
 module.exports = {
   create,
@@ -12,13 +11,13 @@ module.exports = {
   getUser,
   logOut,
   forgotPassword,
-  resetPassword
+  resetPassword,
 };
 
 const cookieOptions = {
   httpOnly: true, // Prevents JavaScript access to the cookie
   secure: false,
-  sameSite: "lax", // Prevents CSRF by limiting where the cookie can be sent
+  sameSite: 'lax', // Prevents CSRF by limiting where the cookie can be sent
   maxAge: 24 * 60 * 60 * 1000, //Equals 1 day.
 };
 
@@ -28,18 +27,16 @@ async function create(req, res) {
   try {
     const user = await User.create(req.body);
     const token = createJWT(user);
-    res.cookie("token", token, cookieOptions);
+    res.cookie('token', token, cookieOptions);
     res.json(user);
   } catch (error) {
     if (error.code === 11000) {
-      res
-        .status(400)
-        .json({
-          message: "A user with that email address or username already exists!",
-        });
+      res.status(400).json({
+        message: 'A user with that email address or username already exists!',
+      });
     } else {
       res.status(400).json({
-        message: "An error occurred during sign-up. Please try again.",
+        message: 'An error occurred during sign-up. Please try again.',
       });
     }
   }
@@ -47,9 +44,9 @@ async function create(req, res) {
 
 async function logIn(req, res) {
   try {
-    console.log("Login attempt with:", {
+    console.log('Login attempt with:', {
       email: req.body.email,
-      passwordProvided: !!req.body.password
+      passwordProvided: !!req.body.password,
     });
 
     const user = await User.findOne({
@@ -57,8 +54,8 @@ async function logIn(req, res) {
     });
 
     if (!user) {
-      console.log("User not found with email/username:", req.body.email);
-      throw new Error("Invalid credentials");
+      console.log('User not found with email/username:', req.body.email);
+      throw new Error('Invalid credentials');
     }
 
     const passwordMatch = await bcrypt.compare(
@@ -67,14 +64,14 @@ async function logIn(req, res) {
     );
 
     if (!passwordMatch) {
-      throw new Error("Invalid credentials");
+      throw new Error('Invalid credentials');
     }
 
     const token = createJWT(user);
-    res.cookie("token", token, cookieOptions);
+    res.cookie('token', token, cookieOptions);
     res.json(user);
   } catch (error) {
-    res.status(400).json("Invalid credentials");
+    res.status(400).json('Invalid credentials');
   }
 }
 
@@ -83,7 +80,7 @@ async function getUser(req, res) {
     const user = await User.findById(req.user._id);
     if (!user) {
       throw new Error(
-        "Unable to find user in the database. Please try logging in again."
+        'Unable to find user in the database. Please try logging in again.'
       );
     }
     res.json(user);
@@ -95,27 +92,27 @@ async function getUser(req, res) {
 async function logOut(req, res) {
   try {
     res.cookie(
-      "token",
+      'token',
       {},
       {
         httpOnly: true,
-        sameSite: "lax",
+        sameSite: 'lax',
         secure: false,
         maxAge: 0,
-        path: "/",
+        path: '/',
       }
     );
-    res.status(200).json({ message: "Successfully logged out" });
+    res.status(200).json({ message: 'Successfully logged out' });
   } catch (error) {
-    res.status(403).json({ message: "Unable to log out successfully" });
+    res.status(403).json({ message: 'Unable to log out successfully' });
   }
 }
 
 /**
  * @api { POST } /users/forgot-password
- * @param {*} req 
+ * @param {*} req
  * @param { email } req.body
- * @param {*} res 
+ * @param {*} res
  */
 
 async function forgotPassword(req, res) {
@@ -125,24 +122,30 @@ async function forgotPassword(req, res) {
     const user = await User.findOne({ email });
 
     if (!user) {
-      throw new Error("User not found")
+      throw new Error('User not found');
     }
 
-    let resetUserPassData = await ResetUserPassword.findOne({ userId: user._id });
+    let resetUserPassData = await ResetUserPassword.findOne({
+      userId: user._id,
+    });
 
     if (!resetUserPassData) {
       // Generate token
       const token = generateToken();
-      resetUserPassData = await ResetUserPassword.create({ userId: user._id, token });
+      resetUserPassData = await ResetUserPassword.create({
+        userId: user._id,
+        token,
+      });
     }
 
     const resetPasswordUrl = `${process.env.RESET_PASS_URL}?token=${resetUserPassData.token}`;
 
     await sendResetPasswordMail(email, resetPasswordUrl, user.username);
 
-    res.status(200).json({ message: "Password resent link sent to your email account." });
-  }
-  catch (error) {
+    res
+      .status(200)
+      .json({ message: 'Password resent link sent to your email account.' });
+  } catch (error) {
     res.status(400).json({ message: error.message });
   }
 }
@@ -151,7 +154,7 @@ async function forgotPassword(req, res) {
  * @param {*} req
  * @param { token } req.params
  * @param { newPassword } req.body
- * @param {*} res 
+ * @param {*} res
  */
 async function resetPassword(req, res) {
   try {
@@ -160,16 +163,17 @@ async function resetPassword(req, res) {
 
     // Add validation to ensure newPassword exists
     if (!newPassword) {
-      return res.status(400).json({ message: "New password is required" });
+      return res.status(400).json({ message: 'New password is required' });
     }
 
     const resetPasswordData = await ResetUserPassword.findOne({ token });
 
-    if (!resetPasswordData) throw new Error("Reset password link has been expired!");
+    if (!resetPasswordData)
+      throw new Error('Reset password link has been expired!');
 
     const userData = await User.findById(resetPasswordData.userId);
 
-    if (!userData) throw new Error("User not found!");
+    if (!userData) throw new Error('User not found!');
 
     // Instead of setting the hashed password directly and calling save(),
     // use the updateOne method which bypasses the pre-save hook
@@ -181,7 +185,7 @@ async function resetPassword(req, res) {
     // Clean up the reset token entry
     await resetPasswordData.deleteOne();
 
-    res.status(200).json({ message: "Password reset successfully" });
+    res.status(200).json({ message: 'Password reset successfully' });
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
