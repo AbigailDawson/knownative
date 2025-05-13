@@ -586,7 +586,7 @@ export default function DashboardPage() {
                       <td>
                       <button
                         className="dashboard__table-container__name dashboard__link"
-                        onClick={() => navigate(`/text/${item._id}`)}
+                        onClick={() => navigate(`/text/${item._id}`, { state: { text: item } })}
                       >
                         {item.title}
                       </button>
@@ -603,7 +603,7 @@ export default function DashboardPage() {
                           iconStyling="reusable-button__icon-flip"
                           buttonVariant="tertiary"
                           buttonText="Review"
-                          buttonOnClickFunc={() => navigate(`/text/${item._id}`)}
+                          buttonOnClickFunc={() => navigate(`/text/${item._id}`, { state: { text: item } })}
                           disabled={item.cards.length === 0 ? true : false}
                         />
                       </td>
