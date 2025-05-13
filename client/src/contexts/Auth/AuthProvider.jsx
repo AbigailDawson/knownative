@@ -17,7 +17,7 @@ function AuthProvider({ children }) {
   useEffect(() => {
     async function getUser() {
       try {
-        const res = await fetch(import.meta.env.VITE_GET_USER_URL, {
+        const res = await fetch('api/users/getUser', {
           method: 'GET',
           credentials: 'include'
         });

@@ -394,7 +394,7 @@ export default function DashboardPage() {
     const fetchTexts = async () => {
       try {
         if (user._id) {
-          const texts = await getUserTexts(user._id);
+          const texts = await getUserTexts();
           setTexts(texts);
         }
       } catch (error) {
@@ -408,31 +408,32 @@ export default function DashboardPage() {
     <div className="dashboard">
       <DashboardNavbar activeTab="Dashboard" />
       <div className="dashboard__main">
-      <div className="dashboard__user-info">
-        <div className="dashboard__user-dropdown">
-          <button
-            className="dashboard__user-dropdown-options"
-            onClick={() => setIsUserDropdownOpen((prev) => !prev)}
-          >
-            <p className="dashboard__user-name">{user.username}</p>
-            <img
-              className="dashboard__user-profile-pic"
-              src="/images/square-logo.png"
-              alt="User profile picture."
-            />
-            <p className="dashboard__user-dropdown-icon">
-              {isUserDropdownOpen ? '┓' : '┕'}
-            </p>
-          </button>
+        <div className="dashboard__user-info">
+          <div className="dashboard__user-dropdown">
+            <button
+              className="dashboard__user-dropdown-options"
+              onClick={() => setIsUserDropdownOpen((prev) => !prev)}>
+              <p className="dashboard__user-name">{user.username}</p>
+              <img
+                className="dashboard__user-profile-pic"
+                src="/images/square-logo.png"
+                alt="User profile picture."
+              />
+              <p className="dashboard__user-dropdown-icon">{isUserDropdownOpen ? '┓' : '┕'}</p>
+            </button>
 
-          {isUserDropdownOpen && (
-            <div className="dashboard__user-dropdown-panel">
-              <p><strong>{user.firstName} {user.lastName}</strong></p>
-              <p>Joined {new Date(user.createdAt).toLocaleDateString()}</p>
-            </div>
-          )}
+            {isUserDropdownOpen && (
+              <div className="dashboard__user-dropdown-panel">
+                <p>
+                  <strong>
+                    {user.firstName} {user.lastName}
+                  </strong>
+                </p>
+                <p>Joined {new Date(user.createdAt).toLocaleDateString()}</p>
+              </div>
+            )}
+          </div>
         </div>
-      </div>
         <div className="dashboard__title">
           {/*Just added user.username for testing of the token. Please adjust as needed. */}
           <h1>Dashboard</h1>
@@ -644,7 +645,9 @@ export default function DashboardPage() {
           )}
         </div>
       </div>
-      <div className={`dashboard__overlay ${isAddTextOpen ? 'dashboard__overlay--active' : ''}`} onClick={() => setIsAddTextOpen(false)}></div>
+      <div
+        className={`dashboard__overlay ${isAddTextOpen ? 'dashboard__overlay--active' : ''}`}
+        onClick={() => setIsAddTextOpen(false)}></div>
       <AddTextSlideout isOpen={isAddTextOpen} onClose={() => setIsAddTextOpen(false)} />
     </div>
   ) : (
