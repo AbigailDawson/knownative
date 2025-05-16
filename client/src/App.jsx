@@ -14,6 +14,7 @@ import DashboardPage from './KnowNativePage/DashboardPage/DashboardPage';
 import AppProvider from './contexts/AppProvider';
 import AddTextPage from './KnowNativePage/AddTextPage/AddTextPage';
 import CardsPage from './KnowNativePage/CardsPage/CardsPage';
+import TextsPage from './KnowNativePage/TextPage/TextsPage';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/reset-password" element={<ResetPasswordPage />} />
           <Route path="/add-text" element={<AddTextPage />} />
+          <Route path="/text/:id?" element={<TextsPage />} />
           <Route path="/*" element={<LandingPage />} />
         </Routes>
       </main>
