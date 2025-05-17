@@ -607,7 +607,12 @@ export default function DashboardPage() {
                         <RoundIcon iconName="book_2" color="blue" />
                       </td>
                       <td>
-                        <div className="dashboard__table-container__name">{item.title}</div>
+                        <button
+                          className="dashboard__table-container__name dashboard__link"
+                          onClick={() => navigate(`/text/${item._id}`, { state: { text: item } })}
+                        >
+                          {item.title}
+                        </button>
                         <div className="dashboard__table-container__desc">{item.content}</div>
                       </td>
                       <td className={item.cards.length === 0 ? 'dashboard--text-red' : ''}>
@@ -620,8 +625,8 @@ export default function DashboardPage() {
                           iconStyling="reusable-button__icon-flip"
                           buttonVariant="tertiary"
                           buttonText="Review"
-                          buttonOnClickFunc={() => console.log('click click')}
-                          disabled={item.cards.length === 0 ? true : false}
+                          buttonOnClickFunc={() => navigate(`/text/${item._id}`, { state: { text: item } })}
+                          disabled={item.cards.length === 0}
                         />
                       </td>
                     </tr>
