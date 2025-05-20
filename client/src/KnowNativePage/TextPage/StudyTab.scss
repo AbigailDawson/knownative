@@ -1,0 +1,16 @@
+.study {
+  width: 100%;
+}
+
+.study__body {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  text-align: left;
+  line-height: 2.25rem;
+  font-size: 1.25rem;
+}
+
+.study__word {
+  display: inline-block;
+}

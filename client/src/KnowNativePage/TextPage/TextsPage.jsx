@@ -2,12 +2,17 @@ import React, { useState } from "react";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import DashboardNavbar from "../components/DashboardNavbar";
 import "./TextsPage.scss";
+import StudyTab from "./StudyTab";
+import { useAuthContext } from "../../contexts/Auth/AuthProvider";
+
 
 export default function TextsPage() {
   const navigate = useNavigate();
   const location = useLocation();
   const { id } = useParams(); 
   const [activeTab, setActiveTab] = useState("read");
+  const { user } = useAuthContext();
+  const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
   const [text, setText] = useState(location.state?.text || null);
 
   function handleTabClick(tabName) {
@@ -28,6 +33,38 @@ export default function TextsPage() {
       <DashboardNavbar activeTab="Dashboard" />
 
       <div className="dashboard__main">
+              {/* User dropdown with name + profile info */}
+        <div className="dashboard__user-info">
+          <div className="dashboard__user-dropdown">
+            <button
+              className="dashboard__user-dropdown-options"
+              onClick={() => setIsUserDropdownOpen((prev) => !prev)}
+            >
+              <p className="dashboard__user-name">{user.username}</p>
+              <img
+                className="dashboard__user-profile-pic"
+                src="/images/square-logo.png"
+                alt="User profile picture."
+              />
+              <p className="dashboard__user-dropdown-icon">
+                {isUserDropdownOpen ? "┓" : "┕"}
+              </p>
+            </button>
+
+            {isUserDropdownOpen && (
+              <div className="dashboard__user-dropdown-panel">
+                <p>
+                  <strong>
+                    {user.firstName} {user.lastName}
+                  </strong>
+                </p>
+                <p>Joined {new Date(user.createdAt).toLocaleDateString()}</p>
+              </div>
+            )}
+          </div>
+        </div>
+
+
         <Link to="/dashboard" className="text-page__back">
           <span className="material-symbols-outlined" style={{ fontSize: "32px", marginRight: "0.5rem" }}>
             chevron_left
@@ -44,27 +81,31 @@ export default function TextsPage() {
 
         <div className="text-divider"></div>
 
-    {/*Render basecd on active tab */}
+        {/* Show title and source link on every tab */}
+        <div className="Text text-content">
+          <h1 className="text-title">{text.title}</h1>
+          <a
+            href={text.source}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-source"
+          >
+            View Original Source
+          </a>
+        </div>
+
+        <div className="text-divider"></div>
+
+        {/* show the full paragraph on the read tab*/}
         {activeTab === "read" && (
-            <section className="read-container read-container--active">
-                <div className="Text text-content">
-                    <h1 className="text-title">{text.title}</h1>
-                    <a
-                      href={text.source}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-source"
-                    >
-                      View Original Source
-                    </a>
-                    <div className="text-divider"></div>
-                    <p className="text-body">{text.content}</p>
-                </div>
-        </section>
+          <section className="read-container read-container--active">
+            <p className="text-body">{text.content}</p>
+          </section>
         )}
 
+
         <div>
-          {activeTab === "study" && <p>This is the Study tab.</p>}
+          {activeTab === "study" && <StudyTab text={text} />}
           {activeTab === "translate" && <p>This is the Translate tab.</p>}
         </div>
       </div>

@@ -7,7 +7,7 @@
     margin-left: 285px; /* Width of the DashboardNavbar */
     width: calc(100% - 285px);
   }
-  
+
   // Back button to Dashboard
   .text-page__back {
     display: inline-flex;
@@ -114,6 +114,8 @@
   .text-body {
     white-space: pre-wrap;
     text-align: left;
+    font-size: 1.25rem;
+    line-height: 2.25rem;
   }
   
   .text-divider {
