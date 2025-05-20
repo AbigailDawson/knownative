@@ -1,4 +1,4 @@
-import './DashboardPage.scss';
+import './CardsPage.scss';
 import { useEffect, useState } from 'react';
 import { useAuthContext } from '../../contexts/Auth/AuthProvider';
 import { Link, useNavigate } from 'react-router-dom';
@@ -6,7 +6,6 @@ import Button from '../../ui-components/Button/button';
 import { getUserTexts } from '../../utilities/texts-api';
 import DashboardNavbar from '../components/DashboardNavbar';
 import AddTextSlideout from '../AddTextPage/AddTextSlideout';
-import Spinner from '../../ui-components/Spinner/spinner';
 
 const mockData = [
   {
@@ -287,8 +286,8 @@ const mockData = [
   }
 ];
 
-export default function DashboardPage() {
-  const { user, loading } = useAuthContext();
+export default function CardPage() {
+  const { user } = useAuthContext();
   const navigate = useNavigate();
   const [itemsToShow, setItemsToShow] = useState(3);
   const [fadeIn, setFadeIn] = useState(false);
@@ -395,8 +394,10 @@ export default function DashboardPage() {
     const fetchTexts = async () => {
       try {
         if (user._id) {
-          const texts = await getUserTexts();
+          console.log(user);
+          const texts = await getUserTexts(user._id);
           setTexts(texts);
+          console.log(texts);
         }
       } catch (error) {
         console.log('Error fetching texts:', error);
@@ -405,31 +406,9 @@ export default function DashboardPage() {
     fetchTexts();
   }, [user]);
 
-  if (loading) {
-    return (
-      <div className="dashboard">
-        <div className="dashboard__main">
-          <div className="dashboard__loading-overlay">
-            <Spinner />
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  if (!user) {
-    return (
-      <div>
-        <p>
-          User not logged in. Please log in <Link to="/login">here</Link>.
-        </p>
-      </div>
-    );
-  }
-
-  return (
+  return user ? (
     <div className="dashboard">
-      <DashboardNavbar activeTab="Dashboard" />
+      <DashboardNavbar activeTab="Cards" />
       <div className="dashboard__main">
         <div className="dashboard__user-info">
           <div className="dashboard__user-dropdown">
@@ -459,7 +438,7 @@ export default function DashboardPage() {
         </div>
         <div className="dashboard__title">
           {/*Just added user.username for testing of the token. Please adjust as needed. */}
-          <h1>Dashboard</h1>
+          <h1>Cards</h1>
         </div>
 
         {/* Stats */}
@@ -496,176 +475,17 @@ export default function DashboardPage() {
             </div>
           </div>
         </div>
-
-        {texts.length !== 0 ? (
-          <div>
-            <div className="dashboard__title dashboard__title--subtitle">
-              <h4>Jump back in</h4>
-            </div>
-            <div className="dashboard dashboard__card">
-              <div className="dashboard__card__sub-container">
-                <div className="dashboard__card__icon">
-                  <RoundIcon iconName="book_2" color="teal" />
-                </div>
-                <div className="dashboard__card__last-opened-content">
-                  <h2 className="dashboard__card-title">開計程車</h2>
-                  <p className="dashboard dashboard__card-body">
-                    每天我要到許多地方去，也會遇到很多人。有些人喜歡叫我「左轉」、「右轉」、「停」；
-                    有些人會把髒東西留在我的車上。不過也有一些不錯的人，可以從他們身上學到很多東西，
-                    所以我也交了好幾個朋友。真是什麼樣的人都有啊！
-                  </p>
-                </div>
-              </div>
-              <div className="dashboard__card-button">
-                <Button
-                  iconName="&#xe41d;"
-                  iconStyling="reusable-button__icon-flip"
-                  buttonVariant="tertiary"
-                  buttonText="Review"
-                  buttonOnClickFunc={() => console.log('click click')}
-                />
-              </div>
-            </div>
-          </div>
-        ) : (
-          <></>
-        )}
-        {/* Library */}
-        <div className="dashboard__library">
-          <div className="dashboard__title dashboard__library-container">
-            <h4>Library</h4>
-            <Button
-              iconName="new_window"
-              iconStyling="dashboard-button__icon-flip"
-              buttonVariant="primary"
-              buttonText="Add Text"
-              buttonOnClickFunc={() => setIsAddTextOpen(true)}
-            />
-          </div>
-          {texts.length !== 0 ? (
-            <div>
-              <table className="dashboard__table-container">
-                <thead>
-                  <tr>
-                    <th></th>
-                    <th onClick={() => handleSort('title')}>
-                      <span className="dashboard__sortable-header">
-                        <span>Name</span>
-                        <span
-                          className={`material-symbols-outlined dashboard__table-container__sort-arrow ${
-                            sortColumn === 'title'
-                              ? sortDirection === 'asc'
-                                ? 'dashboard__table-container__rotate-up'
-                                : 'dashboard__table-container__rotate-down'
-                              : 'dashboard__table-container__sort-inactive'
-                          }`}>
-                          arrow_drop_down
-                        </span>
-                      </span>
-                    </th>
-                    <th onClick={() => handleSort('cards')}>
-                      <span className="dashboard__sortable-header">
-                        <span>Cards</span>
-                        <span
-                          className={`material-symbols-outlined dashboard__table-container__sort-arrow ${
-                            sortColumn === 'cards'
-                              ? sortDirection === 'asc'
-                                ? 'dashboard__table-container__rotate-up'
-                                : 'dashboard__table-container__rotate-down'
-                              : 'dashboard__table-container__sort-inactive'
-                          }`}>
-                          arrow_drop_down
-                        </span>
-                      </span>
-                    </th>
-                    <th onClick={() => handleSort('lastOpened')}>
-                      <span className="dashboard__sortable-header">
-                        <span>Last Opened </span>
-                        <span
-                          className={`material-symbols-outlined dashboard__table-container__sort-arrow ${
-                            sortColumn === 'lastOpened'
-                              ? sortDirection === 'asc'
-                                ? 'dashboard__table-container__rotate-up'
-                                : 'dashboard__table-container__rotate-down'
-                              : 'dashboard__table-container__sort-inactive'
-                          }`}>
-                          arrow_drop_down
-                        </span>
-                      </span>
-                    </th>
-                    <th></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {sortData(texts.slice(0, itemsToShow)).map((item, index) => (
-                    <tr
-                      key={item._id}
-                      className={`dashboard__table-container__item-row 
-                        ${fadeIn && index >= itemsToShow - 5 ? 'dashboard__table-container__fade-in' : ''}
-                        ${fadeOut && index >= itemsToShow - 5 ? 'dashboard__table-container__fade-out' : ''}`}>
-                      <td>
-                        <RoundIcon iconName="book_2" color="blue" />
-                      </td>
-                      <td>
-                        <div className="dashboard__table-container__name">{item.title}</div>
-                        <div className="dashboard__table-container__desc">{item.content}</div>
-                      </td>
-                      <td className={item.cards.length === 0 ? 'dashboard--text-red' : ''}>
-                        {item.cards.length}
-                      </td>
-                      <td>{item.lastOpened}</td>
-                      <td>
-                        <Button
-                          iconName="&#xe41d;"
-                          iconStyling="reusable-button__icon-flip"
-                          buttonVariant="tertiary"
-                          buttonText="Review"
-                          buttonOnClickFunc={() => console.log('click click')}
-                          disabled={item.cards.length === 0 ? true : false}
-                        />
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-              {texts.length > 3 && (
-                <div className="dashboard__view-container">
-                  <button
-                    disabled={itemsToShow >= texts.length}
-                    className="dashboard__view-button"
-                    onClick={() => showMoreItems(5)}>
-                    View More
-                    <span className="material-symbols-outlined">keyboard_arrow_down</span>
-                  </button>
-                  <button
-                    disabled={itemsToShow <= 3}
-                    className={`dashboard__view-button`}
-                    onClick={() => showLessItems(5)}>
-                    View Less
-                    <span className="material-symbols-outlined">keyboard_arrow_up</span>
-                  </button>
-                </div>
-              )}
-            </div>
-          ) : (
-            <div className="dashboard__no-text-library">
-              <img src="/images/no_text_library.svg" />
-              <div>
-                <p className="dashboard--bold dashboard__no-text-library__text-margin">
-                  Nothing here yet!
-                </p>
-                <p>
-                  Add your own text, or <u>use a sample text</u>
-                </p>
-              </div>
-            </div>
-          )}
-        </div>
       </div>
       <div
         className={`dashboard__overlay ${isAddTextOpen ? 'dashboard__overlay--active' : ''}`}
         onClick={() => setIsAddTextOpen(false)}></div>
       <AddTextSlideout isOpen={isAddTextOpen} onClose={() => setIsAddTextOpen(false)} />
+    </div>
+  ) : (
+    <div>
+      <p>
+        User not logged in. Please log in <Link to="/login">here</Link>.
+      </p>
     </div>
   );
 }

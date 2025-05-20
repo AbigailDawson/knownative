@@ -13,11 +13,12 @@ function useAuthContext() {
 
 function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function getUser() {
       try {
-        const res = await fetch(import.meta.env.VITE_GET_USER_URL, {
+        const res = await fetch('api/users/getUser', {
           method: 'GET',
           credentials: 'include'
         });
@@ -31,12 +32,14 @@ function AuthProvider({ children }) {
       } catch (err) {
         console.error(err.message);
         setUser(null);
+      } finally {
+        setLoading(false);
       }
     }
     getUser();
   }, []);
 
-  return <AuthContext.Provider value={{ user, setUser }}>{children}</AuthContext.Provider>;
+  return <AuthContext.Provider value={{ user, setUser, loading }}>{children}</AuthContext.Provider>;
 }
 
 export { AuthProvider, useAuthContext };
