@@ -4,7 +4,7 @@ import sendRequest from '../../utilities/send-request';
 import { useAuthContext } from '../../contexts/Auth/AuthProvider';
 import './AddTextSlideout.scss';
 
-export default function AddTextSlideout({ isOpen, onClose }) {
+export default function AddTextSlideout({ isOpen, onClose, onSuccess }) {
   const [formData, setFormData] = useState({
     source: '',
     title: '',
@@ -61,6 +61,7 @@ export default function AddTextSlideout({ isOpen, onClose }) {
       try {
         const data = await sendRequest('/api/demo/texts', 'POST', formData);
         console.log('Text added:', data);
+        if (onSuccess) onSuccess();
         onClose(); // Close the slideout after successful submission
       } catch (error) {
         console.error('Oops! Error submitting form:', error);

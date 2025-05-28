@@ -391,17 +391,18 @@ export default function DashboardPage() {
     );
   };
 
-  useEffect(() => {
-    const fetchTexts = async () => {
-      try {
-        if (user._id) {
-          const texts = await getUserTexts();
-          setTexts(texts);
-        }
-      } catch (error) {
-        console.log('Error fetching texts:', error);
+  const fetchTexts = async () => {
+    try {
+      if (user._id) {
+        const texts = await getUserTexts();
+        setTexts(texts);
       }
-    };
+    } catch (error) {
+      console.log('Error fetching texts:', error);
+    }
+  };
+
+  useEffect(() => {
     fetchTexts();
   }, [user]);
 
@@ -609,8 +610,7 @@ export default function DashboardPage() {
                       <td>
                         <button
                           className="dashboard__table-container__name dashboard__link"
-                          onClick={() => navigate(`/text/${item._id}`, { state: { text: item } })}
-                        >
+                          onClick={() => navigate(`/text/${item._id}`, { state: { text: item } })}>
                           {item.title}
                         </button>
                         <div className="dashboard__table-container__desc">{item.content}</div>
@@ -625,7 +625,9 @@ export default function DashboardPage() {
                           iconStyling="reusable-button__icon-flip"
                           buttonVariant="tertiary"
                           buttonText="Review"
-                          buttonOnClickFunc={() => navigate(`/text/${item._id}`, { state: { text: item } })}
+                          buttonOnClickFunc={() =>
+                            navigate(`/text/${item._id}`, { state: { text: item } })
+                          }
                           disabled={item.cards.length === 0}
                         />
                       </td>
@@ -670,7 +672,11 @@ export default function DashboardPage() {
       <div
         className={`dashboard__overlay ${isAddTextOpen ? 'dashboard__overlay--active' : ''}`}
         onClick={() => setIsAddTextOpen(false)}></div>
-      <AddTextSlideout isOpen={isAddTextOpen} onClose={() => setIsAddTextOpen(false)} />
+      <AddTextSlideout
+        isOpen={isAddTextOpen}
+        onClose={() => setIsAddTextOpen(false)}
+        onSuccess={fetchTexts}
+      />
     </div>
   );
 }
