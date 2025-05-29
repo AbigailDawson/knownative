@@ -7,6 +7,7 @@ import { getUserTexts } from '../../utilities/texts-api';
 import DashboardNavbar from '../components/DashboardNavbar';
 import AddTextSlideout from '../AddTextPage/AddTextSlideout';
 import Spinner from '../../ui-components/Spinner/spinner';
+import { fetchTexts } from '../../utilities/texts-api';
 
 const mockData = [
   {
@@ -392,17 +393,7 @@ export default function DashboardPage() {
   };
 
   useEffect(() => {
-    const fetchTexts = async () => {
-      try {
-        if (user._id) {
-          const texts = await getUserTexts();
-          setTexts(texts);
-        }
-      } catch (error) {
-        console.log('Error fetching texts:', error);
-      }
-    };
-    fetchTexts();
+    fetchTexts(user, setTexts);
   }, [user]);
 
   if (loading) {
@@ -609,8 +600,7 @@ export default function DashboardPage() {
                       <td>
                         <button
                           className="dashboard__table-container__name dashboard__link"
-                          onClick={() => navigate(`/text/${item._id}`, { state: { text: item } })}
-                        >
+                          onClick={() => navigate(`/text/${item._id}`, { state: { text: item } })}>
                           {item.title}
                         </button>
                         <div className="dashboard__table-container__desc">{item.content}</div>
@@ -625,7 +615,9 @@ export default function DashboardPage() {
                           iconStyling="reusable-button__icon-flip"
                           buttonVariant="tertiary"
                           buttonText="Review"
-                          buttonOnClickFunc={() => navigate(`/text/${item._id}`, { state: { text: item } })}
+                          buttonOnClickFunc={() =>
+                            navigate(`/text/${item._id}`, { state: { text: item } })
+                          }
                           disabled={item.cards.length === 0}
                         />
                       </td>
@@ -670,7 +662,11 @@ export default function DashboardPage() {
       <div
         className={`dashboard__overlay ${isAddTextOpen ? 'dashboard__overlay--active' : ''}`}
         onClick={() => setIsAddTextOpen(false)}></div>
-      <AddTextSlideout isOpen={isAddTextOpen} onClose={() => setIsAddTextOpen(false)} />
+      <AddTextSlideout
+        isOpen={isAddTextOpen}
+        onClose={() => setIsAddTextOpen(false)}
+        onSuccess={() => fetchTexts(user, setTexts)}
+      />
     </div>
   );
 }
