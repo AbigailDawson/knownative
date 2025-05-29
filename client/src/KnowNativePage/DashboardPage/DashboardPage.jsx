@@ -393,7 +393,7 @@ export default function DashboardPage() {
   };
 
   useEffect(() => {
-    fetchTexts();
+    fetchTexts(user, setTexts);
   }, [user]);
 
   if (loading) {
@@ -665,7 +665,7 @@ export default function DashboardPage() {
       <AddTextSlideout
         isOpen={isAddTextOpen}
         onClose={() => setIsAddTextOpen(false)}
-        onSuccess={fetchTexts}
+        onSuccess={() => fetchTexts(user, setTexts)}
       />
     </div>
   );

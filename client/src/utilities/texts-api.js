@@ -45,7 +45,7 @@ export const getUserTexts = async () => {
   return sendRequest(`${BASE_URL}/getTexts`, 'GET');
 };
 
-export const fetchTexts = async () => {
+export const fetchTexts = async (user, setTexts) => {
   try {
     if (user._id) {
       const texts = await getUserTexts();

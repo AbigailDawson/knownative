@@ -61,7 +61,7 @@ export default function AddTextSlideout({ isOpen, onClose, onSuccess }) {
       try {
         const data = await sendRequest('/api/demo/texts', 'POST', formData);
         console.log('Text added:', data);
-        if (onSuccess) onSuccess();
+        if (onSuccess) onSuccess(); // Callback to notify parent component of success
         onClose(); // Close the slideout after successful submission
       } catch (error) {
         console.error('Oops! Error submitting form:', error);
