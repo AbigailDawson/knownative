@@ -7,6 +7,7 @@ import { getUserTexts } from '../../utilities/texts-api';
 import DashboardNavbar from '../components/DashboardNavbar';
 import AddTextSlideout from '../AddTextPage/AddTextSlideout';
 import Spinner from '../../ui-components/Spinner/spinner';
+import { fetchTexts } from '../../utilities/texts-api';
 
 const mockData = [
   {
@@ -389,17 +390,6 @@ export default function DashboardPage() {
         )}
       </div>
     );
-  };
-
-  const fetchTexts = async () => {
-    try {
-      if (user._id) {
-        const texts = await getUserTexts();
-        setTexts(texts);
-      }
-    } catch (error) {
-      console.log('Error fetching texts:', error);
-    }
   };
 
   useEffect(() => {
