@@ -13,7 +13,10 @@ export default function WordPopup({ word, anchorRect, onClose }) {
 
   // position popup above the clicked word
   const style = anchorRect
-    ? { top: anchorRect.top - 160, left: anchorRect.left }
+    ? {
+        top: anchorRect.top - 160,
+        left: anchorRect.left + anchorRect.width / 2 - 100
+    }
     : {};
 
   return (

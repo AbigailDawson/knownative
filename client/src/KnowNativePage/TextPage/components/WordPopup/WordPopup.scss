@@ -59,11 +59,11 @@
   content: ""; // creates the little triangle box shape
   position: absolute;
   bottom: -6px;
-  left: 40px;
+  left: 50%;
   width: 10px;
   height: 10px;
   background: #EFFFFC;
   border-bottom: 1px solid #57bcaa;
   border-right: 1px solid #57bcaa;
-  transform: rotate(45deg);
+  transform: translateX(-50%) rotate(45deg);
 }
