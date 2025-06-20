@@ -16,6 +16,6 @@
   display: inline-block;
 }
 
-.study__word--active {
-  background: #EFFFFC;
+.study__word:hover:not(.study__word--active) {
+  background: #ddfcf6;
 }

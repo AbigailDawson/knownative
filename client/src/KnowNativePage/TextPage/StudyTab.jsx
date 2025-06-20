@@ -34,8 +34,7 @@ export default function StudyTab({ text }) {
           <span
             key={i}
             className={
-              "study__word" + 
-              (activeWord?.index === i ? " study__word--active" : "")
+              "study__word"
             }
 
             // when clicked pull pronunciation + meaning from word data and open popup
