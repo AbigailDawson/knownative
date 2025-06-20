@@ -1,0 +1,69 @@
+.word-popup {
+  position: absolute;
+  padding: .75rem;
+  border: 1px solid #57bcaa;
+  background: #EFFFFC;
+  border-radius: .5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, .15);
+  z-index: 1000;
+  text-align: left;
+  width: 200px;
+  max-width: 350px; //expands when needed
+  min-height: 150px;
+
+  &__close {
+    position: absolute;
+    top: .25rem;
+    right: .25rem;
+    border: none;
+    background: none;
+    font-size: 1rem;
+    color: #7ea5a4;
+    cursor: pointer;
+  }
+
+  &__add {
+    position: absolute;
+    bottom: .5rem;
+    right: .5rem;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 50%;
+    background: #57bcaa;
+    color: #ffffff;
+    font-size: 1.25rem;
+    cursor: pointer;
+  }
+
+  &__chars {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin: .25rem 0;
+  }
+
+  &__pinyin {
+    color: #555555;
+    margin: 0;
+  }
+
+  &__meaning {
+    margin: .25rem 0 0;
+  }
+}
+
+.word-popup::after {
+  content: ""; // creates the little triangle box shape
+  position: absolute;
+  bottom: -6px;
+  left: 40px;
+  width: 10px;
+  height: 10px;
+  background: #EFFFFC;
+  border-bottom: 1px solid #57bcaa;
+  border-right: 1px solid #57bcaa;
+  transform: rotate(45deg);
+}
