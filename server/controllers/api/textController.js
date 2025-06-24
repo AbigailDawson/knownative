@@ -40,7 +40,41 @@ const getUserTexts = async (req, res) => {
     }
   };
 
+  // Save a word to a user's text (POST /api/texts/saveWord)
+async function saveWord(req, res) {
+  try {
+    const { textId, traditional, pinyin, meaning } = req.body;
+    const userId = req.user._id;
+
+    if (!textId || !traditional) {
+      return res.status(400).json({ message: "textId and traditional are required" });
+    }
+
+    // stop duplicates for the same user + text + characters
+    const exists = await Card.findOne({
+      user: userId,
+      text: textId,
+      "frontProperties.traditional": traditional,
+    });
+    if (exists) return res.status(409).json({ message: "Word already saved" });
+
+    const card = await Card.create({
+      user: userId,
+      text: textId,
+      frontProperties: { traditional, easier: traditional, pinyin },
+      backProperties: { meaning },
+    });
+
+    await Text.findByIdAndUpdate(textId, { $push: { cards: card._id } });
+    res.status(201).json(card);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Server error" });
+  }
+}
+
   module.exports = {
     getUserTexts,
-    deleteUserText
+    deleteUserText,
+    saveWord,
 };
