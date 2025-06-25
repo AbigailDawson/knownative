@@ -82,9 +82,9 @@ npm i
 Create a new file named `.env` inside the **server** directory and add the following variables:
 
 ```
-DATABASE_URL=<your-mongodb-connection-string>
+MONGODB_URI=<your-mongodb-connection-string>
 GOOGLE_TRANSLATE_API_KEY=<your-google-translate-api-key>
-JWT_SECRED=<any-string>
+JWT_SECRET=<any-string>
 ```
 
 - `MONGODB_URI` contains the connection string for MongoDB. [Learn how to connect](https://www.mongodb.com/resources/products/fundamentals/mongodb-connection-string).
