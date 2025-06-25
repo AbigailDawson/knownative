@@ -44,7 +44,7 @@ export default function WordPopup({ word, anchorRect, onClose }) {
       <p className="word-popup__chars">{word.chars}</p>
       <p className="word-popup__meaning">{word.meaning}</p>
       <button 
-        className={`word-popup__add${saved ? " saved" : ""}`}
+        className={`word-popup__add${saved ? " word-popup__add--saved" : ""}`}
         onClick={handleSave}
       >
         {saved ? "✓" : "＋"}

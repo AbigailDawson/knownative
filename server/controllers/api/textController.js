@@ -65,7 +65,10 @@ async function saveWord(req, res) {
       backProperties: { meaning },
     });
 
-    await Text.findByIdAndUpdate(textId, { $push: { cards: card._id } });
+    // Mongoose style load text add card and save
+    const text = await Text.findById(textId);
+    text.cards.push(card._id);
+    await text.save();
     res.status(201).json(card);
   } catch (err) {
     console.error(err);
