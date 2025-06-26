@@ -45,6 +45,7 @@ export default function StudyTab({ text }) {
                 chars: charGroup || w.text,
                 pinyin,
                 meaning,
+                textId: text._id,
                 rect: e.target.getBoundingClientRect(), // store click position for popup placement
               });
             }}
