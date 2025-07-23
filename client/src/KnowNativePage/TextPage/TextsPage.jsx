@@ -90,6 +90,8 @@ export default function TextsPage() {
             onClick={() => handleTabClick('translate')}>
             Translate
           </button>
+        </div>
+        <div className="terms-page__button_container">
           <Button
             iconName="&#xe41d;"
             iconStyling="reusable-button__icon-flip"
