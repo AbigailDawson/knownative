@@ -1,14 +1,15 @@
 .slider {
   position: fixed;
-  top: 0;
+  top: 5rem;
   right: -100%;
   width: 400px;
-  height: 100%;
-  background-color: white;
+  height: 90%;
+  background-color: #f2f5f5;
   color: black;
   box-shadow: -2px 0 8px rgba(0, 0, 0, 0.15);
   transition: right 0.3s ease-in-out;
   z-index: 1000;
+  text-align: left;
 
   &.open {
     right: 0;
@@ -19,6 +20,7 @@
     flex-direction: column;
     height: 100%;
     padding: 1rem;
+    padding-inline-start: 1.5rem;
   }
 
   &__header {
@@ -28,9 +30,11 @@
   }
 
   &__close {
+    display: flex;
+    justify-content: end;
     background: none;
     border: none;
-    font-size: 1.5rem;
+    font-size: 2rem;
     cursor: pointer;
   }
 
@@ -41,7 +45,7 @@
   }
 
   &__card {
-    background: #f5f5f5;
+    background: #ffffff;
     padding: 1rem;
     border-radius: 8px;
     margin-bottom: 1rem;

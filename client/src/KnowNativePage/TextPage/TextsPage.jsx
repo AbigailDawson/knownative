@@ -91,17 +91,19 @@ export default function TextsPage() {
             Translate
           </button>
         </div>
-        <div className="terms-page__button_container">
-          <Button
-            iconName="&#xe41d;"
-            iconStyling="reusable-button__icon-flip"
-            buttonVariant="tertiary"
-            buttonText="Terms"
-            buttonOnClickFunc={() => setIsSliderOpen(true)}
-          />
-        </div>
 
-        <div className="text-divider"></div>
+        <div className="text-divider-countainer">
+          <div className="terms-page__button_container">
+            <Button
+              iconName="&#xe41d;"
+              iconStyling="reusable-button__icon-flip"
+              buttonVariant="tertiary"
+              buttonText="Terms"
+              buttonOnClickFunc={() => setIsSliderOpen(true)}
+            />
+          </div>
+          <div className={`${isSliderOpen ? 'text-divider-short' : 'text-divider'}`}></div>
+        </div>
 
         {/* Show title and source link on every tab */}
         <div className="Text text-content">
@@ -111,11 +113,12 @@ export default function TextsPage() {
           </a>
         </div>
 
-        <div className="text-divider"></div>
+        <div className={`${isSliderOpen ? 'text-divider-short' : 'text-divider'}`}></div>
 
         {/* show the full paragraph on the read tab*/}
         {activeTab === 'read' && (
-          <section className="read-container read-container--active">
+          <section
+            className={`read-container read-container--active ${isSliderOpen ? 'read-container--slider-open' : ''}`}>
             <p className="text-body">{text.content}</p>
           </section>
         )}

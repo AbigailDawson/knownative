@@ -87,6 +87,10 @@
   justify-content: left;
 }
 
+.read-container--slider-open {
+  width: 65%;
+}
+
 .Text {
   width: 100%;
   line-height: 2.95;
@@ -119,6 +123,12 @@
 }
 
 .text-divider {
+  border-top: 1px solid #e1e3e3;
+  margin: 0.5rem 0 1.25rem;
+  transition: all 0.2s ease;
+}
+.text-divider-short {
+  width: 65%;
   border-top: 1px solid #e1e3e3;
   margin: 0.5rem 0 1.25rem;
 }
