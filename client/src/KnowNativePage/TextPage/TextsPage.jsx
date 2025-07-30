@@ -36,7 +36,15 @@ export default function TextsPage() {
 
       <div className="dashboard__main">
         {/* User dropdown with name + profile info */}
-        <div className="dashboard__user-info">
+        <div className="dashboard__user-info-card">
+          <Link to="/dashboard" className="text-page__back">
+            <span
+              className="material-symbols-outlined"
+              style={{ fontSize: '32px', marginRight: '0.5rem' }}>
+              chevron_left
+            </span>
+            Return to Dashboard
+          </Link>
           <div className="dashboard__user-dropdown">
             <button
               className="dashboard__user-dropdown-options"
@@ -64,17 +72,9 @@ export default function TextsPage() {
           </div>
         </div>
 
-        <Link to="/dashboard" className="text-page__back">
-          <span
-            className="material-symbols-outlined"
-            style={{ fontSize: '32px', marginRight: '0.5rem' }}>
-            chevron_left
-          </span>
-          Return to Dashboard
-        </Link>
-
         {/* Tabs for switching mode */}
-        <div className="tabs sticky-fade text-page__l-center">
+        <div
+          className={`tabs sticky-fade text-page__l-center ${isSliderOpen ? 'tabs--slider-open' : ''}`}>
           <button
             className={`tabs__btn ${activeTab === 'read' ? 'tabs__btn--active' : ''}`}
             onClick={() => handleTabClick('read')}>
