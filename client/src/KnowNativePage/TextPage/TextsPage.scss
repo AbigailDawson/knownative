@@ -8,6 +8,14 @@
   width: calc(100% - 285px);
 }
 
+.dashboard__cards-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr; /* Two columns: main content and sidebar */
+  gap: 2vmin;
+  padding: 2vmin;
+  margin-right: 2vmin;
+}
+
 // Back button to Dashboard
 .text-page__back {
   display: inline-flex;
@@ -87,10 +95,6 @@
   justify-content: left;
 }
 
-.read-container--slider-open {
-  width: 65%;
-}
-
 .Text {
   width: 100%;
   line-height: 2.95;
@@ -126,11 +130,6 @@
   border-top: 1px solid #e1e3e3;
   margin: 0.5rem 0 1.25rem;
   transition: all 0.2s ease;
-}
-.text-divider-short {
-  width: 65%;
-  border-top: 1px solid #e1e3e3;
-  margin: 0.5rem 0 1.25rem;
 }
 
 .terms-page__button_container {

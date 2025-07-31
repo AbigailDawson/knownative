@@ -73,68 +73,81 @@ export default function TextsPage() {
         </div>
 
         {/* Tabs for switching mode */}
-        <div
-          className={`tabs sticky-fade text-page__l-center ${isSliderOpen ? 'tabs--slider-open' : ''}`}>
-          <button
-            className={`tabs__btn ${activeTab === 'read' ? 'tabs__btn--active' : ''}`}
-            onClick={() => handleTabClick('read')}>
-            Read
-          </button>
-          <button
-            className={`tabs__btn ${activeTab === 'study' ? 'tabs__btn--active' : ''}`}
-            onClick={() => handleTabClick('study')}>
-            Study
-          </button>
-          <button
-            className={`tabs__btn ${activeTab === 'translate' ? 'tabs__btn--active' : ''}`}
-            onClick={() => handleTabClick('translate')}>
-            Translate
-          </button>
-        </div>
+        <div className={`${isSliderOpen ? 'dashboard__cards-container' : 'dashboard__content'}`}>
+          <div className="col">
+            <div className="tabs sticky-fade text-page__l-center">
+              <button
+                className={`tabs__btn ${activeTab === 'read' ? 'tabs__btn--active' : ''}`}
+                onClick={() => handleTabClick('read')}>
+                Read
+              </button>
+              <button
+                className={`tabs__btn ${activeTab === 'study' ? 'tabs__btn--active' : ''}`}
+                onClick={() => handleTabClick('study')}>
+                Study
+              </button>
+              <button
+                className={`tabs__btn ${activeTab === 'translate' ? 'tabs__btn--active' : ''}`}
+                onClick={() => handleTabClick('translate')}>
+                Translate
+              </button>
+            </div>
 
-        <div className="text-divider-countainer">
-          <div className="terms-page__button_container">
-            <Button
-              iconName="&#xe41d;"
-              iconStyling="reusable-button__icon-flip"
-              buttonVariant="tertiary"
-              buttonText="Terms"
-              buttonOnClickFunc={() => setIsSliderOpen(true)}
+            <div className="text-divider-countainer">
+              <div className="terms-page__button_container">
+                {isSliderOpen ? (
+                  <div> </div>
+                ) : (
+                  <Button
+                    iconName="&#xe41d;"
+                    iconStyling="reusable-button__icon-flip"
+                    buttonVariant="tertiary"
+                    buttonText="Terms"
+                    buttonOnClickFunc={() => setIsSliderOpen(true)}
+                  />
+                )}
+              </div>
+
+              <div className="text-divider"></div>
+            </div>
+
+            {/* Show title and source link on every tab */}
+            <div className="Text text-content">
+              <h1 className="text-title">{text.title}</h1>
+              <a
+                href={text.source}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-source">
+                View Original Source
+              </a>
+            </div>
+
+            <div className="text-divider"></div>
+
+            {/* show the full paragraph on the read tab*/}
+            {activeTab === 'read' && (
+              <section className="read-container read-container--active">
+                <p className="text-body">{text.content}</p>
+              </section>
+            )}
+
+            <div>
+              {activeTab === 'study' && <StudyTab text={text} />}
+              {activeTab === 'translate' && <p>This is the Translate tab.</p>}
+            </div>
+          </div>
+          <div className="col">
+            <Slider
+              isOpen={isSliderOpen}
+              onClose={() => setIsSliderOpen(false)}
+              onSuccess={() => {
+                // Add review logic here if needed
+                setIsSliderOpen(false);
+              }}
             />
           </div>
-          <div className={`${isSliderOpen ? 'text-divider-short' : 'text-divider'}`}></div>
         </div>
-
-        {/* Show title and source link on every tab */}
-        <div className="Text text-content">
-          <h1 className="text-title">{text.title}</h1>
-          <a href={text.source} target="_blank" rel="noopener noreferrer" className="text-source">
-            View Original Source
-          </a>
-        </div>
-
-        <div className={`${isSliderOpen ? 'text-divider-short' : 'text-divider'}`}></div>
-
-        {/* show the full paragraph on the read tab*/}
-        {activeTab === 'read' && (
-          <section
-            className={`read-container read-container--active ${isSliderOpen ? 'read-container--slider-open' : ''}`}>
-            <p className="text-body">{text.content}</p>
-          </section>
-        )}
-
-        <div>
-          {activeTab === 'study' && <StudyTab text={text} />}
-          {activeTab === 'translate' && <p>This is the Translate tab.</p>}
-        </div>
-        <Slider
-          isOpen={isSliderOpen}
-          onClose={() => setIsSliderOpen(false)}
-          onSuccess={() => {
-            // Add review logic here if needed
-            setIsSliderOpen(false);
-          }}
-        />
       </div>
     </div>
   );
