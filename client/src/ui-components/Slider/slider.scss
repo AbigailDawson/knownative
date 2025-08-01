@@ -46,9 +46,57 @@
 
   &__card {
     background: #ffffff;
+    display: grid;
+    grid-template-columns: 1fr auto;
     padding: 1rem;
     border-radius: 8px;
     margin-bottom: 1rem;
+
+    .col {
+      align-self: center;
+      position: relative;
+
+      .SavedWord-card__menu {
+        position: absolute;
+        top: 1.5rem; // Adjust based on your icon placement
+        right: 0.02rem; // Ensures it's aligned within the card
+        background-color: white;
+        border-radius: 6px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        z-index: 10;
+        min-width: 120px;
+        overflow: hidden;
+
+        display: flex;
+        flex-direction: column;
+
+        &-button {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 0.75rem 1rem;
+          font-size: 1rem;
+          cursor: pointer;
+
+          &--edit {
+            background-color: #e6f7f7;
+          }
+
+          &--delete {
+            background-color: #fddddd;
+            color: #b00020;
+          }
+
+          &:hover {
+            background-color: #f0f0f0;
+          }
+        }
+
+        &__menu-label {
+          margin-right: 0.5rem;
+        }
+      }
+    }
   }
 
   &__footer {
