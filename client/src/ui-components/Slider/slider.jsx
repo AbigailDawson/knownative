@@ -48,13 +48,13 @@ const Slider = ({ isOpen, onClose, onSuccess }) => {
           ×
         </button>
         <div className="slider__header">
-          <h1 className="slider__title">Saved Cards</h1>
-        </div>
-        <div className="slider__body">
+          <h4 className="slider__title">Saved Cards</h4>
           <p className="slider__description">
             Expand your vocabulary with the words you’ve saved. Reviewing them regularly helps
             reinforce learning!
           </p>
+        </div>
+        <div className="slider__body">
           {/* Placeholder cards */}
           <div className="slider__card">
             <div className="col">

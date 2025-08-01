@@ -25,8 +25,9 @@
 
   &__header {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    align-items: center;
+    gap: 1rem;
   }
 
   &__close {
@@ -36,10 +37,16 @@
     border: none;
     font-size: 2rem;
     cursor: pointer;
+    font-family: 'Libre Franklin', sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    padding: 0 1.2vmin;
+    border-radius: 0.7vmin;
   }
 
   &__body {
-    flex: 1;
+    flex: 0.8;
     overflow-y: auto;
     margin-top: 1rem;
   }
