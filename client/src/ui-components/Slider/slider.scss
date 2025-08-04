@@ -111,6 +111,14 @@
     border-top: 1px solid #ddd;
     display: flex;
     justify-content: center;
+
+    .dashboard__card-button {
+      width: 100%;
+
+      Button {
+        width: 100%;
+      }
+    }
   }
 
   &__confirm {

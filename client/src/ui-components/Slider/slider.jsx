@@ -3,6 +3,7 @@ import './slider.scss';
 import DemoEditWordModal from '../../DemoPage/components/DemoEditWordModal/DemoEditWordModal';
 import { FaPencilAlt, FaTrashAlt } from 'react-icons/fa';
 import { BiDotsVerticalRounded } from 'react-icons/bi';
+import Button from '../Button/button';
 
 const Slider = ({ isOpen, onClose, onSuccess }) => {
   const [isEditMenuOpen, setIsEditMenuOpen] = useState(false);
@@ -142,9 +143,15 @@ const Slider = ({ isOpen, onClose, onSuccess }) => {
           </div>
         </div>
         <div className="slider__footer">
-          <button className="slider__confirm" onClick={onSuccess}>
-            Review
-          </button>
+          <div className="dashboard__card-button">
+            <Button
+              iconName="&#xe41d;"
+              iconStyling="reusable-button__icon-flip"
+              buttonVariant="tertiary"
+              buttonText="Review"
+              buttonOnClickFunc={() => console.log('click click')}
+            />
+          </div>
         </div>
       </div>
     </div>
