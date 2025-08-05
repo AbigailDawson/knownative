@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './slider.scss';
 import DemoEditWordModal from '../../DemoPage/components/DemoEditWordModal/DemoEditWordModal';
 import { FaPencilAlt, FaTrashAlt } from 'react-icons/fa';
@@ -11,6 +11,7 @@ const Slider = ({ isOpen, onClose, onSuccess }) => {
   const [showingEditWordModal, setShowingEditWordModal] = useState(false);
   const [activeCardId, setActiveCardId] = useState(null);
   const [modalCardId, setModalCardId] = useState(null);
+  const sliderRef = useRef();
   const words = [
     { id: 1, term: '天氣', definition: 'weather' },
     { id: 2, term: '天氣', definition: 'weather' }
@@ -23,12 +24,20 @@ const Slider = ({ isOpen, onClose, onSuccess }) => {
       }
     }
 
+    function handleClickOutside(event) {
+      if (sliderRef.current && !sliderRef.current.contains(event.target)) {
+        onClose();
+      }
+    }
+
     if (isOpen) {
       window.addEventListener('keydown', handleKeyDown);
+      document.addEventListener('mousedown', handleClickOutside);
     }
 
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
+      document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [isOpen, onClose]);
 
@@ -113,7 +122,7 @@ const Slider = ({ isOpen, onClose, onSuccess }) => {
   ));
 
   return (
-    <div className={`slider ${isOpen ? 'open' : ''}`}>
+    <div ref={sliderRef} className={`slider ${isOpen ? 'open' : ''}`}>
       <div className="slider__content">
         <button className="slider__close" aria-label="Close slider" onClick={onClose}>
           ×
