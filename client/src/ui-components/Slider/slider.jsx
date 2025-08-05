@@ -9,6 +9,12 @@ const Slider = ({ isOpen, onClose, onSuccess }) => {
   const [isEditMenuOpen, setIsEditMenuOpen] = useState(false);
   const [isMouseInsideMenu, setIsMouseInsideMenu] = useState(false);
   const [showingEditWordModal, setShowingEditWordModal] = useState(false);
+  const [activeCardId, setActiveCardId] = useState(null);
+  const [modalCardId, setModalCardId] = useState(null);
+  const words = [
+    { id: 1, term: '天氣', definition: 'weather' },
+    { id: 2, term: '天氣', definition: 'weather' }
+  ];
 
   function handleOpenEditModal() {
     setShowingEditWordModal(true);
@@ -42,6 +48,54 @@ const Slider = ({ isOpen, onClose, onSuccess }) => {
     deleteWord(word);
   }
 
+  const displayWords = words.map((word) => (
+    <div key={word.id} className="slider__card">
+      <div className="col">
+        <section className="SavedWord-card__content">
+          <p className="SavedWord-card__char">{word.term}</p>
+          <p className="SavedWord-card__char">{word.definition}</p>
+        </section>
+      </div>
+      <div className="col">
+        <BiDotsVerticalRounded
+          className={`SavedWord-card__card-icon ${modalCardId === word.id ? 'SavedWord-card__menu-icon--open' : ''}`}
+          onClick={() => setActiveCardId(activeCardId === word.id ? null : word.id)}
+        />
+
+        {/* Modal */}
+        {modalCardId === word.id && (
+          <DemoEditWordModal
+            handleDeleteWord={() => handleDeleteWord(word.id)}
+            setShowModal={(open) => setModalCardId(open ? word.id : null)}
+            updateWord={updateWord}
+            word={word}
+          />
+        )}
+
+        {/* Menu */}
+        {activeCardId === word.id && (
+          <article
+            className="SavedWord-card__menu"
+            onMouseEnter={handleMouseEnterMenu}
+            onMouseLeave={() => setActiveCardId(null)}>
+            <section
+              className="SavedWord-card__menu-button SavedWord-card__menu-button--edit"
+              onClick={() => setModalCardId(word.id)}>
+              <p className="SavedWord-card__menu-label">Edit</p>
+              <FaPencilAlt />
+            </section>
+            <section
+              className="SavedWord-card__menu-button SavedWord-card__menu-button--delete"
+              onClick={() => handleDeleteWord(word.id)}>
+              <p className="SavedWord-card__menu-label">Delete</p>
+              <FaTrashAlt />
+            </section>
+          </article>
+        )}
+      </div>
+    </div>
+  ));
+
   return (
     <div className={`slider ${isOpen ? 'open' : ''}`}>
       <div className="slider__content">
@@ -57,90 +111,13 @@ const Slider = ({ isOpen, onClose, onSuccess }) => {
         </div>
         <div className="slider__body">
           {/* Placeholder cards */}
-          <div className="slider__card">
-            <div className="col">
-              <h3>Placeholder Term</h3>
-              <p>This is an example definition...</p>
+          {displayWords.length > 0 ? (
+            displayWords
+          ) : (
+            <div className="slider__empty-state">
+              <p>No saved words yet. Start saving words to review them here!</p>
             </div>
-            <div className="col">
-              <BiDotsVerticalRounded
-                className={`SavedWord-card__card-icon ${showingEditWordModal && 'SavedWord-card__menu-icon--open'}`}
-                onClick={handleEditIconClick}
-              />
-              {/* Code that allows for the edit word modal to show up*/}
-              {showingEditWordModal ? (
-                <DemoEditWordModal
-                  handleDeleteWord={handleDeleteWord}
-                  setShowModal={setShowingEditWordModal}
-                  updateWord={updateWord}
-                  word={word}
-                />
-              ) : null}
-              {/* If the editMenuOpen state variable is true, display the edit/delete menu. */}
-              {isEditMenuOpen && (
-                <article
-                  className="SavedWord-card__menu"
-                  onMouseEnter={handleMouseEnterMenu}
-                  onMouseLeave={handleEditMenuMouseleave}>
-                  <section
-                    className="SavedWord-card__menu-button SavedWord-card__menu-button--edit"
-                    onClick={handleOpenEditModal}>
-                    <p className="SavedWord-card__menu-label">Edit</p>
-                    <FaPencilAlt />
-                  </section>
-                  <section
-                    className="SavedWord-card__menu-button 
-          SavedWord-card__menu-button--delete"
-                    onClick={handleDeleteWord}>
-                    <p className="SavedWord-card__menu-label">Delete</p>
-                    <FaTrashAlt />
-                  </section>
-                </article>
-              )}
-            </div>
-          </div>
-          <div className="slider__card">
-            <div className="col">
-              <h3>Placeholder Term</h3>
-              <p>This is an example definition...</p>
-            </div>
-            <div className="col">
-              <BiDotsVerticalRounded
-                className={`SavedWord-card__card-icon ${showingEditWordModal && 'SavedWord-card__menu-icon--open'}`}
-                onClick={handleEditIconClick}
-              />
-              {/* Code that allows for the edit word modal to show up*/}
-              {showingEditWordModal ? (
-                <DemoEditWordModal
-                  handleDeleteWord={handleDeleteWord}
-                  setShowModal={setShowingEditWordModal}
-                  updateWord={updateWord}
-                  word={word}
-                />
-              ) : null}
-              {/* If the editMenuOpen state variable is true, display the edit/delete menu. */}
-              {isEditMenuOpen && (
-                <article
-                  className="SavedWord-card__menu"
-                  onMouseEnter={handleMouseEnterMenu}
-                  onMouseLeave={handleEditMenuMouseleave}>
-                  <section
-                    className="SavedWord-card__menu-button SavedWord-card__menu-button--edit"
-                    onClick={handleOpenEditModal}>
-                    <p className="SavedWord-card__menu-label">Edit</p>
-                    <FaPencilAlt />
-                  </section>
-                  <section
-                    className="SavedWord-card__menu-button 
-          SavedWord-card__menu-button--delete"
-                    onClick={handleDeleteWord}>
-                    <p className="SavedWord-card__menu-label">Delete</p>
-                    <FaTrashAlt />
-                  </section>
-                </article>
-              )}
-            </div>
-          </div>
+          )}
         </div>
         <div className="slider__footer">
           <div className="dashboard__card-button">

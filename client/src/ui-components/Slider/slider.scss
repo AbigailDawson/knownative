@@ -57,7 +57,7 @@
     grid-template-columns: 1fr auto;
     padding: 1rem;
     border-radius: 8px;
-    margin-bottom: 1rem;
+    margin-bottom: 0.1rem;
 
     .col {
       align-self: center;
@@ -101,6 +101,18 @@
 
         &__menu-label {
           margin-right: 0.5rem;
+        }
+      }
+
+      .SavedWord-card__content {
+        display: flex;
+        flex-direction: column;
+        padding: 0.5rem;
+
+        .SavedWord-card__char {
+          font-size: 1.2rem;
+          font-weight: 400;
+          color: #333;
         }
       }
     }
