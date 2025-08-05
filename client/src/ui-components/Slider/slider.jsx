@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './slider.scss';
 import DemoEditWordModal from '../../DemoPage/components/DemoEditWordModal/DemoEditWordModal';
 import { FaPencilAlt, FaTrashAlt } from 'react-icons/fa';
@@ -15,6 +15,22 @@ const Slider = ({ isOpen, onClose, onSuccess }) => {
     { id: 1, term: '天氣', definition: 'weather' },
     { id: 2, term: '天氣', definition: 'weather' }
   ];
+
+  useEffect(() => {
+    function handleKeyDown(event) {
+      if (event.key === 'Escape') {
+        onClose();
+      }
+    }
+
+    if (isOpen) {
+      window.addEventListener('keydown', handleKeyDown);
+    }
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isOpen, onClose]);
 
   function handleOpenEditModal() {
     setShowingEditWordModal(true);
