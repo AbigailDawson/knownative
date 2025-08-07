@@ -8,6 +8,13 @@
   width: calc(100% - 285px);
 }
 
+.dashboard__content {
+  display: grid;
+  gap: 2vmin;
+  padding: 2vmin;
+  margin-right: 2vmin;
+}
+
 .dashboard__cards-container {
   display: grid;
   grid-template-columns: 2fr 1fr; /* Two columns: main content and sidebar */
