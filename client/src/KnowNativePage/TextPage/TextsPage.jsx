@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
-import Slider from '../../ui-components/slider/slider.jsx';
+import Slider from '../../ui-components/Slider/slider.jsx';
 import DashboardNavbar from '../components/DashboardNavbar';
 import Button from '../../ui-components/Button/button';
 import './TextsPage.scss';
