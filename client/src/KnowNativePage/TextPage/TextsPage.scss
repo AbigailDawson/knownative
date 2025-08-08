@@ -8,19 +8,30 @@
   width: calc(100% - 285px);
 }
 
-.dashboard__content {
+.text-page__layout {
   display: grid;
   gap: 2vmin;
   padding: 2vmin;
   margin-right: 2vmin;
-}
 
-.dashboard__cards-container {
-  display: grid;
-  grid-template-columns: 2fr 1fr; /* Two columns: main content and sidebar */
-  gap: 2vmin;
-  padding: 2vmin;
-  margin-right: 2vmin;
+  &--with-sidebar {
+    grid-template-columns: 2fr 1fr; /* Two columns: main content and sidebar */
+    gap: 2vmin;
+    padding: 2vmin;
+    margin-right: 2vmin;
+  }
+  &--full-width {
+    grid-template-columns: 1fr; /* Full width for the main content */
+  }
+}
+.text-page__workspace {
+  transition: all 0.5s ease-in-out;
+  &--compressed {
+    grid-template-columns: 1fr;
+  }
+}
+.text-page__sidebar {
+  transition: all 0.5s ease-in-out;
 }
 
 // Back button to Dashboard

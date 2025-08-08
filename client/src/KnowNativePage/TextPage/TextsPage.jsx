@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
-import Slider from '../../ui-components/Slider/slider.jsx';
+import Slider from '../../ui-components/Slider/Slider.jsx';
 import DashboardNavbar from '../components/DashboardNavbar';
 import Button from '../../ui-components/Button/button';
 import './TextsPage.scss';
@@ -73,8 +73,10 @@ export default function TextsPage() {
         </div>
 
         {/* Tabs for switching mode */}
-        <div className={`${isSliderOpen ? 'dashboard__cards-container' : 'dashboard__content'}`}>
-          <div className="col">
+        <div
+          className={`text-page__layout ${isSliderOpen ? 'text-page__layout--with-sidebar' : 'text-page__layout--full-width'}`}>
+          <div
+            className={`text-page__workspace ${isSliderOpen ? 'text-page__workspace--compressed' : ''}`}>
             <div className="tabs sticky-fade text-page__l-center">
               <button
                 className={`tabs__btn ${activeTab === 'read' ? 'tabs__btn--active' : ''}`}
@@ -137,7 +139,7 @@ export default function TextsPage() {
               {activeTab === 'translate' && <p>This is the Translate tab.</p>}
             </div>
           </div>
-          <div className="col">
+          <div className="text-page__sidebar">
             <Slider
               isOpen={isSliderOpen}
               onClose={() => setIsSliderOpen(false)}
