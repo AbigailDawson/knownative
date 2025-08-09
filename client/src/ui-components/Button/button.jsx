@@ -8,7 +8,8 @@ const Button = ({
   disabled = false,
   iconName,
   iconStyling,
-  textSize
+  textSize,
+  visibility = true
 }) => {
   /*
 Button Variants:
@@ -20,7 +21,7 @@ Button Variants:
 
   return (
     <button
-      className={`reusable-button reusable-button--${buttonVariant} ${textSize}`}
+      className={`reusable-button reusable-button--${buttonVariant} reusable-button--${visibility ? 'show' : 'invisible'} ${textSize}`}
       onClick={buttonOnClickFunc}
       disabled={disabled}>
       {iconName && (
