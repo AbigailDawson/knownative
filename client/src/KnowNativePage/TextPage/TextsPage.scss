@@ -9,7 +9,7 @@
 }
 
 .text-page__layout {
-  display: grid;
+  display: flex;
   gap: 2vmin;
   padding: 2vmin;
   margin-right: 2vmin;
@@ -25,14 +25,20 @@
   }
 }
 .text-page__workspace {
-  transition: all 0.5s ease-in-out;
-  &--compressed {
-    grid-template-columns: 1fr;
+  transition: width 0.3s ease-out;
+  flex: 1;
+}
+
+.text-page__sidebar {
+  width: 0;
+  overflow: hidden;
+  transition: width 0.5s ease-in-out;
+  
+  .text-page__layout--with-sidebar & {
+    width: 300px; // Adjust this value as needed
   }
 }
-.text-page__sidebar {
-  transition: all 0.5s ease-in-out;
-}
+
 
 // Back button to Dashboard
 .text-page__back {

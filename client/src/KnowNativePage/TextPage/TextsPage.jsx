@@ -98,13 +98,21 @@ export default function TextsPage() {
             <div className="text-divider-countainer">
               <div className="terms-page__button_container">
                 {isSliderOpen ? (
-                  <div> </div>
+                  <Button
+                    iconName="&#xe41d;"
+                    iconStyling="display: none"
+                    buttonVariant="tertiary"
+                    buttonText="Terms"
+                    visibility={false}
+                    buttonOnClickFunc={() => setIsSliderOpen(true)}
+                  />
                 ) : (
                   <Button
                     iconName="&#xe41d;"
                     iconStyling="reusable-button__icon-flip"
                     buttonVariant="tertiary"
                     buttonText="Terms"
+                    visibility={true}
                     buttonOnClickFunc={() => setIsSliderOpen(true)}
                   />
                 )}
