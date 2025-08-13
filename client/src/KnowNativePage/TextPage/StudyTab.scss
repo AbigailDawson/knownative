@@ -12,5 +12,10 @@
 }
 
 .study__word {
+  cursor: pointer;
   display: inline-block;
+}
+
+.study__word:hover:not(.study__word--active) {
+  background: #ddfcf6;
 }
