@@ -75,9 +75,9 @@ export default function TextsPage() {
         {/* Tabs for switching mode */}
         <div
           className={`text-page__layout ${isSliderOpen ? 'text-page__layout--with-sidebar' : 'text-page__layout--full-width'}`}>
-          <div
-            className={`text-page__workspace ${isSliderOpen ? 'text-page__workspace--compressed' : ''}`}>
-            <div className="tabs sticky-fade text-page__l-center">
+          <div className={`text-page__workspace`}>
+            <div
+              className={`${isSliderOpen ? 'tabs__compressed sticky-fade ' : 'tabs sticky-fade '}`}>
               <button
                 className={`tabs__btn ${activeTab === 'read' ? 'tabs__btn--active' : ''}`}
                 onClick={() => handleTabClick('read')}>
