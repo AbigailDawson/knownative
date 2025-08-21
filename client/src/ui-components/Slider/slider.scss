@@ -1,0 +1,150 @@
+.slider {
+  position: fixed;
+  top: 5rem;
+  right: -100%;
+  width: 400px;
+  height: 100%;
+  background-color: #f2f5f5;
+  color: black;
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.15);
+  transition: right 0.3s ease-in-out;
+  z-index: 1000;
+  text-align: left;
+
+  &.open {
+    right: 0;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 1rem;
+    padding-inline-start: 1.5rem;
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  &__close {
+    display: flex;
+    justify-content: end;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    font-family: 'Libre Franklin', sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    padding: 0 1.2vmin;
+    border-radius: 0.7vmin;
+  }
+
+  &__body {
+    flex: 0.8;
+    overflow-y: auto;
+    margin-top: 1rem;
+  }
+
+  &__card {
+    background: #ffffff;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 0.1rem;
+
+    .col {
+      align-self: center;
+      position: relative;
+
+      .SavedWord-card__menu {
+        position: absolute;
+        top: 1.5rem; // Adjust based on your icon placement
+        right: 0.02rem; // Ensures it's aligned within the card
+        background-color: white;
+        border-radius: 6px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        z-index: 10;
+        min-width: 120px;
+        overflow: hidden;
+
+        display: flex;
+        flex-direction: column;
+
+        &-button {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 0.75rem 1rem;
+          font-size: 1rem;
+          cursor: pointer;
+
+          &--edit {
+            background-color: #e6f7f7;
+          }
+
+          &--delete {
+            background-color: #fddddd;
+            color: #b00020;
+          }
+
+          &:hover {
+            background-color: #f0f0f0;
+          }
+        }
+
+        &__menu-label {
+          margin-right: 0.5rem;
+        }
+      }
+
+      .SavedWord-card__content {
+        display: flex;
+        flex-direction: column;
+        padding: 0.5rem;
+
+        .SavedWord-card__char {
+          font-size: 1.2rem;
+          font-weight: 400;
+          color: #333;
+        }
+      }
+    }
+  }
+
+  &__footer {
+    padding-top: 1rem;
+    border-top: 1px solid #ddd;
+    display: flex;
+    justify-content: center;
+
+    .dashboard__card-button {
+      width: 100%;
+
+      Button {
+        width: 100%;
+      }
+    }
+  }
+
+  &__confirm {
+    background-color: #086a6c;
+    color: white;
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #074b59;
+    }
+  }
+}

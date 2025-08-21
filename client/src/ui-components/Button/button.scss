@@ -83,4 +83,12 @@
       @include hoverFX($color: #fff, $bg-color: #bb2deb)
     }
   }
+  
+  &--show {
+    visibility: visible;
+  }
+
+  &--invisible {
+    visibility: hidden;
+  }
 }

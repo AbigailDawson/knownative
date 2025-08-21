@@ -10,5 +10,9 @@ export function deleteWord(word) {
 }
 
 export function countSavedWords() {
-  return sendRequest(`${BASE_URL}/count`)
+  return sendRequest(`${BASE_URL}/count`);
+}
+
+export function saveWord(data) {
+  return sendRequest('/api/texts/saveWord', 'POST', data);
 }

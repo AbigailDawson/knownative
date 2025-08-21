@@ -67,3 +67,9 @@
   border-right: 1px solid #bed3d1;
   transform: translateX(-50%) rotate(45deg);
 }
+
+//hide circle when word is saved
+.word-popup__add--saved {
+  background: transparent;
+  color: #57bcaa
+}
