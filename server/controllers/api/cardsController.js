@@ -1,6 +1,6 @@
 const Card = require("../../models/card");
 
-async function getCards(req, res) {
+async function getAllCards(req, res) {
   try {
     const userId = req.user._id; 
     const cards = await Card.find({ user: userId })
@@ -13,5 +13,5 @@ async function getCards(req, res) {
 }
 
 module.exports = {
-  getCards
+  getAllCards
 };

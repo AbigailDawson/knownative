@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import Slider from '../../ui-components/Slider/slider.jsx';
 import DashboardNavbar from '../components/DashboardNavbar';
@@ -6,16 +6,32 @@ import Button from '../../ui-components/Button/button';
 import './TextsPage.scss';
 import StudyTab from './StudyTab';
 import { useAuthContext } from '../../contexts/Auth/AuthProvider';
+import { getAllCards } from '../../utilities/cards-api.js';
+import { useSavedWordsDispatch } from '../../contexts/SavedWords/SavedWordsProvider.jsx';
 
 export default function TextsPage() {
   const navigate = useNavigate();
   const location = useLocation();
   const { id } = useParams();
+  const textId = id;
   const [activeTab, setActiveTab] = useState('read');
   const { user } = useAuthContext();
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
   const [text, setText] = useState(location.state?.text || null);
   const [isSliderOpen, setIsSliderOpen] = useState(false);
+  const dispatch = useSavedWordsDispatch();
+
+  useEffect(() => {
+    if  (textId) {
+      async function fetchSavedWords() {
+        const data = await getAllCards(textId)
+        console.log('These are your fetched words: ', data)
+        dispatch({ type: 'LOAD', data })
+      }
+
+      fetchSavedWords();
+    };
+  }, [textId, dispatch]) 
 
   function handleTabClick(tabName) {
     setActiveTab(tabName);
