@@ -25,7 +25,7 @@ export default function TextsPage() {
     if  (textId) {
       async function fetchSavedWords() {
         const data = await getAllCards(textId)
-        console.log('These are your fetched words: ', data)
+        console.log('These are all your words: ', data)
         dispatch({ type: 'LOAD', data })
       }
 
