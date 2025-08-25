@@ -6,8 +6,8 @@ import "./WordPopup.scss";
 export default function WordPopup({ word, anchorRect, onClose }) {
   const ref = useRef(null);
   const [saved, setSaved] = useState(false);
+  const [loading, setLoading] = useState(false);
   const { savedWords } = useSavedWordsContext();
-  console.log('Here you have your savedWords: ', savedWords)
 
   // close popup if clicked outside of it
   useEffect(() => {
@@ -26,18 +26,13 @@ export default function WordPopup({ word, anchorRect, onClose }) {
 
   // Check if the word is already saved:
   useEffect(() => {
-    const isWordSaved = savedWords.some((savedWord) => {
-      console.log(`Comparing ${savedWord.frontProperties.traditional} to ${word.chars}`)
-      return savedWord.frontProperties.traditional === word.chars;
-    });
-    console.log('Is the word saved? ', isWordSaved)
+    setLoading(true);
+    const isWordSaved = savedWords.some((savedWord) => savedWord.frontProperties.traditional === word.chars);
     setSaved(isWordSaved);
-    console.log('Checking if saved. Saved: ', saved)
+    setLoading(false);
   }, [savedWords, word.chars])
 
   async function handleSave() {
-    console.log('Handling Saved')
-    console.log('Word seems to be saved? ', saved)
     if (saved) return;
     try {
       await saveWord({
@@ -62,8 +57,9 @@ export default function WordPopup({ word, anchorRect, onClose }) {
       <button 
         className={`word-popup__add${saved ? " word-popup__add--saved" : ""}`}
         onClick={handleSave}
+        disabled={loading}
       >
-        {saved ? "✓" : "＋"}
+        {loading ? "..." : saved ? "✓" : "＋"}
       </button>
     </div>
   );
