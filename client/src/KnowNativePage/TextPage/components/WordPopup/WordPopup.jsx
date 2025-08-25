@@ -26,10 +26,19 @@ export default function WordPopup({ word, anchorRect, onClose }) {
 
   // Check if the word is already saved:
   useEffect(() => {
+    let finishedChecking = false;
     setLoading(true);
+
     const isWordSaved = savedWords.some((savedWord) => savedWord.frontProperties.traditional === word.chars);
-    setSaved(isWordSaved);
-    setLoading(false);
+    
+    if(!finishedChecking) {
+      setSaved(isWordSaved);
+      setLoading(false);
+    }
+    
+    return () => {
+      finishedChecking = true;
+    }
   }, [savedWords, word.chars])
 
   async function handleSave() {
@@ -59,7 +68,7 @@ export default function WordPopup({ word, anchorRect, onClose }) {
         onClick={handleSave}
         disabled={loading}
       >
-        {loading ? "..." : saved ? "✓" : "＋"}
+        {loading ? "⌛" : saved ? "✓" : "＋"}
       </button>
     </div>
   );
