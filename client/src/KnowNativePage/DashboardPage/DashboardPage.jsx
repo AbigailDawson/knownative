@@ -399,21 +399,14 @@ export default function DashboardPage() {
     fetchTexts(user, setTexts);
   }, [user]);
 
-  // Fetch all saved words:
+  // Fetch all saved words and load them into Context:
   useEffect(() => {
     async function fetchSavedCards(){
       const allCards = await getAllCards();
-      console.log('These are all your saved cards: ', allCards)
-      console.log(`You have ${allCards.length} cards total.`)
       dispatch({ type: 'LOAD', data: allCards });
     }
-
     fetchSavedCards();
   }, [dispatch])
-
-  useEffect(() => {
-  console.log('Saved Words State:', savedWords); // Log the context state
-}, [savedWords]);
 
   if (loading) {
     return (
@@ -477,7 +470,7 @@ export default function DashboardPage() {
           <div className="dashboard__stat">
             <RoundIcon iconName="book_2" color="blue" />
             <div className="dashboard__stat__stat-info">
-              <h3 className="">21</h3>
+              <h3 className="">{texts.length}</h3>
               <span className="dashboard__stat__label">Texts</span>
             </div>
           </div>

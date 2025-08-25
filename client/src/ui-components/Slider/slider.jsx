@@ -1,9 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useContext } from 'react';
 import './slider.scss';
 import DemoEditWordModal from '../../DemoPage/components/DemoEditWordModal/DemoEditWordModal';
 import { FaPencilAlt, FaTrashAlt } from 'react-icons/fa';
 import { BiDotsVerticalRounded } from 'react-icons/bi';
 import Button from '../Button/button';
+import { useSavedWordsContext } from '../../contexts/SavedWords/SavedWordsProvider';
 
 const Slider = ({ isOpen, onClose, onSuccess }) => {
   const [isEditMenuOpen, setIsEditMenuOpen] = useState(false);
@@ -12,10 +13,7 @@ const Slider = ({ isOpen, onClose, onSuccess }) => {
   const [activeCardId, setActiveCardId] = useState(null);
   const [modalCardId, setModalCardId] = useState(null);
   const sliderRef = useRef();
-  const words = [
-    { id: 1, term: '天氣', definition: 'weather' },
-    { id: 2, term: '天氣', definition: 'weather' }
-  ];
+  const { savedWords } = useSavedWordsContext();
 
   useEffect(() => {
     function handleKeyDown(event) {
@@ -73,12 +71,12 @@ const Slider = ({ isOpen, onClose, onSuccess }) => {
     deleteWord(word);
   }
 
-  const displayWords = words.map((word) => (
+  const displayWords = savedWords.map((word) => (
     <div key={word.id} className="slider__card">
       <div className="col">
         <section className="SavedWord-card__content">
-          <p className="SavedWord-card__char">{word.term}</p>
-          <p className="SavedWord-card__char">{word.definition}</p>
+          <p className="SavedWord-card__char">{word.frontProperties.traditional}</p>
+          <p className="SavedWord-card__char">{word.backProperties.meaning}</p>
         </section>
       </div>
       <div className="col">
