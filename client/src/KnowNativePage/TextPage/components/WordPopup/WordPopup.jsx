@@ -46,6 +46,8 @@ export default function WordPopup({ word, anchorRect, onClose }) {
   async function handleSave() {
     if (saved) return;
     
+    setLoading(true);
+
     try {
       await saveWord({
         textId: word.textId,
@@ -61,6 +63,8 @@ export default function WordPopup({ word, anchorRect, onClose }) {
     } catch (err) {
       if (err?.status === 409) setSaved(true);
       console.error(err);
+    } finally {
+      setLoading(false);
     }
   }
 
