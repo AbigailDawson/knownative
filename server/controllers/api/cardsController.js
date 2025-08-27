@@ -23,7 +23,7 @@ async function getCardsByTextId(req, res) {
     .populate('text', 'title')
     .sort({ createdAt: -1 });
 
-    if(!cards.length){
+    if (!cards.length) {
       return res.status(404).json({ message: "No cards saved for this text."});
     }
 
