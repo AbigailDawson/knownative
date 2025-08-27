@@ -72,7 +72,7 @@ const Slider = ({ isOpen, onClose, onSuccess }) => {
   }
 
   const displayWords = savedWords.map((word) => (
-    <div key={word.id} className="slider__card">
+    <div key={word._id} className="slider__card">
       <div className="col">
         <section className="SavedWord-card__content">
           <p className="SavedWord-card__char">{word.frontProperties.traditional}</p>
@@ -81,35 +81,35 @@ const Slider = ({ isOpen, onClose, onSuccess }) => {
       </div>
       <div className="col">
         <BiDotsVerticalRounded
-          className={`SavedWord-card__card-icon ${modalCardId === word.id ? 'SavedWord-card__menu-icon--open' : ''}`}
-          onClick={() => setActiveCardId(activeCardId === word.id ? null : word.id)}
+          className={`SavedWord-card__card-icon ${modalCardId === word._id ? 'SavedWord-card__menu-icon--open' : ''}`}
+          onClick={() => setActiveCardId(activeCardId === word._id ? null : word._id)}
         />
 
         {/* Modal */}
-        {modalCardId === word.id && (
+        {modalCardId === word._id && (
           <DemoEditWordModal
-            handleDeleteWord={() => handleDeleteWord(word.id)}
-            setShowModal={(open) => setModalCardId(open ? word.id : null)}
+            handleDeleteWord={() => handleDeleteWord(word._id)}
+            setShowModal={(open) => setModalCardId(open ? word._id : null)}
             updateWord={updateWord}
             word={word}
           />
         )}
 
         {/* Menu */}
-        {activeCardId === word.id && (
+        {activeCardId === word._id && (
           <article
             className="SavedWord-card__menu"
             onMouseEnter={handleMouseEnterMenu}
             onMouseLeave={() => setActiveCardId(null)}>
             <section
               className="SavedWord-card__menu-button SavedWord-card__menu-button--edit"
-              onClick={() => setModalCardId(word.id)}>
+              onClick={() => setModalCardId(word._id)}>
               <p className="SavedWord-card__menu-label">Edit</p>
               <FaPencilAlt />
             </section>
             <section
               className="SavedWord-card__menu-button SavedWord-card__menu-button--delete"
-              onClick={() => handleDeleteWord(word.id)}>
+              onClick={() => handleDeleteWord(word._id)}>
               <p className="SavedWord-card__menu-label">Delete</p>
               <FaTrashAlt />
             </section>
