@@ -1,10 +1,15 @@
 import { useEffect, useRef, useState } from "react";
 import { saveWord } from "../../../../utilities/words-api";
+import { getAllCards } from '../../../../utilities/cards-api'
+import { useSavedWordsContext, useSavedWordsDispatch } from '../../../../contexts/SavedWords/SavedWordsProvider'
 import "./WordPopup.scss";
 
 export default function WordPopup({ word, anchorRect, onClose }) {
   const ref = useRef(null);
   const [saved, setSaved] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const { savedWords } = useSavedWordsContext();
+  const dispatch = useSavedWordsDispatch();
 
   // close popup if clicked outside of it
   useEffect(() => {
@@ -21,8 +26,19 @@ export default function WordPopup({ word, anchorRect, onClose }) {
     }
     : {};
 
+  // Check if the word is already saved:
+  useEffect(() => {
+    const isWordSaved = savedWords.some(
+      (savedWord) => savedWord.frontProperties.traditional === word.chars
+    );
+    setSaved(isWordSaved);
+  }, [savedWords, word.chars])
+
   async function handleSave() {
     if (saved) return;
+    
+    setLoading(true);
+
     try {
       await saveWord({
         textId: word.textId,
@@ -30,10 +46,16 @@ export default function WordPopup({ word, anchorRect, onClose }) {
         pinyin: word.pinyin,
         meaning: word.meaning,
       });
+      
       setSaved(true);
+      const updatedSavedWords = await getAllCards();
+      dispatch({ type: 'LOAD', data: updatedSavedWords });
+    
     } catch (err) {
       if (err?.status === 409) setSaved(true);
       console.error(err);
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -46,8 +68,9 @@ export default function WordPopup({ word, anchorRect, onClose }) {
       <button 
         className={`word-popup__add${saved ? " word-popup__add--saved" : ""}`}
         onClick={handleSave}
+        disabled={loading}
       >
-        {saved ? "✓" : "＋"}
+        {loading ? "⌛" : saved ? "✓" : "＋"}
       </button>
     </div>
   );

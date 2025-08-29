@@ -8,6 +8,8 @@ import DashboardNavbar from '../components/DashboardNavbar';
 import AddTextSlideout from '../AddTextPage/AddTextSlideout';
 import Spinner from '../../ui-components/Spinner/spinner';
 import { fetchTexts } from '../../utilities/texts-api';
+import { getAllCards } from '../../utilities/cards-api'
+import { useSavedWordsDispatch, useSavedWordsContext }  from '../../contexts/SavedWords/SavedWordsProvider';
 
 const mockData = [
   {
@@ -298,9 +300,9 @@ export default function DashboardPage() {
   const [sortDirection, setSortDirection] = useState('asc');
   const [isAddTextOpen, setIsAddTextOpen] = useState(false);
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
-
   const [texts, setTexts] = useState([]);
-  const [error, setError] = useState(null);
+  const dispatch = useSavedWordsDispatch();
+  const { savedWords } = useSavedWordsContext();
 
   const showMoreItems = (amount) => {
     setItemsToShow((prev) => prev + amount);
@@ -392,9 +394,19 @@ export default function DashboardPage() {
     );
   };
 
+  // Fetch all Texts for the User:
   useEffect(() => {
     fetchTexts(user, setTexts);
   }, [user]);
+
+  // Fetch all saved words and load them into Context:
+  useEffect(() => {
+    async function fetchSavedCards(){
+      const allCards = await getAllCards();
+      dispatch({ type: 'LOAD', data: allCards });
+    }
+    fetchSavedCards();
+  }, [dispatch])
 
   if (loading) {
     return (
@@ -458,7 +470,7 @@ export default function DashboardPage() {
           <div className="dashboard__stat">
             <RoundIcon iconName="book_2" color="blue" />
             <div className="dashboard__stat__stat-info">
-              <h3 className="">21</h3>
+              <h3 className="">{texts.length}</h3>
               <span className="dashboard__stat__label">Texts</span>
             </div>
           </div>
@@ -466,7 +478,7 @@ export default function DashboardPage() {
           <div className="dashboard__stat">
             <RoundIcon iconName="&#xe41d;" color="green" />
             <div className="dashboard__stat__stat-info">
-              <h3>154</h3>
+              <h3>{savedWords.length}</h3>
               <span className="dashboard__stat__label">Cards</span>
             </div>
           </div>

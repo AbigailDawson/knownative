@@ -1,9 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useContext } from 'react';
 import './slider.scss';
 import DemoEditWordModal from '../../DemoPage/components/DemoEditWordModal/DemoEditWordModal';
 import { FaPencilAlt, FaTrashAlt } from 'react-icons/fa';
 import { BiDotsVerticalRounded } from 'react-icons/bi';
 import Button from '../Button/button';
+import { useSavedWordsContext } from '../../contexts/SavedWords/SavedWordsProvider';
 
 const Slider = ({ isOpen, onClose, onSuccess }) => {
   const [isEditMenuOpen, setIsEditMenuOpen] = useState(false);
@@ -12,10 +13,7 @@ const Slider = ({ isOpen, onClose, onSuccess }) => {
   const [activeCardId, setActiveCardId] = useState(null);
   const [modalCardId, setModalCardId] = useState(null);
   const sliderRef = useRef();
-  const words = [
-    { id: 1, term: '天氣', definition: 'weather' },
-    { id: 2, term: '天氣', definition: 'weather' }
-  ];
+  const { savedWords } = useSavedWordsContext();
 
   useEffect(() => {
     function handleKeyDown(event) {
@@ -73,45 +71,45 @@ const Slider = ({ isOpen, onClose, onSuccess }) => {
     deleteWord(word);
   }
 
-  const displayWords = words.map((word) => (
-    <div key={word.id} className="slider__card">
+  const displayWords = savedWords.map((word) => (
+    <div key={word._id} className="slider__card">
       <div className="col">
         <section className="SavedWord-card__content">
-          <p className="SavedWord-card__char">{word.term}</p>
-          <p className="SavedWord-card__char">{word.definition}</p>
+          <p className="SavedWord-card__char">{word.frontProperties.traditional}</p>
+          <p className="SavedWord-card__char">{word.backProperties.meaning}</p>
         </section>
       </div>
       <div className="col">
         <BiDotsVerticalRounded
-          className={`SavedWord-card__card-icon ${modalCardId === word.id ? 'SavedWord-card__menu-icon--open' : ''}`}
-          onClick={() => setActiveCardId(activeCardId === word.id ? null : word.id)}
+          className={`SavedWord-card__card-icon ${modalCardId === word._id ? 'SavedWord-card__menu-icon--open' : ''}`}
+          onClick={() => setActiveCardId(activeCardId === word._id ? null : word._id)}
         />
 
         {/* Modal */}
-        {modalCardId === word.id && (
+        {modalCardId === word._id && (
           <DemoEditWordModal
-            handleDeleteWord={() => handleDeleteWord(word.id)}
-            setShowModal={(open) => setModalCardId(open ? word.id : null)}
+            handleDeleteWord={() => handleDeleteWord(word._id)}
+            setShowModal={(open) => setModalCardId(open ? word._id : null)}
             updateWord={updateWord}
             word={word}
           />
         )}
 
         {/* Menu */}
-        {activeCardId === word.id && (
+        {activeCardId === word._id && (
           <article
             className="SavedWord-card__menu"
             onMouseEnter={handleMouseEnterMenu}
             onMouseLeave={() => setActiveCardId(null)}>
             <section
               className="SavedWord-card__menu-button SavedWord-card__menu-button--edit"
-              onClick={() => setModalCardId(word.id)}>
+              onClick={() => setModalCardId(word._id)}>
               <p className="SavedWord-card__menu-label">Edit</p>
               <FaPencilAlt />
             </section>
             <section
               className="SavedWord-card__menu-button SavedWord-card__menu-button--delete"
-              onClick={() => handleDeleteWord(word.id)}>
+              onClick={() => handleDeleteWord(word._id)}>
               <p className="SavedWord-card__menu-label">Delete</p>
               <FaTrashAlt />
             </section>
