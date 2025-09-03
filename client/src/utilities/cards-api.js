@@ -6,19 +6,10 @@ export const getAllCards = async () => {
 };
 
 export const updateCard = async (cardId, updates) => {
-  const payload = {};
-  if (updates?.frontProperties?.pinyin !== undefined) {
-    payload.reading = updates.frontProperties.pinyin;
-  }
-  if (updates?.backProperties?.meaning !== undefined) {
-    payload.meaning = updates.backProperties.meaning;
-  }
-  if (updates?.reading !== undefined) {
-    payload.reading = updates.reading;
-  }
-  if (updates?.meaning !== undefined) {
-    payload.meaning = updates.meaning;
-  }
+  const payload = {
+    reading: updates?.frontProperties?.pinyin ?? updates?.reading,
+    meaning: updates?.backProperties?.meaning ?? updates?.meaning,
+  };
 
   return sendRequest(`${BASE_URL}/${cardId}`, 'PUT', payload);
 };
