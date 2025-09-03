@@ -78,9 +78,9 @@ const Slider = ({ isOpen, onClose, onSuccess }) => {
 //  }
 
   const handleEditClick = (word) => {
-  setSelectedWord(word);
-  setEditModalOpen(true);
-  setActiveCardId(null);
+    setSelectedWord(word);
+    setEditModalOpen(true);
+    setActiveCardId(null);
 };
 
   const handleSaveWord = async (cardId, updates) => {
