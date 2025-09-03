@@ -18,6 +18,7 @@ const Slider = ({ isOpen, onClose, onSuccess }) => {
   const dispatch = useSavedWordsDispatch();
   const [editModalOpen, setEditModalOpen] = useState(false);
   const [selectedWord, setSelectedWord] = useState(null);
+  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
     function handleKeyDown(event) {
@@ -83,16 +84,17 @@ const Slider = ({ isOpen, onClose, onSuccess }) => {
 };
 
   const handleSaveWord = async (cardId, updates) => {
-  try {
-    const updatedCard = await updateCard(cardId, updates);
-    
-    dispatch({
-      type: 'UPDATE',
-      data: { cardId, updates: updatedCard }
-    });
-  } catch (error) {
-    console.error('Failed to save changes:', error);
-  }
+    setErrorMessage('');
+    try {
+      await updateCard(cardId, updates);
+      dispatch({
+        type: 'UPDATE',
+        data: { cardId, updates }
+      });
+    } catch (error) {
+      console.error('Failed to save changes:', error);
+      setErrorMessage('Changes could not be saved. Please try again.');
+    }
 };
 
   const displayWords = savedWords.map((word) => (
@@ -160,6 +162,12 @@ const Slider = ({ isOpen, onClose, onSuccess }) => {
           </p>
         </div>
         <div className="slider__body">
+          {errorMessage && (
+            <div style={{color: 'red', padding: '8px', fontSize: '14px', textAlign: 'center'}}>
+              {errorMessage}
+            </div>
+          )}
+
           {/* Placeholder cards */}
           {displayWords.length > 0 ? (
             displayWords

@@ -31,14 +31,21 @@ function savedWordsReducer(state, action) {
 function updateWord(savedWords, updatedData) {
   try {
     const { cardId, updates } = updatedData;
-    const targetWord = savedWords.find((w) => w._id === cardId);
-    if (targetWord && updates) {
-      targetWord.frontProperties.pinyin = 
-        updates.frontProperties?.pinyin ?? targetWord.frontProperties?.pinyin;
-      targetWord.backProperties.meaning = 
-        updates.backProperties?.meaning ?? targetWord.backProperties?.meaning;
-    }
-    return savedWords;
+    return savedWords.map((w) =>
+      w._id === cardId
+        ? {
+            ...w,
+            frontProperties: {
+              ...w.frontProperties,
+              ...(updates?.frontProperties ?? {}),
+            },
+            backProperties: {
+              ...w.backProperties,
+              ...(updates?.backProperties ?? {}),
+            },
+          }
+        : w
+    );
   } catch (error) {
     console.error(error);
     return savedWords;

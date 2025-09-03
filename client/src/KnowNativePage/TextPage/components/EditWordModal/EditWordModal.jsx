@@ -3,8 +3,9 @@ import Modal from '../../../../ui-components/Modal/modal';
 import './EditWordModal.scss';
 
 export default function EditWordModal({ word, isOpen, onClose, onSave }) {
-  const [reading, setReading] = useState(word?.frontProperties?.pinyin || '');
-  const [meaning, setMeaning] = useState(word?.backProperties?.meaning || '');
+  const [reading, setReading] = useState('');
+  const [meaning, setMeaning] = useState('');
+  const [saveError, setSaveError] = useState('');
 
   useEffect(() => {
     setReading(word?.frontProperties?.pinyin || '');
@@ -12,6 +13,7 @@ export default function EditWordModal({ word, isOpen, onClose, onSave }) {
   }, [word]);
 
   const handleSave = async () => {
+  setSaveError('');
   try {
     await onSave(word._id, {
       frontProperties: { pinyin: reading },
@@ -20,6 +22,7 @@ export default function EditWordModal({ word, isOpen, onClose, onSave }) {
     onClose();
   } catch (error) {
     console.error('Save failed:', error);
+    setSaveError('Error: Failed to save changes. Please try again.');
   }
 };
 
@@ -61,6 +64,12 @@ export default function EditWordModal({ word, isOpen, onClose, onSave }) {
           value={meaning}
           onChange={(e) => setMeaning(e.target.value)}
         />
+
+        {saveError && (
+          <div style={{color: 'red', fontSize: '14px', marginTop: '8px'}}>
+            {saveError}
+          </div>
+        )}
       </div>
     </Modal>
   );

@@ -7,5 +7,10 @@ export const getAllCards = async () => {
 
 // Update a card by its ID
 export const updateCard = async (cardId, updates) => {
-  return sendRequest(`${BASE_URL}/${cardId}`, 'PUT', updates);
+  const payload = {
+    reading: updates?.frontProperties?.pinyin ?? updates?.reading ?? '',
+    meaning: updates?.backProperties?.meaning ?? updates?.meaning ?? '',
+  };
+
+  return sendRequest(`${BASE_URL}/${cardId}`, 'PUT', payload);
 };
