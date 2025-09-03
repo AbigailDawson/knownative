@@ -1,19 +1,23 @@
-import React, { useEffect, useRef, useState, useContext } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './slider.scss';
-import DemoEditWordModal from '../../DemoPage/components/DemoEditWordModal/DemoEditWordModal';
-import { FaPencilAlt, FaTrashAlt } from 'react-icons/fa';
+import EditWordModal from '../../KnowNativePage/TextPage/components/EditWordModal/EditWordModal';
+import { FaPencilAlt, FaTrashAlt  } from 'react-icons/fa';
 import { BiDotsVerticalRounded } from 'react-icons/bi';
 import Button from '../Button/button';
-import { useSavedWordsContext } from '../../contexts/SavedWords/SavedWordsProvider';
+import { useSavedWordsContext, useSavedWordsDispatch } from '../../contexts/SavedWords/SavedWordsProvider';
+import { updateCard } from '../../utilities/cards-api';
 
 const Slider = ({ isOpen, onClose, onSuccess }) => {
   const [isEditMenuOpen, setIsEditMenuOpen] = useState(false);
   const [isMouseInsideMenu, setIsMouseInsideMenu] = useState(false);
   const [showingEditWordModal, setShowingEditWordModal] = useState(false);
   const [activeCardId, setActiveCardId] = useState(null);
-  const [modalCardId, setModalCardId] = useState(null);
+  // const [modalCardId, setModalCardId] = useState(null);  For demo modal (disabled)
   const sliderRef = useRef();
   const { savedWords } = useSavedWordsContext();
+  const dispatch = useSavedWordsDispatch();
+  const [editModalOpen, setEditModalOpen] = useState(false);
+  const [selectedWord, setSelectedWord] = useState(null);
 
   useEffect(() => {
     function handleKeyDown(event) {
@@ -66,10 +70,30 @@ const Slider = ({ isOpen, onClose, onSuccess }) => {
     setIsEditMenuOpen(false);
   }
 
-  function handleDeleteWord() {
-    setIsEditMenuOpen(false);
-    deleteWord(word);
+//  (delete disabled)
+//  function handleDeleteWord() {
+//    setIsEditMenuOpen(false);
+//    deleteWord(word);
+//  }
+
+  const handleEditClick = (word) => {
+  setSelectedWord(word);
+  setEditModalOpen(true);
+  setActiveCardId(null);
+};
+
+  const handleSaveWord = async (cardId, updates) => {
+  try {
+    const updatedCard = await updateCard(cardId, updates);
+    
+    dispatch({
+      type: 'UPDATE',
+      data: { cardId, updates: updatedCard }
+    });
+  } catch (error) {
+    console.error('Failed to save changes:', error);
   }
+};
 
   const displayWords = savedWords.map((word) => (
     <div key={word._id} className="slider__card">
@@ -81,11 +105,12 @@ const Slider = ({ isOpen, onClose, onSuccess }) => {
       </div>
       <div className="col">
         <BiDotsVerticalRounded
-          className={`SavedWord-card__card-icon ${modalCardId === word._id ? 'SavedWord-card__menu-icon--open' : ''}`}
+          className={`SavedWord-card__card-icon ${activeCardId === word._id ? 'SavedWord-card__menu-icon--open' : ''}`}
           onClick={() => setActiveCardId(activeCardId === word._id ? null : word._id)}
         />
 
-        {/* Modal */}
+        {/* 
+        Modal (demo, disabled)
         {modalCardId === word._id && (
           <DemoEditWordModal
             handleDeleteWord={() => handleDeleteWord(word._id)}
@@ -94,6 +119,7 @@ const Slider = ({ isOpen, onClose, onSuccess }) => {
             word={word}
           />
         )}
+        */}
 
         {/* Menu */}
         {activeCardId === word._id && (
@@ -103,7 +129,7 @@ const Slider = ({ isOpen, onClose, onSuccess }) => {
             onMouseLeave={() => setActiveCardId(null)}>
             <section
               className="SavedWord-card__menu-button SavedWord-card__menu-button--edit"
-              onClick={() => setModalCardId(word._id)}>
+              onClick={() => handleEditClick(word)}>
               <p className="SavedWord-card__menu-label">Edit</p>
               <FaPencilAlt />
             </section>
@@ -120,6 +146,7 @@ const Slider = ({ isOpen, onClose, onSuccess }) => {
   ));
 
   return (
+    <>
     <div ref={sliderRef} className={`slider ${isOpen ? 'open' : ''}`}>
       <div className="slider__content">
         <button className="slider__close" aria-label="Close slider" onClick={onClose}>
@@ -155,6 +182,13 @@ const Slider = ({ isOpen, onClose, onSuccess }) => {
         </div>
       </div>
     </div>
+    <EditWordModal
+      word={selectedWord}
+      isOpen={editModalOpen}
+      onClose={() => setEditModalOpen(false)}
+      onSave={handleSaveWord}
+    />
+    </>
   );
 };
 

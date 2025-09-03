@@ -1,0 +1,50 @@
+.edit-word-modal {
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    min-width: 450px;
+  }
+
+  &__textarea {
+    width: 100%;
+    min-height: 60px;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: inherit;
+    resize: vertical;
+
+    &:disabled {
+      background-color: #f5f5f5;
+      color: #666;
+      cursor: not-allowed;
+    }
+  }
+
+.modal__buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 0.75rem;
+}
+
+.modal__buttons-left {
+  margin-right: auto;
+}
+
+.modal__buttons-right {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.modal__buttons button {
+  font-size: 0.85rem;
+  padding: 0.35rem 0.7rem;
+}
+
+  .modal__buttons button:first-child:hover {
+  background-color: #6B0000;
+  }
+}

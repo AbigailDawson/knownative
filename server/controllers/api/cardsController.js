@@ -34,7 +34,34 @@ async function getCardsByTextId(req, res) {
   }
 }
 
+// Update a card by its ID
+async function updateCard(req, res) {
+  try {
+    const { id } = req.params;
+    const { reading, meaning } = req.body;
+    const userId = req.user._id;
+
+    const updatedCard = await Card.findOneAndUpdate(
+      { _id: id, user: userId },
+      { 
+        'frontProperties.pinyin': reading,
+        'backProperties.meaning': meaning 
+      },
+      { new: true }
+    ).populate('text', 'title');
+
+    if (!updatedCard) {
+      return res.status(404).json({ message: 'Card not found' });
+    }
+
+    res.json(updatedCard);
+  } catch (error) {
+    res.status(500).json({ message: 'Error updating card', error: error.message });
+  }
+}
+
 module.exports = {
   getAllCards,
-  getCardsByTextId
+  getCardsByTextId,
+  updateCard
 };

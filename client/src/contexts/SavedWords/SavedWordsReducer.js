@@ -30,13 +30,18 @@ function savedWordsReducer(state, action) {
 
 function updateWord(savedWords, updatedData) {
   try {
-    const targetWord = savedWords.find((word) => word._id === updatedData.id);
-    targetWord.meaning = updatedData.meaning;
-    targetWord.charGroup = updatedData.term;
-    targetWord.pinyin = updatedData.reading;
+    const { cardId, updates } = updatedData;
+    const targetWord = savedWords.find((w) => w._id === cardId);
+    if (targetWord && updates) {
+      targetWord.frontProperties.pinyin = 
+        updates.frontProperties?.pinyin ?? targetWord.frontProperties?.pinyin;
+      targetWord.backProperties.meaning = 
+        updates.backProperties?.meaning ?? targetWord.backProperties?.meaning;
+    }
     return savedWords;
   } catch (error) {
     console.error(error);
+    return savedWords;
   }
 }
 
