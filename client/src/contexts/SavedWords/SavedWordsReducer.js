@@ -47,7 +47,12 @@ function updateWord(savedWords, updatedData) {
         : w
     );
   } catch (error) {
-    console.error(error);
+    console.error(
+      'Failed to update word with data:',
+      updatedData,
+      'Error:',
+      error
+    );
     return savedWords;
   }
 }
