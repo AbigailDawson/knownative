@@ -41,6 +41,10 @@ async function updateCard(req, res) {
     const { reading, meaning } = req.body;
     const userId = req.user._id;
 
+    if (!reading && !meaning) {
+      return res.status(400).json({ message: 'At least one field (reading or meaning) must be provided.' });
+    }
+
     const updatedCard = await Card.findOneAndUpdate(
       { _id: id, user: userId },
       { 
