@@ -12,7 +12,6 @@ const Slider = ({ isOpen, onClose, onSuccess }) => {
   const [isMouseInsideMenu, setIsMouseInsideMenu] = useState(false);
   const [showingEditWordModal, setShowingEditWordModal] = useState(false);
   const [activeCardId, setActiveCardId] = useState(null);
-  // const [modalCardId, setModalCardId] = useState(null);  For demo modal (disabled)
   const sliderRef = useRef();
   const { savedWords } = useSavedWordsContext();
   const dispatch = useSavedWordsDispatch();
