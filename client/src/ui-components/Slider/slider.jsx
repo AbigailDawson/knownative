@@ -70,11 +70,6 @@ const Slider = ({ isOpen, onClose, onSuccess }) => {
     setIsEditMenuOpen(false);
   }
 
-//  (delete disabled)
-//  function handleDeleteWord() {
-//    setIsEditMenuOpen(false);
-//    deleteWord(word);
-//  }
 
   const handleEditClick = (word) => {
     setSelectedWord(word);
