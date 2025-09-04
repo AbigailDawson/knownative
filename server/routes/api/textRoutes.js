@@ -1,10 +1,16 @@
-const express = require("express");
-const { getUserTexts, deleteUserText, saveWord } = require("../../controllers/api/textController");
+const express = require('express');
+const {
+  getUserTexts,
+  deleteUserText,
+  saveWord,
+  deleteWord,
+} = require('../../controllers/api/textController');
 const router = express.Router();
-const { verifyJWT } = require("./../../utils/jwt");
+const { verifyJWT } = require('./../../utils/jwt');
 
-router.get("/getTexts", verifyJWT, getUserTexts);
-router.delete("/:userId/text/:textId", deleteUserText);
-router.post("/saveWord", verifyJWT, saveWord);
+router.get('/getTexts', verifyJWT, getUserTexts);
+router.delete('/:userId/text/:textId', deleteUserText);
+router.post('/saveWord', verifyJWT, saveWord);
+router.delete('/deleteWord/:wordId', verifyJWT, deleteWord);
 
 module.exports = router;
