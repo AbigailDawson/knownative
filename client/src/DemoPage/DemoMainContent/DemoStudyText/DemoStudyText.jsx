@@ -74,7 +74,6 @@ export default function DemoStudyText({
     return foundWord[propertyType];
   }
 
-  console.log(tokenizedText);
   const words = tokenizedText.map((word, idx) => {
     const isSaved = checkSaved(word);
     const wordInfo = wordsAPI.getWordInfo(word);

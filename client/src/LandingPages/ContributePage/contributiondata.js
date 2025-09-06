@@ -233,5 +233,4 @@ const enrichedContributions = contributions.map(contribution => {
   }
 })
 
-console.log(JSON.stringify(enrichedContributions, null, 2));
 export default { contributions, contributors, enrichedContributions };

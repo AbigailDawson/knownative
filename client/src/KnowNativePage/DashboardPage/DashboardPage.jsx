@@ -525,7 +525,7 @@ export default function DashboardPage() {
                   iconStyling="reusable-button__icon-flip"
                   buttonVariant="tertiary"
                   buttonText="Review"
-                  buttonOnClickFunc={() => console.log('click click')}
+                  buttonOnClickFunc={() => console.log('Card button has been clicked')}
                 />
               </div>
             </div>
