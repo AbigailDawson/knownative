@@ -20,6 +20,9 @@
   align-items: center;
   justify-content: center;
   font-family: 'Montserrat', 'Roboto', sans-serif;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   
   & p {
     margin: 0;
@@ -27,9 +30,6 @@
 
   &__zh {
     margin: 0;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
 
     &:hover {
       background-color: #d5fbf4;
