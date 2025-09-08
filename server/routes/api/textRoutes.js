@@ -11,6 +11,5 @@ const { verifyJWT } = require('./../../utils/jwt');
 router.get('/getTexts', verifyJWT, getUserTexts);
 router.delete('/:userId/text/:textId', deleteUserText);
 router.post('/saveWord', verifyJWT, saveWord);
-router.delete('/deleteWord/:wordId', verifyJWT, deleteWord);
 
 module.exports = router;

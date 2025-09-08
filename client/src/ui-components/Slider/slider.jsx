@@ -4,7 +4,11 @@ import DemoEditWordModal from '../../DemoPage/components/DemoEditWordModal/DemoE
 import { FaPencilAlt, FaTrashAlt } from 'react-icons/fa';
 import { BiDotsVerticalRounded } from 'react-icons/bi';
 import Button from '../Button/button';
-import { useSavedWordsContext } from '../../contexts/SavedWords/SavedWordsProvider';
+import {
+  useSavedWordsContext,
+  useSavedWordsDispatch
+} from '../../contexts/SavedWords/SavedWordsProvider';
+import { deleteSavedWord } from '../../contexts/SavedWords/SavedWordsActionsUtil';
 
 const Slider = ({ isOpen, onClose, onSuccess }) => {
   const [isEditMenuOpen, setIsEditMenuOpen] = useState(false);
@@ -14,6 +18,7 @@ const Slider = ({ isOpen, onClose, onSuccess }) => {
   const [modalCardId, setModalCardId] = useState(null);
   const sliderRef = useRef();
   const { savedWords } = useSavedWordsContext();
+  const dispatch = useSavedWordsDispatch();
 
   useEffect(() => {
     function handleKeyDown(event) {
@@ -66,9 +71,14 @@ const Slider = ({ isOpen, onClose, onSuccess }) => {
     setIsEditMenuOpen(false);
   }
 
-  function handleDeleteWord() {
+  async function handleDeleteWord(wordId) {
     setIsEditMenuOpen(false);
-    deleteWord(word);
+    try {
+      await deleteSavedWord(dispatch, wordId);
+      onClose?.();
+    } catch (e) {
+      console.error('Error deleting word:', e);
+    }
   }
 
   const displayWords = savedWords.map((word) => (
