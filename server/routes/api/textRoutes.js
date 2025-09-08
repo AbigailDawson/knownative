@@ -3,7 +3,6 @@ const {
   getUserTexts,
   deleteUserText,
   saveWord,
-  deleteWord,
 } = require('../../controllers/api/textController');
 const router = express.Router();
 const { verifyJWT } = require('./../../utils/jwt');

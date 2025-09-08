@@ -6,5 +6,5 @@ export const getAllCards = async () => {
 };
 
 export function deleteCard(id) {
-  return sendRequest(`${BASE_URL}/deleteCard/${id}/delete`, 'DELETE');
+  return sendRequest(`${BASE_URL}/${id}`, 'DELETE');
 }

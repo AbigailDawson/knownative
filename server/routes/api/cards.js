@@ -15,6 +15,6 @@ router.get('/', verifyJWT, getAllCards);
 // Route to get cards by Text ID for a specific user
 router.get('/text/:id', verifyJWT, getCardsByTextId);
 
-router.delete('/deleteCard/:wordId/delete', verifyJWT, deleteCard);
+router.delete('/:cardId', verifyJWT, deleteCard);
 
 module.exports = router;

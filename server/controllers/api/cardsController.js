@@ -41,12 +41,12 @@ async function getCardsByTextId(req, res) {
 
 async function deleteCard(req, res) {
   try {
-    const { wordId } = req.params;
+    const { cardId } = req.params;
     const userId = req.user._id;
 
     // Find the card and remove it
     const card = await Card.findOneAndDelete({
-      _id: wordId,
+      _id: cardId,
       user: userId,
     });
 
