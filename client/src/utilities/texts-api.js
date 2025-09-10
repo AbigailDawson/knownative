@@ -13,8 +13,8 @@ export function addNewText(textData) {
   return sendRequest(`${BASE_URL}/add`, 'POST', textData);
 }
 
-export function deleteText(text, id) {
-  return sendRequest(`${BASE_URL}/${id}/delete`, 'DELETE', { text });
+export function deleteText(textId, userId) {
+  return sendRequest(`/api/texts/${userId}/text/${textId}`, 'DELETE');
 }
 
 export function getText(id) {
