@@ -14,7 +14,7 @@ export function addNewText(textData) {
 }
 
 export function deleteText(textId, userId) {
-  return sendRequest(`/api/texts/${userId}/text/${textId}`, 'DELETE');
+  return sendRequest(`${BASE_URL}/${userId}/text/${textId}`, 'DELETE');
 }
 
 export function getText(id) {
