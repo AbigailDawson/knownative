@@ -30,11 +30,10 @@ export default function AddTextPage() {
       const data = await sendRequest('/api/demo/texts', 'POST', formData, {
         Authorization: `Bearer ${user.token}`
       });
-  
-      console.log('Text added:', data);
+      
       // Temporarily redirecting to the dashboard after successfully adding a text.
       navigate('/dashboard');
-      console.log('Form submitted:', formData);
+
     } catch (error) {
       console.error('Oops! Error submitting form:', error);
     }

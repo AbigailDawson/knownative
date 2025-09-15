@@ -52,6 +52,6 @@ export const fetchTexts = async (user, setTexts) => {
       setTexts(texts);
     }
   } catch (error) {
-    console.log('Error fetching texts:', error);
+    console.error('Error fetching texts:', error.message);
   }
 };

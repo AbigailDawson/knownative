@@ -44,17 +44,12 @@ async function create(req, res) {
 
 async function logIn(req, res) {
   try {
-    console.log('Login attempt with:', {
-      email: req.body.email,
-      passwordProvided: !!req.body.password,
-    });
 
     const user = await User.findOne({
       $or: [{ email: req.body.email }, { username: req.body.email }],
     });
 
     if (!user) {
-      console.log('User not found with email/username:', req.body.email);
       throw new Error('Invalid credentials');
     }
 

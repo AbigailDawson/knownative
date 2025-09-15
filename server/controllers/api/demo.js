@@ -18,7 +18,6 @@ async function getDemo(req, res) {}
 function tokenizeText(req, res) {
   const { text } = req.body;
   const tokenizedText = tokenize(text);
-  console.log(tokenizedText);
   res.json(tokenizedText);
 }
 
@@ -38,9 +37,6 @@ async function translateSentence(req, res) {
 async function addText(req, res) {
   const { content, title, source } = req.body;
   const userId = req.user._id;
-
-  console.log('User ID in addText:', userId);
-  console.log('Adding text:', content);
   
   try {
     const newText = new Text({
@@ -49,7 +45,6 @@ async function addText(req, res) {
       source,
       content
     });
-    console.log('New text:', newText);
     await newText.save();
     res.status(201).json({ message: 'Text added successfully', text: newText });
   } catch (error) {
