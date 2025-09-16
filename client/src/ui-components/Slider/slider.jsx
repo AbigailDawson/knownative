@@ -171,17 +171,19 @@ const Slider = ({ isOpen, onClose, onSuccess }) => {
             </div>
           )}
         </div>
-        <div className="slider__footer">
-          <div className="dashboard__card-button">
-            <Button
-              iconName="&#xe41d;"
-              iconStyling="reusable-button__icon-flip"
-              buttonVariant="tertiary"
-              buttonText="Review"
-              buttonOnClickFunc={() => console.log('click click')}
-            />
+          <div className="slider__footer">
+            {Array.isArray(savedWords) && savedWords.length > 0 && (
+              <div className="dashboard__card-button">
+                <Button
+                  iconName="&#xe41d;"
+                  iconStyling="reusable-button__icon-flip"
+                  buttonVariant="tertiary"
+                  buttonText="Review"
+                  buttonOnClickFunc={() => console.log('click click')}
+                />
+              </div>
+            )}
           </div>
-        </div>
       </div>
     </div>
     <EditWordModal
