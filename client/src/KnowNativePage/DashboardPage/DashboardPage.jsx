@@ -308,6 +308,7 @@ export default function DashboardPage() {
   const [texts, setTexts] = useState([]);
   const dispatch = useSavedWordsDispatch();
   const { savedWords } = useSavedWordsContext();
+  // Show review button if user has any saved words (global check)
   const hasSaved = Array.isArray(savedWords) && savedWords.length > 0;
 
 
