@@ -572,14 +572,17 @@ export default function DashboardPage() {
                 </div>
               </div>
               <div className="dashboard__card-button">
-                <Button
-                  iconName="&#xe41d;"
-                  iconStyling="reusable-button__icon-flip"
-                  buttonVariant="tertiary"
-                  buttonText="Review"
-                  buttonOnClickFunc={() => console.log('Card button has been clicked')}
-                />
-              </div>
+                {Array.isArray(savedWords) && savedWords.length > 0 && (
+                  <Button
+                    iconName="&#xe41d;"
+                    iconStyling="reusable-button__icon-flip"
+                    buttonVariant="tertiary"
+                    buttonText="Review"
+                    buttonOnClickFunc={() => console.log('click click')}
+                  />
+                )}
+            </div>
+
             </div>
           </div>
         ) : (
@@ -674,16 +677,15 @@ export default function DashboardPage() {
                       </td>
                       <td>{item.lastOpened}</td>
                       <td className="dashboard__table-container__options">
-                        <Button
-                          iconName="&#xe41d;"
-                          iconStyling="reusable-button__icon-flip"
-                          buttonVariant="tertiary"
-                          buttonText="Review"
-                          buttonOnClickFunc={() =>
-                            navigate(`/text/${item._id}`, { state: { text: item } })
-                          }
-                          disabled={item.cards.length === 0}
-                        />
+                        {Array.isArray(item.cards) && item.cards.length > 0 && (
+                          <Button
+                            iconName="&#xe41d;"
+                            iconStyling="reusable-button__icon-flip"
+                            buttonVariant="tertiary"
+                            buttonText="Review"
+                            buttonOnClickFunc={() => console.log('click click')}
+                          />
+                        )}
                         <button
                           onClick={() => setOpenMenuId(!openMenuId ? item._id : null)}
                           className="options-button"
