@@ -308,9 +308,6 @@ export default function DashboardPage() {
   const [texts, setTexts] = useState([]);
   const dispatch = useSavedWordsDispatch();
   const { savedWords } = useSavedWordsContext();
-  // Show review button if user has any saved words (global check)
-  const hasSaved = Array.isArray(savedWords) && savedWords.length > 0;
-
 
   const showMoreItems = (amount) => {
     setItemsToShow((prev) => prev + amount);
@@ -575,7 +572,7 @@ export default function DashboardPage() {
                 </div>
               </div>
               <div className="dashboard__card-button">
-                {hasSaved && (
+                {Array.isArray(savedWords) && savedWords.length > 0 && (
                   <Button
                     iconName="&#xe41d;"
                     iconStyling="reusable-button__icon-flip"
