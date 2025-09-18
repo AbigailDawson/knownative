@@ -124,7 +124,6 @@ export default function DashboardPage() {
 
     try {
       await deleteText(textToDelete, user._id);
-      console.log('Deleted item with ID:', textToDelete);
     } catch (error) {
       console.error('Failed to delete from server:', error);
     }
@@ -144,8 +143,6 @@ export default function DashboardPage() {
   };
 
   function startQuiz() {
-    console.log('Starting Quiz');
-    console.log('Saved Words: ', savedWords);
     setIsQuizModalOpen(true);
   }
 

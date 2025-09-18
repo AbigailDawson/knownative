@@ -116,18 +116,6 @@ const Slider = ({ isOpen, onClose, onSuccess }) => {
           onClick={() => setActiveCardId(activeCardId === word._id ? null : word._id)}
         />
 
-        {/* 
-        Modal (demo, disabled)
-        {modalCardId === word._id && (
-          <DemoEditWordModal
-            handleDeleteWord={() => handleDeleteWord(word._id)}
-            setShowModal={(open) => setModalCardId(open ? word._id : null)}
-            updateWord={updateWord}
-            word={word}
-          />
-        )}
-        */}
-
         {/* Menu */}
         {activeCardId === word._id && (
           <article
