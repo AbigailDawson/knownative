@@ -1,15 +1,29 @@
+import { useEffect } from 'react';
 import { Button, Dialog, DialogActions, DialogContent } from '@mui/material';
 import { IoMdClose } from 'react-icons/io';
 import { useSavedWordsContext } from '../../../contexts/SavedWords/SavedWordsProvider';
 import './FlashcardGameModal.scss';
 
-export default function FlashcardGameModal({ selectedFront = 'chinese', showPinyin = true, open, onClose }) {
+export default function FlashcardGameModal({ selectedFront = 'chinese', showPinyin = true, open, onClose, blurText }) {
     
     const { savedWords } = useSavedWordsContext();
 
     function handleClose() {
         onClose();
     }
+
+    // Blur the background text when the FlashcardGameModal is open
+    useEffect(() => {
+        if (blurText) {
+            blurText(open);
+        }
+        // Remove blur when the FlashcardGameModal closes.
+        return () => {
+            if (blurText) {
+                blurText(false);
+            }
+        };
+    }, [open, blurText]);
 
     return (
         <Dialog

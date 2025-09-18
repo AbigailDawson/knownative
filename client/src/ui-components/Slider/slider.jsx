@@ -8,7 +8,7 @@ import Button from '../Button/button';
 import { useSavedWordsContext, useSavedWordsDispatch } from '../../contexts/SavedWords/SavedWordsProvider';
 import { updateCard } from '../../utilities/cards-api';
 
-const Slider = ({ isOpen, onClose, onSuccess }) => {
+const Slider = ({ isOpen, onClose, blurText }) => {
   const [isEditMenuOpen, setIsEditMenuOpen] = useState(false);
   const [isMouseInsideMenu, setIsMouseInsideMenu] = useState(false);
   const [showingEditWordModal, setShowingEditWordModal] = useState(false);
@@ -194,6 +194,7 @@ const Slider = ({ isOpen, onClose, onSuccess }) => {
     <FlashcardGameModal
       open={flashcardGameModalOpen}
       onClose={handleCloseFlashcardGameModal}
+      blurText={blurText}
     />
     </>
   );
