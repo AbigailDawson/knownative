@@ -87,5 +87,4 @@ module.exports = {
   getUserTexts,
   deleteUserText,
   saveWord,
-  deleteWord,
 };
