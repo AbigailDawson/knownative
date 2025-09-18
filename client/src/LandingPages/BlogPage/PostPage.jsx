@@ -14,7 +14,6 @@ export default function PostPage() {
     const fetchPost = async () => {
       try {
         const post = await client.getByID(postId);
-        console.log(post);
         setPost(post);
       } catch (error) {
         console.error('Error fetching post:', error);

@@ -5,7 +5,7 @@ const router = express.Router();
 const {
   getAllCards,
   getCardsByTextId,
-  deleteCard,
+  updateCard,
 } = require('../../controllers/api/cardsController');
 const { verifyJWT } = require('../../utils/jwt');
 
@@ -15,6 +15,7 @@ router.get('/', verifyJWT, getAllCards);
 // Route to get cards by Text ID for a specific user
 router.get('/text/:id', verifyJWT, getCardsByTextId);
 
-router.delete('/:cardId', verifyJWT, deleteCard);
+// Route to update a card by its ID
+router.put('/:id', verifyJWT, updateCard);
 
 module.exports = router;

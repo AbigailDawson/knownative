@@ -13,7 +13,6 @@ export default function BlogPage() {
       try {
         const posts = await client.getAllByType('blog_post');
         setPosts(posts);
-        console.log(posts);
       } catch (error) {
         console.error('Error fetching posts:', error);
       }
