@@ -46,6 +46,7 @@ const Slider = ({ isOpen, onClose, onSuccess }) => {
   }, [isOpen, onClose]);
 
   function handleOpenFlashcardGameModal() {
+    onClose();
     setFlashcardGameModalOpen(true);
   }
 
