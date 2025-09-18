@@ -11,285 +11,7 @@ import Modal from '../../ui-components/Modal/modal';
 import { fetchTexts, deleteText } from '../../utilities/texts-api';
 import { getAllCards } from '../../utilities/cards-api'
 import { useSavedWordsDispatch, useSavedWordsContext }  from '../../contexts/SavedWords/SavedWordsProvider';
-
-const mockData = [
-  {
-    _id: 1,
-    title: '駕駛執照',
-    content:
-      '每天我要到許多地方去，也會遇到很多人。有些人喜歡叫我「左轉」、「右轉」、「停」；有些人會把髒東西留在我的車上。不過也有一些不錯的人，可以從他們身上學到很多東西，所以我也交了好幾個朋友。真是什麼樣的人都有啊！',
-    cards: [
-      {
-        text: 'asdfasdfasd',
-        status: 'active',
-        frontProperties: 'asdfasdf',
-        backProperties: 'aslfjasd;f'
-      },
-      {
-        text: 'asdfasdfasd',
-        status: 'active',
-        frontProperties: 'asdfasdf',
-        backProperties: 'aslfjasd;f'
-      },
-      {
-        text: 'asdfasdfasd',
-        status: 'active',
-        frontProperties: 'asdfasdf',
-        backProperties: 'aslfjasd;f'
-      },
-      {
-        text: 'asdfasdfasd',
-        status: 'active',
-        frontProperties: 'asdfasdf',
-        backProperties: 'aslfjasd;f'
-      },
-      {
-        text: 'asdfasdfasd',
-        status: 'active',
-        frontProperties: 'asdfasdf',
-        backProperties: 'aslfjasd;f'
-      },
-      {
-        text: 'asdfasdfasd',
-        status: 'active',
-        frontProperties: 'asdfasdf',
-        backProperties: 'aslfjasd;f'
-      }
-    ],
-    lastOpened: 'Oct 29, 2024'
-  },
-  {
-    _id: 2,
-    title: '銷售促進',
-    content:
-      '每天我要到許多地方去，也會遇到很多人。有些人喜歡叫我「左轉」、「右轉」、「停」；有些人會把髒東西留在我的車上。不過也有一些不錯的人，可以從他們身上學到很多東西，所以我也交了好幾個朋友。真是什麼樣的人都有啊！',
-    cards: [
-      {
-        text: 'asdfasdfasd',
-        status: 'active',
-        frontProperties: 'asdfasdf',
-        backProperties: 'aslfjasd;f'
-      },
-      {
-        text: 'asdfasdfasd',
-        status: 'active',
-        frontProperties: 'asdfasdf',
-        backProperties: 'aslfjasd;f'
-      },
-      {
-        text: 'asdfasdfasd',
-        status: 'active',
-        frontProperties: 'asdfasdf',
-        backProperties: 'aslfjasd;f'
-      }
-    ],
-    lastOpened: 'Oct 25, 2024'
-  },
-  {
-    _id: 3,
-    title: '開計程車',
-    content:
-      '每天我要到許多地方去，也會遇到很多人。有些人喜歡叫我「左轉」、「右轉」、「停」；有些人會把髒東西留在我的車上。不過也有一些不錯的人，可以從他們身上學到很多東西，所以我也交了好幾個朋友。真是什麼樣的人都有啊！',
-    cards: [],
-    lastOpened: 'Feb 25, 2025'
-  },
-  {
-    _id: 4,
-    title: '開計程車',
-    content:
-      '每天我要到許多地方去，也會遇到很多人。有些人喜歡叫我「左轉」、「右轉」、「停」；有些人會把髒東西留在我的車上。不過也有一些不錯的人，可以從他們身上學到很多東西，所以我也交了好幾個朋友。真是什麼樣的人都有啊！',
-    cards: [
-      {
-        text: 'asdfasdfasd',
-        status: 'active',
-        frontProperties: 'asdfasdf',
-        backProperties: 'aslfjasd;f'
-      },
-      {
-        text: 'asdfasdfasd',
-        status: 'active',
-        frontProperties: 'asdfasdf',
-        backProperties: 'aslfjasd;f'
-      }
-    ],
-    lastOpened: 'Feb 25, 2025'
-  },
-  {
-    _id: 5,
-    title: '開計程車',
-    content:
-      '每天我要到許多地方去，也會遇到很多人。有些人喜歡叫我「左轉」、「右轉」、「停」；有些人會把髒東西留在我的車上。不過也有一些不錯的人，可以從他們身上學到很多東西，所以我也交了好幾個朋友。真是什麼樣的人都有啊！',
-    cards: [
-      {
-        text: 'asdfasdfasd',
-        status: 'active',
-        frontProperties: 'asdfasdf',
-        backProperties: 'aslfjasd;f'
-      }
-    ],
-    lastOpened: 'Feb 25, 2025'
-  },
-  {
-    _id: 6,
-    title: '開計程車',
-    content:
-      '每天我要到許多地方去，也會遇到很多人。有些人喜歡叫我「左轉」、「右轉」、「停」；有些人會把髒東西留在我的車上。不過也有一些不錯的人，可以從他們身上學到很多東西，所以我也交了好幾個朋友。真是什麼樣的人都有啊！',
-    cards: [
-      {
-        text: 'asdfasdfasd',
-        status: 'active',
-        frontProperties: 'asdfasdf',
-        backProperties: 'aslfjasd;f'
-      },
-      {
-        text: 'asdfasdfasd',
-        status: 'active',
-        frontProperties: 'asdfasdf',
-        backProperties: 'aslfjasd;f'
-      },
-      {
-        text: 'asdfasdfasd',
-        status: 'active',
-        frontProperties: 'asdfasdf',
-        backProperties: 'aslfjasd;f'
-      },
-      {
-        text: 'asdfasdfasd',
-        status: 'active',
-        frontProperties: 'asdfasdf',
-        backProperties: 'aslfjasd;f'
-      },
-      {
-        text: 'asdfasdfasd',
-        status: 'active',
-        frontProperties: 'asdfasdf',
-        backProperties: 'aslfjasd;f'
-      },
-      {
-        text: 'asdfasdfasd',
-        status: 'active',
-        frontProperties: 'asdfasdf',
-        backProperties: 'aslfjasd;f'
-      }
-    ],
-    lastOpened: 'Feb 25, 2025'
-  },
-  {
-    _id: 7,
-    title: '快遞服務',
-    content:
-      '每天我要到許多地方去，也會遇到很多人。有些人喜歡叫我「左轉」、「右轉」、「停」；有些人會把髒東西留在我的車上。不過也有一些不錯的人，可以從他們身上學到很多東西，所以我也交了好幾個朋友。真是什麼樣的人都有啊！',
-    cards: [],
-    lastOpened: 'Feb 25, 2025'
-  },
-  {
-    _id: 8,
-    title: '開計程車',
-    content:
-      '每天我要到許多地方去，也會遇到很多人。有些人喜歡叫我「左轉」、「右轉」、「停」；有些人會把髒東西留在我的車上。不過也有一些不錯的人，可以從他們身上學到很多東西，所以我也交了好幾個朋友。真是什麼樣的人都有啊！',
-    cards: [
-      {
-        text: 'asdfasdfasd',
-        status: 'active',
-        frontProperties: 'asdfasdf',
-        backProperties: 'aslfjasd;f'
-      },
-      {
-        text: 'asdfasdfasd',
-        status: 'active',
-        frontProperties: 'asdfasdf',
-        backProperties: 'aslfjasd;f'
-      },
-      {
-        text: 'asdfasdfasd',
-        status: 'active',
-        frontProperties: 'asdfasdf',
-        backProperties: 'aslfjasd;f'
-      }
-    ],
-    lastOpened: 'Feb 25, 2025'
-  },
-  {
-    _id: 9,
-    title: '乘車券',
-    content:
-      '每天我要到許多地方去，也會遇到很多人。有些人喜歡叫我「左轉」、「右轉」、「停」；有些人會把髒東西留在我的車上。不過也有一些不錯的人，可以從他們身上學到很多東西，所以我也交了好幾個朋友。真是什麼樣的人都有啊！',
-    cards: [
-      {
-        text: 'asdfasdfasd',
-        status: 'active',
-        frontProperties: 'asdfasdf',
-        backProperties: 'aslfjasd;f'
-      },
-      {
-        text: 'asdfasdfasd',
-        status: 'active',
-        frontProperties: 'asdfasdf',
-        backProperties: 'aslfjasd;f'
-      },
-      {
-        text: 'asdfasdfasd',
-        status: 'active',
-        frontProperties: 'asdfasdf',
-        backProperties: 'aslfjasd;f'
-      },
-      {
-        text: 'asdfasdfasd',
-        status: 'active',
-        frontProperties: 'asdfasdf',
-        backProperties: 'aslfjasd;f'
-      },
-      {
-        text: 'asdfasdfasd',
-        status: 'active',
-        frontProperties: 'asdfasdf',
-        backProperties: 'aslfjasd;f'
-      },
-      {
-        text: 'asdfasdfasd',
-        status: 'active',
-        frontProperties: 'asdfasdf',
-        backProperties: 'aslfjasd;f'
-      },
-      {
-        text: 'asdfasdfasd',
-        status: 'active',
-        frontProperties: 'asdfasdf',
-        backProperties: 'aslfjasd;f'
-      },
-      {
-        text: 'asdfasdfasd',
-        status: 'active',
-        frontProperties: 'asdfasdf',
-        backProperties: 'aslfjasd;f'
-      }
-    ],
-    lastOpened: 'Feb 25, 2025'
-  },
-  {
-    _id: 10,
-    title: '計畫書',
-    content:
-      '每天我要到許多地方去，也會遇到很多人。有些人喜歡叫我「左轉」、「右轉」、「停」；有些人會把髒東西留在我的車上。不過也有一些不錯的人，可以從他們身上學到很多東西，所以我也交了好幾個朋友。真是什麼樣的人都有啊！',
-    cards: [
-      {
-        text: 'asdfasdfasd',
-        status: 'active',
-        frontProperties: 'asdfasdf',
-        backProperties: 'aslfjasd;f'
-      }
-    ],
-    lastOpened: 'Feb 25, 2025'
-  },
-  {
-    _id: 11,
-    title: '開發者',
-    content:
-      '每天我要到許多地方去，也會遇到很多人。有些人喜歡叫我「左轉」、「右轉」、「停」；有些人會把髒東西留在我的車上。不過也有一些不錯的人，可以從他們身上學到很多東西，所以我也交了好幾個朋友。真是什麼樣的人都有啊！',
-    cards: [],
-    lastOpened: 'Feb 25, 2025'
-  }
-];
+import FlashcardGameModal from '../components/FlashcardGameModal/FlashcardGameModal';
 
 export default function DashboardPage() {
   const { user, loading } = useAuthContext();
@@ -301,10 +23,10 @@ export default function DashboardPage() {
   const [sortDirection, setSortDirection] = useState('asc');
   const [isAddTextOpen, setIsAddTextOpen] = useState(false);
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
+  const [isQuizModalOpen, setIsQuizModalOpen] = useState(false);
   const [openMenuId, setOpenMenuId] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [textToDelete, setTextToDelete] = useState(null);
-
   const [texts, setTexts] = useState([]);
   const dispatch = useSavedWordsDispatch();
   const { savedWords } = useSavedWordsContext();
@@ -327,7 +49,7 @@ export default function DashboardPage() {
 
   const showLessItems = (amount) => {
     if (itemsToShow > 3) {
-      setFadeOut(true); // Start fade-out animation
+      setFadeOut(true);
 
       const listContainer = document.querySelector('.dashboard__table-container');
       const firstVisibleItem = document.querySelector('.dashboard__table-container__item-row');
@@ -420,6 +142,12 @@ export default function DashboardPage() {
       </div>
     );
   };
+
+  function startQuiz() {
+    console.log('Starting Quiz');
+    console.log('Saved Words: ', savedWords);
+    setIsQuizModalOpen(true);
+  }
 
   // Fetch all Texts for the User:
   useEffect(() => {
@@ -578,7 +306,7 @@ export default function DashboardPage() {
                     iconStyling="reusable-button__icon-flip"
                     buttonVariant="tertiary"
                     buttonText="Review"
-                    buttonOnClickFunc={() => console.log('click click')}
+                    buttonOnClickFunc={startQuiz}
                   />
                 )}
             </div>
@@ -683,7 +411,7 @@ export default function DashboardPage() {
                             iconStyling="reusable-button__icon-flip"
                             buttonVariant="tertiary"
                             buttonText="Review"
-                            buttonOnClickFunc={() => console.log('click click')}
+                            buttonOnClickFunc={startQuiz}
                           />
                         )}
                         <button
@@ -766,6 +494,11 @@ export default function DashboardPage() {
         isOpen={isAddTextOpen}
         onClose={() => setIsAddTextOpen(false)}
         onSuccess={() => fetchTexts(user, setTexts)}
+      />
+      <FlashcardGameModal
+        wordList={savedWords}
+        open={isQuizModalOpen}
+        onClose={() => setIsQuizModalOpen(false)}
       />
     </div>
   );
