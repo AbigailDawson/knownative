@@ -83,32 +83,6 @@ async function saveWord(req, res) {
   }
 }
 
-async function deleteWord(req, res) {
-  try {
-    const { wordId } = req.params;
-    const userId = req.user._id;
-
-    // Find the card and remove it
-    const card = await Card.findOneAndDelete({
-      _id: wordId,
-      user: userId,
-    });
-
-    if (!card) {
-      return res.status(404).json({ message: 'Word not found' });
-    }
-
-    const text = await Text.findById(card.text);
-    text.cards.pull(card._id);
-    await text.save();
-
-    res.status(200).json({ message: 'Word deleted successfully' });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: 'Server error' });
-  }
-}
-
 module.exports = {
   getUserTexts,
   deleteUserText,
