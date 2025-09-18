@@ -142,7 +142,7 @@ export default function DashboardPage() {
     );
   };
 
-  function startQuiz() {
+  function startFlashcardActivity() {
     setIsQuizModalOpen(true);
   }
 
@@ -303,7 +303,7 @@ export default function DashboardPage() {
                     iconStyling="reusable-button__icon-flip"
                     buttonVariant="tertiary"
                     buttonText="Review"
-                    buttonOnClickFunc={startQuiz}
+                    buttonOnClickFunc={startFlashcardActivity}
                   />
                 )}
             </div>
@@ -408,7 +408,7 @@ export default function DashboardPage() {
                             iconStyling="reusable-button__icon-flip"
                             buttonVariant="tertiary"
                             buttonText="Review"
-                            buttonOnClickFunc={startQuiz}
+                            buttonOnClickFunc={startFlashcardActivity}
                           />
                         )}
                         <button
