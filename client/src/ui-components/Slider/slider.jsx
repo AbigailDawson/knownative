@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './slider.scss';
 import EditWordModal from '../../KnowNativePage/TextPage/components/EditWordModal/EditWordModal';
+import FlashcardGameModal from '../../KnowNativePage/components/FlashcardGameModal/FlashcardGameModal';
 import { FaPencilAlt, FaTrashAlt  } from 'react-icons/fa';
 import { BiDotsVerticalRounded } from 'react-icons/bi';
 import Button from '../Button/button';
@@ -18,6 +19,7 @@ const Slider = ({ isOpen, onClose, onSuccess }) => {
   const [editModalOpen, setEditModalOpen] = useState(false);
   const [selectedWord, setSelectedWord] = useState(null);
   const [errorMessage, setErrorMessage] = useState('');
+  const [flashcardGameModalOpen, setFlashcardGameModalOpen] = useState(false);
 
   useEffect(() => {
     function handleKeyDown(event) {
@@ -42,6 +44,14 @@ const Slider = ({ isOpen, onClose, onSuccess }) => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [isOpen, onClose]);
+
+  function handleOpenFlashcardGameModal() {
+    setFlashcardGameModalOpen(true);
+  }
+
+  function handleCloseFlashcardGameModal() {
+    setFlashcardGameModalOpen(false);
+  }
 
   function handleOpenEditModal() {
     setShowingEditWordModal(true);
@@ -179,7 +189,7 @@ const Slider = ({ isOpen, onClose, onSuccess }) => {
                   iconStyling="reusable-button__icon-flip"
                   buttonVariant="tertiary"
                   buttonText="Review"
-                  buttonOnClickFunc={() => console.log('click click')}
+                  buttonOnClickFunc={handleOpenFlashcardGameModal}
                 />
               </div>
             )}
@@ -191,6 +201,13 @@ const Slider = ({ isOpen, onClose, onSuccess }) => {
       isOpen={editModalOpen}
       onClose={() => setEditModalOpen(false)}
       onSave={handleSaveWord}
+    />
+    <FlashcardGameModal
+      wordList={savedWords}
+      selectedFront="chinese"
+      showPinyin={true}
+      open={flashcardGameModalOpen}
+      onClose={handleCloseFlashcardGameModal}
     />
     </>
   );
