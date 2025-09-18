@@ -1,9 +1,12 @@
 import { Button, Dialog, DialogActions, DialogContent } from '@mui/material';
 import { IoMdClose } from 'react-icons/io';
+import { useSavedWordsContext } from '../../../contexts/SavedWords/SavedWordsProvider';
 import './FlashcardGameModal.scss';
 
-export default function FlashcardGameModal({ wordList, selectedFront = 'chinese', showPinyin = true, open, onClose }) {
+export default function FlashcardGameModal({ selectedFront = 'chinese', showPinyin = true, open, onClose }) {
     
+    const { savedWords } = useSavedWordsContext();
+
     function handleClose() {
         onClose();
     }
@@ -48,7 +51,7 @@ export default function FlashcardGameModal({ wordList, selectedFront = 'chinese'
                 }}>
                 <div style={{ textAlign: 'center' }}>
                     <h2>Flashcards Placeholder</h2>
-                    <p>Saved Words: {wordList ? wordList.length : 0}</p>
+                    <p>Saved Words: {savedWords ? savedWords.length : 0}</p>
                     <p>Selected Front: {selectedFront}</p>
                     <p>Show Pinyin: {showPinyin ? 'Yes' : 'No'}</p>
                     <p style={{ marginTop: '20px', color: '#666' }}>

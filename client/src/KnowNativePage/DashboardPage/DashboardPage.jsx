@@ -493,7 +493,6 @@ export default function DashboardPage() {
         onSuccess={() => fetchTexts(user, setTexts)}
       />
       <FlashcardGameModal
-        wordList={savedWords}
         open={isQuizModalOpen}
         onClose={() => setIsQuizModalOpen(false)}
       />
