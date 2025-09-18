@@ -32,12 +32,10 @@ async function getCardsByTextId(req, res) {
 
     res.status(200).json(cards);
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        message: 'Error fetching cards by textId',
-        error: error.message,
-      });
+    res.status(500).json({
+      message: 'Error fetching cards by textId',
+      error: error.message,
+    });
   }
 }
 
@@ -49,11 +47,9 @@ async function updateCard(req, res) {
     const userId = req.user._id;
 
     if (!reading && !meaning) {
-      return res
-        .status(400)
-        .json({
-          message: 'At least one field (reading or meaning) must be provided.',
-        });
+      return res.status(400).json({
+        message: 'At least one field (reading or meaning) must be provided.',
+      });
     }
 
     const updatedCard = await Card.findOneAndUpdate(
@@ -77,8 +73,33 @@ async function updateCard(req, res) {
   }
 }
 
+async function deleteCard(req, res) {
+  try {
+    const { wordId } = req.params;
+    const userId = req.user._id;
+    const card = await Card.findOneAndDelete({ _id: wordId, user: userId });
+    if (!card) {
+      return res.status(404).json({ message: 'Word not found' });
+    }
+    const text = await Text.findById(card.text);
+    if (text) {
+      text.cards.pull(card._id);
+      await text.save();
+      return res.status(200).json({ message: 'Card deleted.' });
+    } else {
+      return res
+        .status(200)
+        .json({ message: 'Card deleted. No Text associated.' });
+    }
+  } catch (err) {
+    console.error('[deleteWord] error:', err);
+    return res.status(500).json({ message: 'Server error' });
+  }
+}
+
 module.exports = {
   getAllCards,
   getCardsByTextId,
   updateCard,
+  deleteCard,
 };

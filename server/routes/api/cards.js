@@ -6,6 +6,7 @@ const {
   getAllCards,
   getCardsByTextId,
   updateCard,
+  deleteCard,
 } = require('../../controllers/api/cardsController');
 const { verifyJWT } = require('../../utils/jwt');
 
@@ -17,5 +18,7 @@ router.get('/text/:id', verifyJWT, getCardsByTextId);
 
 // Route to update a card by its ID
 router.put('/:id', verifyJWT, updateCard);
+
+router.delete('/:cardId', verifyJWT, deleteCard);
 
 module.exports = router;
