@@ -192,9 +192,6 @@ const Slider = ({ isOpen, onClose, onSuccess }) => {
       onSave={handleSaveWord}
     />
     <FlashcardGameModal
-      wordList={savedWords}
-      selectedFront="chinese"
-      showPinyin={true}
       open={flashcardGameModalOpen}
       onClose={handleCloseFlashcardGameModal}
     />
