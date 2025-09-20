@@ -30,6 +30,7 @@
     }
   }
 
+  // Pulls the front and back together so the seam looks like one card
   &__front { margin-bottom: -20px; }
   &__back  { border-top: 0.5px solid var(--dark); border-radius: 0; }
 }
