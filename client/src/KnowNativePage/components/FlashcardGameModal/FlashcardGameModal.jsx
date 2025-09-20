@@ -1,12 +1,32 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Button, Dialog, DialogActions, DialogContent } from '@mui/material';
 import { IoMdClose } from 'react-icons/io';
 import { useSavedWordsContext } from '../../../contexts/SavedWords/SavedWordsProvider';
 import './FlashcardGameModal.scss';
+import Flashcard from '../Flashcard/Flashcard';
 
 export default function FlashcardGameModal({ selectedFront = 'chinese', showPinyin = true, open, onClose, blurText }) {
     
     const { savedWords } = useSavedWordsContext();
+    const [isFlipped, setIsFlipped] = useState(false);
+
+    const w = Array.isArray(savedWords) && savedWords.length ? savedWords[0] : null;
+
+    const chinese =
+        w?.frontProperties?.traditional ??
+        w?.charGroup ??
+        w?.traditional ??
+        '';
+
+    const pinyin =
+        w?.frontProperties?.pinyin ??
+        w?.pinyin ??
+        '';
+
+    const english =
+        w?.backProperties?.meaning ??
+        w?.meaning ??
+        '';
 
     function handleClose() {
         onClose();
@@ -63,16 +83,25 @@ export default function FlashcardGameModal({ selectedFront = 'chinese', showPiny
                     justifyContent: 'center',
                     alignItems: 'center'
                 }}>
-                <div style={{ textAlign: 'center' }}>
-                    <h2>Flashcards Placeholder</h2>
-                    <p>Saved Words: {savedWords ? savedWords.length : 0}</p>
-                    <p>Selected Front: {selectedFront}</p>
-                    <p>Show Pinyin: {showPinyin ? 'Yes' : 'No'}</p>
-                    <p style={{ marginTop: '20px', color: '#666' }}>
-                        Flashcard.jsx component will be implemented here.
-                    </p>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'center', textAlign: 'center' }}>
+                    <Flashcard
+                        chinese={chinese}
+                        pinyin={pinyin}
+                        english={english}
+                        selectedFront={selectedFront}
+                        showPinyin={showPinyin}
+                        isFlipped={isFlipped}
+                        onToggle={() => setIsFlipped(v => !v)}
+                    />
+                    <button
+                        type="button"
+                        className="button-container__flip-button"
+                        onClick={() => setIsFlipped(v => !v)}
+                    >
+                    {isFlipped ? 'Hide Answer' : 'Show Answer'}
+                    </button>
                 </div>
-            </DialogContent>
+                </DialogContent>
         </Dialog>
     );
 }
