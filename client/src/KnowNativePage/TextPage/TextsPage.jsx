@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import Slider from '../../ui-components/Slider/slider.jsx';
 import DashboardNavbar from '../components/DashboardNavbar';
@@ -16,6 +16,7 @@ export default function TextsPage() {
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
   const [text, setText] = useState(location.state?.text || null);
   const [isSliderOpen, setIsSliderOpen] = useState(false);
+  const blurRef = useRef(null);
 
   function handleTabClick(tabName) {
     setActiveTab(tabName);
@@ -29,6 +30,19 @@ export default function TextsPage() {
       </div>
     );
   }
+
+  // Function that blurs the background text when flashcard game is active.
+  function blurText (isActive) {
+
+    // Safety check to prevent errors when blurText is not defined.
+    if (!blurRef.current) return;
+
+    if (isActive) {
+      blurRef.current.style.filter = 'blur(6px)';
+    } else {
+      blurRef.current.removeAttribute('style');
+    }
+  };
 
   return (
     <div className="dashboard">
@@ -75,7 +89,7 @@ export default function TextsPage() {
         {/* Tabs for switching mode */}
         <div
           className={`text-page__layout ${isSliderOpen ? 'text-page__layout--with-sidebar' : 'text-page__layout--full-width'}`}>
-          <div className={`text-page__workspace`}>
+          <div className={`text-page__workspace`} ref={blurRef}>
             <div
               className={`${isSliderOpen ? 'tabs__compressed sticky-fade ' : 'tabs sticky-fade '}`}>
               <button
@@ -151,10 +165,7 @@ export default function TextsPage() {
             <Slider
               isOpen={isSliderOpen}
               onClose={() => setIsSliderOpen(false)}
-              onSuccess={() => {
-                // Add review logic here if needed
-                setIsSliderOpen(false);
-              }}
+              blurText={blurText}
             />
           </div>
         </div>

@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './slider.scss';
 import EditWordModal from '../../KnowNativePage/TextPage/components/EditWordModal/EditWordModal';
+import FlashcardGameModal from '../../KnowNativePage/components/FlashcardGameModal/FlashcardGameModal';
 import { FaPencilAlt, FaTrashAlt } from 'react-icons/fa';
 import { BiDotsVerticalRounded } from 'react-icons/bi';
 import Button from '../Button/button';
@@ -11,7 +12,7 @@ import {
 import { updateCard } from '../../utilities/cards-api';
 import { deleteSavedCard } from '../../contexts/SavedWords/SavedWordsActionsUtil';
 
-const Slider = ({ isOpen, onClose, onSuccess }) => {
+const Slider = ({ isOpen, onClose, blurText }) => {
   const [isEditMenuOpen, setIsEditMenuOpen] = useState(false);
   const [isMouseInsideMenu, setIsMouseInsideMenu] = useState(false);
   const [showingEditWordModal, setShowingEditWordModal] = useState(false);
@@ -22,6 +23,7 @@ const Slider = ({ isOpen, onClose, onSuccess }) => {
   const [editModalOpen, setEditModalOpen] = useState(false);
   const [selectedWord, setSelectedWord] = useState(null);
   const [errorMessage, setErrorMessage] = useState('');
+  const [flashcardGameModalOpen, setFlashcardGameModalOpen] = useState(false);
 
   useEffect(() => {
     function handleKeyDown(event) {
@@ -46,6 +48,15 @@ const Slider = ({ isOpen, onClose, onSuccess }) => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [isOpen, onClose]);
+
+  function handleOpenFlashcardGameModal() {
+    onClose();
+    setFlashcardGameModalOpen(true);
+  }
+
+  function handleCloseFlashcardGameModal() {
+    setFlashcardGameModalOpen(false);
+  }
 
   function handleOpenEditModal() {
     setShowingEditWordModal(true);
@@ -117,18 +128,6 @@ const Slider = ({ isOpen, onClose, onSuccess }) => {
           className={`SavedWord-card__card-icon ${activeCardId === word._id ? 'SavedWord-card__menu-icon--open' : ''}`}
           onClick={() => setActiveCardId(activeCardId === word._id ? null : word._id)}
         />
-        {/* 
-        Modal
-        (demo, disabled)
-        {modalCardId === word._id && (
-          <DemoEditWordModal
-            handleDeleteWord={() => handleDeleteCard(word._id)}
-            setShowModal={(open) => setModalCardId(open ? word._id : null)}
-            updateWord={updateWord}
-            word={word}
-          />
-        )}
-         
         {/* Menu */}
         {activeCardId === word._id && (
           <article
@@ -191,18 +190,24 @@ const Slider = ({ isOpen, onClose, onSuccess }) => {
                   iconStyling="reusable-button__icon-flip"
                   buttonVariant="tertiary"
                   buttonText="Review"
-                  buttonOnClickFunc={() => console.log('click click')}
+                  buttonOnClickFunc={handleOpenFlashcardGameModal}
                 />
               </div>
             )}
           </div>
         </div>
       </div>
+
       <EditWordModal
         word={selectedWord}
         isOpen={editModalOpen}
         onClose={() => setEditModalOpen(false)}
         onSave={handleSaveWord}
+      />
+      <FlashcardGameModal
+        open={flashcardGameModalOpen}
+        onClose={handleCloseFlashcardGameModal}
+        blurText={blurText}
       />
     </>
   );
