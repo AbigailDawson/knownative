@@ -9,6 +9,7 @@ import {
   useSavedWordsDispatch
 } from '../../contexts/SavedWords/SavedWordsProvider';
 import { updateCard } from '../../utilities/cards-api';
+import { deleteSavedCard } from '../../contexts/SavedWords/SavedWordsActionsUtil';
 
 const Slider = ({ isOpen, onClose, onSuccess }) => {
   const [isEditMenuOpen, setIsEditMenuOpen] = useState(false);
@@ -93,6 +94,16 @@ const Slider = ({ isOpen, onClose, onSuccess }) => {
     }
   };
 
+  const handleDeleteCard = async (cardId) => {
+    setIsEditMenuOpen(false);
+    try {
+      await deleteSavedCard(dispatch, cardId);
+      onClose?.();
+    } catch (e) {
+      console.error('Error deleting card:', e);
+    }
+  };
+
   const displayWords = savedWords.map((word) => (
     <div key={word._id} className="slider__card">
       <div className="col">
@@ -106,19 +117,18 @@ const Slider = ({ isOpen, onClose, onSuccess }) => {
           className={`SavedWord-card__card-icon ${activeCardId === word._id ? 'SavedWord-card__menu-icon--open' : ''}`}
           onClick={() => setActiveCardId(activeCardId === word._id ? null : word._id)}
         />
-
         {/* 
-        Modal (demo, disabled)
+        Modal
+        (demo, disabled)
         {modalCardId === word._id && (
           <DemoEditWordModal
-            handleDeleteWord={() => handleDeleteWord(word._id)}
+            handleDeleteWord={() => handleDeleteCard(word._id)}
             setShowModal={(open) => setModalCardId(open ? word._id : null)}
             updateWord={updateWord}
             word={word}
           />
         )}
-        */}
-
+         
         {/* Menu */}
         {activeCardId === word._id && (
           <article
@@ -133,7 +143,7 @@ const Slider = ({ isOpen, onClose, onSuccess }) => {
             </section>
             <section
               className="SavedWord-card__menu-button SavedWord-card__menu-button--delete"
-              onClick={() => handleDeleteWord(word._id)}>
+              onClick={() => handleDeleteCard(word._id)}>
               <p className="SavedWord-card__menu-label">Delete</p>
               <FaTrashAlt />
             </section>

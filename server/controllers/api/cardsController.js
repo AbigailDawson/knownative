@@ -75,11 +75,11 @@ async function updateCard(req, res) {
 
 async function deleteCard(req, res) {
   try {
-    const { wordId } = req.params;
+    const { cardId } = req.params;
     const userId = req.user._id;
-    const card = await Card.findOneAndDelete({ _id: wordId, user: userId });
+    const card = await Card.findOneAndDelete({ _id: cardId, user: userId });
     if (!card) {
-      return res.status(404).json({ message: 'Word not found' });
+      return res.status(404).json({ message: 'Card not found' });
     }
     const text = await Text.findById(card.text);
     if (text) {

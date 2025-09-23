@@ -14,3 +14,7 @@ export const updateCard = async (cardId, updates) => {
 
   return sendRequest(`${BASE_URL}/${cardId}`, 'PUT', payload);
 };
+
+export function deleteCard(id) {
+  return sendRequest(`${BASE_URL}/${id}`, 'DELETE');
+}

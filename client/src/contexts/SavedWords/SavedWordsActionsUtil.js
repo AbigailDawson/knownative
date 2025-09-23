@@ -1,7 +1,7 @@
 import { actionDeleteWord } from './SavedWordsActions';
 import { deleteCard } from '../../utilities/cards-api';
 
-export async function deleteSavedWord(dispatch, wordId) {
-  await deleteCard(wordId);
-  dispatch(actionDeleteWord(wordId));
+export async function deleteSavedCard(dispatch, cardId) {
+  await deleteCard(cardId);
+  dispatch(actionDeleteWord(cardId));
 }
