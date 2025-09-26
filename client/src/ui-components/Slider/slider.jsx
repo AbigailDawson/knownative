@@ -2,11 +2,15 @@ import React, { useEffect, useRef, useState } from 'react';
 import './slider.scss';
 import EditWordModal from '../../KnowNativePage/TextPage/components/EditWordModal/EditWordModal';
 import FlashcardGameModal from '../../KnowNativePage/components/FlashcardGameModal/FlashcardGameModal';
-import { FaPencilAlt, FaTrashAlt  } from 'react-icons/fa';
+import { FaPencilAlt, FaTrashAlt } from 'react-icons/fa';
 import { BiDotsVerticalRounded } from 'react-icons/bi';
 import Button from '../Button/button';
-import { useSavedWordsContext, useSavedWordsDispatch } from '../../contexts/SavedWords/SavedWordsProvider';
-import { updateCard } from '../../utilities/cards-api';
+import {
+  useSavedWordsContext,
+  useSavedWordsDispatch
+} from '../../contexts/SavedWords/SavedWordsProvider';
+import { deleteCard, updateCard } from '../../utilities/cards-api';
+import { actionDeleteWord } from '../../contexts/SavedWords/SavedWordsActions';
 
 const Slider = ({ isOpen, onClose, blurText }) => {
   const [isEditMenuOpen, setIsEditMenuOpen] = useState(false);
@@ -81,12 +85,11 @@ const Slider = ({ isOpen, onClose, blurText }) => {
     setIsEditMenuOpen(false);
   }
 
-
   const handleEditClick = (word) => {
     setSelectedWord(word);
     setEditModalOpen(true);
     setActiveCardId(null);
-};
+  };
 
   const handleSaveWord = async (cardId, updates) => {
     setErrorMessage('');
@@ -100,7 +103,18 @@ const Slider = ({ isOpen, onClose, blurText }) => {
       console.error('Failed to save changes:', error);
       setErrorMessage('Changes could not be saved. Please try again.');
     }
-};
+  };
+
+  const handleDeleteCard = async (cardId) => {
+    setIsEditMenuOpen(false);
+    try {
+      await deleteCard(cardId);
+      dispatch(actionDeleteWord(cardId));
+      onClose();
+    } catch (e) {
+      console.error('Error deleting card:', e);
+    }
+  };
 
   const displayWords = savedWords.map((word) => (
     <div key={word._id} className="slider__card">
@@ -115,7 +129,6 @@ const Slider = ({ isOpen, onClose, blurText }) => {
           className={`SavedWord-card__card-icon ${activeCardId === word._id ? 'SavedWord-card__menu-icon--open' : ''}`}
           onClick={() => setActiveCardId(activeCardId === word._id ? null : word._id)}
         />
-
         {/* Menu */}
         {activeCardId === word._id && (
           <article
@@ -130,7 +143,7 @@ const Slider = ({ isOpen, onClose, blurText }) => {
             </section>
             <section
               className="SavedWord-card__menu-button SavedWord-card__menu-button--delete"
-              onClick={() => handleDeleteWord(word._id)}>
+              onClick={() => handleDeleteCard(word._id)}>
               <p className="SavedWord-card__menu-label">Delete</p>
               <FaTrashAlt />
             </section>
@@ -142,34 +155,34 @@ const Slider = ({ isOpen, onClose, blurText }) => {
 
   return (
     <>
-    <div ref={sliderRef} className={`slider ${isOpen ? 'open' : ''}`}>
-      <div className="slider__content">
-        <button className="slider__close" aria-label="Close slider" onClick={onClose}>
-          ×
-        </button>
-        <div className="slider__header">
-          <h4 className="slider__title">Saved Cards</h4>
-          <p className="slider__description">
-            Expand your vocabulary with the words you’ve saved. Reviewing them regularly helps
-            reinforce learning!
-          </p>
-        </div>
-        <div className="slider__body">
-          {errorMessage && (
-            <div style={{color: 'red', padding: '8px', fontSize: '14px', textAlign: 'center'}}>
-              {errorMessage}
-            </div>
-          )}
+      <div ref={sliderRef} className={`slider ${isOpen ? 'open' : ''}`}>
+        <div className="slider__content">
+          <button className="slider__close" aria-label="Close slider" onClick={onClose}>
+            ×
+          </button>
+          <div className="slider__header">
+            <h4 className="slider__title">Saved Cards</h4>
+            <p className="slider__description">
+              Expand your vocabulary with the words you’ve saved. Reviewing them regularly helps
+              reinforce learning!
+            </p>
+          </div>
+          <div className="slider__body">
+            {errorMessage && (
+              <div style={{ color: 'red', padding: '8px', fontSize: '14px', textAlign: 'center' }}>
+                {errorMessage}
+              </div>
+            )}
 
-          {/* Placeholder cards */}
-          {displayWords.length > 0 ? (
-            displayWords
-          ) : (
-            <div className="slider__empty-state">
-              <p>No saved words yet. Start saving words to review them here!</p>
-            </div>
-          )}
-        </div>
+            {/* Placeholder cards */}
+            {displayWords.length > 0 ? (
+              displayWords
+            ) : (
+              <div className="slider__empty-state">
+                <p>No saved words yet. Start saving words to review them here!</p>
+              </div>
+            )}
+          </div>
           <div className="slider__footer">
             {Array.isArray(savedWords) && savedWords.length > 0 && (
               <div className="dashboard__card-button">
@@ -183,19 +196,20 @@ const Slider = ({ isOpen, onClose, blurText }) => {
               </div>
             )}
           </div>
+        </div>
       </div>
-    </div>
-    <EditWordModal
-      word={selectedWord}
-      isOpen={editModalOpen}
-      onClose={() => setEditModalOpen(false)}
-      onSave={handleSaveWord}
-    />
-    <FlashcardGameModal
-      open={flashcardGameModalOpen}
-      onClose={handleCloseFlashcardGameModal}
-      blurText={blurText}
-    />
+
+      <EditWordModal
+        word={selectedWord}
+        isOpen={editModalOpen}
+        onClose={() => setEditModalOpen(false)}
+        onSave={handleSaveWord}
+      />
+      <FlashcardGameModal
+        open={flashcardGameModalOpen}
+        onClose={handleCloseFlashcardGameModal}
+        blurText={blurText}
+      />
     </>
   );
 };

@@ -9,8 +9,12 @@ export const getAllCards = async () => {
 export const updateCard = async (cardId, updates) => {
   const payload = {
     reading: updates.frontProperties.pinyin,
-    meaning: updates.backProperties.meaning,
+    meaning: updates.backProperties.meaning
   };
 
   return sendRequest(`${BASE_URL}/${cardId}`, 'PUT', payload);
 };
+
+export function deleteCard(id) {
+  return sendRequest(`${BASE_URL}/${id}`, 'DELETE');
+}
