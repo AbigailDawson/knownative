@@ -10,7 +10,7 @@ import {
   useSavedWordsDispatch
 } from '../../contexts/SavedWords/SavedWordsProvider';
 import { updateCard } from '../../utilities/cards-api';
-import { deleteSavedCard } from '../../contexts/SavedWords/SavedWordsActionsUtil';
+import { actionDeleteWord } from '../../contexts/SavedWords/SavedWordsActions';
 
 const Slider = ({ isOpen, onClose, blurText }) => {
   const [isEditMenuOpen, setIsEditMenuOpen] = useState(false);
@@ -108,7 +108,8 @@ const Slider = ({ isOpen, onClose, blurText }) => {
   const handleDeleteCard = async (cardId) => {
     setIsEditMenuOpen(false);
     try {
-      await deleteSavedCard(dispatch, cardId);
+      await deleteCard(cardId);
+      dispatch(actionDeleteWord(cardId));
       onClose?.();
     } catch (e) {
       console.error('Error deleting card:', e);
