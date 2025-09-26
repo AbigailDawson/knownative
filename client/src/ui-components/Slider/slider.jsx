@@ -9,7 +9,7 @@ import {
   useSavedWordsContext,
   useSavedWordsDispatch
 } from '../../contexts/SavedWords/SavedWordsProvider';
-import { updateCard } from '../../utilities/cards-api';
+import { deleteCard, updateCard } from '../../utilities/cards-api';
 import { actionDeleteWord } from '../../contexts/SavedWords/SavedWordsActions';
 
 const Slider = ({ isOpen, onClose, blurText }) => {
@@ -110,7 +110,7 @@ const Slider = ({ isOpen, onClose, blurText }) => {
     try {
       await deleteCard(cardId);
       dispatch(actionDeleteWord(cardId));
-      onClose?.();
+      onClose();
     } catch (e) {
       console.error('Error deleting card:', e);
     }
