@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Button, Dialog, DialogActions, DialogContent } from '@mui/material';
 import { IoMdClose } from 'react-icons/io';
+import { GiCheckMark } from 'react-icons/gi';
+import { PiRepeatBold } from 'react-icons/pi';
 import { useSavedWordsContext } from '../../../contexts/SavedWords/SavedWordsProvider';
 import './FlashcardGameModal.scss';
 import Flashcard from '../Flashcard/Flashcard';
@@ -93,13 +95,26 @@ export default function FlashcardGameModal({ selectedFront = 'chinese', showPiny
                         isFlipped={isFlipped}
                         onToggle={() => setIsFlipped(v => !v)}
                     />
-                    <button
-                        type="button"
-                        className="button-container__flip-button"
-                        onClick={() => setIsFlipped(v => !v)}
-                    >
-                    {isFlipped ? 'Hide Answer' : 'Show Answer'}
-                    </button>
+                    
+                    {isFlipped ? 
+                        <div className="flashcard-buttons">
+                            <button className="flashcard-buttons__correct-btn" onClick={() => console.log("Correct clicked")}>
+                                <GiCheckMark className="flashcard-buttons__icon" />
+                                Correct!
+                            </button>
+                            <button className="flashcard-buttons__incorrect-btn" onClick={() => console.log("Incorrect clicked")}>
+                                <PiRepeatBold className="flashcard-buttons__icon" />
+                                Try again
+                            </button>
+                        </div> 
+                        : 
+                        <button
+                            type="button"
+                            className="button-container__flip-button"
+                            onClick={() => setIsFlipped(v => !v)}
+                        >Show Answer
+                        </button>}
+                    
                 </div>
                 </DialogContent>
         </Dialog>
