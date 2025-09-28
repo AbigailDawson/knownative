@@ -44,6 +44,11 @@ export default function FlashcardGameModal({ selectedFront = 'chinese', showPiny
         setIsFlipped(false);
     }
 
+    function handleIncorrect() {
+        // If the user marks the card as incorrect, flip the card back.
+        setIsFlipped(false);
+    }
+
     // Blur the background text when the FlashcardGameModal is open
     useEffect(() => {
         if (blurText) {
@@ -110,7 +115,7 @@ export default function FlashcardGameModal({ selectedFront = 'chinese', showPiny
                                 <GiCheckMark className="flashcard-buttons__icon" />
                                 Correct!
                             </button>
-                            <button className="flashcard-buttons__incorrect-btn" onClick={() => console.log("Incorrect clicked")}>
+                            <button className="flashcard-buttons__incorrect-btn" onClick={handleIncorrect}>
                                 <PiRepeatBold className="flashcard-buttons__icon" />
                                 Try again
                             </button>
