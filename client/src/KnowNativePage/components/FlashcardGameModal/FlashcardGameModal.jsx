@@ -10,6 +10,7 @@ import Flashcard from '../Flashcard/Flashcard';
 export default function FlashcardGameModal({ selectedFront = 'chinese', showPinyin = true, open, onClose, blurText }) {
     
     const { savedWords } = useSavedWordsContext();
+    const [correctCount, setCorrectCount] = useState(0);
     const [isFlipped, setIsFlipped] = useState(false);
 
     const w = Array.isArray(savedWords) && savedWords.length ? savedWords[0] : null;
@@ -85,7 +86,6 @@ export default function FlashcardGameModal({ selectedFront = 'chinese', showPiny
                     justifyContent: 'center',
                     alignItems: 'center'
                 }}>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'center', textAlign: 'center' }}>
                     <Flashcard
                         chinese={chinese}
                         pinyin={pinyin}
@@ -114,8 +114,6 @@ export default function FlashcardGameModal({ selectedFront = 'chinese', showPiny
                             onClick={() => setIsFlipped(v => !v)}
                         >Show Answer
                         </button>}
-                    
-                </div>
                 </DialogContent>
         </Dialog>
     );
