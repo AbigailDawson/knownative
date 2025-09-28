@@ -34,7 +34,14 @@ export default function FlashcardGameModal({ selectedFront = 'chinese', showPiny
 
     function handleClose() {
         setIsFlipped(false);
+        setCorrectCount(0);
         onClose();
+    }
+    
+    function handleCorrect() {
+        // If the user marks the card as correct, update the count.
+        setCorrectCount((prev) => prev + 1);
+        setIsFlipped(false);
     }
 
     // Blur the background text when the FlashcardGameModal is open
@@ -99,7 +106,7 @@ export default function FlashcardGameModal({ selectedFront = 'chinese', showPiny
                     />
                     {isFlipped ? 
                         <div className="flashcard-buttons">
-                            <button className="flashcard-buttons__correct-btn" onClick={() => console.log("Correct clicked")}>
+                            <button className="flashcard-buttons__correct-btn" onClick={handleCorrect}>
                                 <GiCheckMark className="flashcard-buttons__icon" />
                                 Correct!
                             </button>
