@@ -11,6 +11,7 @@ export default function FlashcardGameModal({ selectedFront = 'chinese', showPiny
     
     const { savedWords } = useSavedWordsContext();
     const [correctCount, setCorrectCount] = useState(0);
+    const [remainingCount, setRemainingCount] = useState(0);
     const [isFlipped, setIsFlipped] = useState(false);
 
     const w = Array.isArray(savedWords) && savedWords.length ? savedWords[0] : null;
@@ -96,7 +97,6 @@ export default function FlashcardGameModal({ selectedFront = 'chinese', showPiny
                         isFlipped={isFlipped}
                         onToggle={() => setIsFlipped(v => !v)}
                     />
-                    
                     {isFlipped ? 
                         <div className="flashcard-buttons">
                             <button className="flashcard-buttons__correct-btn" onClick={() => console.log("Correct clicked")}>
@@ -116,6 +116,14 @@ export default function FlashcardGameModal({ selectedFront = 'chinese', showPiny
                         >Show Answer
                         </button>
                     }
+                    <div className="flashcard-count">
+                        <p>
+                            <span className="flashcard-count__correct">{correctCount}</span> Correct
+                        </p>
+                        <p>
+                            <span className="flashcard-count__remaining">{remainingCount}</span> Remaining
+                        </p>
+                    </div>
                 </DialogContent>
         </Dialog>
     );
