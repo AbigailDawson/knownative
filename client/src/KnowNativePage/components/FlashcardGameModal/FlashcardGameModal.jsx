@@ -32,6 +32,7 @@ export default function FlashcardGameModal({ selectedFront = 'chinese', showPiny
         '';
 
     function handleClose() {
+        setIsFlipped(false);
         onClose();
     }
 
@@ -113,7 +114,8 @@ export default function FlashcardGameModal({ selectedFront = 'chinese', showPiny
                             className="button-container__flip-button"
                             onClick={() => setIsFlipped(v => !v)}
                         >Show Answer
-                        </button>}
+                        </button>
+                    }
                 </DialogContent>
         </Dialog>
     );
