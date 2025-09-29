@@ -10,46 +10,22 @@ import Flashcard from '../Flashcard/Flashcard';
 export default function FlashcardGameModal({ selectedFront = 'chinese', showPinyin = true, open, onClose, blurText }) {
     
     const { savedWords } = useSavedWordsContext();
+    const [flashcards, setFlashcards] = useState([]);
     const [correctCount, setCorrectCount] = useState(0);
     const [remainingCount, setRemainingCount] = useState(0);
     const [isFlipped, setIsFlipped] = useState(false);
 
-    const w = Array.isArray(savedWords) && savedWords.length ? savedWords[0] : null;
-
-    const chinese =
-        w?.frontProperties?.traditional ??
-        w?.charGroup ??
-        w?.traditional ??
-        '';
-
-    const pinyin =
-        w?.frontProperties?.pinyin ??
-        w?.pinyin ??
-        '';
-
-    const english =
-        w?.backProperties?.meaning ??
-        w?.meaning ??
-        '';
-
-    function handleClose() {
-        setIsFlipped(false);
-        setCorrectCount(0);
-        onClose();
+    // ** When the modal opens:** 
+    // 1) Initialize the flashcards array with all of the savedWords.
+    useEffect(() => {
+    if (open && savedWords.length > 0) {
+        setFlashcards([...savedWords]);
+        // 2) Set the remaining count to the total number of savedWords.
+        setRemainingCount(savedWords.length);
     }
-    
-    function handleCorrect() {
-        // If the user marks the card as correct, update the count.
-        setCorrectCount((prev) => prev + 1);
-        setIsFlipped(false);
-    }
+}, [open, savedWords]);
 
-    function handleIncorrect() {
-        // If the user marks the card as incorrect, flip the card back.
-        setIsFlipped(false);
-    }
-
-    // Blur the background text when the FlashcardGameModal is open
+    // 3) Blur the background text
     useEffect(() => {
         if (blurText) {
             blurText(open);
@@ -61,6 +37,33 @@ export default function FlashcardGameModal({ selectedFront = 'chinese', showPiny
             }
         };
     }, [open, blurText]);
+
+    const word = Array.isArray(flashcards) && flashcards.length ? flashcards[0] : null;
+
+    const chinese = word?.frontProperties.traditional
+    const pinyin = word?.frontProperties.pinyin
+    const english = word?.backProperties.meaning
+
+    function handleClose() {
+        setIsFlipped(false);
+        setCorrectCount(0);
+        onClose();
+    }
+    
+    function handleCorrect() {
+        // If the user marks the card as correct, update the count.
+        setCorrectCount((count) => count + 1);
+        // Remove the card marked as correct from the flashcards array.
+        setFlashcards((cards) => cards.slice(1));
+        // Decrement the remaining cards counter.
+        setRemainingCount((count) => count - 1);
+        setIsFlipped(false);
+    }
+
+    function handleIncorrect() {
+        // If the user marks the card as incorrect, flip the card back.
+        setIsFlipped(false);
+    }
 
     return (
         <Dialog
