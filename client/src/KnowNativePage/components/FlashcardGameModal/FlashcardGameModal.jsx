@@ -53,17 +53,19 @@ export default function FlashcardGameModal({ selectedFront = 'chinese', showPiny
     function handleCorrect() {
         // If the user marks the card as correct, update the count.
         setCorrectCount((count) => count + 1);
-        // Remove the card marked as correct from the flashcards array.
+        // Remove the card marked as *Correct* from the flashcards array.
         setFlashcards((cards) => cards.slice(1));
         // Decrement the remaining cards counter.
         setRemainingCount((count) => count - 1);
         setIsFlipped(false);
     }
 
-    function handleIncorrect() {
-        // If the user marks the card as incorrect, flip the card back.
-        setIsFlipped(false);
-    }
+function handleIncorrect() {
+    // Create a new array by removing the first card and adding it to the end
+    setFlashcards((cards) => [...cards.slice(1), cards[0]]);
+    // Reset the flip state so the user can try the next card.
+    setIsFlipped(false);
+}
 
     return (
         <Dialog
