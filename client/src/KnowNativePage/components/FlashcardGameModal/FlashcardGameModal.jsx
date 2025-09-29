@@ -14,6 +14,7 @@ export default function FlashcardGameModal({ selectedFront = 'chinese', showPiny
     const [correctCount, setCorrectCount] = useState(0);
     const [remainingCount, setRemainingCount] = useState(0);
     const [isFlipped, setIsFlipped] = useState(false);
+    const [hasBeenFlipped, setHasBeenFlipped] = useState(false);
 
     // ** When the modal opens:** 
     // 1) Initialize the flashcards array with all of the savedWords.
@@ -23,7 +24,7 @@ export default function FlashcardGameModal({ selectedFront = 'chinese', showPiny
         // 2) Set the remaining count to the total number of savedWords.
         setRemainingCount(savedWords.length);
     }
-}, [open, savedWords]);
+    }, [open, savedWords]);
 
     // 3) Blur the background text
     useEffect(() => {
@@ -58,14 +59,23 @@ export default function FlashcardGameModal({ selectedFront = 'chinese', showPiny
         // Decrement the remaining cards counter.
         setRemainingCount((count) => count - 1);
         setIsFlipped(false);
+        setHasBeenFlipped(false);
     }
 
-function handleIncorrect() {
-    // Create a new array by removing the first card and adding it to the end
-    setFlashcards((cards) => [...cards.slice(1), cards[0]]);
-    // Reset the flip state so the user can try the next card.
-    setIsFlipped(false);
-}
+    function handleIncorrect() {
+        // Create a new array by removing the first card and adding it to the end
+        setFlashcards((cards) => [...cards.slice(1), cards[0]]);
+        // Reset the flip state so the user can try the next card.
+        setIsFlipped(false);
+        setHasBeenFlipped(false);
+    }
+
+  function handleToggle() {
+        setIsFlipped(!isFlipped);
+        if (!hasBeenFlipped) {
+        setHasBeenFlipped(true);
+        }
+    }
 
     return (
         <Dialog
@@ -112,7 +122,7 @@ function handleIncorrect() {
                         selectedFront={selectedFront}
                         showPinyin={showPinyin}
                         isFlipped={isFlipped}
-                        onToggle={() => setIsFlipped(v => !v)}
+                        onToggle={handleToggle}
                     />
                     {isFlipped ? 
                         <div className="flashcard-buttons">
@@ -129,7 +139,7 @@ function handleIncorrect() {
                         <button
                             type="button"
                             className="button-container__flip-button"
-                            onClick={() => setIsFlipped(v => !v)}
+                            onClick={() => setIsFlipped(isFlipped => !isFlipped)}
                         >Show Answer
                         </button>
                     }
