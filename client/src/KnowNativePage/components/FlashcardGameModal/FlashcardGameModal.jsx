@@ -17,9 +17,9 @@ export default function FlashcardGameModal({ selectedFront = 'chinese', showPiny
 
     const word = Array.isArray(flashcards) && flashcards.length ? flashcards[0] : null;
 
-    const chinese = word?.frontProperties.traditional
-    const pinyin = word?.frontProperties.pinyin
-    const english = word?.backProperties.meaning
+    const chinese = word?.frontProperties.traditional;
+    const pinyin = word?.frontProperties.pinyin;
+    const english = word?.backProperties.meaning;
 
     function shuffle(cards) {
         // Shuffle the cards using the Fisher-Yates algorithm:
