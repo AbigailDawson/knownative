@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Button, Dialog, DialogActions, DialogContent } from '@mui/material';
 import { IoMdClose } from 'react-icons/io';
+import { GiCheckMark } from 'react-icons/gi';
+import { PiRepeatBold } from 'react-icons/pi';
 import { useSavedWordsContext } from '../../../contexts/SavedWords/SavedWordsProvider';
 import './FlashcardGameModal.scss';
 import Flashcard from '../Flashcard/Flashcard';
@@ -8,42 +10,79 @@ import Flashcard from '../Flashcard/Flashcard';
 export default function FlashcardGameModal({ selectedFront = 'chinese', showPinyin = true, open, onClose, blurText }) {
     
     const { savedWords } = useSavedWordsContext();
+    const [flashcards, setFlashcards] = useState([]);
+    const [correctCount, setCorrectCount] = useState(0);
+    const [remainingCount, setRemainingCount] = useState(0);
     const [isFlipped, setIsFlipped] = useState(false);
 
-    const w = Array.isArray(savedWords) && savedWords.length ? savedWords[0] : null;
+    const word = Array.isArray(flashcards) && flashcards.length ? flashcards[0] : null;
 
-    const chinese =
-        w?.frontProperties?.traditional ??
-        w?.charGroup ??
-        w?.traditional ??
-        '';
+    const chinese = word?.frontProperties.traditional;
+    const pinyin = word?.frontProperties.pinyin;
+    const english = word?.backProperties.meaning;
 
-    const pinyin =
-        w?.frontProperties?.pinyin ??
-        w?.pinyin ??
-        '';
-
-    const english =
-        w?.backProperties?.meaning ??
-        w?.meaning ??
-        '';
-
-    function handleClose() {
-        onClose();
+    function shuffle(cards) {
+        // Shuffle the cards using the Fisher-Yates algorithm:
+        let i = cards.length;
+        while (i > 0) {
+            let newIdx = Math.floor(Math.random() * i);
+            i--;
+            [cards[newIdx], cards[i]] = [cards[i], cards[newIdx]];
+        }
     }
 
-    // Blur the background text when the FlashcardGameModal is open
+    // ** When the modal opens:** 
+    // 1) Initialize and shuffle the flashcards array with all of the savedWords.
+    // 2) Set the remaining count to the total number of savedWords.
+    useEffect(() => {
+    if (open && savedWords.length > 0) {
+        const allCards = [...savedWords];
+        shuffle(allCards);
+        setFlashcards(allCards);
+        setRemainingCount(savedWords.length);
+    }
+    }, [open, savedWords]);
+
+    // 3) Blur the background text
     useEffect(() => {
         if (blurText) {
             blurText(open);
         }
-        // Remove blur when the FlashcardGameModal closes.
+        // Remove text blur when the FlashcardGameModal closes.
         return () => {
             if (blurText) {
                 blurText(false);
             }
         };
     }, [open, blurText]);
+    
+    function handleClose() {
+        setFlashcards([]);
+        setCorrectCount(0);
+        onClose();
+    }
+    
+    function handleCorrect() {
+        // If the user marks the card as correct:
+        // Update the count.
+        // Remove the card marked as *Correct* from the flashcards array.
+        // Decrement the remaining cards counter.
+        setCorrectCount((count) => count + 1);
+        setFlashcards((cards) => cards.slice(1));
+        setRemainingCount((count) => count - 1);
+        setIsFlipped(false);
+    }
+
+    function handleIncorrect() {
+        // If the user marks the word as incorrect:
+        // Create a new array by removing the first card and adding it to the end of the array.
+        setFlashcards((cards) => [...cards.slice(1), cards[0]]);
+        setIsFlipped(false);
+    }
+
+  function handleToggle() {
+        setIsFlipped(!isFlipped);
+    }
 
     return (
         <Dialog
@@ -83,7 +122,6 @@ export default function FlashcardGameModal({ selectedFront = 'chinese', showPiny
                     justifyContent: 'center',
                     alignItems: 'center'
                 }}>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'center', textAlign: 'center' }}>
                     <Flashcard
                         chinese={chinese}
                         pinyin={pinyin}
@@ -91,16 +129,34 @@ export default function FlashcardGameModal({ selectedFront = 'chinese', showPiny
                         selectedFront={selectedFront}
                         showPinyin={showPinyin}
                         isFlipped={isFlipped}
-                        onToggle={() => setIsFlipped(v => !v)}
                     />
-                    <button
-                        type="button"
-                        className="button-container__flip-button"
-                        onClick={() => setIsFlipped(v => !v)}
-                    >
-                    {isFlipped ? 'Hide Answer' : 'Show Answer'}
-                    </button>
-                </div>
+                    {isFlipped ? 
+                        <div className="flashcard-buttons">
+                            <button className="flashcard-buttons__correct-btn" onClick={handleCorrect}>
+                                <GiCheckMark className="flashcard-buttons__icon" />
+                                Correct!
+                            </button>
+                            <button className="flashcard-buttons__incorrect-btn" onClick={handleIncorrect}>
+                                <PiRepeatBold className="flashcard-buttons__icon" />
+                                Try again
+                            </button>
+                        </div> 
+                        : 
+                        <button
+                            type="button"
+                            className="button-container__flip-button"
+                            onClick={handleToggle}
+                        >Show Answer
+                        </button>
+                    }
+                    <div className="flashcard-count">
+                        <p>
+                            <span className="flashcard-count__correct">{correctCount}</span> Correct
+                        </p>
+                        <p>
+                            <span className="flashcard-count__remaining">{remainingCount}</span> Remaining
+                        </p>
+                    </div>
                 </DialogContent>
         </Dialog>
     );
