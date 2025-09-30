@@ -14,7 +14,12 @@ export default function FlashcardGameModal({ selectedFront = 'chinese', showPiny
     const [correctCount, setCorrectCount] = useState(0);
     const [remainingCount, setRemainingCount] = useState(0);
     const [isFlipped, setIsFlipped] = useState(false);
-    const [hasBeenFlipped, setHasBeenFlipped] = useState(false);
+
+    const word = Array.isArray(flashcards) && flashcards.length ? flashcards[0] : null;
+
+    const chinese = word?.frontProperties.traditional
+    const pinyin = word?.frontProperties.pinyin
+    const english = word?.backProperties.meaning
 
     function shuffle(cards) {
         // Shuffle the cards using the Fisher-Yates algorithm:
@@ -28,12 +33,12 @@ export default function FlashcardGameModal({ selectedFront = 'chinese', showPiny
 
     // ** When the modal opens:** 
     // 1) Initialize and shuffle the flashcards array with all of the savedWords.
+    // 2) Set the remaining count to the total number of savedWords.
     useEffect(() => {
     if (open && savedWords.length > 0) {
         const allCards = [...savedWords];
         shuffle(allCards);
         setFlashcards(allCards);
-        // 2) Set the remaining count to the total number of savedWords.
         setRemainingCount(savedWords.length);
     }
     }, [open, savedWords]);
@@ -43,51 +48,40 @@ export default function FlashcardGameModal({ selectedFront = 'chinese', showPiny
         if (blurText) {
             blurText(open);
         }
-        // Remove blur when the FlashcardGameModal closes.
+        // Remove text blur when the FlashcardGameModal closes.
         return () => {
             if (blurText) {
                 blurText(false);
             }
         };
     }, [open, blurText]);
-
-    const word = Array.isArray(flashcards) && flashcards.length ? flashcards[0] : null;
-
-    const chinese = word?.frontProperties.traditional
-    const pinyin = word?.frontProperties.pinyin
-    const english = word?.backProperties.meaning
     
     function handleClose() {
         setFlashcards([]);
         setCorrectCount(0);
-        setHasBeenFlipped(false);
         onClose();
     }
     
     function handleCorrect() {
-        // If the user marks the card as correct, update the count.
-        setCorrectCount((count) => count + 1);
+        // If the user marks the card as correct:
+        // Update the count.
         // Remove the card marked as *Correct* from the flashcards array.
-        setFlashcards((cards) => cards.slice(1));
         // Decrement the remaining cards counter.
+        setCorrectCount((count) => count + 1);
+        setFlashcards((cards) => cards.slice(1));
         setRemainingCount((count) => count - 1);
         setIsFlipped(false);
-        setHasBeenFlipped(false);
     }
 
     function handleIncorrect() {
-        // Create a new array by removing the first card and adding it to the end
+        // If the user marks the word as incorrect:
+        // Create a new array by removing the first card and adding it to the end of the array.
         setFlashcards((cards) => [...cards.slice(1), cards[0]]);
-        // Reset the flip state so the user can try the next card.
         setIsFlipped(false);
-        setHasBeenFlipped(false);
     }
 
   function handleToggle() {
         setIsFlipped(!isFlipped);
-        if (!hasBeenFlipped) {
-        setHasBeenFlipped(true);
-        }
     }
 
     return (
@@ -135,7 +129,6 @@ export default function FlashcardGameModal({ selectedFront = 'chinese', showPiny
                         selectedFront={selectedFront}
                         showPinyin={showPinyin}
                         isFlipped={isFlipped}
-                        onToggle={handleToggle}
                     />
                     {isFlipped ? 
                         <div className="flashcard-buttons">
