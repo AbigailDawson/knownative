@@ -16,11 +16,23 @@ export default function FlashcardGameModal({ selectedFront = 'chinese', showPiny
     const [isFlipped, setIsFlipped] = useState(false);
     const [hasBeenFlipped, setHasBeenFlipped] = useState(false);
 
+    function shuffle(cards) {
+        // Shuffle the cards using the Fisher-Yates algorithm:
+        let i = cards.length;
+        while (i > 0) {
+            let newIdx = Math.floor(Math.random() * i);
+            i--;
+            [cards[newIdx], cards[i]] = [cards[i], cards[newIdx]];
+        }
+    }
+
     // ** When the modal opens:** 
-    // 1) Initialize the flashcards array with all of the savedWords.
+    // 1) Initialize and shuffle the flashcards array with all of the savedWords.
     useEffect(() => {
     if (open && savedWords.length > 0) {
-        setFlashcards([...savedWords]);
+        const allCards = [...savedWords];
+        shuffle(allCards);
+        setFlashcards(allCards);
         // 2) Set the remaining count to the total number of savedWords.
         setRemainingCount(savedWords.length);
     }
@@ -44,10 +56,11 @@ export default function FlashcardGameModal({ selectedFront = 'chinese', showPiny
     const chinese = word?.frontProperties.traditional
     const pinyin = word?.frontProperties.pinyin
     const english = word?.backProperties.meaning
-
+    
     function handleClose() {
-        setIsFlipped(false);
+        setFlashcards([]);
         setCorrectCount(0);
+        setHasBeenFlipped(false);
         onClose();
     }
     
@@ -139,7 +152,7 @@ export default function FlashcardGameModal({ selectedFront = 'chinese', showPiny
                         <button
                             type="button"
                             className="button-container__flip-button"
-                            onClick={() => setIsFlipped(isFlipped => !isFlipped)}
+                            onClick={handleToggle}
                         >Show Answer
                         </button>
                     }
