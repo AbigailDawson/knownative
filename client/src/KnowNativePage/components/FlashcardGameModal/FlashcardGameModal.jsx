@@ -39,7 +39,9 @@ export default function FlashcardGameModal({ selectedFront = 'chinese', showPiny
         const allCards = [...savedWords];
         shuffle(allCards);
         setFlashcards(allCards);
-        setRemainingCount(savedWords.length);
+        setRemainingCount(allCards.length);
+        setCorrectCount(0);
+        setIsFlipped(false);
     }
     }, [open, savedWords]);
 
@@ -59,6 +61,8 @@ export default function FlashcardGameModal({ selectedFront = 'chinese', showPiny
     function handleClose() {
         setFlashcards([]);
         setCorrectCount(0);
+        setRemainingCount(0);
+        setIsFlipped(false);
         onClose();
     }
     
@@ -69,20 +73,31 @@ export default function FlashcardGameModal({ selectedFront = 'chinese', showPiny
         // Decrement the remaining cards counter.
         setCorrectCount((count) => count + 1);
         setFlashcards((cards) => cards.slice(1));
-        setRemainingCount((count) => count - 1);
+        setRemainingCount((count) => Math.max(0, count - 1));
         setIsFlipped(false);
     }
 
     function handleIncorrect() {
         // If the user marks the word as incorrect:
         // Create a new array by removing the first card and adding it to the end of the array.
-        setFlashcards((cards) => [...cards.slice(1), cards[0]]);
+        setFlashcards((cards) => (cards.length ? [...cards.slice(1), cards[0]] : cards));
         setIsFlipped(false);
     }
+
+    function handlePlayAgain() {
+    const allCards = [...savedWords];
+    shuffle(allCards);
+    setFlashcards(allCards);
+    setCorrectCount(0);
+    setRemainingCount(allCards.length);
+    setIsFlipped(false);
+}
 
   function handleToggle() {
         setIsFlipped(!isFlipped);
     }
+
+    const showGame = remainingCount > 0;
 
     return (
         <Dialog
@@ -122,6 +137,8 @@ export default function FlashcardGameModal({ selectedFront = 'chinese', showPiny
                     justifyContent: 'center',
                     alignItems: 'center'
                 }}>
+                {showGame ? (
+                    <>
                     <Flashcard
                         chinese={chinese}
                         pinyin={pinyin}
@@ -157,6 +174,25 @@ export default function FlashcardGameModal({ selectedFront = 'chinese', showPiny
                             <span className="flashcard-count__remaining">{remainingCount}</span> Remaining
                         </p>
                     </div>
+                    </> 
+                ) : (
+                    <div className="game-modal__congrats-msg">
+                        <div>
+                            <dotlottie-player
+                                src="https://lottie.host/9279b8f8-2d84-4077-aaf6-db967f8ec7bb/3JRYmBPJgq.json"
+                                background="transparent"
+                                speed="1"
+                                style={{ height: '20vmin' }}
+                                loop
+                                autoplay>
+                            </dotlottie-player>
+                        </div>
+                        <h2>You completed the deck!</h2>
+                        <button className="game-modal__play-btn" onClick={handlePlayAgain}>
+                            Play Again
+                        </button>
+                    </div>
+                )}
                 </DialogContent>
         </Dialog>
     );
