@@ -85,13 +85,13 @@ export default function FlashcardGameModal({ selectedFront = 'chinese', showPiny
     }
 
     function handlePlayAgain() {
-    const allCards = [...savedWords];
-    shuffle(allCards);
-    setFlashcards(allCards);
-    setCorrectCount(0);
-    setRemainingCount(allCards.length);
-    setIsFlipped(false);
-}
+        const allCards = [...savedWords];
+        shuffle(allCards);
+        setFlashcards(allCards);
+        setCorrectCount(0);
+        setRemainingCount(allCards.length);
+        setIsFlipped(false);
+    }
 
   function handleToggle() {
         setIsFlipped(!isFlipped);
