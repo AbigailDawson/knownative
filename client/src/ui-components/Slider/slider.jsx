@@ -104,6 +104,17 @@ const Slider = ({ isOpen, onClose, blurText }) => {
       setErrorMessage('Changes could not be saved. Please try again.');
     }
   };
+  const handleDeleteWord = async (cardId) => {
+    setErrorMessage('');
+    try {
+      await deleteCard(cardId);
+      dispatch(actionDeleteWord(cardId));
+      setShowingEditWordModal(false);
+    } catch (error) {
+      console.error('Failed to save changes:', error);
+      setErrorMessage('Changes could not be saved. Please try again.');
+    }
+  };
 
   const handleDeleteCard = async (cardId) => {
     setIsEditMenuOpen(false);
@@ -204,6 +215,7 @@ const Slider = ({ isOpen, onClose, blurText }) => {
         isOpen={editModalOpen}
         onClose={() => setEditModalOpen(false)}
         onSave={handleSaveWord}
+        onDelete={handleDeleteWord}
       />
       <FlashcardGameModal
         open={flashcardGameModalOpen}
