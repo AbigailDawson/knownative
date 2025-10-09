@@ -85,7 +85,7 @@ export default function FlashcardGameModal({ selectedFront = 'chinese', showPiny
                 }
                 break;
         }
-    }, [open, isFlipped, remainingCount]);
+    }, [open, isFlipped, remainingCount, handleClose, handleToggle, handleCorrect, handleIncorrect, handlePlayAgain]);
 
     // Handler for when the user clicks outside the modal:
     const handleClickOutside = useCallback((event) => {
