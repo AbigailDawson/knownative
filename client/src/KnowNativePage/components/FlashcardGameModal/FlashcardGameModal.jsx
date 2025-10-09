@@ -105,6 +105,7 @@ export default function FlashcardGameModal({ selectedFront = 'chinese', showPiny
         setRemainingCount(allCards.length);
         setCorrectCount(0);
         setIsFlipped(false);
+        setIsClosing(false);
     }
     }, [open, savedWords]);
 
@@ -190,6 +191,7 @@ export default function FlashcardGameModal({ selectedFront = 'chinese', showPiny
         setCorrectCount(0);
         setRemainingCount(allCards.length);
         setIsFlipped(false);
+        setIsClosing(false);
     }
 
   function handleToggle() {
