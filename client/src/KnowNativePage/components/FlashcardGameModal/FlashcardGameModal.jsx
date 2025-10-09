@@ -14,6 +14,7 @@ export default function FlashcardGameModal({ selectedFront = 'chinese', showPiny
     const [correctCount, setCorrectCount] = useState(0);
     const [remainingCount, setRemainingCount] = useState(0);
     const [isFlipped, setIsFlipped] = useState(false);
+    const [isClosing, setIsClosing] = useState(false);
 
     // Refs for focus management
     const modalRef = useRef(null);
@@ -28,6 +29,8 @@ export default function FlashcardGameModal({ selectedFront = 'chinese', showPiny
     const chinese = word?.frontProperties.traditional;
     const pinyin = word?.frontProperties.pinyin;
     const english = word?.backProperties.meaning;
+
+    const showGame = open && remainingCount > 0;
 
     function shuffle(cards) {
         // Shuffle the cards using the Fisher-Yates algorithm:
@@ -154,6 +157,7 @@ export default function FlashcardGameModal({ selectedFront = 'chinese', showPiny
     }, [open, isFlipped, remainingCount]);
     
     function handleClose() {
+        setIsClosing(true);
         setFlashcards([]);
         setCorrectCount(0);
         setRemainingCount(0);
@@ -191,8 +195,6 @@ export default function FlashcardGameModal({ selectedFront = 'chinese', showPiny
   function handleToggle() {
         setIsFlipped(!isFlipped);
     }
-
-    const showGame = remainingCount > 0;
 
     return (
         <Dialog
@@ -281,25 +283,27 @@ export default function FlashcardGameModal({ selectedFront = 'chinese', showPiny
                     </div>
                     </> 
                 ) : (
-                    <div className="game-modal__congrats-msg">
-                        <div>
-                            <dotlottie-player
-                                src="https://lottie.host/9279b8f8-2d84-4077-aaf6-db967f8ec7bb/3JRYmBPJgq.json"
-                                background="transparent"
-                                speed="1"
-                                style={{ height: '20vmin' }}
-                                loop
-                                autoplay>
-                            </dotlottie-player>
+                    !isClosing && remainingCount === 0 && (
+                        <div className="game-modal__congrats-msg">
+                            <div>
+                                <dotlottie-player
+                                    src="https://lottie.host/9279b8f8-2d84-4077-aaf6-db967f8ec7bb/3JRYmBPJgq.json"
+                                    background="transparent"
+                                    speed="1"
+                                    style={{ height: '20vmin' }}
+                                    loop
+                                    autoplay>
+                                </dotlottie-player>
+                            </div>
+                            <h2>You completed the deck!</h2>
+                            <button 
+                                ref={playAgainButtonRef}
+                                className="game-modal__play-btn" 
+                                onClick={handlePlayAgain}>
+                                Play Again
+                            </button>
                         </div>
-                        <h2>You completed the deck!</h2>
-                        <button 
-                            ref={playAgainButtonRef}
-                            className="game-modal__play-btn" 
-                            onClick={handlePlayAgain}>
-                            Play Again
-                        </button>
-                    </div>
+                    )
                 )}
                 </DialogContent>
         </Dialog>
