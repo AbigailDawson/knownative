@@ -92,7 +92,7 @@ export default function FlashcardGameModal({ selectedFront = 'chinese', showPiny
         if (modalRef.current && !modalRef.current.contains(event.target)) {
             handleClose();
         }
-    }, []);
+    }, [handleClose]);
 
     // ** When the modal opens:** 
     // 1) Initialize and shuffle the flashcards array with all of the savedWords.
