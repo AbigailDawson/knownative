@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef, useCallback, useLayoutEffect } from 'react';
 import { Button, Dialog, DialogActions, DialogContent } from '@mui/material';
 import { IoMdClose } from 'react-icons/io';
 import { GiCheckMark } from 'react-icons/gi';
@@ -15,6 +15,14 @@ export default function FlashcardGameModal({ selectedFront = 'chinese', showPiny
     const [remainingCount, setRemainingCount] = useState(0);
     const [isFlipped, setIsFlipped] = useState(false);
 
+    // Refs for focus management
+    const modalRef = useRef(null);
+    const closeButtonRef = useRef(null);
+    const flipButtonRef = useRef(null);
+    const correctButtonRef = useRef(null);
+    const incorrectButtonRef = useRef(null);
+    const playAgainButtonRef = useRef(null);
+
     const word = Array.isArray(flashcards) && flashcards.length ? flashcards[0] : null;
 
     const chinese = word?.frontProperties.traditional;
@@ -30,6 +38,58 @@ export default function FlashcardGameModal({ selectedFront = 'chinese', showPiny
             [cards[newIdx], cards[i]] = [cards[i], cards[newIdx]];
         }
     }
+
+    // Handler for keyboard navigation
+    const handleKeyDown = useCallback((event) => {
+        if (!open) return;
+
+        switch (event.key) {
+            // ESC key closes the modal.
+            case 'Escape':
+                event.preventDefault();
+                handleClose();
+                break;
+            
+            // If the card is flipped, ENTER marks the card as *correct*.
+            // If the game is complete, ENTER hits *play again*.    
+            case 'Enter':
+                event.preventDefault();
+                if (remainingCount > 0) {
+                    if (!isFlipped) {
+                        handleToggle();
+                    } else {
+                        
+                        handleCorrect();
+                    }
+                } else {
+                    handlePlayAgain();
+                }
+                break;
+
+            // The user can use the left arrow to "Try Again"
+            case 'ArrowLeft':
+                event.preventDefault();
+                if (isFlipped && remainingCount > 0) {
+                    handleIncorrect();
+                }
+                break;
+            
+            // Using the right arrow, marks the word as correct.
+            case 'ArrowRight':
+                event.preventDefault();
+                if (isFlipped && remainingCount > 0) {
+                    handleCorrect();
+                }
+                break;
+        }
+    }, [open, isFlipped, remainingCount]);
+
+    // Handler for when the user clicks outside the modal:
+    const handleClickOutside = useCallback((event) => {
+        if (modalRef.current && !modalRef.current.contains(event.target)) {
+            handleClose();
+        }
+    }, []);
 
     // ** When the modal opens:** 
     // 1) Initialize and shuffle the flashcards array with all of the savedWords.
@@ -57,6 +117,41 @@ export default function FlashcardGameModal({ selectedFront = 'chinese', showPiny
             }
         };
     }, [open, blurText]);
+
+    // Add keyboard and click event listeners
+    useEffect(() => {
+        if (open) {
+            document.addEventListener('keydown', handleKeyDown);
+            document.addEventListener('mousedown', handleClickOutside);
+        }
+
+        return () => {
+            document.removeEventListener('keydown', handleKeyDown);
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [open, handleKeyDown, handleClickOutside]);
+
+    // When the modal opens, focus switches to the modal.
+    useLayoutEffect(() => {
+        if (open && modalRef.current) {
+            modalRef.current.focus();
+        }
+    }, [open]);
+
+    // Focus management for the buttons:
+    useLayoutEffect(() => {
+        if (!open) return;
+
+        if (remainingCount > 0) {
+            if (!isFlipped && flipButtonRef.current) {
+                flipButtonRef.current.focus();
+            } else if (isFlipped && correctButtonRef.current) {
+                correctButtonRef.current.focus();
+            }
+        } else if (remainingCount === 0 && playAgainButtonRef.current) {
+            playAgainButtonRef.current.focus();
+        }
+    }, [open, isFlipped, remainingCount]);
     
     function handleClose() {
         setFlashcards([]);
@@ -106,6 +201,7 @@ export default function FlashcardGameModal({ selectedFront = 'chinese', showPiny
             transitionDuration={420}
             PaperComponent={({ children }) => (
                 <div
+                    ref={modalRef}
                     style={{
                         width: '60vmin',
                         height: '55vmin',
@@ -125,7 +221,9 @@ export default function FlashcardGameModal({ selectedFront = 'chinese', showPiny
                     alignSelf: 'flex-end',
                     padding: '0'
                 }}>
-                <Button onClick={handleClose}>
+                <Button 
+                    ref={closeButtonRef} 
+                    onClick={handleClose}>
                     <IoMdClose className="close-icon" />
                 </Button>
             </DialogActions>
@@ -149,17 +247,24 @@ export default function FlashcardGameModal({ selectedFront = 'chinese', showPiny
                     />
                     {isFlipped ? 
                         <div className="flashcard-buttons">
-                            <button className="flashcard-buttons__correct-btn" onClick={handleCorrect}>
+                            <button 
+                                ref={correctButtonRef}
+                                className="flashcard-buttons__correct-btn"
+                                onClick={handleCorrect}>
                                 <GiCheckMark className="flashcard-buttons__icon" />
                                 Correct!
                             </button>
-                            <button className="flashcard-buttons__incorrect-btn" onClick={handleIncorrect}>
+                            <button 
+                                ref={incorrectButtonRef}
+                                className="flashcard-buttons__incorrect-btn"
+                                onClick={handleIncorrect}>
                                 <PiRepeatBold className="flashcard-buttons__icon" />
                                 Try again
                             </button>
                         </div> 
                         : 
                         <button
+                            ref={flipButtonRef}
                             type="button"
                             className="button-container__flip-button"
                             onClick={handleToggle}
@@ -188,7 +293,10 @@ export default function FlashcardGameModal({ selectedFront = 'chinese', showPiny
                             </dotlottie-player>
                         </div>
                         <h2>You completed the deck!</h2>
-                        <button className="game-modal__play-btn" onClick={handlePlayAgain}>
+                        <button 
+                            ref={playAgainButtonRef}
+                            className="game-modal__play-btn" 
+                            onClick={handlePlayAgain}>
                             Play Again
                         </button>
                     </div>
