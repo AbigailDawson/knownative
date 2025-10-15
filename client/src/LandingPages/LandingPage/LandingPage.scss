@@ -63,7 +63,7 @@ $medium-text: #383E40;
 // Link styles
 .login-link {
   color: $medium-text;
-  text-decoration: none;
+  text-decoration: underline;
   
   &:hover {
     text-decoration: underline;

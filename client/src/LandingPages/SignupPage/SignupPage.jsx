@@ -202,7 +202,7 @@ const SignupPage = () => {
     <main className="signup-page__main">
       <LandingPageNav />
       <section className="signup-page__container">
-        <h1 className="signup-page__title">Create Your Knownative Account</h1>
+        <h1 className="signup-page__title">Create Your KnowNative Account</h1>
         
         {loading ? (
           <div className="signup-page__loading-overlay">
@@ -269,23 +269,6 @@ const SignupPage = () => {
                 disabled={loading}
               >
                 Sign Up
-              </button>
-              
-              <div className="signup-page__separator">
-                <span className="signup-page__separator--text">OR</span>
-              </div>
-              
-              <button 
-                className="signup-page__button signup-page__button-google"
-                onClick={handleGoogleSignup}
-                disabled={loading}
-              >
-                <img
-                  className="signup-page__button-google--icon"
-                  src="/images/google-icon.png"
-                  alt="Google sign up"
-                />
-                Sign up with Google
               </button>
               
               <div>
