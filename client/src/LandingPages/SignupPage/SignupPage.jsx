@@ -272,7 +272,7 @@ const SignupPage = () => {
               </button>
               
               <div>
-                <Link to="/login" className="signup-text">
+                <Link to="/login" className="signup-page__login-link">
                   Already have an account? Log in
                 </Link>
               </div>
