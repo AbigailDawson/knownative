@@ -14,8 +14,10 @@
     "mongodb": "^6.9.0",
     "mongoose": "^8.7.0",
     "morgan": "^1.10.0",
+    "openai": "^6.5.0",
     "resend": "^4.4.1",
-    "serve-favicon": "^2.5.0"
+    "serve-favicon": "^2.5.0",
+    "zod": "^4.1.12"
   },
   "scripts": {
     "dev": "nodemon server",

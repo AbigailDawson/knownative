@@ -37,6 +37,7 @@ app.use("/api/demo", require("./routes/api/demo"));
 app.use("/api/users", require("./routes/api/userRouter"));
 app.use("/api/texts", require("./routes/api/textRoutes"));
 app.use("/api/cards", require("./routes/api/cards"));
+app.use("/api/tokenizer", require("./routes/api/tokenizer.js"))
 
 // The following "catch all" route (note the *) is necessary
 // to return the index.html on all non-AJAX requests
