@@ -137,9 +137,9 @@ const LoginModal = ({ setShowModal, openSignupModal }) => {
                 hasCustomButtons={true}>
                 <div className="login-modal__login-form-container">
                   <div className="login-modal__container">
-                    <h1 className="login-modal__header">Log Into Your KnowNative Account</h1>
+                    <h1 className="login-modal__header">Log In to Your KnowNative Account</h1>
                     <h2 className="login-modal__secondary-text">
-                      Lorem ipsum dolor sit amet consectetur.
+                      Let's pick up where you left off.
                     </h2>
                     <form className="login-page__form" onSubmit={handleLogin}>
                       {formFields.map((input, idx) => (
@@ -178,21 +178,8 @@ const LoginModal = ({ setShowModal, openSignupModal }) => {
                       </button>
                     </form>
 
-                    <div className="login-page__separator">
-                      <span className="login-page__separator__text">OR</span>
-                    </div>
-                    <div className="">
-                      <button className="login-page__button--google login-page__button">
-                        <img
-                          src="/images/google_icon.svg"
-                          alt="google sign in"
-                          className="login-page__google-icon"
-                        />
-                        Log in with Google
-                      </button>
-                    </div>
                     <a href="#" className="login-page__signup-link" onClick={handleSignupClick}>
-                      Don't have an account? Sign-Up
+                      Don't have an account? Sign Up
                     </a>
                   </div>
                 </div>
