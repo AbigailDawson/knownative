@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import * as demoAPI from "../../utilities/demo-api"
+// import * as demoAPI from "../../utilities/demo-api"
+import { tokenizer } from "../../utilities/tokenizer"
 import "./StudyTab.scss";
 
 import WordPopup from "./components/WordPopup/WordPopup";
@@ -15,7 +16,7 @@ export default function StudyTab({ text }) {
     async function fetchTokens() {
       if (!text?.content) return;
       try {
-        const words = await demoAPI.tokenizeText(text.content);
+        const words = await tokenizer.tokenizeText(text.content);
         setTokens(
             words.map((w) => (typeof w === "string" ? { text: w } : w))
         );
