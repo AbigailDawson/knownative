@@ -30,7 +30,8 @@ Return a **single JSON object** with the following structure:
 
 # 4. Clarifications:
 ### **Detected Languages**:
-- Always return as an array of strings.
+- Always return as a single array of strings.
+- Write the full name of the detected language. Don't use abreviations.
 - If only one language is detected, return a single-item array.
 - If the text is split 50/50 between two or more languages, return all detected languages in order of detection, with the first listed being the one detected first.
 - If you're unsure how to parse a word, use the context on the text to make an informed decision.

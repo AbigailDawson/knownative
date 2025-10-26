@@ -1,6 +1,14 @@
 The change log will document all modifications made to `prompt.md`
 
 # Change Log for `prompt.md`.
+*Date: 10/26/2025*
+
+### Clarifications: Detected Languages.
+- Fix to line 32: Always return as an array of strings.
+- Correction: Always return _as a single array_ of strings.
+- Added: Write the full name of the detected language. Don't use abreviations.
+
+# Change Log for `prompt.md`.
 *Date: 9/04/2025*
 
 ### Error 100: Unable to determine language
