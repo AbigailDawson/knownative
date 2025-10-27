@@ -10,19 +10,29 @@ export default function StudyTab({ text }) {
   const [tokens, setTokens] = useState([]);
   const [activeWord, setActiveWord] = useState(null);
 
-
-  // call demo API; replace with real API call later
+  function handleWordClick(token, index, e) {
+    const { pronunciation = "", definition = "" } = token;
+    setActiveWord({
+      index: index,
+      chars: token.text,
+      pinyin: pronunciation,
+      meaning: definition,
+      textId: text._id,
+      rect: e.target.getBoundingClientRect(), // store click position for popup placement
+    });
+  }
+  
   useEffect(() => {
     async function fetchTokens() {
       if (!text?.content) return;
       try {
-        const words = await tokenizeText(text.content);
-        console.log("Your words, sir: ", words);
-        console.log("Your detected language, sir: ", words.textDetails.detectedLanguage);
-        console.log("Your tokenizedText sir:", words.textDetails.tokenizedText);
-        // setTokens(
-        //     words.map((w) => (typeof w === "string" ? { text: w } : w))
-        // );
+        const { textDetails } = await tokenizeText(text.content);
+        const detectedLanguage = textDetails.detectedLanguage;
+        const tokenizedText = textDetails.tokenizedText;
+        setTokens(
+            tokenizedText.map((token) => ( { text: token.word, ...token } ))
+        );
+        console.log('tokens:', tokenizedText);
       } catch (err) {
         console.error("tokenizeText failed:", err);
         setTokens([{ text: text.content }]); // fallback
@@ -34,27 +44,16 @@ export default function StudyTab({ text }) {
   return (
     <section className="study">
       <div className="study__body">
-        {tokens.map((w, i) => (
+        {tokens.map((token, idx) => (
           <span
-            key={i}
+            key={idx}
             className={
               "study__word"
             }
-
-            // when clicked pull pronunciation + meaning from word data and open popup
-            onClick={(e) => {
-              const { pinyin = "", meaning = "", charGroup } = getWordInfo(w);
-              setActiveWord({
-                index: i,
-                chars: charGroup || w.text,
-                pinyin,
-                meaning,
-                textId: text._id,
-                rect: e.target.getBoundingClientRect(), // store click position for popup placement
-              });
-            }}
+            // when the user clicks on a word, the token object will be sent to the handler function to display the popup.
+            onClick={(e) => handleWordClick(token, idx, e)}
           >
-            {w.text}
+            {token.text}
           </span>
         ))}
       </div>
