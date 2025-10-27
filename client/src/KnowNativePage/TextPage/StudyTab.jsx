@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 // import * as demoAPI from "../../utilities/demo-api"
-import { tokenizer } from "../../utilities/tokenizer"
+import { tokenizeText } from "../../utilities/tokenizer"
 import "./StudyTab.scss";
 
 import WordPopup from "./components/WordPopup/WordPopup";
@@ -16,10 +16,13 @@ export default function StudyTab({ text }) {
     async function fetchTokens() {
       if (!text?.content) return;
       try {
-        const words = await tokenizer.tokenizeText(text.content);
-        setTokens(
-            words.map((w) => (typeof w === "string" ? { text: w } : w))
-        );
+        const words = await tokenizeText(text.content);
+        console.log("Your words, sir: ", words);
+        console.log("Your detected language, sir: ", words.textDetails.detectedLanguage);
+        console.log("Your tokenizedText sir:", words.textDetails.tokenizedText);
+        // setTokens(
+        //     words.map((w) => (typeof w === "string" ? { text: w } : w))
+        // );
       } catch (err) {
         console.error("tokenizeText failed:", err);
         setTokens([{ text: text.content }]); // fallback

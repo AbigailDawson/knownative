@@ -2,7 +2,7 @@ const express = require('express');
 const { tokenizeText } = require('../../controllers/api/tokenizer/tokenizer.js');
 const router = express.Router();
 
-router.post('/tokenize', async (req, res) => {
+router.post('/', async (req, res) => {
   const { text } = req.body;
 
   if (!text) {
@@ -10,8 +10,8 @@ router.post('/tokenize', async (req, res) => {
   }
 
   try {
-    const text_details = await tokenizeText(text);
-    res.json({ text_details: text_details });
+    const textDetails = await tokenizeText(text);
+    res.json({ textDetails: textDetails });
   } catch (error) {
     console.error('Tokenization error:', error);
     res.status(500).json({ error: 'Failed to segment text', details: error.message });

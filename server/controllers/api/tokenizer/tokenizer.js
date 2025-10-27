@@ -1,6 +1,6 @@
 const OpenAI = require('openai');
 const { zodTextFormat } = require('openai/helpers/zod');
-const { textDetails } = require('../../../models/TextDetailsSchema.js');
+const { textDetailsSchema } = require('../../../models/TextDetailsSchema.js');
 const fs = require('fs');
 const path = require('path');
 
@@ -36,14 +36,14 @@ async function tokenizeText(text) {
         },
       ],
       text: {
-        format: zodTextFormat(textDetails, 'text_details')
+        format: zodTextFormat(textDetailsSchema, 'textDetails')
       }
     });
 
-    const text_details = response.output_parsed;
-    console.log('Tokenized output: ', text_details);
+    const textDetails = response.output_parsed;
+    console.log('Tokenized output: ', textDetails);
 
-    return text_details;
+    return textDetails;
   } catch (error) {
     console.error('Failed to segment text: ', error);
     throw error;

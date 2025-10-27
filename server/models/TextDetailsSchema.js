@@ -12,9 +12,9 @@ const wordSchema = z.object({
 });
 
 // Define the response object output schema.
-const textDetails = z.object({
+const textDetailsSchema = z.object({
     detectedLanguage: z.array(languageSchema),
     tokenizedText: z.array(wordSchema)
 })
 
-module.exports = { textDetails };
+module.exports = { textDetailsSchema };
