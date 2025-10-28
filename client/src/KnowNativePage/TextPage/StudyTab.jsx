@@ -1,14 +1,12 @@
 import { useEffect, useState } from "react";
-// import * as demoAPI from "../../utilities/demo-api"
 import { tokenizeText } from "../../utilities/tokenizer"
 import "./StudyTab.scss";
-
 import WordPopup from "./components/WordPopup/WordPopup";
-import { getWordInfo } from "../../utilities/words-service";
 
 export default function StudyTab({ text }) {
   const [tokens, setTokens] = useState([]);
   const [activeWord, setActiveWord] = useState(null);
+  const [detectedLanguage, setDetectedLanguage] = useState(null);
 
   function handleWordClick(token, index, e) {
     const { pronunciation = "", definition = "" } = token;
@@ -27,8 +25,8 @@ export default function StudyTab({ text }) {
       if (!text?.content) return;
       try {
         const { textDetails } = await tokenizeText(text.content);
-        const detectedLanguage = textDetails.detectedLanguage;
         const tokenizedText = textDetails.tokenizedText;
+        setDetectedLanguage(textDetails.detectedLanguage);
         setTokens(
             tokenizedText.map((token) => ( { text: token.word, ...token } ))
         );
@@ -43,6 +41,9 @@ export default function StudyTab({ text }) {
 
   return (
     <section className="study">
+      <div className="study__language">
+        <h5><strong>Language: </strong> { detectedLanguage || 'Loading...'}</h5> 
+      </div>
       <div className="study__body">
         {tokens.map((token, idx) => (
           <span
