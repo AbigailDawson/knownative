@@ -1,5 +1,5 @@
 const express = require('express');
-const { tokenizeText } = require('../../controllers/api/tokenizer/tokenizer.js');
+const { tokenizeText } = require('../../controllers/api/tokenizer.js');
 const router = express.Router();
 
 router.post('/', async (req, res) => {

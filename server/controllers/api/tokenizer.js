@@ -1,14 +1,13 @@
 const OpenAI = require('openai');
 const { zodTextFormat } = require('openai/helpers/zod');
-const { textDetailsSchema } = require('../../../models/TextDetailsSchema.js');
+const { textDetailsSchema } = require('../../models/TextDetailsSchema.js');
 const fs = require('fs');
 const path = require('path');
 
 // Load the prompt.md file:
 let prompt = '';
-
 try {
-  const filePath = path.join(__dirname, './input/prompt.md');
+  const filePath = path.join(__dirname, '../../config/tokenizer/input/prompt.md');
   prompt = fs.readFileSync(filePath, 'utf8');
   console.log('Prompt loaded successfully');
 } catch (error) {
@@ -20,7 +19,6 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY
 });
 
-// Define the tokenizeText() function:
 async function tokenizeText(text) {
   try {
     const response = await openai.responses.parse({
