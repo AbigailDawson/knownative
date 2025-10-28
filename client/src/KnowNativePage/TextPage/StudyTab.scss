@@ -1,6 +1,11 @@
 .study {
   width: 100%;
   text-align: left;
+
+  &__language {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
  
   &__body {
     display: flex;
