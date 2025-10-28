@@ -1,5 +1,10 @@
 # Tokenizer Edge Case Test Plan
 
+Use this file to document all the Edge Cases used for testing.
+
+- The result of the testing can be used to fine tune the `prompt.md` file. 
+- All changes should be documented on the `change_log.md`.
+
 | **Test Case** | **Input** | **Expected Output** | **Actual Output** | **Pass/Fail** | **Notes** |
 |---------------|-----------|----------------------|-------------------|---------------|-----------|
 | **Chinese compound word segmentation** | `中华人民共和国` | Tokenize into meaningful units: `[中华, 人民, 共和国]` | TBD | ✅ | Ensure tokenizer doesn’t go character-by-character. |
