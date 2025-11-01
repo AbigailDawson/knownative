@@ -24,6 +24,7 @@ $icon-colors: (
 
 .dashboard {
     display: flex;
+    justify-content: center;
     max-height: 100vh;
 
     &--text-red {
