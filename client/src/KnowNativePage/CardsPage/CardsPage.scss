@@ -50,14 +50,6 @@ $icon-colors: (
     }
   }
 
-  &__main {
-    display: flex;
-    flex-direction: column;
-    width: calc(100vw - 285px); // factors in space taken from nav
-    max-width: 1500px;
-    margin-left: 350px;
-  }
-
   &__user {
     &-info {
       width: 100%;
@@ -365,6 +357,8 @@ $icon-colors: (
       font-weight: 700;
       color: #161717;
       font-family: 'Noto Serif TC', serif;
+      background-color: transparent;
+      padding-left: 0;
     }
 
     &__desc {
