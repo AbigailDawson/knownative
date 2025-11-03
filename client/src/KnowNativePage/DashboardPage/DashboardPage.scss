@@ -55,7 +55,7 @@ $icon-colors: (
         flex-direction: column;
         width: calc(100vw - 285px); // factors in space taken from nav
         max-width: 1500px;
-        margin-left: 320px;
+        margin-inline: auto;
     }
 
     &__user{
