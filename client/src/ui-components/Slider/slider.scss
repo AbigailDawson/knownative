@@ -1,8 +1,5 @@
 .slider {
-  position: fixed;
-  top: 5rem;
   right: -100%;
-  width: 400px;
   height: 100%;
   background-color: #f2f5f5;
   color: black;
@@ -10,9 +7,11 @@
   transition: right 0.3s ease-in-out;
   z-index: 1000;
   text-align: left;
+  grid-area: slider;
 
   &.open {
-    right: 0;
+    grid-area: slider;
+    justify-self: right;
   }
 
   &__content {

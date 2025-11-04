@@ -3,63 +3,53 @@
   display: flex;
 }
 
-// .text-page {
-//   margin-left: 285px; /* Width of the DashboardNavbar */
-//   width: calc(100% - 285px);
-// }
+.text-page {
 
-.text-page__layout {
-  display: flex;
-  gap: 2vmin;
-  padding: 2vmin;
-  margin-right: 2vmin;
-
-  &--with-sidebar {
-    grid-template-columns: 2fr 1fr; /* Two columns: main content and sidebar */
+  &__layout {
+    display: grid;
+    grid-template-areas: "workspace slider";
     gap: 2vmin;
-    padding: 2vmin;
-    margin-right: 2vmin;
+    overflow: hidden;
+
+    &--with-sidebar {
+      grid-template-columns: 1fr minmax(auto, 606px);
+      gap: 2vmin;
+    }
+    
+    &--full-width {
+      grid-template-columns: 1fr 0px;
+    }
   }
-  &--full-width {
-    grid-template-columns: 1fr; /* Full width for the main content */
-  }
-}
-.text-page__workspace {
-  transition: width 0.3s ease-out;
-  flex: 1;
+
+  &__workspace {
+    transition: width 0.3s ease-out;
+    padding: 2rem;
+    max-width: 1500px;
+    grid-area: workspace;
+    margin: 0 auto;
 }
 
-.text-page__sidebar {
-  width: 0;
-  overflow: hidden;
-  transition: width 0.5s ease-in-out;
+  // Back button to Dashboard
+  &__back {
+    display: inline-flex;
+    align-items: center;
+    margin: 2vmin 0;
+    color: #383e40;
+    text-decoration: none;
+    font-weight: 16px;
+  }
+
+  &__title {
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+  }
   
-  .text-page__layout--with-sidebar & {
-    width: 300px; // Adjust this value as needed
+  &__source {
+    display: block;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    color: #555;
   }
-}
-
-
-// Back button to Dashboard
-.text-page__back {
-  display: inline-flex;
-  align-items: center;
-  margin: 2vmin 0;
-  color: #383e40;
-  text-decoration: none;
-  font-weight: 16px;
-}
-
-.text-page__title {
-  font-size: 1.75rem;
-  margin-bottom: 0.5rem;
-}
-
-.text-page__source {
-  display: block;
-  margin-bottom: 1.5rem;
-  font-size: 0.9rem;
-  color: #555;
 }
 
 /* Read | Study | Tabs styles */

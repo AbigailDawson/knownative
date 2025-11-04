@@ -161,13 +161,13 @@ export default function TextsPage() {
               {activeTab === 'translate' && <p>This is the Translate tab.</p>}
             </div>
           </div>
-          <div className="text-page__sidebar">
-            <Slider
-              isOpen={isSliderOpen}
-              onClose={() => setIsSliderOpen(false)}
-              blurText={blurText}
-            />
-          </div>
+          {/* <div className="text-page__sidebar"> */}
+          <Slider
+            isOpen={isSliderOpen}
+            onClose={() => setIsSliderOpen(false)}
+            blurText={blurText}
+          />
+          {/* </div> */}
         </div>
       </div>
     </div>

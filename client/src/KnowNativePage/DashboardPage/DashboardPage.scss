@@ -51,12 +51,9 @@ $icon-colors: (
     }
 
     &__main{
-        display: flex;
-        flex-direction: column;
-        max-width: 1500px;
-        margin-inline: auto;
-        padding: 0 2rem;
+        display: grid;
         flex: 1;
+        grid-template-rows: auto 1fr;
     }
 
     &__user{
