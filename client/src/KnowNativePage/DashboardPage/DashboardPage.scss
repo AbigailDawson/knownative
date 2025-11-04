@@ -25,6 +25,7 @@ $icon-colors: (
 .dashboard {
     display: flex;
     min-height: 100vh;
+    flex: 1;
 
     &--text-red {
         color: var(--red);
