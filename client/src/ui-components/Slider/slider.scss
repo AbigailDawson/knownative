@@ -4,14 +4,16 @@
   background-color: #f2f5f5;
   color: black;
   box-shadow: -2px 0 8px rgba(0, 0, 0, 0.15);
-  transition: right 0.3s ease-in-out;
   z-index: 1000;
   text-align: left;
   grid-area: slider;
+  transform: translateX(100%);
+  transition: transform 0.3s ease; 
 
   &.open {
     grid-area: slider;
     justify-self: right;
+    transform: translateX(0);
   }
 
   &__content {
