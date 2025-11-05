@@ -32,6 +32,12 @@ $layout-gap: 2vmin;
 
 .text-page {
 
+  &__main {
+    display: grid;
+    flex: 1;
+    grid-template-rows: auto 1fr;
+  }
+
   &__layout {
     display: grid;
     grid-template-areas: "workspace slider";

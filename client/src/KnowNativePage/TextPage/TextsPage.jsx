@@ -48,7 +48,7 @@ export default function TextsPage() {
     <div className="dashboard">
       <DashboardNavbar activeTab="Dashboard" />
 
-      <div className="dashboard__main">
+      <div className="text-page__main">
         {/* User dropdown with name + profile info */}
         <div className="dashboard__user-info-card">
           <Link to="/dashboard" className="text-page__back">
