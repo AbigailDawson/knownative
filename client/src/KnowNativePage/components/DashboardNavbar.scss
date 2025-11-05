@@ -16,6 +16,9 @@
 
     &__side-nav {
         height: 100vh;
+        position: sticky;
+        top: 0;
+        left: 0;
         border-color: rgb(217, 217, 217);
         display: flex;
         flex-direction: column;

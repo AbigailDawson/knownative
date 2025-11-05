@@ -24,7 +24,7 @@ $icon-colors: (
 
 .dashboard {
     display: flex;
-    max-height: 100vh;
+    min-height: 100vh;
 
     &--text-red {
         color: var(--red);
@@ -53,9 +53,10 @@ $icon-colors: (
     &__main{
         display: flex;
         flex-direction: column;
-        width: calc(100vw - 285px); // factors in space taken from nav
         max-width: 1500px;
         margin-inline: auto;
+        padding: 0 2rem;
+        flex: 1;
     }
 
     &__user{

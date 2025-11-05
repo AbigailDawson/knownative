@@ -3,10 +3,10 @@
   display: flex;
 }
 
-.text-page {
-  margin-left: 285px; /* Width of the DashboardNavbar */
-  width: calc(100% - 285px);
-}
+// .text-page {
+//   margin-left: 285px; /* Width of the DashboardNavbar */
+//   width: calc(100% - 285px);
+// }
 
 .text-page__layout {
   display: flex;
@@ -62,8 +62,13 @@
   color: #555;
 }
 
-/* Tabs styles */
-.tabs{
+/* Read | Study | Tabs styles */
+.tabs {
+  
+  // Check DemoTextPage.scss as we have conflicting class names.
+  // .tabs should be renamed to .text-page__tabs to avoid conflicts.
+  
+  margin-left: 0;
  
     &__compressed {
     display: flex;
