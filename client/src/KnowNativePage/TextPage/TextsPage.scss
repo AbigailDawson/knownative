@@ -1,33 +1,81 @@
+// Use these variables to fine-tune the distribution of the .text-page__layout
+// $slider refers to the Saved Cards Slider.
+// $workspace is the parent container for the Read | Study | Translate tabs + the actual Text Content.
+
+// ----------------------------
+// -- SLIDER WIDTH VARIABLES --
+// ----------------------------
+$slider-min-width: 300px;
+$slider-preferred-width: 30vw;
+$slider-max-width: 606px;
+// clamp(min, preferred, max) is a responsive design tool.
+// It allows us to smoothly scale between a defined min and max range.
+$slider-width: clamp($slider-min-width, $slider-preferred-width, $slider-max-width);
+
+// -------------------------
+// -- WORKSPACE VARIABLES --
+// -------------------------
+
+$workspace-max-width: 1500px;
+$workspace-padding: 2rem;
+
+// ----------------------
+// -- LAYOUT VARIABLES --
+// ----------------------
+$layout-gap: 2vmin;
+
 /*  Main layout styles */
 .text-page-container {
   display: flex;
 }
+
 
 .text-page {
 
   &__layout {
     display: grid;
     grid-template-areas: "workspace slider";
-    gap: 2vmin;
+    gap: $layout-gap;
     overflow: hidden;
+    transition: grid-template-columns 0.3s ease;
+    will-change: grid-template-columns;
 
     &--with-sidebar {
-      grid-template-columns: 1fr minmax(auto, 606px);
-      gap: 2vmin;
+      grid-template-columns: 1fr $slider-width;
+
     }
-    
+
     &--full-width {
       grid-template-columns: 1fr 0px;
     }
   }
 
   &__workspace {
-    transition: width 0.3s ease-out;
-    padding: 2rem;
-    max-width: 1500px;
+    padding: $workspace-padding;
+    max-width: $workspace-max-width;
     grid-area: workspace;
     margin: 0 auto;
-}
+  }
+
+  &__content {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #333;
+    text-align: left;
+  }
+
+  &__tabs {
+    & span {
+      font-weight: bold;
+      background-color: #eee;
+      padding: 0.5rem 1rem;
+      border-radius: 0.25rem;
+
+      &:first-child {
+        border-bottom: 2px solid var(--teal);
+      }
+    }
+  }
 
   // Back button to Dashboard
   &__back {
@@ -43,7 +91,7 @@
     font-size: 1.75rem;
     margin-bottom: 0.5rem;
   }
-  
+
   &__source {
     display: block;
     margin-bottom: 1.5rem;
@@ -100,25 +148,6 @@
       background-color: #2ba6a8;
     }
   }
-}
-
-.text-page__tabs span:first-child {
-  border-bottom: 2px solid var(--teal);
-}
-
-.text-page__tabs span {
-  font-weight: bold;
-  background-color: #eee;
-  padding: 0.5rem 1rem;
-  border-radius: 0.25rem;
-}
-
-/* Read Tab Content Styles */
-.text-page__content {
-  font-size: 1rem;
-  line-height: 1.6;
-  color: #333;
-  text-align: left;
 }
 
 .read-container {
