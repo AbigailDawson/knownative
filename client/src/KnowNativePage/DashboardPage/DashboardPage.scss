@@ -380,6 +380,9 @@ $icon-colors: (
             font-weight: 700;
             color: #161717;
             font-family: 'Noto Serif TC', serif;
+            background-color: transparent;
+            padding-left: 0;
+            padding-right: 0;
         }
 
         &__desc {
