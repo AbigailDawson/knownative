@@ -42,7 +42,7 @@ $layout-gap: 2vmin;
     display: grid;
     grid-template-areas: "workspace slider";
     gap: $layout-gap;
-    overflow: hidden;
+    
     transition: grid-template-columns 0.3s ease;
     will-change: grid-template-columns;
 
