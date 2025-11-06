@@ -16,6 +16,7 @@ $slider-width: clamp($slider-min-width, $slider-preferred-width, $slider-max-wid
 // -- WORKSPACE VARIABLES --
 // -------------------------
 
+$workspace-width: 100%;
 $workspace-max-width: 1500px;
 $workspace-padding: 2rem;
 
@@ -58,6 +59,7 @@ $layout-gap: 2vmin;
 
   &__workspace {
     padding: $workspace-padding;
+    width: $workspace-width;
     max-width: $workspace-max-width;
     grid-area: workspace;
     margin: 0 auto;
