@@ -168,7 +168,7 @@ const Slider = ({ isOpen, onClose, blurText }) => {
 
   return (
     <>
-      <div ref={sliderRef} className={`slider ${isOpen ? 'open' : ''}`} style={{zIndex: 10}}>
+      <div ref={sliderRef} className={`slider ${isOpen ? 'open' : ''}`}>
         <div className="slider__content">
           <button className="slider__close" aria-label="Close slider" onClick={onClose}>
             ×
