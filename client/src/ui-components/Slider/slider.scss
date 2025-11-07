@@ -1,18 +1,18 @@
 .slider {
-  position: fixed;
-  top: 5rem;
   right: -100%;
-  width: 400px;
-  height: 100%;
+  // The slider height needs to account for the .dashboard__user-info header.
+  height: calc(100dvh - 5rem);
   background-color: #f2f5f5;
   color: black;
   box-shadow: -2px 0 8px rgba(0, 0, 0, 0.15);
-  transition: right 0.3s ease-in-out;
   z-index: 1000;
   text-align: left;
+  grid-area: slider;
 
   &.open {
-    right: 0;
+    justify-self: right;
+    position: sticky;
+    top: 0;
   }
 
   &__content {
@@ -46,7 +46,7 @@
   }
 
   &__body {
-    flex: 0.8;
+    flex: 1;
     overflow-y: auto;
     margin-top: 1rem;
   }
