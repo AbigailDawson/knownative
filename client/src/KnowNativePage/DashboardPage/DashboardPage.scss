@@ -52,12 +52,13 @@ $icon-colors: (
 
     &__main{
         display: flex;
-        flex-direction: column;
-        max-width: 1500px;
-        margin-inline: auto;
-        padding: 0 2rem;
         flex: 1;
-    }
+        grid-template-rows: auto 1fr;
+        flex-direction: column;
+        margin-inline: auto;
+        max-width: 1500px;
+        padding: 0 2rem;
+        }
 
     &__user{
         &-info {
@@ -137,7 +138,7 @@ $icon-colors: (
         padding: 1rem 0.5rem;
         border: 1px #E1E3E3 solid;
         border-radius: 8px;
-        width: calc(100% - 1rem);
+        width: 100%;
         margin: 2rem auto 1rem 0;
         align-items: center;
         align-self: center;
@@ -383,6 +384,9 @@ $icon-colors: (
             font-weight: 700;
             color: #161717;
             font-family: 'Noto Serif TC', serif;
+            background-color: transparent;
+            padding-left: 0;
+            padding-right: 0;
         }
 
         &__desc {
@@ -545,13 +549,10 @@ $icon-colors: (
         background-color: rgb(229, 242, 246);
         border: 1px solid #2BA6A8;
         border-radius: 0.5rem;
-        width: calc(100% - 1rem);
         padding: 1rem;
-        box-sizing: border-box;
         overflow: hidden;
         text-align: left;
         gap: 1rem;
-        margin: auto auto auto 0;
 
         &__sub-container {
             display: flex;
