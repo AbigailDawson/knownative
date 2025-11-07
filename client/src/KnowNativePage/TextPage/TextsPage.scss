@@ -54,6 +54,7 @@ $layout-gap: 2vmin;
 
     &--full-width {
       grid-template-columns: 1fr 0px;
+      overflow-x: hidden;
     }
   }
 

@@ -8,12 +8,9 @@
   z-index: 1000;
   text-align: left;
   grid-area: slider;
-  transform: translateX(100%);
-  transition: transform 0.3s ease; 
 
   &.open {
     justify-self: right;
-    transform: translateX(0);
     position: sticky;
     top: 0;
   }
