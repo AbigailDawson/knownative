@@ -25,6 +25,7 @@ const Modal = ({
 
   useEffect(() => {
     const modalRoot = document.getElementById('portal-modal');
+    modalRoot.style.zIndex = '9999';
     modalRoot.appendChild(elRef.current);
     // anything you return in a useEffect will run after the component unmounts
     return () => modalRoot.removeChild(elRef.current);
