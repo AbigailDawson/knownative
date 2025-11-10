@@ -131,33 +131,31 @@ const Slider = ({ isOpen, onClose, blurText }) => {
 
   const displayWords = savedWords.map((word) => (
     <div key={word._id} className="slider__card">
-      <div className="col">
-        <section className="SavedWord-card__content">
-          <p className="SavedWord-card__char">{word.frontProperties.traditional}</p>
-          <p className="SavedWord-card__char">{word.backProperties.meaning}</p>
-        </section>
-      </div>
-      <div className="col">
+      <section className="slider__card-content" aria-label='Saved Word'>
+        <p className="slider__card-content--savedWord">{word.frontProperties.traditional}</p>
+        <p className="slider__card-content--meaning">{word.backProperties.meaning}</p>
+      </section>
+      <div className="slider__card--options" aria-label='Options Menu'>
         <BiDotsVerticalRounded
-          className={`SavedWord-card__card-icon ${activeCardId === word._id ? 'SavedWord-card__menu-icon--open' : ''}`}
+          className={`options-menu__icon ${activeCardId === word._id ? 'options-menu__icon--open' : ''}`}
           onClick={() => setActiveCardId(activeCardId === word._id ? null : word._id)}
         />
         {/* Menu */}
         {activeCardId === word._id && (
           <article
-            className="SavedWord-card__menu"
+            className="options-menu"
             onMouseEnter={handleMouseEnterMenu}
             onMouseLeave={() => setActiveCardId(null)}>
             <section
-              className="SavedWord-card__menu-button SavedWord-card__menu-button--edit"
+              className="options-menu-button options-menu-button--edit"
               onClick={() => handleEditClick(word)}>
-              <p className="SavedWord-card__menu-label">Edit</p>
+              <p className="options-menu-label">Edit</p>
               <FaPencilAlt />
             </section>
             <section
-              className="SavedWord-card__menu-button SavedWord-card__menu-button--delete"
+              className="options-menu-button options-menu-button--delete"
               onClick={() => handleDeleteCard(word._id)}>
-              <p className="SavedWord-card__menu-label">Delete</p>
+              <p className="options-menu-label">Delete</p>
               <FaTrashAlt />
             </section>
           </article>
@@ -168,7 +166,7 @@ const Slider = ({ isOpen, onClose, blurText }) => {
 
   return (
     <>
-      <div ref={sliderRef} className={`slider ${isOpen ? 'open' : ''}`}>
+      <div ref={sliderRef} className={`slider ${isOpen ? 'slider--open' : ''}`}>
         <div className="slider__content">
           <button className="slider__close" aria-label="Close slider" onClick={onClose}>
             ×
@@ -198,7 +196,7 @@ const Slider = ({ isOpen, onClose, blurText }) => {
           </div>
           <div className="slider__footer">
             {Array.isArray(savedWords) && savedWords.length > 0 && (
-              <div className="dashboard__card-button">
+              <div className="slider__footer-button">
                 <Button
                   iconName="&#xe41d;"
                   iconStyling="reusable-button__icon-flip"

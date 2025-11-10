@@ -9,7 +9,7 @@
   text-align: left;
   grid-area: slider;
 
-  &.open {
+  &--open {
     justify-self: right;
     position: sticky;
     top: 0;
@@ -53,17 +53,116 @@
 
   &__card {
     background: #ffffff;
-    display: grid;
-    grid-template-columns: 1fr auto;
+    display: flex;
+    align-items: center;
     padding: 1rem;
-    border-radius: 8px;
     margin-bottom: 0.1rem;
+    
+    &--options {
+      flex-shrink: 2;
+    }
 
-    .col {
-      align-self: center;
-      position: relative;
+    &-content {
+      flex: 1;
 
-      .SavedWord-card__menu {
+      &--savedWord {
+        font-size: 1.6rem;
+        font-weight: light;
+        margin-bottom: 0;
+      }
+
+      &--meaning {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__footer {
+    padding-top: 1rem;
+    border-top: 1px solid #ddd;
+    display: flex;
+    justify-content: center;
+
+    &-button {
+      width: 100%;
+
+      Button {
+        width: 100%;
+      }
+    }
+  }
+
+  &__confirm {
+    background-color: #086a6c;
+    color: white;
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #074b59;
+    }
+  }
+}
+
+// .SavedWord-card {
+//   &__menu {
+//         position: absolute;
+//         top: 1.5rem; // Adjust based on your icon placement
+//         right: 0.02rem; // Ensures it's aligned within the card
+//         background-color: white;
+//         border-radius: 6px;
+//         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+//         z-index: 10;
+//         min-width: 120px;
+//         overflow: hidden;
+
+//         display: flex;
+//         flex-direction: column;
+
+//         &-button {
+//           display: flex;
+//           justify-content: space-between;
+//           align-items: center;
+//           padding: 0.75rem 1rem;
+//           font-size: 1rem;
+//           cursor: pointer;
+
+//           &--edit {
+//             background-color: #e6f7f7;
+//             color: #333;
+//           }
+
+//           &--delete {
+//             background-color: #fddddd;
+//             color: #b00020;
+//           }
+
+//           &:hover {
+//             background-color: #ddd;
+//           }
+//         }
+
+//         &__menu-label {
+//           margin-right: 0.5rem;
+//         }
+//       }
+//   &__content {
+//         display: flex;
+//         flex-direction: column;
+//         padding: 0.5rem;
+//       }
+//   &__char {
+//         font-size: 1.2rem;
+//         font-weight: 400;
+//         color: #333;
+//       }
+// }
+
+.options-menu {
         position: absolute;
         top: 1.5rem; // Adjust based on your icon placement
         right: 0.02rem; // Ensures it's aligned within the card
@@ -100,52 +199,26 @@
           }
         }
 
-        &__menu-label {
+        &-label {
           margin-right: 0.5rem;
         }
-      }
-
-      .SavedWord-card__content {
+      
+  &__content {
         display: flex;
         flex-direction: column;
         padding: 0.5rem;
-
-        .SavedWord-card__char {
-          font-size: 1.2rem;
-          font-weight: 400;
-          color: #333;
-        }
       }
-    }
-  }
-
-  &__footer {
-    padding-top: 1rem;
-    border-top: 1px solid #ddd;
-    display: flex;
-    justify-content: center;
-
-    .dashboard__card-button {
-      width: 100%;
-
-      Button {
-        width: 100%;
+  &__char {
+        font-size: 1.2rem;
+        font-weight: 400;
+        color: #333;
       }
-    }
-  }
-
-  &__confirm {
-    background-color: #086a6c;
-    color: white;
-    padding: 0.75rem 2rem;
-    font-size: 1rem;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-
-    &:hover {
-      background-color: #074b59;
+  
+    &__icon {
+      border-radius: 50%;
+      &:hover {
+        background-color: #086a6c25;    
+        cursor: pointer;
     }
   }
 }
