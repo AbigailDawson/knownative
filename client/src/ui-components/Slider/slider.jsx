@@ -111,16 +111,16 @@ const Slider = ({ isOpen, onClose, blurText }) => {
         <p className="slider__card-content--meaning">{word.backProperties.meaning}</p>
       </section>
       {/* 2. Options Icon */}
-      <div className="slider__dropdown-menu" aria-label='Options Menu'>
+      <div className="slider__drawer-menu" aria-label='Options Menu'>
         <BiDotsVerticalRounded
-          className={`slider__dropdown-menu-icon ${activeCardId === word._id ? 'slider__dropdown-menu-icon--open' : ''}`}
+          className={`slider__drawer-menu-icon ${activeCardId === word._id ? 'slider__drawer-menu-icon--open' : ''}`}
           onClick={() => {setActiveCardId(word._id);
           }}
         />
       </div>
       {/* 3. Edit | Delete Options Drawer */}
       <div aria-label='Options:'
-        className={`slider__dropdown-menu-options${activeCardId ? '' : '--hidden'}`}
+        className={`slider__drawer-menu-options${activeCardId ? '' : '--hidden'}`}
         onMouseLeave={() => {
           setActiveCardId(null);
           setShowWordOptions(false);
@@ -128,22 +128,22 @@ const Slider = ({ isOpen, onClose, blurText }) => {
       >
         {/* 3.1 Edit Option */}
         <section aria-label='Edit'
-          className="slider__dropdown-menu-button slider__dropdown-menu-button--edit"
+          className="slider__drawer-menu-button slider__drawer-menu-button--edit"
           onClick={() => {
               handleEditClick(word);
               setShowWordOptions(false);
             }}>
-          <p className="slider__dropdown-menu-label">Edit</p>
+          <p className="slider__drawer-menu-label">Edit</p>
           <FaPencilAlt />
         </section>
         {/* 3.2 Delete Option */}
         <section aria-label='Delete'
-          className="slider__dropdown-menu-button slider__dropdown-menu-button--delete"
+          className="slider__drawer-menu-button slider__drawer-menu-button--delete"
           onClick={() => {
               handleDeleteCard(word._id);
               setShowWordOptions(false);
           }}>
-          <p className="slider__dropdown-menu-label">Delete</p>
+          <p className="slider__drawer-menu-label">Delete</p>
           <FaTrashAlt />
         </section>
       </div>
