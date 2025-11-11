@@ -1,8 +1,12 @@
-// --------------------------
-// -- SAVED CARD VARIABLES --
-// --------------------------
+// ----------------------------------
+// -- SAVED CARD STYLING VARIABLES --
+// ----------------------------------
+
+// Left and Right Padding Values:
 $saved-card-LR-padding: 1rem;
+// Top and Bottom Padding Values:
 $saved-card-TB-padding: 0.8rem;
+// Bottom Margin Value:
 $saved-card-bottom-margin: 0.1rem;
 
 .slider {
@@ -156,17 +160,19 @@ $saved-card-bottom-margin: 0.1rem;
   }
 
   &__footer {
-    padding-top: 1rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
     border-top: 1px solid #ddd;
     display: flex;
-    justify-content: center;
 
     &-button {
-      width: 100%;
-
-      Button {
-        width: 100%;
-      }
+        min-width: 100%;
+        height: 100%;
+        display: hidden;
+        flex: 1;
+        & > button {
+          width: 100%;
+        }
     }
   }
 
