@@ -102,37 +102,50 @@ const Slider = ({ isOpen, onClose, blurText }) => {
     }
   };
 
-  const displayWords = savedWords.map((word) => (
-    <div key={word._id} className="slider__card">
+    const displayWords = savedWords.map((word) => (
+    // Saved Cards Container  
+    <div key={word._id} className={`slider__card ${activeCardId == word._id ? 'slider__card--open' : ''}`}>
+      {/* 1. Word and Meaning */}
       <section className="slider__card-content" aria-label='Saved Word'>
         <p className="slider__card-content--savedWord">{word.frontProperties.traditional}</p>
         <p className="slider__card-content--meaning">{word.backProperties.meaning}</p>
       </section>
+      {/* 2. Options Icon */}
       <div className="slider__dropdown-menu" aria-label='Options Menu'>
         <BiDotsVerticalRounded
           className={`slider__dropdown-menu-icon ${activeCardId === word._id ? 'slider__dropdown-menu-icon--open' : ''}`}
-          onClick={() => setActiveCardId(activeCardId === word._id ? null : word._id)}
+          onClick={() => {setActiveCardId(word._id);
+          }}
         />
-        {/* Dropdown Menu */}
-        {activeCardId === word._id && (
-          <article
-            className="slider__dropdown-menu-options"
-            onMouseLeave={() => setActiveCardId(null)}
-          >
-            <section
-              className="slider__dropdown-menu-button slider__dropdown-menu-button--edit"
-              onClick={() => handleEditClick(word)}>
-              <p className="slider__dropdown-menu-label">Edit</p>
-              <FaPencilAlt />
-            </section>
-            <section
-              className="slider__dropdown-menu-button slider__dropdown-menu-button--delete"
-              onClick={() => handleDeleteCard(word._id)}>
-              <p className="slider__dropdown-menu-label">Delete</p>
-              <FaTrashAlt />
-            </section>
-          </article>
-        )}
+      </div>
+      {/* 3. Edit | Delete Options Drawer */}
+      <div aria-label='Options:'
+        className={`slider__dropdown-menu-options${activeCardId ? '' : '--hidden'}`}
+        onMouseLeave={() => {
+          setActiveCardId(null);
+          setShowWordOptions(false);
+        }}
+      >
+        {/* 3.1 Edit Option */}
+        <section aria-label='Edit'
+          className="slider__dropdown-menu-button slider__dropdown-menu-button--edit"
+          onClick={() => {
+              handleEditClick(word);
+              setShowWordOptions(false);
+            }}>
+          <p className="slider__dropdown-menu-label">Edit</p>
+          <FaPencilAlt />
+        </section>
+        {/* 3.2 Delete Option */}
+        <section aria-label='Delete'
+          className="slider__dropdown-menu-button slider__dropdown-menu-button--delete"
+          onClick={() => {
+              handleDeleteCard(word._id);
+              setShowWordOptions(false);
+          }}>
+          <p className="slider__dropdown-menu-label">Delete</p>
+          <FaTrashAlt />
+        </section>
       </div>
     </div>
   ));
