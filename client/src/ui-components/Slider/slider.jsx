@@ -60,33 +60,6 @@ const Slider = ({ isOpen, onClose, blurText }) => {
     setFlashcardGameModalOpen(false);
   }
 
-  function handleOpenEditModal() {
-    setShowingEditWordModal(true);
-  }
-
-  //clicking the edit icon will open up the menu or close the menu if the menu is already open
-  function handleEditIconClick() {
-    setIsEditMenuOpen((currentState) => !currentState);
-  }
-
-  //if the mouse leaves the saved word card element that is associated with the menu, close the menu if the menu is already open.
-  function handleMouseleaveCard() {
-    if (!isMouseInsideMenu) {
-      setIsEditMenuOpen(false);
-    }
-  }
-
-  //if the mouse enters the menu, set state of IsMouseInsideMenu to TRUE. (it allows you navigate edit or delete buttons as you need to)
-  function handleMouseEnterMenu() {
-    setIsMouseInsideMenu(true);
-  }
-
-  //if you enter the menu and then leave the menu with your mouse, it automatically closes the menu.
-  function handleEditMenuMouseleave() {
-    setIsMouseInsideMenu(false);
-    setIsEditMenuOpen(false);
-  }
-
   const handleEditClick = (word) => {
     setSelectedWord(word);
     setEditModalOpen(true);
@@ -135,27 +108,27 @@ const Slider = ({ isOpen, onClose, blurText }) => {
         <p className="slider__card-content--savedWord">{word.frontProperties.traditional}</p>
         <p className="slider__card-content--meaning">{word.backProperties.meaning}</p>
       </section>
-      <div className="slider__card--options" aria-label='Options Menu'>
+      <div className="slider__dropdown-menu" aria-label='Options Menu'>
         <BiDotsVerticalRounded
-          className={`options-menu__icon ${activeCardId === word._id ? 'options-menu__icon--open' : ''}`}
+          className={`slider__dropdown-menu-icon ${activeCardId === word._id ? 'slider__dropdown-menu-icon--open' : ''}`}
           onClick={() => setActiveCardId(activeCardId === word._id ? null : word._id)}
         />
-        {/* Menu */}
+        {/* Dropdown Menu */}
         {activeCardId === word._id && (
           <article
-            className="options-menu"
-            onMouseEnter={handleMouseEnterMenu}
-            onMouseLeave={() => setActiveCardId(null)}>
+            className="slider__dropdown-menu-options"
+            onMouseLeave={() => setActiveCardId(null)}
+          >
             <section
-              className="options-menu-button options-menu-button--edit"
+              className="slider__dropdown-menu-button slider__dropdown-menu-button--edit"
               onClick={() => handleEditClick(word)}>
-              <p className="options-menu-label">Edit</p>
+              <p className="slider__dropdown-menu-label">Edit</p>
               <FaPencilAlt />
             </section>
             <section
-              className="options-menu-button options-menu-button--delete"
+              className="slider__dropdown-menu-button slider__dropdown-menu-button--delete"
               onClick={() => handleDeleteCard(word._id)}>
-              <p className="options-menu-label">Delete</p>
+              <p className="slider__dropdown-menu-label">Delete</p>
               <FaTrashAlt />
             </section>
           </article>
@@ -185,7 +158,7 @@ const Slider = ({ isOpen, onClose, blurText }) => {
               </div>
             )}
 
-            {/* Placeholder cards */}
+            {/* Show the user's Saved Words (displayWords) or render a placeholder message*/}
             {displayWords.length > 0 ? (
               displayWords
             ) : (

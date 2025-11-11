@@ -57,10 +57,6 @@
     align-items: center;
     padding: 1rem;
     margin-bottom: 0.1rem;
-    
-    &--options {
-      flex-shrink: 2;
-    }
 
     &-content {
       flex: 1;
@@ -73,6 +69,62 @@
 
       &--meaning {
         margin-bottom: 0;
+      }
+    }
+  }
+
+  &__dropdown-menu {
+    position: relative;
+
+    &-options {
+      position: absolute;
+      right: 100%; // Ensures it's aligned within the card
+      background-color: white;
+      border-radius: 6px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      z-index: 10;
+      min-width: 120px;
+      min-height: 120px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    &-button {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      // padding: 0.75rem 1rem;
+      font-size: 1rem;
+      cursor: pointer;
+
+      &--edit {
+        background-color: #e6f7f7;
+        color: #333;
+      }
+
+      &--delete {
+        background-color: #fddddd;
+        color: #b00020;
+      }
+
+      &:hover {
+        background-color: #ddd;
+      }
+    }
+
+    &-label {
+      margin: 0;
+      padding: 1rem;
+    }
+
+    &-icon {
+      border-radius: 50%;
+
+      &:hover {
+        background-color: #086a6c25;
+        cursor: pointer;
       }
     }
   }
@@ -104,121 +156,6 @@
 
     &:hover {
       background-color: #074b59;
-    }
-  }
-}
-
-// .SavedWord-card {
-//   &__menu {
-//         position: absolute;
-//         top: 1.5rem; // Adjust based on your icon placement
-//         right: 0.02rem; // Ensures it's aligned within the card
-//         background-color: white;
-//         border-radius: 6px;
-//         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-//         z-index: 10;
-//         min-width: 120px;
-//         overflow: hidden;
-
-//         display: flex;
-//         flex-direction: column;
-
-//         &-button {
-//           display: flex;
-//           justify-content: space-between;
-//           align-items: center;
-//           padding: 0.75rem 1rem;
-//           font-size: 1rem;
-//           cursor: pointer;
-
-//           &--edit {
-//             background-color: #e6f7f7;
-//             color: #333;
-//           }
-
-//           &--delete {
-//             background-color: #fddddd;
-//             color: #b00020;
-//           }
-
-//           &:hover {
-//             background-color: #ddd;
-//           }
-//         }
-
-//         &__menu-label {
-//           margin-right: 0.5rem;
-//         }
-//       }
-//   &__content {
-//         display: flex;
-//         flex-direction: column;
-//         padding: 0.5rem;
-//       }
-//   &__char {
-//         font-size: 1.2rem;
-//         font-weight: 400;
-//         color: #333;
-//       }
-// }
-
-.options-menu {
-        position: absolute;
-        top: 1.5rem; // Adjust based on your icon placement
-        right: 0.02rem; // Ensures it's aligned within the card
-        background-color: white;
-        border-radius: 6px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-        z-index: 10;
-        min-width: 120px;
-        overflow: hidden;
-
-        display: flex;
-        flex-direction: column;
-
-        &-button {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          padding: 0.75rem 1rem;
-          font-size: 1rem;
-          cursor: pointer;
-
-          &--edit {
-            background-color: #e6f7f7;
-            color: #333;
-          }
-
-          &--delete {
-            background-color: #fddddd;
-            color: #b00020;
-          }
-
-          &:hover {
-            background-color: #ddd;
-          }
-        }
-
-        &-label {
-          margin-right: 0.5rem;
-        }
-      
-  &__content {
-        display: flex;
-        flex-direction: column;
-        padding: 0.5rem;
-      }
-  &__char {
-        font-size: 1.2rem;
-        font-weight: 400;
-        color: #333;
-      }
-  
-    &__icon {
-      border-radius: 50%;
-      &:hover {
-        background-color: #086a6c25;    
-        cursor: pointer;
     }
   }
 }
