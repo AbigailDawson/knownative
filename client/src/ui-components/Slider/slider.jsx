@@ -27,14 +27,14 @@ const Slider = ({ isOpen, onClose, blurText }) => {
 
   useEffect(() => {
     function handleKeyDown(event) {
-      if (editModalOpen) return;
+      if (editModalOpen || flashcardGameModalOpen) return;
       if (event.key === 'Escape') { 
         onClose();
       }
     }
 
     function handleClickOutside(event) {
-      if (editModalOpen) return;
+      if (editModalOpen || flashcardGameModalOpen) return;
       if (sliderRef.current && !sliderRef.current.contains(event.target)) {
         onClose();
       }
@@ -49,7 +49,7 @@ const Slider = ({ isOpen, onClose, blurText }) => {
       window.removeEventListener('keydown', handleKeyDown);
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [isOpen, onClose, editModalOpen]);
+  }, [isOpen, onClose, editModalOpen, flashcardGameModalOpen]);
 
   function handleOpenFlashcardGameModal() {
     onClose();
@@ -152,7 +152,7 @@ const Slider = ({ isOpen, onClose, blurText }) => {
 
   return (
     <>
-      <div ref={sliderRef} className={`slider ${isOpen ? 'slider--open' : ''}`}>
+      <div ref={sliderRef} className={`slider ${isOpen ? 'slider--open' : 'slider--close'}`}>
         <div className="slider__content">
           <button className="slider__close" aria-label="Close slider" onClick={onClose}>
             ×
@@ -188,6 +188,7 @@ const Slider = ({ isOpen, onClose, blurText }) => {
                   iconStyling="reusable-button__icon-flip"
                   buttonVariant="tertiary"
                   buttonText="Review"
+                  visibility={isOpen ? true : false}
                   buttonOnClickFunc={handleOpenFlashcardGameModal}
                 />
               </div>
