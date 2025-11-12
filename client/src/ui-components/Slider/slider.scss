@@ -143,6 +143,7 @@ $saved-card-bottom-margin: 0.1rem;
       &--delete {
         background-color: #fddddd;
         color: #b00020;
+        flex: 1;
       }
 
       &:hover {
