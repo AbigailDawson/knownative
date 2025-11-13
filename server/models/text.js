@@ -10,6 +10,14 @@ const textSchema = new Schema(
     // level: { type: String, enum: ["A1", "A2", "B1", "B2", "C1", "C2"] },
     cards: [{ type: Schema.Types.ObjectId, ref: "Card" }],
     tags: [{ type: Schema.Types.ObjectId, ref: "Tag" }],
+    detectedLanguage: [{ type: String }],
+    tokens: [
+      {
+        word: { type: String },
+        pronunciation: { type: String },
+        definition: { type: String }
+      }
+    ],
     status: {
       type: String,
       enum: ["active", "inactive"],
