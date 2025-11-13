@@ -1,5 +1,16 @@
+// ----------------------------------
+// -- SAVED CARD STYLING VARIABLES --
+// ----------------------------------
+
+// Left and Right Padding Values:
+$saved-card-LR-padding: 1.8rem;
+// Top and Bottom Padding Values:
+$saved-card-TB-padding: 1.2rem;
+// Bottom Margin Value:
+$saved-card-bottom-margin: 0.1rem;
+
 .slider {
-  right: -100%;
+  right: 0%;
   // The slider height needs to account for the .dashboard__user-info header.
   height: calc(100dvh - 5rem);
   background-color: #f2f5f5;
@@ -9,10 +20,19 @@
   text-align: left;
   grid-area: slider;
 
-  &.open {
+  &--open {
     justify-self: right;
     position: sticky;
     top: 0;
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.3s ease-in;
+  }
+
+  &--close {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease;
   }
 
   &__content {
@@ -54,83 +74,114 @@
   &__card {
     background: #ffffff;
     display: grid;
-    grid-template-columns: 1fr auto;
-    padding: 1rem;
-    border-radius: 8px;
-    margin-bottom: 0.1rem;
+    grid-template-columns: 1fr auto 0px;
+    grid-template-areas: "content icon options";
+    align-items: center;
+    margin-bottom: $saved-card-bottom-margin;
+    overflow: hidden;
+    transition: grid-template-columns 200ms ease;
+    will-change: grid-template-columns;
 
-    .col {
-      align-self: center;
-      position: relative;
+    &--open {
+      grid-template-areas: "content icon options";
+      grid-template-columns: 1fr 0px 30%;
+      transition: grid-template-columns 300ms ease;
+    }
 
-      .SavedWord-card__menu {
-        position: absolute;
-        top: 1.5rem; // Adjust based on your icon placement
-        right: 0.02rem; // Ensures it's aligned within the card
-        background-color: white;
-        border-radius: 6px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-        z-index: 10;
-        min-width: 120px;
-        overflow: hidden;
+    &-content {
+      grid-area: content;
+      padding: $saved-card-TB-padding $saved-card-LR-padding;
 
-        display: flex;
-        flex-direction: column;
-
-        &-button {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          padding: 0.75rem 1rem;
-          font-size: 1rem;
-          cursor: pointer;
-
-          &--edit {
-            background-color: #e6f7f7;
-            color: #333;
-          }
-
-          &--delete {
-            background-color: #fddddd;
-            color: #b00020;
-          }
-
-          &:hover {
-            background-color: #ddd;
-          }
-        }
-
-        &__menu-label {
-          margin-right: 0.5rem;
-        }
+      &--savedWord {
+        font-size: 1.6rem;
+        font-weight: light;
+        margin-bottom: 0;
       }
 
-      .SavedWord-card__content {
-        display: flex;
-        flex-direction: column;
-        padding: 0.5rem;
+      &--meaning {
+        margin-bottom: 0;
+      }
+    }
+  }
 
-        .SavedWord-card__char {
-          font-size: 1.2rem;
-          font-weight: 400;
-          color: #333;
-        }
+  &__drawer-menu {
+    grid-area: icon;
+    padding: $saved-card-LR-padding;
+
+    &-options {
+      grid-area: options;
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      height: 100%;
+
+      &--hidden {
+        display: none;
+      }
+    }
+
+    &-button {
+      display: flex;
+      justify-content: center;
+      row-gap: 1rem;
+      flex-direction: column-reverse;
+      align-items: center;
+      font-size: 0.9rem;
+      cursor: pointer;
+
+       & > svg {
+        padding: 0 0.6rem;
+        width: fit-content;
+      }
+
+      &--edit {
+        background-color: #e6f7f7;
+        color: #333;
+        flex: 1;
+      }
+
+      &--delete {
+        background-color: #fddddd;
+        color: #b00020;
+        flex: 1;
+      }
+
+      &:hover {
+        background-color: #ddd;
+      }
+    }
+
+    &-label {
+      margin: 0;
+      padding: 0 0.6rem;
+    }
+
+    &-icon {
+      border-radius: 50%;
+      height: 1.5em;
+      width: 1.5em;
+      color: #086A6C;
+
+      &:hover {
+        background-color: #086a6c25;
+        cursor: pointer;
       }
     }
   }
 
   &__footer {
-    padding-top: 1rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
     border-top: 1px solid #ddd;
     display: flex;
-    justify-content: center;
 
-    .dashboard__card-button {
-      width: 100%;
-
-      Button {
+    &-button {
         width: 100%;
-      }
+        height: 100%;
+        flex: 1;
+        & > button {
+          width: 100%;
+        }
     }
   }
 

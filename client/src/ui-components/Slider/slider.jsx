@@ -27,14 +27,14 @@ const Slider = ({ isOpen, onClose, blurText }) => {
 
   useEffect(() => {
     function handleKeyDown(event) {
-      if (editModalOpen) return;
+      if (editModalOpen || flashcardGameModalOpen) return;
       if (event.key === 'Escape') { 
         onClose();
       }
     }
 
     function handleClickOutside(event) {
-      if (editModalOpen) return;
+      if (editModalOpen || flashcardGameModalOpen) return;
       if (sliderRef.current && !sliderRef.current.contains(event.target)) {
         onClose();
       }
@@ -49,7 +49,7 @@ const Slider = ({ isOpen, onClose, blurText }) => {
       window.removeEventListener('keydown', handleKeyDown);
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [isOpen, onClose, editModalOpen]);
+  }, [isOpen, onClose, editModalOpen, flashcardGameModalOpen]);
 
   function handleOpenFlashcardGameModal() {
     onClose();
@@ -58,33 +58,6 @@ const Slider = ({ isOpen, onClose, blurText }) => {
 
   function handleCloseFlashcardGameModal() {
     setFlashcardGameModalOpen(false);
-  }
-
-  function handleOpenEditModal() {
-    setShowingEditWordModal(true);
-  }
-
-  //clicking the edit icon will open up the menu or close the menu if the menu is already open
-  function handleEditIconClick() {
-    setIsEditMenuOpen((currentState) => !currentState);
-  }
-
-  //if the mouse leaves the saved word card element that is associated with the menu, close the menu if the menu is already open.
-  function handleMouseleaveCard() {
-    if (!isMouseInsideMenu) {
-      setIsEditMenuOpen(false);
-    }
-  }
-
-  //if the mouse enters the menu, set state of IsMouseInsideMenu to TRUE. (it allows you navigate edit or delete buttons as you need to)
-  function handleMouseEnterMenu() {
-    setIsMouseInsideMenu(true);
-  }
-
-  //if you enter the menu and then leave the menu with your mouse, it automatically closes the menu.
-  function handleEditMenuMouseleave() {
-    setIsMouseInsideMenu(false);
-    setIsEditMenuOpen(false);
   }
 
   const handleEditClick = (word) => {
@@ -129,46 +102,57 @@ const Slider = ({ isOpen, onClose, blurText }) => {
     }
   };
 
-  const displayWords = savedWords.map((word) => (
-    <div key={word._id} className="slider__card">
-      <div className="col">
-        <section className="SavedWord-card__content">
-          <p className="SavedWord-card__char">{word.frontProperties.traditional}</p>
-          <p className="SavedWord-card__char">{word.backProperties.meaning}</p>
-        </section>
-      </div>
-      <div className="col">
+    const displayWords = savedWords.map((word) => (
+    // Saved Cards Container  
+    <div key={word._id} className={`slider__card ${activeCardId == word._id ? 'slider__card--open' : ''}`}>
+      {/* 1. Word and Meaning */}
+      <section className="slider__card-content" aria-label='Saved Word'>
+        <p className="slider__card-content--savedWord">{word.frontProperties.traditional}</p>
+        <p className="slider__card-content--meaning">{word.backProperties.meaning}</p>
+      </section>
+      {/* 2. Options Icon */}
+      <div className="slider__drawer-menu" aria-label='Options Menu'>
         <BiDotsVerticalRounded
-          className={`SavedWord-card__card-icon ${activeCardId === word._id ? 'SavedWord-card__menu-icon--open' : ''}`}
-          onClick={() => setActiveCardId(activeCardId === word._id ? null : word._id)}
+          className={`slider__drawer-menu-icon ${activeCardId === word._id ? 'slider__drawer-menu-icon--open' : ''}`}
+          onClick={() => {setActiveCardId(word._id);
+          }}
         />
-        {/* Menu */}
-        {activeCardId === word._id && (
-          <article
-            className="SavedWord-card__menu"
-            onMouseEnter={handleMouseEnterMenu}
-            onMouseLeave={() => setActiveCardId(null)}>
-            <section
-              className="SavedWord-card__menu-button SavedWord-card__menu-button--edit"
-              onClick={() => handleEditClick(word)}>
-              <p className="SavedWord-card__menu-label">Edit</p>
-              <FaPencilAlt />
-            </section>
-            <section
-              className="SavedWord-card__menu-button SavedWord-card__menu-button--delete"
-              onClick={() => handleDeleteCard(word._id)}>
-              <p className="SavedWord-card__menu-label">Delete</p>
-              <FaTrashAlt />
-            </section>
-          </article>
-        )}
+      </div>
+      {/* 3. Edit | Delete Options Drawer */}
+      <div aria-label='Options:'
+        className={`slider__drawer-menu-options${activeCardId ? '' : '--hidden'}`}
+        onMouseLeave={() => {
+          setActiveCardId(null);
+          setShowWordOptions(false);
+        }}
+      >
+        {/* 3.1 Edit Option */}
+        <section aria-label='Edit'
+          className="slider__drawer-menu-button slider__drawer-menu-button--edit"
+          onClick={() => {
+              handleEditClick(word);
+              setShowWordOptions(false);
+            }}>
+          <p className="slider__drawer-menu-label">Edit</p>
+          <FaPencilAlt />
+        </section>
+        {/* 3.2 Delete Option */}
+        <section aria-label='Delete'
+          className="slider__drawer-menu-button slider__drawer-menu-button--delete"
+          onClick={() => {
+              handleDeleteCard(word._id);
+              setShowWordOptions(false);
+          }}>
+          <p className="slider__drawer-menu-label">Delete</p>
+          <FaTrashAlt />
+        </section>
       </div>
     </div>
   ));
 
   return (
     <>
-      <div ref={sliderRef} className={`slider ${isOpen ? 'open' : ''}`}>
+      <div ref={sliderRef} className={`slider ${isOpen ? 'slider--open' : 'slider--close'}`}>
         <div className="slider__content">
           <button className="slider__close" aria-label="Close slider" onClick={onClose}>
             ×
@@ -187,7 +171,7 @@ const Slider = ({ isOpen, onClose, blurText }) => {
               </div>
             )}
 
-            {/* Placeholder cards */}
+            {/* Show the user's Saved Words (displayWords) or render a placeholder message*/}
             {displayWords.length > 0 ? (
               displayWords
             ) : (
@@ -198,12 +182,13 @@ const Slider = ({ isOpen, onClose, blurText }) => {
           </div>
           <div className="slider__footer">
             {Array.isArray(savedWords) && savedWords.length > 0 && (
-              <div className="dashboard__card-button">
+              <div className="slider__footer-button">
                 <Button
                   iconName="&#xe41d;"
                   iconStyling="reusable-button__icon-flip"
                   buttonVariant="tertiary"
                   buttonText="Review"
+                  visibility={isOpen ? true : false}
                   buttonOnClickFunc={handleOpenFlashcardGameModal}
                 />
               </div>
