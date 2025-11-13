@@ -59,7 +59,7 @@ export default function AddTextSlideout({ isOpen, onClose, onSuccess }) {
     e.preventDefault();
     if (validateForm()) {
       try {
-        const data = await sendRequest('/api/demo/texts', 'POST', formData);
+        const data = await sendRequest('/api/texts/add', 'POST', formData);
         if (onSuccess) onSuccess(); // Callback to notify parent component of success
         onClose(); // Close the slideout after successful submission
       } catch (error) {

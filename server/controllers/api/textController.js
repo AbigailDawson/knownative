@@ -1,5 +1,30 @@
 const Text = require('../../models/text');
 const Card = require('../../models/card');
+const { tokenizeText } = require('../../controllers/api/tokenizer.js');
+
+const addText = async (req, res) => {
+  const { content, title, source } = req.body;
+  const userId = req.user._id;
+  
+  // Send the content of the text for tokenization.
+  console.log('Sending this text to the API: ', content);
+  const tokenizedText = await tokenizeText(content);
+  console.log('This is the API response: ', tokenizedText);
+
+  try {
+    const newText = new Text({
+      user: userId,
+      title,
+      source,
+      content
+    });
+    await newText.save();
+    res.status(201).json({ message: 'Text added successfully', text: newText });
+  } catch (error) {
+    console.error('Error saving text:', error);
+    res.status(500).json({ error: 'Failed to add text' });
+  }
+}
 
 const getUserTexts = async (req, res) => {
   try {
@@ -84,6 +109,7 @@ async function saveWord(req, res) {
 }
 
 module.exports = {
+  addText,
   getUserTexts,
   deleteUserText,
   saveWord,
