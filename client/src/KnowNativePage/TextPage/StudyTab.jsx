@@ -3,7 +3,6 @@ import { tokenizeText } from "../../utilities/tokenizer"
 import "./StudyTab.scss";
 import WordPopup from "./components/WordPopup/WordPopup";
 import Spinner from "../../ui-components/Spinner/spinner.jsx";
-import { set } from "mongoose";
 
 export default function StudyTab({ text }) {
   const [tokens, setTokens] = useState([]);
