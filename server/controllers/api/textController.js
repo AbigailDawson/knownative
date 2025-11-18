@@ -131,6 +131,7 @@ async function saveWord(req, res) {
 module.exports = {
   addText,
   getUserTexts,
+  getTextTokens,
   deleteUserText,
   saveWord,
 };
