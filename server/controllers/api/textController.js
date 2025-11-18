@@ -5,18 +5,17 @@ const { tokenizeText } = require('../../controllers/api/tokenizer.js');
 const addText = async (req, res) => {
   const { content, title, source } = req.body;
   const userId = req.user._id;
-  
-  // Send the content of the text for tokenization.
-  console.log('Sending this text to the API: ', content);
-  const tokenizedText = await tokenizeText(content);
-  console.log('This is the API response: ', tokenizedText);
+  // Tokenize the content of the text:
+  const {detectedLanguage, tokenizedText} = await tokenizeText(content);
 
   try {
     const newText = new Text({
       user: userId,
       title,
       source,
-      content
+      content,
+      detectedLanguage: detectedLanguage,
+      tokens: tokenizedText
     });
     await newText.save();
     res.status(201).json({ message: 'Text added successfully', text: newText });
