@@ -43,6 +43,27 @@ const getUserTexts = async (req, res) => {
   }
 };
 
+const getTextTokens = async (req, res) => {
+  try {
+    const { textId } = req.params;
+    const userId = req.user._id;
+
+    const text = await Text.findOne({_id: textId, user: userId}).select('tokens detectedLanguage');
+
+    if (!text) {
+      res.status(404).json({message: 'Oops! Text not found.'});
+    }
+
+    res.status(200).json({
+      tokens: text.tokens,
+      detectedLanguage: text.detectedLanguage
+    })
+
+  } catch (error) {
+    res.status(500).json({ message: 'Error fetching tokens', error: error.message})
+  }
+};
+
 const deleteUserText = async (req, res) => {
   const { userId, textId } = req.params;
 
