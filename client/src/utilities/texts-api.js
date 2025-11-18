@@ -55,3 +55,7 @@ export const fetchTexts = async (user, setTexts) => {
     console.error('Error fetching texts:', error.message);
   }
 };
+
+export const getTextTokens = async (textId) => {
+  return sendRequest(`${BASE_URL}/${textId}/tokens`, 'GET');
+}
