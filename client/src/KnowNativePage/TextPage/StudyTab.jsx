@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { tokenizeText } from "../../utilities/tokenizer"
+import { getTextTokens } from "../../utilities/texts-api.js";
 import "./StudyTab.scss";
 import WordPopup from "./components/WordPopup/WordPopup";
 import Spinner from "../../ui-components/Spinner/spinner.jsx";
@@ -27,16 +27,15 @@ export default function StudyTab({ text }) {
       if (!text?.content) return;
       setIsLoading(true);
       try {
-        const { textDetails } = await tokenizeText(text.content);
-        setIsLoading(false);
-        const tokenizedText = textDetails.tokenizedText;
-        setDetectedLanguage(textDetails.detectedLanguage);
+        const { tokens, detectedLanguage } = await getTextTokens(text._id);
+        setDetectedLanguage(detectedLanguage);
         setTokens(
-            tokenizedText.map((token) => ( { text: token.word, ...token } ))
+          tokens.map((token) => ( { text: token.word, ...token } ))
         );
+        setIsLoading(false);
       } catch (err) {
-        console.error("tokenizeText failed:", err);
-        setTokens([{ text: text.content }]); // fallback
+        console.error("Tokenization failed:", err);
+        setTokens([{ text: text.content }]); // fallback to displaying the full text.
         setIsLoading(false);
       }
     }
