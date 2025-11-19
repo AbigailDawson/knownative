@@ -263,7 +263,7 @@ export default function FlashcardGameModal({ selectedFront = 'chinese', showPiny
                                 className="flashcard-buttons__incorrect-btn"
                                 onClick={handleIncorrect}>
                                 <PiRepeatBold className="flashcard-buttons__icon" />
-                                Try again
+                                Wrong
                             </button>
                         </div> 
                         : 
