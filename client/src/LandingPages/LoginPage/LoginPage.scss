@@ -1,6 +1,8 @@
 .login-page {
   $deep-red: #962828;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 
   &__forgot,
   &__signup-link {
@@ -17,6 +19,7 @@
   &__form-container {
     display: flex;
     align-items: center;
+    flex: 1;
     justify-content: center;
     flex-direction: column;
     padding-left: 30px;
