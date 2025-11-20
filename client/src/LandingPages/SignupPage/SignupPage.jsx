@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './SignupPage.scss';
 import { Link, useNavigate } from 'react-router-dom';
 import LandingPageNav from '../components/LandingPageHeader/LandingPageNav';
+import LandingPageFooter from '../components/LandingPageFooter/LandingPageFooter';
 import FormInput from '../components/Forms/FormInput/FormInput';
 import PasswordValidation from '../components/Forms/PasswordValidation';
 import * as authService from '../../services/authService';
@@ -280,6 +281,7 @@ const SignupPage = () => {
           </>
         )}
       </section>
+      <LandingPageFooter />
     </main>
   );
 };

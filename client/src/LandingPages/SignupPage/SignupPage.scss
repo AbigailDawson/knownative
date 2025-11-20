@@ -1,15 +1,26 @@
+$gap-between-fields: 1.8rem;
+
 .signup-page {
+
+  &__main {
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+  }
+
   &__container {
-    display: grid;
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     margin-inline: auto;
+    flex: 1;
   }
 
   &__title {
     font-size: 1.5rem;
     text-align: center;
     color: black;
-    padding: 1em 0 0 0;
+    padding: 1.5rem;
   }
 
   &__error-message {
@@ -21,10 +32,9 @@
   &__form {
     display: flex;
     flex-direction: column;
-    gap: 0.8em;
+    gap: $gap-between-fields;
     align-items: center;
     justify-content: center;
-    padding: 0 160px;
   }
 
   &__button {
@@ -70,7 +80,7 @@
 
   &__login-link {
     color: black;
-    font-size: 14px;
+    font-size: 1rem;
     text-align: center;
   }
 
@@ -108,7 +118,7 @@
   &--hidden {
     max-height: 0px;
     opacity: 0;
-    margin-top: -12px;
+    margin-top: - $gap-between-fields;
   }
 }
 
