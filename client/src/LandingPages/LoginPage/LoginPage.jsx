@@ -2,6 +2,7 @@ import { useState, useReducer } from 'react';
 import './LoginPage.scss';
 import { Link } from 'react-router-dom';
 import LandingPageNav from '../components/LandingPageHeader/LandingPageNav';
+import LandingPageFooter from '../components/LandingPageFooter/LandingPageFooter';
 import * as authService from '../../services/authService';
 import { useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../../contexts/Auth/AuthProvider';
@@ -212,7 +213,7 @@ export default function LoginPage() {
   }
 
   return (
-    <main>
+    <main className='login-page'>
       <LandingPageNav />
       <div className="login-page__form-container">
         <div className="login-page__container">
@@ -281,6 +282,7 @@ export default function LoginPage() {
           )}
         </div>
       </div>
+      <LandingPageFooter />
       
       {currentModal === MODAL_STATES.FORGOT_PASSWORD && (
         <ForgotPasswordModal setShowModal={handleCloseForgotPassword} />
