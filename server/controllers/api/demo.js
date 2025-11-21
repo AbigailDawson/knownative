@@ -15,6 +15,8 @@ module.exports = {
 
 async function getDemo(req, res) {}
 
+// TokenizeText() is our old tokenizer function.
+// It utilizes a dictionary ("chinese-tokenizer") to parse text into individual words.
 function tokenizeText(req, res) {
   const { text } = req.body;
   const tokenizedText = tokenize(text);

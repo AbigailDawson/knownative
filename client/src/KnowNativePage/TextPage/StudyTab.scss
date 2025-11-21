@@ -1,21 +1,27 @@
 .study {
   width: 100%;
-}
-
-.study__body {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
   text-align: left;
-  line-height: 2.25rem;
-  font-size: 1.25rem;
-}
 
-.study__word {
-  cursor: pointer;
-  display: inline-block;
-}
+  &__language {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+ 
+  &__body {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    text-align: left;
+    line-height: 2.25rem;
+    font-size: 1.25rem;
+  }
 
-.study__word:hover:not(.study__word--active) {
-  background: #ddfcf6;
+  &__word {
+      cursor: pointer;
+    display: inline-block;
+
+    &:hover:not(.study__word--active){
+      background: #ddfcf6;
+    }
+  }
 }

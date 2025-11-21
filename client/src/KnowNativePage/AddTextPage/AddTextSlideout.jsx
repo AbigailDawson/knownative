@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Button from '../../ui-components/Button/button';
+import Spinner from '../../ui-components/Spinner/spinner';
 import sendRequest from '../../utilities/send-request';
 import { useAuthContext } from '../../contexts/Auth/AuthProvider';
 import './AddTextSlideout.scss';
@@ -12,6 +13,7 @@ export default function AddTextSlideout({ isOpen, onClose, onSuccess }) {
   });
 
   const [errors, setErrors] = useState({});
+  const [isAdding, setIsAdding] = useState(false);
   const { user } = useAuthContext();
 
   const handleChange = (e) => {
@@ -59,11 +61,16 @@ export default function AddTextSlideout({ isOpen, onClose, onSuccess }) {
     e.preventDefault();
     if (validateForm()) {
       try {
-        const data = await sendRequest('/api/demo/texts', 'POST', formData);
-        if (onSuccess) onSuccess(); // Callback to notify parent component of success
+        setIsAdding(true);
+        const data = await sendRequest('/api/texts/add', 'POST', formData);
+        if (onSuccess) {
+          onSuccess(); // Callback to notify parent component of success
+          setIsAdding(false);
+        } 
         onClose(); // Close the slideout after successful submission
       } catch (error) {
         console.error('Oops! Error submitting form:', error);
+        setIsAdding(false);
       }
     }
   };
@@ -125,7 +132,11 @@ export default function AddTextSlideout({ isOpen, onClose, onSuccess }) {
             {errors.content && <div className="error-message">{errors.content}</div>}
           </div>
           <div className="add-text-slideout__buttons">
+            {isAdding ? 
+            <Spinner /> 
+            : 
             <Button buttonText="Save" buttonOnClickFunc={handleSubmit} buttonVariant="primary" />
+            }
           </div>
         </form>
       </div>

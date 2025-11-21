@@ -1,27 +1,42 @@
 import { useEffect, useState } from "react";
-import * as demoAPI from "../../utilities/demo-api"
+import { getTextTokens } from "../../utilities/texts-api.js";
 import "./StudyTab.scss";
-
 import WordPopup from "./components/WordPopup/WordPopup";
-import { getWordInfo } from "../../utilities/words-service";
+import Spinner from "../../ui-components/Spinner/spinner.jsx";
 
 export default function StudyTab({ text }) {
   const [tokens, setTokens] = useState([]);
   const [activeWord, setActiveWord] = useState(null);
+  const [detectedLanguage, setDetectedLanguage] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
-
-  // call demo API; replace with real API call later
+  function handleWordClick(token, index, e) {
+    const { pronunciation = "", definition = "" } = token;
+    setActiveWord({
+      index: index,
+      chars: token.text,
+      pinyin: pronunciation,
+      meaning: definition,
+      textId: text._id,
+      rect: e.target.getBoundingClientRect(), // store click position for popup placement
+    });
+  }
+  
   useEffect(() => {
     async function fetchTokens() {
       if (!text?.content) return;
+      setIsLoading(true);
       try {
-        const words = await demoAPI.tokenizeText(text.content);
+        const { tokens, detectedLanguage } = await getTextTokens(text._id);
+        setDetectedLanguage(detectedLanguage);
         setTokens(
-            words.map((w) => (typeof w === "string" ? { text: w } : w))
+          tokens.map((token) => ( { text: token.word, ...token } ))
         );
+        setIsLoading(false);
       } catch (err) {
-        console.error("tokenizeText failed:", err);
-        setTokens([{ text: text.content }]); // fallback
+        console.error("Tokenization failed:", err);
+        setTokens([{ text: text.content }]); // fallback to displaying the full text.
+        setIsLoading(false);
       }
     }
     fetchTokens();
@@ -29,30 +44,26 @@ export default function StudyTab({ text }) {
 
   return (
     <section className="study">
+      <div className="study__language">
+        <h5><strong>Language: </strong> { detectedLanguage || 'Loading...'}</h5> 
+      </div>
       <div className="study__body">
-        {tokens.map((w, i) => (
-          <span
-            key={i}
-            className={
-              "study__word"
-            }
-
-            // when clicked pull pronunciation + meaning from word data and open popup
-            onClick={(e) => {
-              const { pinyin = "", meaning = "", charGroup } = getWordInfo(w);
-              setActiveWord({
-                index: i,
-                chars: charGroup || w.text,
-                pinyin,
-                meaning,
-                textId: text._id,
-                rect: e.target.getBoundingClientRect(), // store click position for popup placement
-              });
-            }}
-          >
-            {w.text}
-          </span>
-        ))}
+        {isLoading ? 
+            <Spinner />
+          :
+            tokens.map((token, idx) => (
+              <span
+                key={idx}
+                className={
+                  "study__word"
+                }
+                // when the user clicks on a word, the token object will be sent to the handler function to display the popup.
+                onClick={(e) => handleWordClick(token, idx, e)}
+              >
+                {token.text}
+              </span>
+            ))
+        }
       </div>
 
       {/* show popup if a word was clicked */}
