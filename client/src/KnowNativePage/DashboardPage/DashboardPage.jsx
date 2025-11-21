@@ -199,20 +199,6 @@ export default function DashboardPage() {
               />
               <p className="dashboard__user-dropdown-icon">{isUserDropdownOpen ? '┓' : '┕'}</p>
             </button>
-        <div className="dashboard__user-info">
-          <div className="dashboard__user-dropdown">
-            <button
-              className="dashboard__user-dropdown-options"
-              onClick={() => setIsUserDropdownOpen((prev) => !prev)}>
-              <p className="dashboard__user-name">{user.username}</p>
-              <img
-                className="dashboard__user-profile-pic"
-                src="/images/square-logo.png"
-                alt="User profile picture."
-              />
-              <p className="dashboard__user-dropdown-icon">{isUserDropdownOpen ? '┓' : '┕'}</p>
-            </button>
-
             {isUserDropdownOpen && (
               <div className="dashboard__user-dropdown-panel">
                 <p>
@@ -224,18 +210,16 @@ export default function DashboardPage() {
               </div>
             )}
           </div>
-        </div>
-            {isUserDropdownOpen && (
-              <div className="dashboard__user-dropdown-panel">
-                <p>
-                  <strong>
-                    {user.firstName} {user.lastName}
-                  </strong>
-                </p>
-                <p>Joined {new Date(user.createdAt).toLocaleDateString()}</p>
-              </div>
-            )}
-          </div>
+          {isUserDropdownOpen && (
+            <div className="dashboard__user-dropdown-panel">
+              <p>
+                <strong>
+                  {user.firstName} {user.lastName}
+                </strong>
+              </p>
+              <p>Joined {new Date(user.createdAt).toLocaleDateString()}</p>
+            </div>
+          )}
         </div>
         <div className="dashboard__title">
           {/*Just added user.username for testing of the token. Please adjust as needed. */}
