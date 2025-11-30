@@ -17,6 +17,7 @@ export default function TextsPage() {
   const [text, setText] = useState(location.state?.text || null);
   const [isSliderOpen, setIsSliderOpen] = useState(false);
   const blurRef = useRef(null);
+  const tokenCacheRef = useRef(null);
 
   function handleTabClick(tabName) {
     setActiveTab(tabName);
@@ -157,7 +158,7 @@ export default function TextsPage() {
             )}
 
             <div>
-              {activeTab === 'study' && <StudyTab text={text} />}
+              {activeTab === 'study' && <StudyTab text={text} tokenCacheRef={tokenCacheRef} />}
               {activeTab === 'translate' && <p>This is the Translate tab.</p>}
             </div>
           </div>
