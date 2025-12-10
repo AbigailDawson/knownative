@@ -84,11 +84,17 @@ Create a new file named `.env` inside the **server** directory and add the follo
 ```
 MONGODB_URI=<your-mongodb-connection-string>
 GOOGLE_TRANSLATE_API_KEY=<your-google-translate-api-key>
+OPENAI_API_KEY=<your-openai-api-key>
+RESEND_API_KEY=<your-resend-api-key>
+RESET_PASS_URL=http://localhost:5173/reset-password
 JWT_SECRET=<any-string>
 ```
 
 - `MONGODB_URI` contains the connection string for MongoDB. [Learn how to connect](https://www.mongodb.com/resources/products/fundamentals/mongodb-connection-string).
 - `GOOGLE_TRANSLATE_API_KEY` contains the API key for sentence translations. [Get a key](https://cloud.google.com/translate/docs/setup).
+- `OPENAI_API_KEY` contains your OpenAI API key (used for any OpenAI-powered features). [Get an OpenAI API key](https://platform.openai.com/account/api-keys).
+- `RESEND_API_KEY` contains your Resend API key used for sending password reset emails. [Sign up](https://resend.com/signup) for a free account to [get a Resend API key](https://resend.com/api-keys).
+- `RESET_PASS_URL` is the URL where users will be redirected to reset their password. For local development, use `http://localhost:5173/reset-password`.
 - `JWT_SECRET` contains any string of your choosing (ex. `ilovecoffee`).
 
 Create a new file named `.env` inside the **client** directory and add the following variables:
