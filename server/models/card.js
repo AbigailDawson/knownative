@@ -4,6 +4,7 @@ const cardSchema = new Schema(
   {
     user: { type: Schema.Types.ObjectId, ref: "User", required: true },
     text: { type: Schema.Types.ObjectId, ref: "Text" },
+    token: { type: Schema.Types.ObjectId },
     decks: [{ type: Schema.Types.ObjectId, ref: "Deck" }],
     status: {
       type: String,
