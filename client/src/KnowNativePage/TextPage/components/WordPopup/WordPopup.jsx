@@ -42,6 +42,7 @@ export default function WordPopup({ word, anchorRect, onClose }) {
     try {
       await saveWord({
         textId: word.textId,
+        tokenId: word.tokenId,
         traditional: word.chars,
         pinyin: word.pinyin,
         meaning: word.meaning,
