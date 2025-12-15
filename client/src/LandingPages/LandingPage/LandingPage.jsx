@@ -188,7 +188,7 @@ export default function LandingPage() {
           buttonPrimaryText="Continue Anyways"
           buttonSecondaryText="Back"
           handleSecondaryButtonOnClick={() => setShowModal(false)}
-          handlePrimaryButtonOnClick={handleModalButtonClick}
+          handlePrimaryButtonOnClick={() => handleModalButtonClick('/demo')}
           hasCloseButton={false}
           modalTitle="KnowNative is not optimized for mobile devices!"
           setShowModal={setShowModal}
