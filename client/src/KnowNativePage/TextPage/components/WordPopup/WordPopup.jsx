@@ -29,7 +29,8 @@ export default function WordPopup({ word, anchorRect, onClose }) {
   // Check if the word is already saved:
   useEffect(() => {
     const isWordSaved = savedWords.some(
-      (savedWord) => savedWord.frontProperties.traditional === word.chars
+      (savedWord) => savedWord.frontProperties.traditional === word.chars &&
+      savedWord.tokenId === word.tokenId
     );
     setSaved(isWordSaved);
   }, [savedWords, word.chars])
