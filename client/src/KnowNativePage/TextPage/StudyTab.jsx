@@ -12,7 +12,6 @@ export default function StudyTab({ text, tokenCacheRef }) {
 
   function handleWordClick(token, index, e) {
     const { pronunciation = "", definition = "", _id } = token;
-    console.log("Clicked word ID:", _id);
     setActiveWord({
       index: index,
       chars: token.text,
