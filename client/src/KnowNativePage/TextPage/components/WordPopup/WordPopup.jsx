@@ -1,14 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import { saveWord } from "../../../../utilities/words-api";
 import { getAllCards } from '../../../../utilities/cards-api'
-import { useSavedWordsContext, useSavedWordsDispatch } from '../../../../contexts/SavedWords/SavedWordsProvider'
+import { useSavedWordsDispatch } from '../../../../contexts/SavedWords/SavedWordsProvider'
 import "./WordPopup.scss";
 
-export default function WordPopup({ word, anchorRect, onClose }) {
+export default function WordPopup({ word, anchorRect, isSaved, onClose }) {
   const ref = useRef(null);
   const [saved, setSaved] = useState(false);
   const [loading, setLoading] = useState(false);
-  const { savedWords } = useSavedWordsContext();
   const dispatch = useSavedWordsDispatch();
 
   // close popup if clicked outside of it
@@ -28,12 +27,8 @@ export default function WordPopup({ word, anchorRect, onClose }) {
 
   // Check if the word is already saved:
   useEffect(() => {
-    const isWordSaved = savedWords.some(
-      (savedWord) => savedWord.frontProperties.traditional === word.chars &&
-      savedWord.tokenId === word.tokenId
-    );
-    setSaved(isWordSaved);
-  }, [savedWords, word.chars])
+    setSaved(isSaved);
+  }, [isSaved])
 
   async function handleSave() {
     if (saved) return;
