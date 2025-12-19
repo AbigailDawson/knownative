@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getTextTokens } from "../../utilities/texts-api.js";
 import "./StudyTab.scss";
+import Word from "./components/Word/Word.jsx";
 import WordPopup from "./components/WordPopup/WordPopup";
 import Spinner from "../../ui-components/Spinner/spinner.jsx";
 
@@ -84,18 +85,10 @@ export default function StudyTab({ text, tokenCacheRef }) {
         {isLoading ? 
             <Spinner />
           :
-            tokens.map((token, idx) => (
-              <span
-                key={idx}
-                className={
-                  "study__word"
-                }
-                // when the user clicks on a word, the token object will be sent to the handler function to display the popup.
-                onClick={(e) => handleWordClick(token, idx, e)}
-              >
-                {token.text}
-              </span>
-            ))
+            <Word 
+            tokens={tokens} 
+            handleWordClick={handleWordClick}
+            />
         }
       </div>
 
