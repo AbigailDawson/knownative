@@ -1,18 +1,19 @@
 import './Word.scss';
 
-export default function Word({ tokens, handleWordClick }) {
+export default function Word({ tokens, handleWordClick, isWordSaved }) {
   return (
-    tokens.map((token, idx) => (
-              <span
-                key={idx}
-                className={
-                  "study__word"
-                }
-                // when the user clicks on a word, the token object will be sent to the handler function to display the popup.
-                onClick={(e) => handleWordClick(token, idx, e)}
-              >
-                {token.text}
-              </span>
-            ))
+    tokens.map((token, idx) => {
+      const saved = isWordSaved(token._id, token.text);
+      
+      return (
+        <span
+          key={idx}
+          className={`study__word${saved ? ' study__word--saved' : ''}`}
+          onClick={(e) => handleWordClick(token, idx, e)}
+        >
+          {token.text}
+        </span>
+      );
+    })
   );
 }
