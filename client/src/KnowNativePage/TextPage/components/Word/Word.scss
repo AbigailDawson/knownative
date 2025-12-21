@@ -1,13 +1,11 @@
 .word {
   display: inline-flex;
   flex-direction: column;
-  height: 6.05rem;
   font-size: 1.7rem;
   text-wrap: wrap;
-  min-height: 8.5rem;
   text-align: center;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;  
   font-family: 'Montserrat', 'Roboto', sans-serif;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -20,11 +18,12 @@
   &__token {
     margin: 0;
     white-space: nowrap;
+    padding-left: 0.25vmin;
+    padding-right: 0.25vmin;
 
     &:hover {
       background-color: #d5fbf4;
       border-radius: 0.5vmin;
-      padding: 2px;
       opacity: 0.8;
     }
 
