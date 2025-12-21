@@ -38,6 +38,11 @@
   &__annotations {
     font-size: 0.9rem;
     font-family: 'Montserrat', 'Roboto', sans-serif;
+    display: none;
+
+    &--saved {
+      display: block;
+    }
   }
 
   &__pinyin {

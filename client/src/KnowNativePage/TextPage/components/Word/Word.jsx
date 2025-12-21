@@ -14,8 +14,7 @@ export default function Word({ tokens, handleWordClick, isWordSaved }) {
             {token.text}
           </span>
           <div 
-            className="study-word__annotation" 
-            style={{ display: saved ? 'block' : 'none' }}
+            className={`word__annotations ${saved ? ' word__annotations--saved' : ''}`}
           >
             <p className="word__pinyin">{token.pronunciation}</p>
             <p className="word__meaning">{token.definition}</p>
