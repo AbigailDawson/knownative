@@ -1,9 +1,7 @@
-.study-word {
-  display: flex;
+.word {
+  display: inline-flex;
   flex-direction: column;
   height: 6.05rem;
-  max-width: 6.7rem;
-  margin: 0 0.2vmin;
   font-size: 1.7rem;
   text-wrap: wrap;
   min-height: 8.5rem;
@@ -11,7 +9,6 @@
   align-items: center;
   justify-content: center;
   font-family: 'Montserrat', 'Roboto', sans-serif;
-  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   cursor: pointer;
@@ -20,8 +17,9 @@
     margin: 0;
   }
 
-  &__text {
+  &__token {
     margin: 0;
+    white-space: nowrap;
 
     &:hover {
       background-color: #d5fbf4;
@@ -38,7 +36,7 @@
     }
   }
 
-  &__annotation {
+  &__annotations {
     font-size: 0.9rem;
     font-family: 'Montserrat', 'Roboto', sans-serif;
   }
@@ -51,6 +49,7 @@
     font-weight: bold;
     min-width: 10rem;
     z-index: 1;
+    overflow-wrap: break-word;
   }
 }
 

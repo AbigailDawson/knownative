@@ -6,9 +6,9 @@ export default function Word({ tokens, handleWordClick, isWordSaved }) {
       const saved = isWordSaved(token._id, token.text);
       
       return (
-        <div key={idx} className="study-word">
+        <div key={idx} className="word">
           <span
-            className={`study-word__text${saved ? ' study-word__text--saved' : ''}`}
+            className={`word__token${saved ? ' word__token--saved' : ''}`}
             onClick={(e) => handleWordClick(token, idx, e)}
           >
             {token.text}
@@ -17,8 +17,8 @@ export default function Word({ tokens, handleWordClick, isWordSaved }) {
             className="study-word__annotation" 
             style={{ visibility: saved ? 'visible' : 'hidden' }}
           >
-            <p className="study-word__pinyin">{token.pronunciation}</p>
-            <p className="study-word__meaning">{token.definition}</p>
+            <p className="word__pinyin">{token.pronunciation}</p>
+            <p className="word__meaning">{token.definition}</p>
           </div>
         </div>
       );

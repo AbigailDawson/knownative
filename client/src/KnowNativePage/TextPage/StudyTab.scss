@@ -8,9 +8,10 @@
   }
  
   &__body {
-    display: flex;
+    display: inline-flex;
     flex-wrap: wrap;
-    gap: 0.75rem;
+    row-gap: 1.75rem;
+    column-gap: 1rem;
     text-align: left;
     line-height: 2.25rem;
     font-size: 1.25rem;
