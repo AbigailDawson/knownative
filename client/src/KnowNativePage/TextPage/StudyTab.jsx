@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { getTextTokens } from "../../utilities/texts-api.js";
+import { useSavedWordsContext } from "../../contexts/SavedWords/SavedWordsProvider";
 import "./StudyTab.scss";
+import Word from "./components/Word/Word.jsx";
 import WordPopup from "./components/WordPopup/WordPopup";
 import Spinner from "../../ui-components/Spinner/spinner.jsx";
 
@@ -9,6 +11,7 @@ export default function StudyTab({ text, tokenCacheRef }) {
   const [activeWord, setActiveWord] = useState(null);
   const [detectedLanguage, setDetectedLanguage] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const { savedWords } = useSavedWordsContext();
 
   function handleWordClick(token, index, e) {
     const { pronunciation = "", definition = "", _id } = token;
@@ -21,6 +24,15 @@ export default function StudyTab({ text, tokenCacheRef }) {
       tokenId: _id,
       rect: e.target.getBoundingClientRect(), // store click position for popup placement
     });
+  }
+
+  // Helper function to check if a word is saved
+  function isWordSaved(tokenId, chars) {
+    return savedWords.some(
+      (savedWord) =>
+        savedWord.frontProperties.traditional === chars &&
+        savedWord.tokenId === tokenId
+    );
   }
 
   function cacheTokens(textId, tokens, detectedLanguage) {
@@ -84,18 +96,11 @@ export default function StudyTab({ text, tokenCacheRef }) {
         {isLoading ? 
             <Spinner />
           :
-            tokens.map((token, idx) => (
-              <span
-                key={idx}
-                className={
-                  "study__word"
-                }
-                // when the user clicks on a word, the token object will be sent to the handler function to display the popup.
-                onClick={(e) => handleWordClick(token, idx, e)}
-              >
-                {token.text}
-              </span>
-            ))
+            <Word 
+            tokens={tokens} 
+            handleWordClick={handleWordClick}
+            isWordSaved={isWordSaved}
+            />
         }
       </div>
 
@@ -105,6 +110,7 @@ export default function StudyTab({ text, tokenCacheRef }) {
           word={activeWord}
           anchorRect={activeWord.rect}
           onClose={() => setActiveWord(null)}
+          isSaved={isWordSaved(activeWord.tokenId, activeWord.chars)}
         />
       )}
     </section>

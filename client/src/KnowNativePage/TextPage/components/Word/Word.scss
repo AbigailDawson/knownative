@@ -1,0 +1,67 @@
+.word {
+  display: inline-flex;
+  flex-direction: column;
+  font-size: 1.7rem;
+  text-wrap: wrap;
+  text-align: center;
+  align-items: center;
+  justify-content: flex-start;  
+  font-family: 'Montserrat', 'Roboto', sans-serif;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+  
+  & p {
+    margin: 0;
+  }
+
+  &__token {
+    margin: 0;
+    white-space: nowrap;
+    padding-left: 0.25vmin;
+    padding-right: 0.25vmin;
+
+    &:hover {
+      background-color: #d5fbf4;
+      border-radius: 0.5vmin;
+      opacity: 0.8;
+    }
+
+    &--saved {
+      color: #056a6d;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      text-decoration-thickness: 1.5px;
+    }
+  }
+
+  &__annotations {
+    font-size: 0.9rem;
+    font-family: 'Montserrat', 'Roboto', sans-serif;
+    display: none;
+
+    &--saved {
+      display: block;
+    }
+  }
+
+  &__pinyin {
+    font-size: 0.9rem;
+  }
+
+  &__meaning {
+    font-weight: bold;
+    overflow-wrap: break-word;
+  }
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .study-word {
+    font-size: 1.3rem;
+  }
+
+  .study-word__annotation {
+    font-size: 0.8rem;
+  }
+}
