@@ -11,13 +11,14 @@ export default function StudyTab({ text, tokenCacheRef }) {
   const [isLoading, setIsLoading] = useState(true);
 
   function handleWordClick(token, index, e) {
-    const { pronunciation = "", definition = "" } = token;
+    const { pronunciation = "", definition = "", _id } = token;
     setActiveWord({
       index: index,
       chars: token.text,
       pinyin: pronunciation,
       meaning: definition,
       textId: text._id,
+      tokenId: _id,
       rect: e.target.getBoundingClientRect(), // store click position for popup placement
     });
   }

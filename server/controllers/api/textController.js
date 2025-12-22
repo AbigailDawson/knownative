@@ -93,31 +93,33 @@ const deleteUserText = async (req, res) => {
 // Save a word to a user's text (POST /api/texts/saveWord)
 async function saveWord(req, res) {
   try {
-    const { textId, traditional, pinyin, meaning } = req.body;
+    const { textId, tokenId, traditional, pinyin, meaning } = req.body;
     const userId = req.user._id;
 
-    if (!textId || !traditional) {
+    if (!textId || !traditional || !tokenId) {
       return res
         .status(400)
-        .json({ message: 'textId and traditional are required' });
+        .json({ message: 'textId, tokenId and traditional are required' });
     }
 
-    // stop duplicates for the same user + text + characters
+    // stop duplicates for the same user + text + tokenId combination
     const exists = await Card.findOne({
       user: userId,
       text: textId,
-      'frontProperties.traditional': traditional,
+      tokenId: tokenId
     });
     if (exists) return res.status(409).json({ message: 'Word already saved' });
 
     const card = await Card.create({
       user: userId,
       text: textId,
+      tokenId: tokenId,
       frontProperties: { traditional, easier: traditional, pinyin },
       backProperties: { meaning },
     });
 
-    // Mongoose style load text add card and save
+    // Cards are a subdocument of the Text model.
+    // Load Text, push the new card to the cards array and save.
     const text = await Text.findById(textId);
     text.cards.push(card._id);
     await text.save();
